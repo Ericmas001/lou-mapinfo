@@ -2,21 +2,19 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5CE0D6C9-C22B-450F-AA78-6433BB2A03FF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LouMapInfo</RootNamespace>
-    <AssemblyName>LouMapInfo</AssemblyName>
+    <AssemblyName>LouMapInfoLib</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,8 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,17 +37,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Entities\AllianceInfo.cs" />
+    <Compile Include="Entities\CityInfo.cs" />
+    <Compile Include="Entities\ContinentInfo.cs" />
+    <Compile Include="Entities\PlayerInfo.cs" />
+    <Compile Include="Entities\Pt.cs" />
+    <Compile Include="Entities\WorldInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="testData\overlay10c41.json" />
-    <None Include="testData\p10c41.json" />
-    <None Include="testData\sea10.json" />
-    <None Include="testData\updated.json" />
-    <None Include="testData\w10c41.json" />
-    <None Include="testData\w10s41.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections_4.0.csproj">
@@ -64,10 +57,6 @@
     <ProjectReference Include="..\EricUtility\EricUtility_4.0.csproj">
       <Project>{31541BBE-B408-4719-BFCE-03947BB7AB0E}</Project>
       <Name>EricUtility_4.0</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LouMapInfoLib\LouMapInfoLib.csproj">
-      <Project>{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}</Project>
-      <Name>LouMapInfoLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
