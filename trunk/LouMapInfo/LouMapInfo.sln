@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityCollections_4.0"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityNetworking_4.0", "EricUtilityNetworking\EricUtilityNetworking_4.0.csproj", "{455F649D-B01B-4B20-B648-805461BF3142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoApp", "LouMapInfoApp\LouMapInfoApp.csproj", "{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoLib", "LouMapInfoLib\LouMapInfoLib.csproj", "{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -63,6 +67,26 @@ Global
 		{455F649D-B01B-4B20-B648-805461BF3142}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{455F649D-B01B-4B20-B648-805461BF3142}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{455F649D-B01B-4B20-B648-805461BF3142}.Release|x86.ActiveCfg = Release|Any CPU
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Debug|x86.ActiveCfg = Debug|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Debug|x86.Build.0 = Debug|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Release|Any CPU.ActiveCfg = Release|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Release|x86.ActiveCfg = Release|x86
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}.Release|x86.Build.0 = Release|x86
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
