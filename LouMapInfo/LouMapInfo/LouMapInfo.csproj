@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\CityInfo.cs" />
     <Compile Include="Entities\ContinentInfo.cs" />
+    <Compile Include="Entities\AllianceInfo.cs" />
+    <Compile Include="Entities\PlayerInfo.cs" />
     <Compile Include="Entities\Pt.cs" />
     <Compile Include="Entities\WorldInfo.cs" />
     <Compile Include="Program.cs" />

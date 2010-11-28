@@ -44,5 +44,9 @@ namespace LouMapInfo.Entities
         }
 
         #endregion
+        public override string ToString()
+        {
+            return "" + ID;
+        }
     }
 }

@@ -31,19 +31,13 @@ namespace LouMapInfo
             }
         }
 
-        
+
         public static void loadShrines()
         {
             string s = File.ReadAllText("../../testData/sea10.json");
             JsonTextParser parser = new JsonTextParser();
             JsonObject jsonObject = parser.Parse(s);
-
-            //Console.WriteLine();
-            //Console.WriteLine("loadShrines() indentation in JSON data format:");
-            //Console.WriteLine(jsonObject.ToString());
-            //Console.WriteLine();
             WorldInfo w = worlds[10];
-            List<int> cont = new List<int>();
             foreach (JsonObject o in jsonObject as JsonObjectCollection)
             {
                 JsonObjectCollection t = o as JsonObjectCollection;
@@ -74,31 +68,68 @@ namespace LouMapInfo
 
                     }
                 }
-                /*
-                int worldID = int.Parse(field.Name);
-                DateTime val = DateTime.Parse((string)field.GetValue());
-                worlds.Add(worldID,new WorldInfo(worldID, val));*/
             }
 
+        }
+
+
+        public static void loadOverlay()
+        {
+            string s = File.ReadAllText("../../testData/overlay10c41.json");
+            JsonTextParser parser = new JsonTextParser();
+            JsonObject jsonObject = parser.Parse(s);
+            WorldInfo world = worlds[10];
+            ContinentInfo continent = world.Cont(41);
+            foreach (JsonObjectCollection a in jsonObject as JsonObjectCollection)
+            {
+                string aid = a.Name;
+                int pts = (int)((JsonNumericValue)a["points"]).Value;
+                string name = (string)((JsonStringValue)a["name"]).Value;
+                AllianceInfo alliance = new AllianceInfo(int.Parse(aid), name, pts, continent);
+                if (continent.Alliances.ContainsKey(name))
+                    alliance = continent.Alliances[name];
+                else
+                    continent.Alliances.Add(name,alliance);
+                JsonObjectCollection players = (JsonObjectCollection)a["players"];
+                foreach (JsonObjectCollection p in players)
+                {
+                    string pid = p.Name;
+                    string pname = (string)((JsonStringValue)p["name"]).Value;
+                    int ppts = (int)((JsonNumericValue)p["points"]).Value;
+                    PlayerInfo player = new PlayerInfo(int.Parse(pid), pname, ppts, alliance);
+                    if (alliance.Players.ContainsKey(pname))
+                        player = alliance.Players[pname];
+                    else
+                        alliance.Players.Add(pname, player);
+                    JsonObjectCollection pcities = (JsonObjectCollection)p["cities"];
+                    foreach (JsonObjectCollection c in pcities)
+                    {
+                        string cid = c.Name;
+                        string cname = (string)((JsonStringValue)c["name"]).Value;
+                        int cpts = (int)((JsonNumericValue)c["points"]).Value;
+                        bool castle = (bool)((JsonBooleanValue)c["castle"]).Value;
+                        Pt loc = new Pt((int)((JsonNumericValue)c["x"]).Value, (int)((JsonNumericValue)c["y"]).Value);
+                        CityInfo city = new CityInfo(int.Parse(cid), cname, cpts, castle, loc, player);
+                        player.Cities.Add(cid,city);
+                        if (castle)
+                            Console.WriteLine(alliance + ": " + player + ": " + city);
+                    }
+                }
+            }
         }
         static void Main(string[] args)
         {
             loadUpdated();
-            //foreach (WorldInfo wi in worlds.Values)
-            //    Console.WriteLine("World #{0}, last updated {1:yyyy}-{1:mm}-{1:dd}", wi.ID, wi.LastUpdated);
-            //Console.ReadLine();
             loadShrines();
-            foreach (ContinentInfo c in worlds[10].Continents)
-            {
-                foreach (Pt p in worlds[10].Cont(c.ID).Shrines)
-                {
-                    Console.WriteLine("Shrine   World " + c.World.ID + " Cont " + c.ID + ": " + p);
-                }
-                foreach (Pt p in worlds[10].Cont(41).MoonGates)
-                {
-                    Console.WriteLine("MoonGate World " + c.World.ID + " Cont " + c.ID + ": " + p);
-                }
-            }
+            loadOverlay();
+            Console.WriteLine();
+            Console.WriteLine("======================");
+            Console.WriteLine();
+            foreach (CityInfo c in worlds[10].Cont(41).Alliances[AllianceInfo.NO_ALLIANCE].Players[PlayerInfo.LAWLESS].Cities.Values)
+                Console.WriteLine(c);
+            Console.WriteLine();
+            Console.WriteLine("======================");
+            Console.WriteLine();
             Console.ReadLine();
         }
     }
