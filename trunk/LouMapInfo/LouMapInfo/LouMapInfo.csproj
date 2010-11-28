@@ -40,11 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\WorldInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="testData\overlay10c41.json" />
+    <None Include="testData\p10c41.json" />
+    <None Include="testData\sea10.json" />
+    <None Include="testData\updated.json" />
+    <None Include="testData\w10c41.json" />
+    <None Include="testData\w10s41.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections_4.0.csproj">
