@@ -124,6 +124,7 @@ namespace LouMapInfoApp
         public MainForm()
         {
             InitializeComponent();
+            tabControl1.TabPages.Remove(tpageReports);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -132,10 +133,12 @@ namespace LouMapInfoApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            lblStatus.Text = "";
             this.Enabled = false;
             statePictureBox1.Etat = StatePictureBoxStates.Waiting;
             dgvCities.Rows.Clear();
             worlds.Clear();
+            tabControl1.TabPages.Remove(tpageReports);
             new Thread(new ParameterizedThreadStart(LoadContinent)).Start(new KeyValuePair<int, int>((int)nudWorld.Value, (int)nudContinent.Value));
         }
 
@@ -179,9 +182,10 @@ namespace LouMapInfoApp
 
                 }
             }
-            dgvCities.Sort(dgvCities.Columns["CityScore"], ListSortDirection.Descending);
-            dgvCities.Sort(dgvCities.Columns["PlayerName"], ListSortDirection.Ascending);
             dgvCities.Sort(dgvCities.Columns["AllianceName"], ListSortDirection.Ascending);
+            lblStatus.Text = String.Format("Word: {0:00}, Continent: {1:00}, Last Updated: {2:yyyy}-{2:mm}-{2:dd}",info.Key,info.Value,worlds[info.Key].LastUpdated);
+
+            tabControl1.TabPages.Add(tpageReports); 
             this.Enabled = true;
         }
         private void EndLoadContinentBadly(KeyValuePair<int, int> info)
@@ -193,6 +197,49 @@ namespace LouMapInfoApp
             }
             statePictureBox1.Etat = StatePictureBoxStates.Bad;
             this.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnReportLawless_Click(object sender, EventArgs e)
+        {
+            int w = (int)nudWorld.Value;
+            int co = (int)nudContinent.Value;
+            String title = "Lawless cities on C" + co + " (World " + w + ")";
+            string report = "<center><h1>" + title + "</h1></center><br /><br />";
+            ICollection<CityInfo> lawless = worlds[w].Cont(co).Alliances[AllianceInfo.NO_ALLIANCE].Players[PlayerInfo.LAWLESS].Cities.Values;
+            List<CityInfo> lawlessCity = new List<CityInfo>();
+            List<CityInfo> lawlessCastles = new List<CityInfo>();
+            foreach (CityInfo c in lawless)
+            {
+                if (c.Castle)
+                    lawlessCastles.Add(c);
+                else
+                    lawlessCity.Add(c);
+            }
+            CityInfo[] cities = new CityInfo[lawlessCity.Count];
+            lawlessCity.CopyTo(cities, 0);
+            Array.Sort(cities);
+            Array.Reverse(cities);
+            report += "<h2>Cities</h2><ul>";
+            foreach (CityInfo c in cities)
+            {
+                report += "<li>" + c + "</li>";
+            }
+            report += "</ul>";
+            cities = new CityInfo[lawlessCastles.Count];
+            lawlessCastles.CopyTo(cities, 0);
+            Array.Sort(cities);
+            Array.Reverse(cities);
+            report += "<h2>Castles</h2><ul>";
+            foreach (CityInfo c in cities)
+            {
+                report += "<li>" + c + "</li>";
+            }
+            report += "</ul>";
+            new ReportForm(title,report).Show();
         }
     }
 }
