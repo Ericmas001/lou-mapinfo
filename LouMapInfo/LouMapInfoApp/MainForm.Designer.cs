@@ -41,7 +41,7 @@
             this.CityCastle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CityScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.nudWorld = new System.Windows.Forms.NumericUpDown();
             this.nudContinent = new System.Windows.Forms.NumericUpDown();
@@ -49,6 +49,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
+            this.tpageReports = new System.Windows.Forms.TabPage();
+            this.btnReportLawless = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
@@ -57,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudContinent)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
+            this.tpageReports.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -65,6 +68,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tpageReports);
             this.tabControl1.Location = new System.Drawing.Point(0, 37);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -165,18 +169,17 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.lblStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 451);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(683, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // lblStatus
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(270, 17);
-            this.toolStripStatusLabel1.Text = "Word: 10, Continent: 41, Last Updated: 2010-11-28";
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // label1
             // 
@@ -268,6 +271,30 @@
             this.statePictureBox1.TabIndex = 8;
             this.statePictureBox1.TabStop = false;
             // 
+            // tpageReports
+            // 
+            this.tpageReports.Controls.Add(this.btnReportLawless);
+            this.tpageReports.Location = new System.Drawing.Point(4, 22);
+            this.tpageReports.Name = "tpageReports";
+            this.tpageReports.Padding = new System.Windows.Forms.Padding(3);
+            this.tpageReports.Size = new System.Drawing.Size(675, 385);
+            this.tpageReports.TabIndex = 1;
+            this.tpageReports.Text = "Reports";
+            this.tpageReports.UseVisualStyleBackColor = true;
+            // 
+            // btnReportLawless
+            // 
+            this.btnReportLawless.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportLawless.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportLawless.Location = new System.Drawing.Point(101, 23);
+            this.btnReportLawless.Name = "btnReportLawless";
+            this.btnReportLawless.Size = new System.Drawing.Size(489, 65);
+            this.btnReportLawless.TabIndex = 0;
+            this.btnReportLawless.Text = "Lawless Cities";
+            this.btnReportLawless.UseVisualStyleBackColor = true;
+            this.btnReportLawless.Click += new System.EventHandler(this.btnReportLawless_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,6 +322,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudContinent)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).EndInit();
+            this.tpageReports.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,7 +343,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn CityCastle;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityScore;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudWorld;
         private System.Windows.Forms.NumericUpDown nudContinent;
@@ -323,6 +351,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private EricUtility.Windows.Forms.StatePictureBox statePictureBox1;
+        private System.Windows.Forms.TabPage tpageReports;
+        private System.Windows.Forms.Button btnReportLawless;
     }
 }
 
