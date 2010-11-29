@@ -59,5 +59,19 @@ namespace LouMapInfoApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon icone_LOU {
+            get {
+                object obj = ResourceManager.GetObject("icone_LOU", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap logo_LOU {
+            get {
+                object obj = ResourceManager.GetObject("logo_LOU", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

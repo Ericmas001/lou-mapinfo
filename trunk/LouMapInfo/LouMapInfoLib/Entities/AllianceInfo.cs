@@ -16,7 +16,7 @@ namespace LouMapInfo.Entities
 
         public int ID { get { return m_ID; } }
         public string Name { get { return m_Name; } }
-        public int Score { get { return m_Score; } }
+        public int Score { get { return m_Score; } set { m_Score = value; } }
         public string SayScore { get { return (Score > 10000 ? String.Format("{0:0,0,0,0,0}", Score) : (Score > 1000 ? String.Format("{0:0,0}", Score) : "" + Score)); } }
         public Dictionary<string, PlayerInfo> Players { get { return m_Players; } }
         public ContinentInfo Continent { get { return m_Continent; } }
