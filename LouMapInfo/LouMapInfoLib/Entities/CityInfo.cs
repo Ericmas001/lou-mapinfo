@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LouMapInfo.Entities
 {
-    public class CityInfo
+    public class CityInfo : IComparable<CityInfo>
     {
         private int m_ID;
         private string m_Name;
@@ -16,6 +16,7 @@ namespace LouMapInfo.Entities
         public int ID { get { return m_ID; } }
         public string Name { get { return m_Name; } }
         public int Score { get { return m_Score; } }
+        public string SayScore { get { return (Score > 10000 ? String.Format("{0:0,0,0,0,0}", Score) : (Score > 1000 ? String.Format("{0:0,0}", Score) : "" + Score)); } }
         public bool Castle { get { return m_Castle; } }
         public Pt Location { get { return m_Location; } }
         public PlayerInfo Player { get { return m_Player; } }
@@ -31,7 +32,16 @@ namespace LouMapInfo.Entities
         }
         public override string ToString()
         {
-            return Location + " " + Name + (Castle ? "[*]" : "") + " (" + Score + ")";
+            return String.Format("{0} {1}{2} ({3})", Location, Name, (Castle ? "[*]" : ""), SayScore);
         }
+
+        #region IComparable<CityInfo> Members
+
+        public int CompareTo(CityInfo other)
+        {
+            return Score.CompareTo(other.Score);
+        }
+
+        #endregion
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LouMapInfo.Entities
 {
-    public class PlayerInfo
+    public class PlayerInfo : IComparable<PlayerInfo>
     {
         public static string LAWLESS { get { return "-"; } }
         private int m_ID;
@@ -18,6 +18,7 @@ namespace LouMapInfo.Entities
         public int Score { get { return m_Score; } }
         public Dictionary<string, CityInfo> Cities { get { return m_Cities; } }
         public AllianceInfo Alliance { get { return m_Alliance; } }
+        public string SayScore { get { return (Score > 10000 ? String.Format("{0:0,0,0,0,0}", Score) : (Score > 1000 ? String.Format("{0:0,0}", Score) : "" + Score)); } }
 
         public PlayerInfo(int id, string name, int pts, AllianceInfo parent)
         {
@@ -28,7 +29,16 @@ namespace LouMapInfo.Entities
         }
         public override string ToString()
         {
-            return Name + " (" + Score + ")";
+            return Name == PlayerInfo.LAWLESS ? "Lawless castles" : (Name + " (" + SayScore + ")");
         }
+
+        #region IComparable<PlayerInfo> Members
+
+        public int CompareTo(PlayerInfo other)
+        {
+            return Score.CompareTo(other.Score);
+        }
+
+        #endregion
     }
 }

@@ -87,8 +87,8 @@ namespace LouMapInfoApp
             foreach (JsonObjectCollection a in jsonObject as JsonObjectCollection)
             {
                 string aid = a.Name;
-                int pts = (int)((JsonNumericValue)a["points"]).Value;
                 string name = (string)((JsonStringValue)a["name"]).Value;
+                int pts = (name == AllianceInfo.NO_ALLIANCE) ? 0 : (int)((JsonNumericValue)a["points"]).Value;
                 AllianceInfo alliance = new AllianceInfo(int.Parse(aid), name, pts, continent);
                 if (continent.Alliances.ContainsKey(name))
                     alliance = continent.Alliances[name];
@@ -99,7 +99,7 @@ namespace LouMapInfoApp
                 {
                     string pid = p.Name;
                     string pname = (string)((JsonStringValue)p["name"]).Value;
-                    int ppts = (int)((JsonNumericValue)p["points"]).Value;
+                    int ppts = (pname == PlayerInfo.LAWLESS) ? 0 : (int)((JsonNumericValue)p["points"]).Value;
                     PlayerInfo player = new PlayerInfo(int.Parse(pid), pname, ppts, alliance);
                     if (alliance.Players.ContainsKey(pname))
                         player = alliance.Players[pname];
@@ -183,7 +183,7 @@ namespace LouMapInfoApp
                 }
             }
             dgvCities.Sort(dgvCities.Columns["AllianceName"], ListSortDirection.Ascending);
-            lblStatus.Text = String.Format("Word: {0:00}, Continent: {1:00}, Last Updated: {2:yyyy}-{2:mm}-{2:dd}",info.Key,info.Value,worlds[info.Key].LastUpdated);
+            lblStatus.Text = String.Format("Word: {0:00}, Continent: {1:00}, Last Updated: {2:yyyy}-{2:MM}-{2:dd}",info.Key,info.Value,worlds[info.Key].LastUpdated);
 
             tabControl1.TabPages.Add(tpageReports); 
             this.Enabled = true;
@@ -208,7 +208,7 @@ namespace LouMapInfoApp
             int w = (int)nudWorld.Value;
             int co = (int)nudContinent.Value;
             String title = "Lawless cities on C" + co + " (World " + w + ")";
-            string report = "<center><h1>" + title + "</h1></center><br /><br />";
+            string report = "<center><h1>" + title + "</h1></center>";
             ICollection<CityInfo> lawless = worlds[w].Cont(co).Alliances[AllianceInfo.NO_ALLIANCE].Players[PlayerInfo.LAWLESS].Cities.Values;
             List<CityInfo> lawlessCity = new List<CityInfo>();
             List<CityInfo> lawlessCastles = new List<CityInfo>();
@@ -226,7 +226,7 @@ namespace LouMapInfoApp
             report += "<h2>Cities</h2><ul>";
             foreach (CityInfo c in cities)
             {
-                report += "<li>" + c + "</li>";
+                report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
             }
             report += "</ul>";
             cities = new CityInfo[lawlessCastles.Count];
@@ -236,10 +236,60 @@ namespace LouMapInfoApp
             report += "<h2>Castles</h2><ul>";
             foreach (CityInfo c in cities)
             {
-                report += "<li>" + c + "</li>";
+                report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
             }
             report += "</ul>";
             new ReportForm(title,report).Show();
+        }
+
+        private void btnReportCastles_Click(object sender, EventArgs e)
+        {
+            int w = (int)nudWorld.Value;
+            int co = (int)nudContinent.Value;
+            String title = "Castles on C" + co + " (World " + w + ")";
+            string report = "<center><h1>" + title + "</h1></center>";
+            AllianceInfo[] alliances = new AllianceInfo[worlds[w].Cont(co).Alliances.Count];
+            worlds[w].Cont(co).Alliances.Values.CopyTo(alliances, 0);
+            Array.Sort(alliances);
+            Array.Reverse(alliances);
+            for (int i = 0; i < alliances.Length; ++i)
+            {
+                Dictionary<PlayerInfo, List<CityInfo>> players = new Dictionary<PlayerInfo, List<CityInfo>>();
+                foreach( PlayerInfo p in alliances[i].Players.Values )
+                {
+                    foreach (CityInfo c in p.Cities.Values)
+                    {
+                        if (c.Castle)
+                        {
+                            if (!players.ContainsKey(p))
+                                players.Add(p,new List<CityInfo>());
+                            players[p].Add(c);
+                        }
+                    }
+                }
+                if (players.Count > 0)
+                {
+                    report += String.Format("<hr /><center><h2>{0}{1}</h2></center>", alliances[i].Name == AllianceInfo.NO_ALLIANCE ? "" : String.Format("#{0:00} ", (i + 1)), alliances[i]);
+                    PlayerInfo[] ps = new PlayerInfo[players.Count];
+                    players.Keys.CopyTo(ps, 0);
+                    Array.Sort(ps);
+                    Array.Reverse(ps);
+                    foreach( PlayerInfo p in ps)
+                    {
+                        report += String.Format("<h3>{0}</h3><ul>", p);
+                        CityInfo[] cs = new CityInfo[players[p].Count];
+                        players[p].CopyTo(cs, 0);
+                        Array.Sort(cs);
+                        Array.Reverse(cs);
+                        foreach (CityInfo c in cs)
+                        {
+                            report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
+                        }
+                        report += String.Format("</ul>");
+                    }
+                }
+            }
+            new ReportForm(title, report).Show();
         }
     }
 }
