@@ -82,6 +82,10 @@
     <None Include="testData\w10s41.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Desktop\Programmation\C#\LouMapInfo\EricUtilityWinForms\EricUtilityWinForms_4.0.csproj">
+      <Project>{13AC29CB-866A-4954-B376-7FCA5412DDF1}</Project>
+      <Name>EricUtilityWinForms_4.0</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections_4.0.csproj">
       <Project>{B8B8FC45-F16D-4380-91FD-F08B365C74A7}</Project>
       <Name>EricUtilityCollections_4.0</Name>

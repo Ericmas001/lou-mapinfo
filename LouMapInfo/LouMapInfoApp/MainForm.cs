@@ -8,15 +8,19 @@ using System.Windows.Forms;
 using LouMapInfo.Entities;
 using System.IO;
 using EricUtility.Networking.JSON;
+using EricUtility.Windows.Forms;
+using System.Threading;
+using EricUtility.Networking.Gathering;
 
 namespace LouMapInfoApp
 {
     public partial class MainForm : Form
     {
         private static Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
-        public static void loadUpdated()
+        public static void loadUpdated(int iw)
         {
-            string s = File.ReadAllText("../../testData/updated.json");
+            //string s = File.ReadAllText("../../testData/updated.json");
+            string s = GatheringUtility.GetPageSource("http://www.lou-map.com/updated.json"); 
             JsonTextParser parser = new JsonTextParser();
             JsonObject jsonObject = parser.Parse(s);
 
@@ -29,12 +33,14 @@ namespace LouMapInfoApp
         }
 
 
-        public static void loadShrines()
+        public static void loadShrines(int iw)
         {
-            string s = File.ReadAllText("../../testData/sea10.json");
+            //string s = File.ReadAllText("../../testData/sea" + iw + ".json");
+
+            string s = GatheringUtility.GetPageSource("http://www.lou-map.com/data/sea" + iw + ".json"); 
             JsonTextParser parser = new JsonTextParser();
             JsonObject jsonObject = parser.Parse(s);
-            WorldInfo w = worlds[10];
+            WorldInfo w = worlds[iw];
             foreach (JsonObject o in jsonObject as JsonObjectCollection)
             {
                 JsonObjectCollection t = o as JsonObjectCollection;
@@ -70,13 +76,14 @@ namespace LouMapInfoApp
         }
 
 
-        public static void loadOverlay()
+        public static void loadOverlay( int iw, int ic )
         {
-            string s = File.ReadAllText("../../testData/overlay10c41.json");
+            string s = GatheringUtility.GetPageSource("http://www.lou-map.com/data/overlay" + iw + "c" + ic + ".json");
+            //string s = File.ReadAllText("../../testData/overlay"+iw+"c"+ic+".json");
             JsonTextParser parser = new JsonTextParser();
             JsonObject jsonObject = parser.Parse(s);
-            WorldInfo world = worlds[10];
-            ContinentInfo continent = world.Cont(41);
+            WorldInfo world = worlds[iw];
+            ContinentInfo continent = world.Cont(ic);
             foreach (JsonObjectCollection a in jsonObject as JsonObjectCollection)
             {
                 string aid = a.Name;
@@ -121,10 +128,45 @@ namespace LouMapInfoApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            loadUpdated();
-            loadShrines();
-            loadOverlay();
-            foreach (AllianceInfo a in worlds[10].Cont(41).Alliances.Values)
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            statePictureBox1.Etat = StatePictureBoxStates.Waiting;
+            dgvCities.Rows.Clear();
+            worlds.Clear();
+            new Thread(new ParameterizedThreadStart(LoadContinent)).Start(new KeyValuePair<int, int>((int)nudWorld.Value, (int)nudContinent.Value));
+        }
+
+        public void LoadContinent(object State)
+        {
+            KeyValuePair<int, int> info = (KeyValuePair<int, int>)State;
+            int world = info.Key;
+            int cont = info.Value;
+            try
+            {
+                loadUpdated(world);
+                loadShrines(world);
+                loadOverlay(world, cont);
+                EndLoadContinent(info);
+            }
+            catch
+            {
+                EndLoadContinentBadly(info);
+            }
+        }
+
+        public delegate void EmptyHandler(KeyValuePair<int, int> info);
+        private void EndLoadContinent(KeyValuePair<int, int> info)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new EmptyHandler(EndLoadContinent), info);
+                return;
+            }
+            statePictureBox1.Etat = StatePictureBoxStates.None;
+            foreach (AllianceInfo a in worlds[info.Key].Cont(info.Value).Alliances.Values)
             {
 
                 foreach (PlayerInfo p in a.Players.Values)
@@ -132,11 +174,25 @@ namespace LouMapInfoApp
 
                     foreach (CityInfo c in p.Cities.Values)
                     {
-                        dataGridView1.Rows.Add(a.Name, a.Score, p.Name, p.Score, c.Location.X, c.Location.Y, c.Name, c.Castle, c.Score);
+                        dgvCities.Rows.Add(a.Name, a.Score, p.Name, p.Score, c.Location.X, c.Location.Y, c.Name, c.Castle, c.Score);
                     }
 
                 }
             }
+            dgvCities.Sort(dgvCities.Columns["CityScore"], ListSortDirection.Descending);
+            dgvCities.Sort(dgvCities.Columns["PlayerName"], ListSortDirection.Ascending);
+            dgvCities.Sort(dgvCities.Columns["AllianceName"], ListSortDirection.Ascending);
+            this.Enabled = true;
+        }
+        private void EndLoadContinentBadly(KeyValuePair<int, int> info)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new EmptyHandler(EndLoadContinentBadly), info);
+                return;
+            }
+            statePictureBox1.Etat = StatePictureBoxStates.Bad;
+            this.Enabled = true;
         }
     }
 }
