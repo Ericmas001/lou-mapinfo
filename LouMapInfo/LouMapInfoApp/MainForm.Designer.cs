@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvCities = new System.Windows.Forms.DataGridView();
@@ -41,7 +42,12 @@
             this.CityCastle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CityScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpageReports = new System.Windows.Forms.TabPage();
+            this.btnReportAllCities = new System.Windows.Forms.Button();
+            this.btnReportCastles = new System.Windows.Forms.Button();
             this.btnReportLawless = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnReportPlayer = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,11 +57,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
-            this.btnReportCastles = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
             this.tpageReports.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudWorld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudContinent)).BeginInit();
@@ -70,6 +76,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tpageReports);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(0, 37);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -169,6 +176,7 @@
             // 
             // tpageReports
             // 
+            this.tpageReports.Controls.Add(this.btnReportAllCities);
             this.tpageReports.Controls.Add(this.btnReportCastles);
             this.tpageReports.Controls.Add(this.btnReportLawless);
             this.tpageReports.Location = new System.Drawing.Point(4, 22);
@@ -176,8 +184,34 @@
             this.tpageReports.Padding = new System.Windows.Forms.Padding(3);
             this.tpageReports.Size = new System.Drawing.Size(675, 385);
             this.tpageReports.TabIndex = 1;
-            this.tpageReports.Text = "Reports";
+            this.tpageReports.Text = "Continent Reports";
             this.tpageReports.UseVisualStyleBackColor = true;
+            // 
+            // btnReportAllCities
+            // 
+            this.btnReportAllCities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportAllCities.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportAllCities.Location = new System.Drawing.Point(101, 189);
+            this.btnReportAllCities.Name = "btnReportAllCities";
+            this.btnReportAllCities.Size = new System.Drawing.Size(489, 65);
+            this.btnReportAllCities.TabIndex = 2;
+            this.btnReportAllCities.Text = "All cities";
+            this.btnReportAllCities.UseVisualStyleBackColor = true;
+            this.btnReportAllCities.Click += new System.EventHandler(this.btnReportAllCities_Click);
+            // 
+            // btnReportCastles
+            // 
+            this.btnReportCastles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportCastles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportCastles.Location = new System.Drawing.Point(101, 107);
+            this.btnReportCastles.Name = "btnReportCastles";
+            this.btnReportCastles.Size = new System.Drawing.Size(489, 65);
+            this.btnReportCastles.TabIndex = 1;
+            this.btnReportCastles.Text = "Castles";
+            this.btnReportCastles.UseVisualStyleBackColor = true;
+            this.btnReportCastles.Click += new System.EventHandler(this.btnReportCastles_Click);
             // 
             // btnReportLawless
             // 
@@ -191,6 +225,44 @@
             this.btnReportLawless.Text = "Lawless Cities";
             this.btnReportLawless.UseVisualStyleBackColor = true;
             this.btnReportLawless.Click += new System.EventHandler(this.btnReportLawless_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.btnReportPlayer);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(675, 385);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "World Reports";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.textBox1.Location = new System.Drawing.Point(93, 123);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(489, 31);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnReportPlayer
+            // 
+            this.btnReportPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportPlayer.Enabled = false;
+            this.btnReportPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportPlayer.Location = new System.Drawing.Point(93, 160);
+            this.btnReportPlayer.Name = "btnReportPlayer";
+            this.btnReportPlayer.Size = new System.Drawing.Size(489, 65);
+            this.btnReportPlayer.TabIndex = 2;
+            this.btnReportPlayer.Text = "Player Report";
+            this.btnReportPlayer.UseVisualStyleBackColor = true;
+            this.btnReportPlayer.Click += new System.EventHandler(this.btnReportPlayer_Click);
             // 
             // statusStrip1
             // 
@@ -297,19 +369,6 @@
             this.statePictureBox1.TabIndex = 8;
             this.statePictureBox1.TabStop = false;
             // 
-            // btnReportCastles
-            // 
-            this.btnReportCastles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportCastles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportCastles.Location = new System.Drawing.Point(101, 107);
-            this.btnReportCastles.Name = "btnReportCastles";
-            this.btnReportCastles.Size = new System.Drawing.Size(489, 65);
-            this.btnReportCastles.TabIndex = 1;
-            this.btnReportCastles.Text = "Castles";
-            this.btnReportCastles.UseVisualStyleBackColor = true;
-            this.btnReportCastles.Click += new System.EventHandler(this.btnReportCastles_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +382,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoU Map Info";
@@ -332,6 +392,8 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).EndInit();
             this.tpageReports.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudWorld)).EndInit();
@@ -369,6 +431,10 @@
         private System.Windows.Forms.TabPage tpageReports;
         private System.Windows.Forms.Button btnReportLawless;
         private System.Windows.Forms.Button btnReportCastles;
+        private System.Windows.Forms.Button btnReportAllCities;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnReportPlayer;
     }
 }
 

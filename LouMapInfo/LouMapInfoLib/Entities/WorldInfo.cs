@@ -6,6 +6,13 @@ namespace LouMapInfo.Entities
 {
     public class WorldInfo : IComparable<WorldInfo>
     {
+        private bool m_Loaded = false;
+
+        public bool Loaded
+        {
+            get { return m_Loaded; }
+            set { m_Loaded = value; }
+        }
         private readonly int m_ID;
         private readonly DateTime m_LastUpdated;
         private readonly Dictionary<int,ContinentInfo> m_Continents = new Dictionary<int,ContinentInfo>();
