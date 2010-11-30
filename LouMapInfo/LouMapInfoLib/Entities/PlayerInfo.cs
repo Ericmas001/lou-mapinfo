@@ -32,6 +32,21 @@ namespace LouMapInfo.Entities
             return Name == PlayerInfo.LAWLESS ? "Lawless castles" : (Name + " (" + SayScore + ")");
         }
 
+        public List<CityInfo> Neighbours(int x, int y, int range)
+        {
+            List<CityInfo> cities = new List<CityInfo>();
+            foreach (CityInfo c in m_Cities.Values)
+            {
+                int dx = Math.Abs(x - c.Location.X);
+                int dy = Math.Abs(y - c.Location.Y);
+                if( dx == 0 && dy == 0 )
+                    continue;
+                if( dx <= range && dy <= range )
+                    cities.Add(c);
+            }
+            return cities;
+        }
+
         #region IComparable<PlayerInfo> Members
 
         public int CompareTo(PlayerInfo other)

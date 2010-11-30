@@ -224,12 +224,10 @@ namespace LouMapInfoApp
             String title = "Lawless cities on C" + co + " (World " + w + ")";
             string report = "<center><h1>" + title + "</h1></center>";
             string bbcode = "[b] Lawless cities on C" + co + "[/b]\n";
-            if( !worlds[w].Cont(co).Alliances.ContainsKey(AllianceInfo.NO_ALLIANCE) || !worlds[w].Cont(co).Alliances[AllianceInfo.NO_ALLIANCE].Players.ContainsKey(PlayerInfo.LAWLESS))
-            {
-                MessageBox.Show("No lawless cities");
-                return;
-            }
-            ICollection<CityInfo> lawless = worlds[w].Cont(co).Alliances[AllianceInfo.NO_ALLIANCE].Players[PlayerInfo.LAWLESS].Cities.Values;
+            List<CityInfo> lawless = new List<CityInfo>();
+            foreach (AllianceInfo a in worlds[w].Cont(co).Alliances.Values)
+                if (a.Players.ContainsKey(PlayerInfo.LAWLESS))
+                    lawless.AddRange(a.Players[PlayerInfo.LAWLESS].Cities.Values);
             List<CityInfo> lawlessCity = new List<CityInfo>();
             List<CityInfo> lawlessCastles = new List<CityInfo>();
             foreach (CityInfo c in lawless)
@@ -263,60 +261,6 @@ namespace LouMapInfoApp
             }
             report += "</ul>";
             new ReportForm(title,report,bbcode).Show();
-        }
-
-        private void btnReportCastles_Click(object sender, EventArgs e)
-        {
-            int w = (int)nudWorld.Value;
-            int co = (int)nudContinent.Value;
-            String title = "Castles on C" + co + " (World " + w + ")";
-            string report = "<center><h1>" + title + "</h1></center>";
-            string bbcode = "";
-            AllianceInfo[] alliances = new AllianceInfo[worlds[w].Cont(co).Alliances.Count];
-            worlds[w].Cont(co).Alliances.Values.CopyTo(alliances, 0);
-            Array.Sort(alliances);
-            Array.Reverse(alliances);
-            for (int i = 0; i < alliances.Length; ++i)
-            {
-                Dictionary<PlayerInfo, List<CityInfo>> players = new Dictionary<PlayerInfo, List<CityInfo>>();
-                foreach( PlayerInfo p in alliances[i].Players.Values )
-                {
-                    foreach (CityInfo c in p.Cities.Values)
-                    {
-                        if (c.Castle)
-                        {
-                            if (!players.ContainsKey(p))
-                                players.Add(p,new List<CityInfo>());
-                            players[p].Add(c);
-                        }
-                    }
-                }
-                if (players.Count > 0)
-                {
-                    bbcode += String.Format("\n\n\n[b][u]Alliance{0}: {1}[/u][/b]", alliances[i].Name == AllianceInfo.NO_ALLIANCE ? "" : String.Format(" ranked #{0:00} ", (i + 1)), alliances[i].Name == AllianceInfo.NO_ALLIANCE ? "None" : "[alliance]" + alliances[i].Name + "[/alliance]");
-                    report += String.Format("<hr /><center><h2>{0}{1}</h2></center>", alliances[i].Name == AllianceInfo.NO_ALLIANCE ? "" : String.Format("#{0:00} ", (i + 1)), alliances[i]);
-                    PlayerInfo[] ps = new PlayerInfo[players.Count];
-                    players.Keys.CopyTo(ps, 0);
-                    Array.Sort(ps);
-                    Array.Reverse(ps);
-                    foreach( PlayerInfo p in ps)
-                    {
-                        bbcode += String.Format("\n\n[b][player]{0}[/player][/b] ({1})\n", p.Name, p.SayScore);
-                        report += String.Format("<h3>{0}</h3><ul>", p);
-                        CityInfo[] cs = new CityInfo[players[p].Count];
-                        players[p].CopyTo(cs, 0);
-                        Array.Sort(cs);
-                        Array.Reverse(cs);
-                        foreach (CityInfo c in cs)
-                        {
-                            bbcode += String.Format("{0} [i]{1}[/i] ({2})\n", c.Location, c.Name, c.SayScore);
-                            report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
-                        }
-                        report += String.Format("</ul>");
-                    }
-                }
-            }
-            new ReportForm(title, report,bbcode).Show();
         }
 
         private void btnReportAllCities_Click(object sender, EventArgs e)
@@ -357,7 +301,7 @@ namespace LouMapInfoApp
                     {
                         bbcode += String.Format("\n\n[b][player]{0}[/player][/b] ({1})\n", p.Name, p.SayScore);
                         report += String.Format("<h3>{0}</h3>", p);
-                        if (players[p].Key.Count > 0)
+                        if (chooReportAllCities.City && players[p].Key.Count > 0)
                         {
                             bbcode += "[b]Cities[/b]\n";
                             report += String.Format("<h4>Cities</h4><ul>");
@@ -372,7 +316,7 @@ namespace LouMapInfoApp
                             }
                             report += String.Format("</ul>");
                         }
-                        if (players[p].Value.Count > 0)
+                        if (chooReportAllCities.Castle && players[p].Value.Count > 0)
                         {
                             bbcode += "[b]Castles[/b]\n";
                             report += String.Format("<h4>Castles</h4><ul>");
@@ -398,6 +342,19 @@ namespace LouMapInfoApp
             btnReportPlayer.Enabled = !String.IsNullOrEmpty(txtPlayerName.Text);
         }
 
+        private class GlobalReportEntry
+        {
+            public int World;
+            public string Param;
+            public CityCastleType CityCastle;
+            public GlobalReportEntry(int w, string p, CityCastleType cc)
+            {
+                World = w;
+                Param = p;
+                CityCastle = cc;
+            }
+        }
+
         private void btnReportPlayer_Click(object sender, EventArgs e)
         {
             //lblStatus.Text = "";
@@ -406,7 +363,7 @@ namespace LouMapInfoApp
             //dgvCities.Rows.Clear();
             //worlds.Clear();
             //tabControl1.TabPages.Remove(tpageReports);
-            new Thread(new ParameterizedThreadStart(LoadPlayerInfo)).Start(new KeyValuePair<int, string>((int)nudWorld.Value, txtPlayerName.Text));
+            new Thread(new ParameterizedThreadStart(LoadPlayerInfo)).Start(new GlobalReportEntry((int)nudWorld.Value, txtPlayerName.Text,chooReportPlayer.Value));
             
         }
         private class PlayerReportEntry
@@ -426,7 +383,7 @@ namespace LouMapInfoApp
             public int PScore;
             public Dictionary<int,PlayerReportEntry> Continents = new Dictionary<int,PlayerReportEntry>();
         }
-        private PlayerReportRoot getPlayer(string player, int world)
+        private PlayerReportRoot getPlayer(string player, int world, CityCastleType cc)
         {
             PlayerReportRoot res = new PlayerReportRoot();
             res.AName = null;
@@ -452,9 +409,9 @@ namespace LouMapInfoApp
                             res.PScore += p.Score;
                             foreach (CityInfo ci in p.Cities.Values)
                             {
-                                if (ci.Castle)
+                                if (ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.Castle))
                                     e.Castles.Add(ci);
-                                else
+                                if (!ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.City))
                                     e.Cities.Add(ci);
                             }
                         }
@@ -479,9 +436,9 @@ namespace LouMapInfoApp
                                     res.PScore += p.Score;
                                     foreach (CityInfo ci in p.Cities.Values)
                                     {
-                                        if (ci.Castle)
+                                        if (ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.Castle))
                                             e.Castles.Add(ci);
-                                        else
+                                        if (!ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.City))
                                             e.Cities.Add(ci);
                                     }
                                 }
@@ -493,9 +450,9 @@ namespace LouMapInfoApp
         }
         public void LoadPlayerInfo(object State)
         {
-            KeyValuePair<int, string> info = (KeyValuePair<int, string>)State;
-            int world = info.Key;
-            string player = info.Value;
+            GlobalReportEntry info = (GlobalReportEntry)State;
+            int world = info.World;
+            string player = info.Param;
             try
             {
                 loadUpdated(world);
@@ -503,7 +460,7 @@ namespace LouMapInfoApp
                 foreach (ContinentInfo c in worlds[world].Continents)
                     try { loadOverlay(world, c.ID); }
                     catch { }
-                PlayerReportRoot res = getPlayer(player, world);
+                PlayerReportRoot res = getPlayer(player, world,info.CityCastle);
                 EndLoadPlayerInfo(res);
             }
             catch
@@ -566,12 +523,12 @@ namespace LouMapInfoApp
             statePictureBox1.Etat = StatePictureBoxStates.None;
             this.Enabled = true;
         }
-        public delegate void IntStringHandler(KeyValuePair<int, string> info);
-        private void EndLoadPlayerInfoBadly(KeyValuePair<int, string> info)
+        private delegate void GlobalReportEntryHandler(GlobalReportEntry info);
+        private void EndLoadPlayerInfoBadly(GlobalReportEntry info)
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new IntStringHandler(EndLoadPlayerInfoBadly), info);
+                this.Invoke(new GlobalReportEntryHandler(EndLoadPlayerInfoBadly), info);
                 return;
             }
             statePictureBox1.Etat = StatePictureBoxStates.Bad;
@@ -586,7 +543,7 @@ namespace LouMapInfoApp
             //dgvCities.Rows.Clear();
             //worlds.Clear();
             //tabControl1.TabPages.Remove(tpageReports);
-            new Thread(new ParameterizedThreadStart(LoadAllianceInfo)).Start(new KeyValuePair<int, string>((int)nudWorld.Value, txtAllianceName.Text));
+            new Thread(new ParameterizedThreadStart(LoadAllianceInfo)).Start(new GlobalReportEntry((int)nudWorld.Value, txtAllianceName.Text,chooReportAlliance.Value));
         }
 
         private void txtAllianceName_TextChanged(object sender, EventArgs e)
@@ -604,7 +561,7 @@ namespace LouMapInfoApp
             public int AScore;
             public Dictionary<int, AllianceReportEntry> Continents = new Dictionary<int, AllianceReportEntry>();
         }
-        private AllianceReportRoot getAlliance(string alliance, int world)
+        private AllianceReportRoot getAlliance(string alliance, int world, CityCastleType cc)
         {
             AllianceReportRoot res = new AllianceReportRoot();
             
@@ -631,9 +588,9 @@ namespace LouMapInfoApp
                             ae.Players.Add(e);
                             foreach (CityInfo ci in p.Cities.Values)
                             {
-                                if (ci.Castle)
+                                if (ci.Castle &&(cc == CityCastleType.Both || cc == CityCastleType.Castle))
                                     e.Castles.Add(ci);
-                                else
+                                if (!ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.City))
                                     e.Cities.Add(ci);
                             }
                         }
@@ -643,9 +600,9 @@ namespace LouMapInfoApp
         }
         public void LoadAllianceInfo(object State)
         {
-            KeyValuePair<int, string> info = (KeyValuePair<int, string>)State;
-            int world = info.Key;
-            string alliance = info.Value;
+            GlobalReportEntry info = (GlobalReportEntry) State;
+            int world = info.World;
+            string alliance = info.Param;
             try
             {
                 loadUpdated(world);
@@ -653,7 +610,7 @@ namespace LouMapInfoApp
                 foreach (ContinentInfo c in worlds[world].Continents)
                     try { loadOverlay(world, c.ID); }
                     catch { }
-                AllianceReportRoot res = getAlliance(alliance, world);
+                AllianceReportRoot res = getAlliance(alliance, world, info.CityCastle);
                 EndLoadAllianceInfo(res);
             }
             catch
@@ -722,11 +679,11 @@ namespace LouMapInfoApp
             this.Enabled = true;
         }
         //public delegate void IntStringHandler(KeyValuePair<int, string> info);
-        private void EndLoadAllianceInfoBadly(KeyValuePair<int, string> info)
+        private void EndLoadAllianceInfoBadly(GlobalReportEntry info)
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new IntStringHandler(EndLoadAllianceInfoBadly), info);
+                this.Invoke(new GlobalReportEntryHandler(EndLoadAllianceInfoBadly), info);
                 return;
             }
             statePictureBox1.Etat = StatePictureBoxStates.Bad;
@@ -739,16 +696,27 @@ namespace LouMapInfoApp
             int co = (int)nudContinent.Value;
             String title = "Shrines & Moongates on C" + co + " (World " + w + ")";
             string report = "<center><h1>" + title + "</h1></center>";
-            string bbcode = "[b] Shrines on C" + co + "[/b]\n";
+            string bbcode = "[b][u]Shrines on C" + co + "[/u][/b]\n";
             report += "<h2>Shrines</h2><ul>";
             foreach (Pt p in worlds[w].Cont(co).Shrines)
             {
-                bbcode += String.Format("{0}\n", p);
-                report += String.Format("<li>{0}</li>", p);
+                bbcode += String.Format("[b]{0}[/b]\n", p);
+                report += String.Format("<li><b>{0}</b></li><ul>", p);
+                foreach( AllianceInfo ai in worlds[w].Cont(co).Alliances.Values)
+                    foreach( PlayerInfo pi in ai.Players.Values )
+                        foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
+                        {
+                            if ((chooReportShrines.City && !ci.Castle) || (chooReportShrines.Castle && ci.Castle))
+                            {
+                                bbcode += String.Format("{0}{1} [i]{2}[/i] ({3}), [player]{4}[/player], [alliance]{5}[/alliance]\n", (ci.Castle ? "[*] " : ""), ci.Location, ci.Name, ci.SayScore, pi.Name, ai.Name);
+                                report += String.Format("<li>{0}{1} <i>{2}</i> ({3}), <b>{4}</b>, {5}</li>", (ci.Castle ? "[*] " : ""), ci.Location, ci.Name, ci.SayScore, pi.Name, ai.Name);
+                            }
+                        }
+                report += "</ul>";
             }
             report += "</ul>";
-            bbcode += "\n\n[b] Moongates on C" + co + "[/b]\n";
-            report += "<h2>Moongates</h2><ul>";
+            bbcode += "\n\n[b][u]Moongates on C" + co + "[/u][/b]\n";
+            report += "<hr /><h2>Moongates</h2><ul>";
             foreach (Pt p in worlds[w].Cont(co).MoonGates)
             {
                 bbcode += String.Format("{0}\n", p);
