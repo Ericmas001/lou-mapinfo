@@ -125,7 +125,7 @@ namespace LouMapInfoApp
                             bool castle = (bool)((JsonBooleanValue)c["castle"]).Value;
                             Pt loc = new Pt((int)((JsonNumericValue)c["x"]).Value, (int)((JsonNumericValue)c["y"]).Value);
                             CityInfo city = new CityInfo(int.Parse(cid), cname, cpts, castle, loc, player);
-                            player.Cities.Add(cid, city);
+                            player.AddCity(city);
                             if (castle)
                                 Console.WriteLine(alliance + ": " + player + ": " + city);
                         }
@@ -189,7 +189,7 @@ namespace LouMapInfoApp
                 foreach (PlayerInfo p in a.Players.Values)
                 {
 
-                    foreach (CityInfo c in p.Cities.Values)
+                    foreach (CityInfo c in p.AllCities)
                     {
                         dgvCities.Rows.Add(a.Name, a.Score, p.Name, p.Score, c.Location.X, c.Location.Y, c.Name, c.Castle, c.Score);
                     }
@@ -227,7 +227,7 @@ namespace LouMapInfoApp
             List<CityInfo> lawless = new List<CityInfo>();
             foreach (AllianceInfo a in worlds[w].Cont(co).Alliances.Values)
                 if (a.Players.ContainsKey(PlayerInfo.LAWLESS))
-                    lawless.AddRange(a.Players[PlayerInfo.LAWLESS].Cities.Values);
+                    lawless.AddRange(a.Players[PlayerInfo.LAWLESS].AllCities);
             List<CityInfo> lawlessCity = new List<CityInfo>();
             List<CityInfo> lawlessCastles = new List<CityInfo>();
             foreach (CityInfo c in lawless)
@@ -279,7 +279,7 @@ namespace LouMapInfoApp
                 Dictionary<PlayerInfo, KeyValuePair<List<CityInfo>, List<CityInfo>>> players = new Dictionary<PlayerInfo, KeyValuePair<List<CityInfo>, List<CityInfo>>>();
                 foreach (PlayerInfo p in alliances[i].Players.Values)
                 {
-                    foreach (CityInfo c in p.Cities.Values)
+                    foreach (CityInfo c in p.AllCities)
                     {
                         if (!players.ContainsKey(p))
                             players.Add(p, new KeyValuePair<List<CityInfo>, List<CityInfo>>(new List<CityInfo>(), new List<CityInfo>()));
@@ -407,7 +407,7 @@ namespace LouMapInfoApp
                             e.PScore = p.Score;
                             res.Continents.Add(c.ID,e);
                             res.PScore += p.Score;
-                            foreach (CityInfo ci in p.Cities.Values)
+                            foreach (CityInfo ci in p.AllCities)
                             {
                                 if (ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.Castle))
                                     e.Castles.Add(ci);
@@ -434,7 +434,7 @@ namespace LouMapInfoApp
                                     e.PScore = p.Score;
                                     res.Continents.Add(c.ID, e);
                                     res.PScore += p.Score;
-                                    foreach (CityInfo ci in p.Cities.Values)
+                                    foreach (CityInfo ci in p.AllCities)
                                     {
                                         if (ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.Castle))
                                             e.Castles.Add(ci);
@@ -586,7 +586,7 @@ namespace LouMapInfoApp
                             e.PName = p.Name;
                             e.PScore = p.Score;
                             ae.Players.Add(e);
-                            foreach (CityInfo ci in p.Cities.Values)
+                            foreach (CityInfo ci in p.AllCities)
                             {
                                 if (ci.Castle &&(cc == CityCastleType.Both || cc == CityCastleType.Castle))
                                     e.Castles.Add(ci);
