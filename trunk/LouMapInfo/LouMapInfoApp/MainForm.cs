@@ -224,6 +224,11 @@ namespace LouMapInfoApp
             String title = "Lawless cities on C" + co + " (World " + w + ")";
             string report = "<center><h1>" + title + "</h1></center>";
             string bbcode = "[b] Lawless cities on C" + co + "[/b]\n";
+            if( !worlds[w].Cont(co).Alliances.ContainsKey(AllianceInfo.NO_ALLIANCE) || !worlds[w].Cont(co).Alliances[AllianceInfo.NO_ALLIANCE].Players.ContainsKey(PlayerInfo.LAWLESS))
+            {
+                MessageBox.Show("No lawless cities");
+                return;
+            }
             ICollection<CityInfo> lawless = worlds[w].Cont(co).Alliances[AllianceInfo.NO_ALLIANCE].Players[PlayerInfo.LAWLESS].Cities.Values;
             List<CityInfo> lawlessCity = new List<CityInfo>();
             List<CityInfo> lawlessCastles = new List<CityInfo>();
