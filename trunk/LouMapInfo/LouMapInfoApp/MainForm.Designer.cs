@@ -46,7 +46,7 @@
             this.btnReportCastles = new System.Windows.Forms.Button();
             this.btnReportLawless = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPlayerName = new System.Windows.Forms.TextBox();
             this.btnReportPlayer = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,6 +57,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
+            this.txtAllianceName = new System.Windows.Forms.TextBox();
+            this.btnReportAlliance = new System.Windows.Forms.Button();
+            this.btnReportShrines = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
@@ -176,6 +179,7 @@
             // 
             // tpageReports
             // 
+            this.tpageReports.Controls.Add(this.btnReportShrines);
             this.tpageReports.Controls.Add(this.btnReportAllCities);
             this.tpageReports.Controls.Add(this.btnReportCastles);
             this.tpageReports.Controls.Add(this.btnReportLawless);
@@ -228,7 +232,9 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.txtAllianceName);
+            this.tabPage2.Controls.Add(this.btnReportAlliance);
+            this.tabPage2.Controls.Add(this.txtPlayerName);
             this.tabPage2.Controls.Add(this.btnReportPlayer);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -238,17 +244,17 @@
             this.tabPage2.Text = "World Reports";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtPlayerName
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtPlayerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
-            this.textBox1.Location = new System.Drawing.Point(93, 123);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(489, 31);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtPlayerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.txtPlayerName.Location = new System.Drawing.Point(94, 58);
+            this.txtPlayerName.Name = "txtPlayerName";
+            this.txtPlayerName.Size = new System.Drawing.Size(489, 31);
+            this.txtPlayerName.TabIndex = 3;
+            this.txtPlayerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPlayerName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnReportPlayer
             // 
@@ -256,7 +262,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReportPlayer.Enabled = false;
             this.btnReportPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportPlayer.Location = new System.Drawing.Point(93, 160);
+            this.btnReportPlayer.Location = new System.Drawing.Point(94, 95);
             this.btnReportPlayer.Name = "btnReportPlayer";
             this.btnReportPlayer.Size = new System.Drawing.Size(489, 65);
             this.btnReportPlayer.TabIndex = 2;
@@ -369,6 +375,45 @@
             this.statePictureBox1.TabIndex = 8;
             this.statePictureBox1.TabStop = false;
             // 
+            // txtAllianceName
+            // 
+            this.txtAllianceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAllianceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.txtAllianceName.Location = new System.Drawing.Point(94, 197);
+            this.txtAllianceName.Name = "txtAllianceName";
+            this.txtAllianceName.Size = new System.Drawing.Size(489, 31);
+            this.txtAllianceName.TabIndex = 5;
+            this.txtAllianceName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAllianceName.TextChanged += new System.EventHandler(this.txtAllianceName_TextChanged);
+            // 
+            // btnReportAlliance
+            // 
+            this.btnReportAlliance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportAlliance.Enabled = false;
+            this.btnReportAlliance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportAlliance.Location = new System.Drawing.Point(94, 234);
+            this.btnReportAlliance.Name = "btnReportAlliance";
+            this.btnReportAlliance.Size = new System.Drawing.Size(489, 65);
+            this.btnReportAlliance.TabIndex = 4;
+            this.btnReportAlliance.Text = "Alliance Report";
+            this.btnReportAlliance.UseVisualStyleBackColor = true;
+            this.btnReportAlliance.Click += new System.EventHandler(this.btnReportAlliance_Click);
+            // 
+            // btnReportShrines
+            // 
+            this.btnReportShrines.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportShrines.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportShrines.Location = new System.Drawing.Point(101, 278);
+            this.btnReportShrines.Name = "btnReportShrines";
+            this.btnReportShrines.Size = new System.Drawing.Size(489, 65);
+            this.btnReportShrines.TabIndex = 3;
+            this.btnReportShrines.Text = "Shrines";
+            this.btnReportShrines.UseVisualStyleBackColor = true;
+            this.btnReportShrines.Click += new System.EventHandler(this.btnReportShrines_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,8 +478,11 @@
         private System.Windows.Forms.Button btnReportCastles;
         private System.Windows.Forms.Button btnReportAllCities;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPlayerName;
         private System.Windows.Forms.Button btnReportPlayer;
+        private System.Windows.Forms.TextBox txtAllianceName;
+        private System.Windows.Forms.Button btnReportAlliance;
+        private System.Windows.Forms.Button btnReportShrines;
     }
 }
 
