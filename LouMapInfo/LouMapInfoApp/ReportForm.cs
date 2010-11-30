@@ -10,13 +10,19 @@ namespace LouMapInfoApp
 {
     public partial class ReportForm : Form
     {
-        public ReportForm(string title, string report)
+        public ReportForm(string title, string report, string bbcode)
         {
 
             InitializeComponent();
             Text = title;
             webBrowser1.DocumentText = report;
             webBrowser1.AllowNavigation = false;
+            txtBBCode.Text = bbcode.Replace("\n", Environment.NewLine);
+        }
+
+        private void btnCopyBBCode_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
