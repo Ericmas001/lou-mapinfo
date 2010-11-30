@@ -22,7 +22,13 @@ namespace LouMapInfoApp
 
         private void btnCopyBBCode_Click(object sender, EventArgs e)
         {
+            Clipboard.SetText(txtBBCode.Text);
+        }
 
+        private void txtBBCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+                txtBBCode.SelectAll();
         }
     }
 }
