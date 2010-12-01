@@ -214,7 +214,8 @@ namespace LouMapInfoApp
             {
                 GlobalLoading.LoadUpdated(worlds);
                 WorldLoading.LoadShrines(worlds,world);
-                ContinentLoading.LoadOverlay(worlds,world, continent);
+                ContinentLoading.LoadContinent(worlds, world, continent);
+                //ContinentLoading.LoadOverlay(worlds,world, continent);
                 EndLoadContinent();
                 
             }
@@ -226,9 +227,9 @@ namespace LouMapInfoApp
         private void RenderGrid()
         {
             dgvCities.Rows.Clear();
-            foreach (AllianceInfo a in worlds[world].Cont(continent).Alliances.Values)
+            foreach (AllianceInfo a in worlds[world].Cont(continent).AlliancesOldWay.Values)
             {
-                foreach (PlayerInfo p in a.Players.Values)
+                foreach (PlayerInfo p in a.PlayersOldWay.Values)
                 {
                     foreach (CityInfo c in p.AllCities)
                     {

@@ -18,7 +18,7 @@ namespace LouMapInfo.Entities
         public string Name { get { return m_Name; } }
         public int Score { get { return m_Score; } set { m_Score = value; } }
         public string SayScore { get { return (Score > 10000 ? String.Format("{0:0,0,0,0,0}", Score) : (Score > 1000 ? String.Format("{0:0,0}", Score) : "" + Score)); } }
-        public Dictionary<string, PlayerInfo> Players { get { return m_Players; } }
+        public Dictionary<string, PlayerInfo> PlayersOldWay { get { return m_Players; } }
         public ContinentInfo Continent { get { return m_Continent; } }
 
         public AllianceInfo(int id, string name, int pts, ContinentInfo parent)
@@ -27,6 +27,10 @@ namespace LouMapInfo.Entities
             m_Name = name;
             m_Score = pts;
             m_Continent = parent;
+        }
+        public AllianceInfo(string name, ContinentInfo parent)
+            : this(-1, name, 0, parent)
+        {
         }
         public override string ToString()
         {
@@ -38,6 +42,15 @@ namespace LouMapInfo.Entities
         public int CompareTo(AllianceInfo other)
         {
             return Score.CompareTo(other.Score);
+        }
+
+
+
+        public PlayerInfo Player(string p)
+        {
+            if (!m_Players.ContainsKey(p))
+                m_Players.Add(p, new PlayerInfo(p, this));
+            return m_Players[p];
         }
 
         #endregion

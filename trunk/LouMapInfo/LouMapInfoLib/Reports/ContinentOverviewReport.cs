@@ -12,14 +12,14 @@ namespace LouMapInfo.Reports
         {
             title = DisplayUtility.Cont(cont.ID) + " Overview";
 
-            AllianceInfo[] alliances = new AllianceInfo[cont.Alliances.Count];
-            cont.Alliances.Values.CopyTo(alliances, 0);
+            AllianceInfo[] alliances = new AllianceInfo[cont.AlliancesOldWay.Count];
+            cont.AlliancesOldWay.Values.CopyTo(alliances, 0);
             Array.Sort(alliances);
             Array.Reverse(alliances);
             for (int i = 0; i < alliances.Length; ++i)
             {
                 Dictionary<PlayerInfo, KeyValuePair<List<CityInfo>, List<CityInfo>>> players = new Dictionary<PlayerInfo, KeyValuePair<List<CityInfo>, List<CityInfo>>>();
-                foreach (PlayerInfo p in alliances[i].Players.Values)
+                foreach (PlayerInfo p in alliances[i].PlayersOldWay.Values)
                 {
                     List<CityInfo> infos = new List<CityInfo>();
                     switch (type)

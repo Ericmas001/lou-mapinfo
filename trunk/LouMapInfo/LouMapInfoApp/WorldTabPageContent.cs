@@ -185,7 +185,7 @@ namespace LouMapInfoApp
                 GlobalLoading.LoadUpdated(worlds);
                 WorldLoading.LoadShrines(worlds,world);
                 foreach (ContinentInfo c in World.Continents)
-                    try { ContinentLoading.LoadOverlay(worlds,world, c.ID); }
+                    try { ContinentLoading.LoadContinent(worlds,world, c.ID); }
                     catch { }
                 EndLoadWorld();
                 
@@ -388,13 +388,13 @@ namespace LouMapInfoApp
             foreach (ContinentInfo c in worlds[world].Continents)
                 if (c.Loaded)
                 {
-                    if (res.AName != null && c.Alliances.ContainsKey(res.AName))
+                    if (res.AName != null && c.AlliancesOldWay.ContainsKey(res.AName))
                     {
-                        AllianceInfo a = c.Alliances[res.AName];
+                        AllianceInfo a = c.AlliancesOldWay[res.AName];
                         res.AScore += a.Score;
-                        if (a.Players.ContainsKey(player))
+                        if (a.PlayersOldWay.ContainsKey(player))
                         {
-                            PlayerInfo p = a.Players[player];
+                            PlayerInfo p = a.PlayersOldWay[player];
                             PlayerReportEntry e = new PlayerReportEntry();
                             e.AName = a.Name;
                             e.AScore = a.Score;
@@ -413,15 +413,15 @@ namespace LouMapInfoApp
                     }
                     else if (res.AName == null)
                     {
-                        foreach (AllianceInfo a in c.Alliances.Values)
+                        foreach (AllianceInfo a in c.AlliancesOldWay.Values)
                         {
                             if (res.AName == null || a.Name == res.AName)
                             {
-                                if (a.Players.ContainsKey(player))
+                                if (a.PlayersOldWay.ContainsKey(player))
                                 {
                                     res.AName = a.Name;
                                     res.AScore += a.Score;
-                                    PlayerInfo p = a.Players[player];
+                                    PlayerInfo p = a.PlayersOldWay[player];
                                     PlayerReportEntry e = new PlayerReportEntry();
                                     e.AName = a.Name;
                                     e.AScore = a.Score;
@@ -454,14 +454,14 @@ namespace LouMapInfoApp
             foreach (ContinentInfo c in worlds[world].Continents)
                 if (c.Loaded)
                 {
-                    if (c.Alliances.ContainsKey(res.AName))
+                    if (c.AlliancesOldWay.ContainsKey(res.AName))
                     {
-                        AllianceInfo a = c.Alliances[res.AName];
+                        AllianceInfo a = c.AlliancesOldWay[res.AName];
                         res.AScore += a.Score;
                         AllianceReportEntry ae = new AllianceReportEntry();
                         ae.AScore = a.Score;
                         res.Continents.Add(c.ID, ae);
-                        foreach (PlayerInfo p in a.Players.Values)
+                        foreach (PlayerInfo p in a.PlayersOldWay.Values)
                         {
                             PlayerReportEntry e = new PlayerReportEntry();
                             e.AName = a.Name;
