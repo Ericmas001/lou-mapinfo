@@ -10,8 +10,8 @@ namespace LouMapInfo.Reports.core
     {
         private ReportOption options = ReportOption.None;
         protected abstract int depth { get; }
-        protected string title;
-        protected string subtitle = null;
+        protected ReportItem title;
+        protected ReportItem subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
         protected CityCastleType m_Type;
@@ -60,9 +60,11 @@ namespace LouMapInfo.Reports.core
 
         public string Report(int d)
         {
-            String report = String.Format("<center><h1>{0}</h1></center>", title);
-            if (!String.IsNullOrEmpty(subtitle))
-                report += String.Format("<center><h2>{0}</h2></center>", subtitle);
+            String report = "";
+            if (title != null && !String.IsNullOrEmpty(title.Value(options)))
+                report += String.Format("<center><h1>{0}</h1></center>", title.Value(options));
+            if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
+                report += String.Format("<center><h2>{0}</h2></center>", subtitle.Value(options));
             foreach (ReportItem it1 in root)
             {
                 if (it1.ShowEmpty || it1.Items.Count > 0)
@@ -109,9 +111,11 @@ namespace LouMapInfo.Reports.core
 
         public string BBCode(int d)
         {
-            String report = String.Format("[b][u]{0}[/b][/u]\n", title);
-            if (!String.IsNullOrEmpty(subtitle))
-                report += String.Format("[b]{0}[b]\n", subtitle);
+            String report = "";
+            if (title != null && !String.IsNullOrEmpty(title.Value(options)))
+                report += String.Format("[b][u]{0}[/b][/u]\n", title.Value(options));
+            if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
+                report += String.Format("[b]{0}[b]\n", subtitle.Value(options));
             report += "\n";
             foreach (ReportItem it1 in root)
             {
@@ -158,12 +162,12 @@ namespace LouMapInfo.Reports.core
 
         public string Title
         {
-            get { return title; }
+            get { return title.Value(options); }
         }
 
         public string SubTitle
         {
-            get { return subtitle; }
+            get { return subtitle.Value(options); }
         }
 
         public string ReportText(string s)

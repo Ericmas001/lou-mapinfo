@@ -13,12 +13,12 @@ namespace LouMapInfo.Reports
         public override void generateReport()
         {
             CityCastleType type = m_Type;
-            title = "Lawless cities on " + DisplayUtility.Cont(cont.ID);
+            title = new TextReportItem("Lawless cities on " + DisplayUtility.Cont(cont.ID), true);
 
             if (type == CityCastleType.Castle)
-                subtitle = "Castled Cities only";
+                subtitle = new TextReportItem("Castled Cities only",true);
             else if (type == CityCastleType.City)
-                subtitle = "Non-Castled Cities only";
+                subtitle = new TextReportItem("Non-Castled Cities only",true);
 
             List<CityInfo> lawless = new List<CityInfo>();
             foreach (AllianceInfo a in cont.AlliancesOldWay.Values)

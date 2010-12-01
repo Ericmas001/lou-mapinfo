@@ -21,7 +21,7 @@ namespace LouMapInfo.Reports.Items
         public override string Value(ReportOption options)
         {
             if (m_Info.Name == AllianceInfo.NO_ALLIANCE)
-                return m_Info.Name;
+                return m_Info.ToString();
             string s = "";
             if (m_Rank > 0 && (options & ReportOption.AllianceRank) != 0)
                 s += String.Format("#{0:00} : ", m_Rank);
