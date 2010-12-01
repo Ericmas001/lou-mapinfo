@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using LouMapInfo.Reports.core;
 using EricUtility.Windows.Forms;
+using LouMapInfo.Entities;
 
 namespace LouMapInfoApp
 {
@@ -45,14 +46,26 @@ namespace LouMapInfoApp
             tctl.SelectedIndex = 0;
             tctl.Size = new System.Drawing.Size(707, 468);
             tctl.TabIndex = 0;
-            Controls.Remove(customTabControl1);
-            Controls.Add(tctl);
+            tctl.Alignment = TabAlignment.Bottom;
+            pnlContent.Controls.Remove(customTabControl1);
+            pnlContent.Controls.Add(tctl);
             report = r;
             depth = d;
             Text = r.Title;
-            reportBrowser.DocumentText = r.Report(d);
-            reportBrowser.AllowNavigation = false;
-            txtBBCode.Text = r.BBCode(d);
+            switch (r.Type)
+            {
+                case LouMapInfo.Entities.CityCastleType.Both: btnBoth_Click(null, new EventArgs()); break;
+                case LouMapInfo.Entities.CityCastleType.City: btnCities_Click(null, new EventArgs()); break;
+                case LouMapInfo.Entities.CityCastleType.Castle: btnCastles_Click(null, new EventArgs()); break;
+            }
+            switch (d)
+            {
+                case 1: btnReportsLvl1_Click(null, new EventArgs()); break;
+                case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
+                case 3: btnReportsLvl3_Click(null, new EventArgs()); break;
+            }
+            txtBBCode.Text = report.BBCode(depth);
+            reportBrowser.DocumentText = report.Report(depth);
         }
         private void btnBBCode_Click(object sender, EventArgs e)
         {
@@ -77,6 +90,96 @@ namespace LouMapInfoApp
         private void btnCopyAllBBCode_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(txtBBCode.Text);
+        }
+
+        private void btnReportsLvl_ButtonClick(object sender, EventArgs e)
+        {
+            btnReportsLvl.ShowDropDown();
+        }
+
+        private void btnReportsLvl1_Click(object sender, EventArgs e)
+        {
+            depth = 1;
+            btnReportsLvl.Text = btnReportsLvl1.Text;
+            btnReportsLvl1.Checked = true;
+            btnReportsLvl2.Checked = false;
+            btnReportsLvl3.Checked = false;
+            txtBBCode.Text = report.BBCode(depth);
+            reportBrowser.DocumentText = report.Report(depth);
+        }
+
+        private void btnReportsLvl2_Click(object sender, EventArgs e)
+        {
+            depth = 2;
+            btnReportsLvl.Text = btnReportsLvl2.Text;
+            btnReportsLvl1.Checked = false;
+            btnReportsLvl2.Checked = true;
+            btnReportsLvl3.Checked = false;
+            if (sender != null)
+            {
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnReportsLvl3_Click(object sender, EventArgs e)
+        {
+            depth = 3;
+            btnReportsLvl.Text = btnReportsLvl3.Text;
+            btnReportsLvl1.Checked = false;
+            btnReportsLvl2.Checked = false;
+            btnReportsLvl3.Checked = true;
+            if (sender != null)
+            {
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+        private void btnCityType_ButtonClick(object sender, EventArgs e)
+        {
+            btnCityType.ShowDropDown();
+        }
+
+        private void btnBoth_Click(object sender, EventArgs e)
+        {
+            btnCityType.Text = btnBoth.Text;
+            btnBoth.Checked = true;
+            btnCities.Checked = false;
+            btnCastles.Checked = false;
+            report.Type = CityCastleType.Both;
+            if (sender != null)
+            {
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnCastles_Click(object sender, EventArgs e)
+        {
+            btnCityType.Text = btnCastles.Text;
+            btnBoth.Checked = false;
+            btnCities.Checked = false;
+            btnCastles.Checked = true;
+            report.Type = CityCastleType.Castle;
+            if (sender != null)
+            {
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnCities_Click(object sender, EventArgs e)
+        {
+            btnCityType.Text = btnCities.Text;
+            btnBoth.Checked = false;
+            btnCities.Checked = true;
+            btnCastles.Checked = false;
+            report.Type = CityCastleType.City;
+            if (sender != null)
+            {
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
         }
     }
 }

@@ -8,9 +8,16 @@ namespace LouMapInfo.Reports
 {
     public class ShrinesReport : ReportInfo
     {
-        public ShrinesReport(ContinentInfo cont, CityCastleType type)
+        private ContinentInfo cont;
+        public override void generateReport()
         {
+            CityCastleType type = m_Type;
             title = "Shrines & Moongates on " + DisplayUtility.Cont(cont.ID);
+
+            if (type == CityCastleType.Castle)
+                subtitle = "Castled Cities only";
+            else if (type == CityCastleType.City)
+                subtitle = "Non-Castled Cities only";
 
             List<CityInfo> lawless = new List<CityInfo>();
             foreach (AllianceInfo a in cont.AlliancesOldWay.Values)
@@ -63,7 +70,7 @@ namespace LouMapInfo.Reports
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                             if (type == CityCastleType.Both || (ci.Castle && type == CityCastleType.Castle) || (!ci.Castle && type == CityCastleType.City))
                                 r2.Items.Add(new ReportItem(String.Format("{0}[city]{1}[/city] [name]{2}[/name] ({3}), [player]{4}[/player], [alliance]{5}[/alliance]", (ci.Castle ? "[*] " : ""), ci.Location, ci.Name, DisplayUtility.Score(ci.Score), pi.Name, ai.Name), true));
-                if( r2.Items.Count == 0 )
+                if (r2.Items.Count == 0)
                     switch (type)
                     {
                         case CityCastleType.Castle: r2.Items.Add(new ReportItem("No castled cities", true)); break;
@@ -73,6 +80,12 @@ namespace LouMapInfo.Reports
                 r.Items.Add(r2);
             }
             root.Add(r);
+        }
+        public ShrinesReport(ContinentInfo c, CityCastleType type)
+            : base(type)
+        {
+            this.cont = c;
+            generateReport();
         }
 
         protected override int depth
