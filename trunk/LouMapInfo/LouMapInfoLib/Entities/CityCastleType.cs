@@ -7,8 +7,8 @@ namespace LouMapInfo.Entities
     public enum CityCastleType
     {
         None,
+        Both,
         City,
         Castle,
-        Both
     }
 }

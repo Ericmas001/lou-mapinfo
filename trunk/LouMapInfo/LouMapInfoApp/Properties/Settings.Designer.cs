@@ -22,5 +22,197 @@ namespace LouMapInfoApp.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dirnahm")]
+        public string lastWName {
+            get {
+                return ((string)(this["lastWName"]));
+            }
+            set {
+                this["lastWName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int lastWWorld {
+            get {
+                return ((int)(this["lastWWorld"]));
+            }
+            set {
+                this["lastWWorld"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int lastCWorld {
+            get {
+                return ((int)(this["lastCWorld"]));
+            }
+            set {
+                this["lastCWorld"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("41")]
+        public int lastCCont {
+            get {
+                return ((int)(this["lastCCont"]));
+            }
+            set {
+                this["lastCCont"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int lastCCityType {
+            get {
+                return ((int)(this["lastCCityType"]));
+            }
+            set {
+                this["lastCCityType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int lastCDetailLvl {
+            get {
+                return ((int)(this["lastCDetailLvl"]));
+            }
+            set {
+                this["lastCDetailLvl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int lastWCityType {
+            get {
+                return ((int)(this["lastWCityType"]));
+            }
+            set {
+                this["lastWCityType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int lastWDetailLvl {
+            get {
+                return ((int)(this["lastWDetailLvl"]));
+            }
+            set {
+                this["lastWDetailLvl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool bbCode_u {
+            get {
+                return ((bool)(this["bbCode_u"]));
+            }
+            set {
+                this["bbCode_u"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool bbCode_s {
+            get {
+                return ((bool)(this["bbCode_s"]));
+            }
+            set {
+                this["bbCode_s"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool bbCode_i {
+            get {
+                return ((bool)(this["bbCode_i"]));
+            }
+            set {
+                this["bbCode_i"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool bbCode_b {
+            get {
+                return ((bool)(this["bbCode_b"]));
+            }
+            set {
+                this["bbCode_b"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool bbCode_url {
+            get {
+                return ((bool)(this["bbCode_url"]));
+            }
+            set {
+                this["bbCode_url"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool bbCode_city {
+            get {
+                return ((bool)(this["bbCode_city"]));
+            }
+            set {
+                this["bbCode_city"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool bbCode_player {
+            get {
+                return ((bool)(this["bbCode_player"]));
+            }
+            set {
+                this["bbCode_player"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool bbCode_alliance {
+            get {
+                return ((bool)(this["bbCode_alliance"]));
+            }
+            set {
+                this["bbCode_alliance"] = value;
+            }
+        }
     }
 }

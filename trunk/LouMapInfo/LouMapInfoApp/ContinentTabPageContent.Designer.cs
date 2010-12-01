@@ -220,8 +220,8 @@
             this.toolbarReports.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCityType,
             this.btnReportsLvl,
-            this.btnReportLawless,
             this.btnReportContinent,
+            this.btnReportLawless,
             this.btnReportShrines});
             this.toolbarReports.Location = new System.Drawing.Point(0, 0);
             this.toolbarReports.Name = "toolbarReports";
@@ -312,8 +312,8 @@
             this.btnReportLawless.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReportLawless.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
             this.btnReportLawless.Name = "btnReportLawless";
-            this.btnReportLawless.Size = new System.Drawing.Size(83, 22);
-            this.btnReportLawless.Text = "Lawless Cities";
+            this.btnReportLawless.Size = new System.Drawing.Size(51, 22);
+            this.btnReportLawless.Text = "Lawless";
             this.btnReportLawless.Click += new System.EventHandler(this.btnReportLawless_Click);
             // 
             // btnReportContinent

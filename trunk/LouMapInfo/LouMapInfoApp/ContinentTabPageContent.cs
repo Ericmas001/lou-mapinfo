@@ -23,9 +23,9 @@ namespace LouMapInfoApp
 
         private System.Windows.Forms.Timer waitingTimer;
         private int waitingCounter = 0;
-        int world = 10;
-        int continent = 41;
-        int lvl = 3;
+        int world;
+        int continent;
+        int lvl;
         CityCastleType type = CityCastleType.Both;
         public WorldInfo World
         {
@@ -39,6 +39,9 @@ namespace LouMapInfoApp
         public ContinentTabPageContent()
         {
             InitializeComponent();
+            world = Properties.Settings.Default.lastCWorld;
+            continent = Properties.Settings.Default.lastCCont;
+            lvl = Properties.Settings.Default.lastCDetailLvl;
             for (int i = 1; i <= 22; ++i)
             {
                 ToolStripMenuItem btn = new ToolStripMenuItem();
@@ -58,10 +61,23 @@ namespace LouMapInfoApp
                     btn.Text = "Continent " + i + "" + j;
                     btnContinent.DropDownItems.Add(btn);
                     btn.Click += new EventHandler(btnContinent_X_Click);
-                    if ((i*10)+j == continent)
-                        btn.Checked = true;
                 }
             }
+            CityCastleType t = (CityCastleType)Properties.Settings.Default.lastCCityType;
+            switch (t)
+            {
+                case CityCastleType.Both: btnBoth_Click(null, new EventArgs()); break;
+                case CityCastleType.Castle: btnCastles_Click(null, new EventArgs()); break;
+                case CityCastleType.City: btnCities_Click(null, new EventArgs()); break;
+            }
+            switch (lvl)
+            {
+                case 1: btnReportsLvl1_Click(null, new EventArgs()); break;
+                case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
+                case 3: btnReportsLvl3_Click(null, new EventArgs()); break;
+            }
+            btnWorld.Text = "W" + world;
+            btnContinent.Text = "C" + String.Format("{0:00}", continent);
         }
         private void btnCityType_ButtonClick(object sender, EventArgs e)
         {
@@ -75,7 +91,12 @@ namespace LouMapInfoApp
             btnCities.Checked = false;
             btnCastles.Checked = false;
             type = CityCastleType.Both;
-            RenderGrid();
+            if (sender != null)
+            {
+                RenderGrid();
+                Properties.Settings.Default.lastCCityType = (int)type;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void btnCastles_Click(object sender, EventArgs e)
@@ -85,7 +106,12 @@ namespace LouMapInfoApp
             btnCities.Checked = false;
             btnCastles.Checked = true;
             type = CityCastleType.Castle;
-            RenderGrid();
+            if (sender != null)
+            {
+                RenderGrid();
+                Properties.Settings.Default.lastCCityType = (int)type;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void btnCities_Click(object sender, EventArgs e)
@@ -95,7 +121,12 @@ namespace LouMapInfoApp
             btnCities.Checked = true;
             btnCastles.Checked = false;
             type = CityCastleType.City;
-            RenderGrid();
+            if (sender != null)
+            {
+                RenderGrid();
+                Properties.Settings.Default.lastCCityType = (int)type;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void btnWorld_ButtonClick(object sender, EventArgs e)
@@ -110,6 +141,8 @@ namespace LouMapInfoApp
             world = int.Parse(btn.Text.Substring(btn.Text.LastIndexOf(' ') + 1));
             btnWorld.Text = "W" + world;
             btn.Checked = true;
+            Properties.Settings.Default.lastCWorld = world;
+            Properties.Settings.Default.Save();
         }
 
         private void btnContinent_ButtonClick(object sender, EventArgs e)
@@ -124,6 +157,8 @@ namespace LouMapInfoApp
             continent = int.Parse(btn.Text.Substring(btn.Text.LastIndexOf(' ') + 1));
             btnContinent.Text = "C" + String.Format("{0:00}", continent);
             btn.Checked = true;
+            Properties.Settings.Default.lastCCont = continent;
+            Properties.Settings.Default.Save();
         }
         delegate void EmptyHandler();
         void StartWaiting()
@@ -303,6 +338,11 @@ namespace LouMapInfoApp
             btnReportsLvl1.Checked = true;
             btnReportsLvl2.Checked = false;
             btnReportsLvl3.Checked = false;
+            if (sender != null)
+            {
+                Properties.Settings.Default.lastCDetailLvl = lvl;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void btnReportsLvl2_Click(object sender, EventArgs e)
@@ -312,6 +352,11 @@ namespace LouMapInfoApp
             btnReportsLvl1.Checked = false;
             btnReportsLvl2.Checked = true;
             btnReportsLvl3.Checked = false;
+            if (sender != null)
+            {
+                Properties.Settings.Default.lastCDetailLvl = lvl;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void btnReportsLvl3_Click(object sender, EventArgs e)
@@ -321,6 +366,11 @@ namespace LouMapInfoApp
             btnReportsLvl1.Checked = false;
             btnReportsLvl2.Checked = false;
             btnReportsLvl3.Checked = true;
+            if (sender != null)
+            {
+                Properties.Settings.Default.lastCDetailLvl = lvl;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }
