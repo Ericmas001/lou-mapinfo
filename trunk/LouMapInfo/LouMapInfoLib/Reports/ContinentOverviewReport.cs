@@ -71,25 +71,31 @@ namespace LouMapInfo.Reports
                 {
                     ReportItem r2 = new ReportItem("[player]" + p.Name + "[/player] (" + DisplayUtility.Score(p.Score) + ")", false);
 
-                    ReportItem r3 = new ReportItem(players[p].Key.Count + " Cities", false);
-                    CityInfo[] cities = new CityInfo[players[p].Key.Count];
-                    players[p].Key.CopyTo(cities, 0);
-                    Array.Sort(cities);
-                    Array.Reverse(cities);
-                    foreach (CityInfo c in cities)
-                        r3.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
-                    r2.Items.Add(r3);
+                    if (type == CityCastleType.Both || type == CityCastleType.City)
+                    {
+                        ReportItem r3 = new ReportItem(players[p].Key.Count + " Cities", false);
+                        CityInfo[] cities = new CityInfo[players[p].Key.Count];
+                        players[p].Key.CopyTo(cities, 0);
+                        Array.Sort(cities);
+                        Array.Reverse(cities);
+                        foreach (CityInfo c in cities)
+                            r3.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
+                        r2.Items.Add(r3);
+                    }
 
-                    r3 = new ReportItem(players[p].Value.Count + " Castles", false);
-                    cities = new CityInfo[players[p].Value.Count];
-                    players[p].Value.CopyTo(cities, 0);
-                    Array.Sort(cities);
-                    Array.Reverse(cities);
-                    foreach (CityInfo c in cities)
-                        r3.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
-                    r2.Items.Add(r3);
+                    if (type == CityCastleType.Both || type == CityCastleType.Castle)
+                    {
+                        ReportItem r3 = new ReportItem(players[p].Value.Count + " Castles", false);
+                        CityInfo[] cities = new CityInfo[players[p].Value.Count];
+                        players[p].Value.CopyTo(cities, 0);
+                        Array.Sort(cities);
+                        Array.Reverse(cities);
+                        foreach (CityInfo c in cities)
+                            r3.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
+                        r2.Items.Add(r3);
 
-                    r.Items.Add(r2);
+                        r.Items.Add(r2);
+                    }
                 }
                 root.Add(r);
             }
