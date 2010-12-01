@@ -46,6 +46,7 @@ namespace LouMapInfoApp
             tctl.TabIndex = 0;
             Controls.Remove(tabControl1);
             Controls.Add(tctl);
+
             continentView.Worlds = worlds;
             worldView.Worlds = worlds;
         }

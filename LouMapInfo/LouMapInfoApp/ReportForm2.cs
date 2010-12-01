@@ -64,6 +64,22 @@ namespace LouMapInfoApp
                 case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
                 case 3: btnReportsLvl3_Click(null, new EventArgs()); break;
             }
+            btnBBCodeB.Checked = Properties.Settings.Default.bbCode_b;
+            btnBBCodeI.Checked = Properties.Settings.Default.bbCode_i;
+            btnBBCodeU.Checked = Properties.Settings.Default.bbCode_u;
+            btnBBCodeS.Checked = Properties.Settings.Default.bbCode_s;
+            btnBBCodeUrl.Checked = Properties.Settings.Default.bbCode_url;
+            btnBBCodeCity.Checked = Properties.Settings.Default.bbCode_city;
+            btnBBCodePlayer.Checked = Properties.Settings.Default.bbCode_player;
+            btnBBCodeAlliance.Checked = Properties.Settings.Default.bbCode_alliance;
+            r.BBCodeDisplay["b"] = btnBBCodeB.Checked;
+            r.BBCodeDisplay["i"] = btnBBCodeI.Checked;
+            r.BBCodeDisplay["u"] = btnBBCodeS.Checked;
+            r.BBCodeDisplay["s"] = btnBBCodeU.Checked;
+            r.BBCodeDisplay["url"] = btnBBCodeUrl.Checked;
+            r.BBCodeDisplay["city"] = btnBBCodeCity.Checked;
+            r.BBCodeDisplay["player"] = btnBBCodePlayer.Checked;
+            r.BBCodeDisplay["alliance"] = btnBBCodeAlliance.Checked;
             txtBBCode.Text = report.BBCode(depth);
             reportBrowser.DocumentText = report.Report(depth);
         }
@@ -73,6 +89,8 @@ namespace LouMapInfoApp
             btn.Checked = !btn.Checked;
             string b = btn.Name.Replace("btnBBCode", "").ToLower();
             report.BBCodeDisplay[b] = btn.Checked;
+            Properties.Settings.Default["bbcode_" + b] = btn.Checked;
+            Properties.Settings.Default.Save();
             txtBBCode.Text = report.BBCode(depth);
         }
 
