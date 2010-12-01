@@ -50,5 +50,8 @@
     <Setting Name="bbCode_alliance" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="reportOptions" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">63</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -214,5 +214,17 @@ namespace LouMapInfoApp.Properties {
                 this["bbCode_alliance"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("63")]
+        public int reportOptions {
+            get {
+                return ((int)(this["reportOptions"]));
+            }
+            set {
+                this["reportOptions"] = value;
+            }
+        }
     }
 }

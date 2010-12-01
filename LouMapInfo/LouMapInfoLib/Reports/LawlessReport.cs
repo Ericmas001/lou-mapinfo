@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
+using LouMapInfo.Reports.Items;
 
 namespace LouMapInfo.Reports
 {
@@ -40,22 +41,22 @@ namespace LouMapInfo.Reports
                     lawlessCity.Add(c);
             }
 
-            ReportItem r = new ReportItem(lawlessCity.Count + " Cities", false);
+            ReportItem r = new CityTypeReportItem(lawlessCity.Count, CityCastleType.City, false);
             CityInfo[] cities = new CityInfo[lawlessCity.Count];
             lawlessCity.CopyTo(cities, 0);
             Array.Sort(cities);
             Array.Reverse(cities);
             foreach (CityInfo c in cities)
-                r.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
+                r.Items.Add(new CityInfoReportItem(c, true));
             root.Add(r);
 
-            r = new ReportItem(lawlessCastles.Count + " Castles", false);
+            r = new CityTypeReportItem(lawlessCastles.Count, CityCastleType.Castle, false);
             cities = new CityInfo[lawlessCastles.Count];
             lawlessCastles.CopyTo(cities, 0);
             Array.Sort(cities);
             Array.Reverse(cities);
             foreach (CityInfo c in cities)
-                r.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
+                r.Items.Add(new CityInfoReportItem(c, true));
             root.Add(r);
         }
         public LawlessReport(ContinentInfo c, CityCastleType type)

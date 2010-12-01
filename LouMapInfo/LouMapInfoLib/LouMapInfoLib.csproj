@@ -49,13 +49,21 @@
     <Compile Include="Loading\WorldLoading.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\ContinentOverviewReport.cs" />
+    <Compile Include="Reports\core\ReportOption.cs" />
     <Compile Include="Reports\Entities\AllianceReportEntry.cs" />
     <Compile Include="Reports\Entities\AllianceReportRoot.cs" />
     <Compile Include="Reports\Entities\PlayerReportRoot.cs" />
     <Compile Include="Reports\Entities\PlayerReportEntry.cs" />
+    <Compile Include="Reports\core\ReportItem.cs" />
+    <Compile Include="Reports\Items\CityTypeReportItem.cs" />
+    <Compile Include="Reports\Items\CityInfoReportItem.cs" />
+    <Compile Include="Reports\Items\AllianceInfoReportItem.cs" />
+    <Compile Include="Reports\Items\MultiLineReportItem.cs" />
+    <Compile Include="Reports\Items\PlayerCountReportItem.cs" />
+    <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
     <Compile Include="Reports\ShrinesReport.cs" />
     <Compile Include="Reports\core\ReportInfo.cs" />
-    <Compile Include="Reports\core\ReportItem.cs" />
+    <Compile Include="Reports\Items\TextReportItem.cs" />
     <Compile Include="Reports\DisplayUtility.cs" />
     <Compile Include="Reports\LawlessReport.cs" />
   </ItemGroup>
