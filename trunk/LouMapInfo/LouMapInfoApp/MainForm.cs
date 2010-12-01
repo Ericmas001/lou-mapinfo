@@ -10,10 +10,10 @@ using EricUtility.Windows.Forms;
 
 namespace LouMapInfoApp
 {
-    public partial class MainForm2 : Form
+    public partial class MainForm : Form
     {
         private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
-        public MainForm2()
+        public MainForm()
         {
             InitializeComponent();
             CustomTabControl tctl = new CustomTabControl();
