@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm2));
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnReportsLvl = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnReportsLvl1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReportsLvl2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReportsLvl3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.customTabControl1 = new System.Windows.Forms.TabControl();
             this.tpageReport = new System.Windows.Forms.TabPage();
             this.reportBrowser = new System.Windows.Forms.WebBrowser();
@@ -46,14 +52,81 @@
             this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCityType = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnBoth = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCastles = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCities = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStrip2.SuspendLayout();
+            this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
             this.tpageReport.SuspendLayout();
             this.tpageBBCode.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // toolStrip2
+            // 
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReportsLvl,
+            this.toolStripSeparator2,
+            this.btnCityType});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(707, 25);
+            this.toolStrip2.TabIndex = 1;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // btnReportsLvl
+            // 
+            this.btnReportsLvl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReportsLvl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReportsLvl1,
+            this.btnReportsLvl2,
+            this.btnReportsLvl3});
+            this.btnReportsLvl.Image = ((System.Drawing.Image)(resources.GetObject("btnReportsLvl.Image")));
+            this.btnReportsLvl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportsLvl.Name = "btnReportsLvl";
+            this.btnReportsLvl.Size = new System.Drawing.Size(109, 22);
+            this.btnReportsLvl.Text = "Detailed Reports";
+            this.btnReportsLvl.ButtonClick += new System.EventHandler(this.btnReportsLvl_ButtonClick);
+            // 
+            // btnReportsLvl1
+            // 
+            this.btnReportsLvl1.Name = "btnReportsLvl1";
+            this.btnReportsLvl1.Size = new System.Drawing.Size(168, 22);
+            this.btnReportsLvl1.Text = "Global Reports";
+            this.btnReportsLvl1.Click += new System.EventHandler(this.btnReportsLvl1_Click);
+            // 
+            // btnReportsLvl2
+            // 
+            this.btnReportsLvl2.Name = "btnReportsLvl2";
+            this.btnReportsLvl2.Size = new System.Drawing.Size(168, 22);
+            this.btnReportsLvl2.Text = "Summary Reports";
+            this.btnReportsLvl2.Click += new System.EventHandler(this.btnReportsLvl2_Click);
+            // 
+            // btnReportsLvl3
+            // 
+            this.btnReportsLvl3.Checked = true;
+            this.btnReportsLvl3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnReportsLvl3.Name = "btnReportsLvl3";
+            this.btnReportsLvl3.Size = new System.Drawing.Size(168, 22);
+            this.btnReportsLvl3.Text = "Detailed Reports";
+            this.btnReportsLvl3.Click += new System.EventHandler(this.btnReportsLvl3_Click);
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Controls.Add(this.customTabControl1);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(0, 25);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(707, 443);
+            this.pnlContent.TabIndex = 2;
+            // 
             // customTabControl1
             // 
+            this.customTabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.customTabControl1.Controls.Add(this.tpageReport);
             this.customTabControl1.Controls.Add(this.tpageBBCode);
             this.customTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -61,16 +134,16 @@
             this.customTabControl1.Location = new System.Drawing.Point(0, 0);
             this.customTabControl1.Name = "customTabControl1";
             this.customTabControl1.SelectedIndex = 0;
-            this.customTabControl1.Size = new System.Drawing.Size(707, 468);
-            this.customTabControl1.TabIndex = 0;
+            this.customTabControl1.Size = new System.Drawing.Size(707, 443);
+            this.customTabControl1.TabIndex = 3;
             // 
             // tpageReport
             // 
             this.tpageReport.Controls.Add(this.reportBrowser);
-            this.tpageReport.Location = new System.Drawing.Point(4, 22);
+            this.tpageReport.Location = new System.Drawing.Point(4, 4);
             this.tpageReport.Name = "tpageReport";
             this.tpageReport.Padding = new System.Windows.Forms.Padding(3);
-            this.tpageReport.Size = new System.Drawing.Size(699, 442);
+            this.tpageReport.Size = new System.Drawing.Size(699, 417);
             this.tpageReport.TabIndex = 0;
             this.tpageReport.Text = "Report";
             this.tpageReport.UseVisualStyleBackColor = true;
@@ -81,17 +154,17 @@
             this.reportBrowser.Location = new System.Drawing.Point(3, 3);
             this.reportBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.reportBrowser.Name = "reportBrowser";
-            this.reportBrowser.Size = new System.Drawing.Size(693, 436);
+            this.reportBrowser.Size = new System.Drawing.Size(693, 411);
             this.reportBrowser.TabIndex = 0;
             // 
             // tpageBBCode
             // 
             this.tpageBBCode.Controls.Add(this.txtBBCode);
             this.tpageBBCode.Controls.Add(this.toolStrip1);
-            this.tpageBBCode.Location = new System.Drawing.Point(4, 22);
+            this.tpageBBCode.Location = new System.Drawing.Point(4, 4);
             this.tpageBBCode.Name = "tpageBBCode";
             this.tpageBBCode.Padding = new System.Windows.Forms.Padding(3);
-            this.tpageBBCode.Size = new System.Drawing.Size(699, 442);
+            this.tpageBBCode.Size = new System.Drawing.Size(699, 417);
             this.tpageBBCode.TabIndex = 1;
             this.tpageBBCode.Text = "BBCode";
             this.tpageBBCode.UseVisualStyleBackColor = true;
@@ -105,12 +178,12 @@
             this.txtBBCode.Name = "txtBBCode";
             this.txtBBCode.ReadOnly = true;
             this.txtBBCode.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBBCode.Size = new System.Drawing.Size(693, 411);
+            this.txtBBCode.Size = new System.Drawing.Size(693, 386);
             this.txtBBCode.TabIndex = 1;
-            this.txtBBCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBBCode_KeyDown);
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCopyAllBBCode,
@@ -154,7 +227,7 @@
             this.btnBBCodeDisplay.Name = "btnBBCodeDisplay";
             this.btnBBCodeDisplay.Size = new System.Drawing.Size(119, 22);
             this.btnBBCodeDisplay.Text = "Displayed BBCode";
-            this.btnBBCodeDisplay.ButtonClick += new System.EventHandler(this.btnBBCodeDisplay_ButtonClick);
+            this.btnBBCodeDisplay.Click += new System.EventHandler(this.btnBBCodeDisplay_ButtonClick);
             // 
             // btnBBCodeB
             // 
@@ -226,16 +299,63 @@
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
             // 
+            // btnCityType
+            // 
+            this.btnCityType.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCityType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnBoth,
+            this.btnCastles,
+            this.btnCities});
+            this.btnCityType.Image = ((System.Drawing.Image)(resources.GetObject("btnCityType.Image")));
+            this.btnCityType.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCityType.Name = "btnCityType";
+            this.btnCityType.Size = new System.Drawing.Size(117, 22);
+            this.btnCityType.Text = "Cities And Castles";
+            this.btnCityType.ButtonClick += new System.EventHandler(this.btnCityType_ButtonClick);
+            // 
+            // btnBoth
+            // 
+            this.btnBoth.Checked = true;
+            this.btnBoth.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnBoth.Name = "btnBoth";
+            this.btnBoth.Size = new System.Drawing.Size(166, 22);
+            this.btnBoth.Text = "Cities and Castles";
+            this.btnBoth.Click += new System.EventHandler(this.btnBoth_Click);
+            // 
+            // btnCastles
+            // 
+            this.btnCastles.Name = "btnCastles";
+            this.btnCastles.Size = new System.Drawing.Size(166, 22);
+            this.btnCastles.Text = "Castles Only";
+            this.btnCastles.Click += new System.EventHandler(this.btnCastles_Click);
+            // 
+            // btnCities
+            // 
+            this.btnCities.Name = "btnCities";
+            this.btnCities.Size = new System.Drawing.Size(166, 22);
+            this.btnCities.Text = "Cities Only";
+            this.btnCities.Click += new System.EventHandler(this.btnCities_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // ReportForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 468);
-            this.Controls.Add(this.customTabControl1);
+            this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.toolStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportForm2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Report";
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            this.pnlContent.ResumeLayout(false);
             this.customTabControl1.ResumeLayout(false);
             this.tpageReport.ResumeLayout(false);
             this.tpageBBCode.ResumeLayout(false);
@@ -243,15 +363,23 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripSplitButton btnReportsLvl;
+        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl1;
+        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl2;
+        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl3;
+        private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.TabControl customTabControl1;
         private System.Windows.Forms.TabPage tpageReport;
-        private System.Windows.Forms.TabPage tpageBBCode;
         private System.Windows.Forms.WebBrowser reportBrowser;
+        private System.Windows.Forms.TabPage tpageBBCode;
+        private System.Windows.Forms.TextBox txtBBCode;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnCopyAllBBCode;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -264,6 +392,11 @@
         private System.Windows.Forms.ToolStripMenuItem btnBBCodeCity;
         private System.Windows.Forms.ToolStripMenuItem btnBBCodePlayer;
         private System.Windows.Forms.ToolStripMenuItem btnBBCodeAlliance;
-        private System.Windows.Forms.TextBox txtBBCode;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSplitButton btnCityType;
+        private System.Windows.Forms.ToolStripMenuItem btnBoth;
+        private System.Windows.Forms.ToolStripMenuItem btnCastles;
+        private System.Windows.Forms.ToolStripMenuItem btnCities;
+
     }
 }

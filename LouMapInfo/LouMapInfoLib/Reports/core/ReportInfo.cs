@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using LouMapInfo.Entities;
 
 namespace LouMapInfo.Reports.core
 {
@@ -11,9 +12,27 @@ namespace LouMapInfo.Reports.core
         protected string subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
+        protected CityCastleType m_Type;
 
-        public ReportInfo()
+        public CityCastleType Type
         {
+            get { return m_Type; }
+            set
+            {
+                m_Type = value;
+                title = null;
+                subtitle = null;
+                root = new List<ReportItem>();
+                generateReport();
+            }
+        }
+
+
+        public abstract void generateReport();
+
+        public ReportInfo(CityCastleType type)
+        {
+            m_Type = type;
             BBCodeDisplay.Add("b", true);
             BBCodeDisplay.Add("i", true);
             BBCodeDisplay.Add("s", true);

@@ -8,9 +8,16 @@ namespace LouMapInfo.Reports
 {
     public class ContinentOverviewReport : ReportInfo
     {
-        public ContinentOverviewReport(ContinentInfo cont, CityCastleType type)
+        private ContinentInfo cont;
+        public override void generateReport()
         {
+            CityCastleType type = m_Type;
             title = DisplayUtility.Cont(cont.ID) + " Overview";
+
+            if (type == CityCastleType.Castle)
+                subtitle = "Castled Cities only";
+            else if (type == CityCastleType.City)
+                subtitle = "Non-Castled Cities only";
 
             AllianceInfo[] alliances = new AllianceInfo[cont.AlliancesOldWay.Count];
             cont.AlliancesOldWay.Values.CopyTo(alliances, 0);
@@ -86,6 +93,12 @@ namespace LouMapInfo.Reports
                 }
                 root.Add(r);
             }
+        }
+        public ContinentOverviewReport(ContinentInfo c, CityCastleType type)
+            : base(type)
+        {
+            this.cont = c;
+            generateReport();
         }
 
         protected override int depth

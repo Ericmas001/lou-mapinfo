@@ -8,9 +8,16 @@ namespace LouMapInfo.Reports
 {
     public class LawlessReport : ReportInfo
     {
-        public LawlessReport(ContinentInfo cont, CityCastleType type)
+        private ContinentInfo cont;
+        public override void generateReport()
         {
+            CityCastleType type = m_Type;
             title = "Lawless cities on " + DisplayUtility.Cont(cont.ID);
+
+            if (type == CityCastleType.Castle)
+                subtitle = "Castled Cities only";
+            else if (type == CityCastleType.City)
+                subtitle = "Non-Castled Cities only";
 
             List<CityInfo> lawless = new List<CityInfo>();
             foreach (AllianceInfo a in cont.AlliancesOldWay.Values)
@@ -39,7 +46,7 @@ namespace LouMapInfo.Reports
             Array.Sort(cities);
             Array.Reverse(cities);
             foreach (CityInfo c in cities)
-                r.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)),true));
+                r.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
             root.Add(r);
 
             r = new ReportItem(lawlessCastles.Count + " Castles", false);
@@ -50,6 +57,12 @@ namespace LouMapInfo.Reports
             foreach (CityInfo c in cities)
                 r.Items.Add(new ReportItem(String.Format("[city]{0}[/city] [name]{1}[/name] ({2})", c.Location, c.Name, DisplayUtility.Score(c.Score)), true));
             root.Add(r);
+        }
+        public LawlessReport(ContinentInfo c, CityCastleType type)
+            : base(type)
+        {
+            this.cont = c;
+            generateReport();
         }
 
         protected override int depth
