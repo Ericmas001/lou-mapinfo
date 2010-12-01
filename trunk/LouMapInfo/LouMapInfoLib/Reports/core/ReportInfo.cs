@@ -2,17 +2,32 @@
 using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Entities;
+using LouMapInfo.Reports.Items;
 
 namespace LouMapInfo.Reports.core
 {
     public abstract class ReportInfo
     {
+        private ReportOption options = ReportOption.None;
         protected abstract int depth { get; }
         protected string title;
         protected string subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
         protected CityCastleType m_Type;
+
+        public ReportOption Options
+        {
+            get { return options; }
+        }
+
+        public void SetOption(ReportOption o, bool value)
+        {
+            if (value)
+                options |= o;
+            else
+                options &= ~o;
+        }
 
         public CityCastleType Type
         {
@@ -53,15 +68,15 @@ namespace LouMapInfo.Reports.core
                 if (it1.ShowEmpty || it1.Items.Count > 0)
                 {
                     report += "<hr />";
-                    if (!String.IsNullOrEmpty(it1.Text))
-                        report += String.Format("<center><h3>{0}</h3></center>", it1.Text);
+                    if (!String.IsNullOrEmpty(it1.Value(options)))
+                        report += String.Format("<center><h3>{0}</h3></center>", it1.Value(options));
                     report += "<ul>";
                     foreach (ReportItem it2 in it1.Items)
                     {
                         if (it2.ShowEmpty || it2.Items.Count > 0 || d == 1)
                         {
-                            if (!String.IsNullOrEmpty(it2.Text))
-                                report += String.Format("<li>{0}</li>", it2.Text);
+                            if (!String.IsNullOrEmpty(it2.Value(options)))
+                                report += String.Format("<li>{0}</li>", it2.Value(options));
                             if (d > 1 && it2.Items.Count > 0)
                             {
                                 report += "<ul>";
@@ -69,13 +84,13 @@ namespace LouMapInfo.Reports.core
                                 {
                                     if (it3.ShowEmpty || it3.Items.Count > 0 || d == 2)
                                     {
-                                        report += String.Format("<li>{0}</li>", it3.Text);
+                                        report += String.Format("<li>{0}</li>", it3.Value(options));
                                         if (d > 2 && it3.Items.Count > 0)
                                         {
                                             report += "<ul>";
                                             foreach (ReportItem it4 in it3.Items)
                                             {
-                                                report += String.Format("<li>{0}</li>", it4.Text);
+                                                report += String.Format("<li>{0}</li>", it4.Value(options));
                                             }
                                             report += "</ul>";
                                         }
@@ -103,8 +118,8 @@ namespace LouMapInfo.Reports.core
                 if (it1.ShowEmpty || it1.Items.Count > 0)
                 {
                     report += "[hr]\n";
-                    if (!String.IsNullOrEmpty(it1.Text))
-                        report += String.Format("[b]{0}[/b]", it1.Text);
+                    if (!String.IsNullOrEmpty(it1.Value(options)))
+                        report += String.Format("[b]{0}[/b]", it1.Value(options));
                     if (it1.Items.Count > 0)
                         report += "\n";
 
@@ -114,20 +129,20 @@ namespace LouMapInfo.Reports.core
                         {
                             if (d > 1 && it2.Items.Count > 0)
                                 report += "\n";
-                            if (!String.IsNullOrEmpty(it2.Text))
-                                report += String.Format("{0}\n", it2.Text);
+                            if (!String.IsNullOrEmpty(it2.Value(options)))
+                                report += String.Format("{0}\n", it2.Value(options));
                             if (d > 1 && it2.Items.Count > 0)
                             {
                                 foreach (ReportItem it3 in it2.Items)
                                 {
                                     if (it3.ShowEmpty || it3.Items.Count > 0 || d == 2)
                                     {
-                                        report += String.Format("{0}\n", it3.Text);
+                                        report += String.Format("{0}\n", it3.Value(options));
                                         if (d > 2 && it3.Items.Count > 0)
                                         {
                                             foreach (ReportItem it4 in it3.Items)
                                             {
-                                                report += String.Format("{0}\n", it4.Text);
+                                                report += String.Format("{0}\n", it4.Value(options));
                                             }
                                         }
                                     }

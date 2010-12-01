@@ -80,6 +80,15 @@ namespace LouMapInfoApp
             r.BBCodeDisplay["city"] = btnBBCodeCity.Checked;
             r.BBCodeDisplay["player"] = btnBBCodePlayer.Checked;
             r.BBCodeDisplay["alliance"] = btnBBCodeAlliance.Checked;
+            ReportOption ro = (ReportOption)Properties.Settings.Default.reportOptions;
+            btnDisplayOptionsAllianceScore.Checked = (ro & ReportOption.AllianceScore) != 0;
+            btnDisplayOptionsCityCount.Checked = (ro & ReportOption.CityCount) != 0;
+            btnDisplayOptionsCityName.Checked = (ro & ReportOption.CityName) != 0;
+            btnDisplayOptionsCityScore.Checked = (ro & ReportOption.CityScore) != 0;
+            btnDisplayOptionsPlayerCount.Checked = (ro & ReportOption.PlayerCount) != 0;
+            btnDisplayOptionsPlayerScore.Checked = (ro & ReportOption.PlayerScore) != 0;
+            btnDisplayOptionsAllianceRank.Checked = (ro & ReportOption.AllianceRank) != 0;
+            report.SetOption(ro, true);
             txtBBCode.Text = report.BBCode(depth);
             reportBrowser.DocumentText = report.Report(depth);
         }
@@ -195,6 +204,102 @@ namespace LouMapInfoApp
             report.Type = CityCastleType.City;
             if (sender != null)
             {
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnDisplayOptions_ButtonClick(object sender, EventArgs e)
+        {
+            btnDisplayOptions.ShowDropDown();
+        }
+
+        private void btnDisplayOptionsAllianceScore_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsAllianceScore.Checked = !btnDisplayOptionsAllianceScore.Checked;
+            report.SetOption(ReportOption.AllianceScore, btnDisplayOptionsAllianceScore.Checked);
+            if (sender != null)
+            {
+                Properties.Settings.Default.reportOptions = (int)report.Options;
+                Properties.Settings.Default.Save();
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnDisplayOptionsPlayerScore_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsPlayerScore.Checked = !btnDisplayOptionsPlayerScore.Checked;
+            report.SetOption(ReportOption.PlayerScore, btnDisplayOptionsPlayerScore.Checked);
+            if (sender != null)
+            {
+                Properties.Settings.Default.reportOptions = (int)report.Options;
+                Properties.Settings.Default.Save();
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnDisplayOptionsPlayerCount_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsPlayerCount.Checked = !btnDisplayOptionsPlayerCount.Checked;
+            report.SetOption(ReportOption.PlayerCount, btnDisplayOptionsPlayerCount.Checked);
+            if (sender != null)
+            {
+                Properties.Settings.Default.reportOptions = (int)report.Options;
+                Properties.Settings.Default.Save();
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnDisplayOptionsCityName_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsCityName.Checked = !btnDisplayOptionsCityName.Checked;
+            report.SetOption(ReportOption.CityName, btnDisplayOptionsCityName.Checked);
+            if (sender != null)
+            {
+                Properties.Settings.Default.reportOptions = (int)report.Options;
+                Properties.Settings.Default.Save();
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnDisplayOptionsCityScore_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsCityScore.Checked = !btnDisplayOptionsCityScore.Checked;
+            report.SetOption(ReportOption.CityScore, btnDisplayOptionsCityScore.Checked);
+            if (sender != null)
+            {
+                Properties.Settings.Default.reportOptions = (int)report.Options;
+                Properties.Settings.Default.Save();
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnDisplayOptionsCityCount_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsCityCount.Checked = !btnDisplayOptionsCityCount.Checked;
+            report.SetOption(ReportOption.CityCount, btnDisplayOptionsCityCount.Checked);
+            if (sender != null)
+            {
+                Properties.Settings.Default.reportOptions = (int)report.Options; 
+                Properties.Settings.Default.Save();
+                txtBBCode.Text = report.BBCode(depth);
+                reportBrowser.DocumentText = report.Report(depth);
+            }
+        }
+
+        private void btnDisplayOptionsAllianceRank_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsAllianceRank.Checked = !btnDisplayOptionsAllianceRank.Checked;
+            report.SetOption(ReportOption.AllianceRank, btnDisplayOptionsAllianceRank.Checked);
+            if (sender != null)
+            {
+                Properties.Settings.Default.reportOptions = (int)report.Options;
+                Properties.Settings.Default.Save();
                 txtBBCode.Text = report.BBCode(depth);
                 reportBrowser.DocumentText = report.Report(depth);
             }

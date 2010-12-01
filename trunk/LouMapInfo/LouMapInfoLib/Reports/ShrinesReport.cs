@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
+using LouMapInfo.Reports.Items;
 
 namespace LouMapInfo.Reports
 {
@@ -40,42 +41,42 @@ namespace LouMapInfo.Reports
                     lawlessCity.Add(c);
             }
 
-            ReportItem r = new ReportItem(cont.Shrines.Count + " Shrines", false);
+            TextReportItem r = new TextReportItem(cont.Shrines.Count + " Shrines", false);
 
             foreach (Pt p in cont.Shrines)
             {
-                ReportItem r2 = new ReportItem(p.ToString(), true);
+                TextReportItem r2 = new TextReportItem(p.ToString(), true);
                 foreach (AllianceInfo ai in cont.AlliancesOldWay.Values)
                     foreach (PlayerInfo pi in ai.PlayersOldWay.Values)
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                             if (type == CityCastleType.Both || (ci.Castle && type == CityCastleType.Castle) || (!ci.Castle && type == CityCastleType.City))
-                                r2.Items.Add(new ReportItem(String.Format("{0}[city]{1}[/city] [name]{2}[/name] ({3}), [player]{4}[/player], [alliance]{5}[/alliance]", (ci.Castle ? "[*] " : ""), ci.Location, ci.Name, DisplayUtility.Score(ci.Score), pi.Name, ai.Name), true));
+                                r2.Items.Add(new CityInfoReportItem(ci, true));
                 if (r2.Items.Count == 0)
                     switch (type)
                     {
-                        case CityCastleType.Castle: r2.Items.Add(new ReportItem("No castled cities", true)); break;
-                        case CityCastleType.City: r2.Items.Add(new ReportItem("No non-castled cities", true)); break;
-                        default: r2.Items.Add(new ReportItem("No city", true)); break;
+                        case CityCastleType.Castle: r2.Items.Add(new TextReportItem("No castled cities", true)); break;
+                        case CityCastleType.City: r2.Items.Add(new TextReportItem("No non-castled cities", true)); break;
+                        default: r2.Items.Add(new TextReportItem("No city", true)); break;
                     }
                 r.Items.Add(r2);
             }
             root.Add(r);
 
-            r = new ReportItem(cont.MoonGates.Count + " Moongates", false);
+            r = new TextReportItem(cont.MoonGates.Count + " Moongates", false);
             foreach (Pt p in cont.MoonGates)
             {
-                ReportItem r2 = new ReportItem(p.ToString(), true);
+                TextReportItem r2 = new TextReportItem(p.ToString(), true);
                 foreach (AllianceInfo ai in cont.AlliancesOldWay.Values)
                     foreach (PlayerInfo pi in ai.PlayersOldWay.Values)
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                             if (type == CityCastleType.Both || (ci.Castle && type == CityCastleType.Castle) || (!ci.Castle && type == CityCastleType.City))
-                                r2.Items.Add(new ReportItem(String.Format("{0}[city]{1}[/city] [name]{2}[/name] ({3}), [player]{4}[/player], [alliance]{5}[/alliance]", (ci.Castle ? "[*] " : ""), ci.Location, ci.Name, DisplayUtility.Score(ci.Score), pi.Name, ai.Name), true));
+                                r2.Items.Add(new CityInfoReportItem(ci, true));
                 if (r2.Items.Count == 0)
                     switch (type)
                     {
-                        case CityCastleType.Castle: r2.Items.Add(new ReportItem("No castled cities", true)); break;
-                        case CityCastleType.City: r2.Items.Add(new ReportItem("No non-castled cities", true)); break;
-                        default: r2.Items.Add(new ReportItem("No city", true)); break;
+                        case CityCastleType.Castle: r2.Items.Add(new TextReportItem("No castled cities", true)); break;
+                        case CityCastleType.City: r2.Items.Add(new TextReportItem("No non-castled cities", true)); break;
+                        default: r2.Items.Add(new TextReportItem("No city", true)); break;
                     }
                 r.Items.Add(r2);
             }
