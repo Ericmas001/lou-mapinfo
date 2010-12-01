@@ -38,12 +38,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AllianceInfo.cs" />
+    <Compile Include="Entities\CityCastleType.cs" />
     <Compile Include="Entities\CityInfo.cs" />
     <Compile Include="Entities\ContinentInfo.cs" />
     <Compile Include="Entities\PlayerInfo.cs" />
     <Compile Include="Entities\Pt.cs" />
     <Compile Include="Entities\WorldInfo.cs" />
+    <Compile Include="Loading\ContinentLoading.cs" />
+    <Compile Include="Loading\GlobalLoading.cs" />
+    <Compile Include="Loading\WorldLoading.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ContinentOverviewReport.cs" />
+    <Compile Include="Reports\Entities\AllianceReportEntry.cs" />
+    <Compile Include="Reports\Entities\AllianceReportRoot.cs" />
+    <Compile Include="Reports\Entities\PlayerReportRoot.cs" />
+    <Compile Include="Reports\Entities\PlayerReportEntry.cs" />
+    <Compile Include="Reports\PlayerOverviewReport.cs" />
+    <Compile Include="Reports\ShrinesReport.cs" />
+    <Compile Include="Reports\core\ReportInfo.cs" />
+    <Compile Include="Reports\core\ReportItem.cs" />
+    <Compile Include="Reports\DisplayUtility.cs" />
+    <Compile Include="Reports\LawlessReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections_4.0.csproj">

@@ -64,7 +64,7 @@ namespace LouMapInfo.Entities
         public List<CityInfo> Neighbours(int x, int y, int range)
         {
             List<CityInfo> cities = new List<CityInfo>();
-            foreach (CityInfo c in m_Cities.Values)
+            foreach (CityInfo c in AllCities)
             {
                 int dx = Math.Abs(x - c.Location.X);
                 int dy = Math.Abs(y - c.Location.Y);

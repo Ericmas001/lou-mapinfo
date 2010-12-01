@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnCityType = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnBoth = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCastles = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCities = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvCities = new System.Windows.Forms.DataGridView();
             this.AllianceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AllianceScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,10 +47,16 @@
             this.CityCastle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CityScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpageReports = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cityCastleChooser1 = new LouMapInfoApp.CityCastleChooser();
+            this.btnReportLawless = new System.Windows.Forms.Button();
             this.btnReportShrines = new System.Windows.Forms.Button();
             this.btnReportAllCities = new System.Windows.Forms.Button();
-            this.btnReportLawless = new System.Windows.Forms.Button();
+            this.chooReportShrines = new LouMapInfoApp.CityCastleChooser();
+            this.chooReportAllCities = new LouMapInfoApp.CityCastleChooser();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chooReportAlliance = new LouMapInfoApp.CityCastleChooser();
+            this.chooReportPlayer = new LouMapInfoApp.CityCastleChooser();
             this.txtAllianceName = new System.Windows.Forms.TextBox();
             this.btnReportAlliance = new System.Windows.Forms.Button();
             this.txtPlayerName = new System.Windows.Forms.TextBox();
@@ -59,14 +70,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
-            this.chooReportShrines = new LouMapInfoApp.CityCastleChooser();
-            this.chooReportAllCities = new LouMapInfoApp.CityCastleChooser();
-            this.chooReportPlayer = new LouMapInfoApp.CityCastleChooser();
-            this.chooReportAlliance = new LouMapInfoApp.CityCastleChooser();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
             this.tpageReports.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudWorld)).BeginInit();
@@ -91,20 +100,69 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.toolStrip1);
             this.tabPage1.Controls.Add(this.dgvCities);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(675, 385);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cities";
+            this.tabPage1.Text = "Continent View";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCityType});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(669, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnCityType
+            // 
+            this.btnCityType.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCityType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnBoth,
+            this.btnCastles,
+            this.btnCities});
+            this.btnCityType.Image = ((System.Drawing.Image)(resources.GetObject("btnCityType.Image")));
+            this.btnCityType.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCityType.Name = "btnCityType";
+            this.btnCityType.Size = new System.Drawing.Size(117, 22);
+            this.btnCityType.Text = "Cities And Castles";
+            this.btnCityType.ButtonClick += new System.EventHandler(this.btnCityType_ButtonClick);
+            // 
+            // btnBoth
+            // 
+            this.btnBoth.Name = "btnBoth";
+            this.btnBoth.Size = new System.Drawing.Size(166, 22);
+            this.btnBoth.Text = "Cities and Castles";
+            this.btnBoth.Click += new System.EventHandler(this.btnBoth_Click);
+            // 
+            // btnCastles
+            // 
+            this.btnCastles.Name = "btnCastles";
+            this.btnCastles.Size = new System.Drawing.Size(166, 22);
+            this.btnCastles.Text = "Castles Only";
+            this.btnCastles.Click += new System.EventHandler(this.btnCastles_Click);
+            // 
+            // btnCities
+            // 
+            this.btnCities.Name = "btnCities";
+            this.btnCities.Size = new System.Drawing.Size(166, 22);
+            this.btnCities.Text = "Cities Only";
+            this.btnCities.Click += new System.EventHandler(this.btnCities_Click);
             // 
             // dgvCities
             // 
             this.dgvCities.AllowUserToAddRows = false;
             this.dgvCities.AllowUserToDeleteRows = false;
             this.dgvCities.AllowUserToOrderColumns = true;
+            this.dgvCities.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -117,13 +175,12 @@
             this.CityName,
             this.CityCastle,
             this.CityScore});
-            this.dgvCities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCities.Location = new System.Drawing.Point(3, 3);
+            this.dgvCities.Location = new System.Drawing.Point(3, 110);
             this.dgvCities.Name = "dgvCities";
             this.dgvCities.ReadOnly = true;
             this.dgvCities.RowHeadersVisible = false;
             this.dgvCities.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvCities.Size = new System.Drawing.Size(669, 379);
+            this.dgvCities.Size = new System.Drawing.Size(669, 272);
             this.dgvCities.TabIndex = 0;
             // 
             // AllianceName
@@ -182,11 +239,11 @@
             // 
             // tpageReports
             // 
-            this.tpageReports.Controls.Add(this.chooReportShrines);
-            this.tpageReports.Controls.Add(this.chooReportAllCities);
+            this.tpageReports.Controls.Add(this.groupBox1);
             this.tpageReports.Controls.Add(this.btnReportShrines);
             this.tpageReports.Controls.Add(this.btnReportAllCities);
-            this.tpageReports.Controls.Add(this.btnReportLawless);
+            this.tpageReports.Controls.Add(this.chooReportShrines);
+            this.tpageReports.Controls.Add(this.chooReportAllCities);
             this.tpageReports.Location = new System.Drawing.Point(4, 22);
             this.tpageReports.Name = "tpageReports";
             this.tpageReports.Padding = new System.Windows.Forms.Padding(3);
@@ -195,14 +252,51 @@
             this.tpageReports.Text = "Continent Reports";
             this.tpageReports.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cityCastleChooser1);
+            this.groupBox1.Controls.Add(this.btnReportLawless);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(8, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(659, 136);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Lawless Cities";
+            // 
+            // cityCastleChooser1
+            // 
+            this.cityCastleChooser1.BackColor = System.Drawing.Color.Transparent;
+            this.cityCastleChooser1.Castle = true;
+            this.cityCastleChooser1.City = true;
+            this.cityCastleChooser1.Location = new System.Drawing.Point(137, 32);
+            this.cityCastleChooser1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cityCastleChooser1.Name = "cityCastleChooser1";
+            this.cityCastleChooser1.Size = new System.Drawing.Size(319, 39);
+            this.cityCastleChooser1.TabIndex = 7;
+            this.cityCastleChooser1.Value = LouMapInfo.Entities.CityCastleType.Both;
+            // 
+            // btnReportLawless
+            // 
+            this.btnReportLawless.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportLawless.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportLawless.Location = new System.Drawing.Point(6, 80);
+            this.btnReportLawless.Name = "btnReportLawless";
+            this.btnReportLawless.Size = new System.Drawing.Size(647, 50);
+            this.btnReportLawless.TabIndex = 0;
+            this.btnReportLawless.Text = "Lawless Cities";
+            this.btnReportLawless.UseVisualStyleBackColor = true;
+            this.btnReportLawless.Click += new System.EventHandler(this.btnReportLawless_Click);
+            // 
             // btnReportShrines
             // 
             this.btnReportShrines.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReportShrines.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportShrines.Location = new System.Drawing.Point(101, 278);
+            this.btnReportShrines.Location = new System.Drawing.Point(483, 329);
             this.btnReportShrines.Name = "btnReportShrines";
-            this.btnReportShrines.Size = new System.Drawing.Size(489, 65);
+            this.btnReportShrines.Size = new System.Drawing.Size(184, 50);
             this.btnReportShrines.TabIndex = 3;
             this.btnReportShrines.Text = "Shrines";
             this.btnReportShrines.UseVisualStyleBackColor = true;
@@ -213,26 +307,35 @@
             this.btnReportAllCities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReportAllCities.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportAllCities.Location = new System.Drawing.Point(101, 152);
+            this.btnReportAllCities.Location = new System.Drawing.Point(483, 195);
             this.btnReportAllCities.Name = "btnReportAllCities";
-            this.btnReportAllCities.Size = new System.Drawing.Size(489, 65);
+            this.btnReportAllCities.Size = new System.Drawing.Size(171, 62);
             this.btnReportAllCities.TabIndex = 2;
             this.btnReportAllCities.Text = "Continent Overview";
             this.btnReportAllCities.UseVisualStyleBackColor = true;
             this.btnReportAllCities.Click += new System.EventHandler(this.btnReportAllCities_Click);
             // 
-            // btnReportLawless
+            // chooReportShrines
             // 
-            this.btnReportLawless.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportLawless.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportLawless.Location = new System.Drawing.Point(101, 23);
-            this.btnReportLawless.Name = "btnReportLawless";
-            this.btnReportLawless.Size = new System.Drawing.Size(489, 65);
-            this.btnReportLawless.TabIndex = 0;
-            this.btnReportLawless.Text = "Lawless Cities";
-            this.btnReportLawless.UseVisualStyleBackColor = true;
-            this.btnReportLawless.Click += new System.EventHandler(this.btnReportLawless_Click);
+            this.chooReportShrines.BackColor = System.Drawing.Color.Transparent;
+            this.chooReportShrines.Castle = true;
+            this.chooReportShrines.City = true;
+            this.chooReportShrines.Location = new System.Drawing.Point(265, 329);
+            this.chooReportShrines.Name = "chooReportShrines";
+            this.chooReportShrines.Size = new System.Drawing.Size(199, 36);
+            this.chooReportShrines.TabIndex = 5;
+            this.chooReportShrines.Value = LouMapInfo.Entities.CityCastleType.Both;
+            // 
+            // chooReportAllCities
+            // 
+            this.chooReportAllCities.BackColor = System.Drawing.Color.Transparent;
+            this.chooReportAllCities.Castle = true;
+            this.chooReportAllCities.City = true;
+            this.chooReportAllCities.Location = new System.Drawing.Point(265, 233);
+            this.chooReportAllCities.Name = "chooReportAllCities";
+            this.chooReportAllCities.Size = new System.Drawing.Size(210, 36);
+            this.chooReportAllCities.TabIndex = 4;
+            this.chooReportAllCities.Value = LouMapInfo.Entities.CityCastleType.Both;
             // 
             // tabPage2
             // 
@@ -249,6 +352,28 @@
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "World Reports";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chooReportAlliance
+            // 
+            this.chooReportAlliance.BackColor = System.Drawing.Color.Transparent;
+            this.chooReportAlliance.Castle = true;
+            this.chooReportAlliance.City = true;
+            this.chooReportAlliance.Location = new System.Drawing.Point(94, 230);
+            this.chooReportAlliance.Name = "chooReportAlliance";
+            this.chooReportAlliance.Size = new System.Drawing.Size(489, 36);
+            this.chooReportAlliance.TabIndex = 7;
+            this.chooReportAlliance.Value = LouMapInfo.Entities.CityCastleType.Both;
+            // 
+            // chooReportPlayer
+            // 
+            this.chooReportPlayer.BackColor = System.Drawing.Color.Transparent;
+            this.chooReportPlayer.Castle = true;
+            this.chooReportPlayer.City = true;
+            this.chooReportPlayer.Location = new System.Drawing.Point(94, 47);
+            this.chooReportPlayer.Name = "chooReportPlayer";
+            this.chooReportPlayer.Size = new System.Drawing.Size(489, 36);
+            this.chooReportPlayer.TabIndex = 6;
+            this.chooReportPlayer.Value = LouMapInfo.Entities.CityCastleType.Both;
             // 
             // txtAllianceName
             // 
@@ -407,50 +532,6 @@
             this.statePictureBox1.TabIndex = 8;
             this.statePictureBox1.TabStop = false;
             // 
-            // chooReportShrines
-            // 
-            this.chooReportShrines.BackColor = System.Drawing.Color.Transparent;
-            this.chooReportShrines.Castle = true;
-            this.chooReportShrines.City = true;
-            this.chooReportShrines.Location = new System.Drawing.Point(101, 242);
-            this.chooReportShrines.Name = "chooReportShrines";
-            this.chooReportShrines.Size = new System.Drawing.Size(489, 36);
-            this.chooReportShrines.TabIndex = 5;
-            this.chooReportShrines.Value = LouMapInfoApp.CityCastleType.Both;
-            // 
-            // chooReportAllCities
-            // 
-            this.chooReportAllCities.BackColor = System.Drawing.Color.Transparent;
-            this.chooReportAllCities.Castle = true;
-            this.chooReportAllCities.City = true;
-            this.chooReportAllCities.Location = new System.Drawing.Point(101, 116);
-            this.chooReportAllCities.Name = "chooReportAllCities";
-            this.chooReportAllCities.Size = new System.Drawing.Size(489, 36);
-            this.chooReportAllCities.TabIndex = 4;
-            this.chooReportAllCities.Value = LouMapInfoApp.CityCastleType.Both;
-            // 
-            // chooReportPlayer
-            // 
-            this.chooReportPlayer.BackColor = System.Drawing.Color.Transparent;
-            this.chooReportPlayer.Castle = true;
-            this.chooReportPlayer.City = true;
-            this.chooReportPlayer.Location = new System.Drawing.Point(94, 47);
-            this.chooReportPlayer.Name = "chooReportPlayer";
-            this.chooReportPlayer.Size = new System.Drawing.Size(489, 36);
-            this.chooReportPlayer.TabIndex = 6;
-            this.chooReportPlayer.Value = LouMapInfoApp.CityCastleType.Both;
-            // 
-            // chooReportAlliance
-            // 
-            this.chooReportAlliance.BackColor = System.Drawing.Color.Transparent;
-            this.chooReportAlliance.Castle = true;
-            this.chooReportAlliance.City = true;
-            this.chooReportAlliance.Location = new System.Drawing.Point(94, 230);
-            this.chooReportAlliance.Name = "chooReportAlliance";
-            this.chooReportAlliance.Size = new System.Drawing.Size(489, 36);
-            this.chooReportAlliance.TabIndex = 7;
-            this.chooReportAlliance.Value = LouMapInfoApp.CityCastleType.Both;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,8 +553,12 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).EndInit();
             this.tpageReports.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -523,6 +608,13 @@
         private CityCastleChooser chooReportShrines;
         private CityCastleChooser chooReportAlliance;
         private CityCastleChooser chooReportPlayer;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private CityCastleChooser cityCastleChooser1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripSplitButton btnCityType;
+        private System.Windows.Forms.ToolStripMenuItem btnBoth;
+        private System.Windows.Forms.ToolStripMenuItem btnCastles;
+        private System.Windows.Forms.ToolStripMenuItem btnCities;
     }
 }
 

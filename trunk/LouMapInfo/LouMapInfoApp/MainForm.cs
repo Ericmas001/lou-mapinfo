@@ -137,6 +137,7 @@ namespace LouMapInfoApp
         public MainForm()
         {
             InitializeComponent();
+            //lstCityType.SelectedIndex = 0;
             tabControl1.TabPages.Remove(tpageReports);
         }
 
@@ -724,6 +725,26 @@ namespace LouMapInfoApp
             }
             report += "</ul>";
             new ReportForm(title, report, bbcode).Show();
+        }
+
+        private void btnCityType_ButtonClick(object sender, EventArgs e)
+        {
+            btnCityType.ShowDropDown();
+        }
+
+        private void btnBoth_Click(object sender, EventArgs e)
+        {
+            btnCityType.Text = btnBoth.Text;
+        }
+
+        private void btnCastles_Click(object sender, EventArgs e)
+        {
+            btnCityType.Text = btnCastles.Text;
+        }
+
+        private void btnCities_Click(object sender, EventArgs e)
+        {
+            btnCityType.Text = btnCities.Text;
         }
     }
 }

@@ -50,7 +50,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(513, 448);
+            this.tabControl1.Size = new System.Drawing.Size(688, 448);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -59,7 +59,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(505, 422);
+            this.tabPage1.Size = new System.Drawing.Size(680, 422);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Report";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(3, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(499, 416);
+            this.webBrowser1.Size = new System.Drawing.Size(674, 416);
             this.webBrowser1.TabIndex = 3;
             // 
             // tabPage2
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 448);
+            this.ClientSize = new System.Drawing.Size(688, 448);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportForm";
