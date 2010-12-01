@@ -56,6 +56,8 @@
             this.btnLoad = new System.Windows.Forms.ToolStripButton();
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.lblTitLastUpdated = new System.Windows.Forms.ToolStripLabel();
+            this.lblLastUpdated = new System.Windows.Forms.ToolStripLabel();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
             this.toolbarReports.SuspendLayout();
@@ -263,12 +265,12 @@
             this.btnReportPlayers.Text = "Player Overview";
             this.btnReportPlayers.Click += new System.EventHandler(this.btnReportPlayers_Click);
             // 
-            // btnReportContinent
+            // btnReportAlliance
             // 
             this.btnReportAlliance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnReportAlliance.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReportAlliance.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.btnReportAlliance.Name = "btnReportContinent";
+            this.btnReportAlliance.Name = "btnReportAlliance";
             this.btnReportAlliance.Size = new System.Drawing.Size(105, 22);
             this.btnReportAlliance.Text = "Alliance Overview";
             this.btnReportAlliance.Click += new System.EventHandler(this.btnReportAlliance_Click);
@@ -313,12 +315,31 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnWorld,
             this.btnLoad,
-            this.lblImage});
+            this.lblImage,
+            this.lblLastUpdated,
+            this.lblTitLastUpdated});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(627, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // lblTitLastUpdated
+            // 
+            this.lblTitLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblTitLastUpdated.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTitLastUpdated.Name = "lblTitLastUpdated";
+            this.lblTitLastUpdated.Size = new System.Drawing.Size(83, 22);
+            this.lblTitLastUpdated.Text = "Last Updated:";
+            this.lblTitLastUpdated.Visible = false;
+            // 
+            // lblLastUpdated
+            // 
+            this.lblLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblLastUpdated.Name = "lblLastUpdated";
+            this.lblLastUpdated.Size = new System.Drawing.Size(65, 22);
+            this.lblLastUpdated.Text = "2010-00-00";
+            this.lblLastUpdated.Visible = false;
             // 
             // WorldTabPageContent
             // 
@@ -369,6 +390,8 @@
         private System.Windows.Forms.ToolStripLabel lblImage;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripTextBox txtName;
+        private System.Windows.Forms.ToolStripLabel lblLastUpdated;
+        private System.Windows.Forms.ToolStripLabel lblTitLastUpdated;
 
     }
 }

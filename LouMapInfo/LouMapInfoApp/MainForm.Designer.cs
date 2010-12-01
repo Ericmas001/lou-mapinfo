@@ -1,6 +1,6 @@
 ﻿namespace LouMapInfoApp
 {
-    partial class MainForm2
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpageContinent = new System.Windows.Forms.TabPage();
             this.continentView = new LouMapInfoApp.ContinentTabPageContent();

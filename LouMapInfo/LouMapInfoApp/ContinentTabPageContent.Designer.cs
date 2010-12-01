@@ -57,6 +57,8 @@
             this.btnReportLawless = new System.Windows.Forms.ToolStripButton();
             this.btnReportContinent = new System.Windows.Forms.ToolStripButton();
             this.btnReportShrines = new System.Windows.Forms.ToolStripButton();
+            this.lblTitLastUpdated = new System.Windows.Forms.ToolStripLabel();
+            this.lblLastUpdated = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
@@ -115,7 +117,9 @@
             this.btnWorld,
             this.btnContinent,
             this.btnLoad,
-            this.lblImage});
+            this.lblImage,
+            this.lblLastUpdated,
+            this.lblTitLastUpdated});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(627, 25);
@@ -338,6 +342,23 @@
             this.btnReportShrines.Text = "Shrines";
             this.btnReportShrines.Click += new System.EventHandler(this.btnReportShrines_Click);
             // 
+            // lblTitLastUpdated
+            // 
+            this.lblTitLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblTitLastUpdated.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTitLastUpdated.Name = "lblTitLastUpdated";
+            this.lblTitLastUpdated.Size = new System.Drawing.Size(83, 22);
+            this.lblTitLastUpdated.Text = "Last Updated:";
+            this.lblTitLastUpdated.Visible = false;
+            // 
+            // lblLastUpdated
+            // 
+            this.lblLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblLastUpdated.Name = "lblLastUpdated";
+            this.lblLastUpdated.Size = new System.Drawing.Size(65, 22);
+            this.lblLastUpdated.Text = "2010-00-00";
+            this.lblLastUpdated.Visible = false;
+            // 
             // ContinentTabPageContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,6 +409,8 @@
         private System.Windows.Forms.ToolStripMenuItem btnReportsLvl1;
         private System.Windows.Forms.ToolStripMenuItem btnReportsLvl2;
         private System.Windows.Forms.ToolStripMenuItem btnReportsLvl3;
+        private System.Windows.Forms.ToolStripLabel lblLastUpdated;
+        private System.Windows.Forms.ToolStripLabel lblTitLastUpdated;
 
     }
 }

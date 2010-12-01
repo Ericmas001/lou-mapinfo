@@ -239,6 +239,8 @@ namespace LouMapInfoApp
         {
             StartWaiting();
             Enable(false);
+            lblLastUpdated.Visible = false;
+            lblTitLastUpdated.Visible = false;
             pnlContent.Visible = false;
             new Thread(new ThreadStart(LoadContinent)).Start();
         }
@@ -285,6 +287,9 @@ namespace LouMapInfoApp
             StopWaiting();
             dgvCities.Sort(dgvCities.Columns["AllianceName"], ListSortDirection.Ascending);
             Enable(true);
+            lblLastUpdated.Text = String.Format("{0:yyyy}-{0:MM}-{0:dd}", World.LastUpdated); ;
+            lblLastUpdated.Visible = true;
+            lblTitLastUpdated.Visible = true;
             RenderGrid();
             pnlContent.Visible = true;
         }
@@ -296,6 +301,8 @@ namespace LouMapInfoApp
                 return;
             }
             StopWaiting();
+            lblLastUpdated.Text = "Error while Loading";
+            lblLastUpdated.Visible = true;
             Enable(true);
             this.Enabled = true;
         }
