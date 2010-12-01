@@ -53,7 +53,6 @@
     <Compile Include="Reports\Entities\AllianceReportRoot.cs" />
     <Compile Include="Reports\Entities\PlayerReportRoot.cs" />
     <Compile Include="Reports\Entities\PlayerReportEntry.cs" />
-    <Compile Include="Reports\PlayerOverviewReport.cs" />
     <Compile Include="Reports\ShrinesReport.cs" />
     <Compile Include="Reports\core\ReportInfo.cs" />
     <Compile Include="Reports\core\ReportItem.cs" />
