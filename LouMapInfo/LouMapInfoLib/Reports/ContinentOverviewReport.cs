@@ -13,12 +13,12 @@ namespace LouMapInfo.Reports
         public override void generateReport()
         {
             CityCastleType type = m_Type;
-            title = DisplayUtility.Cont(cont.ID) + " Overview";
+            title = new TextReportItem(DisplayUtility.Cont(cont.ID) + " Overview",true);
 
             if (type == CityCastleType.Castle)
-                subtitle = "Castled Cities only";
+                subtitle = new TextReportItem("Castled Cities only",true);
             else if (type == CityCastleType.City)
-                subtitle = "Non-Castled Cities only";
+                subtitle = new TextReportItem("Non-Castled Cities only", true);
 
             AllianceInfo[] alliances = new AllianceInfo[cont.AlliancesOldWay.Count];
             cont.AlliancesOldWay.Values.CopyTo(alliances, 0);
@@ -83,9 +83,9 @@ namespace LouMapInfo.Reports
                         foreach (CityInfo c in cities)
                             r3.Items.Add(new CityInfoReportItem(c, true));
                         r2.Items.Add(r3);
-
-                        r.Items.Add(r2);
                     }
+
+                    r.Items.Add(r2);
                 }
                 root.Add(r);
             }

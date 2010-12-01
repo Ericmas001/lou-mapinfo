@@ -103,8 +103,10 @@ namespace LouMapInfo.Entities
                 m_Castles.Add(c.Location.ToString(), c);
             else
                 m_Cities.Add(c.Location.ToString(), c);
-            m_Score += c.Score;
-            m_Alliance.Score += c.Score;
+            if( m_Name != PlayerInfo.LAWLESS )
+                m_Score += c.Score;
+            if( m_Alliance.Name != AllianceInfo.NO_ALLIANCE )
+                m_Alliance.Score += c.Score;
         }
 
         public CityInfo City(string location)
