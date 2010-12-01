@@ -9,6 +9,7 @@ using LouMapInfo.Entities;
 using LouMapInfo.Loading;
 using System.Threading;
 using LouMapInfo.Reports;
+using LouMapInfo.Reports.Entities;
 
 namespace LouMapInfoApp
 {
@@ -277,14 +278,208 @@ namespace LouMapInfoApp
             btnReportsLvl3.Checked = true;
         }
 
-        private void btnReportPlayers_Click(object sender, EventArgs e)
+        private void btnReportPlayers_Click(object sender, EventArgs e2)
         {
-
+            PlayerReportRoot info = getPlayer(txtName.Text, world, type);
+            int w = world;
+            String title = "Report on " + info.PName + " (" + (info.PScore > 10000 ? String.Format("{0:0,0,0,0,0}", info.PScore) : (info.PScore > 1000 ? String.Format("{0:0,0}", info.PScore) : "" + info.PScore)) + ")";
+            string report = "<center><h1>" + title + "</h1><h2>" + info.AName + " (" + (info.AScore > 10000 ? String.Format("{0:0,0,0,0,0}", info.AScore) : (info.AScore > 1000 ? String.Format("{0:0,0}", info.AScore) : "" + info.AScore)) + ")</h2></center>";
+            string bbcode = "[b][u]Report on [player]" + info.PName + "[/player] (" + (info.PScore > 10000 ? String.Format("{0:0,0,0,0,0}", info.PScore) : (info.PScore > 1000 ? String.Format("{0:0,0}", info.PScore) : "" + info.PScore)) + ")[/u][/b]\n";
+            bbcode += "[b]Alliance: [alliance]" + info.AName + "[/alliance] (" + (info.AScore > 10000 ? String.Format("{0:0,0,0,0,0}", info.AScore) : (info.AScore > 1000 ? String.Format("{0:0,0}", info.AScore) : "" + info.AScore)) + ")[/u][/b]\n";
+            foreach (int ic in info.Continents.Keys)
+            {
+                PlayerReportEntry e = info.Continents[ic];
+                bbcode += "\n\n[b]C" + String.Format("{0:00}", ic) + " (" + (e.PScore > 10000 ? String.Format("{0:0,0,0,0,0}", e.PScore) : (e.PScore > 1000 ? String.Format("{0:0,0}", e.PScore) : "" + e.PScore)) + ")[/b]\n";
+                report += "<hr /><center><h3>C" + String.Format("{0:00}", ic) + " (" + (e.PScore > 10000 ? String.Format("{0:0,0,0,0,0}", e.PScore) : (e.PScore > 1000 ? String.Format("{0:0,0}", e.PScore) : "" + e.PScore)) + ")</h2></center>";
+                if (e.Cities.Count > 0)
+                {
+                    bbcode += String.Format("Cities\n");
+                    report += String.Format("<h4>Cities</h4><ul>");
+                    CityInfo[] cs = new CityInfo[e.Cities.Count];
+                    e.Cities.CopyTo(cs, 0);
+                    Array.Sort(cs);
+                    Array.Reverse(cs);
+                    foreach (CityInfo c in cs)
+                    {
+                        bbcode += String.Format("{0} [i]{1}[/i] ({2})\n", c.Location, c.Name, c.SayScore);
+                        report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
+                    }
+                    report += String.Format("</ul>");
+                }
+                if (e.Castles.Count > 0)
+                {
+                    bbcode += String.Format("Castles\n");
+                    report += String.Format("<h4>Castles</h4><ul>");
+                    CityInfo[] cs = new CityInfo[e.Castles.Count];
+                    e.Castles.CopyTo(cs, 0);
+                    Array.Sort(cs);
+                    Array.Reverse(cs);
+                    foreach (CityInfo c in cs)
+                    {
+                        bbcode += String.Format("{0} [i]{1}[/i] ({2})\n", c.Location, c.Name, c.SayScore);
+                        report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
+                    }
+                    report += String.Format("</ul>");
+                }
+            }
+            new ReportForm(title, report, bbcode).Show();
         }
 
-        private void btnReportContinent_Click(object sender, EventArgs e)
+        private void btnReportAlliance_Click(object sender, EventArgs e2)
         {
+            AllianceReportRoot info = getAlliance(txtName.Text, world, type);
+            // TODO:
+            int w = world;
+            String title = "Report on " + info.AName + " (" + (info.AScore > 10000 ? String.Format("{0:0,0,0,0,0}", info.AScore) : (info.AScore > 1000 ? String.Format("{0:0,0}", info.AScore) : "" + info.AScore)) + ")";
+            string report = "<center><h1>" + title + "</h1></center>";
+            string bbcode = "[b][u]Report on [alliance]" + info.AName + "[/alliance] (" + (info.AScore > 10000 ? String.Format("{0:0,0,0,0,0}", info.AScore) : (info.AScore > 1000 ? String.Format("{0:0,0}", info.AScore) : "" + info.AScore)) + ")[/u][/b]\n";
+            foreach (int ic in info.Continents.Keys)
+            {
+                AllianceReportEntry e = info.Continents[ic];
+                bbcode += "\n\n[b]C" + String.Format("{0:00}", ic) + " (" + (e.AScore > 10000 ? String.Format("{0:0,0,0,0,0}", e.AScore) : (e.AScore > 1000 ? String.Format("{0:0,0}", e.AScore) : "" + e.AScore)) + ")[/b]\n";
+                report += "<hr /><center><h3>C" + String.Format("{0:00}", ic) + " (" + (e.AScore > 10000 ? String.Format("{0:0,0,0,0,0}", e.AScore) : (e.AScore > 1000 ? String.Format("{0:0,0}", e.AScore) : "" + e.AScore)) + ")</h2></center>";
 
+                foreach (PlayerReportEntry p in e.Players)
+                {
+                    bbcode += String.Format("\n\n[b][player]{0}[/player][/b] ({1})\n", p.PName, (p.PScore > 10000 ? String.Format("{0:0,0,0,0,0}", p.PScore) : (p.PScore > 1000 ? String.Format("{0:0,0}", p.PScore) : "" + p.PScore)));
+                    report += String.Format("<br /><br /><h3>{0} ({1})</h3>", p.PName, (p.PScore > 10000 ? String.Format("{0:0,0,0,0,0}", p.PScore) : (p.PScore > 1000 ? String.Format("{0:0,0}", p.PScore) : "" + p.PScore)));
+                    if (p.Cities.Count > 0)
+                    {
+                        bbcode += String.Format("Cities\n");
+                        report += String.Format("<h4>Cities</h4><ul>");
+                        CityInfo[] cs = new CityInfo[p.Cities.Count];
+                        p.Cities.CopyTo(cs, 0);
+                        Array.Sort(cs);
+                        Array.Reverse(cs);
+                        foreach (CityInfo c in cs)
+                        {
+                            bbcode += String.Format("{0} [i]{1}[/i] ({2})\n", c.Location, c.Name, c.SayScore);
+                            report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
+                        }
+                        report += String.Format("</ul>");
+                    }
+                    if (p.Castles.Count > 0)
+                    {
+                        bbcode += String.Format("Castles\n");
+                        report += String.Format("<h4>Castles</h4><ul>");
+                        CityInfo[] cs = new CityInfo[p.Castles.Count];
+                        p.Castles.CopyTo(cs, 0);
+                        Array.Sort(cs);
+                        Array.Reverse(cs);
+                        foreach (CityInfo c in cs)
+                        {
+                            bbcode += String.Format("{0} [i]{1}[/i] ({2})\n", c.Location, c.Name, c.SayScore);
+                            report += String.Format("<li>{0}  <b>{1}</b>  ({3})</li>", c.Location, c.Name, (c.Castle ? "[*]" : ""), c.SayScore);
+                        }
+                        report += String.Format("</ul>");
+                    }
+                }
+            }
+            new ReportForm(title, report, bbcode).Show();
+        }
+
+        private PlayerReportRoot getPlayer(string player, int world, CityCastleType cc)
+        {
+            PlayerReportRoot res = new PlayerReportRoot();
+            res.AName = null;
+            res.AScore = 0;
+            res.PName = player;
+            res.PScore = 0;
+            foreach (ContinentInfo c in worlds[world].Continents)
+                if (c.Loaded)
+                {
+                    if (res.AName != null && c.Alliances.ContainsKey(res.AName))
+                    {
+                        AllianceInfo a = c.Alliances[res.AName];
+                        res.AScore += a.Score;
+                        if (a.Players.ContainsKey(player))
+                        {
+                            PlayerInfo p = a.Players[player];
+                            PlayerReportEntry e = new PlayerReportEntry();
+                            e.AName = a.Name;
+                            e.AScore = a.Score;
+                            e.PName = player;
+                            e.PScore = p.Score;
+                            res.Continents.Add(c.ID, e);
+                            res.PScore += p.Score;
+                            foreach (CityInfo ci in p.AllCities)
+                            {
+                                if (ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.Castle))
+                                    e.Castles.Add(ci);
+                                if (!ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.City))
+                                    e.Cities.Add(ci);
+                            }
+                        }
+                    }
+                    else if (res.AName == null)
+                    {
+                        foreach (AllianceInfo a in c.Alliances.Values)
+                        {
+                            if (res.AName == null || a.Name == res.AName)
+                            {
+                                if (a.Players.ContainsKey(player))
+                                {
+                                    res.AName = a.Name;
+                                    res.AScore += a.Score;
+                                    PlayerInfo p = a.Players[player];
+                                    PlayerReportEntry e = new PlayerReportEntry();
+                                    e.AName = a.Name;
+                                    e.AScore = a.Score;
+                                    e.PName = player;
+                                    e.PScore = p.Score;
+                                    res.Continents.Add(c.ID, e);
+                                    res.PScore += p.Score;
+                                    foreach (CityInfo ci in p.AllCities)
+                                    {
+                                        if (ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.Castle))
+                                            e.Castles.Add(ci);
+                                        if (!ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.City))
+                                            e.Cities.Add(ci);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            return res;
+        }
+
+        private AllianceReportRoot getAlliance(string alliance, int world, CityCastleType cc)
+        {
+            AllianceReportRoot res = new AllianceReportRoot();
+
+            res.AName = alliance;
+            res.AScore = 0;
+
+            foreach (ContinentInfo c in worlds[world].Continents)
+                if (c.Loaded)
+                {
+                    if (c.Alliances.ContainsKey(res.AName))
+                    {
+                        AllianceInfo a = c.Alliances[res.AName];
+                        res.AScore += a.Score;
+                        AllianceReportEntry ae = new AllianceReportEntry();
+                        ae.AScore = a.Score;
+                        res.Continents.Add(c.ID, ae);
+                        foreach (PlayerInfo p in a.Players.Values)
+                        {
+                            PlayerReportEntry e = new PlayerReportEntry();
+                            e.AName = a.Name;
+                            e.AScore = a.Score;
+                            e.PName = p.Name;
+                            e.PScore = p.Score;
+                            ae.Players.Add(e);
+                            foreach (CityInfo ci in p.AllCities)
+                            {
+                                if (ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.Castle))
+                                    e.Castles.Add(ci);
+                                if (!ci.Castle && (cc == CityCastleType.Both || cc == CityCastleType.City))
+                                    e.Cities.Add(ci);
+                            }
+                        }
+                    }
+                }
+            return res;
         }
     }
 }

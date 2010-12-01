@@ -51,7 +51,7 @@
             this.btnReportsLvl3 = new System.Windows.Forms.ToolStripMenuItem();
             this.txtName = new System.Windows.Forms.ToolStripTextBox();
             this.btnReportPlayers = new System.Windows.Forms.ToolStripButton();
-            this.btnReportContinent = new System.Windows.Forms.ToolStripButton();
+            this.btnReportAlliance = new System.Windows.Forms.ToolStripButton();
             this.btnWorld = new System.Windows.Forms.ToolStripSplitButton();
             this.btnLoad = new System.Windows.Forms.ToolStripButton();
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
@@ -162,7 +162,7 @@
             this.btnReportsLvl,
             this.txtName,
             this.btnReportPlayers,
-            this.btnReportContinent});
+            this.btnReportAlliance});
             this.toolbarReports.Location = new System.Drawing.Point(0, 0);
             this.toolbarReports.Name = "toolbarReports";
             this.toolbarReports.Size = new System.Drawing.Size(627, 25);
@@ -265,13 +265,13 @@
             // 
             // btnReportContinent
             // 
-            this.btnReportContinent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnReportContinent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReportContinent.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.btnReportContinent.Name = "btnReportContinent";
-            this.btnReportContinent.Size = new System.Drawing.Size(105, 22);
-            this.btnReportContinent.Text = "Alliance Overview";
-            this.btnReportContinent.Click += new System.EventHandler(this.btnReportContinent_Click);
+            this.btnReportAlliance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReportAlliance.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportAlliance.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
+            this.btnReportAlliance.Name = "btnReportContinent";
+            this.btnReportAlliance.Size = new System.Drawing.Size(105, 22);
+            this.btnReportAlliance.Text = "Alliance Overview";
+            this.btnReportAlliance.Click += new System.EventHandler(this.btnReportAlliance_Click);
             // 
             // btnWorld
             // 
@@ -355,7 +355,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CityScore;
         private System.Windows.Forms.ToolStrip toolbarReports;
         private System.Windows.Forms.ToolStripButton btnReportPlayers;
-        private System.Windows.Forms.ToolStripButton btnReportContinent;
+        private System.Windows.Forms.ToolStripButton btnReportAlliance;
         private System.Windows.Forms.ToolStripSplitButton btnCityType;
         private System.Windows.Forms.ToolStripMenuItem btnBoth;
         private System.Windows.Forms.ToolStripMenuItem btnCastles;
