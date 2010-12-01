@@ -278,17 +278,17 @@ namespace LouMapInfoApp
 
         private void btnReportLawless_Click(object sender, EventArgs e)
         {
-            new ReportForm(new LawlessReport(Continent, type), lvl).Show();
+            new ReportForm2(new LawlessReport(Continent, type), lvl).Show();
         }
 
         private void btnReportContinent_Click(object sender, EventArgs e)
         {
-            new ReportForm(new ContinentOverviewReport(Continent, type), lvl).Show();
+            new ReportForm2(new ContinentOverviewReport(Continent, type), lvl).Show();
         }
 
         private void btnReportShrines_Click(object sender, EventArgs e)
         {
-            new ReportForm(new ShrinesReport(Continent, type), lvl).Show();
+            new ReportForm2(new ShrinesReport(Continent, type), lvl).Show();
         }
 
         private void btnReportsLvl_ButtonClick(object sender, EventArgs e)

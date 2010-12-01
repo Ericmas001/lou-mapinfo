@@ -10,6 +10,19 @@ namespace LouMapInfo.Reports.core
         protected string title;
         protected string subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
+        public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
+
+        public ReportInfo()
+        {
+            BBCodeDisplay.Add("b", true);
+            BBCodeDisplay.Add("i", true);
+            BBCodeDisplay.Add("s", true);
+            BBCodeDisplay.Add("u", true);
+            BBCodeDisplay.Add("url", true);
+            BBCodeDisplay.Add("city", false);
+            BBCodeDisplay.Add("player", true);
+            BBCodeDisplay.Add("alliance", true);
+        }
 
         public string Report(int d)
         {
@@ -138,13 +151,19 @@ namespace LouMapInfo.Reports.core
 
         public string BBCodeText(string s)
         {
-            return s
+            string res = s
                 .Replace("\n", Environment.NewLine)
                 .Replace("[name]", "[i]")
                 .Replace("[/name]", "[/i]")
                 .Replace("[score]", "")
                 .Replace("[/score]", "")
                 ;
+            foreach (string b in BBCodeDisplay.Keys)
+                if (!BBCodeDisplay[b])
+                    res = res
+                        .Replace("["+b+"]", "")
+                        .Replace("[/" + b + "]", "");
+            return res;
         }
     }
 }

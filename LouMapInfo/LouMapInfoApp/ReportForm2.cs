@@ -5,20 +5,21 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.Entities;
+using LouMapInfo.Reports.core;
 using EricUtility.Windows.Forms;
 
 namespace LouMapInfoApp
 {
-    public partial class MainForm2 : Form
+    public partial class ReportForm2 : Form
     {
-        private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
-        public MainForm2()
+        ReportInfo report;
+        int depth;
+        public ReportForm2(ReportInfo r, int d)
         {
             InitializeComponent();
             CustomTabControl tctl = new CustomTabControl();
-            tctl.Controls.Add(this.tpageContinent);
-            tctl.Controls.Add(this.tpageWorld);
+            tctl.Controls.Add(this.tpageReport);
+            tctl.Controls.Add(this.tpageBBCode);
             tctl.DisplayStyle = EricUtility.Windows.Forms.TabStyle.Chrome;
             // 
             tctl.DisplayStyleProvider.BorderColor = System.Drawing.SystemColors.ControlDark;
@@ -44,10 +45,38 @@ namespace LouMapInfoApp
             tctl.SelectedIndex = 0;
             tctl.Size = new System.Drawing.Size(707, 468);
             tctl.TabIndex = 0;
-            Controls.Remove(tabControl1);
+            Controls.Remove(customTabControl1);
             Controls.Add(tctl);
-            continentView.Worlds = worlds;
-            worldView.Worlds = worlds;
+            report = r;
+            depth = d;
+            Text = r.Title;
+            reportBrowser.DocumentText = r.Report(d);
+            reportBrowser.AllowNavigation = false;
+            txtBBCode.Text = r.BBCode(d);
+        }
+        private void btnBBCode_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem btn = (ToolStripMenuItem)sender;
+            btn.Checked = !btn.Checked;
+            string b = btn.Name.Replace("btnBBCode", "").ToLower();
+            report.BBCodeDisplay[b] = btn.Checked;
+            txtBBCode.Text = report.BBCode(depth);
+        }
+
+        private void txtBBCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+                txtBBCode.SelectAll();
+        }
+
+        private void btnBBCodeDisplay_ButtonClick(object sender, EventArgs e)
+        {
+            btnBBCodeDisplay.ShowDropDown();
+        }
+
+        private void btnCopyAllBBCode_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtBBCode.Text);
         }
     }
 }
