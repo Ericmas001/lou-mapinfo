@@ -13,14 +13,14 @@ namespace LouMapInfo.Reports
             title = "Shrines & Moongates on " + DisplayUtility.Cont(cont.ID);
 
             List<CityInfo> lawless = new List<CityInfo>();
-            foreach (AllianceInfo a in cont.Alliances.Values)
-                if (a.Players.ContainsKey(PlayerInfo.LAWLESS))
+            foreach (AllianceInfo a in cont.AlliancesOldWay.Values)
+                if (a.PlayersOldWay.ContainsKey(PlayerInfo.LAWLESS))
                 {
                     switch (type)
                     {
-                        case CityCastleType.Both: lawless.AddRange(a.Players[PlayerInfo.LAWLESS].AllCities); break;
-                        case CityCastleType.Castle: lawless.AddRange(a.Players[PlayerInfo.LAWLESS].CastlesOnly); break;
-                        case CityCastleType.City: lawless.AddRange(a.Players[PlayerInfo.LAWLESS].CitiesOnly); break;
+                        case CityCastleType.Both: lawless.AddRange(a.PlayersOldWay[PlayerInfo.LAWLESS].AllCities); break;
+                        case CityCastleType.Castle: lawless.AddRange(a.PlayersOldWay[PlayerInfo.LAWLESS].CastlesOnly); break;
+                        case CityCastleType.City: lawless.AddRange(a.PlayersOldWay[PlayerInfo.LAWLESS].CitiesOnly); break;
                     }
                 }
             List<CityInfo> lawlessCity = new List<CityInfo>();
@@ -38,8 +38,8 @@ namespace LouMapInfo.Reports
             foreach (Pt p in cont.Shrines)
             {
                 ReportItem r2 = new ReportItem(p.ToString(), true);
-                foreach (AllianceInfo ai in cont.Alliances.Values)
-                    foreach (PlayerInfo pi in ai.Players.Values)
+                foreach (AllianceInfo ai in cont.AlliancesOldWay.Values)
+                    foreach (PlayerInfo pi in ai.PlayersOldWay.Values)
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                             if (type == CityCastleType.Both || (ci.Castle && type == CityCastleType.Castle) || (!ci.Castle && type == CityCastleType.City))
                                 r2.Items.Add(new ReportItem(String.Format("{0}[city]{1}[/city] [name]{2}[/name] ({3}), [player]{4}[/player], [alliance]{5}[/alliance]", (ci.Castle ? "[*] " : ""), ci.Location, ci.Name, DisplayUtility.Score(ci.Score), pi.Name, ai.Name), true));
@@ -58,8 +58,8 @@ namespace LouMapInfo.Reports
             foreach (Pt p in cont.MoonGates)
             {
                 ReportItem r2 = new ReportItem(p.ToString(), true);
-                foreach (AllianceInfo ai in cont.Alliances.Values)
-                    foreach (PlayerInfo pi in ai.Players.Values)
+                foreach (AllianceInfo ai in cont.AlliancesOldWay.Values)
+                    foreach (PlayerInfo pi in ai.PlayersOldWay.Values)
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                             if (type == CityCastleType.Both || (ci.Castle && type == CityCastleType.Castle) || (!ci.Castle && type == CityCastleType.City))
                                 r2.Items.Add(new ReportItem(String.Format("{0}[city]{1}[/city] [name]{2}[/name] ({3}), [player]{4}[/player], [alliance]{5}[/alliance]", (ci.Castle ? "[*] " : ""), ci.Location, ci.Name, DisplayUtility.Score(ci.Score), pi.Name, ai.Name), true));

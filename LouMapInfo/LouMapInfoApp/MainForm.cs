@@ -101,10 +101,10 @@ namespace LouMapInfoApp
                     string name = (string)((JsonStringValue)a["name"]).Value;
                     int pts = (name == AllianceInfo.NO_ALLIANCE) ? 0 : (int)((JsonNumericValue)a["points"]).Value;
                     AllianceInfo alliance = new AllianceInfo(int.Parse(aid), name, pts, continent);
-                    if (continent.Alliances.ContainsKey(name))
-                        alliance = continent.Alliances[name];
+                    if (continent.AlliancesOldWay.ContainsKey(name))
+                        alliance = continent.AlliancesOldWay[name];
                     else
-                        continent.Alliances.Add(name, alliance);
+                        continent.AlliancesOldWay.Add(name, alliance);
                     JsonObjectCollection players = (JsonObjectCollection)a["players"];
                     foreach (JsonObjectCollection p in players)
                     {
@@ -112,10 +112,10 @@ namespace LouMapInfoApp
                         string pname = (string)((JsonStringValue)p["name"]).Value;
                         int ppts = (pname == PlayerInfo.LAWLESS) ? 0 : (int)((JsonNumericValue)p["points"]).Value;
                         PlayerInfo player = new PlayerInfo(int.Parse(pid), pname, ppts, alliance);
-                        if (alliance.Players.ContainsKey(pname))
-                            player = alliance.Players[pname];
+                        if (alliance.PlayersOldWay.ContainsKey(pname))
+                            player = alliance.PlayersOldWay[pname];
                         else
-                            alliance.Players.Add(pname, player);
+                            alliance.PlayersOldWay.Add(pname, player);
                         JsonObjectCollection pcities = (JsonObjectCollection)p["cities"];
                         foreach (JsonObjectCollection c in pcities)
                         {
@@ -184,10 +184,10 @@ namespace LouMapInfoApp
                 return;
             }
             statePictureBox1.Etat = StatePictureBoxStates.None;
-            foreach (AllianceInfo a in worlds[info.Key].Cont(info.Value).Alliances.Values)
+            foreach (AllianceInfo a in worlds[info.Key].Cont(info.Value).AlliancesOldWay.Values)
             {
 
-                foreach (PlayerInfo p in a.Players.Values)
+                foreach (PlayerInfo p in a.PlayersOldWay.Values)
                 {
 
                     foreach (CityInfo c in p.AllCities)
@@ -226,9 +226,9 @@ namespace LouMapInfoApp
             string report = "<center><h1>" + title + "</h1></center>";
             string bbcode = "[b] Lawless cities on C" + co + "[/b]\n";
             List<CityInfo> lawless = new List<CityInfo>();
-            foreach (AllianceInfo a in worlds[w].Cont(co).Alliances.Values)
-                if (a.Players.ContainsKey(PlayerInfo.LAWLESS))
-                    lawless.AddRange(a.Players[PlayerInfo.LAWLESS].AllCities);
+            foreach (AllianceInfo a in worlds[w].Cont(co).AlliancesOldWay.Values)
+                if (a.PlayersOldWay.ContainsKey(PlayerInfo.LAWLESS))
+                    lawless.AddRange(a.PlayersOldWay[PlayerInfo.LAWLESS].AllCities);
             List<CityInfo> lawlessCity = new List<CityInfo>();
             List<CityInfo> lawlessCastles = new List<CityInfo>();
             foreach (CityInfo c in lawless)
@@ -271,14 +271,14 @@ namespace LouMapInfoApp
             String title = "Cities on C" + co + " (World " + w + ")";
             string report = "<center><h1>" + title + "</h1></center>";
             string bbcode = "";
-            AllianceInfo[] alliances = new AllianceInfo[worlds[w].Cont(co).Alliances.Count];
-            worlds[w].Cont(co).Alliances.Values.CopyTo(alliances, 0);
+            AllianceInfo[] alliances = new AllianceInfo[worlds[w].Cont(co).AlliancesOldWay.Count];
+            worlds[w].Cont(co).AlliancesOldWay.Values.CopyTo(alliances, 0);
             Array.Sort(alliances);
             Array.Reverse(alliances);
             for (int i = 0; i < alliances.Length; ++i)
             {
                 Dictionary<PlayerInfo, KeyValuePair<List<CityInfo>, List<CityInfo>>> players = new Dictionary<PlayerInfo, KeyValuePair<List<CityInfo>, List<CityInfo>>>();
-                foreach (PlayerInfo p in alliances[i].Players.Values)
+                foreach (PlayerInfo p in alliances[i].PlayersOldWay.Values)
                 {
                     foreach (CityInfo c in p.AllCities)
                     {
@@ -394,13 +394,13 @@ namespace LouMapInfoApp
             foreach (ContinentInfo c in worlds[world].Continents)
                 if (c.Loaded)
                 {
-                    if( res.AName!= null && c.Alliances.ContainsKey(res.AName))
+                    if( res.AName!= null && c.AlliancesOldWay.ContainsKey(res.AName))
                     {
-                        AllianceInfo a = c.Alliances[res.AName];
+                        AllianceInfo a = c.AlliancesOldWay[res.AName];
                         res.AScore += a.Score;
-                        if (a.Players.ContainsKey(player))
+                        if (a.PlayersOldWay.ContainsKey(player))
                         {
-                            PlayerInfo p = a.Players[player];
+                            PlayerInfo p = a.PlayersOldWay[player];
                             PlayerReportEntry e = new PlayerReportEntry();
                             e.AName = a.Name;
                             e.AScore = a.Score;
@@ -419,15 +419,15 @@ namespace LouMapInfoApp
                     }
                     else if (res.AName == null)
                     {
-                        foreach (AllianceInfo a in c.Alliances.Values)
+                        foreach (AllianceInfo a in c.AlliancesOldWay.Values)
                         {
                             if (res.AName == null || a.Name == res.AName)
                             {
-                                if (a.Players.ContainsKey(player))
+                                if (a.PlayersOldWay.ContainsKey(player))
                                 {
                                     res.AName = a.Name;
                                     res.AScore += a.Score;
-                                    PlayerInfo p = a.Players[player];
+                                    PlayerInfo p = a.PlayersOldWay[player];
                                     PlayerReportEntry e = new PlayerReportEntry();
                                     e.AName = a.Name;
                                     e.AScore = a.Score;
@@ -572,14 +572,14 @@ namespace LouMapInfoApp
             foreach (ContinentInfo c in worlds[world].Continents)
                 if (c.Loaded)
                 {
-                    if (c.Alliances.ContainsKey(res.AName))
+                    if (c.AlliancesOldWay.ContainsKey(res.AName))
                     {
-                        AllianceInfo a = c.Alliances[res.AName];
+                        AllianceInfo a = c.AlliancesOldWay[res.AName];
                         res.AScore += a.Score;
                         AllianceReportEntry ae = new AllianceReportEntry();
                         ae.AScore = a.Score;
                         res.Continents.Add(c.ID, ae);
-                        foreach( PlayerInfo p in a.Players.Values)
+                        foreach( PlayerInfo p in a.PlayersOldWay.Values)
                         {
                             PlayerReportEntry e = new PlayerReportEntry();
                             e.AName = a.Name;
@@ -703,8 +703,8 @@ namespace LouMapInfoApp
             {
                 bbcode += String.Format("[b]{0}[/b]\n", p);
                 report += String.Format("<li><b>{0}</b></li><ul>", p);
-                foreach( AllianceInfo ai in worlds[w].Cont(co).Alliances.Values)
-                    foreach( PlayerInfo pi in ai.Players.Values )
+                foreach( AllianceInfo ai in worlds[w].Cont(co).AlliancesOldWay.Values)
+                    foreach( PlayerInfo pi in ai.PlayersOldWay.Values )
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                         {
                             if ((chooReportShrines.City && !ci.Castle) || (chooReportShrines.Castle && ci.Castle))

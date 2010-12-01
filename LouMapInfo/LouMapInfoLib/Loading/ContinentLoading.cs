@@ -25,10 +25,10 @@ namespace LouMapInfo.Loading
                     string name = (string)((JsonStringValue)a["name"]).Value;
                     int pts = (name == AllianceInfo.NO_ALLIANCE) ? 0 : (int)((JsonNumericValue)a["points"]).Value;
                     AllianceInfo alliance = new AllianceInfo(int.Parse(aid), name, pts, continent);
-                    if (continent.Alliances.ContainsKey(name))
-                        alliance = continent.Alliances[name];
+                    if (continent.AlliancesOldWay.ContainsKey(name))
+                        alliance = continent.AlliancesOldWay[name];
                     else
-                        continent.Alliances.Add(name, alliance);
+                        continent.AlliancesOldWay.Add(name, alliance);
                     JsonObjectCollection players = (JsonObjectCollection)a["players"];
                     foreach (JsonObjectCollection p in players)
                     {
@@ -36,10 +36,10 @@ namespace LouMapInfo.Loading
                         string pname = (string)((JsonStringValue)p["name"]).Value;
                         int ppts = (pname == PlayerInfo.LAWLESS) ? 0 : (int)((JsonNumericValue)p["points"]).Value;
                         PlayerInfo player = new PlayerInfo(int.Parse(pid), pname, ppts, alliance);
-                        if (alliance.Players.ContainsKey(pname))
-                            player = alliance.Players[pname];
+                        if (alliance.PlayersOldWay.ContainsKey(pname))
+                            player = alliance.PlayersOldWay[pname];
                         else
-                            alliance.Players.Add(pname, player);
+                            alliance.PlayersOldWay.Add(pname, player);
                         JsonObjectCollection pcities = (JsonObjectCollection)p["cities"];
                         foreach (JsonObjectCollection c in pcities)
                         {
@@ -55,6 +55,49 @@ namespace LouMapInfo.Loading
                         }
                     }
                 }
+                continent.Loaded = true;
+            }
+        }
+        private static void LoadContinentFile(ContinentInfo continent, bool castle, JsonObject jsonObject)
+        {
+            foreach (JsonObjectCollection o1 in jsonObject as JsonObjectCollection)
+            {
+                foreach (JsonObject o in o1 as JsonObjectCollection)
+                {
+                    if (o is JsonObjectCollection)
+                    {
+                        JsonObjectCollection o2 = (JsonObjectCollection)o;
+                        JsonNumericValue oX = (JsonNumericValue)o2["x"];
+                        JsonNumericValue oY = (JsonNumericValue)o2["y"];
+                        JsonStringValue oCName = (JsonStringValue)o2["name"];
+                        JsonNumericValue oCScore = (JsonNumericValue)o2["points"];
+                        JsonNumericValue oPIndex = (JsonNumericValue)o2["playerIndex"];
+                        JsonStringValue oPName = (JsonStringValue)o2["player"];
+                        JsonNumericValue oPScore = (JsonNumericValue)o2["ppoints"];
+                        JsonNumericValue oAIndex = (JsonNumericValue)o2["allianceIndex"];
+                        JsonStringValue oAName = (JsonStringValue)o2["alliance"];
+                        CityInfo city = new CityInfo(-1, oCName.Value, (int)oCScore.Value, castle, new Pt((int)oX.Value, (int)oY.Value), continent.Alliance(oAName.Value).Player(oPName.Value));
+                        continent.Alliance(oAName.Value).Player(oPName.Value).AddCityAddScore(city);
+                    }
+                }
+            }
+        }
+        public static void LoadContinent(Dictionary<int, WorldInfo> worlds, int iw, int ic)
+        {
+            WorldInfo world = worlds[iw];
+            ContinentInfo continent = world.Cont(ic);
+            if (!continent.Loaded)
+            {
+                string s = GatheringUtility.GetPageSource("http://www.lou-map.com/data/w" + iw + "c" + ic + ".json");
+                //string s = File.ReadAllText("../../testData/overlay"+iw+"c"+ic+".json");
+                JsonTextParser parser = new JsonTextParser();
+                JsonObject jsonObject = parser.Parse(s);
+                LoadContinentFile(continent, false, jsonObject);
+                s = GatheringUtility.GetPageSource("http://www.lou-map.com/data/w" + iw + "s" + ic + ".json");
+                //string s = File.ReadAllText("../../testData/overlay"+iw+"c"+ic+".json");
+                parser = new JsonTextParser();
+                jsonObject = parser.Parse(s);
+                LoadContinentFile(continent, true, jsonObject);
                 continent.Loaded = true;
             }
         }

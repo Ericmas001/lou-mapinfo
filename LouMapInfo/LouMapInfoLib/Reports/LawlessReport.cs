@@ -13,14 +13,14 @@ namespace LouMapInfo.Reports
             title = "Lawless cities on " + DisplayUtility.Cont(cont.ID);
 
             List<CityInfo> lawless = new List<CityInfo>();
-            foreach (AllianceInfo a in cont.Alliances.Values)
-                if (a.Players.ContainsKey(PlayerInfo.LAWLESS))
+            foreach (AllianceInfo a in cont.AlliancesOldWay.Values)
+                if (a.PlayersOldWay.ContainsKey(PlayerInfo.LAWLESS))
                 {
                     switch (type)
                     {
-                        case CityCastleType.Both: lawless.AddRange(a.Players[PlayerInfo.LAWLESS].AllCities); break;
-                        case CityCastleType.Castle: lawless.AddRange(a.Players[PlayerInfo.LAWLESS].CastlesOnly); break;
-                        case CityCastleType.City: lawless.AddRange(a.Players[PlayerInfo.LAWLESS].CitiesOnly); break;
+                        case CityCastleType.Both: lawless.AddRange(a.PlayersOldWay[PlayerInfo.LAWLESS].AllCities); break;
+                        case CityCastleType.Castle: lawless.AddRange(a.PlayersOldWay[PlayerInfo.LAWLESS].CastlesOnly); break;
+                        case CityCastleType.City: lawless.AddRange(a.PlayersOldWay[PlayerInfo.LAWLESS].CitiesOnly); break;
                     }
                 }
             List<CityInfo> lawlessCity = new List<CityInfo>();

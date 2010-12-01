@@ -23,7 +23,7 @@ namespace LouMapInfo.Entities
         public WorldInfo World { get { return m_World; } }
         public List<Pt> Shrines { get { return m_Shrines; } }
         public List<Pt> MoonGates { get { return m_MoonGates; } }
-        public Dictionary<string,AllianceInfo> Alliances { get { return m_Alliances; } }
+        public Dictionary<string,AllianceInfo> AlliancesOldWay { get { return m_Alliances; } }
 
         public ContinentInfo(int id, WorldInfo parent)
         {
@@ -42,6 +42,15 @@ namespace LouMapInfo.Entities
         public override string ToString()
         {
             return ""+ID;
+        }
+
+
+
+        public AllianceInfo Alliance(string a)
+        {
+            if (!m_Alliances.ContainsKey(a))
+                m_Alliances.Add(a, new AllianceInfo(a, this));
+            return m_Alliances[a];
         }
     }
 }

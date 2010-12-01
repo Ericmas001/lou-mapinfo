@@ -56,6 +56,10 @@ namespace LouMapInfo.Entities
             m_Score = pts;
             m_Alliance = parent;
         }
+        public PlayerInfo(string name, AllianceInfo parent)
+            : this(-1, name, 0, parent)
+        {
+        }
         public override string ToString()
         {
             return Name == PlayerInfo.LAWLESS ? "Lawless castles" : (Name + " (" + SayScore + ")");
@@ -91,6 +95,16 @@ namespace LouMapInfo.Entities
                 m_Castles.Add(c.Location.ToString(), c);
             else
                 m_Cities.Add(c.Location.ToString(), c);
+        }
+
+        public void AddCityAddScore(CityInfo c)
+        {
+            if (c.Castle)
+                m_Castles.Add(c.Location.ToString(), c);
+            else
+                m_Cities.Add(c.Location.ToString(), c);
+            m_Score += c.Score;
+            m_Alliance.Score += c.Score;
         }
 
         public CityInfo City(string location)
