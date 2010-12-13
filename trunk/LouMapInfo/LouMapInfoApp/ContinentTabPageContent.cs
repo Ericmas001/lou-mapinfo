@@ -23,8 +23,8 @@ namespace LouMapInfoApp
 
         private System.Windows.Forms.Timer waitingTimer;
         private int waitingCounter = 0;
-        int world;
-        int continent;
+        int world = -1;
+        int continent = -1;
         int lvl;
         CityCastleType type = CityCastleType.Both;
         public WorldInfo World
@@ -39,27 +39,29 @@ namespace LouMapInfoApp
         public ContinentTabPageContent()
         {
             InitializeComponent();
-            world = Properties.Settings.Default.lastCWorld;
-            continent = Properties.Settings.Default.lastCCont;
             lvl = Properties.Settings.Default.lastCDetailLvl;
             for (int i = 1; i <= 22; ++i)
             {
-                ToolStripMenuItem btn = new ToolStripMenuItem();
+                ToolStripButton btn = new ToolStripButton();
                 btn.Name = "btnWorld_" + i;
-                btn.Text = "World " + i;
-                btnWorld.DropDownItems.Add(btn);
+                btn.Text = "" + i;
+                btn.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                btn.Size = new Size(23, 22);
+                btn.BackColor = Color.White;
+                toolbarWorld.Items.Add(btn);
                 btn.Click += new EventHandler(btnWorld_X_Click);
-                if (i == world)
-                    btn.Checked = true;
             }
             for (int i = 0; i <= 6; ++i)
             {
                 for (int j = 0; j <= 6; ++j)
                 {
-                    ToolStripMenuItem btn = new ToolStripMenuItem();
-                    btn.Name = "btnContinent_" + i  + "" + j;
-                    btn.Text = "Continent " + i + "" + j;
-                    btnContinent.DropDownItems.Add(btn);
+                    ToolStripButton btn = new ToolStripButton();
+                    btn.Name = "btnContinent_" + i + "" + j;
+                    btn.Text = i + "" + j;
+                    btn.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                    btn.Size = new Size(23, 22);
+                    btn.BackColor = Color.White;
+                    toolbarContinent.Items.Add(btn);
                     btn.Click += new EventHandler(btnContinent_X_Click);
                 }
             }
@@ -76,8 +78,8 @@ namespace LouMapInfoApp
                 case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
                 case 3: btnReportsLvl3_Click(null, new EventArgs()); break;
             }
-            btnWorld.Text = "W" + world;
-            btnContinent.Text = "C" + String.Format("{0:00}", continent);
+            //btnWorld.Text = "W" + world;
+            //btnContinent.Text = "C" + String.Format("{0:00}", continent);
         }
         private void btnCityType_ButtonClick(object sender, EventArgs e)
         {
@@ -129,37 +131,57 @@ namespace LouMapInfoApp
             }
         }
 
-        private void btnWorld_ButtonClick(object sender, EventArgs e)
-        {
-            btnWorld.ShowDropDown();
-        }
-
         void btnWorld_X_Click(object sender, EventArgs e)
         {
-            ((ToolStripMenuItem)btnWorld.DropDownItems["btnWorld_" + world]).Checked = false;
-            ToolStripMenuItem btn = (ToolStripMenuItem)sender;
-            world = int.Parse(btn.Text.Substring(btn.Text.LastIndexOf(' ') + 1));
-            btnWorld.Text = "W" + world;
-            btn.Checked = true;
-            Properties.Settings.Default.lastCWorld = world;
-            Properties.Settings.Default.Save();
-        }
-
-        private void btnContinent_ButtonClick(object sender, EventArgs e)
-        {
-            btnContinent.ShowDropDown();
+            ToolStripButton current = (ToolStripButton)sender;
+            if (world != int.Parse(current.Text))
+            {
+                if (world >= 0)
+                {
+                    ToolStripButton old = (ToolStripButton)toolbarWorld.Items["btnWorld_" + world];
+                    old.Font = new Font(old.Font, FontStyle.Regular);
+                    old.BackColor = Color.White;
+                }
+                current.Font = new Font(current.Font, FontStyle.Bold);
+                current.BackColor = Color.SkyBlue;
+                world = int.Parse(current.Text);
+                if (continent >= 0)
+                {
+                    ToolStripButton cold = (ToolStripButton)toolbarContinent.Items["btnContinent_" + String.Format("{0:00}", continent)];
+                    cold.Font = new Font(cold.Font, FontStyle.Regular);
+                    cold.BackColor = Color.White;
+                }
+                continent = -1;
+                lblLastUpdated.Visible = false;
+                lblTitLastUpdated.Visible = false;
+                pnlContent.Visible = false;
+                toolbarContinent.Visible = true;
+            }
         }
 
         void btnContinent_X_Click(object sender, EventArgs e)
         {
-            ((ToolStripMenuItem)btnContinent.DropDownItems["btnContinent_" + String.Format("{0:00}", continent)]).Checked = false;
-            ToolStripMenuItem btn = (ToolStripMenuItem)sender;
-            continent = int.Parse(btn.Text.Substring(btn.Text.LastIndexOf(' ') + 1));
-            btnContinent.Text = "C" + String.Format("{0:00}", continent);
-            btn.Checked = true;
-            Properties.Settings.Default.lastCCont = continent;
-            Properties.Settings.Default.Save();
+            ToolStripButton current = (ToolStripButton)sender;
+            if (continent != int.Parse(current.Text))
+            {
+                if (continent >= 0)
+                {
+                    ToolStripButton old = (ToolStripButton)toolbarContinent.Items["btnContinent_" + String.Format("{0:00}", continent)];
+                    old.Font = new Font(old.Font, FontStyle.Regular);
+                    old.BackColor = Color.White;
+                }
+                current.Font = new Font(current.Font, FontStyle.Bold);
+                current.BackColor = Color.SkyBlue;
+                continent = int.Parse(current.Text);
+                StartWaiting();
+                Enable(false);
+                lblLastUpdated.Visible = false;
+                lblTitLastUpdated.Visible = false;
+                pnlContent.Visible = false;
+                new Thread(new ThreadStart(LoadContinent)).Start();
+            }
         }
+
         delegate void EmptyHandler();
         void StartWaiting()
         {
@@ -313,9 +335,10 @@ namespace LouMapInfoApp
             {
                 Invoke(new BoolHandler(Enable),value);
             }
-            btnLoad.Enabled = value;
-            btnWorld.Enabled = value;
-            btnContinent.Enabled = value;
+            foreach (ToolStripItem it in toolbarWorld.Items)
+                if( it is ToolStripButton )
+                    it.Enabled = value;
+            toolbarContinent.Enabled = value;
         }
 
         private void btnReportLawless_Click(object sender, EventArgs e)

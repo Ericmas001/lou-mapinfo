@@ -76,7 +76,8 @@ namespace LouMapInfo.Loading
                         JsonNumericValue oPScore = (JsonNumericValue)o2["ppoints"];
                         JsonNumericValue oAIndex = (JsonNumericValue)o2["allianceIndex"];
                         JsonStringValue oAName = (JsonStringValue)o2["alliance"];
-                        CityInfo city = new CityInfo(-1, oCName.Value, (int)oCScore.Value, castle, new Pt((int)oX.Value, (int)oY.Value), continent.Alliance(oAName.Value).Player(oPName.Value));
+                        bool isCastle = castle && (oPName.Value != PlayerInfo.LAWLESS || oCName.Value.Contains("castle"));
+                        CityInfo city = new CityInfo(-1, oCName.Value, (int)oCScore.Value, isCastle, new Pt((int)oX.Value, (int)oY.Value), continent.Alliance(oAName.Value).Player(oPName.Value));
                         continent.Alliance(oAName.Value).Player(oPName.Value).AddCityAddScore(city);
                     }
                 }
