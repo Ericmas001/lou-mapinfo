@@ -70,8 +70,6 @@ namespace LouMapInfo.Reports
                         r3.Items.Add(new CityInfoReportItem(c, true));
                     r.Items.Add(r3);
                 }
-
-
                 root.Add(r);
             }
         }

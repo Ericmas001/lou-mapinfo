@@ -51,6 +51,7 @@
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
     <Compile Include="Reports\Items\ContinentScoreReportItem.cs" />
+    <Compile Include="Reports\Items\DetailedCityInfoReportItem.cs" />
     <Compile Include="Reports\PlayerOverviewReport.cs" />
     <Compile Include="Reports\core\ReportOption.cs" />
     <Compile Include="Reports\Entities\AllianceReportEntry.cs" />

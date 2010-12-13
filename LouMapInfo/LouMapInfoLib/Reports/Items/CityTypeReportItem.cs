@@ -24,9 +24,9 @@ namespace LouMapInfo.Reports.Items
             if (m_Count == 0)
             {
                 if (m_Type == CityCastleType.City || m_Type == CityCastleType.Both)
-                    s = "No City";
+                    s = "No Castled City";
                 else
-                    s = "No Castle";
+                    s = "No Non-Castled City";
             }
             else
             {
