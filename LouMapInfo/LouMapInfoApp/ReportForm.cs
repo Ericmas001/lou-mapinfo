@@ -8,14 +8,15 @@ using System.Windows.Forms;
 using LouMapInfo.Reports.core;
 using EricUtility.Windows.Forms;
 using LouMapInfo.Entities;
+using EricUtility;
 
 namespace LouMapInfoApp
 {
-    public partial class ReportForm2 : Form
+    public partial class ReportForm : Form
     {
         ReportInfo report;
         int depth;
-        public ReportForm2(ReportInfo r, int d)
+        public ReportForm(ReportInfo r, int d)
         {
             InitializeComponent();
             CustomTabControl tctl = new CustomTabControl();
@@ -51,7 +52,7 @@ namespace LouMapInfoApp
             pnlContent.Controls.Add(tctl);
             report = r;
             depth = d;
-            Text = r.Title;
+            Text = StringUtility.RemoveBBCodeTags(r.Title);
             switch (r.Type)
             {
                 case LouMapInfo.Entities.CityCastleType.Both: btnBoth_Click(null, new EventArgs()); break;
