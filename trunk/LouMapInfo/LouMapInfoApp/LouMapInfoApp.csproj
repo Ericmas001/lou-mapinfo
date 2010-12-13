@@ -52,11 +52,11 @@
     <Compile Include="ContinentTabPageContent.Designer.cs">
       <DependentUpon>ContinentTabPageContent.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportForm2.cs">
+    <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportForm2.Designer.cs">
-      <DependentUpon>ReportForm2.cs</DependentUpon>
+    <Compile Include="ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WorldTabPageContent.cs">
       <SubType>UserControl</SubType>
@@ -75,8 +75,8 @@
     <EmbeddedResource Include="ContinentTabPageContent.resx">
       <DependentUpon>ContinentTabPageContent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportForm2.resx">
-      <DependentUpon>ReportForm2.cs</DependentUpon>
+    <EmbeddedResource Include="ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorldTabPageContent.resx">
       <DependentUpon>WorldTabPageContent.cs</DependentUpon>

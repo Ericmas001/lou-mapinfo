@@ -335,14 +335,14 @@ namespace LouMapInfoApp
         {
             Properties.Settings.Default.lastWName = txtName.Text;
             Properties.Settings.Default.Save();
-            new ReportForm2(new PlayerOverviewReport(World, txtName.Text, type), lvl).Show();
+            new ReportForm(new PlayerOverviewReport(World, txtName.Text, type), lvl).Show();
         }
 
         private void btnReportAlliance_Click(object sender, EventArgs e2)
         {
             Properties.Settings.Default.lastWName = txtName.Text;
             Properties.Settings.Default.Save();
-            new ReportForm2(new AllianceOverviewReport(World, txtName.Text, type), lvl).Show();
+            new ReportForm(new AllianceOverviewReport(World, txtName.Text, type), lvl).Show();
         }
     }
 }
