@@ -50,7 +50,7 @@ namespace LouMapInfo.Reports
                     foreach (PlayerInfo pi in ai.PlayersOldWay.Values)
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                             if (type == CityCastleType.Both || (ci.Castle && type == CityCastleType.Castle) || (!ci.Castle && type == CityCastleType.City))
-                                r2.Items.Add(new CityInfoReportItem(ci, true));
+                                r2.Items.Add(new DetailedCityInfoReportItem(ci, true, pi, ai));
                 if (r2.Items.Count == 0)
                     switch (type)
                     {
@@ -70,7 +70,7 @@ namespace LouMapInfo.Reports
                     foreach (PlayerInfo pi in ai.PlayersOldWay.Values)
                         foreach (CityInfo ci in pi.Neighbours(p.X, p.Y, 3))
                             if (type == CityCastleType.Both || (ci.Castle && type == CityCastleType.Castle) || (!ci.Castle && type == CityCastleType.City))
-                                r2.Items.Add(new CityInfoReportItem(ci, true));
+                                r2.Items.Add(new DetailedCityInfoReportItem(ci, true, pi, ai));
                 if (r2.Items.Count == 0)
                     switch (type)
                     {

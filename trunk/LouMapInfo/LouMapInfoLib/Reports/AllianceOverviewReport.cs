@@ -55,7 +55,8 @@ namespace LouMapInfo.Reports
                         Array.Reverse(cities);
                         foreach (CityInfo c in cities)
                             r3.Items.Add(new CityInfoReportItem(c, true));
-                        r2.Items.Add(r3);
+                        if( r3.Items.Count > 0)
+                            r2.Items.Add(r3);
                     }
 
                     if (type == CityCastleType.Both || type == CityCastleType.Castle)
@@ -67,10 +68,12 @@ namespace LouMapInfo.Reports
                         Array.Reverse(cities);
                         foreach (CityInfo c in cities)
                             r3.Items.Add(new CityInfoReportItem(c, true));
-                        r2.Items.Add(r3);
+                        if (r3.Items.Count > 0)
+                            r2.Items.Add(r3);
                     }
 
-                    r.Items.Add(r2);
+                    if( r2.Items.Count > 0 )
+                        r.Items.Add(r2);
                 }
 
 
