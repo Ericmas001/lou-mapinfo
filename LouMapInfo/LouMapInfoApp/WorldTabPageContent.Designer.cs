@@ -52,16 +52,15 @@
             this.txtName = new System.Windows.Forms.ToolStripTextBox();
             this.btnReportPlayers = new System.Windows.Forms.ToolStripButton();
             this.btnReportAlliance = new System.Windows.Forms.ToolStripButton();
-            this.btnWorld = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnLoad = new System.Windows.Forms.ToolStripButton();
+            this.toolbarWorld = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.lblTitLastUpdated = new System.Windows.Forms.ToolStripLabel();
             this.lblLastUpdated = new System.Windows.Forms.ToolStripLabel();
+            this.lblTitLastUpdated = new System.Windows.Forms.ToolStripLabel();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
             this.toolbarReports.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.toolbarWorld.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -275,28 +274,27 @@
             this.btnReportAlliance.Text = "Alliance Overview";
             this.btnReportAlliance.Click += new System.EventHandler(this.btnReportAlliance_Click);
             // 
-            // btnWorld
+            // toolbarWorld
             // 
-            this.btnWorld.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnWorld.Image = ((System.Drawing.Image)(resources.GetObject("btnWorld.Image")));
-            this.btnWorld.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnWorld.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.btnWorld.Name = "btnWorld";
-            this.btnWorld.Size = new System.Drawing.Size(46, 22);
-            this.btnWorld.Text = "W10";
-            this.btnWorld.ButtonClick += new System.EventHandler(this.btnWorld_ButtonClick);
+            this.toolbarWorld.BackColor = System.Drawing.Color.White;
+            this.toolbarWorld.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolbarWorld.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.lblImage,
+            this.lblLastUpdated,
+            this.lblTitLastUpdated});
+            this.toolbarWorld.Location = new System.Drawing.Point(0, 0);
+            this.toolbarWorld.Name = "toolbarWorld";
+            this.toolbarWorld.Size = new System.Drawing.Size(627, 25);
+            this.toolbarWorld.TabIndex = 9;
+            this.toolbarWorld.Text = "toolStrip2";
             // 
-            // btnLoad
+            // toolStripLabel1
             // 
-            this.btnLoad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnLoad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLoad.Image = ((System.Drawing.Image)(resources.GetObject("btnLoad.Image")));
-            this.btnLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(74, 22);
-            this.btnLoad.Text = "Load World";
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(44, 22);
+            this.toolStripLabel1.Text = "World:";
             // 
             // lblImage
             // 
@@ -308,21 +306,13 @@
             this.lblImage.Size = new System.Drawing.Size(22, 22);
             this.lblImage.Text = "toolStripLabel1";
             // 
-            // toolStrip1
+            // lblLastUpdated
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnWorld,
-            this.btnLoad,
-            this.lblImage,
-            this.lblLastUpdated,
-            this.lblTitLastUpdated});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(627, 25);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
+            this.lblLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblLastUpdated.Name = "lblLastUpdated";
+            this.lblLastUpdated.Size = new System.Drawing.Size(65, 22);
+            this.lblLastUpdated.Text = "2010-00-00";
+            this.lblLastUpdated.Visible = false;
             // 
             // lblTitLastUpdated
             // 
@@ -333,20 +323,12 @@
             this.lblTitLastUpdated.Text = "Last Updated:";
             this.lblTitLastUpdated.Visible = false;
             // 
-            // lblLastUpdated
-            // 
-            this.lblLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblLastUpdated.Name = "lblLastUpdated";
-            this.lblLastUpdated.Size = new System.Drawing.Size(65, 22);
-            this.lblLastUpdated.Text = "2010-00-00";
-            this.lblLastUpdated.Visible = false;
-            // 
             // WorldTabPageContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlContent);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.toolbarWorld);
             this.Name = "WorldTabPageContent";
             this.Size = new System.Drawing.Size(627, 505);
             this.pnlContent.ResumeLayout(false);
@@ -354,8 +336,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).EndInit();
             this.toolbarReports.ResumeLayout(false);
             this.toolbarReports.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.toolbarWorld.ResumeLayout(false);
+            this.toolbarWorld.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,11 +367,10 @@
         private System.Windows.Forms.ToolStripMenuItem btnReportsLvl1;
         private System.Windows.Forms.ToolStripMenuItem btnReportsLvl2;
         private System.Windows.Forms.ToolStripMenuItem btnReportsLvl3;
-        private System.Windows.Forms.ToolStripSplitButton btnWorld;
-        private System.Windows.Forms.ToolStripButton btnLoad;
-        private System.Windows.Forms.ToolStripLabel lblImage;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripTextBox txtName;
+        private System.Windows.Forms.ToolStrip toolbarWorld;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel lblImage;
         private System.Windows.Forms.ToolStripLabel lblLastUpdated;
         private System.Windows.Forms.ToolStripLabel lblTitLastUpdated;
 

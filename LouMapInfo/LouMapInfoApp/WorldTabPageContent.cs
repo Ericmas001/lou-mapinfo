@@ -24,7 +24,7 @@ namespace LouMapInfoApp
 
         private System.Windows.Forms.Timer waitingTimer;
         private int waitingCounter = 0;
-        int world;
+        int world = -1;
         int lvl;
         CityCastleType type = CityCastleType.Both;
         public WorldInfo World
@@ -35,18 +35,18 @@ namespace LouMapInfoApp
         public WorldTabPageContent()
         {
             InitializeComponent();
-            world = Properties.Settings.Default.lastWWorld;
-            lvl = Properties.Settings.Default.lastWDetailLvl;
             for (int i = 1; i <= 22; ++i)
             {
-                ToolStripMenuItem btn = new ToolStripMenuItem();
+                ToolStripButton btn = new ToolStripButton();
                 btn.Name = "btnWorld_" + i;
-                btn.Text = "World " + i;
-                btnWorld.DropDownItems.Add(btn);
+                btn.Text = "" + i;
+                btn.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                btn.Size = new Size(23, 22);
+                btn.BackColor = Color.White;
+                toolbarWorld.Items.Add(btn);
                 btn.Click += new EventHandler(btnWorld_X_Click);
-                if (i == world)
-                    btn.Checked = true;
             }
+            lvl = Properties.Settings.Default.lastWDetailLvl;
             CityCastleType t = (CityCastleType)Properties.Settings.Default.lastWCityType;
             switch (t)
             {
@@ -60,7 +60,6 @@ namespace LouMapInfoApp
                 case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
                 case 3: btnReportsLvl3_Click(null, new EventArgs()); break;
             }
-            btnWorld.Text = "W" + world;
             txtName.Text = Properties.Settings.Default.lastWName;
         }
         private void btnCityType_ButtonClick(object sender, EventArgs e)
@@ -113,20 +112,27 @@ namespace LouMapInfoApp
             }
         }
 
-        private void btnWorld_ButtonClick(object sender, EventArgs e)
-        {
-            btnWorld.ShowDropDown();
-        }
-
         void btnWorld_X_Click(object sender, EventArgs e)
         {
-            ((ToolStripMenuItem)btnWorld.DropDownItems["btnWorld_" + world]).Checked = false;
-            ToolStripMenuItem btn = (ToolStripMenuItem)sender;
-            world = int.Parse(btn.Text.Substring(btn.Text.LastIndexOf(' ') + 1));
-            btnWorld.Text = "W" + world;
-            btn.Checked = true;
-            Properties.Settings.Default.lastWWorld = world;
-            Properties.Settings.Default.Save();
+            ToolStripButton current = (ToolStripButton)sender;
+            if (world != int.Parse(current.Text))
+            {
+                if (world >= 0)
+                {
+                    ToolStripButton old = (ToolStripButton)toolbarWorld.Items["btnWorld_" + world];
+                    old.Font = new Font(old.Font, FontStyle.Regular);
+                    old.BackColor = Color.White;
+                }
+                current.Font = new Font(current.Font, FontStyle.Bold);
+                current.BackColor = Color.SkyBlue;
+                world = int.Parse(current.Text);
+                StartWaiting();
+                Enable(false);
+                lblLastUpdated.Visible = false;
+                lblTitLastUpdated.Visible = false;
+                pnlContent.Visible = false;
+                new Thread(new ThreadStart(LoadWorld)).Start();
+            }
         }
 
         delegate void EmptyHandler();
@@ -204,16 +210,6 @@ namespace LouMapInfoApp
             }
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            StartWaiting();
-            Enable(false);
-            lblLastUpdated.Visible = false;
-            lblTitLastUpdated.Visible = false;
-            pnlContent.Visible = false;
-            new Thread(new ThreadStart(LoadWorld)).Start();
-        }
-
         public void LoadWorld()
         {
             try
@@ -283,8 +279,9 @@ namespace LouMapInfoApp
             {
                 Invoke(new BoolHandler(Enable),value);
             }
-            btnLoad.Enabled = value;
-            btnWorld.Enabled = value;
+            foreach (ToolStripItem it in toolbarWorld.Items)
+                if (it is ToolStripButton)
+                    it.Enabled = value;
         }
 
         private void btnReportsLvl_ButtonClick(object sender, EventArgs e)
