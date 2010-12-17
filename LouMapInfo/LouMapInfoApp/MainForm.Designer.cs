@@ -30,17 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpageLive = new System.Windows.Forms.TabPage();
             this.tpageContinent = new System.Windows.Forms.TabPage();
-            this.continentView = new LouMapInfoApp.ContinentTabPageContent();
             this.tpageWorld = new System.Windows.Forms.TabPage();
+            this.liveTabPageContent1 = new LouMapInfoApp.LiveTabPageContent();
+            this.continentView = new LouMapInfoApp.ContinentTabPageContent();
             this.worldView = new LouMapInfoApp.WorldTabPageContent();
             this.tabControl1.SuspendLayout();
+            this.tpageLive.SuspendLayout();
             this.tpageContinent.SuspendLayout();
             this.tpageWorld.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tpageLive);
             this.tabControl1.Controls.Add(this.tpageContinent);
             this.tabControl1.Controls.Add(this.tpageWorld);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -48,8 +52,19 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(576, 490);
+            this.tabControl1.Size = new System.Drawing.Size(765, 490);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tpageLive
+            // 
+            this.tpageLive.Controls.Add(this.liveTabPageContent1);
+            this.tpageLive.Location = new System.Drawing.Point(4, 22);
+            this.tpageLive.Name = "tpageLive";
+            this.tpageLive.Padding = new System.Windows.Forms.Padding(3);
+            this.tpageLive.Size = new System.Drawing.Size(757, 464);
+            this.tpageLive.TabIndex = 2;
+            this.tpageLive.Text = "Live (Official LoU)";
+            this.tpageLive.UseVisualStyleBackColor = true;
             // 
             // tpageContinent
             // 
@@ -59,8 +74,27 @@
             this.tpageContinent.Padding = new System.Windows.Forms.Padding(3);
             this.tpageContinent.Size = new System.Drawing.Size(568, 464);
             this.tpageContinent.TabIndex = 0;
-            this.tpageContinent.Text = "Continent View";
+            this.tpageContinent.Text = "Continent View (LoU-Map)";
             this.tpageContinent.UseVisualStyleBackColor = true;
+            // 
+            // tpageWorld
+            // 
+            this.tpageWorld.Controls.Add(this.worldView);
+            this.tpageWorld.Location = new System.Drawing.Point(4, 22);
+            this.tpageWorld.Name = "tpageWorld";
+            this.tpageWorld.Padding = new System.Windows.Forms.Padding(3);
+            this.tpageWorld.Size = new System.Drawing.Size(568, 464);
+            this.tpageWorld.TabIndex = 1;
+            this.tpageWorld.Text = "World View (LoU-Map)";
+            this.tpageWorld.UseVisualStyleBackColor = true;
+            // 
+            // liveTabPageContent1
+            // 
+            this.liveTabPageContent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.liveTabPageContent1.Location = new System.Drawing.Point(3, 3);
+            this.liveTabPageContent1.Name = "liveTabPageContent1";
+            this.liveTabPageContent1.Size = new System.Drawing.Size(751, 458);
+            this.liveTabPageContent1.TabIndex = 0;
             // 
             // continentView
             // 
@@ -71,17 +105,6 @@
             this.continentView.Size = new System.Drawing.Size(562, 458);
             this.continentView.TabIndex = 0;
             this.continentView.Worlds = null;
-            // 
-            // tpageWorld
-            // 
-            this.tpageWorld.Controls.Add(this.worldView);
-            this.tpageWorld.Location = new System.Drawing.Point(4, 22);
-            this.tpageWorld.Name = "tpageWorld";
-            this.tpageWorld.Padding = new System.Windows.Forms.Padding(3);
-            this.tpageWorld.Size = new System.Drawing.Size(568, 464);
-            this.tpageWorld.TabIndex = 1;
-            this.tpageWorld.Text = "World View";
-            this.tpageWorld.UseVisualStyleBackColor = true;
             // 
             // worldView
             // 
@@ -96,13 +119,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 490);
+            this.ClientSize = new System.Drawing.Size(765, 490);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "LoU Map Info";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
+            this.tpageLive.ResumeLayout(false);
             this.tpageContinent.ResumeLayout(false);
             this.tpageWorld.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -116,5 +140,7 @@
         private System.Windows.Forms.TabPage tpageWorld;
         private ContinentTabPageContent continentView;
         private WorldTabPageContent worldView;
+        private System.Windows.Forms.TabPage tpageLive;
+        private LiveTabPageContent liveTabPageContent1;
     }
 }

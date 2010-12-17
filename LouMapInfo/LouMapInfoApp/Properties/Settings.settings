@@ -53,5 +53,14 @@
     <Setting Name="reportOptions" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">63</Value>
     </Setting>
+    <Setting Name="liveUsername" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="livePassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="liveWorld" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
