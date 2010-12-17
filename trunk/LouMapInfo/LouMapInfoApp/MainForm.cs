@@ -17,6 +17,7 @@ namespace LouMapInfoApp
         {
             InitializeComponent();
             CustomTabControl tctl = new CustomTabControl();
+            tctl.Controls.Add(this.tpageLive);
             tctl.Controls.Add(this.tpageContinent);
             tctl.Controls.Add(this.tpageWorld);
             tctl.DisplayStyle = EricUtility.Windows.Forms.TabStyle.Chrome;
@@ -31,7 +32,7 @@ namespace LouMapInfoApp
             tctl.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             tctl.DisplayStyleProvider.Opacity = 1F;
             tctl.DisplayStyleProvider.Overlap = 16;
-            tctl.DisplayStyleProvider.Padding = new System.Drawing.Point(10, 5);
+            tctl.DisplayStyleProvider.Padding = new System.Drawing.Point(15, 5);
             tctl.DisplayStyleProvider.Radius = 16;
             tctl.DisplayStyleProvider.ShowTabCloser = false;
             tctl.DisplayStyleProvider.TextColor = System.Drawing.SystemColors.ControlText;

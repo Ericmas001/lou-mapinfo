@@ -52,6 +52,12 @@
     <Compile Include="ContinentTabPageContent.Designer.cs">
       <DependentUpon>ContinentTabPageContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="LiveTabPageContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LiveTabPageContent.Designer.cs">
+      <DependentUpon>LiveTabPageContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ContinentTabPageContent.resx">
       <DependentUpon>ContinentTabPageContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiveTabPageContent.resx">
+      <DependentUpon>LiveTabPageContent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
