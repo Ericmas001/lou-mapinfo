@@ -158,22 +158,29 @@
             this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPlayers.Size = new System.Drawing.Size(805, 421);
             this.dgvPlayers.TabIndex = 10;
+            this.dgvPlayers.Visible = false;
             // 
             // dgvPlayersName
             // 
+            this.dgvPlayersName.ActiveLinkColor = System.Drawing.Color.Black;
             this.dgvPlayersName.HeaderText = "Name";
+            this.dgvPlayersName.LinkColor = System.Drawing.Color.Black;
             this.dgvPlayersName.Name = "dgvPlayersName";
             this.dgvPlayersName.ReadOnly = true;
             this.dgvPlayersName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPlayersName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvPlayersName.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // dgvPlayersAlliance
             // 
+            this.dgvPlayersAlliance.ActiveLinkColor = System.Drawing.Color.Black;
             this.dgvPlayersAlliance.HeaderText = "Alliance";
+            this.dgvPlayersAlliance.LinkColor = System.Drawing.Color.Black;
             this.dgvPlayersAlliance.Name = "dgvPlayersAlliance";
             this.dgvPlayersAlliance.ReadOnly = true;
             this.dgvPlayersAlliance.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPlayersAlliance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvPlayersAlliance.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // dgvPlayersScore
             // 
