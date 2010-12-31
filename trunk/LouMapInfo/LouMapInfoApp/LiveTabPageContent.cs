@@ -60,7 +60,10 @@ namespace LouMapInfoApp
                 Properties.Settings.Default.livePassword = txtPassword.Text;
                 Properties.Settings.Default.liveWorld = lstServerNames.SelectedItem.ToString();
                 Properties.Settings.Default.Save();
-                SetConnected(true);
+                //SetConnected(true);
+                txtUsername.Enabled = false;
+                txtPassword.Enabled = false;
+                lstServerNames.Enabled = false;
                 btnConnect.Enabled = false;
                 StartWaiting();
                 SessionInfo session = new SessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames.SelectedItem.ToString());
@@ -97,6 +100,9 @@ namespace LouMapInfoApp
             {
                 dgvPlayers.Rows.Add(p.Name, p.Alliance.Name, p.Score, p.Rank, p.CityCount);
             }
+            string pName = session.World.Player(session.PlayerID).Name;
+            string aName = session.World.Alliance(session.AllianceID).Name;
+            lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")"));
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -111,6 +117,8 @@ namespace LouMapInfoApp
             lstServerNames.Enabled = !isConnected;
             btnConnect.Text = isConnected ? "Disconnect" : "Connect";
             btnConnect.Enabled = true;
+            dgvPlayers.Visible = isConnected;
+            lblWorldInfo.Visible = isConnected;
         }
 
 

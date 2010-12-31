@@ -45,17 +45,22 @@ namespace LouMapInfo.OfficialLOU
             return (JsonObjectCollection) Query(baseurl, endpoint, args);
         }
 
-        public static JsonArrayCollection GetPlayerList(string baseurl, string session)
+        public static JsonArrayCollection GetPlayerList(string baseurl, string session, int continent)
         {
             string endpoint = "PlayerGetRange";
             JsonObjectCollection args = new JsonObjectCollection();
             args.Add(new JsonStringValue("session", session));
             args.Add(new JsonNumericValue("start", 0));
             args.Add(new JsonNumericValue("end", 999999999));
-            args.Add(new JsonNumericValue("continent", -1));
+            args.Add(new JsonNumericValue("continent", continent));
             args.Add(new JsonStringValue("sort", "0"));
             args.Add(new JsonBooleanValue("ascending", true));
             return (JsonArrayCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonArrayCollection GetPlayerList(string baseurl, string session)
+        {
+            return GetPlayerList(baseurl, session, -1);
         }
     }
 }

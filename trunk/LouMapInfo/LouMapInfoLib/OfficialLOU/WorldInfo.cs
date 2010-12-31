@@ -14,6 +14,8 @@ namespace LouMapInfo.OfficialLOU
         private readonly string m_Url;
         private readonly Dictionary<string, PlayerInfo> m_PlayersByName = new Dictionary<string, PlayerInfo>();
         private readonly Dictionary<int, PlayerInfo> m_PlayersById = new Dictionary<int, PlayerInfo>();
+        private readonly Dictionary<string, AllianceInfo> m_AlliancesByName = new Dictionary<string, AllianceInfo>();
+        private readonly Dictionary<int, AllianceInfo> m_AlliancesById = new Dictionary<int, AllianceInfo>();
 
         public SessionInfo Session { get { return m_Session; } }
         public string Url { get { return m_Url; } }
@@ -49,11 +51,41 @@ namespace LouMapInfo.OfficialLOU
                 int pP = (int)((JsonNumericValue)p["p"]).Value;
                 int pR = (int)((JsonNumericValue)p["r"]).Value;
                 int pC = (int)((JsonNumericValue)p["c"]).Value;
-                AllianceInfo aInfo = new AllianceInfo(pA, pJ);
-                PlayerInfo pInfo = new PlayerInfo(pN, pI, aInfo, pP, pR, pC);
+                if (!m_AlliancesById.ContainsKey(pJ))
+                {
+                    AllianceInfo aInfo = new AllianceInfo(pA, pJ);
+                    m_AlliancesById.Add(pJ, aInfo);
+                    m_AlliancesByName.Add(pA, aInfo);
+                }
+                AllianceInfo a = m_AlliancesById[pJ];
+                PlayerInfo pInfo = new PlayerInfo(pN, pI, a, pP, pR, pC);
                 m_PlayersByName.Add(pN, pInfo);
                 m_PlayersById.Add(pI, pInfo);
             }
+        }
+        public PlayerInfo Player(int id)
+        {
+            if (m_PlayersById.ContainsKey(id))
+                return m_PlayersById[id];
+            return null;
+        }
+        public PlayerInfo Player(string name)
+        {
+            if (m_PlayersByName.ContainsKey(name))
+                return m_PlayersByName[name];
+            return null;
+        }
+        public AllianceInfo Alliance(int id)
+        {
+            if (m_AlliancesById.ContainsKey(id))
+                return m_AlliancesById[id];
+            return null;
+        }
+        public AllianceInfo Alliance(string name)
+        {
+            if (m_AlliancesByName.ContainsKey(name))
+                return m_AlliancesByName[name];
+            return null;
         }
     }
 }
