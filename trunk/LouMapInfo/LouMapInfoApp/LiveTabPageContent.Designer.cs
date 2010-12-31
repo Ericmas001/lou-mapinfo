@@ -136,6 +136,8 @@
             this.lblWorldInfo.Name = "lblWorldInfo";
             this.lblWorldInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblWorldInfo.Size = new System.Drawing.Size(0, 22);
+            this.lblWorldInfo.Click += new System.EventHandler(this.lblWorldInfo_Click);
+            this.lblWorldInfo.DoubleClick += new System.EventHandler(this.lblWorldInfo_DoubleClick);
             // 
             // dgvPlayers
             // 

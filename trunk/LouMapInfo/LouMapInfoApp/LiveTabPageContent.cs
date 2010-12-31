@@ -12,6 +12,8 @@ using System.Net.Cache;
 using EricUtility.Networking.JSON;
 using System.IO;
 using LouMapInfo.Reports;
+using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Reports.OfficialLOU;
 
 namespace LouMapInfoApp
 {
@@ -20,7 +22,7 @@ namespace LouMapInfoApp
 
         private System.Windows.Forms.Timer waitingTimer;
         private int waitingCounter = 0;
-        private SessionInfo m_Session = null;
+        private LoUSessionInfo m_Session = null;
         public LiveTabPageContent()
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace LouMapInfoApp
         private void LiveTabPageContent_Load(object sender, EventArgs e)
         {
             ((TextBox)txtPassword.Control).PasswordChar = '*';
-            foreach (string s in ServerList.Servers.Keys)
+            foreach (string s in LoUServerList.Servers.Keys)
                 lstServerNames.Items.Add(s);
             txtUsername.Text = Properties.Settings.Default.liveUsername;
             txtPassword.Text = Properties.Settings.Default.livePassword;
@@ -66,14 +68,14 @@ namespace LouMapInfoApp
                 lstServerNames.Enabled = false;
                 btnConnect.Enabled = false;
                 StartWaiting();
-                SessionInfo session = new SessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames.SelectedItem.ToString());
+                LoUSessionInfo session = new LoUSessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames.SelectedItem.ToString());
                  new Thread(new ParameterizedThreadStart(Connect)).Start(session);
             }
         }
 
         private void Connect(object state_session)
         {
-            SessionInfo session = (SessionInfo)state_session; 
+            LoUSessionInfo session = (LoUSessionInfo)state_session; 
             bool connect = session.Connect();
             if (connect)
             {
@@ -87,8 +89,8 @@ namespace LouMapInfoApp
             StopWaiting();
         }
 
-        delegate void SessionHandler(SessionInfo isConnected);
-        private void InitSession(SessionInfo session)
+        delegate void SessionHandler(LoUSessionInfo isConnected);
+        private void InitSession(LoUSessionInfo session)
         {
             if (InvokeRequired)
             {
@@ -96,13 +98,14 @@ namespace LouMapInfoApp
                 return;
             }
             dgvPlayers.Rows.Clear();
-            foreach (PlayerInfo p in session.World.Players)
+            foreach (LoUPlayerInfo p in session.World.Players)
             {
                 dgvPlayers.Rows.Add(p.Name, p.Alliance.Name, p.Score, p.Rank, p.CityCount);
             }
             string pName = session.World.Player(session.PlayerID).Name;
             string aName = session.World.Alliance(session.AllianceID).Name;
             lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")"));
+            session.World.Player("Battlewillow").ForceLoad();
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -204,6 +207,17 @@ namespace LouMapInfoApp
         {
             JsonObject res = LoUEndPoint.GetPlayerList("http://prodgame05.lordofultima.com/14/", "63fc09c3-6f32-4af3-8e9a-088f005b5463");
             MessageBox.Show(res.ToString());
+        }
+
+        private void lblWorldInfo_DoubleClick(object sender, EventArgs e)
+        {
+            //TODO: Remove this plz ! :)
+        }
+
+        private void lblWorldInfo_Click(object sender, EventArgs e)
+        {
+            new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(m_Session.PlayerID), LoUCityType.CityCastlePalace), 3).Show();
+            //TODO: Remove this plz ! :)
         }
     }
 }

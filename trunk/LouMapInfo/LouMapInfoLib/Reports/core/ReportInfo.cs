@@ -45,9 +45,8 @@ namespace LouMapInfo.Reports.core
 
         public abstract void generateReport();
 
-        public ReportInfo(CityCastleType type)
+        public ReportInfo()
         {
-            m_Type = type;
             BBCodeDisplay.Add("b", true);
             BBCodeDisplay.Add("i", true);
             BBCodeDisplay.Add("s", true);
@@ -56,6 +55,11 @@ namespace LouMapInfo.Reports.core
             BBCodeDisplay.Add("city", false);
             BBCodeDisplay.Add("player", true);
             BBCodeDisplay.Add("alliance", true);
+        }
+
+        public ReportInfo(CityCastleType type) : this()
+        {
+            m_Type = type;
         }
 
         public string Report(int d)

@@ -20,6 +20,11 @@ namespace LouMapInfo.Entities
             get { return m_y; }
             set { m_y = value; }
         }
+
+        public int Continent
+        {
+            get { return ((m_y / 100) * 10) + (m_x / 100); }
+        }
         public Pt()
         {
         }
@@ -27,6 +32,12 @@ namespace LouMapInfo.Entities
         {
             m_x = x;
             m_y = y;
+        }
+        public Pt(string loc)
+        {
+            string[] s = loc.Split(':');
+            m_x = int.Parse(s[0]);
+            m_y = int.Parse(s[1]);
         }
         public override string ToString()
         {

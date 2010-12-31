@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LouMapInfo.OfficialLOU
 {
-    public static class ServerList
+    public static class LoUServerList
     {
         private static readonly Dictionary<string, string> m_Servers = new Dictionary<string, string>();
         private static bool m_Loaded = false;
