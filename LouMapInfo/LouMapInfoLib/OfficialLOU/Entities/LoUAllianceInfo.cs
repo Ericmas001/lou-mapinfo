@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using EricUtility;
 
-namespace LouMapInfo.OfficialLOU
+namespace LouMapInfo.OfficialLOU.Entities
 {
-    public class AllianceInfo : AbstractLoadingTuple
+    public class LoUAllianceInfo : AbstractLoadingTuple
     {
         private readonly string m_Name;
         private readonly int m_Id;
@@ -13,7 +13,7 @@ namespace LouMapInfo.OfficialLOU
         public int Id { get { return m_Id; } }
         public string Name { get { return m_Name; } }
 
-        public AllianceInfo(string name, int id)
+        public LoUAllianceInfo(string name, int id)
             : base()
         {
             m_Name = name;

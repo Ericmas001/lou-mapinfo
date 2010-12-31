@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LouMapInfo.Entities
+namespace LouMapInfo.OfficialLOU.Entities
 {
-    public class Pt
+    public class LoUPt
     {
         private int m_x;
 
@@ -25,15 +25,15 @@ namespace LouMapInfo.Entities
         {
             get { return ((m_y / 100) * 10) + (m_x / 100); }
         }
-        public Pt()
+        public LoUPt()
         {
         }
-        public Pt(int x, int y)
+        public LoUPt(int x, int y)
         {
             m_x = x;
             m_y = y;
         }
-        public Pt(string loc)
+        public LoUPt(string loc)
         {
             string[] s = loc.Split(':');
             m_x = int.Parse(s[0]);

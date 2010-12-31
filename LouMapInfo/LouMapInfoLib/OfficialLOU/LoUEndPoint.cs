@@ -62,5 +62,14 @@ namespace LouMapInfo.OfficialLOU
         {
             return GetPlayerList(baseurl, session, -1);
         }
+
+        public static JsonObjectCollection GetPublicPlayerInfo(string baseurl, string session, int idPlayer)
+        {
+            string endpoint = "GetPublicPlayerInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonNumericValue("id", idPlayer));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
     }
 }
