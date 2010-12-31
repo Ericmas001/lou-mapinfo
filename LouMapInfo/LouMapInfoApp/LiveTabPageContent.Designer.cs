@@ -32,13 +32,21 @@
             this.toolbarConnection = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtUsername = new System.Windows.Forms.ToolStripTextBox();
-            this.txtPassword = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.txtPassword = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.lstServerNames = new System.Windows.Forms.ToolStripComboBox();
             this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
+            this.lblWorldInfo = new System.Windows.Forms.ToolStripLabel();
+            this.dgvPlayers = new System.Windows.Forms.DataGridView();
+            this.dgvPlayersName = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dgvPlayersAlliance = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dgvPlayersScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPlayersRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPlayersCities = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolbarConnection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
             this.SuspendLayout();
             // 
             // toolbarConnection
@@ -53,10 +61,11 @@
             this.toolStripLabel3,
             this.lstServerNames,
             this.btnConnect,
-            this.lblImage});
+            this.lblImage,
+            this.lblWorldInfo});
             this.toolbarConnection.Location = new System.Drawing.Point(0, 0);
             this.toolbarConnection.Name = "toolbarConnection";
-            this.toolbarConnection.Size = new System.Drawing.Size(699, 25);
+            this.toolbarConnection.Size = new System.Drawing.Size(805, 25);
             this.toolbarConnection.TabIndex = 0;
             this.toolbarConnection.Text = "toolStrip1";
             // 
@@ -73,18 +82,18 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(200, 25);
             // 
-            // txtPassword
-            // 
-            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 25);
-            // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(60, 22);
             this.toolStripLabel2.Text = "Password:";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 25);
             // 
             // toolStripLabel3
             // 
@@ -121,16 +130,81 @@
             this.lblImage.Size = new System.Drawing.Size(22, 22);
             this.lblImage.Text = "toolStripLabel1";
             // 
+            // lblWorldInfo
+            // 
+            this.lblWorldInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblWorldInfo.Name = "lblWorldInfo";
+            this.lblWorldInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblWorldInfo.Size = new System.Drawing.Size(0, 22);
+            // 
+            // dgvPlayers
+            // 
+            this.dgvPlayers.AllowUserToAddRows = false;
+            this.dgvPlayers.AllowUserToDeleteRows = false;
+            this.dgvPlayers.AllowUserToOrderColumns = true;
+            this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPlayersName,
+            this.dgvPlayersAlliance,
+            this.dgvPlayersScore,
+            this.dgvPlayersRank,
+            this.dgvPlayersCities});
+            this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPlayers.Location = new System.Drawing.Point(0, 25);
+            this.dgvPlayers.Name = "dgvPlayers";
+            this.dgvPlayers.ReadOnly = true;
+            this.dgvPlayers.RowHeadersVisible = false;
+            this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPlayers.Size = new System.Drawing.Size(805, 421);
+            this.dgvPlayers.TabIndex = 10;
+            // 
+            // dgvPlayersName
+            // 
+            this.dgvPlayersName.HeaderText = "Name";
+            this.dgvPlayersName.Name = "dgvPlayersName";
+            this.dgvPlayersName.ReadOnly = true;
+            this.dgvPlayersName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlayersName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dgvPlayersAlliance
+            // 
+            this.dgvPlayersAlliance.HeaderText = "Alliance";
+            this.dgvPlayersAlliance.Name = "dgvPlayersAlliance";
+            this.dgvPlayersAlliance.ReadOnly = true;
+            this.dgvPlayersAlliance.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlayersAlliance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dgvPlayersScore
+            // 
+            this.dgvPlayersScore.HeaderText = "Score";
+            this.dgvPlayersScore.Name = "dgvPlayersScore";
+            this.dgvPlayersScore.ReadOnly = true;
+            // 
+            // dgvPlayersRank
+            // 
+            this.dgvPlayersRank.HeaderText = "Rank";
+            this.dgvPlayersRank.Name = "dgvPlayersRank";
+            this.dgvPlayersRank.ReadOnly = true;
+            // 
+            // dgvPlayersCities
+            // 
+            this.dgvPlayersCities.HeaderText = "Cities";
+            this.dgvPlayersCities.Name = "dgvPlayersCities";
+            this.dgvPlayersCities.ReadOnly = true;
+            // 
             // LiveTabPageContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvPlayers);
             this.Controls.Add(this.toolbarConnection);
             this.Name = "LiveTabPageContent";
-            this.Size = new System.Drawing.Size(699, 446);
+            this.Size = new System.Drawing.Size(805, 446);
             this.Load += new System.EventHandler(this.LiveTabPageContent_Load);
             this.toolbarConnection.ResumeLayout(false);
             this.toolbarConnection.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +221,12 @@
         private System.Windows.Forms.ToolStripComboBox lstServerNames;
         private System.Windows.Forms.ToolStripButton btnConnect;
         private System.Windows.Forms.ToolStripLabel lblImage;
+        private System.Windows.Forms.ToolStripLabel lblWorldInfo;
+        private System.Windows.Forms.DataGridView dgvPlayers;
+        private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersName;
+        private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersAlliance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersScore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersRank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersCities;
     }
 }
