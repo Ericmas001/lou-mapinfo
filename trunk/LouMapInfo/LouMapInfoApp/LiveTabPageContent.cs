@@ -7,6 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using LouMapInfo.OfficialLOU;
 using System.Threading;
+using System.Net;
+using System.Net.Cache;
+using EricUtility.Networking.JSON;
+using System.IO;
+using LouMapInfo.Reports;
 
 namespace LouMapInfoApp
 {
@@ -19,6 +24,15 @@ namespace LouMapInfoApp
         public LiveTabPageContent()
         {
             InitializeComponent();
+            dgvPlayers.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvPlayers_CellFormatting);
+        }
+
+        void dgvPlayers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dgvPlayersScore.Index)
+            {
+                e.Value = ((int)e.Value).ToString("N0");
+            }
         }
 
         private void LiveTabPageContent_Load(object sender, EventArgs e)
@@ -28,7 +42,7 @@ namespace LouMapInfoApp
                 lstServerNames.Items.Add(s);
             txtUsername.Text = Properties.Settings.Default.liveUsername;
             txtPassword.Text = Properties.Settings.Default.livePassword;
-            lstServerNames.SelectedItem = Properties.Settings.Default.liveUsername;
+            lstServerNames.SelectedItem = Properties.Settings.Default.liveWorld;
         }
         
         private void btnConnect_Click(object sender, EventArgs e)
@@ -49,7 +63,7 @@ namespace LouMapInfoApp
                 SetConnected(true);
                 btnConnect.Enabled = false;
                 StartWaiting();
-                 SessionInfo session = new SessionInfo(txtUsername.Text, txtPassword.Text);
+                SessionInfo session = new SessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames.SelectedItem.ToString());
                  new Thread(new ParameterizedThreadStart(Connect)).Start(session);
             }
         }
@@ -61,11 +75,28 @@ namespace LouMapInfoApp
             if (connect)
             {
                 m_Session = session;
+                session.World.ForceLoad();
+                InitSession(m_Session);
                 SetConnected(true);
             }
             else
                 SetConnected(false);
             StopWaiting();
+        }
+
+        delegate void SessionHandler(SessionInfo isConnected);
+        private void InitSession(SessionInfo session)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new SessionHandler(InitSession), session);
+                return;
+            }
+            dgvPlayers.Rows.Clear();
+            foreach (PlayerInfo p in session.World.Players)
+            {
+                dgvPlayers.Rows.Add(p.Name, p.Alliance.Name, p.Score, p.Rank, p.CityCount);
+            }
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -73,6 +104,7 @@ namespace LouMapInfoApp
             if (InvokeRequired)
             {
                 Invoke(new BoolHandler(SetConnected), isConnected);
+                return;
             }
             txtUsername.Enabled = !isConnected;
             txtPassword.Enabled = !isConnected;
@@ -88,6 +120,7 @@ namespace LouMapInfoApp
             if (InvokeRequired)
             {
                 Invoke(new EmptyHandler(StartWaiting));
+                return;
             }
             if (waitingTimer == null)
             {
@@ -103,6 +136,7 @@ namespace LouMapInfoApp
             if (InvokeRequired)
             {
                 Invoke(new EmptyHandler(StopWaiting));
+                return;
             }
             if (waitingTimer != null)
             {
@@ -117,6 +151,7 @@ namespace LouMapInfoApp
             if (InvokeRequired)
             {
                 Invoke(new EventHandler(waitingTimer_Tick), sender, e);
+                return;
             }
             if (waitingTimer != null)
             {
@@ -155,6 +190,12 @@ namespace LouMapInfoApp
                 waitingTimer.Stop();
                 waitingTimer = null;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            JsonObject res = LoUEndPoint.GetPlayerList("http://prodgame05.lordofultima.com/14/", "63fc09c3-6f32-4af3-8e9a-088f005b5463");
+            MessageBox.Show(res.ToString());
         }
     }
 }

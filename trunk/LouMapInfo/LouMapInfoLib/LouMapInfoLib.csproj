@@ -47,6 +47,12 @@
     <Compile Include="Loading\ContinentLoading.cs" />
     <Compile Include="Loading\GlobalLoading.cs" />
     <Compile Include="Loading\WorldLoading.cs" />
+    <Compile Include="OfficialLOU\AllianceInfo.cs" />
+    <Compile Include="OfficialLOU\LoUEndPoint.cs" />
+    <Compile Include="OfficialLOU\PlayerInfo.cs" />
+    <Compile Include="OfficialLOU\ServerList.cs" />
+    <Compile Include="OfficialLOU\SessionInfo.cs" />
+    <Compile Include="OfficialLOU\WorldInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
