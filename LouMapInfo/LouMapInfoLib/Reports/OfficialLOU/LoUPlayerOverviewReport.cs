@@ -34,11 +34,11 @@ namespace LouMapInfo.Reports.OfficialLOU
             {
                 ReportItem r = new ContinentScoreReportItem(ic, player.CScore(ic), true, false);
 
-
-                if (m_Type == CityCastleType.Both || m_Type == CityCastleType.City)
+                //First castles
+                if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
                 {
-                    LoUCityInfo[] cities = player.Cities(LoUCityType.City, ic);
-                    ReportItem r3 = new LoUCityTypeReportItem(cities.Length, LoUCityType.City, true);
+                    LoUCityInfo[] cities = player.Cities(LoUCityType.CastlePalace, ic);
+                    ReportItem r3 = new LoUCityTypeReportItem(cities.Length, LoUCityType.Castle, true);
                     Array.Sort(cities);
                     Array.Reverse(cities);
                     foreach (LoUCityInfo c in cities)
@@ -46,10 +46,11 @@ namespace LouMapInfo.Reports.OfficialLOU
                     r.Items.Add(r3);
                 }
 
-                if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
+                //Then non-castled cities
+                if (m_Type == CityCastleType.Both || m_Type == CityCastleType.City)
                 {
-                    LoUCityInfo[] cities = player.Cities(LoUCityType.CastlePalace, ic);
-                    ReportItem r3 = new LoUCityTypeReportItem(cities.Length, LoUCityType.Castle, true);
+                    LoUCityInfo[] cities = player.Cities(LoUCityType.City, ic);
+                    ReportItem r3 = new LoUCityTypeReportItem(cities.Length, LoUCityType.City, true);
                     Array.Sort(cities);
                     Array.Reverse(cities);
                     foreach (LoUCityInfo c in cities)

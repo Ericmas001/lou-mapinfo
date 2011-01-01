@@ -27,6 +27,7 @@ namespace LouMapInfoApp
         {
             InitializeComponent();
             dgvPlayers.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvPlayers_CellFormatting);
+            dgvPlayers.CellContentClick += new DataGridViewCellEventHandler(dgvPlayers_CellContentClick);
         }
 
         void dgvPlayers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -105,6 +106,7 @@ namespace LouMapInfoApp
             string pName = session.World.Player(session.PlayerID).Name;
             string aName = session.World.Alliance(session.AllianceID).Name;
             lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")"));
+            btnPlayerReportMe.Text = pName;
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -119,7 +121,7 @@ namespace LouMapInfoApp
             lstServerNames.Enabled = !isConnected;
             btnConnect.Text = isConnected ? "Disconnect" : "Connect";
             btnConnect.Enabled = true;
-            dgvPlayers.Visible = isConnected;
+            pnlContent.Visible = isConnected;
             lblWorldInfo.Visible = isConnected;
         }
 
@@ -208,21 +210,22 @@ namespace LouMapInfoApp
             MessageBox.Show(res.ToString());
         }
 
-        private void lblWorldInfo_DoubleClick(object sender, EventArgs e)
-        {
-            //TODO: Remove this plz ! :)
-        }
-
-        private void lblWorldInfo_Click(object sender, EventArgs e)
-        {
-            new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(m_Session.PlayerID), LoUCityType.CityCastlePalace), 3).Show();
-            //TODO: Remove this plz ! :)
-        }
-
         private void dgvPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if( e.ColumnIndex == dgvPlayersName.Index )
                 new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(dgvPlayers[e.ColumnIndex,e.RowIndex].Value.ToString()), LoUCityType.CityCastlePalace), 3).Show();
+        }
+
+        private void btnPlayerReportMe_Click(object sender, EventArgs e)
+        {
+            new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(m_Session.PlayerID), LoUCityType.CityCastlePalace), 3).Show();
+        }
+
+        private void btnPlayerReportOther_Click(object sender, EventArgs e)
+        {
+            LoUPlayerInfo player = m_Session.World.Player(txtPlayerReportOther.Text);
+            if( player != null )
+                new ReportForm(new LoUPlayerOverviewReport(player, LoUCityType.CityCastlePalace), 3).Show();
         }
     }
 }

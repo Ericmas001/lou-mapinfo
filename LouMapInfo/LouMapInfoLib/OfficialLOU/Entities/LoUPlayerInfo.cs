@@ -35,6 +35,7 @@ namespace LouMapInfo.OfficialLOU.Entities
             {
                 int[] res = new int[m_CitiesByContinent.Count];
                 m_CitiesByContinent.Keys.CopyTo(res, 0);
+                Array.Sort(res);
                 return res;
             }
         }
