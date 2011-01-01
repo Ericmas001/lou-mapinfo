@@ -119,7 +119,7 @@ namespace LouMapInfo.Reports.core
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
                 report += String.Format("[b][u]{0}[/b][/u]\n", title.Value(options));
             if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
-                report += String.Format("[b]{0}[b]\n", subtitle.Value(options));
+                report += String.Format("[b]{0}[/b]\n", subtitle.Value(options));
             report += "\n";
             foreach (ReportItem it1 in root)
             {

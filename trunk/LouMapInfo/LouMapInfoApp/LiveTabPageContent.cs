@@ -213,19 +213,19 @@ namespace LouMapInfoApp
         private void dgvPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if( e.ColumnIndex == dgvPlayersName.Index )
-                new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(dgvPlayers[e.ColumnIndex,e.RowIndex].Value.ToString()), LoUCityType.CityCastlePalace), 3).Show();
+                new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(dgvPlayers[e.ColumnIndex,e.RowIndex].Value.ToString()), OldLoUCityType.CityCastlePalace), 3).Show();
         }
 
         private void btnPlayerReportMe_Click(object sender, EventArgs e)
         {
-            new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(m_Session.PlayerID), LoUCityType.CityCastlePalace), 3).Show();
+            new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(m_Session.PlayerID), OldLoUCityType.CityCastlePalace), 3).Show();
         }
 
         private void btnPlayerReportOther_Click(object sender, EventArgs e)
         {
             LoUPlayerInfo player = m_Session.World.Player(txtPlayerReportOther.Text);
             if( player != null )
-                new ReportForm(new LoUPlayerOverviewReport(player, LoUCityType.CityCastlePalace), 3).Show();
+                new ReportForm(new LoUPlayerOverviewReport(player, OldLoUCityType.CityCastlePalace), 3).Show();
         }
     }
 }

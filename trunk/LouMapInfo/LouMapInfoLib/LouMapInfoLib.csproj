@@ -43,14 +43,16 @@
     <Compile Include="Entities\ContinentInfo.cs" />
     <Compile Include="Entities\Pt.cs" />
     <Compile Include="Entities\PlayerInfo.cs" />
+    <Compile Include="OfficialLOU\Entities\LoUCityFlagGroup.cs" />
     <Compile Include="OfficialLOU\Entities\LoUCityInfo.cs" />
+    <Compile Include="OfficialLOU\Entities\LoUCityFlag.cs" />
     <Compile Include="OfficialLOU\Entities\LoUPt.cs" />
     <Compile Include="Entities\WorldInfo.cs" />
     <Compile Include="Loading\ContinentLoading.cs" />
     <Compile Include="Loading\GlobalLoading.cs" />
     <Compile Include="Loading\WorldLoading.cs" />
     <Compile Include="OfficialLOU\Entities\LoUAllianceInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUCityType.cs" />
+    <Compile Include="OfficialLOU\Entities\OldLoUCityType.cs" />
     <Compile Include="OfficialLOU\Entities\LoUBorderingType.cs" />
     <Compile Include="OfficialLOU\LoUEndPoint.cs" />
     <Compile Include="OfficialLOU\Entities\LoUPlayerInfo.cs" />
@@ -63,6 +65,8 @@
     <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\core\LoUReportInfo.cs" />
     <Compile Include="Reports\OfficialLOU\core\LoUReportUtility.cs" />
+    <Compile Include="Reports\OfficialLOU\Items\LoUAllianceInfoReportItem.cs" />
+    <Compile Include="Reports\OfficialLOU\Items\LoUBorderingTypeReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUCityInfoReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUCityTypeReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\LoUPlayerOverviewReport.cs" />

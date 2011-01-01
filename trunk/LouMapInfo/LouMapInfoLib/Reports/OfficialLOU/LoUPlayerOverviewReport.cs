@@ -14,7 +14,7 @@ namespace LouMapInfo.Reports.OfficialLOU
     public class LoUPlayerOverviewReport : LoUReportInfo
     {
         private LoUPlayerInfo player;
-        public LoUPlayerOverviewReport(LoUPlayerInfo p, LoUCityType type)
+        public LoUPlayerOverviewReport(LoUPlayerInfo p, OldLoUCityType type)
             : base(type)
         {
             player = p;
@@ -28,33 +28,93 @@ namespace LouMapInfo.Reports.OfficialLOU
         public override void generateReport()
         {
             title = new LoUPlayerInfoReportItem(player, true);
-            subtitle = new TextReportItem(LoUReportUtility.SayCityType(LoUType), true);
+            subtitle = new MultiLineReportItem(true,
+                    new LoUAllianceInfoReportItem(player.Alliance, true),
+                    new TextReportItem("", true),
+                    new TextReportItem(LoUReportUtility.SayCityType(LoUType), true)); 
 
             foreach (int ic in player.ActiveContinents)
             {
                 ReportItem r = new ContinentScoreReportItem(ic, player.CScore(ic), true, false);
 
-                //First castles
+                //First palaces
                 if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
                 {
-                    LoUCityInfo[] cities = player.Cities(LoUCityType.CastlePalace, ic);
-                    ReportItem r3 = new LoUCityTypeReportItem(cities.Length, LoUCityType.Castle, true);
-                    Array.Sort(cities);
-                    Array.Reverse(cities);
-                    foreach (LoUCityInfo c in cities)
-                        r3.Items.Add(new LoUCityInfoReportItem(c, true));
+                    LoUCityInfo[] citiesW = player.Cities(OldLoUCityType.Palace, LoUBorderingType.Water, ic);
+                    LoUCityInfo[] citiesL = player.Cities(OldLoUCityType.Palace, LoUBorderingType.Land, ic);
+                    ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, OldLoUCityType.Palace, true);
+                    if (citiesW.Length > 0)
+                    {
+                        ReportItem r4 = new LoUBorderingTypeReportItem(citiesW.Length, LoUBorderingType.Water, true);
+                        Array.Sort(citiesW);
+                        Array.Reverse(citiesW);
+                        foreach (LoUCityInfo c in citiesW)
+                            r4.Items.Add(new LoUCityInfoReportItem(c, true));
+                        r3.Items.Add(r4);
+                    }
+                    if (citiesL.Length > 0)
+                    {
+                        ReportItem r4 = new LoUBorderingTypeReportItem(citiesL.Length, LoUBorderingType.Land, true);
+                        Array.Sort(citiesL);
+                        Array.Reverse(citiesL);
+                        foreach (LoUCityInfo c in citiesL)
+                            r4.Items.Add(new LoUCityInfoReportItem(c, true));
+                        r3.Items.Add(r4);
+                    }
+                    r.Items.Add(r3);
+                }
+
+                //Then castles
+                if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
+                {
+                    LoUCityInfo[] citiesW = player.Cities(OldLoUCityType.Castle, LoUBorderingType.Water, ic);
+                    LoUCityInfo[] citiesL = player.Cities(OldLoUCityType.Castle, LoUBorderingType.Land, ic);
+                    ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, OldLoUCityType.Castle, true);
+                    if (citiesW.Length > 0)
+                    {
+                        ReportItem r4 = new LoUBorderingTypeReportItem(citiesW.Length, LoUBorderingType.Water, true);
+                        Array.Sort(citiesW);
+                        Array.Reverse(citiesW);
+                        foreach (LoUCityInfo c in citiesW)
+                            r4.Items.Add(new LoUCityInfoReportItem(c, true));
+                        r3.Items.Add(r4);
+                    }
+                    if (citiesL.Length > 0)
+                    {
+                        ReportItem r4 = new LoUBorderingTypeReportItem(citiesL.Length, LoUBorderingType.Land, true);
+                        Array.Sort(citiesL);
+                        Array.Reverse(citiesL);
+                        foreach (LoUCityInfo c in citiesL)
+                            r4.Items.Add(new LoUCityInfoReportItem(c, true));
+                        r3.Items.Add(r4);
+                    }
                     r.Items.Add(r3);
                 }
 
                 //Then non-castled cities
                 if (m_Type == CityCastleType.Both || m_Type == CityCastleType.City)
                 {
-                    LoUCityInfo[] cities = player.Cities(LoUCityType.City, ic);
-                    ReportItem r3 = new LoUCityTypeReportItem(cities.Length, LoUCityType.City, true);
-                    Array.Sort(cities);
-                    Array.Reverse(cities);
-                    foreach (LoUCityInfo c in cities)
-                        r3.Items.Add(new LoUCityInfoReportItem(c, true));
+                    LoUCityInfo[] citiesW = player.Cities(OldLoUCityType.City, LoUBorderingType.Water, ic);
+                    LoUCityInfo[] citiesL = player.Cities(OldLoUCityType.City, LoUBorderingType.Land, ic);
+                    ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, OldLoUCityType.City, true);
+                    if (citiesW.Length > 0)
+                    {
+                        ReportItem r4 = new LoUBorderingTypeReportItem(citiesW.Length, LoUBorderingType.Water, true);
+                        Array.Sort(citiesW);
+                        Array.Reverse(citiesW);
+                        foreach (LoUCityInfo c in citiesW)
+                            r4.Items.Add(new LoUCityInfoReportItem(c, true));
+                        r3.Items.Add(r4);
+                    }
+                    if (citiesL.Length > 0)
+                    {
+                        ReportItem r4 = new LoUBorderingTypeReportItem(citiesL.Length, LoUBorderingType.Land, true);
+                        Array.Sort(citiesL);
+                        Array.Reverse(citiesL);
+                        foreach (LoUCityInfo c in citiesL)
+                            r4.Items.Add(new LoUCityInfoReportItem(c, true));
+                        r3.Items.Add(r4);
+                    }
                     r.Items.Add(r3);
                 }
                 root.Add(r);

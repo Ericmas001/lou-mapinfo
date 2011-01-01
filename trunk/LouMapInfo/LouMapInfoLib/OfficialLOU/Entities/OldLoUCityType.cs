@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LouMapInfo.OfficialLOU.Entities
 {
-    public enum LoUCityType
+    public enum OldLoUCityType
     {
         None = -1,
         City = 0,

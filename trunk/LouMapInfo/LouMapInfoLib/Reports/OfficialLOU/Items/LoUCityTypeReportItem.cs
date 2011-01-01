@@ -10,9 +10,9 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
     public class LoUCityTypeReportItem : ReportItem
     {
         private int m_Count;
-        private LoUCityType m_Type;
+        private OldLoUCityType m_Type;
 
-        public LoUCityTypeReportItem(int count, LoUCityType type, bool showIfEmpty)
+        public LoUCityTypeReportItem(int count, OldLoUCityType type, bool showIfEmpty)
             : base(showIfEmpty)
         {
             m_Count = count;
@@ -24,11 +24,11 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
             String name = "";
             switch (m_Type)
             {
-                case LoUCityType.City:
+                case OldLoUCityType.City:
                     name = "Non-Castled Cit" + (m_Count <= 1 ? "y" : "ies"); break;
-                case LoUCityType.Castle:
+                case OldLoUCityType.Castle:
                     name = "Castle" + (m_Count <= 1 ? "" : "s"); break;
-                case LoUCityType.Palace:
+                case OldLoUCityType.Palace:
                     name = "Palace" + (m_Count <= 1 ? "" : "s"); break;
             }
 
