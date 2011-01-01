@@ -68,27 +68,43 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public LoUPlayerInfo Player(int id)
         {
+            LoUPlayerInfo res = null;
             if (m_PlayersById.ContainsKey(id))
-                return m_PlayersById[id];
-            return null;
+            {
+                res = m_PlayersById[id];
+                res.LoadIfNeeded();
+            }
+            return res;
         }
         public LoUPlayerInfo Player(string name)
         {
+            LoUPlayerInfo res = null;
             if (m_PlayersByName.ContainsKey(name))
-                return m_PlayersByName[name];
-            return null;
+            {
+                res = m_PlayersByName[name];
+                res.LoadIfNeeded();
+            }
+            return res;
         }
         public LoUAllianceInfo Alliance(int id)
         {
+            LoUAllianceInfo res = null;
             if (m_AlliancesById.ContainsKey(id))
-                return m_AlliancesById[id];
-            return null;
+            {
+                res = m_AlliancesById[id];
+                res.LoadIfNeeded();
+            }
+            return res;
         }
         public LoUAllianceInfo Alliance(string name)
         {
+            LoUAllianceInfo res = null;
             if (m_AlliancesByName.ContainsKey(name))
-                return m_AlliancesByName[name];
-            return null;
+            {
+                res = m_AlliancesByName[name];
+                res.LoadIfNeeded();
+            }
+            return res;
         }
     }
 }
