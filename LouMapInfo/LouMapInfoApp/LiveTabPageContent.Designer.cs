@@ -39,6 +39,7 @@
             this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
             this.lblWorldInfo = new System.Windows.Forms.ToolStripLabel();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.dgvPlayers = new System.Windows.Forms.DataGridView();
             this.dgvPlayersName = new System.Windows.Forms.DataGridViewLinkColumn();
             this.dgvPlayersAlliance = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -46,6 +47,7 @@
             this.dgvPlayersRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPlayersCities = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolbarConnection.SuspendLayout();
+            this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,6 +141,15 @@
             this.lblWorldInfo.Click += new System.EventHandler(this.lblWorldInfo_Click);
             this.lblWorldInfo.DoubleClick += new System.EventHandler(this.lblWorldInfo_DoubleClick);
             // 
+            // pnlContent
+            // 
+            this.pnlContent.Controls.Add(this.dgvPlayers);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(0, 25);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(805, 421);
+            this.pnlContent.TabIndex = 11;
+            // 
             // dgvPlayers
             // 
             this.dgvPlayers.AllowUserToAddRows = false;
@@ -153,13 +164,13 @@
             this.dgvPlayersRank,
             this.dgvPlayersCities});
             this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPlayers.Location = new System.Drawing.Point(0, 25);
+            this.dgvPlayers.Location = new System.Drawing.Point(0, 0);
             this.dgvPlayers.Name = "dgvPlayers";
             this.dgvPlayers.ReadOnly = true;
             this.dgvPlayers.RowHeadersVisible = false;
             this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPlayers.Size = new System.Drawing.Size(805, 421);
-            this.dgvPlayers.TabIndex = 10;
+            this.dgvPlayers.TabIndex = 11;
             this.dgvPlayers.Visible = false;
             this.dgvPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlayers_CellContentClick);
             // 
@@ -207,13 +218,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dgvPlayers);
+            this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.toolbarConnection);
             this.Name = "LiveTabPageContent";
             this.Size = new System.Drawing.Size(805, 446);
             this.Load += new System.EventHandler(this.LiveTabPageContent_Load);
             this.toolbarConnection.ResumeLayout(false);
             this.toolbarConnection.PerformLayout();
+            this.pnlContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -232,6 +244,7 @@
         private System.Windows.Forms.ToolStripButton btnConnect;
         private System.Windows.Forms.ToolStripLabel lblImage;
         private System.Windows.Forms.ToolStripLabel lblWorldInfo;
+        private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.DataGridView dgvPlayers;
         private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersName;
         private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersAlliance;

@@ -40,14 +40,20 @@ namespace LouMapInfo.OfficialLOU.Entities
             string s = GatheringUtility.GetPageSource("http://www.lordofultima.com/en/game", m_Cookies);
             m_SessionID = StringUtility.Extract(s, "<input type=\"hidden\" name=\"sessionId\" id=\"sessionId\" value=\"", "\"");
             if (m_SessionID == null)
-                m_SessionID = "0af6308a-fa8c-4e9b-aced-d551677de258";//return false;
+                return false;
+            try
+            {
+                JsonObjectCollection me = LoUEndPoint.GetPlayerInfo(m_World.Url, m_SessionID);
+                m_MyPID = (int)((JsonNumericValue)me["Id"]).Value;
+                m_MyAID = (int)((JsonNumericValue)me["AllianceId"]).Value;
 
-            JsonObjectCollection me = LoUEndPoint.GetPlayerInfo(m_World.Url, m_SessionID);
-            m_MyPID = (int)((JsonNumericValue)me["Id"]).Value;
-            m_MyAID = (int)((JsonNumericValue)me["AllianceId"]).Value;
-
-            m_Connected = true;
-            return true;
+                m_Connected = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
