@@ -161,6 +161,7 @@
             this.dgvPlayers.Size = new System.Drawing.Size(805, 421);
             this.dgvPlayers.TabIndex = 10;
             this.dgvPlayers.Visible = false;
+            this.dgvPlayers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlayers_CellContentClick);
             // 
             // dgvPlayersName
             // 

@@ -105,7 +105,6 @@ namespace LouMapInfoApp
             string pName = session.World.Player(session.PlayerID).Name;
             string aName = session.World.Alliance(session.AllianceID).Name;
             lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")"));
-            session.World.Player("Battlewillow").ForceLoad();
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -218,6 +217,12 @@ namespace LouMapInfoApp
         {
             new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(m_Session.PlayerID), LoUCityType.CityCastlePalace), 3).Show();
             //TODO: Remove this plz ! :)
+        }
+
+        private void dgvPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if( e.ColumnIndex == dgvPlayersName.Index )
+                new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(dgvPlayers[e.ColumnIndex,e.RowIndex].Value.ToString()), LoUCityType.CityCastlePalace), 3).Show();
         }
     }
 }
