@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using LouMapInfo.Entities;
 using EricUtility.Windows.Forms;
+using System.IO;
 
 namespace LouMapInfoApp
 {
@@ -45,11 +46,57 @@ namespace LouMapInfoApp
             tctl.SelectedIndex = 0;
             tctl.Size = new System.Drawing.Size(707, 468);
             tctl.TabIndex = 0;
-            Controls.Remove(tabControl1);
-            Controls.Add(tctl);
+            panel1.Controls.Remove(tabControl1);
+            panel1.Controls.Add(tctl);
 
             continentView.Worlds = worlds;
             worldView.Worlds = worlds;
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            string title = "LoU Map Info 3.0";
+            StringBuilder sb = new StringBuilder();
+            StringWriter sw = new StringWriter(sb);
+            sw.WriteLine(title);
+            sw.WriteLine("http://code.google.com/p/lou-mapinfo/");
+            sw.WriteLine();
+            sw.WriteLine("Made by Eric (ericmas001@hotmail.com)");
+            sw.WriteLine("2010-2011");
+            sw.WriteLine();
+            sw.WriteLine("Lord of Ultima http://www.lordofultima.com");
+            sw.WriteLine("Created by Dirnahm for Nighthawks on World 10");
+            sw.WriteLine();
+            sw.WriteLine("Special thanks to lou-map  http://www.lou-map.com/");
+            sw.WriteLine("Their JSONs were more than useful");
+            sw.WriteLine();
+            sw.WriteLine("Special thanks to LoU Empire overview http://empire.lou-tools.com/");
+            sw.WriteLine("Their clean code was a big reference !");
+            MessageBox.Show(sb.ToString(), title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            StringWriter sw = new StringWriter(sb);
+
+            sw.WriteLine("Q: Should I be worried about giving my e-mail and password ?");
+            sw.WriteLine("A: Well, you should always verify where you write those things. In this case, you can read the open-source code and see for yourself that I only use it to retrieve a sessionId.");
+            sw.WriteLine();
+
+            sw.WriteLine("Q: In Live mode, I put the right e-mail and the right password, but nothing works !");
+            sw.WriteLine("A: You must have a browser wit the game open in the correct world if you want to use the application.");
+            sw.WriteLine();
+
+            sw.WriteLine("Q: Why the animated loading image is going counter-clockwise ? It's driving me crazy !");
+            sw.WriteLine("A: It's killing me too, but I made this image a while ago and too lazy to do it again :)");
+            sw.WriteLine();
+
+            MessageBox.Show(sb.ToString(), "Help", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void btnTool_Click(object sender, EventArgs e)
+        {
         }
     }
 }

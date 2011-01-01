@@ -13,7 +13,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         private readonly string m_Name;
         private readonly int m_Id;
         private readonly LoUBorderingType m_Bordering;
-        private readonly LoUCityType m_TypeCity;
+        private readonly OldLoUCityType m_TypeCity;
         private readonly LoUPt m_Location;
 
         private int m_Score;
@@ -21,11 +21,11 @@ namespace LouMapInfo.OfficialLOU.Entities
         public int Id { get { return m_Id; } }
         public string Name { get { return m_Name; } }
         public LoUBorderingType Bordering { get { return m_Bordering; } }
-        public LoUCityType TypeCity { get { return m_TypeCity; } }
+        public OldLoUCityType TypeCity { get { return m_TypeCity; } }
         public LoUPt Location { get { return m_Location; } }
         public int Score { get { return m_Score; } }
 
-        public LoUCityInfo(LoUWorldInfo world, LoUPlayerInfo player, string name, int id, LoUPt location, LoUBorderingType bordering, LoUCityType type, int score)
+        public LoUCityInfo(LoUWorldInfo world, LoUPlayerInfo player, string name, int id, LoUPt location, LoUBorderingType bordering, OldLoUCityType type, int score)
             : base()
         {
             m_World = world;

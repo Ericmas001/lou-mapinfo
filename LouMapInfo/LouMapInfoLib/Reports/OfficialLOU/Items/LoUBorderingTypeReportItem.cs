@@ -7,12 +7,12 @@ using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfo.Reports.OfficialLOU.Items
 {
-    public class LoUCityTypeReportItem : ReportItem
+    public class LoUBorderingTypeReportItem : ReportItem
     {
         private int m_Count;
-        private OldLoUCityType m_Type;
+        private LoUBorderingType m_Type;
 
-        public LoUCityTypeReportItem(int count, OldLoUCityType type, bool showIfEmpty)
+        public LoUBorderingTypeReportItem(int count, LoUBorderingType type, bool showIfEmpty)
             : base(showIfEmpty)
         {
             m_Count = count;
@@ -24,12 +24,10 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
             String name = "";
             switch (m_Type)
             {
-                case OldLoUCityType.City:
-                    name = "Non-Castled Cit" + (m_Count <= 1 ? "y" : "ies"); break;
-                case OldLoUCityType.Castle:
-                    name = "Castle" + (m_Count <= 1 ? "" : "s"); break;
-                case OldLoUCityType.Palace:
-                    name = "Palace" + (m_Count <= 1 ? "" : "s"); break;
+                case LoUBorderingType.Land:
+                    name = "Land-based"; break;
+                case LoUBorderingType.Water:
+                    name = "Water-based"; break;
             }
 
             String s = "";

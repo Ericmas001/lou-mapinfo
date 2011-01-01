@@ -60,6 +60,27 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icon_about {
+            get {
+                object obj = ResourceManager.GetObject("icon_about", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap icon_help {
+            get {
+                object obj = ResourceManager.GetObject("icon_help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap icon_tool {
+            get {
+                object obj = ResourceManager.GetObject("icon_tool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon icone_LOU {
             get {
                 object obj = ResourceManager.GetObject("icone_LOU", resourceCulture);

@@ -138,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
+    <None Include="Resources\icon-tool.png" />
+    <None Include="Resources\icon-help.png" />
+    <None Include="Resources\icon-about.png" />
     <None Include="logo-LOU.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

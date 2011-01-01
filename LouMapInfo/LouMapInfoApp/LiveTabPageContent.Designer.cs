@@ -36,7 +36,6 @@
             this.txtPassword = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.lstServerNames = new System.Windows.Forms.ToolStripComboBox();
-            this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
             this.lblWorldInfo = new System.Windows.Forms.ToolStripLabel();
             this.pnlContent = new System.Windows.Forms.Panel();
@@ -53,6 +52,7 @@
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.txtPlayerReportOther = new System.Windows.Forms.ToolStripTextBox();
             this.btnPlayerReportOther = new System.Windows.Forms.ToolStripButton();
+            this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.toolbarConnection.SuspendLayout();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
@@ -75,7 +75,7 @@
             this.lblWorldInfo});
             this.toolbarConnection.Location = new System.Drawing.Point(0, 0);
             this.toolbarConnection.Name = "toolbarConnection";
-            this.toolbarConnection.Size = new System.Drawing.Size(805, 25);
+            this.toolbarConnection.Size = new System.Drawing.Size(912, 25);
             this.toolbarConnection.TabIndex = 0;
             this.toolbarConnection.Text = "toolStrip1";
             // 
@@ -121,17 +121,6 @@
             this.lstServerNames.Name = "lstServerNames";
             this.lstServerNames.Size = new System.Drawing.Size(150, 25);
             // 
-            // btnConnect
-            // 
-            this.btnConnect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnConnect.Image = ((System.Drawing.Image)(resources.GetObject("btnConnect.Image")));
-            this.btnConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(56, 22);
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
             // lblImage
             // 
             this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -156,7 +145,7 @@
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 25);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(805, 421);
+            this.pnlContent.Size = new System.Drawing.Size(912, 421);
             this.pnlContent.TabIndex = 11;
             this.pnlContent.Visible = false;
             // 
@@ -179,7 +168,7 @@
             this.dgvPlayers.ReadOnly = true;
             this.dgvPlayers.RowHeadersVisible = false;
             this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvPlayers.Size = new System.Drawing.Size(805, 396);
+            this.dgvPlayers.Size = new System.Drawing.Size(912, 396);
             this.dgvPlayers.TabIndex = 13;
             // 
             // dgvPlayersName
@@ -235,7 +224,7 @@
             this.btnPlayerReportOther});
             this.tbReportPlayerOverview.Location = new System.Drawing.Point(0, 0);
             this.tbReportPlayerOverview.Name = "tbReportPlayerOverview";
-            this.tbReportPlayerOverview.Size = new System.Drawing.Size(805, 25);
+            this.tbReportPlayerOverview.Size = new System.Drawing.Size(912, 25);
             this.tbReportPlayerOverview.TabIndex = 12;
             this.tbReportPlayerOverview.Text = "toolStrip1";
             // 
@@ -286,6 +275,17 @@
             this.btnPlayerReportOther.Text = "Show Report";
             this.btnPlayerReportOther.Click += new System.EventHandler(this.btnPlayerReportOther_Click);
             // 
+            // btnConnect
+            // 
+            this.btnConnect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnConnect.Image = ((System.Drawing.Image)(resources.GetObject("btnConnect.Image")));
+            this.btnConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(56, 22);
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
             // LiveTabPageContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,7 +293,7 @@
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.toolbarConnection);
             this.Name = "LiveTabPageContent";
-            this.Size = new System.Drawing.Size(805, 446);
+            this.Size = new System.Drawing.Size(912, 446);
             this.Load += new System.EventHandler(this.LiveTabPageContent_Load);
             this.toolbarConnection.ResumeLayout(false);
             this.toolbarConnection.PerformLayout();
@@ -316,7 +316,6 @@
         private System.Windows.Forms.ToolStripTextBox txtPassword;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripComboBox lstServerNames;
-        private System.Windows.Forms.ToolStripButton btnConnect;
         private System.Windows.Forms.ToolStripLabel lblImage;
         private System.Windows.Forms.ToolStripLabel lblWorldInfo;
         private System.Windows.Forms.Panel pnlContent;
@@ -333,5 +332,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
         private System.Windows.Forms.ToolStripTextBox txtPlayerReportOther;
         private System.Windows.Forms.ToolStripButton btnPlayerReportOther;
+        private System.Windows.Forms.ToolStripButton btnConnect;
     }
 }

@@ -55,7 +55,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 int pC = (int)((JsonNumericValue)p["c"]).Value;
                 if (!m_AlliancesById.ContainsKey(pJ))
                 {
-                    LoUAllianceInfo aInfo = new LoUAllianceInfo(pA, pJ);
+                    LoUAllianceInfo aInfo = new LoUAllianceInfo(this, pA, pJ);
                     m_AlliancesById.Add(pJ, aInfo);
                     m_AlliancesByName.Add(pA, aInfo);
                 }
