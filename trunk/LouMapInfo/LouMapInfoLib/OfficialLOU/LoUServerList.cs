@@ -38,7 +38,7 @@ namespace LouMapInfo.OfficialLOU
             m_Servers.Add("(de) Welt 3", "http://prodgame11.lordofultima.com/19");
             m_Servers.Add("(de) Welt 4", "http://prodgame12.lordofultima.com/25");
             m_Servers.Add("(es) Mundo 1", "http://prodgame05.lordofultima.com/28");
-            m_Servers.Add("(Fr) Monde 1", "http://prodgame13.lordofultima.com/26");
+            m_Servers.Add("(fr) Monde 1", "http://prodgame13.lordofultima.com/26");
             m_Servers.Add("(it) Mondo 1", "http://prodgame04.lordofultima.com/27");
             m_Servers.Add("(pl) Świata 1", "http://prodgame08.lordofultima.com/31");
             m_Servers.Add("(pt) Mundo 1", "http://prodgame06.lordofultima.com/29");
