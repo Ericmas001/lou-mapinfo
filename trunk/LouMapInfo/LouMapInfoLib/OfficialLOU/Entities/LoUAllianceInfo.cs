@@ -12,7 +12,6 @@ namespace LouMapInfo.OfficialLOU.Entities
 
         private readonly LoUWorldInfo m_World;
         private readonly string m_Name;
-        private readonly string m_ShortName;
         private readonly int m_Id;
 
         private int m_Score = 0;

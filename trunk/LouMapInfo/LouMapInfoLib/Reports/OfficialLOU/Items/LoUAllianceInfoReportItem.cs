@@ -19,8 +19,8 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
 
         public override string Value(ReportOption options)
         {
-            if (m_Info.Name == AllianceInfo.NO_ALLIANCE)
-                return m_Info.ToString();
+            if (m_Info.Name == "")
+                return "Not in an alliance";
             string s = "";
             s += String.Format(" [alliance]{0}[/alliance]", m_Info.Name);
             if ((options & ReportOption.AllianceScore) != 0)
