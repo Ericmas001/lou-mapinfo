@@ -18,44 +18,26 @@ namespace LouMapInfo.Reports.OfficialLOU
             : base(type)
         {
             this.alliance = a;
-            generateReport();
+            LoadIfNeeded();
         }
 
         protected override int depth
         {
             get { return 3; }
         }
-        public override void generateReport()
+        protected override void OnLoad()
         {
             title = new LoUAllianceInfoReportItem(alliance, true);
             subtitle = new TextReportItem(LoUReportUtility.SayCityType(LoUType), true);
-            Dictionary<int, List<LoUPlayerInfo>> byCont = new Dictionary<int, List<LoUPlayerInfo>>();
-            Dictionary<int, int> scoreByCont = new Dictionary<int, int>();
-            foreach (LoUPlayerInfo p in alliance.Players)
+            foreach (LoUPlayerInfo p in alliance.Players())
             {
                 p.LoadIfNeeded();
-                foreach (int i in p.ActiveContinents)
-                {
-                    if (!byCont.ContainsKey(i))
-                    {
-                        byCont.Add(i, new List<LoUPlayerInfo>());
-                        scoreByCont.Add(i, 0);
-                    }
-                    byCont[i].Add(p);
-                    scoreByCont[i] += p.CScore(i);
-                }
             }
-            int[] conts = new int[byCont.Count];
-            byCont.Keys.CopyTo(conts, 0);
-            Array.Sort(conts);
-            foreach (int ic in conts)
+            foreach (int ic in alliance.ActiveContinents)
             {
-                LoUPlayerInfo[] pjs = new LoUPlayerInfo[byCont[ic].Count];
-                byCont[ic].CopyTo(pjs, 0);
-                Array.Sort(pjs);
-                Array.Reverse(pjs);
+                LoUPlayerInfo[] pjs = alliance.Players(ic);
                 ReportItem r = new MultiLineReportItem(false,
-                    new ContinentScoreReportItem(ic, scoreByCont[ic], false, false),
+                    new ContinentScoreReportItem(ic, alliance.CScore(ic), false, false),
                     new PlayerCountReportItem(pjs.Length, CityCastleType.Both, false));
                 foreach (LoUPlayerInfo p in pjs)
                 {

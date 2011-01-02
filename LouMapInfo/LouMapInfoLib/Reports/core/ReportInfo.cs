@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.Items;
+using EricUtility;
 
 namespace LouMapInfo.Reports.core
 {
-    public abstract class ReportInfo
+    public abstract class ReportInfo : AbstractLoadingTuple
     {
         private ReportOption options = ReportOption.None;
         protected abstract int depth { get; }
@@ -34,16 +35,16 @@ namespace LouMapInfo.Reports.core
             get { return m_Type; }
             set
             {
-                m_Type = value;
-                title = null;
-                subtitle = null;
-                root = new List<ReportItem>();
-                generateReport();
+                if (m_Type != value)
+                {
+                    m_Type = value;
+                    title = null;
+                    subtitle = null;
+                    root = new List<ReportItem>();
+                    ForceLoad();
+                }
             }
         }
-
-
-        public abstract void generateReport();
 
         public ReportInfo()
         {

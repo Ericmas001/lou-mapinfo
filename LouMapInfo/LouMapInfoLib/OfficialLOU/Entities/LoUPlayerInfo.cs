@@ -82,6 +82,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 m_CitiesById.Add(cI, city);
                 m_ScoreByContinent[pt.Continent] += cP;
             }
+            m_Alliance.InformActiveContinent(this);
 
         }
         private LoUCityInfo[] Cities(ICollection<LoUCityInfo> list)

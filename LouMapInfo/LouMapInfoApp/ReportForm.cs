@@ -9,11 +9,15 @@ using LouMapInfo.Reports.core;
 using EricUtility.Windows.Forms;
 using LouMapInfo.Entities;
 using EricUtility;
+using System.Threading;
 
 namespace LouMapInfoApp
 {
     public partial class ReportForm : Form
     {
+
+        private System.Windows.Forms.Timer waitingTimer;
+        private int waitingCounter = 0;
         ReportInfo report;
         int depth;
         public ReportForm(ReportInfo r, int d)
@@ -90,8 +94,42 @@ namespace LouMapInfoApp
             btnDisplayOptionsPlayerScore.Checked = (ro & ReportOption.PlayerScore) != 0;
             btnDisplayOptionsAllianceRank.Checked = (ro & ReportOption.AllianceRank) != 0;
             report.SetOption(ro, true);
-            txtBBCode.Text = report.BBCode(depth);
-            reportBrowser.DocumentText = report.Report(depth);
+            RefreshReport();
+        }
+        private void ChangeType(CityCastleType t)
+        {
+            report.Type = t;
+        }
+        private void RefreshReport()
+        {
+            btnReportsLvl.Enabled = false;
+            btnCityType.Enabled = false;
+            btnDisplayOptions.Enabled = false;
+            pnlContent.Enabled = false;
+            StartWaiting();
+            new Thread(new ThreadStart(RefreshReportAsync)).Start();
+        }
+        private void RefreshReportAsync()
+        {
+            string r = report.Report(depth);
+            string b = report.BBCode(depth);
+            RefreshReport(r, b);
+        }
+        private delegate void ReportsHandler(string r, string b);
+        private void RefreshReport(string r, string b)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new ReportsHandler(RefreshReport), r, b);
+                return;
+            }
+            txtBBCode.Text = b;
+            btnReportsLvl.Enabled = true;
+            btnCityType.Enabled = true;
+            btnDisplayOptions.Enabled = true;
+            pnlContent.Enabled = true;
+            reportBrowser.DocumentText = r;
+            StopWaiting();
         }
         private void btnBBCode_Click(object sender, EventArgs e)
         {
@@ -132,8 +170,7 @@ namespace LouMapInfoApp
             btnReportsLvl1.Checked = true;
             btnReportsLvl2.Checked = false;
             btnReportsLvl3.Checked = false;
-            txtBBCode.Text = report.BBCode(depth);
-            reportBrowser.DocumentText = report.Report(depth);
+            RefreshReport();
         }
 
         private void btnReportsLvl2_Click(object sender, EventArgs e)
@@ -145,22 +182,20 @@ namespace LouMapInfoApp
             btnReportsLvl3.Checked = false;
             if (sender != null)
             {
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
         private void btnReportsLvl3_Click(object sender, EventArgs e)
         {
-            depth = 3;
+            depth = 4;
             btnReportsLvl.Text = btnReportsLvl3.Text;
             btnReportsLvl1.Checked = false;
             btnReportsLvl2.Checked = false;
             btnReportsLvl3.Checked = true;
             if (sender != null)
             {
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
         private void btnCityType_ButtonClick(object sender, EventArgs e)
@@ -174,11 +209,10 @@ namespace LouMapInfoApp
             btnBoth.Checked = true;
             btnCities.Checked = false;
             btnCastles.Checked = false;
-            report.Type = CityCastleType.Both;
+            ChangeType(CityCastleType.Both);
             if (sender != null)
             {
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -188,11 +222,10 @@ namespace LouMapInfoApp
             btnBoth.Checked = false;
             btnCities.Checked = false;
             btnCastles.Checked = true;
-            report.Type = CityCastleType.Castle;
+            ChangeType(CityCastleType.Castle);
             if (sender != null)
             {
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -202,11 +235,10 @@ namespace LouMapInfoApp
             btnBoth.Checked = false;
             btnCities.Checked = true;
             btnCastles.Checked = false;
-            report.Type = CityCastleType.City;
+            ChangeType(CityCastleType.City);
             if (sender != null)
             {
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -221,10 +253,7 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.AllianceScore, btnDisplayOptionsAllianceScore.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options;
-                Properties.Settings.Default.Save();
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -236,8 +265,7 @@ namespace LouMapInfoApp
             {
                 Properties.Settings.Default.reportOptions = (int)report.Options;
                 Properties.Settings.Default.Save();
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -249,8 +277,7 @@ namespace LouMapInfoApp
             {
                 Properties.Settings.Default.reportOptions = (int)report.Options;
                 Properties.Settings.Default.Save();
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -262,8 +289,7 @@ namespace LouMapInfoApp
             {
                 Properties.Settings.Default.reportOptions = (int)report.Options;
                 Properties.Settings.Default.Save();
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -275,8 +301,7 @@ namespace LouMapInfoApp
             {
                 Properties.Settings.Default.reportOptions = (int)report.Options;
                 Properties.Settings.Default.Save();
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -286,10 +311,9 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.CityCount, btnDisplayOptionsCityCount.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options; 
+                Properties.Settings.Default.reportOptions = (int)report.Options;
                 Properties.Settings.Default.Save();
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
             }
         }
 
@@ -301,8 +325,86 @@ namespace LouMapInfoApp
             {
                 Properties.Settings.Default.reportOptions = (int)report.Options;
                 Properties.Settings.Default.Save();
-                txtBBCode.Text = report.BBCode(depth);
-                reportBrowser.DocumentText = report.Report(depth);
+                RefreshReport();
+            }
+        }
+
+
+        delegate void EmptyHandler();
+        void StartWaiting()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new EmptyHandler(StartWaiting));
+                return;
+            }
+            if (waitingTimer == null)
+            {
+                waitingTimer = new System.Windows.Forms.Timer();
+                waitingTimer.Interval = 100;
+                waitingTimer.Tick += new EventHandler(waitingTimer_Tick);
+                waitingTimer.Start();
+                lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting0;
+            }
+        }
+        void StopWaiting()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new EmptyHandler(StopWaiting));
+                return;
+            }
+            if (waitingTimer != null)
+            {
+                waitingTimer.Stop();
+                waitingTimer = null;
+                lblImage.Image = Properties.Resources.logo_LOU;
+            }
+        }
+
+        void waitingTimer_Tick(object sender, EventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new EventHandler(waitingTimer_Tick), sender, e);
+                return;
+            }
+            if (waitingTimer != null)
+            {
+                waitingCounter++;
+                waitingCounter %= 8;
+                switch (waitingCounter)
+                {
+                    case 0:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting0;
+                        break;
+                    case 1:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting1;
+                        break;
+                    case 2:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting2;
+                        break;
+                    case 3:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting3;
+                        break;
+                    case 4:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting4;
+                        break;
+                    case 5:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting5;
+                        break;
+                    case 6:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting6;
+                        break;
+                    case 7:
+                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting7;
+                        break;
+                }
+            }
+            else
+            {
+                waitingTimer.Stop();
+                waitingTimer = null;
             }
         }
     }

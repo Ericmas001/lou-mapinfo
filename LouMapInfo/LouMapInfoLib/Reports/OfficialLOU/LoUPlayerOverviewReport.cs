@@ -18,14 +18,14 @@ namespace LouMapInfo.Reports.OfficialLOU
             : base(type)
         {
             player = p;
-            generateReport();
+            LoadIfNeeded();
         }
 
         protected override int depth
         {
             get { return 3; }
         }
-        public override void generateReport()
+        protected override void OnLoad()
         {
             title = new LoUPlayerInfoReportItem(player, true);
             subtitle = new MultiLineReportItem(true,

@@ -14,6 +14,7 @@ using System.IO;
 using LouMapInfo.Reports;
 using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Reports.OfficialLOU;
+using LouMapInfo.Reports.core;
 
 namespace LouMapInfoApp
 {
@@ -213,40 +214,111 @@ namespace LouMapInfoApp
 
         private void dgvPlayers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if( e.ColumnIndex == dgvPlayersName.Index )
-                new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(dgvPlayers[e.ColumnIndex,e.RowIndex].Value.ToString()), OldLoUCityType.CityCastlePalace), 3).Show();
-
+            if (e.ColumnIndex == dgvPlayersName.Index)
+                OpenPlayerReport(dgvPlayers[e.ColumnIndex, e.RowIndex].Value.ToString());
+                
             if (e.ColumnIndex == dgvPlayersAlliance.Index)
-                new ReportForm(new LoUAllianceOverviewReport(m_Session.World.Alliance(dgvPlayers[e.ColumnIndex, e.RowIndex].Value.ToString()), OldLoUCityType.CityCastlePalace), 4).Show();
+                OpenAllianceReport(dgvPlayers[e.ColumnIndex, e.RowIndex].Value.ToString());
         }
 
         private void btnPlayerReportMe_Click(object sender, EventArgs e)
         {
-            new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(m_Session.PlayerID), OldLoUCityType.CityCastlePalace), 3).Show();
+            OpenPlayerReport(m_Session.PlayerID);
         }
 
         private void btnPlayerReportOther_Click(object sender, EventArgs e)
         {
-            LoUPlayerInfo player = m_Session.World.Player(txtPlayerReportOther.Text);
-            if( player != null )
-                new ReportForm(new LoUPlayerOverviewReport(player, OldLoUCityType.CityCastlePalace), 3).Show();
-        }
+            OpenPlayerReport(txtPlayerReportOther.Text);
+            }
 
         private void btnAllianceReportMe_Click(object sender, EventArgs e)
         {
-            new ReportForm(new LoUAllianceOverviewReport(m_Session.World.Alliance(m_Session.AllianceID), OldLoUCityType.CityCastlePalace), 4).Show();
+            OpenAllianceReport(m_Session.AllianceID);
         }
 
         private void btnAllianceReportOther_Click(object sender, EventArgs e)
         {
-            LoUAllianceInfo alliance = m_Session.World.Alliance(txtAllianceReportOther.Text);
-            if (alliance != null)
-                new ReportForm(new LoUAllianceOverviewReport(alliance, OldLoUCityType.CityCastlePalace), 4).Show();
+            OpenAllianceReport(txtAllianceReportOther.Text);
         }
 
         private void btnAllianceReportNoAlliance_Click(object sender, EventArgs e)
         {
-            new ReportForm(new LoUAllianceOverviewReport(m_Session.World.Alliance(""), OldLoUCityType.CityCastlePalace), 4).Show();
+            OpenAllianceReport("");
+        }
+
+        private void OpenPlayerReport(object p)
+        {
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenPlayerReportAsync)).Start(p);
+        }
+
+        private void OpenAllianceReport(object a)
+        {
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenAllianceReportAsync)).Start(a);
+        }
+
+        private void OpenPlayerReportAsync(object o)
+        {
+            LoUPlayerInfo p = null;
+            if (o is int)
+                p = m_Session.World.Player((int)o);
+            else if (o is string)
+                p = m_Session.World.Player((string)o);
+
+            if (p == null)
+                ContentEnabling(true);
+            else
+            {
+                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, OldLoUCityType.CityCastlePalace);
+                rep.LoadIfNeeded();
+                OpenReport(rep, 3);
+                ContentEnabling(true);
+            }
+        }
+
+        private void OpenAllianceReportAsync(object o)
+        {
+            LoUAllianceInfo a = null;
+            if (o is int)
+                a = m_Session.World.Alliance((int)o);
+            else if (o is string)
+                a = m_Session.World.Alliance((string)o);
+
+            if (a == null)
+                ContentEnabling(true);
+            else
+            {
+                LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, OldLoUCityType.CityCastlePalace);
+                rep.LoadIfNeeded();
+                OpenReport(rep, 4);
+                ContentEnabling(true);
+            }
+        }
+        public void ContentEnabling(bool value)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new BoolHandler(ContentEnabling), value);
+                return;
+            }
+            btnConnect.Enabled = value;
+            pnlContent.Enabled = value;
+
+            if (value) 
+                StopWaiting(); 
+            else 
+                StartWaiting();
+        }
+        public delegate void ReportHandler(ReportInfo r, int lvl);
+        public void OpenReport(ReportInfo r, int lvl)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new ReportHandler(OpenReport), r, lvl);
+                return;
+            }
+            new ReportForm(r, lvl).Show();
         }
     }
 }
