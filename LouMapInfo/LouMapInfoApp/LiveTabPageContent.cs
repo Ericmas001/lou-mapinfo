@@ -107,6 +107,7 @@ namespace LouMapInfoApp
             string aName = session.World.Alliance(session.AllianceID).Name;
             lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")"));
             btnPlayerReportMe.Text = pName;
+            btnAllianceReportMe.Text = aName;
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -229,6 +230,23 @@ namespace LouMapInfoApp
             LoUPlayerInfo player = m_Session.World.Player(txtPlayerReportOther.Text);
             if( player != null )
                 new ReportForm(new LoUPlayerOverviewReport(player, OldLoUCityType.CityCastlePalace), 3).Show();
+        }
+
+        private void btnAllianceReportMe_Click(object sender, EventArgs e)
+        {
+            new ReportForm(new LoUAllianceOverviewReport(m_Session.World.Alliance(m_Session.AllianceID), OldLoUCityType.CityCastlePalace), 4).Show();
+        }
+
+        private void btnAllianceReportOther_Click(object sender, EventArgs e)
+        {
+            LoUAllianceInfo alliance = m_Session.World.Alliance(txtAllianceReportOther.Text);
+            if (alliance != null)
+                new ReportForm(new LoUAllianceOverviewReport(alliance, OldLoUCityType.CityCastlePalace), 4).Show();
+        }
+
+        private void btnAllianceReportNoAlliance_Click(object sender, EventArgs e)
+        {
+            new ReportForm(new LoUAllianceOverviewReport(m_Session.World.Alliance(""), OldLoUCityType.CityCastlePalace), 4).Show();
         }
     }
 }
