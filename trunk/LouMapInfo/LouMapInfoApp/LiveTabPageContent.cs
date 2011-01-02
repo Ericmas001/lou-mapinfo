@@ -214,6 +214,9 @@ namespace LouMapInfoApp
         {
             if( e.ColumnIndex == dgvPlayersName.Index )
                 new ReportForm(new LoUPlayerOverviewReport(m_Session.World.Player(dgvPlayers[e.ColumnIndex,e.RowIndex].Value.ToString()), OldLoUCityType.CityCastlePalace), 3).Show();
+
+            if (e.ColumnIndex == dgvPlayersAlliance.Index)
+                new ReportForm(new LoUAllianceOverviewReport(m_Session.World.Alliance(dgvPlayers[e.ColumnIndex, e.RowIndex].Value.ToString()), OldLoUCityType.CityCastlePalace), 4).Show();
         }
 
         private void btnPlayerReportMe_Click(object sender, EventArgs e)

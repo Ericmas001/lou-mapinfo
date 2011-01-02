@@ -71,5 +71,14 @@ namespace LouMapInfo.OfficialLOU
             args.Add(new JsonNumericValue("id", idPlayer));
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
+
+        public static JsonObjectCollection GetPublicAllianceInfo(string baseurl, string session, int idAlliance)
+        {
+            string endpoint = "GetPublicAllianceInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonNumericValue("id", idAlliance));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
     }
 }

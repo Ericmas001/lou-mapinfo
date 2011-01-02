@@ -96,7 +96,19 @@ namespace LouMapInfo.Reports.core
                                             report += "<ul>";
                                             foreach (ReportItem it4 in it3.Items)
                                             {
-                                                report += String.Format("<li>{0}</li>", it4.Value(options));
+                                                if (it4.ShowEmpty || it4.Items.Count > 0 || d == 3)
+                                                {
+                                                    report += String.Format("<li>{0}</li>", it4.Value(options));
+                                                    if (d > 3 && it4.Items.Count > 0)
+                                                    {
+                                                        report += "<ul>";
+                                                        foreach (ReportItem it5 in it4.Items)
+                                                        {
+                                                            report += String.Format("<li>{0}</li>", it5.Value(options));
+                                                        }
+                                                        report += "</ul>";
+                                                    }
+                                                }
                                             }
                                             report += "</ul>";
                                         }

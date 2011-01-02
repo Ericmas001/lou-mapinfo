@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using EricUtility;
+using EricUtility.Networking.JSON;
 
 namespace LouMapInfo.OfficialLOU.Entities
 {
@@ -11,6 +12,7 @@ namespace LouMapInfo.OfficialLOU.Entities
 
         private readonly LoUWorldInfo m_World;
         private readonly string m_Name;
+        private readonly string m_ShortName;
         private readonly int m_Id;
 
         private int m_Score = 0;
@@ -29,12 +31,22 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         protected override void OnLoad()
         {
-
         }
         public void AddPlayer(LoUPlayerInfo p)
         {
             m_Score += p.Score;
             m_Players.Add(p.Name, p);
+        }
+        public LoUPlayerInfo[] Players
+        {
+            get
+            {
+                LoUPlayerInfo[] res = new LoUPlayerInfo[m_Players.Count];
+                m_Players.Values.CopyTo(res, 0);
+                Array.Sort(res);
+                Array.Reverse(res);
+                return res;
+            }
         }
     }
 }
