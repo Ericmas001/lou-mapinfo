@@ -65,112 +65,112 @@ namespace LouMapInfo.Reports.core
 
         public string Report(int d)
         {
-            String report = "";
+            StringBuilder sb = new StringBuilder();
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
-                report += String.Format("<center><h1>{0}</h1></center>", title.Value(options));
+                sb.Append(String.Format("<center><h1>{0}</h1></center>", title.Value(options)));
             if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
-                report += String.Format("<center><h2>{0}</h2></center>", subtitle.Value(options));
+                sb.Append(String.Format("<center><h2>{0}</h2></center>", subtitle.Value(options)));
             foreach (ReportItem it1 in root)
             {
                 if (it1.ShowEmpty || it1.Items.Count > 0)
                 {
-                    report += "<hr />";
+                    sb.Append("<hr />");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
-                        report += String.Format("<center><h3>{0}</h3></center>", it1.Value(options));
-                    report += "<ul>";
+                        sb.Append(String.Format("<center><h3>{0}</h3></center>", it1.Value(options)));
+                    sb.Append("<ul>");
                     foreach (ReportItem it2 in it1.Items)
                     {
                         if (it2.ShowEmpty || it2.Items.Count > 0 || d == 1)
                         {
                             if (!String.IsNullOrEmpty(it2.Value(options)))
-                                report += String.Format("<li>{0}</li>", it2.Value(options));
+                                sb.Append(String.Format("<li>{0}</li>", it2.Value(options)));
                             if (d > 1 && it2.Items.Count > 0)
                             {
-                                report += "<ul>";
+                                sb.Append("<ul>");
                                 foreach (ReportItem it3 in it2.Items)
                                 {
                                     if (it3.ShowEmpty || it3.Items.Count > 0 || d == 2)
                                     {
-                                        report += String.Format("<li>{0}</li>", it3.Value(options));
+                                        sb.Append(String.Format("<li>{0}</li>", it3.Value(options)));
                                         if (d > 2 && it3.Items.Count > 0)
                                         {
-                                            report += "<ul>";
+                                            sb.Append("<ul>");
                                             foreach (ReportItem it4 in it3.Items)
                                             {
                                                 if (it4.ShowEmpty || it4.Items.Count > 0 || d == 3)
                                                 {
-                                                    report += String.Format("<li>{0}</li>", it4.Value(options));
+                                                    sb.Append(String.Format("<li>{0}</li>", it4.Value(options)));
                                                     if (d > 3 && it4.Items.Count > 0)
                                                     {
-                                                        report += "<ul>";
+                                                        sb.Append("<ul>");
                                                         foreach (ReportItem it5 in it4.Items)
                                                         {
-                                                            report += String.Format("<li>{0}</li>", it5.Value(options));
+                                                            sb.Append(String.Format("<li>{0}</li>", it5.Value(options)));
                                                         }
-                                                        report += "</ul>";
+                                                        sb.Append("</ul>");
                                                     }
                                                 }
                                             }
-                                            report += "</ul>";
+                                            sb.Append("</ul>");
                                         }
                                     }
                                 }
-                                report += "</ul>";
+                                sb.Append("</ul>");
                             }
 
                         }
                     }
-                    report += "</ul>";
+                    sb.Append("</ul>");
                 }
             }
-            return ReportText(report);
+            return ReportText(sb.ToString());
         }
 
         public string BBCode(int d)
         {
-            String report = "";
+            StringBuilder sb = new StringBuilder();
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
-                report += String.Format("[b][u]{0}[/b][/u]\n", title.Value(options));
+                sb.Append(String.Format("[b][u]{0}[/b][/u]\n", title.Value(options)));
             if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
-                report += String.Format("[b]{0}[/b]\n", subtitle.Value(options));
-            report += "\n";
+                sb.Append(String.Format("[b]{0}[/b]\n", subtitle.Value(options)));
+            sb.Append("\n");
             foreach (ReportItem it1 in root)
             {
                 if (it1.ShowEmpty || it1.Items.Count > 0)
                 {
-                    report += "[hr]\n";
+                    sb.Append("[hr]\n");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
-                        report += String.Format("[b]{0}[/b]", it1.Value(options));
+                        sb.Append(String.Format("[b]{0}[/b]", it1.Value(options)));
                     if (it1.Items.Count > 0)
-                        report += "\n";
+                        sb.Append("\n");
 
                     foreach (ReportItem it2 in it1.Items)
                     {
                         if (it2.ShowEmpty || it2.Items.Count > 0 || d == 1)
                         {
                             if (d > 1 && it2.Items.Count > 0)
-                                report += "\n";
+                                sb.Append("\n");
                             if (!String.IsNullOrEmpty(it2.Value(options)))
-                                report += String.Format("{0}\n", it2.Value(options));
+                                sb.Append(String.Format("{0}\n", it2.Value(options)));
                             if (d > 1 && it2.Items.Count > 0)
                             {
                                 foreach (ReportItem it3 in it2.Items)
                                 {
                                     if (it3.ShowEmpty || it3.Items.Count > 0 || d == 2)
                                     {
-                                        report += String.Format("{0}\n", it3.Value(options));
+                                        sb.Append(String.Format("{0}\n", it3.Value(options)));
                                         if (d > 2 && it3.Items.Count > 0)
                                         {
                                             foreach (ReportItem it4 in it3.Items)
                                             {
                                                 if (it4.ShowEmpty || it4.Items.Count > 0 || d == 3)
                                                 {
-                                                    report += String.Format("{0}\n", it4.Value(options));
+                                                    sb.Append(String.Format("{0}\n", it4.Value(options)));
                                                     if (d > 3 && it4.Items.Count > 0)
                                                     {
                                                         foreach (ReportItem it5 in it4.Items)
                                                         {
-                                                            report += String.Format("{0}\n", it5.Value(options));
+                                                            sb.Append(String.Format("{0}\n", it5.Value(options)));
                                                         }
                                                     }
                                                 }
@@ -184,7 +184,7 @@ namespace LouMapInfo.Reports.core
                     }
                 }
             }
-            return BBCodeText(report);
+            return BBCodeText(sb.ToString());
         }
 
         public string Title
