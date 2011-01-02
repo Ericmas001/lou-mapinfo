@@ -17,14 +17,14 @@ namespace LouMapInfo.Reports
         {
             this.alliance = name;
             this.world = w;
-            generateReport();
+            LoadIfNeeded();
         }
 
         protected override int depth
         {
             get { return 3; }
         }
-        public override void generateReport()
+        protected override void OnLoad()
         {
             AllianceReportRoot info = getAlliance();
 

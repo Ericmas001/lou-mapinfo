@@ -10,7 +10,7 @@ namespace LouMapInfo.Reports
     public class ShrinesReport : ReportInfo
     {
         private ContinentInfo cont;
-        public override void generateReport()
+        protected override void OnLoad()
         {
             CityCastleType type = m_Type;
             title = new TextReportItem("Shrines & Moongates on " + DisplayUtility.Cont(cont.ID),true);
@@ -86,7 +86,7 @@ namespace LouMapInfo.Reports
             : base(type)
         {
             this.cont = c;
-            generateReport();
+            LoadIfNeeded();
         }
 
         protected override int depth

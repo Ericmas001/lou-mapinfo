@@ -10,7 +10,7 @@ namespace LouMapInfo.Reports
     public class ContinentOverviewReport : ReportInfo
     {
         private ContinentInfo cont;
-        public override void generateReport()
+        protected override void OnLoad()
         {
             CityCastleType type = m_Type;
             title = new TextReportItem(DisplayUtility.Cont(cont.ID) + " Overview",true);
@@ -94,7 +94,7 @@ namespace LouMapInfo.Reports
             : base(type)
         {
             this.cont = c;
-            generateReport();
+            LoadIfNeeded();
         }
 
         protected override int depth

@@ -66,6 +66,7 @@
             this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblImage = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip2.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
@@ -82,7 +83,8 @@
             this.toolStripSeparator2,
             this.btnCityType,
             this.toolStripSeparator3,
-            this.btnDisplayOptions});
+            this.btnDisplayOptions,
+            this.lblImage});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(707, 25);
@@ -428,6 +430,16 @@
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
             // 
+            // lblImage
+            // 
+            this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblImage.AutoSize = false;
+            this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
+            this.lblImage.Name = "lblImage";
+            this.lblImage.Size = new System.Drawing.Size(22, 22);
+            this.lblImage.Text = "toolStripLabel1";
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,6 +504,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsPlayerScore;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsAllianceScore;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsAllianceRank;
+        private System.Windows.Forms.ToolStripLabel lblImage;
 
     }
 }
