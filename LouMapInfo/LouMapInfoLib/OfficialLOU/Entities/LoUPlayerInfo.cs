@@ -6,7 +6,7 @@ using EricUtility.Networking.JSON;
 
 namespace LouMapInfo.OfficialLOU.Entities
 {
-    public class LoUPlayerInfo : AbstractLoadingTuple
+    public class LoUPlayerInfo : AbstractLoadingTuple, IComparable<LoUPlayerInfo>
     {
         private readonly Dictionary<string, LoUCityInfo> m_CitiesByCoords = new Dictionary<string, LoUCityInfo>();
         private readonly Dictionary<int, LoUCityInfo> m_CitiesById = new Dictionary<int, LoUCityInfo>();
@@ -204,5 +204,14 @@ namespace LouMapInfo.OfficialLOU.Entities
                 return m_ScoreByContinent[continent];
             return 0;
         }
+
+        #region IComparable<LoUPlayerInfo> Members
+
+        public int CompareTo(LoUPlayerInfo other)
+        {
+            return m_Score.CompareTo(other.Score);
+        }
+
+        #endregion
     }
 }

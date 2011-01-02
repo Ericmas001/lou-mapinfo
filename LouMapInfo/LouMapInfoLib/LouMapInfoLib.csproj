@@ -63,6 +63,7 @@
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
     <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
+    <Compile Include="Reports\OfficialLOU\LoUAllianceOverviewReport.cs" />
     <Compile Include="Reports\OfficialLOU\core\LoUReportInfo.cs" />
     <Compile Include="Reports\OfficialLOU\core\LoUReportUtility.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUAllianceInfoReportItem.cs" />
