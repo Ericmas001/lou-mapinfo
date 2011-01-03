@@ -44,7 +44,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 if (!m_Alliances.ContainsKey(player.Alliance.Id))
                     m_Alliances.Add(player.Alliance.Id, new LoUAllianceInfo(World, player.Alliance.Name, player.Alliance.Id));
                 LoUPlayerInfo cPlayer = new LoUPlayerInfo(World, player.Name, player.Id, m_Alliances[player.Alliance.Id], player.CScore(Id), r, c);
-                foreach (LoUCityInfo city in player.Cities(41))
+                foreach (LoUCityInfo city in player.Cities(m_Id))
                 {
                     cPlayer.AddCity(new LoUCityInfo(World, cPlayer, city.Name, city.Id, city.Location, city.Bordering, city.TypeCity, city.Score));
                 }
