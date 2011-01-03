@@ -272,7 +272,7 @@ namespace LouMapInfoApp
             {
                 LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, OldLoUCityType.CityCastlePalace);
                 rep.LoadIfNeeded();
-                OpenReport(rep, 3);
+                OpenReport(rep,4);
                 ContentEnabling(true);
             }
         }
@@ -319,6 +319,48 @@ namespace LouMapInfoApp
                 return;
             }
             new ReportForm(r, lvl).Show();
+        }
+
+        private void OpenContinentReport(int c)
+        {
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenContinentReportAsync)).Start(c);
+        }
+
+        private void OpenContinentReportAsync(object o)
+        {
+            if (o is int)
+            {
+                LoUContinentInfo c = m_Session.World.Continent((int)o);
+                if (c != null)
+                {
+                    LoUContinentOverviewReport rep = new LoUContinentOverviewReport(c, OldLoUCityType.CityCastlePalace);
+                    rep.LoadIfNeeded();
+                    OpenReport(rep, 4);
+                }
+            }
+            ContentEnabling(true);
+                
+            LoUPlayerInfo p = null;
+            if (o is int)
+                p = m_Session.World.Player((int)o);
+            else if (o is string)
+                p = m_Session.World.Player((string)o);
+
+            if (p == null)
+                ContentEnabling(true);
+            else
+            {
+                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, OldLoUCityType.CityCastlePalace);
+                rep.LoadIfNeeded();
+                OpenReport(rep, 4);
+                ContentEnabling(true);
+            }
+        }
+
+        private void btnContinentReport41_Click(object sender, EventArgs e)
+        {
+            OpenContinentReport(41);
         }
     }
 }

@@ -36,37 +36,43 @@
             this.txtPassword = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.lstServerNames = new System.Windows.Forms.ToolStripComboBox();
-            this.lblWorldInfo = new System.Windows.Forms.ToolStripLabel();
-            this.pnlContent = new System.Windows.Forms.Panel();
-            this.tbReportPlayerOverview = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.txtPlayerReportOther = new System.Windows.Forms.ToolStripTextBox();
-            this.btnPlayerReportMe = new System.Windows.Forms.ToolStripButton();
-            this.btnPlayerReportOther = new System.Windows.Forms.ToolStripButton();
             this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
-            this.btnAllianceReportNoAlliance = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
-            this.txtAllianceReportOther = new System.Windows.Forms.ToolStripTextBox();
-            this.btnAllianceReportOther = new System.Windows.Forms.ToolStripButton();
+            this.lblWorldInfo = new System.Windows.Forms.ToolStripLabel();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.dgvPlayers = new System.Windows.Forms.DataGridView();
             this.dgvPlayersName = new System.Windows.Forms.DataGridViewLinkColumn();
             this.dgvPlayersAlliance = new System.Windows.Forms.DataGridViewLinkColumn();
             this.dgvPlayersScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPlayersRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPlayersCities = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbReportContinentOverview = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
+            this.btnContinentReport41 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel9 = new System.Windows.Forms.ToolStripLabel();
+            this.tbReportAllianceOverview = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.btnAllianceReportMe = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
+            this.txtAllianceReportOther = new System.Windows.Forms.ToolStripTextBox();
+            this.btnAllianceReportOther = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAllianceReportNoAlliance = new System.Windows.Forms.ToolStripButton();
+            this.tbReportPlayerOverview = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.btnPlayerReportMe = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
+            this.txtPlayerReportOther = new System.Windows.Forms.ToolStripTextBox();
+            this.btnPlayerReportOther = new System.Windows.Forms.ToolStripButton();
             this.toolbarConnection.SuspendLayout();
             this.pnlContent.SuspendLayout();
-            this.tbReportPlayerOverview.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
+            this.tbReportContinentOverview.SuspendLayout();
+            this.tbReportAllianceOverview.SuspendLayout();
+            this.tbReportPlayerOverview.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolbarConnection
@@ -131,89 +137,6 @@
             this.lstServerNames.Name = "lstServerNames";
             this.lstServerNames.Size = new System.Drawing.Size(150, 25);
             // 
-            // lblWorldInfo
-            // 
-            this.lblWorldInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblWorldInfo.Name = "lblWorldInfo";
-            this.lblWorldInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblWorldInfo.Size = new System.Drawing.Size(0, 22);
-            // 
-            // pnlContent
-            // 
-            this.pnlContent.Controls.Add(this.dgvPlayers);
-            this.pnlContent.Controls.Add(this.toolStrip1);
-            this.pnlContent.Controls.Add(this.tbReportPlayerOverview);
-            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 25);
-            this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(912, 421);
-            this.pnlContent.TabIndex = 11;
-            this.pnlContent.Visible = false;
-            // 
-            // tbReportPlayerOverview
-            // 
-            this.tbReportPlayerOverview.BackColor = System.Drawing.Color.White;
-            this.tbReportPlayerOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tbReportPlayerOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel4,
-            this.btnPlayerReportMe,
-            this.toolStripSeparator1,
-            this.toolStripLabel5,
-            this.txtPlayerReportOther,
-            this.btnPlayerReportOther});
-            this.tbReportPlayerOverview.Location = new System.Drawing.Point(0, 0);
-            this.tbReportPlayerOverview.Name = "tbReportPlayerOverview";
-            this.tbReportPlayerOverview.Size = new System.Drawing.Size(912, 25);
-            this.tbReportPlayerOverview.TabIndex = 12;
-            this.tbReportPlayerOverview.Text = "toolStrip1";
-            // 
-            // toolStripLabel4
-            // 
-            this.toolStripLabel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(105, 22);
-            this.toolStripLabel4.Text = "Player Overview: ";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel5
-            // 
-            this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel5.Text = "Other:";
-            // 
-            // txtPlayerReportOther
-            // 
-            this.txtPlayerReportOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            this.txtPlayerReportOther.Name = "txtPlayerReportOther";
-            this.txtPlayerReportOther.Size = new System.Drawing.Size(100, 25);
-            this.txtPlayerReportOther.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnPlayerReportMe
-            // 
-            this.btnPlayerReportMe.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnPlayerReportMe.Image = ((System.Drawing.Image)(resources.GetObject("btnPlayerReportMe.Image")));
-            this.btnPlayerReportMe.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPlayerReportMe.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnPlayerReportMe.Name = "btnPlayerReportMe";
-            this.btnPlayerReportMe.Size = new System.Drawing.Size(28, 22);
-            this.btnPlayerReportMe.Text = "Me";
-            this.btnPlayerReportMe.Click += new System.EventHandler(this.btnPlayerReportMe_Click);
-            // 
-            // btnPlayerReportOther
-            // 
-            this.btnPlayerReportOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnPlayerReportOther.Image = ((System.Drawing.Image)(resources.GetObject("btnPlayerReportOther.Image")));
-            this.btnPlayerReportOther.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPlayerReportOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnPlayerReportOther.Name = "btnPlayerReportOther";
-            this.btnPlayerReportOther.Size = new System.Drawing.Size(78, 22);
-            this.btnPlayerReportOther.Text = "Show Report";
-            this.btnPlayerReportOther.Click += new System.EventHandler(this.btnPlayerReportOther_Click);
-            // 
             // btnConnect
             // 
             this.btnConnect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -235,71 +158,25 @@
             this.lblImage.Size = new System.Drawing.Size(22, 22);
             this.lblImage.Text = "toolStripLabel1";
             // 
-            // toolStrip1
+            // lblWorldInfo
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel6,
-            this.btnAllianceReportMe,
-            this.toolStripSeparator2,
-            this.toolStripLabel7,
-            this.txtAllianceReportOther,
-            this.btnAllianceReportOther,
-            this.toolStripSeparator3,
-            this.btnAllianceReportNoAlliance});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(912, 25);
-            this.toolStrip1.TabIndex = 14;
-            this.toolStrip1.Text = "toolStrip1";
+            this.lblWorldInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblWorldInfo.Name = "lblWorldInfo";
+            this.lblWorldInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblWorldInfo.Size = new System.Drawing.Size(0, 22);
             // 
-            // toolStripLabel6
+            // pnlContent
             // 
-            this.toolStripLabel6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel6.Name = "toolStripLabel6";
-            this.toolStripLabel6.Size = new System.Drawing.Size(114, 22);
-            this.toolStripLabel6.Text = "Alliance Overview: ";
-            // 
-            // btnAllianceReportNoAlliance
-            // 
-            this.btnAllianceReportNoAlliance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnAllianceReportNoAlliance.Image = ((System.Drawing.Image)(resources.GetObject("btnAllianceReportNoAlliance.Image")));
-            this.btnAllianceReportNoAlliance.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAllianceReportNoAlliance.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnAllianceReportNoAlliance.Name = "btnAllianceReportNoAlliance";
-            this.btnAllianceReportNoAlliance.Size = new System.Drawing.Size(134, 22);
-            this.btnAllianceReportNoAlliance.Text = "Players with no alliance";
-            this.btnAllianceReportNoAlliance.Click += new System.EventHandler(this.btnAllianceReportNoAlliance_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel7
-            // 
-            this.toolStripLabel7.Name = "toolStripLabel7";
-            this.toolStripLabel7.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel7.Text = "Other:";
-            // 
-            // txtAllianceReportOther
-            // 
-            this.txtAllianceReportOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            this.txtAllianceReportOther.Name = "txtAllianceReportOther";
-            this.txtAllianceReportOther.Size = new System.Drawing.Size(100, 25);
-            this.txtAllianceReportOther.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnAllianceReportOther
-            // 
-            this.btnAllianceReportOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnAllianceReportOther.Image = ((System.Drawing.Image)(resources.GetObject("btnAllianceReportOther.Image")));
-            this.btnAllianceReportOther.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAllianceReportOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnAllianceReportOther.Name = "btnAllianceReportOther";
-            this.btnAllianceReportOther.Size = new System.Drawing.Size(78, 22);
-            this.btnAllianceReportOther.Text = "Show Report";
-            this.btnAllianceReportOther.Click += new System.EventHandler(this.btnAllianceReportOther_Click);
+            this.pnlContent.Controls.Add(this.dgvPlayers);
+            this.pnlContent.Controls.Add(this.tbReportContinentOverview);
+            this.pnlContent.Controls.Add(this.tbReportAllianceOverview);
+            this.pnlContent.Controls.Add(this.tbReportPlayerOverview);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(0, 25);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(912, 421);
+            this.pnlContent.TabIndex = 11;
+            this.pnlContent.Visible = false;
             // 
             // dgvPlayers
             // 
@@ -315,13 +192,13 @@
             this.dgvPlayersRank,
             this.dgvPlayersCities});
             this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPlayers.Location = new System.Drawing.Point(0, 50);
+            this.dgvPlayers.Location = new System.Drawing.Point(0, 75);
             this.dgvPlayers.Name = "dgvPlayers";
             this.dgvPlayers.ReadOnly = true;
             this.dgvPlayers.RowHeadersVisible = false;
             this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvPlayers.Size = new System.Drawing.Size(912, 371);
-            this.dgvPlayers.TabIndex = 15;
+            this.dgvPlayers.Size = new System.Drawing.Size(912, 346);
+            this.dgvPlayers.TabIndex = 17;
             // 
             // dgvPlayersName
             // 
@@ -363,6 +240,76 @@
             this.dgvPlayersCities.Name = "dgvPlayersCities";
             this.dgvPlayersCities.ReadOnly = true;
             // 
+            // tbReportContinentOverview
+            // 
+            this.tbReportContinentOverview.BackColor = System.Drawing.Color.White;
+            this.tbReportContinentOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportContinentOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel8,
+            this.btnContinentReport41,
+            this.toolStripSeparator4,
+            this.toolStripLabel9});
+            this.tbReportContinentOverview.Location = new System.Drawing.Point(0, 50);
+            this.tbReportContinentOverview.Name = "tbReportContinentOverview";
+            this.tbReportContinentOverview.Size = new System.Drawing.Size(912, 25);
+            this.tbReportContinentOverview.TabIndex = 16;
+            this.tbReportContinentOverview.Text = "toolStrip2";
+            // 
+            // toolStripLabel8
+            // 
+            this.toolStripLabel8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel8.Name = "toolStripLabel8";
+            this.toolStripLabel8.Size = new System.Drawing.Size(126, 22);
+            this.toolStripLabel8.Text = "Continent Overview: ";
+            // 
+            // btnContinentReport41
+            // 
+            this.btnContinentReport41.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentReport41.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentReport41.Image")));
+            this.btnContinentReport41.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentReport41.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentReport41.Name = "btnContinentReport41";
+            this.btnContinentReport41.Size = new System.Drawing.Size(23, 22);
+            this.btnContinentReport41.Text = "41";
+            this.btnContinentReport41.Click += new System.EventHandler(this.btnContinentReport41_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel9
+            // 
+            this.toolStripLabel9.Name = "toolStripLabel9";
+            this.toolStripLabel9.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel9.Text = "Other:";
+            // 
+            // tbReportAllianceOverview
+            // 
+            this.tbReportAllianceOverview.BackColor = System.Drawing.Color.White;
+            this.tbReportAllianceOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportAllianceOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel6,
+            this.btnAllianceReportMe,
+            this.toolStripSeparator2,
+            this.toolStripLabel7,
+            this.txtAllianceReportOther,
+            this.btnAllianceReportOther,
+            this.toolStripSeparator3,
+            this.btnAllianceReportNoAlliance});
+            this.tbReportAllianceOverview.Location = new System.Drawing.Point(0, 25);
+            this.tbReportAllianceOverview.Name = "tbReportAllianceOverview";
+            this.tbReportAllianceOverview.Size = new System.Drawing.Size(912, 25);
+            this.tbReportAllianceOverview.TabIndex = 14;
+            this.tbReportAllianceOverview.Text = "toolStrip1";
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(114, 22);
+            this.toolStripLabel6.Text = "Alliance Overview: ";
+            // 
             // btnAllianceReportMe
             // 
             this.btnAllianceReportMe.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -374,10 +321,114 @@
             this.btnAllianceReportMe.Text = "Me";
             this.btnAllianceReportMe.Click += new System.EventHandler(this.btnAllianceReportMe_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel7
+            // 
+            this.toolStripLabel7.Name = "toolStripLabel7";
+            this.toolStripLabel7.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel7.Text = "Other:";
+            // 
+            // txtAllianceReportOther
+            // 
+            this.txtAllianceReportOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.txtAllianceReportOther.Name = "txtAllianceReportOther";
+            this.txtAllianceReportOther.Size = new System.Drawing.Size(100, 25);
+            this.txtAllianceReportOther.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnAllianceReportOther
+            // 
+            this.btnAllianceReportOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnAllianceReportOther.Image = ((System.Drawing.Image)(resources.GetObject("btnAllianceReportOther.Image")));
+            this.btnAllianceReportOther.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAllianceReportOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnAllianceReportOther.Name = "btnAllianceReportOther";
+            this.btnAllianceReportOther.Size = new System.Drawing.Size(78, 22);
+            this.btnAllianceReportOther.Text = "Show Report";
+            this.btnAllianceReportOther.Click += new System.EventHandler(this.btnAllianceReportOther_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnAllianceReportNoAlliance
+            // 
+            this.btnAllianceReportNoAlliance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnAllianceReportNoAlliance.Image = ((System.Drawing.Image)(resources.GetObject("btnAllianceReportNoAlliance.Image")));
+            this.btnAllianceReportNoAlliance.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAllianceReportNoAlliance.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnAllianceReportNoAlliance.Name = "btnAllianceReportNoAlliance";
+            this.btnAllianceReportNoAlliance.Size = new System.Drawing.Size(134, 22);
+            this.btnAllianceReportNoAlliance.Text = "Players with no alliance";
+            this.btnAllianceReportNoAlliance.Click += new System.EventHandler(this.btnAllianceReportNoAlliance_Click);
+            // 
+            // tbReportPlayerOverview
+            // 
+            this.tbReportPlayerOverview.BackColor = System.Drawing.Color.White;
+            this.tbReportPlayerOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportPlayerOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel4,
+            this.btnPlayerReportMe,
+            this.toolStripSeparator1,
+            this.toolStripLabel5,
+            this.txtPlayerReportOther,
+            this.btnPlayerReportOther});
+            this.tbReportPlayerOverview.Location = new System.Drawing.Point(0, 0);
+            this.tbReportPlayerOverview.Name = "tbReportPlayerOverview";
+            this.tbReportPlayerOverview.Size = new System.Drawing.Size(912, 25);
+            this.tbReportPlayerOverview.TabIndex = 12;
+            this.tbReportPlayerOverview.Text = "toolStrip1";
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(105, 22);
+            this.toolStripLabel4.Text = "Player Overview: ";
+            // 
+            // btnPlayerReportMe
+            // 
+            this.btnPlayerReportMe.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnPlayerReportMe.Image = ((System.Drawing.Image)(resources.GetObject("btnPlayerReportMe.Image")));
+            this.btnPlayerReportMe.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPlayerReportMe.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnPlayerReportMe.Name = "btnPlayerReportMe";
+            this.btnPlayerReportMe.Size = new System.Drawing.Size(28, 22);
+            this.btnPlayerReportMe.Text = "Me";
+            this.btnPlayerReportMe.Click += new System.EventHandler(this.btnPlayerReportMe_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel5
+            // 
+            this.toolStripLabel5.Name = "toolStripLabel5";
+            this.toolStripLabel5.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel5.Text = "Other:";
+            // 
+            // txtPlayerReportOther
+            // 
+            this.txtPlayerReportOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.txtPlayerReportOther.Name = "txtPlayerReportOther";
+            this.txtPlayerReportOther.Size = new System.Drawing.Size(100, 25);
+            this.txtPlayerReportOther.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnPlayerReportOther
+            // 
+            this.btnPlayerReportOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnPlayerReportOther.Image = ((System.Drawing.Image)(resources.GetObject("btnPlayerReportOther.Image")));
+            this.btnPlayerReportOther.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPlayerReportOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnPlayerReportOther.Name = "btnPlayerReportOther";
+            this.btnPlayerReportOther.Size = new System.Drawing.Size(78, 22);
+            this.btnPlayerReportOther.Text = "Show Report";
+            this.btnPlayerReportOther.Click += new System.EventHandler(this.btnPlayerReportOther_Click);
             // 
             // LiveTabPageContent
             // 
@@ -392,11 +443,13 @@
             this.toolbarConnection.PerformLayout();
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
+            this.tbReportContinentOverview.ResumeLayout(false);
+            this.tbReportContinentOverview.PerformLayout();
+            this.tbReportAllianceOverview.ResumeLayout(false);
+            this.tbReportAllianceOverview.PerformLayout();
             this.tbReportPlayerOverview.ResumeLayout(false);
             this.tbReportPlayerOverview.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,13 +475,7 @@
         private System.Windows.Forms.ToolStripTextBox txtPlayerReportOther;
         private System.Windows.Forms.ToolStripButton btnPlayerReportOther;
         private System.Windows.Forms.ToolStripButton btnConnect;
-        private System.Windows.Forms.DataGridView dgvPlayers;
-        private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersName;
-        private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersAlliance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersScore;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersRank;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersCities;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tbReportAllianceOverview;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
         private System.Windows.Forms.ToolStripButton btnAllianceReportNoAlliance;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -437,5 +484,16 @@
         private System.Windows.Forms.ToolStripButton btnAllianceReportOther;
         private System.Windows.Forms.ToolStripButton btnAllianceReportMe;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.DataGridView dgvPlayers;
+        private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersName;
+        private System.Windows.Forms.DataGridViewLinkColumn dgvPlayersAlliance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersScore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersRank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersCities;
+        private System.Windows.Forms.ToolStrip tbReportContinentOverview;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel8;
+        private System.Windows.Forms.ToolStripButton btnContinentReport41;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel9;
     }
 }
