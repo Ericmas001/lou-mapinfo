@@ -109,6 +109,29 @@ namespace LouMapInfoApp
             lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")"));
             btnPlayerReportMe.Text = pName;
             btnAllianceReportMe.Text = aName;
+            int ind = 1;
+            List<int> actives = new List<int>(session.World.Alliance(session.AllianceID).ActiveContinents);
+            foreach (int ic in session.World.Alliance(session.AllianceID).ActiveContinents)
+            {
+                ToolStripButton btnContinent = new ToolStripButton(ic.ToString("00"));
+                btnContinent.Click += new EventHandler(btnContinent_Click);
+                tbReportContinentOverview.Items.Insert(ind++, btnContinent);
+            }
+            lstNonActiveContinent.Items.Clear();
+            for (int i = 0; i <= 6; ++i)
+            {
+                for (int j = 0; j <= 6; ++j)
+                {
+                    int c = (i * 10) + j;
+                    if (!actives.Contains(c))
+                        lstNonActiveContinent.Items.Add(c.ToString("00"));
+                }
+            }
+        }
+
+        void btnContinent_Click(object sender, EventArgs e)
+        {
+            OpenContinentReport(int.Parse(((ToolStripButton)sender).Text));
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -358,9 +381,10 @@ namespace LouMapInfoApp
             }
         }
 
-        private void btnContinentReport41_Click(object sender, EventArgs e)
+        private void btnContinentReportOther_Click(object sender, EventArgs e)
         {
-            OpenContinentReport(41);
+            if (lstNonActiveContinent.SelectedIndex >= 0)
+                OpenContinentReport(int.Parse(lstNonActiveContinent.SelectedItem.ToString()));
         }
     }
 }

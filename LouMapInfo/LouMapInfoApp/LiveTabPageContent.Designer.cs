@@ -48,7 +48,6 @@
             this.dgvPlayersCities = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbReportContinentOverview = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
-            this.btnContinentReport41 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel9 = new System.Windows.Forms.ToolStripLabel();
             this.tbReportAllianceOverview = new System.Windows.Forms.ToolStrip();
@@ -67,6 +66,8 @@
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.txtPlayerReportOther = new System.Windows.Forms.ToolStripTextBox();
             this.btnPlayerReportOther = new System.Windows.Forms.ToolStripButton();
+            this.lstNonActiveContinent = new System.Windows.Forms.ToolStripComboBox();
+            this.btnContinentReportOther = new System.Windows.Forms.ToolStripButton();
             this.toolbarConnection.SuspendLayout();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
@@ -134,6 +135,8 @@
             // 
             this.lstServerNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
             this.lstServerNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstServerNames.Items.AddRange(new object[] {
+            "00"});
             this.lstServerNames.Name = "lstServerNames";
             this.lstServerNames.Size = new System.Drawing.Size(150, 25);
             // 
@@ -246,9 +249,10 @@
             this.tbReportContinentOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tbReportContinentOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel8,
-            this.btnContinentReport41,
             this.toolStripSeparator4,
-            this.toolStripLabel9});
+            this.toolStripLabel9,
+            this.lstNonActiveContinent,
+            this.btnContinentReportOther});
             this.tbReportContinentOverview.Location = new System.Drawing.Point(0, 50);
             this.tbReportContinentOverview.Name = "tbReportContinentOverview";
             this.tbReportContinentOverview.Size = new System.Drawing.Size(912, 25);
@@ -261,17 +265,6 @@
             this.toolStripLabel8.Name = "toolStripLabel8";
             this.toolStripLabel8.Size = new System.Drawing.Size(126, 22);
             this.toolStripLabel8.Text = "Continent Overview: ";
-            // 
-            // btnContinentReport41
-            // 
-            this.btnContinentReport41.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnContinentReport41.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentReport41.Image")));
-            this.btnContinentReport41.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnContinentReport41.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnContinentReport41.Name = "btnContinentReport41";
-            this.btnContinentReport41.Size = new System.Drawing.Size(23, 22);
-            this.btnContinentReport41.Text = "41";
-            this.btnContinentReport41.Click += new System.EventHandler(this.btnContinentReport41_Click);
             // 
             // toolStripSeparator4
             // 
@@ -430,6 +423,26 @@
             this.btnPlayerReportOther.Text = "Show Report";
             this.btnPlayerReportOther.Click += new System.EventHandler(this.btnPlayerReportOther_Click);
             // 
+            // lstNonActiveContinent
+            // 
+            this.lstNonActiveContinent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.lstNonActiveContinent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstNonActiveContinent.DropDownWidth = 42;
+            this.lstNonActiveContinent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lstNonActiveContinent.Name = "lstNonActiveContinent";
+            this.lstNonActiveContinent.Size = new System.Drawing.Size(75, 25);
+            // 
+            // btnContinentReportOther
+            // 
+            this.btnContinentReportOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentReportOther.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentReportOther.Image")));
+            this.btnContinentReportOther.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentReportOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentReportOther.Name = "btnContinentReportOther";
+            this.btnContinentReportOther.Size = new System.Drawing.Size(78, 22);
+            this.btnContinentReportOther.Text = "Show Report";
+            this.btnContinentReportOther.Click += new System.EventHandler(this.btnContinentReportOther_Click);
+            // 
             // LiveTabPageContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,8 +505,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvPlayersCities;
         private System.Windows.Forms.ToolStrip tbReportContinentOverview;
         private System.Windows.Forms.ToolStripLabel toolStripLabel8;
-        private System.Windows.Forms.ToolStripButton btnContinentReport41;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel9;
+        private System.Windows.Forms.ToolStripComboBox lstNonActiveContinent;
+        private System.Windows.Forms.ToolStripButton btnContinentReportOther;
     }
 }
