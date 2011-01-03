@@ -85,6 +85,19 @@ namespace LouMapInfo.OfficialLOU.Entities
             m_Alliance.InformActiveContinent(this);
 
         }
+        public void AddCity(LoUCityInfo city)
+        {
+            LoUPt pt = city.Location;
+            if (!m_CitiesByContinent.ContainsKey(pt.Continent))
+            {
+                m_CitiesByContinent.Add(pt.Continent, new List<LoUCityInfo>());
+                m_ScoreByContinent.Add(pt.Continent, 0);
+            }
+            m_CitiesByContinent[pt.Continent].Add(city);
+            m_CitiesByCoords.Add(pt.ToString(), city);
+            m_CitiesById.Add(city.Id, city);
+            m_ScoreByContinent[pt.Continent] += city.Score;
+        }
         private LoUCityInfo[] Cities(ICollection<LoUCityInfo> list)
         {
             LoUCityInfo[] res = new LoUCityInfo[list.Count];

@@ -6,7 +6,7 @@ using EricUtility.Networking.JSON;
 
 namespace LouMapInfo.OfficialLOU.Entities
 {
-    public class LoUAllianceInfo : AbstractLoadingTuple
+    public class LoUAllianceInfo : AbstractLoadingTuple, IComparable<LoUAllianceInfo>
     {
         private readonly Dictionary<string, LoUPlayerInfo> m_Players = new Dictionary<string, LoUPlayerInfo>();
 
@@ -20,7 +20,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         private int m_Score = 0;
 
         public int Id { get { return m_Id; } }
-        public int Score { get { return m_Score; } }
+        public int Score { get { return String.IsNullOrEmpty(m_Name) ? 0 : m_Score; } }
         public string Name { get { return m_Name; } }
         public LoUWorldInfo World { get { return m_World; } }
 
@@ -89,5 +89,14 @@ namespace LouMapInfo.OfficialLOU.Entities
             Array.Reverse(res);
             return res;
         }
+
+        #region IComparable<LoUAllianceInfo> Members
+
+        public int CompareTo(LoUAllianceInfo other)
+        {
+            return Score.CompareTo(other.Score);
+        }
+
+        #endregion
     }
 }

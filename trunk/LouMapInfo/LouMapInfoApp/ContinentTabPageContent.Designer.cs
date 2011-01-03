@@ -71,9 +71,9 @@
             this.pnlContent.Controls.Add(this.dgvCities);
             this.pnlContent.Controls.Add(this.toolbarReports);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 25);
+            this.pnlContent.Location = new System.Drawing.Point(0, 50);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(627, 480);
+            this.pnlContent.Size = new System.Drawing.Size(627, 455);
             this.pnlContent.TabIndex = 7;
             this.pnlContent.Visible = false;
             // 
@@ -100,7 +100,7 @@
             this.dgvCities.ReadOnly = true;
             this.dgvCities.RowHeadersVisible = false;
             this.dgvCities.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvCities.Size = new System.Drawing.Size(627, 455);
+            this.dgvCities.Size = new System.Drawing.Size(627, 430);
             this.dgvCities.TabIndex = 9;
             // 
             // AllianceName

@@ -16,6 +16,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         private readonly Dictionary<int, LoUPlayerInfo> m_PlayersById = new Dictionary<int, LoUPlayerInfo>();
         private readonly Dictionary<string, LoUAllianceInfo> m_AlliancesByName = new Dictionary<string, LoUAllianceInfo>();
         private readonly Dictionary<int, LoUAllianceInfo> m_AlliancesById = new Dictionary<int, LoUAllianceInfo>();
+        private readonly Dictionary<int, LoUContinentInfo> m_ContinentById = new Dictionary<int, LoUContinentInfo>();
 
         public LoUSessionInfo Session { get { return m_Session; } }
         public string Url { get { return m_Url; } }
@@ -64,6 +65,15 @@ namespace LouMapInfo.OfficialLOU.Entities
                 m_PlayersByName.Add(pN, pInfo);
                 m_PlayersById.Add(pI, pInfo);
             }
+
+            for (int i = 0; i <= 6; ++i)
+            {
+                for (int j = 0; j <= 6; ++j)
+                {
+                    int c = (i * 10) + j;
+                    m_ContinentById.Add(c, new LoUContinentInfo(this, c));
+                }
+            }
             m_PlayersById[m_Session.PlayerID].ForceLoad();
         }
         public LoUPlayerInfo Player(int id)
@@ -102,6 +112,16 @@ namespace LouMapInfo.OfficialLOU.Entities
             if (m_AlliancesByName.ContainsKey(name))
             {
                 res = m_AlliancesByName[name];
+                res.LoadIfNeeded();
+            }
+            return res;
+        }
+        public LoUContinentInfo Continent(int id)
+        {
+            LoUContinentInfo res = null;
+            if (m_ContinentById.ContainsKey(id))
+            {
+                res = m_ContinentById[id];
                 res.LoadIfNeeded();
             }
             return res;

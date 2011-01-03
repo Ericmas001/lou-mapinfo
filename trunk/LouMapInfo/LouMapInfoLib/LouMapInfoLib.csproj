@@ -43,6 +43,7 @@
     <Compile Include="Entities\ContinentInfo.cs" />
     <Compile Include="Entities\Pt.cs" />
     <Compile Include="Entities\PlayerInfo.cs" />
+    <Compile Include="OfficialLOU\Entities\LoUContinentInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUCityFlagGroup.cs" />
     <Compile Include="OfficialLOU\Entities\LoUCityInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUCityFlag.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
     <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
+    <Compile Include="Reports\OfficialLOU\LoUContinentOverviewReport.cs" />
     <Compile Include="Reports\OfficialLOU\LoUAllianceOverviewReport.cs" />
     <Compile Include="Reports\OfficialLOU\core\LoUReportInfo.cs" />
     <Compile Include="Reports\OfficialLOU\core\LoUReportUtility.cs" />
