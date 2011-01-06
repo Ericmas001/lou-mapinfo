@@ -23,7 +23,7 @@ namespace LouMapInfo.Reports.Items
         public override string Value(ReportOption options)
         {
             string s = "C" + String.Format("{0:00}", m_C);
-            if ((m_IsPlayer && (options & ReportOption.PlayerScore) != 0) || (!m_IsPlayer && (options & ReportOption.AllianceScore) != 0))
+            if (m_Score >= 0 && ((m_IsPlayer && (options & ReportOption.PlayerScore) != 0) || (!m_IsPlayer && (options & ReportOption.AllianceScore) != 0)))
                 s += String.Format(" ({0})", DisplayUtility.Score(m_Score));
             return s;
         }

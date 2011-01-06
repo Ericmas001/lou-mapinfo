@@ -22,7 +22,7 @@ namespace LouMapInfo.OfficialLOU
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
-            request.Timeout = 2000;
+            request.Timeout = 5000;
             request.ContentType = "application/json; charset=utf-8";
             request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
             request.ContentLength = bytes.Length;
@@ -78,6 +78,41 @@ namespace LouMapInfo.OfficialLOU
             JsonObjectCollection args = new JsonObjectCollection();
             args.Add(new JsonStringValue("session", session));
             args.Add(new JsonNumericValue("id", idAlliance));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonObjectCollection GetServerInfo(string baseurl, string session)
+        {
+            string endpoint = "GetServerInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonArrayCollection GetVIS(string baseurl, string session)
+        {
+            string endpoint = "Poll"; //
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonStringValue("requestid", "42"));
+            args.Add(new JsonStringValue("requests", "VIS:r:0:0:-0:-0:1000000:1000000"));
+            JsonArrayCollection ac1 = Query(baseurl, endpoint, args) as JsonArrayCollection;
+            foreach (JsonObjectCollection oc1 in ac1)
+            {
+                if (((JsonStringValue)oc1["C"]).Value == "VIS")
+                {
+                    return ((JsonObjectCollection)((JsonObjectCollection)oc1["D"]))["u"] as JsonArrayCollection;
+                }
+            }
+            return null;
+        }
+
+        public static JsonObjectCollection GetShrineInfo(string baseurl, string session, int id)
+        {
+            string endpoint = "GetPublicShrineInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonNumericValue("id", id));
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
     }

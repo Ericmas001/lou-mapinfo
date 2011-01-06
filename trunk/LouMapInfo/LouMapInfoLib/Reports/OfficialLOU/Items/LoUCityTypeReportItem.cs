@@ -19,6 +19,11 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
             m_Type = type;
         }
 
+        public void setCountAsItemCount()
+        {
+            m_Count = Items.Count;
+        }
+
         public override string Value(ReportOption options)
         {
             String name = "";

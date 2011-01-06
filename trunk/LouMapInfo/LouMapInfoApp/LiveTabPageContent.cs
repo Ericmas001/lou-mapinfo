@@ -115,7 +115,14 @@ namespace LouMapInfoApp
             {
                 ToolStripButton btnContinent = new ToolStripButton(ic.ToString("00"));
                 btnContinent.Click += new EventHandler(btnContinent_Click);
-                tbReportContinentOverview.Items.Insert(ind++, btnContinent);
+                tbReportContinentOverview.Items.Insert(ind, btnContinent);
+                ToolStripButton btnLawless = new ToolStripButton(ic.ToString("00"));
+                btnLawless.Click += new EventHandler(btnLawless_Click);
+                tbReportLawlessCities.Items.Insert(ind, btnLawless);
+                ToolStripButton btnMoonGates = new ToolStripButton(ic.ToString("00"));
+                btnMoonGates.Click += new EventHandler(btnMoonGates_Click);
+                tbReportMoongatesLocation.Items.Insert(ind, btnMoonGates);
+                ind++;
             }
             lstNonActiveContinent.Items.Clear();
             for (int i = 0; i <= 6; ++i)
@@ -124,14 +131,14 @@ namespace LouMapInfoApp
                 {
                     int c = (i * 10) + j;
                     if (!actives.Contains(c))
+                    {
                         lstNonActiveContinent.Items.Add(c.ToString("00"));
+                        lstNonActiveContinentLawless.Items.Add(c.ToString("00"));
+                        lstNonActiveContinentMoonGates.Items.Add(c.ToString("00"));
+                    }
                 }
             }
-        }
 
-        void btnContinent_Click(object sender, EventArgs e)
-        {
-            OpenContinentReport(int.Parse(((ToolStripButton)sender).Text));
         }
         delegate void BoolHandler(bool isConnected);
         private void SetConnected(bool isConnected)
@@ -385,6 +392,85 @@ namespace LouMapInfoApp
         {
             if (lstNonActiveContinent.SelectedIndex >= 0)
                 OpenContinentReport(int.Parse(lstNonActiveContinent.SelectedItem.ToString()));
+        }
+
+        void btnContinent_Click(object sender, EventArgs e)
+        {
+            OpenContinentReport(int.Parse(((ToolStripButton)sender).Text));
+        }
+
+        private void OpenLawlessReport(params int[] conts)
+        {
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenLawlessReportAsync)).Start(conts);
+        }
+
+        private void OpenLawlessReportAsync(object o)
+        {
+            int[] conts = (int[]) o;
+            Dictionary<int, LoUCityInfo[]> res = m_Session.World.Lawless(conts);
+            LoULawlessReport rep = new LoULawlessReport(res, OldLoUCityType.CityCastlePalace);
+            rep.LoadIfNeeded();
+            OpenReport(rep, 4);
+            ContentEnabling(true);
+        }
+
+        void btnLawless_Click(object sender, EventArgs e)
+        {
+            OpenLawlessReport(int.Parse(((ToolStripButton)sender).Text));
+        }
+
+        private void btnContinentLawlessAll_Click(object sender, EventArgs e)
+        {
+            OpenLawlessReport();
+        }
+
+        private void btnContinentLawlessActive_Click(object sender, EventArgs e)
+        {
+            OpenLawlessReport(m_Session.World.Player(m_Session.PlayerID).ActiveContinents);
+        }
+
+        private void btnContinentLawlessOther_Click(object sender, EventArgs e)
+        {
+            if (lstNonActiveContinentLawless.SelectedIndex >= 0)
+                OpenLawlessReport(int.Parse(lstNonActiveContinentLawless.SelectedItem.ToString()));
+        }
+
+        private void OpenMoonGatesReport(params int[] conts)
+        {
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenMoonGatesReportAsync)).Start(conts);
+        }
+
+        private void OpenMoonGatesReportAsync(object o)
+        {
+            int[] conts = (int[])o;
+            Dictionary<int, LoUMoonGateInfo[]> res = m_Session.World.MoonGates(conts);
+            LoUMoongatesReport rep = new LoUMoongatesReport(res);
+            rep.LoadIfNeeded();
+            OpenReport(rep, 4);
+            ContentEnabling(true);
+        }
+
+        private void btnContinentMoonGatesAll_Click(object sender, EventArgs e)
+        {
+            OpenMoonGatesReport();
+        }
+
+        private void btnContinentMoonGatesActive_Click(object sender, EventArgs e)
+        {
+            OpenMoonGatesReport(m_Session.World.Player(m_Session.PlayerID).ActiveContinents);
+        }
+
+        private void btnContinentMoonGatesOther_Click(object sender, EventArgs e)
+        {
+            if (lstNonActiveContinentMoonGates.SelectedIndex >= 0)
+                OpenMoonGatesReport(int.Parse(lstNonActiveContinentMoonGates.SelectedItem.ToString()));
+        }
+
+        void btnMoonGates_Click(object sender, EventArgs e)
+        {
+            OpenMoonGatesReport(int.Parse(((ToolStripButton)sender).Text));
         }
     }
 }
