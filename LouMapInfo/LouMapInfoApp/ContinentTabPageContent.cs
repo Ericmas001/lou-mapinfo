@@ -343,17 +343,17 @@ namespace LouMapInfoApp
 
         private void btnReportLawless_Click(object sender, EventArgs e)
         {
-            new ReportForm(new LawlessReport(Continent, type), lvl).Show();
+            ReportForm.ShowReport(new LawlessReport(Continent, type), lvl);
         }
 
         private void btnReportContinent_Click(object sender, EventArgs e)
         {
-            new ReportForm(new ContinentOverviewReport(Continent, type), lvl).Show();
+            ReportForm.ShowReport(new ContinentOverviewReport(Continent, type), lvl);
         }
 
         private void btnReportShrines_Click(object sender, EventArgs e)
         {
-            new ReportForm(new ShrinesReport(Continent, type), lvl).Show();
+            ReportForm.ShowReport(new ShrinesReport(Continent, type), lvl);
         }
 
         private void btnReportsLvl_ButtonClick(object sender, EventArgs e)
