@@ -40,6 +40,32 @@
             this.lblImage = new System.Windows.Forms.ToolStripLabel();
             this.lblWorldInfo = new System.Windows.Forms.ToolStripLabel();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.dgvPlayers = new System.Windows.Forms.DataGridView();
+            this.dgvPlayersName = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dgvPlayersAlliance = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dgvPlayersScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPlayersRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPlayersCities = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbReportMoongatesLocation = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel12 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel13 = new System.Windows.Forms.ToolStripLabel();
+            this.lstNonActiveContinentMoonGates = new System.Windows.Forms.ToolStripComboBox();
+            this.btnContinentMoonGatesOther = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnContinentMoonGatesActive = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnContinentMoonGatesAll = new System.Windows.Forms.ToolStripButton();
+            this.tbReportLawlessCities = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
+            this.lstNonActiveContinentLawless = new System.Windows.Forms.ToolStripComboBox();
+            this.btnContinentLawlessOther = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnContinentLawlessActive = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnContinentLawlessAll = new System.Windows.Forms.ToolStripButton();
             this.tbReportContinentOverview = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -62,40 +88,14 @@
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.txtPlayerReportOther = new System.Windows.Forms.ToolStripTextBox();
             this.btnPlayerReportOther = new System.Windows.Forms.ToolStripButton();
-            this.tbReportLawlessCities = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel11 = new System.Windows.Forms.ToolStripLabel();
-            this.lstNonActiveContinentLawless = new System.Windows.Forms.ToolStripComboBox();
-            this.btnContinentLawlessOther = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnContinentLawlessActive = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnContinentLawlessAll = new System.Windows.Forms.ToolStripButton();
-            this.tbReportMoongatesLocation = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel12 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel13 = new System.Windows.Forms.ToolStripLabel();
-            this.lstNonActiveContinentMoonGates = new System.Windows.Forms.ToolStripComboBox();
-            this.btnContinentMoonGatesOther = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnContinentMoonGatesActive = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnContinentMoonGatesAll = new System.Windows.Forms.ToolStripButton();
-            this.dgvPlayers = new System.Windows.Forms.DataGridView();
-            this.dgvPlayersName = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dgvPlayersAlliance = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dgvPlayersScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPlayersRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPlayersCities = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolbarConnection.SuspendLayout();
             this.pnlContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
+            this.tbReportMoongatesLocation.SuspendLayout();
+            this.tbReportLawlessCities.SuspendLayout();
             this.tbReportContinentOverview.SuspendLayout();
             this.tbReportAllianceOverview.SuspendLayout();
             this.tbReportPlayerOverview.SuspendLayout();
-            this.tbReportLawlessCities.SuspendLayout();
-            this.tbReportMoongatesLocation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
             this.SuspendLayout();
             // 
             // toolbarConnection
@@ -202,6 +202,248 @@
             this.pnlContent.Size = new System.Drawing.Size(912, 421);
             this.pnlContent.TabIndex = 11;
             this.pnlContent.Visible = false;
+            // 
+            // dgvPlayers
+            // 
+            this.dgvPlayers.AllowUserToAddRows = false;
+            this.dgvPlayers.AllowUserToDeleteRows = false;
+            this.dgvPlayers.AllowUserToOrderColumns = true;
+            this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPlayersName,
+            this.dgvPlayersAlliance,
+            this.dgvPlayersScore,
+            this.dgvPlayersRank,
+            this.dgvPlayersCities});
+            this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPlayers.Location = new System.Drawing.Point(0, 125);
+            this.dgvPlayers.Name = "dgvPlayers";
+            this.dgvPlayers.ReadOnly = true;
+            this.dgvPlayers.RowHeadersVisible = false;
+            this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPlayers.Size = new System.Drawing.Size(912, 296);
+            this.dgvPlayers.TabIndex = 21;
+            // 
+            // dgvPlayersName
+            // 
+            this.dgvPlayersName.ActiveLinkColor = System.Drawing.Color.Black;
+            this.dgvPlayersName.HeaderText = "Name";
+            this.dgvPlayersName.LinkColor = System.Drawing.Color.Black;
+            this.dgvPlayersName.Name = "dgvPlayersName";
+            this.dgvPlayersName.ReadOnly = true;
+            this.dgvPlayersName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlayersName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvPlayersName.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // dgvPlayersAlliance
+            // 
+            this.dgvPlayersAlliance.ActiveLinkColor = System.Drawing.Color.Black;
+            this.dgvPlayersAlliance.HeaderText = "Alliance";
+            this.dgvPlayersAlliance.LinkColor = System.Drawing.Color.Black;
+            this.dgvPlayersAlliance.Name = "dgvPlayersAlliance";
+            this.dgvPlayersAlliance.ReadOnly = true;
+            this.dgvPlayersAlliance.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlayersAlliance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvPlayersAlliance.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // dgvPlayersScore
+            // 
+            this.dgvPlayersScore.HeaderText = "Score";
+            this.dgvPlayersScore.Name = "dgvPlayersScore";
+            this.dgvPlayersScore.ReadOnly = true;
+            // 
+            // dgvPlayersRank
+            // 
+            this.dgvPlayersRank.HeaderText = "Rank";
+            this.dgvPlayersRank.Name = "dgvPlayersRank";
+            this.dgvPlayersRank.ReadOnly = true;
+            // 
+            // dgvPlayersCities
+            // 
+            this.dgvPlayersCities.HeaderText = "Cities";
+            this.dgvPlayersCities.Name = "dgvPlayersCities";
+            this.dgvPlayersCities.ReadOnly = true;
+            // 
+            // tbReportMoongatesLocation
+            // 
+            this.tbReportMoongatesLocation.BackColor = System.Drawing.Color.White;
+            this.tbReportMoongatesLocation.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportMoongatesLocation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel12,
+            this.toolStripSeparator8,
+            this.toolStripLabel13,
+            this.lstNonActiveContinentMoonGates,
+            this.btnContinentMoonGatesOther,
+            this.toolStripSeparator9,
+            this.btnContinentMoonGatesActive,
+            this.toolStripSeparator10,
+            this.btnContinentMoonGatesAll});
+            this.tbReportMoongatesLocation.Location = new System.Drawing.Point(0, 100);
+            this.tbReportMoongatesLocation.Name = "tbReportMoongatesLocation";
+            this.tbReportMoongatesLocation.Size = new System.Drawing.Size(912, 25);
+            this.tbReportMoongatesLocation.TabIndex = 20;
+            this.tbReportMoongatesLocation.Text = "toolStrip2";
+            // 
+            // toolStripLabel12
+            // 
+            this.toolStripLabel12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel12.Name = "toolStripLabel12";
+            this.toolStripLabel12.Size = new System.Drawing.Size(121, 22);
+            this.toolStripLabel12.Text = "MoonGates Location";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel13
+            // 
+            this.toolStripLabel13.Name = "toolStripLabel13";
+            this.toolStripLabel13.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel13.Text = "Other:";
+            // 
+            // lstNonActiveContinentMoonGates
+            // 
+            this.lstNonActiveContinentMoonGates.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.lstNonActiveContinentMoonGates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstNonActiveContinentMoonGates.DropDownWidth = 42;
+            this.lstNonActiveContinentMoonGates.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lstNonActiveContinentMoonGates.Name = "lstNonActiveContinentMoonGates";
+            this.lstNonActiveContinentMoonGates.Size = new System.Drawing.Size(75, 25);
+            // 
+            // btnContinentMoonGatesOther
+            // 
+            this.btnContinentMoonGatesOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentMoonGatesOther.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentMoonGatesOther.Image")));
+            this.btnContinentMoonGatesOther.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentMoonGatesOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentMoonGatesOther.Name = "btnContinentMoonGatesOther";
+            this.btnContinentMoonGatesOther.Size = new System.Drawing.Size(78, 22);
+            this.btnContinentMoonGatesOther.Text = "Show Report";
+            this.btnContinentMoonGatesOther.Click += new System.EventHandler(this.btnContinentMoonGatesOther_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnContinentMoonGatesActive
+            // 
+            this.btnContinentMoonGatesActive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentMoonGatesActive.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentMoonGatesActive.Image")));
+            this.btnContinentMoonGatesActive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentMoonGatesActive.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentMoonGatesActive.Name = "btnContinentMoonGatesActive";
+            this.btnContinentMoonGatesActive.Size = new System.Drawing.Size(182, 22);
+            this.btnContinentMoonGatesActive.Text = "MoonGates on active continents";
+            this.btnContinentMoonGatesActive.Click += new System.EventHandler(this.btnContinentMoonGatesActive_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnContinentMoonGatesAll
+            // 
+            this.btnContinentMoonGatesAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentMoonGatesAll.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentMoonGatesAll.Image")));
+            this.btnContinentMoonGatesAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentMoonGatesAll.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentMoonGatesAll.Name = "btnContinentMoonGatesAll";
+            this.btnContinentMoonGatesAll.Size = new System.Drawing.Size(89, 22);
+            this.btnContinentMoonGatesAll.Text = "All MoonGates";
+            this.btnContinentMoonGatesAll.Click += new System.EventHandler(this.btnContinentMoonGatesAll_Click);
+            // 
+            // tbReportLawlessCities
+            // 
+            this.tbReportLawlessCities.BackColor = System.Drawing.Color.White;
+            this.tbReportLawlessCities.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportLawlessCities.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel10,
+            this.toolStripSeparator5,
+            this.toolStripLabel11,
+            this.lstNonActiveContinentLawless,
+            this.btnContinentLawlessOther,
+            this.toolStripSeparator6,
+            this.btnContinentLawlessActive,
+            this.toolStripSeparator7,
+            this.btnContinentLawlessAll});
+            this.tbReportLawlessCities.Location = new System.Drawing.Point(0, 75);
+            this.tbReportLawlessCities.Name = "tbReportLawlessCities";
+            this.tbReportLawlessCities.Size = new System.Drawing.Size(912, 25);
+            this.tbReportLawlessCities.TabIndex = 18;
+            this.tbReportLawlessCities.Text = "toolStrip2";
+            // 
+            // toolStripLabel10
+            // 
+            this.toolStripLabel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel10.Name = "toolStripLabel10";
+            this.toolStripLabel10.Size = new System.Drawing.Size(87, 22);
+            this.toolStripLabel10.Text = "Lawless cities: ";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel11
+            // 
+            this.toolStripLabel11.Name = "toolStripLabel11";
+            this.toolStripLabel11.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel11.Text = "Other:";
+            // 
+            // lstNonActiveContinentLawless
+            // 
+            this.lstNonActiveContinentLawless.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.lstNonActiveContinentLawless.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstNonActiveContinentLawless.DropDownWidth = 42;
+            this.lstNonActiveContinentLawless.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lstNonActiveContinentLawless.Name = "lstNonActiveContinentLawless";
+            this.lstNonActiveContinentLawless.Size = new System.Drawing.Size(75, 25);
+            // 
+            // btnContinentLawlessOther
+            // 
+            this.btnContinentLawlessOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentLawlessOther.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentLawlessOther.Image")));
+            this.btnContinentLawlessOther.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentLawlessOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentLawlessOther.Name = "btnContinentLawlessOther";
+            this.btnContinentLawlessOther.Size = new System.Drawing.Size(78, 22);
+            this.btnContinentLawlessOther.Text = "Show Report";
+            this.btnContinentLawlessOther.Click += new System.EventHandler(this.btnContinentLawlessOther_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnContinentLawlessActive
+            // 
+            this.btnContinentLawlessActive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentLawlessActive.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentLawlessActive.Image")));
+            this.btnContinentLawlessActive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentLawlessActive.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentLawlessActive.Name = "btnContinentLawlessActive";
+            this.btnContinentLawlessActive.Size = new System.Drawing.Size(161, 22);
+            this.btnContinentLawlessActive.Text = "Lawless on active continents";
+            this.btnContinentLawlessActive.Click += new System.EventHandler(this.btnContinentLawlessActive_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnContinentLawlessAll
+            // 
+            this.btnContinentLawlessAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContinentLawlessAll.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentLawlessAll.Image")));
+            this.btnContinentLawlessAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContinentLawlessAll.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnContinentLawlessAll.Name = "btnContinentLawlessAll";
+            this.btnContinentLawlessAll.Size = new System.Drawing.Size(68, 22);
+            this.btnContinentLawlessAll.Text = "All Lawless";
+            this.btnContinentLawlessAll.Click += new System.EventHandler(this.btnContinentLawlessAll_Click);
             // 
             // tbReportContinentOverview
             // 
@@ -403,248 +645,6 @@
             this.btnPlayerReportOther.Text = "Show Report";
             this.btnPlayerReportOther.Click += new System.EventHandler(this.btnPlayerReportOther_Click);
             // 
-            // tbReportLawlessCities
-            // 
-            this.tbReportLawlessCities.BackColor = System.Drawing.Color.White;
-            this.tbReportLawlessCities.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tbReportLawlessCities.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel10,
-            this.toolStripSeparator5,
-            this.toolStripLabel11,
-            this.lstNonActiveContinentLawless,
-            this.btnContinentLawlessOther,
-            this.toolStripSeparator6,
-            this.btnContinentLawlessActive,
-            this.toolStripSeparator7,
-            this.btnContinentLawlessAll});
-            this.tbReportLawlessCities.Location = new System.Drawing.Point(0, 75);
-            this.tbReportLawlessCities.Name = "tbReportLawlessCities";
-            this.tbReportLawlessCities.Size = new System.Drawing.Size(912, 25);
-            this.tbReportLawlessCities.TabIndex = 18;
-            this.tbReportLawlessCities.Text = "toolStrip2";
-            // 
-            // toolStripLabel10
-            // 
-            this.toolStripLabel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel10.Name = "toolStripLabel10";
-            this.toolStripLabel10.Size = new System.Drawing.Size(87, 22);
-            this.toolStripLabel10.Text = "Lawless cities: ";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel11
-            // 
-            this.toolStripLabel11.Name = "toolStripLabel11";
-            this.toolStripLabel11.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel11.Text = "Other:";
-            // 
-            // lstNonActiveContinentLawless
-            // 
-            this.lstNonActiveContinentLawless.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            this.lstNonActiveContinentLawless.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.lstNonActiveContinentLawless.DropDownWidth = 42;
-            this.lstNonActiveContinentLawless.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lstNonActiveContinentLawless.Name = "lstNonActiveContinentLawless";
-            this.lstNonActiveContinentLawless.Size = new System.Drawing.Size(75, 25);
-            // 
-            // btnContinentLawlessOther
-            // 
-            this.btnContinentLawlessOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnContinentLawlessOther.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentLawlessOther.Image")));
-            this.btnContinentLawlessOther.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnContinentLawlessOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnContinentLawlessOther.Name = "btnContinentLawlessOther";
-            this.btnContinentLawlessOther.Size = new System.Drawing.Size(78, 22);
-            this.btnContinentLawlessOther.Text = "Show Report";
-            this.btnContinentLawlessOther.Click += new System.EventHandler(this.btnContinentLawlessOther_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnContinentLawlessActive
-            // 
-            this.btnContinentLawlessActive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnContinentLawlessActive.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentLawlessActive.Image")));
-            this.btnContinentLawlessActive.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnContinentLawlessActive.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnContinentLawlessActive.Name = "btnContinentLawlessActive";
-            this.btnContinentLawlessActive.Size = new System.Drawing.Size(161, 22);
-            this.btnContinentLawlessActive.Text = "Lawless on active continents";
-            this.btnContinentLawlessActive.Click += new System.EventHandler(this.btnContinentLawlessActive_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnContinentLawlessAll
-            // 
-            this.btnContinentLawlessAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnContinentLawlessAll.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentLawlessAll.Image")));
-            this.btnContinentLawlessAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnContinentLawlessAll.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnContinentLawlessAll.Name = "btnContinentLawlessAll";
-            this.btnContinentLawlessAll.Size = new System.Drawing.Size(68, 22);
-            this.btnContinentLawlessAll.Text = "All Lawless";
-            this.btnContinentLawlessAll.Click += new System.EventHandler(this.btnContinentLawlessAll_Click);
-            // 
-            // tbReportMoongatesLocation
-            // 
-            this.tbReportMoongatesLocation.BackColor = System.Drawing.Color.White;
-            this.tbReportMoongatesLocation.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tbReportMoongatesLocation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel12,
-            this.toolStripSeparator8,
-            this.toolStripLabel13,
-            this.lstNonActiveContinentMoonGates,
-            this.btnContinentMoonGatesOther,
-            this.toolStripSeparator9,
-            this.btnContinentMoonGatesActive,
-            this.toolStripSeparator10,
-            this.btnContinentMoonGatesAll});
-            this.tbReportMoongatesLocation.Location = new System.Drawing.Point(0, 100);
-            this.tbReportMoongatesLocation.Name = "tbReportMoongatesLocation";
-            this.tbReportMoongatesLocation.Size = new System.Drawing.Size(912, 25);
-            this.tbReportMoongatesLocation.TabIndex = 20;
-            this.tbReportMoongatesLocation.Text = "toolStrip2";
-            // 
-            // toolStripLabel12
-            // 
-            this.toolStripLabel12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel12.Name = "toolStripLabel12";
-            this.toolStripLabel12.Size = new System.Drawing.Size(121, 22);
-            this.toolStripLabel12.Text = "MoonGates Location";
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel13
-            // 
-            this.toolStripLabel13.Name = "toolStripLabel13";
-            this.toolStripLabel13.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel13.Text = "Other:";
-            // 
-            // lstNonActiveContinentMoonGates
-            // 
-            this.lstNonActiveContinentMoonGates.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            this.lstNonActiveContinentMoonGates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.lstNonActiveContinentMoonGates.DropDownWidth = 42;
-            this.lstNonActiveContinentMoonGates.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lstNonActiveContinentMoonGates.Name = "lstNonActiveContinentMoonGates";
-            this.lstNonActiveContinentMoonGates.Size = new System.Drawing.Size(75, 25);
-            // 
-            // btnContinentMoonGatesOther
-            // 
-            this.btnContinentMoonGatesOther.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnContinentMoonGatesOther.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentMoonGatesOther.Image")));
-            this.btnContinentMoonGatesOther.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnContinentMoonGatesOther.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnContinentMoonGatesOther.Name = "btnContinentMoonGatesOther";
-            this.btnContinentMoonGatesOther.Size = new System.Drawing.Size(78, 22);
-            this.btnContinentMoonGatesOther.Text = "Show Report";
-            this.btnContinentMoonGatesOther.Click += new System.EventHandler(this.btnContinentMoonGatesOther_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnContinentMoonGatesActive
-            // 
-            this.btnContinentMoonGatesActive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnContinentMoonGatesActive.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentMoonGatesActive.Image")));
-            this.btnContinentMoonGatesActive.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnContinentMoonGatesActive.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnContinentMoonGatesActive.Name = "btnContinentMoonGatesActive";
-            this.btnContinentMoonGatesActive.Size = new System.Drawing.Size(182, 22);
-            this.btnContinentMoonGatesActive.Text = "MoonGates on active continents";
-            this.btnContinentMoonGatesActive.Click += new System.EventHandler(this.btnContinentMoonGatesActive_Click);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnContinentMoonGatesAll
-            // 
-            this.btnContinentMoonGatesAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnContinentMoonGatesAll.Image = ((System.Drawing.Image)(resources.GetObject("btnContinentMoonGatesAll.Image")));
-            this.btnContinentMoonGatesAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnContinentMoonGatesAll.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnContinentMoonGatesAll.Name = "btnContinentMoonGatesAll";
-            this.btnContinentMoonGatesAll.Size = new System.Drawing.Size(89, 22);
-            this.btnContinentMoonGatesAll.Text = "All MoonGates";
-            this.btnContinentMoonGatesAll.Click += new System.EventHandler(this.btnContinentMoonGatesAll_Click);
-            // 
-            // dgvPlayers
-            // 
-            this.dgvPlayers.AllowUserToAddRows = false;
-            this.dgvPlayers.AllowUserToDeleteRows = false;
-            this.dgvPlayers.AllowUserToOrderColumns = true;
-            this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvPlayersName,
-            this.dgvPlayersAlliance,
-            this.dgvPlayersScore,
-            this.dgvPlayersRank,
-            this.dgvPlayersCities});
-            this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPlayers.Location = new System.Drawing.Point(0, 125);
-            this.dgvPlayers.Name = "dgvPlayers";
-            this.dgvPlayers.ReadOnly = true;
-            this.dgvPlayers.RowHeadersVisible = false;
-            this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvPlayers.Size = new System.Drawing.Size(912, 296);
-            this.dgvPlayers.TabIndex = 21;
-            // 
-            // dgvPlayersName
-            // 
-            this.dgvPlayersName.ActiveLinkColor = System.Drawing.Color.Black;
-            this.dgvPlayersName.HeaderText = "Name";
-            this.dgvPlayersName.LinkColor = System.Drawing.Color.Black;
-            this.dgvPlayersName.Name = "dgvPlayersName";
-            this.dgvPlayersName.ReadOnly = true;
-            this.dgvPlayersName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlayersName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgvPlayersName.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
-            // dgvPlayersAlliance
-            // 
-            this.dgvPlayersAlliance.ActiveLinkColor = System.Drawing.Color.Black;
-            this.dgvPlayersAlliance.HeaderText = "Alliance";
-            this.dgvPlayersAlliance.LinkColor = System.Drawing.Color.Black;
-            this.dgvPlayersAlliance.Name = "dgvPlayersAlliance";
-            this.dgvPlayersAlliance.ReadOnly = true;
-            this.dgvPlayersAlliance.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlayersAlliance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgvPlayersAlliance.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
-            // dgvPlayersScore
-            // 
-            this.dgvPlayersScore.HeaderText = "Score";
-            this.dgvPlayersScore.Name = "dgvPlayersScore";
-            this.dgvPlayersScore.ReadOnly = true;
-            // 
-            // dgvPlayersRank
-            // 
-            this.dgvPlayersRank.HeaderText = "Rank";
-            this.dgvPlayersRank.Name = "dgvPlayersRank";
-            this.dgvPlayersRank.ReadOnly = true;
-            // 
-            // dgvPlayersCities
-            // 
-            this.dgvPlayersCities.HeaderText = "Cities";
-            this.dgvPlayersCities.Name = "dgvPlayersCities";
-            this.dgvPlayersCities.ReadOnly = true;
-            // 
             // LiveTabPageContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,17 +658,17 @@
             this.toolbarConnection.PerformLayout();
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
+            this.tbReportMoongatesLocation.ResumeLayout(false);
+            this.tbReportMoongatesLocation.PerformLayout();
+            this.tbReportLawlessCities.ResumeLayout(false);
+            this.tbReportLawlessCities.PerformLayout();
             this.tbReportContinentOverview.ResumeLayout(false);
             this.tbReportContinentOverview.PerformLayout();
             this.tbReportAllianceOverview.ResumeLayout(false);
             this.tbReportAllianceOverview.PerformLayout();
             this.tbReportPlayerOverview.ResumeLayout(false);
             this.tbReportPlayerOverview.PerformLayout();
-            this.tbReportLawlessCities.ResumeLayout(false);
-            this.tbReportLawlessCities.PerformLayout();
-            this.tbReportMoongatesLocation.ResumeLayout(false);
-            this.tbReportMoongatesLocation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

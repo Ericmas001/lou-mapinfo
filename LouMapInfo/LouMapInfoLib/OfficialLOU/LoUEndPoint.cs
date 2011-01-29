@@ -89,6 +89,14 @@ namespace LouMapInfo.OfficialLOU
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
 
+        public static JsonObjectCollection OpenSession(string baseurl, string session)
+        {
+            string endpoint = "OpenSession";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
         public static JsonArrayCollection GetVIS(string baseurl, string session)
         {
             string endpoint = "Poll"; //
