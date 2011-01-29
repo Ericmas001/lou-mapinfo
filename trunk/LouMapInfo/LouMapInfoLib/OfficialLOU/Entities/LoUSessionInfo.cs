@@ -41,6 +41,8 @@ namespace LouMapInfo.OfficialLOU.Entities
             m_SessionID = StringUtility.Extract(s, "<input type=\"hidden\" name=\"sessionId\" id=\"sessionId\" value=\"", "\"");
             if (m_SessionID == null)
                 return false;
+            JsonObjectCollection o = LoUEndPoint.OpenSession(m_World.Url, m_SessionID);
+            m_SessionID = ((JsonStringValue)o["i"]).Value;
             try
             {
                 JsonObjectCollection me = LoUEndPoint.GetPlayerInfo(m_World.Url, m_SessionID);
@@ -50,7 +52,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 m_Connected = true;
                 return true;
             }
-            catch
+            catch( Exception e )
             {
                 return false;
             }
