@@ -15,12 +15,27 @@ namespace LouMapInfoApp
 {
     public partial class ReportForm : Form
     {
+        public static void ShowReport(ReportInfo r, int d)
+        {
+            bool ok = false;
+            while (!ok)
+            {
+                try
+                {
+                    new ReportForm(r, d).Show();
+                    ok = true;
+                }
+                catch
+                {
+                }
+            }
+        }
 
         private System.Windows.Forms.Timer waitingTimer;
         private int waitingCounter = 0;
         ReportInfo report;
         int depth;
-        public ReportForm(ReportInfo r, int d)
+        private ReportForm(ReportInfo r, int d)
         {
             InitializeComponent();
             CustomTabControl tctl = new CustomTabControl();
@@ -107,7 +122,8 @@ namespace LouMapInfoApp
             btnDisplayOptions.Enabled = false;
             pnlContent.Enabled = false;
             StartWaiting();
-            new Thread(new ThreadStart(RefreshReportAsync)).Start();
+            RefreshReportAsync();
+            //new Thread(new ThreadStart(RefreshReportAsync)).Start();
         }
         private void RefreshReportAsync()
         {

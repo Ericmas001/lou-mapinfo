@@ -348,7 +348,7 @@ namespace LouMapInfoApp
                 Invoke(new ReportHandler(OpenReport), r, lvl);
                 return;
             }
-            new ReportForm(r, lvl).Show();
+            ReportForm.ShowReport(r, lvl);
         }
 
         private void OpenContinentReport(int c)

@@ -12,6 +12,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         private readonly LoUSessionInfo m_Session;
         private readonly string m_Name;
         private readonly string m_Url;
+        private bool m_VisLoaded = false;
         private readonly Dictionary<string, LoUPlayerInfo> m_PlayersByName = new Dictionary<string, LoUPlayerInfo>();
         private readonly Dictionary<int, LoUPlayerInfo> m_PlayersById = new Dictionary<int, LoUPlayerInfo>();
         private readonly Dictionary<string, LoUAllianceInfo> m_AlliancesByName = new Dictionary<string, LoUAllianceInfo>();
@@ -79,57 +80,64 @@ namespace LouMapInfo.OfficialLOU.Entities
                 }
             }
             m_PlayersById[m_Session.PlayerID].ForceLoad();
-            foreach (JsonObjectCollection oc2 in LoUEndPoint.GetVIS(m_Session.World.Url, m_Session.SessionID))
+        }
+        public void LoadVis()
+        {
+            if (!m_VisLoaded)
             {
-                // 1: MoonGate
-                // 2: City
-                // 14: Shrine
-                int t = (int)((JsonNumericValue)oc2["t"]).Value; // type
-                int x = (int)((JsonNumericValue)oc2["x"]).Value / 128; //x
-                int y = (int)(((JsonNumericValue)oc2["y"]).Value + 0.5) / 80; // y
-                switch (t)
+                foreach (JsonObjectCollection oc2 in LoUEndPoint.GetVIS(m_Session.World.Url, m_Session.SessionID))
                 {
-                    case 1: // MoonGate
-                        {
-                            int i = (int)((JsonNumericValue)oc2["mi"]).Value; // id
-                            LoUPt loc = new LoUPt(x, y);
-                            LoUMoonGateInfo mi = new LoUMoonGateInfo(this, i, loc);
-                            if (!m_MoonGatesByCont.ContainsKey(loc.Continent))
-                                m_MoonGatesByCont.Add(loc.Continent, new List<LoUMoonGateInfo>());
-                            m_MoonGatesByCont[loc.Continent].Add(mi);
-                            break;
-                        }
-                    case 2: // City
-                        {
-                            if (String.IsNullOrEmpty(((JsonStringValue)oc2["pn"]).Value))
+                    // 1: MoonGate
+                    // 2: City
+                    // 14: Shrine
+                    int t = (int)((JsonNumericValue)oc2["t"]).Value; // type
+                    int x = (int)((JsonNumericValue)oc2["x"]).Value / 128; //x
+                    int y = (int)(((JsonNumericValue)oc2["y"]).Value + 0.5) / 80; // y
+                    switch (t)
+                    {
+                        case 1: // MoonGate
                             {
-                                int i = (int)((JsonNumericValue)oc2["ci"]).Value; // id
-                                string name = ((JsonStringValue)oc2["n"]).Value; // name
-                                int p = (int)((JsonNumericValue)oc2["p"]).Value; // score
-                                int c = (int)((JsonNumericValue)oc2["k"]).Value; // continent
+                                int i = (int)((JsonNumericValue)oc2["mi"]).Value; // id
                                 LoUPt loc = new LoUPt(x, y);
-                                LoUCityInfo ci = new LoUCityInfo(this, null, name, i, loc, LoUBorderingType.Unknown, name.Contains("castle") ? OldLoUCityType.Castle : OldLoUCityType.City, p);
-                                if (!m_LawlessByCont.ContainsKey(c))
-                                    m_LawlessByCont.Add(c, new List<LoUCityInfo>());
-                                m_LawlessByCont[c].Add(ci);
+                                LoUMoonGateInfo mi = new LoUMoonGateInfo(this, i, loc);
+                                if (!m_MoonGatesByCont.ContainsKey(loc.Continent))
+                                    m_MoonGatesByCont.Add(loc.Continent, new List<LoUMoonGateInfo>());
+                                m_MoonGatesByCont[loc.Continent].Add(mi);
+                                break;
                             }
-                            break;
-                        }
-                    case 14: // Shrine
-                        {
-                            int i = (int)((JsonNumericValue)oc2["si"]).Value; // id
-                            int st = (int)((JsonNumericValue)oc2["m"]).Value; // shrine type
-                            LoUPt loc = new LoUPt(x, y);
-                            LoUShrineInfo si = new LoUShrineInfo(this, i, loc, (LoUShrineType)st);
-                            if (!m_ShrinesByCont.ContainsKey(loc.Continent))
-                                m_ShrinesByCont.Add(loc.Continent, new List<LoUShrineInfo>());
-                            m_ShrinesByCont[loc.Continent].Add(si);
-                            if (!m_ShrinesByVirtue.ContainsKey(si.Virtue))
-                                m_ShrinesByVirtue.Add(si.Virtue, new List<LoUShrineInfo>());
-                            m_ShrinesByVirtue[si.Virtue].Add(si);
-                            break;
-                        }
+                        case 2: // City
+                            {
+                                if (String.IsNullOrEmpty(((JsonStringValue)oc2["pn"]).Value))
+                                {
+                                    int i = (int)((JsonNumericValue)oc2["ci"]).Value; // id
+                                    string name = ((JsonStringValue)oc2["n"]).Value; // name
+                                    int p = (int)((JsonNumericValue)oc2["p"]).Value; // score
+                                    int c = (int)((JsonNumericValue)oc2["k"]).Value; // continent
+                                    LoUPt loc = new LoUPt(x, y);
+                                    LoUCityInfo ci = new LoUCityInfo(this, null, name, i, loc, LoUBorderingType.Unknown, name.Contains("castle") ? OldLoUCityType.Castle : OldLoUCityType.City, p);
+                                    if (!m_LawlessByCont.ContainsKey(c))
+                                        m_LawlessByCont.Add(c, new List<LoUCityInfo>());
+                                    m_LawlessByCont[c].Add(ci);
+                                }
+                                break;
+                            }
+                        case 14: // Shrine
+                            {
+                                int i = (int)((JsonNumericValue)oc2["si"]).Value; // id
+                                int st = (int)((JsonNumericValue)oc2["m"]).Value; // shrine type
+                                LoUPt loc = new LoUPt(x, y);
+                                LoUShrineInfo si = new LoUShrineInfo(this, i, loc, (LoUShrineType)st);
+                                if (!m_ShrinesByCont.ContainsKey(loc.Continent))
+                                    m_ShrinesByCont.Add(loc.Continent, new List<LoUShrineInfo>());
+                                m_ShrinesByCont[loc.Continent].Add(si);
+                                if (!m_ShrinesByVirtue.ContainsKey(si.Virtue))
+                                    m_ShrinesByVirtue.Add(si.Virtue, new List<LoUShrineInfo>());
+                                m_ShrinesByVirtue[si.Virtue].Add(si);
+                                break;
+                            }
+                    }
                 }
+                m_VisLoaded = true;
             }
         }
         public LoUPlayerInfo Player(int id)
@@ -184,6 +192,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public Dictionary<int, LoUCityInfo[]> Lawless(params int[] who)
         {
+            LoadVis();
             bool all = who.Length == 0;
             List<int> conts = new List<int>(who);
             int[] ids = new int[m_LawlessByCont.Keys.Count];
@@ -205,6 +214,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public List<LoUShrineInfo> Shrines(int cid)
         {
+            LoadVis();
             List<LoUShrineInfo> res = new List<LoUShrineInfo>();
             if (m_ShrinesByCont.ContainsKey(cid))
                 res = m_ShrinesByCont[cid];
@@ -212,6 +222,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public List<LoUShrineInfo> ActivatedShrines()
         {
+            LoadVis();
             List<LoUShrineInfo> res = new List<LoUShrineInfo>();
             foreach (LoUShrineType t in m_ShrinesByVirtue.Keys)
                 if (t != LoUShrineType.UnActivated)
@@ -220,6 +231,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public List<LoUShrineInfo> Shrines(LoUShrineType virtue)
         {
+            LoadVis();
             List<LoUShrineInfo> res = new List<LoUShrineInfo>();
             if (m_ShrinesByVirtue.ContainsKey(virtue))
                 res = m_ShrinesByVirtue[virtue];
@@ -227,6 +239,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public Dictionary<int, LoUMoonGateInfo[]> MoonGates(params int[] who)
         {
+            LoadVis();
             bool all = who.Length == 0;
             List<int> conts = new List<int>(who);
             int[] ids = new int[m_MoonGatesByCont.Keys.Count];
