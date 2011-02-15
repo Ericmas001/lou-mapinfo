@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoLib", "LouMapInfo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityWinForms_4.0", "..\..\..\Desktop\Programmation\C#\LouMapInfo\EricUtilityWinForms\EricUtilityWinForms_4.0.csproj", "{13AC29CB-866A-4954-B376-7FCA5412DDF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouCsvMaker", "LouInfoForNateural\LouCsvMaker.csproj", "{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -87,6 +89,16 @@ Global
 		{13AC29CB-866A-4954-B376-7FCA5412DDF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{13AC29CB-866A-4954-B376-7FCA5412DDF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{13AC29CB-866A-4954-B376-7FCA5412DDF1}.Release|x86.ActiveCfg = Release|Any CPU
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Debug|x86.ActiveCfg = Debug|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Debug|x86.Build.0 = Debug|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|Any CPU.ActiveCfg = Release|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|Mixed Platforms.Build.0 = Release|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|x86.ActiveCfg = Release|x86
+		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
