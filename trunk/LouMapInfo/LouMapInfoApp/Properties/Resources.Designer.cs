@@ -94,5 +94,19 @@ namespace LouMapInfoApp.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap map {
+            get {
+                object obj = ResourceManager.GetObject("map", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Zeus_icon {
+            get {
+                object obj = ResourceManager.GetObject("Zeus_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
