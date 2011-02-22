@@ -217,12 +217,12 @@
             this.dgvPlayersRank,
             this.dgvPlayersCities});
             this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPlayers.Location = new System.Drawing.Point(0, 125);
+            this.dgvPlayers.Location = new System.Drawing.Point(0, 75);
             this.dgvPlayers.Name = "dgvPlayers";
             this.dgvPlayers.ReadOnly = true;
             this.dgvPlayers.RowHeadersVisible = false;
             this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvPlayers.Size = new System.Drawing.Size(912, 296);
+            this.dgvPlayers.Size = new System.Drawing.Size(912, 346);
             this.dgvPlayers.TabIndex = 21;
             // 
             // dgvPlayersName
@@ -279,11 +279,12 @@
             this.btnContinentMoonGatesActive,
             this.toolStripSeparator10,
             this.btnContinentMoonGatesAll});
-            this.tbReportMoongatesLocation.Location = new System.Drawing.Point(0, 100);
+            this.tbReportMoongatesLocation.Location = new System.Drawing.Point(0, 75);
             this.tbReportMoongatesLocation.Name = "tbReportMoongatesLocation";
             this.tbReportMoongatesLocation.Size = new System.Drawing.Size(912, 25);
             this.tbReportMoongatesLocation.TabIndex = 20;
             this.tbReportMoongatesLocation.Text = "toolStrip2";
+            this.tbReportMoongatesLocation.Visible = false;
             // 
             // toolStripLabel12
             // 
@@ -374,6 +375,7 @@
             this.tbReportLawlessCities.Size = new System.Drawing.Size(912, 25);
             this.tbReportLawlessCities.TabIndex = 18;
             this.tbReportLawlessCities.Text = "toolStrip2";
+            this.tbReportLawlessCities.Visible = false;
             // 
             // toolStripLabel10
             // 
