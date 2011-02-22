@@ -64,6 +64,25 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="V4\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="V4\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\PanelEntry.cs" />
+    <Compile Include="V4\Tools\ContentFAQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\Tools\ContentFAQ.Designer.cs">
+      <DependentUpon>ContentFAQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\Tools\ContentAbout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\Tools\ContentAbout.Designer.cs">
+      <DependentUpon>ContentAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorldTabPageContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +105,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\Tools\ContentFAQ.resx">
+      <DependentUpon>ContentFAQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\Tools\ContentAbout.resx">
+      <DependentUpon>ContentAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorldTabPageContent.resx">
       <DependentUpon>WorldTabPageContent.cs</DependentUpon>
@@ -138,6 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
+    <None Include="Resources\map.png" />
+    <None Include="Resources\Zeus_icon.png" />
     <None Include="Resources\icon-tool.png" />
     <None Include="Resources\icon-help.png" />
     <None Include="Resources\icon-about.png" />
