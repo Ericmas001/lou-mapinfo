@@ -103,8 +103,10 @@ namespace LouMapInfo.OfficialLOU
             JsonObjectCollection args = new JsonObjectCollection();
             args.Add(new JsonStringValue("session", session));
             args.Add(new JsonStringValue("requestid", "42"));
-            args.Add(new JsonStringValue("requests", "VIS:r:0:0:-0:-0:1000000:1000000"));
-            JsonArrayCollection ac1 = Query(baseurl, endpoint, args) as JsonArrayCollection;
+            //args.Add(new JsonStringValue("requests", "VIS:w:0:0:-0:-0:1000000:1000000"));
+            args.Add(new JsonStringValue("requests", "UA:\fTM:48,1,\fCAT:1\fWC:A\fWORLD:BA%S-CA?S-DAFhB-EA_(C-FAk0C-hA8+C-iAY%B-jA|1B-kAd)C-lAb'C-%A[2C-&Ax_C-(AJhC-)AB7C-*AO1B-GB'PB-HB_kC-IB]YB-JBv4C-KBQsC-mBquC-nB)LB-oB~cB-pBZnC-qB^pC-+BoiB-,B[SB-.B]2C- BQrC-:B_rC-\fVIS:w:0:0:-264:-66:1016:677\fUFP:\fREPORT:\fMAIL:\fFRIENDINV:\fTIME:1298397592476\fCHAT:\fSUBSTITUTION:\fINV:\fALL_AT:\fMAT:3276896\fFRIENDL:\f"));
+            JsonObject jo = Query(baseurl, endpoint, args);
+            JsonArrayCollection ac1 = jo as JsonArrayCollection;
             foreach (JsonObjectCollection oc1 in ac1)
             {
                 if (((JsonStringValue)oc1["C"]).Value == "VIS")

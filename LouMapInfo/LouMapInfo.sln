@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityWinForms_4.0", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouCsvMaker", "LouInfoForNateural\LouCsvMaker.csproj", "{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouZeusConnector", "LouZeusConnector\LouZeusConnector.csproj", "{7CE0E627-3C62-45F9-B0B2-733297E2D66B}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -99,6 +101,16 @@ Global
 		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|Mixed Platforms.Build.0 = Release|x86
 		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|x86.ActiveCfg = Release|x86
 		{AC17BB7D-A0F5-4463-B13C-A079AA24BE78}.Release|x86.Build.0 = Release|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Debug|x86.ActiveCfg = Debug|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Debug|x86.Build.0 = Debug|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Release|Any CPU.ActiveCfg = Release|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Release|x86.ActiveCfg = Release|x86
+		{7CE0E627-3C62-45F9-B0B2-733297E2D66B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
