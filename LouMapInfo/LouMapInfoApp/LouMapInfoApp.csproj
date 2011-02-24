@@ -64,6 +64,8 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tests\LouZeusConnector.cs" />
+    <Compile Include="Tests\LouCsvMaker.cs" />
     <Compile Include="V4\ContinentPicker.cs">
       <SubType>Form</SubType>
     </Compile>
