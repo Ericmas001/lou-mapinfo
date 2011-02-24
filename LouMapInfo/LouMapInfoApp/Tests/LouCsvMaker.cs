@@ -5,12 +5,12 @@ using LouMapInfo.OfficialLOU.Entities;
 using System.IO;
 using System.Globalization;
 using LouMapInfo.CSV;
+using LouMapInfo.OfficialLOU;
 
 namespace LouMapInfoApp.Tests
 {
     class LouCsvMaker
     {
-        static string world = "World 10 (Europe)";
         static ConsoleColor oldColor = Console.ForegroundColor;
         static void Main(string[] args)
         {
@@ -20,7 +20,7 @@ namespace LouMapInfoApp.Tests
             string password = Console.ReadLine();
             Console.WriteLine();
             Console.Write("We are connecting ...");
-            LoUSessionInfo session = new LoUSessionInfo(mail, password, world);
+            LoUSessionInfo session = new LoUSessionInfo(mail, password, LoUServerList.WORLD_10);
             if (session.Connect())
             {
                 session.World.LoadIfNeeded();
