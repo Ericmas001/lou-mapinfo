@@ -52,7 +52,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 m_Connected = true;
                 return true;
             }
-            catch( Exception e )
+            catch
             {
                 return false;
             }

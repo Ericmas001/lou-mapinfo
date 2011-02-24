@@ -11,31 +11,13 @@ using LouMapInfo.Entities;
 using EricUtility;
 using System.Threading;
 
-namespace LouMapInfoApp
+namespace LouMapInfoApp.V4
 {
-    public partial class ReportForm : Form
+    public partial class ContentReport : UserControl
     {
-        public static void ShowReport(ReportInfo r, int d)
-        {
-            bool ok = false;
-            while (!ok)
-            {
-                try
-                {
-                    new ReportForm(r, d).Show();
-                    ok = true;
-                }
-                catch
-                {
-                }
-            }
-        }
-
-        private System.Windows.Forms.Timer waitingTimer;
-        private int waitingCounter = 0;
         ReportInfo report;
         int depth;
-        private ReportForm(ReportInfo r, int d)
+        public ContentReport(ReportInfo r, int d)
         {
             InitializeComponent();
             CustomTabControl tctl = new CustomTabControl();
@@ -121,7 +103,6 @@ namespace LouMapInfoApp
             btnCityType.Enabled = false;
             btnDisplayOptions.Enabled = false;
             pnlContent.Enabled = false;
-            StartWaiting();
             RefreshReportAsync();
             //new Thread(new ThreadStart(RefreshReportAsync)).Start();
         }
@@ -145,7 +126,6 @@ namespace LouMapInfoApp
             btnDisplayOptions.Enabled = true;
             pnlContent.Enabled = true;
             reportBrowser.DocumentText = r;
-            StopWaiting();
         }
         private void btnBBCode_Click(object sender, EventArgs e)
         {
@@ -346,82 +326,9 @@ namespace LouMapInfoApp
         }
 
 
-        delegate void EmptyHandler();
-        void StartWaiting()
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (InvokeRequired)
-            {
-                Invoke(new EmptyHandler(StartWaiting));
-                return;
-            }
-            if (waitingTimer == null)
-            {
-                waitingTimer = new System.Windows.Forms.Timer();
-                waitingTimer.Interval = 100;
-                waitingTimer.Tick += new EventHandler(waitingTimer_Tick);
-                waitingTimer.Start();
-                lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting0;
-            }
-        }
-        void StopWaiting()
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new EmptyHandler(StopWaiting));
-                return;
-            }
-            if (waitingTimer != null)
-            {
-                waitingTimer.Stop();
-                waitingTimer = null;
-                lblImage.Image = Properties.Resources.logo_LOU;
-            }
-        }
-
-        void waitingTimer_Tick(object sender, EventArgs e)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new EventHandler(waitingTimer_Tick), sender, e);
-                return;
-            }
-            if (waitingTimer != null)
-            {
-                waitingCounter++;
-                waitingCounter %= 8;
-                switch (waitingCounter)
-                {
-                    case 0:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting0;
-                        break;
-                    case 1:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting1;
-                        break;
-                    case 2:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting2;
-                        break;
-                    case 3:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting3;
-                        break;
-                    case 4:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting4;
-                        break;
-                    case 5:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting5;
-                        break;
-                    case 6:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting6;
-                        break;
-                    case 7:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting7;
-                        break;
-                }
-            }
-            else
-            {
-                waitingTimer.Stop();
-                waitingTimer = null;
-            }
+            ReportForm.ShowReport(report, depth);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

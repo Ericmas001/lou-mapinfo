@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LouMapInfoApp.V4.Tools;
+using LouMapInfoApp.V4.LouMap;
+using LouMapInfo.Entities;
 
 namespace LouMapInfoApp.V4
 {
     public partial class MainForm : Form
     {
+        private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
         public Dictionary<string, PanelEntry> tabs = new Dictionary<string, PanelEntry>();
         public MainForm()
         {
@@ -57,12 +60,13 @@ namespace LouMapInfoApp.V4
             }
             else if (btn == btnMenuMap)
             {
-
+                AddSubItem(btn, "Continent View", new ContentLMContinent(worlds));
+                AddSubItem(btn, "World View", new ContentLMWorld(worlds));
             }
             else if (btn == btnMenuTools)
             {
-                AddSubItem(btn, "FAQ", new ContentFAQ());
                 AddSubItem(btn, "About", new ContentAbout());
+                AddSubItem(btn, "FAQ", new ContentFAQ());
             }
         }
         private void AddSubItem(RadioButton btn, string name, UserControl defaultPanel)
@@ -81,6 +85,8 @@ namespace LouMapInfoApp.V4
                 splitContainer1.Panel2.Controls.Clear();
                 splitContainer1.Panel2.Controls.Add(pe.SubPanel);
                 pe.SubPanel.Dock = DockStyle.Fill;
+                pe.SubPanel.BackColor = Color.White;
+                pe.SubPanel.BorderStyle = BorderStyle.FixedSingle;
             }
         }
     }

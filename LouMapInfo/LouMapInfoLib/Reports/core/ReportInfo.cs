@@ -76,7 +76,7 @@ namespace LouMapInfo.Reports.core
                 {
                     sb.Append("<hr />");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
-                        sb.Append(String.Format("<center><h3>{0}</h3></center>", it1.Value(options)));
+                        sb.Append(String.Format("<center><h3>{0}</h3></center>", StringUtility.RemoveBBCodeTags(it1.Value(options))));
                     sb.Append("<ul>");
                     foreach (ReportItem it2 in it1.Items)
                     {

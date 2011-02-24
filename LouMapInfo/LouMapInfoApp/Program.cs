@@ -7,14 +7,6 @@ namespace LouMapInfoApp
 {
     static class Program
     {
-
-        enum test
-        {
-            none = 0,
-            a = 1,
-            b = 2,
-            c = 4
-        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
