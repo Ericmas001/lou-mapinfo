@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EricUtility.Networking.Commands;
 
-namespace LouZeusConnector
+namespace LouMapInfo.Zeus
 {
     public abstract class AbstractLobbyCommand : AbstractCommand
     {

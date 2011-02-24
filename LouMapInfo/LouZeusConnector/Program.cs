@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using EricUtility;
+using LouMapInfo.Zeus;
 
 namespace LouZeusConnector
 {

@@ -100,6 +100,17 @@
     <Compile Include="Reports\Items\TextReportItem.cs" />
     <Compile Include="Reports\DisplayUtility.cs" />
     <Compile Include="Reports\LawlessReport.cs" />
+    <Compile Include="Zeus\AbstractLobbyCommand.cs" />
+    <Compile Include="Zeus\AbstractLobbyResponse.cs" />
+    <Compile Include="Zeus\Commands\Account\ChangePasswordCommand.cs" />
+    <Compile Include="Zeus\Commands\Account\ChangePasswordResponse.cs" />
+    <Compile Include="Zeus\Commands\Identifying\AuthenticateCommand.cs" />
+    <Compile Include="Zeus\Commands\Identifying\AuthenticateResponse.cs" />
+    <Compile Include="Zeus\Commands\Identifying\IdentifyCommand.cs" />
+    <Compile Include="Zeus\Commands\Identifying\IdentifyResponse.cs" />
+    <Compile Include="Zeus\Commands\Identifying\RequestPasswordCommand.cs" />
+    <Compile Include="Zeus\Commands\Identifying\RequestPasswordResponse.cs" />
+    <Compile Include="Zeus\LobbyTCPClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections_4.0.csproj">

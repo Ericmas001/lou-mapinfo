@@ -4,7 +4,7 @@ using System.Text;
 using EricUtility;
 using EricUtility.Networking.Commands;
 
-namespace LouZeusConnector
+namespace LouMapInfo.Zeus
 {
     public abstract class AbstractLobbyResponse<T> : AbstractCommandResponse<T>
         where T : AbstractLobbyCommand
