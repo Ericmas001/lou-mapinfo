@@ -6,10 +6,10 @@ using EricUtility;
 using EricUtility.Collections;
 using EricUtility.Networking;
 using EricUtility.Networking.Commands;
-using LouZeusConnector.Commands.Identifying;
-using LouZeusConnector.Commands.Account;
+using LouMapInfo.Zeus.Commands.Identifying;
+using LouMapInfo.Zeus.Commands.Account;
 
-namespace LouZeusConnector
+namespace LouMapInfo.Zeus
 {
     public delegate void DisconnectDelegate();
     public class LobbyTCPClient : TCPCommunicator

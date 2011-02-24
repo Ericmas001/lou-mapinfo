@@ -40,17 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractLobbyCommand.cs" />
-    <Compile Include="AbstractLobbyResponse.cs" />
-    <Compile Include="Commands\Account\ChangePasswordCommand.cs" />
-    <Compile Include="Commands\Account\ChangePasswordResponse.cs" />
-    <Compile Include="Commands\Identifying\AuthenticateCommand.cs" />
-    <Compile Include="Commands\Identifying\AuthenticateResponse.cs" />
-    <Compile Include="Commands\Identifying\RequestPasswordResponse.cs" />
-    <Compile Include="Commands\Identifying\RequestPasswordCommand.cs" />
-    <Compile Include="Commands\Identifying\IdentifyCommand.cs" />
-    <Compile Include="Commands\Identifying\IdentifyResponse.cs" />
-    <Compile Include="LobbyTCPClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
