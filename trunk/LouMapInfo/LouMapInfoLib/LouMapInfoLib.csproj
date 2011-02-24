@@ -37,6 +37,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSV\AllianceCitiesListCSV.cs" />
+    <Compile Include="CSV\ReportCSV.cs" />
     <Compile Include="Entities\AllianceInfo.cs" />
     <Compile Include="Entities\CityCastleType.cs" />
     <Compile Include="Entities\CityInfo.cs" />
