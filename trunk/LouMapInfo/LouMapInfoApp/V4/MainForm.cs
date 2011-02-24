@@ -52,11 +52,11 @@ namespace LouMapInfoApp.V4
         {
             if (btn == btnMenuOfficial)
             {
-
+                FillOfficial();
             }
             else if (btn == btnMenuZeus)
             {
-
+                FillZeus();
             }
             else if (btn == btnMenuMap)
             {
@@ -68,6 +68,14 @@ namespace LouMapInfoApp.V4
                 AddSubItem(btn, "About", new ContentAbout());
                 AddSubItem(btn, "FAQ", new ContentFAQ());
             }
+        }
+
+        public void FillZeus()
+        {
+        }
+
+        public void FillOfficial()
+        {
         }
         private void AddSubItem(RadioButton btn, string name, UserControl defaultPanel)
         {

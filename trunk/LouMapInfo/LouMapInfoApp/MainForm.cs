@@ -8,11 +8,13 @@ using System.Windows.Forms;
 using LouMapInfo.Entities;
 using EricUtility.Windows.Forms;
 using System.IO;
+using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfoApp
 {
     public partial class MainForm : Form
     {
+        private LoUSessionInfo m_Session = null;
         private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
         public MainForm()
         {
