@@ -6,6 +6,9 @@ namespace LouMapInfo.OfficialLOU
 {
     public static class LoUServerList
     {
+        public static string WORLD_10 { get { return "World 10 (Europe)"; } }
+        public static string WORLD_21 { get { return "World 21 (USA East Coast)"; } }
+
         private static readonly Dictionary<string, string> m_Servers = new Dictionary<string, string>();
         private static bool m_Loaded = false;
         public static Dictionary<string, string> Servers { get { if (!m_Loaded)Load(); return m_Servers; } }
