@@ -75,6 +75,7 @@ I'm also aware that the report window is not perfect (you can't see palaces with
  * YNew Per-Continent report: You can generate Per-Continent-AllCities report 
  * New Per-World report: You can generate Per-World-Player report
  * Application now use LoU Icon
+<p align=center>[ScreenShots11 Screenshots]</p>
 ----
 = <p align=center>0 => 1.0 (R1 => R12) 2010-11-28</p>= 
  * You can View All continent info in a sortable Table
