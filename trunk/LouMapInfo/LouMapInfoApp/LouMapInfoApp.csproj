@@ -64,6 +64,24 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="V4\ContinentPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="V4\ContinentPicker.Designer.cs">
+      <DependentUpon>ContinentPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouMap\ContentLMContinent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouMap\ContentLMContinent.Designer.cs">
+      <DependentUpon>ContentLMContinent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouMap\ContentLMWorld.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouMap\ContentLMWorld.Designer.cs">
+      <DependentUpon>ContentLMWorld.cs</DependentUpon>
+    </Compile>
     <Compile Include="V4\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +89,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="V4\PanelEntry.cs" />
+    <Compile Include="V4\ContentReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\ContentReport.Designer.cs">
+      <DependentUpon>ContentReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="V4\Tools\ContentFAQ.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,8 +130,20 @@
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="V4\ContinentPicker.resx">
+      <DependentUpon>ContinentPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouMap\ContentLMContinent.resx">
+      <DependentUpon>ContentLMContinent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouMap\ContentLMWorld.resx">
+      <DependentUpon>ContentLMWorld.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="V4\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\ContentReport.resx">
+      <DependentUpon>ContentReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="V4\Tools\ContentFAQ.resx">
       <DependentUpon>ContentFAQ.cs</DependentUpon>
@@ -166,6 +202,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
+    <None Include="Resources\LordOfUltima.png" />
+    <None Include="Resources\Refresh-icon.png" />
+    <None Include="Resources\popup_icon.gif" />
     <None Include="Resources\map.png" />
     <None Include="Resources\Zeus_icon.png" />
     <None Include="Resources\icon-tool.png" />
@@ -173,6 +212,7 @@
     <None Include="Resources\icon-about.png" />
     <None Include="logo-LOU.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

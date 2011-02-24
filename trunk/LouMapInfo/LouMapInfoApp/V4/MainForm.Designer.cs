@@ -53,7 +53,12 @@
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuMap);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuZeus);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuOfficial);
-            this.splitContainer1.Size = new System.Drawing.Size(623, 363);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackgroundImage = global::LouMapInfoApp.Properties.Resources.LordOfUltima;
+            this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.splitContainer1.Size = new System.Drawing.Size(784, 562);
             this.splitContainer1.SplitterDistance = 210;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
@@ -66,13 +71,9 @@
             this.lstSubItems.FormattingEnabled = true;
             this.lstSubItems.IntegralHeight = false;
             this.lstSubItems.ItemHeight = 16;
-            this.lstSubItems.Items.AddRange(new object[] {
-            "gnjreo",
-            "njvefo",
-            "jerio"});
             this.lstSubItems.Location = new System.Drawing.Point(2, 280);
             this.lstSubItems.Name = "lstSubItems";
-            this.lstSubItems.Size = new System.Drawing.Size(206, 83);
+            this.lstSubItems.Size = new System.Drawing.Size(206, 282);
             this.lstSubItems.TabIndex = 8;
             this.lstSubItems.SelectedIndexChanged += new System.EventHandler(this.lstSubItems_SelectedIndexChanged);
             // 
@@ -142,10 +143,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 363);
+            this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(639, 401);
+            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "MainForm";
             this.Text = "LoU Map Info";
             this.splitContainer1.Panel1.ResumeLayout(false);

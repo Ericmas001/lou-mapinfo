@@ -14,6 +14,8 @@ namespace LouMapInfoApp
 {
     public partial class ContinentTabPageContent : UserControl
     {
+        private System.Windows.Forms.Timer waitingTimer;
+        private int waitingCounter = 0;
         private Dictionary<int, WorldInfo> worlds;
         public Dictionary<int, WorldInfo> Worlds
         {
@@ -21,10 +23,8 @@ namespace LouMapInfoApp
             set { worlds = value; }
         }
 
-        private System.Windows.Forms.Timer waitingTimer;
-        private int waitingCounter = 0;
-        int world = -1;
         int continent = -1;
+        int world = -1;
         int lvl;
         CityCastleType type = CityCastleType.Both;
         public WorldInfo World

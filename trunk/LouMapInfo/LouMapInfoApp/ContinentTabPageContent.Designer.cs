@@ -29,17 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContinentTabPageContent));
-            this.pnlContent = new System.Windows.Forms.Panel();
-            this.dgvCities = new System.Windows.Forms.DataGridView();
-            this.AllianceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AllianceScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PlayerScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CityX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CityY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CityCastle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CityScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolbarWorld = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.lblImage = new System.Windows.Forms.ToolStripLabel();
+            this.lblLastUpdated = new System.Windows.Forms.ToolStripLabel();
+            this.lblTitLastUpdated = new System.Windows.Forms.ToolStripLabel();
+            this.toolbarContinent = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolbarReports = new System.Windows.Forms.ToolStrip();
             this.btnCityType = new System.Windows.Forms.ToolStripSplitButton();
             this.btnBoth = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,110 +48,92 @@
             this.btnReportContinent = new System.Windows.Forms.ToolStripButton();
             this.btnReportLawless = new System.Windows.Forms.ToolStripButton();
             this.btnReportShrines = new System.Windows.Forms.ToolStripButton();
-            this.toolbarWorld = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.lblImage = new System.Windows.Forms.ToolStripLabel();
-            this.lblLastUpdated = new System.Windows.Forms.ToolStripLabel();
-            this.lblTitLastUpdated = new System.Windows.Forms.ToolStripLabel();
-            this.toolbarContinent = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.pnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
-            this.toolbarReports.SuspendLayout();
+            this.dgvCities = new System.Windows.Forms.DataGridView();
+            this.CityScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CityCastle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CityY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CityX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlayerScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllianceScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllianceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.toolbarWorld.SuspendLayout();
             this.toolbarContinent.SuspendLayout();
+            this.toolbarReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
+            this.pnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnlContent
+            // toolbarWorld
             // 
-            this.pnlContent.Controls.Add(this.dgvCities);
-            this.pnlContent.Controls.Add(this.toolbarReports);
-            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 50);
-            this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(627, 455);
-            this.pnlContent.TabIndex = 7;
-            this.pnlContent.Visible = false;
+            this.toolbarWorld.BackColor = System.Drawing.Color.White;
+            this.toolbarWorld.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolbarWorld.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.lblImage,
+            this.lblLastUpdated,
+            this.lblTitLastUpdated});
+            this.toolbarWorld.Location = new System.Drawing.Point(0, 0);
+            this.toolbarWorld.Name = "toolbarWorld";
+            this.toolbarWorld.Size = new System.Drawing.Size(627, 25);
+            this.toolbarWorld.TabIndex = 8;
+            this.toolbarWorld.Text = "toolStrip2";
             // 
-            // dgvCities
+            // toolStripLabel1
             // 
-            this.dgvCities.AllowUserToAddRows = false;
-            this.dgvCities.AllowUserToDeleteRows = false;
-            this.dgvCities.AllowUserToOrderColumns = true;
-            this.dgvCities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AllianceName,
-            this.AllianceScore,
-            this.PlayerName,
-            this.PlayerScore,
-            this.CityX,
-            this.CityY,
-            this.CityName,
-            this.CityCastle,
-            this.CityScore});
-            this.dgvCities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCities.Location = new System.Drawing.Point(0, 25);
-            this.dgvCities.Name = "dgvCities";
-            this.dgvCities.ReadOnly = true;
-            this.dgvCities.RowHeadersVisible = false;
-            this.dgvCities.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvCities.Size = new System.Drawing.Size(627, 430);
-            this.dgvCities.TabIndex = 9;
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(44, 22);
+            this.toolStripLabel1.Text = "World:";
             // 
-            // AllianceName
+            // lblImage
             // 
-            this.AllianceName.HeaderText = "Alliance Name";
-            this.AllianceName.Name = "AllianceName";
-            this.AllianceName.ReadOnly = true;
+            this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblImage.AutoSize = false;
+            this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
+            this.lblImage.Name = "lblImage";
+            this.lblImage.Size = new System.Drawing.Size(22, 22);
+            this.lblImage.Text = "toolStripLabel1";
             // 
-            // AllianceScore
+            // lblLastUpdated
             // 
-            this.AllianceScore.HeaderText = "Alliance Score";
-            this.AllianceScore.Name = "AllianceScore";
-            this.AllianceScore.ReadOnly = true;
+            this.lblLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblLastUpdated.Name = "lblLastUpdated";
+            this.lblLastUpdated.Size = new System.Drawing.Size(65, 22);
+            this.lblLastUpdated.Text = "2010-00-00";
+            this.lblLastUpdated.Visible = false;
             // 
-            // PlayerName
+            // lblTitLastUpdated
             // 
-            this.PlayerName.HeaderText = "PlayerName";
-            this.PlayerName.Name = "PlayerName";
-            this.PlayerName.ReadOnly = true;
+            this.lblTitLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblTitLastUpdated.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTitLastUpdated.Name = "lblTitLastUpdated";
+            this.lblTitLastUpdated.Size = new System.Drawing.Size(83, 22);
+            this.lblTitLastUpdated.Text = "Last Updated:";
+            this.lblTitLastUpdated.Visible = false;
             // 
-            // PlayerScore
+            // toolbarContinent
             // 
-            this.PlayerScore.HeaderText = "PlayerScore";
-            this.PlayerScore.Name = "PlayerScore";
-            this.PlayerScore.ReadOnly = true;
+            this.toolbarContinent.BackColor = System.Drawing.Color.White;
+            this.toolbarContinent.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolbarContinent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel2});
+            this.toolbarContinent.Location = new System.Drawing.Point(0, 25);
+            this.toolbarContinent.Name = "toolbarContinent";
+            this.toolbarContinent.Size = new System.Drawing.Size(627, 25);
+            this.toolbarContinent.TabIndex = 9;
+            this.toolbarContinent.Text = "toolStrip2";
+            this.toolbarContinent.Visible = false;
             // 
-            // CityX
+            // toolStripLabel2
             // 
-            this.CityX.HeaderText = "X";
-            this.CityX.Name = "CityX";
-            this.CityX.ReadOnly = true;
-            // 
-            // CityY
-            // 
-            this.CityY.HeaderText = "Y";
-            this.CityY.Name = "CityY";
-            this.CityY.ReadOnly = true;
-            // 
-            // CityName
-            // 
-            this.CityName.HeaderText = "Name";
-            this.CityName.Name = "CityName";
-            this.CityName.ReadOnly = true;
-            // 
-            // CityCastle
-            // 
-            this.CityCastle.HeaderText = "Castle";
-            this.CityCastle.Name = "CityCastle";
-            this.CityCastle.ReadOnly = true;
-            // 
-            // CityScore
-            // 
-            this.CityScore.HeaderText = "Score";
-            this.CityScore.Name = "CityScore";
-            this.CityScore.ReadOnly = true;
+            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(65, 22);
+            this.toolStripLabel2.Text = "Continent:";
             // 
             // toolbarReports
             // 
@@ -282,74 +260,96 @@
             this.btnReportShrines.Text = "Shrines";
             this.btnReportShrines.Click += new System.EventHandler(this.btnReportShrines_Click);
             // 
-            // toolbarWorld
+            // dgvCities
             // 
-            this.toolbarWorld.BackColor = System.Drawing.Color.White;
-            this.toolbarWorld.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolbarWorld.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.lblImage,
-            this.lblLastUpdated,
-            this.lblTitLastUpdated});
-            this.toolbarWorld.Location = new System.Drawing.Point(0, 0);
-            this.toolbarWorld.Name = "toolbarWorld";
-            this.toolbarWorld.Size = new System.Drawing.Size(627, 25);
-            this.toolbarWorld.TabIndex = 8;
-            this.toolbarWorld.Text = "toolStrip2";
+            this.dgvCities.AllowUserToAddRows = false;
+            this.dgvCities.AllowUserToDeleteRows = false;
+            this.dgvCities.AllowUserToOrderColumns = true;
+            this.dgvCities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AllianceName,
+            this.AllianceScore,
+            this.PlayerName,
+            this.PlayerScore,
+            this.CityX,
+            this.CityY,
+            this.CityName,
+            this.CityCastle,
+            this.CityScore});
+            this.dgvCities.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCities.Location = new System.Drawing.Point(0, 25);
+            this.dgvCities.Name = "dgvCities";
+            this.dgvCities.ReadOnly = true;
+            this.dgvCities.RowHeadersVisible = false;
+            this.dgvCities.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvCities.Size = new System.Drawing.Size(627, 455);
+            this.dgvCities.TabIndex = 9;
             // 
-            // toolStripLabel1
+            // CityScore
             // 
-            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(44, 22);
-            this.toolStripLabel1.Text = "World:";
+            this.CityScore.HeaderText = "Score";
+            this.CityScore.Name = "CityScore";
+            this.CityScore.ReadOnly = true;
             // 
-            // lblImage
+            // CityCastle
             // 
-            this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblImage.AutoSize = false;
-            this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
-            this.lblImage.Name = "lblImage";
-            this.lblImage.Size = new System.Drawing.Size(22, 22);
-            this.lblImage.Text = "toolStripLabel1";
+            this.CityCastle.HeaderText = "Castle";
+            this.CityCastle.Name = "CityCastle";
+            this.CityCastle.ReadOnly = true;
             // 
-            // lblLastUpdated
+            // CityName
             // 
-            this.lblLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblLastUpdated.Name = "lblLastUpdated";
-            this.lblLastUpdated.Size = new System.Drawing.Size(65, 22);
-            this.lblLastUpdated.Text = "2010-00-00";
-            this.lblLastUpdated.Visible = false;
+            this.CityName.HeaderText = "Name";
+            this.CityName.Name = "CityName";
+            this.CityName.ReadOnly = true;
             // 
-            // lblTitLastUpdated
+            // CityY
             // 
-            this.lblTitLastUpdated.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblTitLastUpdated.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTitLastUpdated.Name = "lblTitLastUpdated";
-            this.lblTitLastUpdated.Size = new System.Drawing.Size(83, 22);
-            this.lblTitLastUpdated.Text = "Last Updated:";
-            this.lblTitLastUpdated.Visible = false;
+            this.CityY.HeaderText = "Y";
+            this.CityY.Name = "CityY";
+            this.CityY.ReadOnly = true;
             // 
-            // toolbarContinent
+            // CityX
             // 
-            this.toolbarContinent.BackColor = System.Drawing.Color.White;
-            this.toolbarContinent.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolbarContinent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel2});
-            this.toolbarContinent.Location = new System.Drawing.Point(0, 25);
-            this.toolbarContinent.Name = "toolbarContinent";
-            this.toolbarContinent.Size = new System.Drawing.Size(627, 25);
-            this.toolbarContinent.TabIndex = 9;
-            this.toolbarContinent.Text = "toolStrip2";
-            this.toolbarContinent.Visible = false;
+            this.CityX.HeaderText = "X";
+            this.CityX.Name = "CityX";
+            this.CityX.ReadOnly = true;
             // 
-            // toolStripLabel2
+            // PlayerScore
             // 
-            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(65, 22);
-            this.toolStripLabel2.Text = "Continent:";
+            this.PlayerScore.HeaderText = "PlayerScore";
+            this.PlayerScore.Name = "PlayerScore";
+            this.PlayerScore.ReadOnly = true;
+            // 
+            // PlayerName
+            // 
+            this.PlayerName.HeaderText = "PlayerName";
+            this.PlayerName.Name = "PlayerName";
+            this.PlayerName.ReadOnly = true;
+            // 
+            // AllianceScore
+            // 
+            this.AllianceScore.HeaderText = "Alliance Score";
+            this.AllianceScore.Name = "AllianceScore";
+            this.AllianceScore.ReadOnly = true;
+            // 
+            // AllianceName
+            // 
+            this.AllianceName.HeaderText = "Alliance Name";
+            this.AllianceName.Name = "AllianceName";
+            this.AllianceName.ReadOnly = true;
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Controls.Add(this.dgvCities);
+            this.pnlContent.Controls.Add(this.toolbarReports);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(0, 25);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(627, 480);
+            this.pnlContent.TabIndex = 7;
+            this.pnlContent.Visible = false;
             // 
             // ContinentTabPageContent
             // 
@@ -360,15 +360,15 @@
             this.Controls.Add(this.toolbarWorld);
             this.Name = "ContinentTabPageContent";
             this.Size = new System.Drawing.Size(627, 505);
-            this.pnlContent.ResumeLayout(false);
-            this.pnlContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).EndInit();
-            this.toolbarReports.ResumeLayout(false);
-            this.toolbarReports.PerformLayout();
             this.toolbarWorld.ResumeLayout(false);
             this.toolbarWorld.PerformLayout();
             this.toolbarContinent.ResumeLayout(false);
             this.toolbarContinent.PerformLayout();
+            this.toolbarReports.ResumeLayout(false);
+            this.toolbarReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).EndInit();
+            this.pnlContent.ResumeLayout(false);
+            this.pnlContent.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,7 +376,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.ToolStrip toolbarWorld;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel lblImage;
+        private System.Windows.Forms.ToolStripLabel lblLastUpdated;
+        private System.Windows.Forms.ToolStripLabel lblTitLastUpdated;
+        private System.Windows.Forms.ToolStrip toolbarContinent;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStrip toolbarReports;
+        private System.Windows.Forms.ToolStripSplitButton btnCityType;
+        private System.Windows.Forms.ToolStripMenuItem btnBoth;
+        private System.Windows.Forms.ToolStripMenuItem btnCastles;
+        private System.Windows.Forms.ToolStripMenuItem btnCities;
+        private System.Windows.Forms.ToolStripSplitButton btnReportsLvl;
+        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl1;
+        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl2;
+        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl3;
+        private System.Windows.Forms.ToolStripButton btnReportContinent;
+        private System.Windows.Forms.ToolStripButton btnReportLawless;
+        private System.Windows.Forms.ToolStripButton btnReportShrines;
         private System.Windows.Forms.DataGridView dgvCities;
         private System.Windows.Forms.DataGridViewTextBoxColumn AllianceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn AllianceScore;
@@ -387,25 +405,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CityName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CityCastle;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityScore;
-        private System.Windows.Forms.ToolStrip toolbarReports;
-        private System.Windows.Forms.ToolStripButton btnReportLawless;
-        private System.Windows.Forms.ToolStripButton btnReportContinent;
-        private System.Windows.Forms.ToolStripButton btnReportShrines;
-        private System.Windows.Forms.ToolStripSplitButton btnCityType;
-        private System.Windows.Forms.ToolStripMenuItem btnBoth;
-        private System.Windows.Forms.ToolStripMenuItem btnCastles;
-        private System.Windows.Forms.ToolStripMenuItem btnCities;
-        private System.Windows.Forms.ToolStripSplitButton btnReportsLvl;
-        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl1;
-        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl2;
-        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl3;
-        private System.Windows.Forms.ToolStrip toolbarWorld;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripLabel lblImage;
-        private System.Windows.Forms.ToolStripLabel lblLastUpdated;
-        private System.Windows.Forms.ToolStripLabel lblTitLastUpdated;
-        private System.Windows.Forms.ToolStrip toolbarContinent;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.Panel pnlContent;
 
     }
 }

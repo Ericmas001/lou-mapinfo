@@ -48,6 +48,8 @@
             this.btnDisplayOptionsPlayerScore = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsAllianceScore = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsAllianceRank = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblImage = new System.Windows.Forms.ToolStripLabel();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.customTabControl1 = new System.Windows.Forms.TabControl();
             this.tpageReport = new System.Windows.Forms.TabPage();
@@ -66,7 +68,6 @@
             this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblImage = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip2.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
@@ -84,10 +85,11 @@
             this.btnCityType,
             this.toolStripSeparator3,
             this.btnDisplayOptions,
-            this.lblImage});
+            this.lblImage,
+            this.btnRefresh});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(707, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(784, 25);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -244,13 +246,35 @@
             this.btnDisplayOptionsAllianceRank.Text = "Alliance Rank";
             this.btnDisplayOptionsAllianceRank.Click += new System.EventHandler(this.btnDisplayOptionsAllianceRank_Click);
             // 
+            // lblImage
+            // 
+            this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblImage.AutoSize = false;
+            this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
+            this.lblImage.Name = "lblImage";
+            this.lblImage.Size = new System.Drawing.Size(22, 22);
+            this.lblImage.Text = "toolStripLabel1";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Image = global::LouMapInfoApp.Properties.Resources.Refresh_icon;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(23, 22);
+            this.btnRefresh.Text = "toolStripButton2";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // pnlContent
             // 
             this.pnlContent.Controls.Add(this.customTabControl1);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 25);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(707, 443);
+            this.pnlContent.Size = new System.Drawing.Size(784, 537);
             this.pnlContent.TabIndex = 2;
             // 
             // customTabControl1
@@ -263,7 +287,7 @@
             this.customTabControl1.Location = new System.Drawing.Point(0, 0);
             this.customTabControl1.Name = "customTabControl1";
             this.customTabControl1.SelectedIndex = 0;
-            this.customTabControl1.Size = new System.Drawing.Size(707, 443);
+            this.customTabControl1.Size = new System.Drawing.Size(784, 537);
             this.customTabControl1.TabIndex = 3;
             // 
             // tpageReport
@@ -272,7 +296,7 @@
             this.tpageReport.Location = new System.Drawing.Point(4, 4);
             this.tpageReport.Name = "tpageReport";
             this.tpageReport.Padding = new System.Windows.Forms.Padding(3);
-            this.tpageReport.Size = new System.Drawing.Size(699, 417);
+            this.tpageReport.Size = new System.Drawing.Size(776, 511);
             this.tpageReport.TabIndex = 0;
             this.tpageReport.Text = "Report";
             this.tpageReport.UseVisualStyleBackColor = true;
@@ -283,8 +307,9 @@
             this.reportBrowser.Location = new System.Drawing.Point(3, 3);
             this.reportBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.reportBrowser.Name = "reportBrowser";
-            this.reportBrowser.Size = new System.Drawing.Size(693, 411);
+            this.reportBrowser.Size = new System.Drawing.Size(770, 505);
             this.reportBrowser.TabIndex = 0;
+            this.reportBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.reportBrowser_DocumentCompleted);
             // 
             // tpageBBCode
             // 
@@ -430,24 +455,15 @@
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
             // 
-            // lblImage
-            // 
-            this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblImage.AutoSize = false;
-            this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
-            this.lblImage.Name = "lblImage";
-            this.lblImage.Size = new System.Drawing.Size(22, 22);
-            this.lblImage.Text = "toolStripLabel1";
-            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 468);
+            this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.toolStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(455, 455);
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Report";
@@ -505,6 +521,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsAllianceScore;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsAllianceRank;
         private System.Windows.Forms.ToolStripLabel lblImage;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
 
     }
 }

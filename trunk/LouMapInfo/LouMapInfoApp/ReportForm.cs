@@ -423,5 +423,19 @@ namespace LouMapInfoApp
                 waitingTimer = null;
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshReport();
+        }
+        private bool already = false;
+        private void reportBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            if (!already)
+            {
+                already = true;
+                RefreshReport();
+            }
+        }
     }
 }
