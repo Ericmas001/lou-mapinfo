@@ -13,7 +13,6 @@ namespace LouMapInfoApp.V4.LouOfficial
 {
     public partial class ContentLouConnection : UserControl
     {
-        private LoUSessionInfo m_Session;
         private V4.MainForm m_Parent;
         public ContentLouConnection(V4.MainForm parent)
         {
@@ -101,6 +100,7 @@ namespace LouMapInfoApp.V4.LouOfficial
             }
             m_Parent.Session = session;
             m_Parent.FillOfficial();
+            EnableAll(true);
         }
     }
 }

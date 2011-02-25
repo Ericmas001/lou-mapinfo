@@ -93,6 +93,12 @@
     <Compile Include="V4\LouOfficial\ContentLouConnection.Designer.cs">
       <DependentUpon>ContentLouConnection.cs</DependentUpon>
     </Compile>
+    <Compile Include="V4\LouOfficial\ContentLoUOfficial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLoUOfficial.Designer.cs">
+      <DependentUpon>ContentLoUOfficial.cs</DependentUpon>
+    </Compile>
     <Compile Include="V4\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="V4\LouOfficial\ContentLouConnection.resx">
       <DependentUpon>ContentLouConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLoUOfficial.resx">
+      <DependentUpon>ContentLoUOfficial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="V4\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

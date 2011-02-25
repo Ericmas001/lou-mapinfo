@@ -88,14 +88,26 @@ namespace LouMapInfoApp.V4
 
         public void FillOfficial()
         {
+            const string CONNECT = "Connection";
             lstSubItems.Items.Clear();
+            string[] keys = new string[tabs.Keys.Count];
+            tabs.Keys.CopyTo(keys, 0);
+            foreach (string k in keys)
+                if (k.StartsWith(btnMenuOfficial.Name) && k != (btnMenuOfficial.Name + "_" + CONNECT))
+                    tabs.Remove(k);
             if (m_Session == null)
             {
-                AddSubItem(btnMenuOfficial, "Connection", new ContentLouConnection(this) );
+                AddSubItem(btnMenuOfficial, CONNECT, new ContentLouConnection(this));
             }
             else
             {
-                AddSubItem(btnMenuOfficial, "Connected", new UserControl());
+                
+                AddSubItem(btnMenuOfficial, m_Session.World.Player(m_Session.PlayerID).Name, new ContentLoUOfficial(this));
+                if( m_Session.AllianceID > 0 )
+                    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this));
+                AddSubItem(btnMenuOfficial, "Players", new ContentLoUOfficial(this));
+                AddSubItem(btnMenuOfficial, "Alliances", new ContentLoUOfficial(this));
+                AddSubItem(btnMenuOfficial, "Continent", new ContentLoUOfficial(this));
             }
             if (lstSubItems.Items.Count > 0)
                 lstSubItems.SelectedIndex = 0;
