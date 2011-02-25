@@ -27,7 +27,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         }
         protected override void OnLoad()
         {
-            title = new LoUPlayerInfoReportItem(player, true);
+            title = new LoUPlayerInfoReportItem(player, -1, true);
             subtitle = new MultiLineReportItem(true,
                     new LoUAllianceInfoReportItem(player.Alliance, true),
                     new TextReportItem("", true),
