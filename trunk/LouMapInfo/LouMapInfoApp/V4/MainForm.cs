@@ -8,11 +8,20 @@ using System.Windows.Forms;
 using LouMapInfoApp.V4.Tools;
 using LouMapInfoApp.V4.LouMap;
 using LouMapInfo.Entities;
+using LouMapInfoApp.V4.LouOfficial;
+using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfoApp.V4
 {
     public partial class MainForm : Form
     {
+        private LoUSessionInfo m_Session = null;
+
+        public LoUSessionInfo Session
+        {
+            get { return m_Session; }
+            set { m_Session = value; }
+        }
         private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
         public Dictionary<string, PanelEntry> tabs = new Dictionary<string, PanelEntry>();
         public MainForm()
@@ -72,10 +81,25 @@ namespace LouMapInfoApp.V4
 
         public void FillZeus()
         {
+            lstSubItems.Items.Clear();
+            if (lstSubItems.Items.Count > 0)
+                lstSubItems.SelectedIndex = 0;
         }
 
         public void FillOfficial()
         {
+            lstSubItems.Items.Clear();
+            if (m_Session == null)
+            {
+                AddSubItem(btnMenuOfficial, "Connection", new ContentLouConnection(this) );
+            }
+            else
+            {
+                AddSubItem(btnMenuOfficial, "Connected", new UserControl());
+            }
+            if (lstSubItems.Items.Count > 0)
+                lstSubItems.SelectedIndex = 0;
+
         }
         private void AddSubItem(RadioButton btn, string name, UserControl defaultPanel)
         {
