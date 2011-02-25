@@ -129,6 +129,12 @@
     <Compile Include="V4\LouOfficial\ContentLouAlliances.Designer.cs">
       <DependentUpon>ContentLouAlliances.cs</DependentUpon>
     </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouRankings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouRankings.Designer.cs">
+      <DependentUpon>ContentLouRankings.cs</DependentUpon>
+    </Compile>
     <Compile Include="V4\LouOfficial\ILouContent.cs" />
     <Compile Include="V4\MainForm.cs">
       <SubType>Form</SubType>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="V4\LouOfficial\ContentLouAlliances.resx">
       <DependentUpon>ContentLouAlliances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLouRankings.resx">
+      <DependentUpon>ContentLouRankings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="V4\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
