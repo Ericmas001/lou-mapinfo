@@ -37,6 +37,9 @@
   <PropertyGroup>
     <ApplicationIcon>icone-LOU.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LouMapInfoApp.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -83,6 +86,12 @@
     </Compile>
     <Compile Include="V4\LouMap\ContentLMWorld.Designer.cs">
       <DependentUpon>ContentLMWorld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouConnection.Designer.cs">
+      <DependentUpon>ContentLouConnection.cs</DependentUpon>
     </Compile>
     <Compile Include="V4\MainForm.cs">
       <SubType>Form</SubType>
@@ -140,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="V4\LouMap\ContentLMWorld.resx">
       <DependentUpon>ContentLMWorld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLouConnection.resx">
+      <DependentUpon>ContentLouConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="V4\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -215,7 +227,6 @@
     <None Include="logo-LOU.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="V4\LouOfficial\" />
     <Folder Include="V4\Zeus\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

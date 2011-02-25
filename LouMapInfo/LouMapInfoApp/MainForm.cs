@@ -14,7 +14,6 @@ namespace LouMapInfoApp
 {
     public partial class MainForm : Form
     {
-        private LoUSessionInfo m_Session = null;
         private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
         public MainForm()
         {
