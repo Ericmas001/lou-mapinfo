@@ -79,7 +79,7 @@ namespace LouMapInfoApp.V4.LouOfficial
             {
                 LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, OldLoUCityType.CityCastlePalace);
                 rep.LoadIfNeeded();
-                OpenReport(rep, 4);
+                OpenReport(rep);
                 ContentEnabling(true);
             }
         }
@@ -100,16 +100,16 @@ namespace LouMapInfoApp.V4.LouOfficial
                 Frame.StartWaiting();
             }
         }
-        public delegate void ReportHandler(ReportInfo r, int lvl);
-        public void OpenReport(ReportInfo r, int lvl)
+        public delegate void ReportHandler(ReportInfo r);
+        public void OpenReport(ReportInfo r)
         {
             if (InvokeRequired)
             {
-                Invoke(new ReportHandler(OpenReport), r, lvl);
+                Invoke(new ReportHandler(OpenReport), r);
                 return;
             }
-            // ReportForm.ShowReport(r, lvl);
-            ContentReport content = new ContentReport(r, lvl);
+            // ReportForm.ShowReport(r, Properties.Settings.Default.lastWDetailLvl);
+            ContentReport content = new ContentReport(r, Properties.Settings.Default.lastWDetailLvl);
             pnlContent.Controls.Add(content);
             content.Dock = DockStyle.Fill;
         }

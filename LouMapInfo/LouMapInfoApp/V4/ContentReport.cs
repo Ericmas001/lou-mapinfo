@@ -20,6 +20,7 @@ namespace LouMapInfoApp.V4
         public ContentReport(ReportInfo r, int d)
         {
             InitializeComponent();
+            r.Type = (CityCastleType)Properties.Settings.Default.lastWCityType;
             CustomTabControl tctl = new CustomTabControl();
             tctl.Controls.Add(this.tpageReport);
             tctl.Controls.Add(this.tpageBBCode);
@@ -64,7 +65,7 @@ namespace LouMapInfoApp.V4
             {
                 case 1: btnReportsLvl1_Click(null, new EventArgs()); break;
                 case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
-                case 3: btnReportsLvl3_Click(null, new EventArgs()); break;
+                case 3: case 4: btnReportsLvl3_Click(null, new EventArgs()); break;
             }
             btnBBCodeB.Checked = Properties.Settings.Default.bbCode_b;
             btnBBCodeI.Checked = Properties.Settings.Default.bbCode_i;
@@ -162,6 +163,9 @@ namespace LouMapInfoApp.V4
         private void btnReportsLvl1_Click(object sender, EventArgs e)
         {
             depth = 1;
+            Properties.Settings.Default.lastWDetailLvl = 1;
+            Properties.Settings.Default.Save();
+            txtBBCode.Text = report.BBCode(depth);
             btnReportsLvl.Text = btnReportsLvl1.Text;
             btnReportsLvl1.Checked = true;
             btnReportsLvl2.Checked = false;
@@ -172,6 +176,8 @@ namespace LouMapInfoApp.V4
         private void btnReportsLvl2_Click(object sender, EventArgs e)
         {
             depth = 2;
+            Properties.Settings.Default.lastWDetailLvl = 2;
+            Properties.Settings.Default.Save();
             btnReportsLvl.Text = btnReportsLvl2.Text;
             btnReportsLvl1.Checked = false;
             btnReportsLvl2.Checked = true;
@@ -185,6 +191,8 @@ namespace LouMapInfoApp.V4
         private void btnReportsLvl3_Click(object sender, EventArgs e)
         {
             depth = 4;
+            Properties.Settings.Default.lastWDetailLvl = 4;
+            Properties.Settings.Default.Save();
             btnReportsLvl.Text = btnReportsLvl3.Text;
             btnReportsLvl1.Checked = false;
             btnReportsLvl2.Checked = false;
@@ -201,6 +209,8 @@ namespace LouMapInfoApp.V4
 
         private void btnBoth_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.lastWCityType = (int)CityCastleType.Both;
+            Properties.Settings.Default.Save();
             btnCityType.Text = btnBoth.Text;
             btnBoth.Checked = true;
             btnCities.Checked = false;
@@ -209,11 +219,14 @@ namespace LouMapInfoApp.V4
             if (sender != null)
             {
                 RefreshReport();
+
             }
         }
 
         private void btnCastles_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.lastWCityType = (int)CityCastleType.Castle;
+            Properties.Settings.Default.Save();
             btnCityType.Text = btnCastles.Text;
             btnBoth.Checked = false;
             btnCities.Checked = false;
@@ -227,6 +240,8 @@ namespace LouMapInfoApp.V4
 
         private void btnCities_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.lastWCityType = (int)CityCastleType.City;
+            Properties.Settings.Default.Save();
             btnCityType.Text = btnCities.Text;
             btnBoth.Checked = false;
             btnCities.Checked = true;

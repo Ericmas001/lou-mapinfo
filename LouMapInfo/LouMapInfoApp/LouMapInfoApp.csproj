@@ -105,18 +105,6 @@
     <Compile Include="V4\LouOfficial\ContentLouPlayers.Designer.cs">
       <DependentUpon>ContentLouPlayers.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouMyPlayer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouMyPlayer.Designer.cs">
-      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouMyAlliance.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouMyAlliance.Designer.cs">
-      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
-    </Compile>
     <Compile Include="V4\LouOfficial\ContentLouAlliances.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,12 +189,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="V4\LouOfficial\ContentLouPlayers.resx">
       <DependentUpon>ContentLouPlayers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLouMyPlayer.resx">
-      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLouMyAlliance.resx">
-      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="V4\LouOfficial\ContentLouAlliances.resx">
       <DependentUpon>ContentLouAlliances.cs</DependentUpon>
