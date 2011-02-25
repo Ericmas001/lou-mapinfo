@@ -40,7 +40,7 @@ namespace LouMapInfo.Reports.OfficialLOU
 
                 foreach (LoUPlayerInfo p in players)
                 {
-                    ReportItem r2 = new LoUPlayerInfoReportItem(p, false);
+                    ReportItem r2 = new LoUPlayerInfoReportItem(p, cont.Id, false);
 
                     //First palaces
                     if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)

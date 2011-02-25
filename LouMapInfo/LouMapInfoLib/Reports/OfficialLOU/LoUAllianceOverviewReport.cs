@@ -41,7 +41,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                     new PlayerCountReportItem(pjs.Length, CityCastleType.Both, false));
                 foreach (LoUPlayerInfo p in pjs)
                 {
-                    ReportItem r2 = new LoUPlayerInfoReportItem(p, false);
+                    ReportItem r2 = new LoUPlayerInfoReportItem(p, ic, false);
 
                     //First palaces
                     if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)

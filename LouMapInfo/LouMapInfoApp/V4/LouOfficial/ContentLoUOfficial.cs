@@ -14,10 +14,20 @@ namespace LouMapInfoApp.V4.LouOfficial
     {
         private System.Windows.Forms.Timer waitingTimer;
         private int waitingCounter = 0;
-        protected V4.MainForm m_Parent;
-        public ContentLoUOfficial(V4.MainForm parent)
+        private V4.MainForm m_Parent;
+
+        public V4.MainForm MainForm
+        {
+            get { return m_Parent; }
+        }
+
+        public ContentLoUOfficial(V4.MainForm parent, ILouContent content)
         {
             m_Parent = parent;
+            content.Frame = this;
+            Control child = content as Control;
+            Controls.Add(child);
+            child.Dock = DockStyle.Fill;
             LoUSessionInfo session = m_Parent.Session;
             InitializeComponent();
             string pName = session.World.Player(session.PlayerID).Name;
@@ -31,7 +41,7 @@ namespace LouMapInfoApp.V4.LouOfficial
             m_Parent.FillOfficial();
         }
         delegate void EmptyHandler();
-        protected void StartWaiting()
+        public void StartWaiting()
         {
             if (InvokeRequired)
             {
@@ -47,7 +57,7 @@ namespace LouMapInfoApp.V4.LouOfficial
                 lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting0;
             }
         }
-        protected void StopWaiting()
+        public void StopWaiting()
         {
             if (InvokeRequired)
             {

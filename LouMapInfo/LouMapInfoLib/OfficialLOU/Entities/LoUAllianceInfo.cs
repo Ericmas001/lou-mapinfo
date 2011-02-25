@@ -75,11 +75,29 @@ namespace LouMapInfo.OfficialLOU.Entities
             {
                 LoUPlayerInfo[] res = new LoUPlayerInfo[m_PlayersByCont[continent].Count];
                 m_PlayersByCont[continent].CopyTo(res, 0);
-                Array.Sort(res);
+                
+                Array.Sort(res, new PlayerContinentCom(continent));
                 Array.Reverse(res);
                 return res;
             }
             return new LoUPlayerInfo[0];
+        }
+
+        class PlayerContinentCom : IComparer<LoUPlayerInfo>
+        {
+            private int m_C;
+            public PlayerContinentCom(int c)
+            {
+                m_C = c;
+            }
+            #region IComparer<LoUPlayerInfo> Members
+
+            public int Compare(LoUPlayerInfo x, LoUPlayerInfo y)
+            {
+                return x.CScore(m_C).CompareTo(y.CScore(m_C));
+            }
+
+            #endregion
         }
         public LoUPlayerInfo[] Players()
         {

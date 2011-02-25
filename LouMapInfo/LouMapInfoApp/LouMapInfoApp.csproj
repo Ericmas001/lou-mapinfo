@@ -99,6 +99,37 @@
     <Compile Include="V4\LouOfficial\ContentLoUOfficial.Designer.cs">
       <DependentUpon>ContentLoUOfficial.cs</DependentUpon>
     </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouPlayers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouPlayers.Designer.cs">
+      <DependentUpon>ContentLouPlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouContinent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouContinent.Designer.cs">
+      <DependentUpon>ContentLouContinent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouMyPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouMyPlayer.Designer.cs">
+      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouMyAlliance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouMyAlliance.Designer.cs">
+      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouAlliances.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ContentLouAlliances.Designer.cs">
+      <DependentUpon>ContentLouAlliances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="V4\LouOfficial\ILouContent.cs" />
     <Compile Include="V4\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +192,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="V4\LouOfficial\ContentLoUOfficial.resx">
       <DependentUpon>ContentLoUOfficial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLouPlayers.resx">
+      <DependentUpon>ContentLouPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLouContinent.resx">
+      <DependentUpon>ContentLouContinent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLouMyPlayer.resx">
+      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLouMyAlliance.resx">
+      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V4\LouOfficial\ContentLouAlliances.resx">
+      <DependentUpon>ContentLouAlliances.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="V4\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
