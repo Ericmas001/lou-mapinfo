@@ -61,7 +61,7 @@ namespace LouMapInfoApp.V4
         {
             if (btn == btnMenuOfficial)
             {
-                FillOfficial();
+                FillOfficial(false);
             }
             else if (btn == btnMenuZeus)
             {
@@ -88,13 +88,20 @@ namespace LouMapInfoApp.V4
 
         public void FillOfficial()
         {
-            const string CONNECT = "Connection";
+            FillOfficial(true);
+        }
+        const string CONNECT = "Connection";
+        private void FillOfficial(bool remove)
+        {
             lstSubItems.Items.Clear();
-            string[] keys = new string[tabs.Keys.Count];
-            tabs.Keys.CopyTo(keys, 0);
-            foreach (string k in keys)
-                if (k.StartsWith(btnMenuOfficial.Name) && k != (btnMenuOfficial.Name + "_" + CONNECT))
-                    tabs.Remove(k);
+            if (remove)
+            {
+                string[] keys = new string[tabs.Keys.Count];
+                tabs.Keys.CopyTo(keys, 0);
+                foreach (string k in keys)
+                    if (k.StartsWith(btnMenuOfficial.Name) && k != (btnMenuOfficial.Name + "_" + CONNECT))
+                        tabs.Remove(k);
+            }
             if (m_Session == null)
             {
                 AddSubItem(btnMenuOfficial, CONNECT, new ContentLouConnection(this));

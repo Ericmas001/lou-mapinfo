@@ -40,7 +40,7 @@ namespace LouMapInfoApp.V4.LouMap
         {
             worlds = w;
             InitializeComponent();
-            lvl = Properties.Settings.Default.lastCDetailLvl;
+            lvl = Properties.Settings.Default.lastWDetailLvl;
 
             //CityCastleType t = (CityCastleType)Properties.Settings.Default.lastCCityType;
             //switch (t)
