@@ -101,10 +101,12 @@ namespace LouMapInfoApp.V4
             }
             else
             {
-
+                /*
                 AddSubItem(btnMenuOfficial, m_Session.World.Player(m_Session.PlayerID).Name, new ContentLoUOfficial(this, new ContentLouMyPlayer()));
                 if( m_Session.AllianceID > 0 )
                     AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance()));
+                */
+                AddSubItem(btnMenuOfficial, "Rankings", new ContentLoUOfficial(this, new ContentLouRankings()));
                 AddSubItem(btnMenuOfficial, "Players", new ContentLoUOfficial(this, new ContentLouPlayers()));
                 AddSubItem(btnMenuOfficial, "Alliances", new ContentLoUOfficial(this, new ContentLouAlliances()));
                 AddSubItem(btnMenuOfficial, "Continent", new ContentLoUOfficial(this, new ContentLouContinent()));
