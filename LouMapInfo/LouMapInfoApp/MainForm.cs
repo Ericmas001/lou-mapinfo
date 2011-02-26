@@ -10,17 +10,25 @@ using LouMapInfoApp.LouMap;
 using LouMapInfo.Entities;
 using LouMapInfoApp.LouOfficial;
 using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Zeus;
+using LouMapInfoApp.Zeus;
 
 namespace LouMapInfoApp
 {
     public partial class MainForm : Form
     {
         private LoUSessionInfo m_Session = null;
+        private ZeusSessionInfo m_ZeusSession = null;
 
         public LoUSessionInfo Session
         {
             get { return m_Session; }
             set { m_Session = value; }
+        }
+        public ZeusSessionInfo ZeusSession
+        {
+            get { return m_ZeusSession; }
+            set { m_ZeusSession = value; }
         }
         private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
         public Dictionary<string, PanelEntry> tabs = new Dictionary<string, PanelEntry>();
@@ -65,7 +73,7 @@ namespace LouMapInfoApp
             }
             else if (btn == btnMenuZeus)
             {
-                FillZeus();
+                FillZeus(false);
             }
             else if (btn == btnMenuMap)
             {
@@ -78,19 +86,40 @@ namespace LouMapInfoApp
                 AddSubItem(btn, "FAQ", new ContentFAQ());
             }
         }
+        const string CONNECT = "Connection";
 
         public void FillZeus()
         {
+            FillZeus(true);
+        }
+        private void FillZeus(bool remove)
+        {
             lstSubItems.Items.Clear();
+            if (remove)
+            {
+                string[] keys = new string[tabs.Keys.Count];
+                tabs.Keys.CopyTo(keys, 0);
+                foreach (string k in keys)
+                    if (k.StartsWith(btnMenuZeus.Name) && k != (btnMenuZeus.Name + "_" + CONNECT))
+                        tabs.Remove(k);
+            }
+            if (m_ZeusSession == null)
+            {
+                AddSubItem(btnMenuZeus, CONNECT, new ContentZeusConnection(this));
+            }
+            else
+            {
+                AddSubItem(btnMenuZeus, "Account", new ContentZeus(this, new ContentZeusAccount()));
+            }
             if (lstSubItems.Items.Count > 0)
                 lstSubItems.SelectedIndex = 0;
+
         }
 
         public void FillOfficial()
         {
             FillOfficial(true);
         }
-        const string CONNECT = "Connection";
         private void FillOfficial(bool remove)
         {
             lstSubItems.Items.Clear();
