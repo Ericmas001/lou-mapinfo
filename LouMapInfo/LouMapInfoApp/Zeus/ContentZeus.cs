@@ -54,7 +54,7 @@ namespace LouMapInfoApp.Zeus
                 waitingTimer.Interval = 100;
                 waitingTimer.Tick += new EventHandler(waitingTimer_Tick);
                 waitingTimer.Start();
-                lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting0;
+                lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting0;
             }
         }
         public void StopWaiting()
@@ -68,7 +68,7 @@ namespace LouMapInfoApp.Zeus
             {
                 waitingTimer.Stop();
                 waitingTimer = null;
-                lblImage.Image = Properties.Resources.Zeus_icon;
+                lblImage.BackgroundImage = Properties.Resources.Zeus_icon;
             }
         }
 
@@ -86,28 +86,28 @@ namespace LouMapInfoApp.Zeus
                 switch (waitingCounter)
                 {
                     case 0:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting0;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting0;
                         break;
                     case 1:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting1;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting1;
                         break;
                     case 2:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting2;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting2;
                         break;
                     case 3:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting3;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting3;
                         break;
                     case 4:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting4;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting4;
                         break;
                     case 5:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting5;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting5;
                         break;
                     case 6:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting6;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting6;
                         break;
                     case 7:
-                        lblImage.Image = EricUtility.Windows.Forms.Properties.Resources.waiting7;
+                        lblImage.BackgroundImage = EricUtility.Windows.Forms.Properties.Resources.waiting7;
                         break;
                 }
             }
