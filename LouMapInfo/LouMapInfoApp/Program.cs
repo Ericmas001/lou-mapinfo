@@ -15,7 +15,7 @@ namespace LouMapInfoApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new V4.MainForm());
+            Application.Run(new MainForm());
         }
     }
 }
