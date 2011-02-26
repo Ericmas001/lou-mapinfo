@@ -1,6 +1,24 @@
 #summary Changelog
 #labels Featured
 ----
+= <p align=center>3.1 => 4.0 (R50 => R82) 2011-02-26</p>= 
+ * *FIX*
+  * On Alliance report, you were getting total score of a player instead of continent score
+  * The "Alliance" section was looking weird if you are not in an alliance.
+  * The Lawless & Moongate reports are removed. They didn't work since last LoU Update.
+    
+ * *The interface got a total new lifting !!*
+  * Sections "LoU Official", "lou-map", "Zeus" and "Tools" are now clearly defined
+  * The about & FAQ page is now better than a simple MessageBox
+  * Picking a continent is now easier with the new ContinentPicker Window
+    
+ * It's now possible to connect with SessionID instead of Mail&Password if you want, both way are available.
+ * A new "Zeus" section is available. As long Zeus is listening, you can register, connect, request password and change your password. It's only the beginning !
+ * Under the "LoU Official > Alliances" section, you can now produce a CSV listing cities of the alliance on each continent.
+
+*Please note* that the Zeus section is there for testing purpose only. It requires that Zeus is up and running and for now it is pretty unlikely.
+
+----
 = <p align=center>3.0 => 3.1 (R46 => R50) 2011-01-29</p>= 
  * It's now possible to connect again to the App. Sorry about that, but last released changed everything ! Thanks to Nateural for the tip !
  * No need to have a browser open to use the App anymore.
