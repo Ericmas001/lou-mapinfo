@@ -343,7 +343,7 @@ namespace LouMapInfoApp.V4
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            ReportForm.ShowReport(report, depth);
+            new ReportForm(report, depth).Show();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

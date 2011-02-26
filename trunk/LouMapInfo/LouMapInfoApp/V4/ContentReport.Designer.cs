@@ -30,34 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentReport));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.pnlContent = new System.Windows.Forms.Panel();
-            this.customTabControl1 = new System.Windows.Forms.TabControl();
-            this.tpageReport = new System.Windows.Forms.TabPage();
-            this.reportBrowser = new System.Windows.Forms.WebBrowser();
-            this.tpageBBCode = new System.Windows.Forms.TabPage();
-            this.txtBBCode = new System.Windows.Forms.TextBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnCopyAllBBCode = new System.Windows.Forms.ToolStripButton();
-            this.btnBBCodeDisplay = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnBBCodeB = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBBCodeU = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBBCodeI = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBBCodeS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBBCodeUrl = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReportsLvl = new System.Windows.Forms.ToolStripSplitButton();
             this.btnReportsLvl1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReportsLvl2 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReportsLvl3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCityType = new System.Windows.Forms.ToolStripSplitButton();
             this.btnBoth = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCastles = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCities = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDisplayOptions = new System.Windows.Forms.ToolStripSplitButton();
             this.btnDisplayOptionsCityCount = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsCityScore = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +50,24 @@
             this.btnDisplayOptionsAllianceRank = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.pnlContent = new System.Windows.Forms.Panel();
+            this.customTabControl1 = new System.Windows.Forms.TabControl();
+            this.tpageReport = new System.Windows.Forms.TabPage();
+            this.reportBrowser = new System.Windows.Forms.WebBrowser();
+            this.tpageBBCode = new System.Windows.Forms.TabPage();
+            this.txtBBCode = new System.Windows.Forms.TextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnCopyAllBBCode = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnBBCodeDisplay = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnBBCodeB = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBBCodeU = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBBCodeI = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBBCodeS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBBCodeUrl = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
@@ -94,17 +94,182 @@
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // btnReportsLvl
+            // 
+            this.btnReportsLvl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReportsLvl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReportsLvl1,
+            this.btnReportsLvl2,
+            this.btnReportsLvl3});
+            this.btnReportsLvl.Image = ((System.Drawing.Image)(resources.GetObject("btnReportsLvl.Image")));
+            this.btnReportsLvl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportsLvl.Name = "btnReportsLvl";
+            this.btnReportsLvl.Size = new System.Drawing.Size(109, 22);
+            this.btnReportsLvl.Text = "Detailed Reports";
+            this.btnReportsLvl.ButtonClick += new System.EventHandler(this.btnReportsLvl_ButtonClick);
+            // 
+            // btnReportsLvl1
+            // 
+            this.btnReportsLvl1.Name = "btnReportsLvl1";
+            this.btnReportsLvl1.Size = new System.Drawing.Size(168, 22);
+            this.btnReportsLvl1.Text = "Global Reports";
+            this.btnReportsLvl1.Click += new System.EventHandler(this.btnReportsLvl1_Click);
+            // 
+            // btnReportsLvl2
+            // 
+            this.btnReportsLvl2.Name = "btnReportsLvl2";
+            this.btnReportsLvl2.Size = new System.Drawing.Size(168, 22);
+            this.btnReportsLvl2.Text = "Summary Reports";
+            this.btnReportsLvl2.Click += new System.EventHandler(this.btnReportsLvl2_Click);
+            // 
+            // btnReportsLvl3
+            // 
+            this.btnReportsLvl3.Checked = true;
+            this.btnReportsLvl3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnReportsLvl3.Name = "btnReportsLvl3";
+            this.btnReportsLvl3.Size = new System.Drawing.Size(168, 22);
+            this.btnReportsLvl3.Text = "Detailed Reports";
+            this.btnReportsLvl3.Click += new System.EventHandler(this.btnReportsLvl3_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // btnCityType
+            // 
+            this.btnCityType.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCityType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnBoth,
+            this.btnCastles,
+            this.btnCities});
+            this.btnCityType.Image = ((System.Drawing.Image)(resources.GetObject("btnCityType.Image")));
+            this.btnCityType.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCityType.Name = "btnCityType";
+            this.btnCityType.Size = new System.Drawing.Size(117, 22);
+            this.btnCityType.Text = "Cities And Castles";
+            this.btnCityType.ButtonClick += new System.EventHandler(this.btnCityType_ButtonClick);
+            // 
+            // btnBoth
+            // 
+            this.btnBoth.Checked = true;
+            this.btnBoth.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnBoth.Name = "btnBoth";
+            this.btnBoth.Size = new System.Drawing.Size(166, 22);
+            this.btnBoth.Text = "Cities and Castles";
+            this.btnBoth.Click += new System.EventHandler(this.btnBoth_Click);
+            // 
+            // btnCastles
+            // 
+            this.btnCastles.Name = "btnCastles";
+            this.btnCastles.Size = new System.Drawing.Size(166, 22);
+            this.btnCastles.Text = "Castles Only";
+            this.btnCastles.Click += new System.EventHandler(this.btnCastles_Click);
+            // 
+            // btnCities
+            // 
+            this.btnCities.Name = "btnCities";
+            this.btnCities.Size = new System.Drawing.Size(166, 22);
+            this.btnCities.Text = "Cities Only";
+            this.btnCities.Click += new System.EventHandler(this.btnCities_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnDisplayOptions
+            // 
+            this.btnDisplayOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnDisplayOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDisplayOptionsCityCount,
+            this.btnDisplayOptionsCityScore,
+            this.btnDisplayOptionsCityName,
+            this.btnDisplayOptionsPlayerCount,
+            this.btnDisplayOptionsPlayerScore,
+            this.btnDisplayOptionsAllianceScore,
+            this.btnDisplayOptionsAllianceRank});
+            this.btnDisplayOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayOptions.Image")));
+            this.btnDisplayOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDisplayOptions.Name = "btnDisplayOptions";
+            this.btnDisplayOptions.Size = new System.Drawing.Size(106, 22);
+            this.btnDisplayOptions.Text = "Display Options";
+            this.btnDisplayOptions.ButtonClick += new System.EventHandler(this.btnDisplayOptions_ButtonClick);
+            // 
+            // btnDisplayOptionsCityCount
+            // 
+            this.btnDisplayOptionsCityCount.Name = "btnDisplayOptionsCityCount";
+            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityCount.Text = "City Count";
+            this.btnDisplayOptionsCityCount.Click += new System.EventHandler(this.btnDisplayOptionsCityCount_Click);
+            // 
+            // btnDisplayOptionsCityScore
+            // 
+            this.btnDisplayOptionsCityScore.Name = "btnDisplayOptionsCityScore";
+            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityScore.Text = "City Score";
+            this.btnDisplayOptionsCityScore.Click += new System.EventHandler(this.btnDisplayOptionsCityScore_Click);
+            // 
+            // btnDisplayOptionsCityName
+            // 
+            this.btnDisplayOptionsCityName.Name = "btnDisplayOptionsCityName";
+            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityName.Text = "City Name";
+            this.btnDisplayOptionsCityName.Click += new System.EventHandler(this.btnDisplayOptionsCityName_Click);
+            // 
+            // btnDisplayOptionsPlayerCount
+            // 
+            this.btnDisplayOptionsPlayerCount.Name = "btnDisplayOptionsPlayerCount";
+            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPlayerCount.Text = "Player Count";
+            this.btnDisplayOptionsPlayerCount.Click += new System.EventHandler(this.btnDisplayOptionsPlayerCount_Click);
+            // 
+            // btnDisplayOptionsPlayerScore
+            // 
+            this.btnDisplayOptionsPlayerScore.Name = "btnDisplayOptionsPlayerScore";
+            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPlayerScore.Text = "Player Score";
+            this.btnDisplayOptionsPlayerScore.Click += new System.EventHandler(this.btnDisplayOptionsPlayerScore_Click);
+            // 
+            // btnDisplayOptionsAllianceScore
+            // 
+            this.btnDisplayOptionsAllianceScore.Name = "btnDisplayOptionsAllianceScore";
+            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsAllianceScore.Text = "Alliance Score";
+            this.btnDisplayOptionsAllianceScore.Click += new System.EventHandler(this.btnDisplayOptionsAllianceScore_Click);
+            // 
+            // btnDisplayOptionsAllianceRank
+            // 
+            this.btnDisplayOptionsAllianceRank.Name = "btnDisplayOptionsAllianceRank";
+            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsAllianceRank.Text = "Alliance Rank";
+            this.btnDisplayOptionsAllianceRank.Click += new System.EventHandler(this.btnDisplayOptionsAllianceRank_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::LouMapInfoApp.Properties.Resources.popup_icon;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Duplicate in a new window";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Image = global::LouMapInfoApp.Properties.Resources.Refresh_icon;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(23, 22);
+            this.btnRefresh.Text = "Refresh Report";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pnlContent
             // 
@@ -189,11 +354,6 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnCopyAllBBCode
             // 
             this.btnCopyAllBBCode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -203,6 +363,11 @@
             this.btnCopyAllBBCode.Size = new System.Drawing.Size(125, 22);
             this.btnCopyAllBBCode.Text = "Copy All to Clipboard";
             this.btnCopyAllBBCode.Click += new System.EventHandler(this.btnCopyAllBBCode_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // btnBBCodeDisplay
             // 
@@ -292,171 +457,6 @@
             this.btnBBCodeAlliance.Size = new System.Drawing.Size(178, 22);
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
-            // 
-            // btnReportsLvl
-            // 
-            this.btnReportsLvl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnReportsLvl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReportsLvl1,
-            this.btnReportsLvl2,
-            this.btnReportsLvl3});
-            this.btnReportsLvl.Image = ((System.Drawing.Image)(resources.GetObject("btnReportsLvl.Image")));
-            this.btnReportsLvl.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReportsLvl.Name = "btnReportsLvl";
-            this.btnReportsLvl.Size = new System.Drawing.Size(109, 22);
-            this.btnReportsLvl.Text = "Detailed Reports";
-            this.btnReportsLvl.ButtonClick += new System.EventHandler(this.btnReportsLvl_ButtonClick);
-            // 
-            // btnReportsLvl1
-            // 
-            this.btnReportsLvl1.Name = "btnReportsLvl1";
-            this.btnReportsLvl1.Size = new System.Drawing.Size(168, 22);
-            this.btnReportsLvl1.Text = "Global Reports";
-            this.btnReportsLvl1.Click += new System.EventHandler(this.btnReportsLvl1_Click);
-            // 
-            // btnReportsLvl2
-            // 
-            this.btnReportsLvl2.Name = "btnReportsLvl2";
-            this.btnReportsLvl2.Size = new System.Drawing.Size(168, 22);
-            this.btnReportsLvl2.Text = "Summary Reports";
-            this.btnReportsLvl2.Click += new System.EventHandler(this.btnReportsLvl2_Click);
-            // 
-            // btnReportsLvl3
-            // 
-            this.btnReportsLvl3.Checked = true;
-            this.btnReportsLvl3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.btnReportsLvl3.Name = "btnReportsLvl3";
-            this.btnReportsLvl3.Size = new System.Drawing.Size(168, 22);
-            this.btnReportsLvl3.Text = "Detailed Reports";
-            this.btnReportsLvl3.Click += new System.EventHandler(this.btnReportsLvl3_Click);
-            // 
-            // btnCityType
-            // 
-            this.btnCityType.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnCityType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnBoth,
-            this.btnCastles,
-            this.btnCities});
-            this.btnCityType.Image = ((System.Drawing.Image)(resources.GetObject("btnCityType.Image")));
-            this.btnCityType.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCityType.Name = "btnCityType";
-            this.btnCityType.Size = new System.Drawing.Size(117, 22);
-            this.btnCityType.Text = "Cities And Castles";
-            this.btnCityType.ButtonClick += new System.EventHandler(this.btnCityType_ButtonClick);
-            // 
-            // btnBoth
-            // 
-            this.btnBoth.Checked = true;
-            this.btnBoth.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.btnBoth.Name = "btnBoth";
-            this.btnBoth.Size = new System.Drawing.Size(166, 22);
-            this.btnBoth.Text = "Cities and Castles";
-            this.btnBoth.Click += new System.EventHandler(this.btnBoth_Click);
-            // 
-            // btnCastles
-            // 
-            this.btnCastles.Name = "btnCastles";
-            this.btnCastles.Size = new System.Drawing.Size(166, 22);
-            this.btnCastles.Text = "Castles Only";
-            this.btnCastles.Click += new System.EventHandler(this.btnCastles_Click);
-            // 
-            // btnCities
-            // 
-            this.btnCities.Name = "btnCities";
-            this.btnCities.Size = new System.Drawing.Size(166, 22);
-            this.btnCities.Text = "Cities Only";
-            this.btnCities.Click += new System.EventHandler(this.btnCities_Click);
-            // 
-            // btnDisplayOptions
-            // 
-            this.btnDisplayOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnDisplayOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDisplayOptionsCityCount,
-            this.btnDisplayOptionsCityScore,
-            this.btnDisplayOptionsCityName,
-            this.btnDisplayOptionsPlayerCount,
-            this.btnDisplayOptionsPlayerScore,
-            this.btnDisplayOptionsAllianceScore,
-            this.btnDisplayOptionsAllianceRank});
-            this.btnDisplayOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDisplayOptions.Image")));
-            this.btnDisplayOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDisplayOptions.Name = "btnDisplayOptions";
-            this.btnDisplayOptions.Size = new System.Drawing.Size(106, 22);
-            this.btnDisplayOptions.Text = "Display Options";
-            this.btnDisplayOptions.ButtonClick += new System.EventHandler(this.btnDisplayOptions_ButtonClick);
-            // 
-            // btnDisplayOptionsCityCount
-            // 
-            this.btnDisplayOptionsCityCount.Name = "btnDisplayOptionsCityCount";
-            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(148, 22);
-            this.btnDisplayOptionsCityCount.Text = "City Count";
-            this.btnDisplayOptionsCityCount.Click += new System.EventHandler(this.btnDisplayOptionsCityCount_Click);
-            // 
-            // btnDisplayOptionsCityScore
-            // 
-            this.btnDisplayOptionsCityScore.Name = "btnDisplayOptionsCityScore";
-            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(148, 22);
-            this.btnDisplayOptionsCityScore.Text = "City Score";
-            this.btnDisplayOptionsCityScore.Click += new System.EventHandler(this.btnDisplayOptionsCityScore_Click);
-            // 
-            // btnDisplayOptionsCityName
-            // 
-            this.btnDisplayOptionsCityName.Name = "btnDisplayOptionsCityName";
-            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(148, 22);
-            this.btnDisplayOptionsCityName.Text = "City Name";
-            this.btnDisplayOptionsCityName.Click += new System.EventHandler(this.btnDisplayOptionsCityName_Click);
-            // 
-            // btnDisplayOptionsPlayerCount
-            // 
-            this.btnDisplayOptionsPlayerCount.Name = "btnDisplayOptionsPlayerCount";
-            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(148, 22);
-            this.btnDisplayOptionsPlayerCount.Text = "Player Count";
-            this.btnDisplayOptionsPlayerCount.Click += new System.EventHandler(this.btnDisplayOptionsPlayerCount_Click);
-            // 
-            // btnDisplayOptionsPlayerScore
-            // 
-            this.btnDisplayOptionsPlayerScore.Name = "btnDisplayOptionsPlayerScore";
-            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(148, 22);
-            this.btnDisplayOptionsPlayerScore.Text = "Player Score";
-            this.btnDisplayOptionsPlayerScore.Click += new System.EventHandler(this.btnDisplayOptionsPlayerScore_Click);
-            // 
-            // btnDisplayOptionsAllianceScore
-            // 
-            this.btnDisplayOptionsAllianceScore.Name = "btnDisplayOptionsAllianceScore";
-            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(148, 22);
-            this.btnDisplayOptionsAllianceScore.Text = "Alliance Score";
-            this.btnDisplayOptionsAllianceScore.Click += new System.EventHandler(this.btnDisplayOptionsAllianceScore_Click);
-            // 
-            // btnDisplayOptionsAllianceRank
-            // 
-            this.btnDisplayOptionsAllianceRank.Name = "btnDisplayOptionsAllianceRank";
-            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(148, 22);
-            this.btnDisplayOptionsAllianceRank.Text = "Alliance Rank";
-            this.btnDisplayOptionsAllianceRank.Click += new System.EventHandler(this.btnDisplayOptionsAllianceRank_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::LouMapInfoApp.Properties.Resources.popup_icon;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRefresh.Image = global::LouMapInfoApp.Properties.Resources.Refresh_icon;
-            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(23, 22);
-            this.btnRefresh.Text = "toolStripButton2";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // ContentReport
             // 
