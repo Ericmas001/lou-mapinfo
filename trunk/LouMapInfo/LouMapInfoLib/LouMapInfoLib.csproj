@@ -111,6 +111,7 @@
     <Compile Include="Zeus\Commands\Identifying\RequestPasswordCommand.cs" />
     <Compile Include="Zeus\Commands\Identifying\RequestPasswordResponse.cs" />
     <Compile Include="Zeus\LobbyTCPClient.cs" />
+    <Compile Include="Zeus\ZeusSessionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections_4.0.csproj">

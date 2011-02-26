@@ -262,5 +262,41 @@ namespace LouMapInfoApp.Properties {
                 this["liveWorld"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string zeusWorld {
+            get {
+                return ((string)(this["zeusWorld"]));
+            }
+            set {
+                this["zeusWorld"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string zeusUsername {
+            get {
+                return ((string)(this["zeusUsername"]));
+            }
+            set {
+                this["zeusUsername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string zeusPassword {
+            get {
+                return ((string)(this["zeusPassword"]));
+            }
+            set {
+                this["zeusPassword"] = value;
+            }
+        }
     }
 }

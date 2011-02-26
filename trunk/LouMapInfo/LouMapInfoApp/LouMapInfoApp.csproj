@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests\LouZeusConnector.cs" />
     <Compile Include="ContinentPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +143,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Zeus\ContentZeusAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Zeus\ContentZeusAccount.Designer.cs">
+      <DependentUpon>ContentZeusAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zeus\ContentZeus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Zeus\ContentZeus.Designer.cs">
+      <DependentUpon>ContentZeus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zeus\ContentZeusConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Zeus\ContentZeusConnection.Designer.cs">
+      <DependentUpon>ContentZeusConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zeus\IZeusContent.cs" />
     <EmbeddedResource Include="ContinentPicker.resx">
       <DependentUpon>ContinentPicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +217,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Zeus\ContentZeusAccount.resx">
+      <DependentUpon>ContentZeusAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zeus\ContentZeus.resx">
+      <DependentUpon>ContentZeus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zeus\ContentZeusConnection.resx">
+      <DependentUpon>ContentZeusConnection.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -245,9 +272,7 @@
     <None Include="Resources\icon-about.png" />
     <None Include="logo-LOU.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Zeus\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
