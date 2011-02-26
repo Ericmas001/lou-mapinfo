@@ -50,143 +50,143 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests\LouZeusConnector.cs" />
-    <Compile Include="V4\ContinentPicker.cs">
+    <Compile Include="ContinentPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="V4\ContinentPicker.Designer.cs">
+    <Compile Include="ContinentPicker.Designer.cs">
       <DependentUpon>ContinentPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\ContentCSV.cs">
+    <Compile Include="ContentCSV.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\ContentCSV.Designer.cs">
+    <Compile Include="ContentCSV.Designer.cs">
       <DependentUpon>ContentCSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouMap\ContentLMContinent.cs">
+    <Compile Include="LouMap\ContentLMContinent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouMap\ContentLMContinent.Designer.cs">
+    <Compile Include="LouMap\ContentLMContinent.Designer.cs">
       <DependentUpon>ContentLMContinent.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouMap\ContentLMWorld.cs">
+    <Compile Include="LouMap\ContentLMWorld.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouMap\ContentLMWorld.Designer.cs">
+    <Compile Include="LouMap\ContentLMWorld.Designer.cs">
       <DependentUpon>ContentLMWorld.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouConnection.cs">
+    <Compile Include="LouOfficial\ContentLouConnection.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouConnection.Designer.cs">
+    <Compile Include="LouOfficial\ContentLouConnection.Designer.cs">
       <DependentUpon>ContentLouConnection.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLoUOfficial.cs">
+    <Compile Include="LouOfficial\ContentLoUOfficial.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLoUOfficial.Designer.cs">
+    <Compile Include="LouOfficial\ContentLoUOfficial.Designer.cs">
       <DependentUpon>ContentLoUOfficial.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouPlayers.cs">
+    <Compile Include="LouOfficial\ContentLouPlayers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouPlayers.Designer.cs">
+    <Compile Include="LouOfficial\ContentLouPlayers.Designer.cs">
       <DependentUpon>ContentLouPlayers.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouAlliances.cs">
+    <Compile Include="LouOfficial\ContentLouAlliances.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouAlliances.Designer.cs">
+    <Compile Include="LouOfficial\ContentLouAlliances.Designer.cs">
       <DependentUpon>ContentLouAlliances.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouRankings.cs">
+    <Compile Include="LouOfficial\ContentLouRankings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouRankings.Designer.cs">
+    <Compile Include="LouOfficial\ContentLouRankings.Designer.cs">
       <DependentUpon>ContentLouRankings.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouContinent.cs">
+    <Compile Include="LouOfficial\ContentLouContinent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\LouOfficial\ContentLouContinent.Designer.cs">
+    <Compile Include="LouOfficial\ContentLouContinent.Designer.cs">
       <DependentUpon>ContentLouContinent.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\LouOfficial\ILouContent.cs" />
-    <Compile Include="V4\MainForm.cs">
+    <Compile Include="LouOfficial\ILouContent.cs" />
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="V4\MainForm.Designer.cs">
+    <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\PanelEntry.cs" />
-    <Compile Include="V4\ContentReport.cs">
+    <Compile Include="PanelEntry.cs" />
+    <Compile Include="ContentReport.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\ContentReport.Designer.cs">
+    <Compile Include="ContentReport.Designer.cs">
       <DependentUpon>ContentReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\ReportForm.cs">
+    <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="V4\ReportForm.Designer.cs">
+    <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\Tools\ContentFAQ.cs">
+    <Compile Include="Tools\ContentFAQ.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\Tools\ContentFAQ.Designer.cs">
+    <Compile Include="Tools\ContentFAQ.Designer.cs">
       <DependentUpon>ContentFAQ.cs</DependentUpon>
     </Compile>
-    <Compile Include="V4\Tools\ContentAbout.cs">
+    <Compile Include="Tools\ContentAbout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="V4\Tools\ContentAbout.Designer.cs">
+    <Compile Include="Tools\ContentAbout.Designer.cs">
       <DependentUpon>ContentAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="V4\ContinentPicker.resx">
+    <EmbeddedResource Include="ContinentPicker.resx">
       <DependentUpon>ContinentPicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\ContentCSV.resx">
+    <EmbeddedResource Include="ContentCSV.resx">
       <DependentUpon>ContentCSV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouMap\ContentLMContinent.resx">
+    <EmbeddedResource Include="LouMap\ContentLMContinent.resx">
       <DependentUpon>ContentLMContinent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouMap\ContentLMWorld.resx">
+    <EmbeddedResource Include="LouMap\ContentLMWorld.resx">
       <DependentUpon>ContentLMWorld.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLouConnection.resx">
+    <EmbeddedResource Include="LouOfficial\ContentLouConnection.resx">
       <DependentUpon>ContentLouConnection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLoUOfficial.resx">
+    <EmbeddedResource Include="LouOfficial\ContentLoUOfficial.resx">
       <DependentUpon>ContentLoUOfficial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLouPlayers.resx">
+    <EmbeddedResource Include="LouOfficial\ContentLouPlayers.resx">
       <DependentUpon>ContentLouPlayers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLouAlliances.resx">
+    <EmbeddedResource Include="LouOfficial\ContentLouAlliances.resx">
       <DependentUpon>ContentLouAlliances.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLouRankings.resx">
+    <EmbeddedResource Include="LouOfficial\ContentLouRankings.resx">
       <DependentUpon>ContentLouRankings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\LouOfficial\ContentLouContinent.resx">
+    <EmbeddedResource Include="LouOfficial\ContentLouContinent.resx">
       <DependentUpon>ContentLouContinent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\MainForm.resx">
+    <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\ContentReport.resx">
+    <EmbeddedResource Include="ContentReport.resx">
       <DependentUpon>ContentReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\ReportForm.resx">
+    <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\Tools\ContentFAQ.resx">
+    <EmbeddedResource Include="Tools\ContentFAQ.resx">
       <DependentUpon>ContentFAQ.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="V4\Tools\ContentAbout.resx">
+    <EmbeddedResource Include="Tools\ContentAbout.resx">
       <DependentUpon>ContentAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -246,7 +246,7 @@
     <None Include="logo-LOU.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="V4\Zeus\" />
+    <Folder Include="Zeus\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
