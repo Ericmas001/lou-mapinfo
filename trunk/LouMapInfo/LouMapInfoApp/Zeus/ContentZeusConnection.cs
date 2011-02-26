@@ -49,7 +49,7 @@ namespace LouMapInfoApp.Zeus
                 Properties.Settings.Default.Save();
                 EnableAll(false);
                 statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.Waiting;
-                ZeusSessionInfo session = new ZeusSessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames1.SelectedItem.ToString(),"127.0.0.1",42042);
+                ZeusSessionInfo session = new ZeusSessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames1.SelectedItem.ToString(), "zeus42.is-a-geek.com", 42042);
                 new Thread(new ParameterizedThreadStart(Connect)).Start(session);
             }
         }
