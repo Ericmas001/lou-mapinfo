@@ -49,26 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContinentTabPageContent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ContinentTabPageContent.Designer.cs">
-      <DependentUpon>ContinentTabPageContent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LiveTabPageContent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LiveTabPageContent.Designer.cs">
-      <DependentUpon>LiveTabPageContent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tests\LouZeusConnector.cs" />
-    <Compile Include="Tests\LouCsvMaker.cs" />
     <Compile Include="V4\ContinentPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +124,12 @@
     <Compile Include="V4\ContentReport.Designer.cs">
       <DependentUpon>ContentReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="V4\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="V4\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="V4\Tools\ContentFAQ.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,29 +142,8 @@
     <Compile Include="V4\Tools\ContentAbout.Designer.cs">
       <DependentUpon>ContentAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorldTabPageContent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorldTabPageContent.Designer.cs">
-      <DependentUpon>WorldTabPageContent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ContinentTabPageContent.resx">
-      <DependentUpon>ContinentTabPageContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LiveTabPageContent.resx">
-      <DependentUpon>LiveTabPageContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="V4\ContinentPicker.resx">
       <DependentUpon>ContinentPicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,17 +180,14 @@
     <EmbeddedResource Include="V4\ContentReport.resx">
       <DependentUpon>ContentReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="V4\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="V4\Tools\ContentFAQ.resx">
       <DependentUpon>ContentFAQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="V4\Tools\ContentAbout.resx">
       <DependentUpon>ContentAbout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorldTabPageContent.resx">
-      <DependentUpon>WorldTabPageContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -130,7 +130,7 @@ namespace LouMapInfoApp.V4.LouOfficial
                 Invoke(new ReportHandler(OpenReport), r, lvl);
                 return;
             }
-            ReportForm.ShowReport(r, lvl);
+            new ReportForm(r, lvl).Show();
             //ContentReport content = new ContentReport(r, lvl);
             //pnlContent.Controls.Add(content);
             //content.Dock = DockStyle.Fill;
