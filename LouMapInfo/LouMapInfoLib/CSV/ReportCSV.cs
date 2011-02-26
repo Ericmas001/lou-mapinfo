@@ -20,6 +20,11 @@ namespace LouMapInfo.CSV
         {
         }
 
+        public virtual string RawFile()
+        {
+            return "";
+        }
+
         public void ProduceReport(string filename, bool silent)
         {
             m_Silent = silent;

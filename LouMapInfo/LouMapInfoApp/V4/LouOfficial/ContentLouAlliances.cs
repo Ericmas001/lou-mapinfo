@@ -9,6 +9,7 @@ using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Reports.core;
 using LouMapInfo.Reports.OfficialLOU;
 using System.Threading;
+using LouMapInfo.CSV;
 
 namespace LouMapInfoApp.V4.LouOfficial
 {
@@ -30,12 +31,15 @@ namespace LouMapInfoApp.V4.LouOfficial
                 {
                     string aName = Session.World.Alliance(Session.AllianceID).Name;
                     btnAllianceReportMe.Text = aName;
+                    btnCSVCityListMe.Text = aName;
+                    tbCSVCityList.Visible = true;
                 }
                 else
                 {
                     btnAllianceReportMe.Visible = false;
                     famousSeparator.Visible = false;
                     lblOther.Visible = false;
+                    tbCSVCityList.Visible = false;
                 }
             }
         }
@@ -92,6 +96,7 @@ namespace LouMapInfoApp.V4.LouOfficial
                 return;
             }
             tbReportAllianceOverview.Enabled = value;
+            tbCSVCityList.Enabled = value;
             if (value)
                 Frame.StopWaiting();
             else
@@ -110,6 +115,64 @@ namespace LouMapInfoApp.V4.LouOfficial
             }
             // ReportForm.ShowReport(r, Properties.Settings.Default.lastWDetailLvl);
             ContentReport content = new ContentReport(r, Properties.Settings.Default.lastWDetailLvl);
+            pnlContent.Controls.Add(content);
+            content.Dock = DockStyle.Fill;
+        }
+
+        private void btnCSVCityListOther_Click(object sender, EventArgs e)
+        {
+            OpenCityListCSV(txtAllianceReportOther.Text);
+        }
+
+        private void btnCSVCityListMe_Click(object sender, EventArgs e)
+        {
+            OpenCityListCSV(Session.AllianceID);
+        }
+
+        private void btnCSVCityListNoAlliance_Click(object sender, EventArgs e)
+        {
+            OpenCityListCSV("");
+        }
+        private void OpenCityListCSV(object a)
+        {
+            ContentEnabling(false);
+            if (saveFileDialogCSV.ShowDialog() == DialogResult.OK)
+            {
+                string csvName = saveFileDialogCSV.FileName;
+                if (!csvName.EndsWith(".csv"))
+                    csvName = csvName + ".csv";
+                new Thread(new ParameterizedThreadStart(OpenCityListCSVAsync)).Start(new KeyValuePair<object,string>(a,csvName));
+            }
+        }
+
+        private void OpenCityListCSVAsync(object o)
+        {
+            KeyValuePair<object, string> kvp = (KeyValuePair<object, string>)o;
+            LoUAllianceInfo a = null;
+            if (kvp.Key is int)
+                a = Session.World.Alliance((int)kvp.Key);
+            else if (kvp.Key is string)
+                a = Session.World.Alliance((string)kvp.Key);
+
+            if (a == null)
+                ContentEnabling(true);
+            else
+            {
+                AllianceCitiesListCSV csv = new AllianceCitiesListCSV(a);
+                csv.ProduceReport(kvp.Value, true);
+                OpenCSV(csv,kvp.Value);
+                ContentEnabling(true);
+            }
+        }
+        public delegate void CSVHandler(ReportCSV r, string filename);
+        public void OpenCSV(ReportCSV r, string filename)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new CSVHandler(OpenCSV), r, filename);
+                return;
+            }
+            ContentCSV content = new ContentCSV(r, filename);
             pnlContent.Controls.Add(content);
             content.Dock = DockStyle.Fill;
         }

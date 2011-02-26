@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.OfficialLOU.Entities;
 using System.Globalization;
+using System.IO;
 
 namespace LouMapInfo.CSV
 {
@@ -64,6 +65,21 @@ namespace LouMapInfo.CSV
 
                 LogLine(" done !", ConsoleColor.Green);
             }
+        }
+        public override string RawFile()
+        {
+            StringWriter sw = new StringWriter();
+            foreach (string[] li in m_Lines)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (string s in li)
+                {
+                    sb.Append(s);
+                    sb.Append(";");
+                }
+                sw.WriteLine(sb.ToString());
+            }
+            return sw.ToString();
         }
         protected override void WriteCSV(System.IO.StreamWriter sw)
         {

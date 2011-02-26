@@ -109,6 +109,13 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Office_excel_csv_icon {
+            get {
+                object obj = ResourceManager.GetObject("Office_excel_csv_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap popup_icon {
             get {
                 object obj = ResourceManager.GetObject("popup_icon", resourceCulture);
