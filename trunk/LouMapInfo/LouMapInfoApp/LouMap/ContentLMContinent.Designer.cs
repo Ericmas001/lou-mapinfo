@@ -126,8 +126,9 @@
             // 
             this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.lblImage.AutoSize = false;
+            this.lblImage.BackgroundImage = global::LouMapInfoApp.Properties.Resources.map;
+            this.lblImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
             this.lblImage.Name = "lblImage";
             this.lblImage.Size = new System.Drawing.Size(22, 22);
             this.lblImage.Text = "toolStripLabel1";
