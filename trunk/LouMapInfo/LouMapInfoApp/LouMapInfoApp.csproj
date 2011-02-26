@@ -75,6 +75,12 @@
     <Compile Include="V4\ContinentPicker.Designer.cs">
       <DependentUpon>ContinentPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="V4\ContentCSV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="V4\ContentCSV.Designer.cs">
+      <DependentUpon>ContentCSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="V4\LouMap\ContentLMContinent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     <EmbeddedResource Include="V4\ContinentPicker.resx">
       <DependentUpon>ContinentPicker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="V4\ContentCSV.resx">
+      <DependentUpon>ContentCSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="V4\LouMap\ContentLMContinent.resx">
       <DependentUpon>ContentLMContinent.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
+    <None Include="Resources\Office-excel-csv-icon.png" />
     <None Include="Resources\LordOfUltima.png" />
     <None Include="Resources\Refresh-icon.png" />
     <None Include="Resources\popup_icon.gif" />
