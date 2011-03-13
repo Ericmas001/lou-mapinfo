@@ -38,6 +38,9 @@ namespace LouMapInfo.OfficialLOU
             m_Servers.Add("World 22 (Australia)", "http://prodgame04.lordofultima.com/34");
             m_Servers.Add("World 23 (Europe)", "http://prodgame01.lordofultima.com/35");
             m_Servers.Add("World 24 (USA East Coast)", "http://prodgame06.lordofultima.com/38");
+            m_Servers.Add("World 25 (USA West Coast)", "http://prodgame02.lordofultima.com/39");
+            m_Servers.Add("World 26 (Australia)", "http://prodgame03.lordofultima.com/40");
+            m_Servers.Add("World 27 (Europe)", "http://prodgame08.lordofultima.com/41");
             m_Servers.Add("Castle 1", "http://prodgame03.lordofultima.com/37");
             m_Servers.Add("(de) Welt 1", "http://prodgame07.lordofultima.com/4");
             m_Servers.Add("(de) Welt 2", "http://prodgame03.lordofultima.com/13");
