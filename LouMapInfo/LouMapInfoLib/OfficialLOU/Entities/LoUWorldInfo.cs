@@ -83,7 +83,7 @@ namespace LouMapInfo.OfficialLOU.Entities
             }
             m_PlayersById[m_Session.PlayerID].ForceLoad();
             string[] vkeys = new string[] { "c", "o", "h", "u", "ju", "f", "s", "v" };
-            foreach (int k in LoUVirtues.VirtuesNames.Keys)
+            foreach (int k in LoUVirtueList.VirtuesNames.Keys)
                 m_PalacesOwnersByVirtue.Add(k, new List<string>());
             JsonArrayCollection jac = LoUEndPoint.GetPlayersWithPalace(Session.World.Url, Session.SessionID);
             foreach (JsonObjectCollection p in jac)
@@ -284,7 +284,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public string[] PalacesOwnersByVirtue(string vname)
         {
-            return PalacesOwnersByVirtue(LoUVirtues.VirtuesIDs[vname]);
+            return PalacesOwnersByVirtue(LoUVirtueList.VirtuesIDs[vname]);
         }
         public string[] PalacesOwnersByAlliance(string a)
         {
