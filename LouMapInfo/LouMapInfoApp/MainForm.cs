@@ -146,6 +146,8 @@ namespace LouMapInfoApp
                 AddSubItem(btnMenuOfficial, "Players", new ContentLoUOfficial(this, new ContentLouPlayers()));
                 AddSubItem(btnMenuOfficial, "Alliances", new ContentLoUOfficial(this, new ContentLouAlliances()));
                 AddSubItem(btnMenuOfficial, "Continent", new ContentLoUOfficial(this, new ContentLouContinent()));
+                AddSubItem(btnMenuOfficial, "Virtues", new ContentLoUOfficial(this, new ContentLouVirtues()));
+                AddSubItem(btnMenuOfficial, "Groups", new ContentLoUOfficial(this, new ContentLouGroups()));
             }
             if (lstSubItems.Items.Count > 0)
                 lstSubItems.SelectedIndex = 0;

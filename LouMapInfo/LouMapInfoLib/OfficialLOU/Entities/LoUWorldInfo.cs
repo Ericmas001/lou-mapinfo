@@ -22,7 +22,9 @@ namespace LouMapInfo.OfficialLOU.Entities
         private readonly Dictionary<int, List<LoUShrineInfo>> m_ShrinesByCont = new Dictionary<int, List<LoUShrineInfo>>();
         private readonly Dictionary<LoUShrineType, List<LoUShrineInfo>> m_ShrinesByVirtue = new Dictionary<LoUShrineType, List<LoUShrineInfo>>();
         private readonly Dictionary<int, List<LoUMoonGateInfo>> m_MoonGatesByCont = new Dictionary<int, List<LoUMoonGateInfo>>();
-
+        private readonly Dictionary<int, List<string>> m_PalacesOwnersByVirtue = new Dictionary<int, List<string>>();
+        private readonly Dictionary<string, List<string>> m_PalacesOwnersByAlliance = new Dictionary<string, List<string>>();
+            
         public LoUSessionInfo Session { get { return m_Session; } }
         public string Url { get { return m_Url; } }
         public string Name { get { return m_Name; } }
@@ -80,6 +82,23 @@ namespace LouMapInfo.OfficialLOU.Entities
                 }
             }
             m_PlayersById[m_Session.PlayerID].ForceLoad();
+            string[] vkeys = new string[] { "c", "o", "h", "u", "ju", "f", "s", "v" };
+            foreach (int k in LoUVirtues.VirtuesNames.Keys)
+                m_PalacesOwnersByVirtue.Add(k, new List<string>());
+            JsonArrayCollection jac = LoUEndPoint.GetPlayersWithPalace(Session.World.Url, Session.SessionID);
+            foreach (JsonObjectCollection p in jac)
+            {
+                string name = ((JsonStringValue)p["n"]).Value;
+                string alliance = ((JsonStringValue)p["a"]).Value;
+                if (!m_PalacesOwnersByAlliance.ContainsKey(alliance))
+                    m_PalacesOwnersByAlliance.Add(alliance, new List<string>());
+                m_PalacesOwnersByAlliance[alliance].Add(name);
+                for (int i = 0; i < 8; ++i)
+                {
+                    if (((JsonNumericValue)p[vkeys[i]]).Value > 0)
+                        m_PalacesOwnersByVirtue[i + 1].Add(name);
+                }
+            }
         }
         public void LoadVis()
         {
@@ -255,6 +274,28 @@ namespace LouMapInfo.OfficialLOU.Entities
                     res.Add(i, cs);
                 }
             }
+            return res;
+        }
+        public string[] PalacesOwnersByVirtue(int vid)
+        {
+            string[] res = new string[m_PalacesOwnersByVirtue[vid].Count];
+            m_PalacesOwnersByVirtue[vid].CopyTo(res);
+            return res;
+        }
+        public string[] PalacesOwnersByVirtue(string vname)
+        {
+            return PalacesOwnersByVirtue(LoUVirtues.VirtuesIDs[vname]);
+        }
+        public string[] PalacesOwnersByAlliance(string a)
+        {
+            string[] res = new string[m_PalacesOwnersByAlliance[a].Count];
+            m_PalacesOwnersByAlliance[a].CopyTo(res);
+            return res;
+        }
+        public string[] PalacesOwnersAlliances()
+        {
+            string[] res = new string[m_PalacesOwnersByAlliance.Keys.Count];
+            m_PalacesOwnersByAlliance.Keys.CopyTo(res,0);
             return res;
         }
     }

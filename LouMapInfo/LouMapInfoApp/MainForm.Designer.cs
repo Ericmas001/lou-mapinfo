@@ -58,7 +58,7 @@
             // 
             this.splitContainer1.Panel2.BackgroundImage = global::LouMapInfoApp.Properties.Resources.LordOfUltima;
             this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.splitContainer1.Size = new System.Drawing.Size(784, 562);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 562);
             this.splitContainer1.SplitterDistance = 210;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
@@ -143,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(700, 500);

@@ -109,6 +109,18 @@
     <Compile Include="LouOfficial\ContentLouContinent.Designer.cs">
       <DependentUpon>ContentLouContinent.cs</DependentUpon>
     </Compile>
+    <Compile Include="LouOfficial\ContentLouVirtues.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LouOfficial\ContentLouVirtues.Designer.cs">
+      <DependentUpon>ContentLouVirtues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LouOfficial\ContentLouGroups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LouOfficial\ContentLouGroups.Designer.cs">
+      <DependentUpon>ContentLouGroups.cs</DependentUpon>
+    </Compile>
     <Compile Include="LouOfficial\ILouContent.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -191,6 +203,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LouOfficial\ContentLouContinent.resx">
       <DependentUpon>ContentLouContinent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LouOfficial\ContentLouVirtues.resx">
+      <DependentUpon>ContentLouVirtues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LouOfficial\ContentLouGroups.resx">
+      <DependentUpon>ContentLouGroups.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

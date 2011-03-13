@@ -65,10 +65,12 @@
     <Compile Include="OfficialLOU\LoUServerList.cs" />
     <Compile Include="OfficialLOU\Entities\LoUSessionInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUWorldInfo.cs" />
+    <Compile Include="OfficialLOU\LoUVirtues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
     <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
+    <Compile Include="Reports\OfficialLOU\LoUSingleVirtuePalaceReport.cs" />
     <Compile Include="Reports\OfficialLOU\LoUMoongatesReport.cs" />
     <Compile Include="Reports\OfficialLOU\LoULawlessReport.cs" />
     <Compile Include="Reports\OfficialLOU\LoUContinentOverviewReport.cs" />

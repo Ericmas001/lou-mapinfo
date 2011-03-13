@@ -58,7 +58,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "LoU Map Info 4.0";
+            this.label1.Text = "LoU Map Info 4.1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlContent
@@ -288,6 +288,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Name = "ContentAbout";
             this.Size = new System.Drawing.Size(358, 315);
             this.pnlContent.ResumeLayout(false);

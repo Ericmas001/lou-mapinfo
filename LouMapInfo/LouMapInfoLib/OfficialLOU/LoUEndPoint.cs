@@ -125,5 +125,20 @@ namespace LouMapInfo.OfficialLOU
             args.Add(new JsonNumericValue("id", id));
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
+
+        public static JsonArrayCollection GetPlayersWithPalace(string baseurl, string session)
+        {
+            string endpoint = "PlayerGetRange";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonNumericValue("start", 0));
+            args.Add(new JsonNumericValue("end", 999999999));
+            args.Add(new JsonNumericValue("continent", -1));
+            args.Add(new JsonStringValue("sort", "18"));
+            args.Add(new JsonBooleanValue("ascending", true));
+            args.Add(new JsonStringValue("type", "7"));
+            JsonObject jo = Query(baseurl, endpoint, args);
+            return (JsonArrayCollection)jo;
+        }
     }
 }
