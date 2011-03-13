@@ -70,6 +70,7 @@ namespace LouMapInfo.Reports.core
                 sb.Append(String.Format("<center><h1>{0}</h1></center>", title.Value(options)));
             if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
                 sb.Append(String.Format("<center><h2>{0}</h2></center>", subtitle.Value(options)));
+            sb.Append(String.Format("<p align=\"right\">{0:yyyy}-{0:MM}-{0:dd}</p>", DateTime.Now));
             foreach (ReportItem it1 in root)
             {
                 if (it1.ShowEmpty || it1.Items.Count > 0)
@@ -133,6 +134,8 @@ namespace LouMapInfo.Reports.core
                 sb.Append(String.Format("[b][u]{0}[/b][/u]\n", title.Value(options)));
             if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
                 sb.Append(String.Format("[b]{0}[/b]\n", subtitle.Value(options)));
+            sb.Append("\n");
+            sb.Append(String.Format("{0:yyyy}-{0:MM}-{0:dd}", DateTime.Now));
             sb.Append("\n");
             foreach (ReportItem it1 in root)
             {
