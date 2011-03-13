@@ -31,11 +31,43 @@ namespace LouMapInfo.Reports.OfficialLOU
         protected override void OnLoad()
         {
             title = new TextReportItem(virtue + " Overview", true);
-            string[] players = world.PalacesOwnersByVirtue(virtue);
-            ReportItem r = new TextReportItem("Player List", true);
+            int vid = LoUVirtueList.VirtuesIDs[virtue];
+            string[] players = world.PalacesOwnersByVirtue(vid);
+            ReportItem r0 = new TextReportItem("Player List", true);
+            Dictionary<int, List<LoUCityInfo>> palaces = new Dictionary<int, List<LoUCityInfo>>();
+            for (int i = 10; i > 0; --i)
+                palaces.Add(i, new List<LoUCityInfo>());
             foreach (string p in players)
-                r.Items.Add(new TextReportItem(p,true));
-            root.Add(r);
+            {
+                LoUPlayerInfo pl = world.Player(p);
+                pl.LoadIfNeeded();
+                ReportItem r2 = new LoUPlayerInfoReportItem(pl, -1, true);
+                foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
+                {
+                    city.LoadIfNeeded();
+                    if (city.VirtueType == vid)
+                        palaces[city.PalaceLvl].Add(city);
+                }
+                r0.Items.Add(r2);
+            }
+            //root.Add(r0);
+            for (int i = 10; i > 0; --i)
+            {
+                if (palaces[i].Count > 0)
+                {
+                    ReportItem r = new TextReportItem("Level " + i + " Palaces", false);
+                    LoUCityInfo[] cities = new LoUCityInfo[palaces[i].Count];
+                    palaces[i].CopyTo(cities);
+                    Array.Sort(cities);
+                    Array.Reverse(cities);
+                    foreach (LoUCityInfo info in cities)
+                    {
+                        ReportItem r2 = new LoUCityInfoReportItem(info, true, true);
+                        r.Items.Add(r2);
+                    }
+                    root.Add(r);
+                }
+            }
             //subtitle = new TextReportItem(LoUReportUtility.SayCityType(LoUType), true);
 
             //for (int i = 0; i < cont.Alliances.Length; ++i)

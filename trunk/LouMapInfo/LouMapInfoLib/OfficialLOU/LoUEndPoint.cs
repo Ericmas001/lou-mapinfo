@@ -140,5 +140,14 @@ namespace LouMapInfo.OfficialLOU
             JsonObject jo = Query(baseurl, endpoint, args);
             return (JsonArrayCollection)jo;
         }
+
+        public static JsonObjectCollection GetPublicCityInfo(string baseurl, string session, int idCity)
+        {
+            string endpoint = "GetPublicCityInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonNumericValue("id", idCity));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
     }
 }

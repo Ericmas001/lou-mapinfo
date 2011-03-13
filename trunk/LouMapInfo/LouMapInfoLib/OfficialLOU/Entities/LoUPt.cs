@@ -41,7 +41,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public override string ToString()
         {
-            return m_x + ":" + m_y;
+            return String.Format(" {0:000}:{1:000} ", m_x, m_y);
         }
     }
 }
