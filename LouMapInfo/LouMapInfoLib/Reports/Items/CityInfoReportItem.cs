@@ -8,7 +8,7 @@ namespace LouMapInfo.Reports.Items
 {
     public class CityInfoReportItem : ReportItem
     {
-        private CityInfo m_Info;
+        protected CityInfo m_Info;
 
         public CityInfoReportItem(CityInfo info, bool showIfEmpty)
             : base(showIfEmpty)

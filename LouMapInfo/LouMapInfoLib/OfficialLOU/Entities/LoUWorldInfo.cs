@@ -22,7 +22,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         private readonly Dictionary<int, List<LoUShrineInfo>> m_ShrinesByCont = new Dictionary<int, List<LoUShrineInfo>>();
         private readonly Dictionary<LoUShrineType, List<LoUShrineInfo>> m_ShrinesByVirtue = new Dictionary<LoUShrineType, List<LoUShrineInfo>>();
         private readonly Dictionary<int, List<LoUMoonGateInfo>> m_MoonGatesByCont = new Dictionary<int, List<LoUMoonGateInfo>>();
-        private readonly Dictionary<int, List<string>> m_PalacesOwnersByVirtue = new Dictionary<int, List<string>>();
+        private readonly Dictionary<LoUVirtue, List<string>> m_PalacesOwnersByVirtue = new Dictionary<LoUVirtue, List<string>>();
         private readonly Dictionary<string, List<string>> m_PalacesOwnersByAlliance = new Dictionary<string, List<string>>();
             
         public LoUSessionInfo Session { get { return m_Session; } }
@@ -83,8 +83,8 @@ namespace LouMapInfo.OfficialLOU.Entities
             }
             m_PlayersById[m_Session.PlayerID].ForceLoad();
             string[] vkeys = new string[] { "c", "o", "h", "u", "ju", "f", "s", "v" };
-            foreach (int k in LoUVirtueList.VirtuesNames.Keys)
-                m_PalacesOwnersByVirtue.Add(k, new List<string>());
+            for( int k = 1; k <= 8; ++k)
+                m_PalacesOwnersByVirtue.Add((LoUVirtue)k, new List<string>());
             JsonArrayCollection jac = LoUEndPoint.GetPlayersWithPalace(Session.World.Url, Session.SessionID);
             foreach (JsonObjectCollection p in jac)
             {
@@ -96,7 +96,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 for (int i = 0; i < 8; ++i)
                 {
                     if (((JsonNumericValue)p[vkeys[i]]).Value > 0)
-                        m_PalacesOwnersByVirtue[i + 1].Add(name);
+                        m_PalacesOwnersByVirtue[(LoUVirtue)(i + 1)].Add(name);
                 }
             }
         }
@@ -276,15 +276,11 @@ namespace LouMapInfo.OfficialLOU.Entities
             }
             return res;
         }
-        public string[] PalacesOwnersByVirtue(int vid)
+        public string[] PalacesOwnersByVirtue(LoUVirtue vid)
         {
             string[] res = new string[m_PalacesOwnersByVirtue[vid].Count];
             m_PalacesOwnersByVirtue[vid].CopyTo(res);
             return res;
-        }
-        public string[] PalacesOwnersByVirtue(string vname)
-        {
-            return PalacesOwnersByVirtue(LoUVirtueList.VirtuesIDs[vname]);
         }
         public string[] PalacesOwnersByAlliance(string a)
         {

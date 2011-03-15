@@ -141,7 +141,8 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUSingleVirtuePalaceReport rep = new LoUSingleVirtuePalaceReport(Session.World, v);
+                LoUVirtue virtue = (LoUVirtue)Enum.Parse(typeof(LoUVirtue), v);
+                LoUSingleVirtuePalaceReport rep = new LoUSingleVirtuePalaceReport(Session.World, virtue);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);
