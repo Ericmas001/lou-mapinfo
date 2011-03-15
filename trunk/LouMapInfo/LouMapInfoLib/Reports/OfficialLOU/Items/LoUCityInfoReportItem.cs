@@ -10,7 +10,6 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
     public class LoUCityInfoReportItem : ReportItem
     {
         protected LoUCityInfo m_Info;
-        private bool m_Extended;
 
         public LoUCityInfoReportItem(LoUCityInfo info, bool showIfEmpty)
             : base(showIfEmpty)
