@@ -124,29 +124,34 @@ namespace LouMapInfoApp.LouOfficial
 
         private void btnSingleVirtueReport_Click(object sender, EventArgs e)
         {
-            OpenSingleVirtueReport(((ToolStripButton)sender).Text);
+            OpenVirtueReport(((ToolStripButton)sender).Text);
         }
 
-        private void OpenSingleVirtueReport(string v)
+        private void OpenVirtueReport(string v)
         {
             ContentEnabling(false);
-            new Thread(new ParameterizedThreadStart(OpenSingleVirtueReportAsync)).Start(v);
+            new Thread(new ParameterizedThreadStart(OpenVirtueReportAsync)).Start(v);
         }
 
-        private void OpenSingleVirtueReportAsync(object o)
+        private void OpenVirtueReportAsync(object o)
         {
             string v = o as string;
+            LoUVirtue virtue;
 
             if (String.IsNullOrEmpty(v))
-                ContentEnabling(true);
+                virtue = LoUVirtue.None;
             else
-            {
-                LoUVirtue virtue = (LoUVirtue)Enum.Parse(typeof(LoUVirtue), v);
-                LoUSingleVirtuePalaceReport rep = new LoUSingleVirtuePalaceReport(Session.World, virtue);
-                rep.LoadIfNeeded();
-                OpenReport(rep);
-                ContentEnabling(true);
-            }
+                virtue = (LoUVirtue)Enum.Parse(typeof(LoUVirtue), v);
+
+            LoUByVirtuePalaceReport rep = new LoUByVirtuePalaceReport(Session.World, virtue);
+            rep.LoadIfNeeded();
+            OpenReport(rep);
+            ContentEnabling(true);
+        }
+
+        private void btnVirtueReportAll_Click(object sender, EventArgs e)
+        {
+            OpenVirtueReport("");
         }
     }
 }

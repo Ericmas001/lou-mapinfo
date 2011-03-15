@@ -180,6 +180,7 @@
             this.btnVirtueReportAll.Name = "btnVirtueReportAll";
             this.btnVirtueReportAll.Size = new System.Drawing.Size(25, 22);
             this.btnVirtueReportAll.Text = "All";
+            this.btnVirtueReportAll.Click += new System.EventHandler(this.btnVirtueReportAll_Click);
             // 
             // toolStripSeparator1
             // 
