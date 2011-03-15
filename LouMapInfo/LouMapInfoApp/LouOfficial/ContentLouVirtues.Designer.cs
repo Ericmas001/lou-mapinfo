@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentLouVirtues));
             this.tbReportByAlliance = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
-            this.btnAllianceReportAll = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAllianceReportMe = new System.Windows.Forms.ToolStripButton();
             this.famousSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.lblOther = new System.Windows.Forms.ToolStripLabel();
@@ -62,8 +60,6 @@
             this.tbReportByAlliance.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tbReportByAlliance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel6,
-            this.btnAllianceReportAll,
-            this.toolStripSeparator3,
             this.btnAllianceReportMe,
             this.famousSeparator,
             this.lblOther,
@@ -81,22 +77,6 @@
             this.toolStripLabel6.Name = "toolStripLabel6";
             this.toolStripLabel6.Size = new System.Drawing.Size(115, 22);
             this.toolStripLabel6.Text = "By Alliance Report: ";
-            // 
-            // btnAllianceReportAll
-            // 
-            this.btnAllianceReportAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnAllianceReportAll.Image = ((System.Drawing.Image)(resources.GetObject("btnAllianceReportAll.Image")));
-            this.btnAllianceReportAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAllianceReportAll.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnAllianceReportAll.Name = "btnAllianceReportAll";
-            this.btnAllianceReportAll.Size = new System.Drawing.Size(25, 22);
-            this.btnAllianceReportAll.Text = "All";
-            this.btnAllianceReportAll.Click += new System.EventHandler(this.btnAllianceReportAll_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnAllianceReportMe
             // 
@@ -315,9 +295,7 @@
         private System.Windows.Forms.ToolStripLabel lblOther;
         private System.Windows.Forms.ToolStripTextBox txtAllianceReportOther;
         private System.Windows.Forms.ToolStripButton btnAllianceReportOther;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.SaveFileDialog saveFileDialogCSV;
-        private System.Windows.Forms.ToolStripButton btnAllianceReportAll;
         private System.Windows.Forms.ToolStrip tbReportByVirtue;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton btnVirtueReportAll;
