@@ -14,8 +14,8 @@ namespace LouMapInfo.Reports.OfficialLOU
     public class LoUSingleVirtuePalaceReport : LoUReportInfo
     {
         private LoUWorldInfo world;
-        private string virtue;
-        public LoUSingleVirtuePalaceReport(LoUWorldInfo w, string v)
+        private LoUVirtue virtue;
+        public LoUSingleVirtuePalaceReport(LoUWorldInfo w, LoUVirtue v)
             : base(OldLoUCityType.CityCastlePalace)
         {
             this.world = w;
@@ -31,8 +31,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         protected override void OnLoad()
         {
             title = new TextReportItem(virtue + " Overview", true);
-            int vid = LoUVirtueList.VirtuesIDs[virtue];
-            string[] players = world.PalacesOwnersByVirtue(vid);
+            string[] players = world.PalacesOwnersByVirtue(virtue);
             ReportItem r0 = new TextReportItem("Player List", true);
             Dictionary<int, List<LoUCityInfo>> palaces = new Dictionary<int, List<LoUCityInfo>>();
             for (int i = 10; i > 0; --i)
@@ -45,7 +44,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                 foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
                 {
                     city.LoadIfNeeded();
-                    if (city.VirtueType == vid)
+                    if (city.VirtueType == virtue)
                         palaces[city.PalaceLvl].Add(city);
                 }
                 r0.Items.Add(r2);
@@ -62,7 +61,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                     Array.Reverse(cities);
                     foreach (LoUCityInfo info in cities)
                     {
-                        ReportItem r2 = new LoUCityInfoReportItem(info, true, true);
+                        ReportItem r2 = new LoUDetailedCityInfoReportItem(info, true, true,true,true);
                         r.Items.Add(r2);
                     }
                     root.Add(r);
