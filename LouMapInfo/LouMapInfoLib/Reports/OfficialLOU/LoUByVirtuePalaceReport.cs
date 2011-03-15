@@ -11,11 +11,11 @@ using LouMapInfo.OfficialLOU;
 
 namespace LouMapInfo.Reports.OfficialLOU
 {
-    public class LoUSingleVirtuePalaceReport : LoUReportInfo
+    public class LoUByVirtuePalaceReport : LoUReportInfo
     {
         private LoUWorldInfo world;
         private LoUVirtue virtue;
-        public LoUSingleVirtuePalaceReport(LoUWorldInfo w, LoUVirtue v)
+        public LoUByVirtuePalaceReport(LoUWorldInfo w, LoUVirtue v)
             : base(OldLoUCityType.CityCastlePalace)
         {
             this.world = w;
@@ -30,71 +30,83 @@ namespace LouMapInfo.Reports.OfficialLOU
 
         protected override void OnLoad()
         {
-            title = new TextReportItem(virtue + " Overview", true);
-            string[] players = world.PalacesOwnersByVirtue(virtue);
-            ReportItem r0 = new TextReportItem("Player List", true);
-            Dictionary<int, List<LoUCityInfo>> palacesW = new Dictionary<int, List<LoUCityInfo>>();
-            Dictionary<int, List<LoUCityInfo>> palacesL = new Dictionary<int, List<LoUCityInfo>>();
+            title = new TextReportItem((virtue == LoUVirtue.None ? "Virtues" : virtue.ToString() ) + " Overview", true);
+            Dictionary<int, Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>> palaces = new Dictionary<int, Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>>();
+            LoUVirtue[] virtues = (virtue == LoUVirtue.None ? new LoUVirtue[]{ LoUVirtue.Compassion, LoUVirtue.Honesty, LoUVirtue.Honor, LoUVirtue.Humility, LoUVirtue.Justice, LoUVirtue.Sacrifice, LoUVirtue.Spirituality, LoUVirtue.Valor} : new LoUVirtue[]{ virtue });
             for (int i = 10; i > 0; --i)
             {
-                palacesW.Add(i, new List<LoUCityInfo>());
-                palacesL.Add(i, new List<LoUCityInfo>());
+                palaces.Add(i, new Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>());
+                foreach (LoUVirtue v in virtues)
+                    palaces[i].Add(v, new KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>(new List<LoUCityInfo>(), new List<LoUCityInfo>()));
             }
-            foreach (string p in players)
+            foreach (LoUVirtue v in virtues)
             {
-                LoUPlayerInfo pl = world.Player(p);
-                pl.LoadIfNeeded();
-                ReportItem r2 = new LoUPlayerInfoReportItem(pl, -1, true);
-                foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
+                string[] players = world.PalacesOwnersByVirtue(v);
+                foreach (string p in players)
                 {
-                    city.LoadIfNeeded();
-                    if (city.VirtueType == virtue)
+                    LoUPlayerInfo pl = world.Player(p);
+                    pl.LoadIfNeeded();
+                    ReportItem r2 = new LoUPlayerInfoReportItem(pl, -1, true);
+                    foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
                     {
-                        if( city.Bordering == LoUBorderingType.Land )
-                            palacesL[city.PalaceLvl].Add(city);
-                        else
-                            palacesW[city.PalaceLvl].Add(city);
+                        city.LoadIfNeeded();
+                        if (city.VirtueType == v)
+                        {                            
+                            if (city.Bordering == LoUBorderingType.Land)
+                                palaces[city.PalaceLvl][v].Value.Add(city);
+                            else
+                                palaces[city.PalaceLvl][v].Key.Add(city);
+                        }
                     }
                 }
-                r0.Items.Add(r2);
             }
-            //root.Add(r0);
             for (int i = 10; i > 0; --i)
             {
-                if (palacesL[i].Count > 0 || palacesW[i].Count > 0)
+                bool something = false;
+                if (palaces[i].Count > 0)
                 {
                     ReportItem r = new TextReportItem("Level " + i + " Palaces", false);
-                    ReportItem r2 = new LoUCityTypeReportItem(palacesL[i].Count + palacesW[i].Count, OldLoUCityType.Palace, virtue, false);
-                    if (palacesW[i].Count > 0)
+                    foreach (LoUVirtue v in virtues)
                     {
-                        ReportItem r3 = new LoUBorderingTypeReportItem(palacesW[i].Count, LoUBorderingType.Water, true);
-                        LoUCityInfo[] cities = new LoUCityInfo[palacesW[i].Count];
-                        palacesW[i].CopyTo(cities);
-                        Array.Sort(cities);
-                        Array.Reverse(cities);
-                        foreach (LoUCityInfo info in cities)
+                        bool something2 = false;
+                        ReportItem r2 = new LoUCityTypeReportItem(palaces[i][v].Key.Count + palaces[i][v].Value.Count, OldLoUCityType.Palace, v, false);
+                        if (palaces[i][v].Key.Count > 0)
                         {
-                            ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, true, true);
-                            r3.Items.Add(r4);
+                            ReportItem r3 = new LoUBorderingTypeReportItem(palaces[i][v].Key.Count, LoUBorderingType.Water, true);
+                            LoUCityInfo[] cities = new LoUCityInfo[palaces[i][v].Key.Count];
+                            palaces[i][v].Key.CopyTo(cities);
+                            Array.Sort(cities);
+                            Array.Reverse(cities);
+                            foreach (LoUCityInfo info in cities)
+                            {
+                                ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, true, true);
+                                r3.Items.Add(r4);
+                            }
+                            r2.Items.Add(r3);
+                            something = true;
+                            something2 = true;
                         }
-                        r2.Items.Add(r3);
-                    }
-                    if (palacesL[i].Count > 0)
-                    {
-                        ReportItem r3 = new LoUBorderingTypeReportItem(palacesL[i].Count, LoUBorderingType.Land, true);
-                        LoUCityInfo[] cities = new LoUCityInfo[palacesL[i].Count];
-                        palacesL[i].CopyTo(cities);
-                        Array.Sort(cities);
-                        Array.Reverse(cities);
-                        foreach (LoUCityInfo info in cities)
+                        if (palaces[i][v].Value.Count > 0)
                         {
-                            ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, true, true);
-                            r3.Items.Add(r4);
+                            ReportItem r3 = new LoUBorderingTypeReportItem(palaces[i][v].Value.Count, LoUBorderingType.Land, true);
+                            LoUCityInfo[] cities = new LoUCityInfo[palaces[i][v].Value.Count];
+                            palaces[i][v].Value.CopyTo(cities);
+                            Array.Sort(cities);
+                            Array.Reverse(cities);
+                            foreach (LoUCityInfo info in cities)
+                            {
+                                ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, true, true);
+                                r3.Items.Add(r4);
+                            }
+                            r2.Items.Add(r3);
+                            something = true;
+                            something2 = true;
                         }
-                        r2.Items.Add(r3);
+                        if (something2)
+                            r.Items.Add(r2);
                     }
-                    r.Items.Add(r2);
-                    root.Add(r);
+                    if( something )
+                        root.Add(r);
                 }
             }
             //subtitle = new TextReportItem(LoUReportUtility.SayCityType(LoUType), true);
