@@ -57,15 +57,10 @@ namespace LouMapInfoApp.LouOfficial
             OpenAllianceReport(txtAllianceReportOther.Text);
         }
 
-        private void btnAllianceReportNoAlliance_Click(object sender, EventArgs e)
-        {
-            OpenAllianceReport("");
-        }
-
         private void OpenAllianceReport(object a)
         {
-            //ContentEnabling(false);
-            //new Thread(new ParameterizedThreadStart(OpenAllianceReportAsync)).Start(a);
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenAllianceReportAsync)).Start(a);
         }
 
         private void OpenAllianceReportAsync(object o)
@@ -80,7 +75,8 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, OldLoUCityType.CityCastlePalace);
+
+                LoUVirtuePalaceReport rep = new LoUVirtuePalaceReport(Session.World, LoUVirtue.None, a);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);
@@ -118,10 +114,6 @@ namespace LouMapInfoApp.LouOfficial
             content.Dock = DockStyle.Fill;
         }
 
-        private void btnAllianceReportAll_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnSingleVirtueReport_Click(object sender, EventArgs e)
         {
             OpenVirtueReport(((ToolStripButton)sender).Text);
@@ -143,7 +135,7 @@ namespace LouMapInfoApp.LouOfficial
             else
                 virtue = (LoUVirtue)Enum.Parse(typeof(LoUVirtue), v);
 
-            LoUByVirtuePalaceReport rep = new LoUByVirtuePalaceReport(Session.World, virtue);
+            LoUVirtuePalaceReport rep = new LoUVirtuePalaceReport(Session.World, virtue, null);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);

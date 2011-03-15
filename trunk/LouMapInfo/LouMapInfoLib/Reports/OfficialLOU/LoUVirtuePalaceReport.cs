@@ -11,15 +11,17 @@ using LouMapInfo.OfficialLOU;
 
 namespace LouMapInfo.Reports.OfficialLOU
 {
-    public class LoUByVirtuePalaceReport : LoUReportInfo
+    public class LoUVirtuePalaceReport : LoUReportInfo
     {
         private LoUWorldInfo world;
         private LoUVirtue virtue;
-        public LoUByVirtuePalaceReport(LoUWorldInfo w, LoUVirtue v)
+        private LoUAllianceInfo alliance;
+        public LoUVirtuePalaceReport(LoUWorldInfo w, LoUVirtue v, LoUAllianceInfo a)
             : base(OldLoUCityType.CityCastlePalace)
         {
             this.world = w;
             this.virtue = v;
+            this.alliance = a;
             LoadIfNeeded();
         }
 
@@ -31,8 +33,13 @@ namespace LouMapInfo.Reports.OfficialLOU
         protected override void OnLoad()
         {
             title = new TextReportItem((virtue == LoUVirtue.None ? "Virtues" : virtue.ToString() ) + " Overview", true);
+            string a = alliance == null ? "" : alliance.Name;
+            if (alliance != null)
+                subtitle = new LoUAllianceInfoReportItem(alliance, true);
             Dictionary<int, Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>> palaces = new Dictionary<int, Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>>();
             LoUVirtue[] virtues = (virtue == LoUVirtue.None ? new LoUVirtue[]{ LoUVirtue.Compassion, LoUVirtue.Honesty, LoUVirtue.Honor, LoUVirtue.Humility, LoUVirtue.Justice, LoUVirtue.Sacrifice, LoUVirtue.Spirituality, LoUVirtue.Valor} : new LoUVirtue[]{ virtue });
+
+            List<string> members = new List<string>(alliance == null ? new string[0] : world.PalacesOwnersByAlliance(a));
             for (int i = 10; i > 0; --i)
             {
                 palaces.Add(i, new Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>());
@@ -44,18 +51,21 @@ namespace LouMapInfo.Reports.OfficialLOU
                 string[] players = world.PalacesOwnersByVirtue(v);
                 foreach (string p in players)
                 {
-                    LoUPlayerInfo pl = world.Player(p);
-                    pl.LoadIfNeeded();
-                    ReportItem r2 = new LoUPlayerInfoReportItem(pl, -1, true);
-                    foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
+                    if (alliance == null || members.Contains(p))
                     {
-                        city.LoadIfNeeded();
-                        if (city.VirtueType == v)
-                        {                            
-                            if (city.Bordering == LoUBorderingType.Land)
-                                palaces[city.PalaceLvl][v].Value.Add(city);
-                            else
-                                palaces[city.PalaceLvl][v].Key.Add(city);
+                        LoUPlayerInfo pl = world.Player(p);
+                        pl.LoadIfNeeded();
+                        ReportItem r2 = new LoUPlayerInfoReportItem(pl, -1, true);
+                        foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
+                        {
+                            city.LoadIfNeeded();
+                            if (city.VirtueType == v)
+                            {
+                                if (city.Bordering == LoUBorderingType.Land)
+                                    palaces[city.PalaceLvl][v].Value.Add(city);
+                                else
+                                    palaces[city.PalaceLvl][v].Key.Add(city);
+                            }
                         }
                     }
                 }
@@ -79,7 +89,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                             Array.Reverse(cities);
                             foreach (LoUCityInfo info in cities)
                             {
-                                ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, true, true);
+                                ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, alliance == null, true);
                                 r3.Items.Add(r4);
                             }
                             r2.Items.Add(r3);
@@ -95,7 +105,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                             Array.Reverse(cities);
                             foreach (LoUCityInfo info in cities)
                             {
-                                ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, true, true);
+                                ReportItem r4 = new LoUDetailedCityInfoReportItem(info, true, true, alliance == null, true);
                                 r3.Items.Add(r4);
                             }
                             r2.Items.Add(r3);
