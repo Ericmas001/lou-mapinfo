@@ -4,6 +4,7 @@ using System.Text;
 using LouMapInfo.Reports.core;
 using LouMapInfo.Entities;
 using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.OfficialLOU;
 
 namespace LouMapInfo.Reports.OfficialLOU.Items
 {
@@ -11,12 +12,19 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
     {
         private int m_Count;
         private OldLoUCityType m_Type;
+        private LoUVirtue m_Virtue;
 
-        public LoUCityTypeReportItem(int count, OldLoUCityType type, bool showIfEmpty)
+        public LoUCityTypeReportItem(int count, OldLoUCityType type, LoUVirtue virtue, bool showIfEmpty)
             : base(showIfEmpty)
         {
             m_Count = count;
             m_Type = type;
+            m_Virtue = virtue;
+        }
+
+        public LoUCityTypeReportItem(int count, OldLoUCityType type, bool showIfEmpty)
+            : this( count,  type, LoUVirtue.None, showIfEmpty)
+        {
         }
 
         public void setCountAsItemCount()
@@ -34,7 +42,7 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
                 case OldLoUCityType.Castle:
                     name = "Castle" + (m_Count <= 1 ? "" : "s"); break;
                 case OldLoUCityType.Palace:
-                    name = "Palace" + (m_Count <= 1 ? "" : "s"); break;
+                    name = (m_Virtue != LoUVirtue.None ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
             }
 
             String s = "";
