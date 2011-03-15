@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentLouVirtues));
-            this.tbReportAllianceOverview = new System.Windows.Forms.ToolStrip();
+            this.tbReportByAlliance = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.btnAllianceReportAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -39,7 +39,7 @@
             this.txtAllianceReportOther = new System.Windows.Forms.ToolStripTextBox();
             this.btnAllianceReportOther = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialogCSV = new System.Windows.Forms.SaveFileDialog();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tbReportByVirtue = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnVirtueReportAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -52,15 +52,15 @@
             this.btnVirtueReportSpirituality = new System.Windows.Forms.ToolStripButton();
             this.btnVirtueReportValor = new System.Windows.Forms.ToolStripButton();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.tbReportAllianceOverview.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tbReportByAlliance.SuspendLayout();
+            this.tbReportByVirtue.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tbReportAllianceOverview
+            // tbReportByAlliance
             // 
-            this.tbReportAllianceOverview.BackColor = System.Drawing.Color.White;
-            this.tbReportAllianceOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tbReportAllianceOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tbReportByAlliance.BackColor = System.Drawing.Color.White;
+            this.tbReportByAlliance.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportByAlliance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel6,
             this.btnAllianceReportAll,
             this.toolStripSeparator3,
@@ -69,11 +69,11 @@
             this.lblOther,
             this.txtAllianceReportOther,
             this.btnAllianceReportOther});
-            this.tbReportAllianceOverview.Location = new System.Drawing.Point(0, 0);
-            this.tbReportAllianceOverview.Name = "tbReportAllianceOverview";
-            this.tbReportAllianceOverview.Size = new System.Drawing.Size(658, 25);
-            this.tbReportAllianceOverview.TabIndex = 16;
-            this.tbReportAllianceOverview.Text = "toolStrip1";
+            this.tbReportByAlliance.Location = new System.Drawing.Point(0, 0);
+            this.tbReportByAlliance.Name = "tbReportByAlliance";
+            this.tbReportByAlliance.Size = new System.Drawing.Size(658, 25);
+            this.tbReportByAlliance.TabIndex = 16;
+            this.tbReportByAlliance.Text = "toolStrip1";
             // 
             // toolStripLabel6
             // 
@@ -142,11 +142,11 @@
             // 
             this.saveFileDialogCSV.Filter = "CSV files|*.csv|All files|*.*";
             // 
-            // toolStrip1
+            // tbReportByVirtue
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tbReportByVirtue.BackColor = System.Drawing.Color.White;
+            this.tbReportByVirtue.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportByVirtue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.btnVirtueReportAll,
             this.toolStripSeparator1,
@@ -158,11 +158,11 @@
             this.btnVirtueReportSacrifice,
             this.btnVirtueReportSpirituality,
             this.btnVirtueReportValor});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(658, 25);
-            this.toolStrip1.TabIndex = 20;
-            this.toolStrip1.Text = "toolStrip1";
+            this.tbReportByVirtue.Location = new System.Drawing.Point(0, 25);
+            this.tbReportByVirtue.Name = "tbReportByVirtue";
+            this.tbReportByVirtue.Size = new System.Drawing.Size(658, 25);
+            this.tbReportByVirtue.TabIndex = 20;
+            this.tbReportByVirtue.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
@@ -292,15 +292,15 @@
             this.BackgroundImage = global::LouMapInfoApp.Properties.Resources.LordOfUltima;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.pnlContent);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.tbReportAllianceOverview);
+            this.Controls.Add(this.tbReportByVirtue);
+            this.Controls.Add(this.tbReportByAlliance);
             this.DoubleBuffered = true;
             this.Name = "ContentLouVirtues";
             this.Size = new System.Drawing.Size(658, 247);
-            this.tbReportAllianceOverview.ResumeLayout(false);
-            this.tbReportAllianceOverview.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tbReportByAlliance.ResumeLayout(false);
+            this.tbReportByAlliance.PerformLayout();
+            this.tbReportByVirtue.ResumeLayout(false);
+            this.tbReportByVirtue.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,7 +308,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip tbReportAllianceOverview;
+        private System.Windows.Forms.ToolStrip tbReportByAlliance;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
         private System.Windows.Forms.ToolStripButton btnAllianceReportMe;
         private System.Windows.Forms.ToolStripSeparator famousSeparator;
@@ -318,7 +318,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.SaveFileDialog saveFileDialogCSV;
         private System.Windows.Forms.ToolStripButton btnAllianceReportAll;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tbReportByVirtue;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton btnVirtueReportAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

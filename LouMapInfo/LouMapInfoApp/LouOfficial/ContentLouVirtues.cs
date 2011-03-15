@@ -94,8 +94,8 @@ namespace LouMapInfoApp.LouOfficial
                 Invoke(new BoolHandler(ContentEnabling), value);
                 return;
             }
-            tbReportAllianceOverview.Enabled = value;
-            tbReportAllianceOverview.Enabled = value;
+            tbReportByAlliance.Enabled = value;
+            tbReportByVirtue.Enabled = value;
             if (value)
                 Frame.StopWaiting();
             else

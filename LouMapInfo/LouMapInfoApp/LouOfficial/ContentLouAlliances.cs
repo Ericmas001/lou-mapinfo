@@ -143,6 +143,8 @@ namespace LouMapInfoApp.LouOfficial
                     csvName = csvName + ".csv";
                 new Thread(new ParameterizedThreadStart(OpenCityListCSVAsync)).Start(new KeyValuePair<object,string>(a,csvName));
             }
+            else
+                ContentEnabling(true);
         }
 
         private void OpenCityListCSVAsync(object o)
