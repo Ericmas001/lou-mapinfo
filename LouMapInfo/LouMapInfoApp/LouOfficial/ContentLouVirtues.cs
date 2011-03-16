@@ -92,6 +92,7 @@ namespace LouMapInfoApp.LouOfficial
             }
             tbReportByAlliance.Enabled = value;
             tbReportByVirtue.Enabled = value;
+            tbReportBattle.Enabled = value;
             if (value)
                 Frame.StopWaiting();
             else
@@ -114,7 +115,7 @@ namespace LouMapInfoApp.LouOfficial
             content.Dock = DockStyle.Fill;
         }
 
-        private void btnSingleVirtueReport_Click(object sender, EventArgs e)
+        private void btnVirtueReport_Click(object sender, EventArgs e)
         {
             OpenVirtueReport(((ToolStripButton)sender).Text);
         }
@@ -144,6 +145,37 @@ namespace LouMapInfoApp.LouOfficial
         private void btnVirtueReportAll_Click(object sender, EventArgs e)
         {
             OpenVirtueReport("");
+        }
+
+        private void OpenBattleReport(LoUBattleType type)
+        {
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenBattleReportAsync)).Start(type);
+        }
+
+        private void OpenBattleReportAsync(object o)
+        {
+            LoUBattleType type = (LoUBattleType)o;
+
+            LoUBattlePalaceReport rep = new LoUBattlePalaceReport(Session.World, type);
+            rep.LoadIfNeeded();
+            OpenReport(rep);
+            ContentEnabling(true);
+        }
+
+        private void btnBattleHigherLvl_Click(object sender, EventArgs e)
+        {
+            OpenBattleReport(LoUBattleType.HighestLevel);
+        }
+
+        private void btnBattlePalaceCount_Click(object sender, EventArgs e)
+        {
+            OpenBattleReport(LoUBattleType.MostPalaces);
+        }
+
+        private void btnBattleHighestFaith_Click(object sender, EventArgs e)
+        {
+            OpenBattleReport(LoUBattleType.HighestFaith);
         }
     }
 }
