@@ -49,9 +49,15 @@
             this.btnVirtueReportSacrifice = new System.Windows.Forms.ToolStripButton();
             this.btnVirtueReportSpirituality = new System.Windows.Forms.ToolStripButton();
             this.btnVirtueReportValor = new System.Windows.Forms.ToolStripButton();
+            this.tbReportBattle = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.btnBattleHigherLvl = new System.Windows.Forms.ToolStripButton();
+            this.btnBattlePalaceCount = new System.Windows.Forms.ToolStripButton();
+            this.btnBattleHighestFaith = new System.Windows.Forms.ToolStripButton();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.tbReportByAlliance.SuspendLayout();
             this.tbReportByVirtue.SuspendLayout();
+            this.tbReportBattle.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbReportByAlliance
@@ -176,7 +182,7 @@
             this.btnVirtueReportCompassion.Name = "btnVirtueReportCompassion";
             this.btnVirtueReportCompassion.Size = new System.Drawing.Size(77, 22);
             this.btnVirtueReportCompassion.Text = "Compassion";
-            this.btnVirtueReportCompassion.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportCompassion.Click += new System.EventHandler(this.btnVirtueReport_Click);
             // 
             // btnVirtueReportHonesty
             // 
@@ -187,7 +193,7 @@
             this.btnVirtueReportHonesty.Name = "btnVirtueReportHonesty";
             this.btnVirtueReportHonesty.Size = new System.Drawing.Size(55, 22);
             this.btnVirtueReportHonesty.Text = "Honesty";
-            this.btnVirtueReportHonesty.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportHonesty.Click += new System.EventHandler(this.btnVirtueReport_Click);
             // 
             // btnVirtueReportHonor
             // 
@@ -198,7 +204,7 @@
             this.btnVirtueReportHonor.Name = "btnVirtueReportHonor";
             this.btnVirtueReportHonor.Size = new System.Drawing.Size(45, 22);
             this.btnVirtueReportHonor.Text = "Honor";
-            this.btnVirtueReportHonor.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportHonor.Click += new System.EventHandler(this.btnVirtueReport_Click);
             // 
             // btnVirtueReportHumility
             // 
@@ -209,7 +215,7 @@
             this.btnVirtueReportHumility.Name = "btnVirtueReportHumility";
             this.btnVirtueReportHumility.Size = new System.Drawing.Size(57, 22);
             this.btnVirtueReportHumility.Text = "Humility";
-            this.btnVirtueReportHumility.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportHumility.Click += new System.EventHandler(this.btnVirtueReport_Click);
             // 
             // btnVirtueReportJustice
             // 
@@ -220,7 +226,7 @@
             this.btnVirtueReportJustice.Name = "btnVirtueReportJustice";
             this.btnVirtueReportJustice.Size = new System.Drawing.Size(46, 22);
             this.btnVirtueReportJustice.Text = "Justice";
-            this.btnVirtueReportJustice.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportJustice.Click += new System.EventHandler(this.btnVirtueReport_Click);
             // 
             // btnVirtueReportSacrifice
             // 
@@ -231,7 +237,7 @@
             this.btnVirtueReportSacrifice.Name = "btnVirtueReportSacrifice";
             this.btnVirtueReportSacrifice.Size = new System.Drawing.Size(55, 22);
             this.btnVirtueReportSacrifice.Text = "Sacrifice";
-            this.btnVirtueReportSacrifice.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportSacrifice.Click += new System.EventHandler(this.btnVirtueReport_Click);
             // 
             // btnVirtueReportSpirituality
             // 
@@ -242,7 +248,7 @@
             this.btnVirtueReportSpirituality.Name = "btnVirtueReportSpirituality";
             this.btnVirtueReportSpirituality.Size = new System.Drawing.Size(67, 22);
             this.btnVirtueReportSpirituality.Text = "Spirituality";
-            this.btnVirtueReportSpirituality.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportSpirituality.Click += new System.EventHandler(this.btnVirtueReport_Click);
             // 
             // btnVirtueReportValor
             // 
@@ -253,16 +259,73 @@
             this.btnVirtueReportValor.Name = "btnVirtueReportValor";
             this.btnVirtueReportValor.Size = new System.Drawing.Size(38, 22);
             this.btnVirtueReportValor.Text = "Valor";
-            this.btnVirtueReportValor.Click += new System.EventHandler(this.btnSingleVirtueReport_Click);
+            this.btnVirtueReportValor.Click += new System.EventHandler(this.btnVirtueReport_Click);
+            // 
+            // tbReportBattle
+            // 
+            this.tbReportBattle.BackColor = System.Drawing.Color.White;
+            this.tbReportBattle.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportBattle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel2,
+            this.btnBattleHigherLvl,
+            this.btnBattlePalaceCount,
+            this.btnBattleHighestFaith});
+            this.tbReportBattle.Location = new System.Drawing.Point(0, 50);
+            this.tbReportBattle.Name = "tbReportBattle";
+            this.tbReportBattle.Size = new System.Drawing.Size(658, 25);
+            this.tbReportBattle.TabIndex = 23;
+            this.tbReportBattle.Text = "toolStrip1";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(98, 22);
+            this.toolStripLabel2.Text = "Alliances Battle: ";
+            // 
+            // btnBattleHigherLvl
+            // 
+            this.btnBattleHigherLvl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBattleHigherLvl.Image = ((System.Drawing.Image)(resources.GetObject("btnBattleHigherLvl.Image")));
+            this.btnBattleHigherLvl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBattleHigherLvl.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnBattleHigherLvl.Name = "btnBattleHigherLvl";
+            this.btnBattleHigherLvl.Size = new System.Drawing.Size(119, 22);
+            this.btnBattleHigherLvl.Text = "Highest Level Palace";
+            this.btnBattleHigherLvl.Click += new System.EventHandler(this.btnBattleHigherLvl_Click);
+            // 
+            // btnBattlePalaceCount
+            // 
+            this.btnBattlePalaceCount.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBattlePalaceCount.Image = ((System.Drawing.Image)(resources.GetObject("btnBattlePalaceCount.Image")));
+            this.btnBattlePalaceCount.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBattlePalaceCount.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnBattlePalaceCount.Name = "btnBattlePalaceCount";
+            this.btnBattlePalaceCount.Size = new System.Drawing.Size(80, 22);
+            this.btnBattlePalaceCount.Text = "Most Palaces";
+            this.btnBattlePalaceCount.Visible = false;
+            this.btnBattlePalaceCount.Click += new System.EventHandler(this.btnBattlePalaceCount_Click);
+            // 
+            // btnBattleHighestFaith
+            // 
+            this.btnBattleHighestFaith.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBattleHighestFaith.Image = ((System.Drawing.Image)(resources.GetObject("btnBattleHighestFaith.Image")));
+            this.btnBattleHighestFaith.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBattleHighestFaith.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnBattleHighestFaith.Name = "btnBattleHighestFaith";
+            this.btnBattleHighestFaith.Size = new System.Drawing.Size(81, 22);
+            this.btnBattleHighestFaith.Text = "Highest Faith";
+            this.btnBattleHighestFaith.Visible = false;
+            this.btnBattleHighestFaith.Click += new System.EventHandler(this.btnBattleHighestFaith_Click);
             // 
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.Transparent;
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 50);
+            this.pnlContent.Location = new System.Drawing.Point(0, 75);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(658, 197);
-            this.pnlContent.TabIndex = 21;
+            this.pnlContent.Size = new System.Drawing.Size(658, 172);
+            this.pnlContent.TabIndex = 24;
             // 
             // ContentLouVirtues
             // 
@@ -272,6 +335,7 @@
             this.BackgroundImage = global::LouMapInfoApp.Properties.Resources.LordOfUltima;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.tbReportBattle);
             this.Controls.Add(this.tbReportByVirtue);
             this.Controls.Add(this.tbReportByAlliance);
             this.DoubleBuffered = true;
@@ -281,6 +345,8 @@
             this.tbReportByAlliance.PerformLayout();
             this.tbReportByVirtue.ResumeLayout(false);
             this.tbReportByVirtue.PerformLayout();
+            this.tbReportBattle.ResumeLayout(false);
+            this.tbReportBattle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,6 +374,11 @@
         private System.Windows.Forms.ToolStripButton btnVirtueReportSacrifice;
         private System.Windows.Forms.ToolStripButton btnVirtueReportSpirituality;
         private System.Windows.Forms.ToolStripButton btnVirtueReportValor;
+        private System.Windows.Forms.ToolStrip tbReportBattle;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton btnBattleHigherLvl;
+        private System.Windows.Forms.ToolStripButton btnBattlePalaceCount;
+        private System.Windows.Forms.ToolStripButton btnBattleHighestFaith;
         private System.Windows.Forms.Panel pnlContent;
 
 

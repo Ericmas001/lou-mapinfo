@@ -11,7 +11,7 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
     {
         private bool m_PInfo;
         private bool m_AInfo;
-        private bool m_ShowCont;
+        protected bool m_ShowCont;
 
         public LoUDetailedCityInfoReportItem(LoUCityInfo info, bool showIfEmpty, bool showPlayer, bool showAlliance, bool showContinent)
             : base(info, showIfEmpty)

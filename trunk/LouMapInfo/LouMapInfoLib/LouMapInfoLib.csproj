@@ -45,6 +45,7 @@
     <Compile Include="Entities\ContinentInfo.cs" />
     <Compile Include="Entities\Pt.cs" />
     <Compile Include="Entities\PlayerInfo.cs" />
+    <Compile Include="OfficialLOU\LoUBattleType.cs" />
     <Compile Include="OfficialLOU\Entities\LoUMoonGateInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUShrineInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUContinentInfo.cs" />
@@ -70,6 +71,8 @@
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
     <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
+    <Compile Include="Reports\OfficialLOU\Items\LoUDetailedPalaceInfoReportItem.cs" />
+    <Compile Include="Reports\OfficialLOU\LoUBattlePalaceReport.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUDetailedCityInfoReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\LoUVirtuePalaceReport.cs" />
     <Compile Include="Reports\OfficialLOU\LoUMoongatesReport.cs" />
