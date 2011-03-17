@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentLouGroups));
-            this.tbReportAllianceOverview = new System.Windows.Forms.ToolStrip();
+            this.tbReportGroupOverview = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.lstGroupReport = new System.Windows.Forms.ToolStripComboBox();
             this.btnGroupReportShow = new System.Windows.Forms.ToolStripButton();
@@ -37,24 +37,24 @@
             this.btnGroupReportManage = new System.Windows.Forms.ToolStripButton();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.saveFileDialogCSV = new System.Windows.Forms.SaveFileDialog();
-            this.tbReportAllianceOverview.SuspendLayout();
+            this.tbReportGroupOverview.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tbReportAllianceOverview
+            // tbReportGroupOverview
             // 
-            this.tbReportAllianceOverview.BackColor = System.Drawing.Color.White;
-            this.tbReportAllianceOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tbReportAllianceOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tbReportGroupOverview.BackColor = System.Drawing.Color.White;
+            this.tbReportGroupOverview.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportGroupOverview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel6,
             this.lstGroupReport,
             this.btnGroupReportShow,
             this.toolStripSeparator1,
             this.btnGroupReportManage});
-            this.tbReportAllianceOverview.Location = new System.Drawing.Point(0, 0);
-            this.tbReportAllianceOverview.Name = "tbReportAllianceOverview";
-            this.tbReportAllianceOverview.Size = new System.Drawing.Size(658, 25);
-            this.tbReportAllianceOverview.TabIndex = 16;
-            this.tbReportAllianceOverview.Text = "toolStrip1";
+            this.tbReportGroupOverview.Location = new System.Drawing.Point(0, 0);
+            this.tbReportGroupOverview.Name = "tbReportGroupOverview";
+            this.tbReportGroupOverview.Size = new System.Drawing.Size(658, 25);
+            this.tbReportGroupOverview.TabIndex = 16;
+            this.tbReportGroupOverview.Text = "toolStrip1";
             // 
             // toolStripLabel6
             // 
@@ -116,12 +116,12 @@
             this.BackgroundImage = global::LouMapInfoApp.Properties.Resources.LordOfUltima;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.pnlContent);
-            this.Controls.Add(this.tbReportAllianceOverview);
+            this.Controls.Add(this.tbReportGroupOverview);
             this.DoubleBuffered = true;
             this.Name = "ContentLouGroups";
             this.Size = new System.Drawing.Size(658, 247);
-            this.tbReportAllianceOverview.ResumeLayout(false);
-            this.tbReportAllianceOverview.PerformLayout();
+            this.tbReportGroupOverview.ResumeLayout(false);
+            this.tbReportGroupOverview.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,7 +129,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip tbReportAllianceOverview;
+        private System.Windows.Forms.ToolStrip tbReportGroupOverview;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.SaveFileDialog saveFileDialogCSV;

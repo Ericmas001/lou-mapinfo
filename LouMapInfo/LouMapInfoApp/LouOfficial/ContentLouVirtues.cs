@@ -93,6 +93,7 @@ namespace LouMapInfoApp.LouOfficial
             tbReportByAlliance.Enabled = value;
             tbReportByVirtue.Enabled = value;
             tbReportBattle.Enabled = value;
+            tbReportShrine.Enabled = value;
             if (value)
                 Frame.StopWaiting();
             else
@@ -176,6 +177,31 @@ namespace LouMapInfoApp.LouOfficial
         private void btnBattleHighestFaith_Click(object sender, EventArgs e)
         {
             OpenBattleReport(LoUBattleType.HighestFaith);
+        }
+
+        private void btnShrineLocation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoUPt loc = new LoUPt(txtShrineLocation.Text);
+                OpenShrineReport(loc);
+            }
+            catch { }
+        }
+
+        private void OpenShrineReport(LoUPt pt)
+        {
+            ContentEnabling(false);
+            new Thread(new ParameterizedThreadStart(OpenShrineReportAsync)).Start(pt);
+        }
+
+        private void OpenShrineReportAsync(object o)
+        {
+            LoUPt pt = (LoUPt)o;
+            LoUShrineCastlesReport rep = new LoUShrineCastlesReport(Session.World, pt);
+            rep.LoadIfNeeded();
+            OpenReport(rep);
+            ContentEnabling(true);
         }
     }
 }

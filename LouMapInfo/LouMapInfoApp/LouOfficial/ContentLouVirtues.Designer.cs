@@ -54,10 +54,16 @@
             this.btnBattleHigherLvl = new System.Windows.Forms.ToolStripButton();
             this.btnBattlePalaceCount = new System.Windows.Forms.ToolStripButton();
             this.btnBattleHighestFaith = new System.Windows.Forms.ToolStripButton();
+            this.tbReportShrine = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.btnShrineLocation = new System.Windows.Forms.ToolStripButton();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.txtShrineLocation = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.tbReportByAlliance.SuspendLayout();
             this.tbReportByVirtue.SuspendLayout();
             this.tbReportBattle.SuspendLayout();
+            this.tbReportShrine.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbReportByAlliance
@@ -318,14 +324,60 @@
             this.btnBattleHighestFaith.Visible = false;
             this.btnBattleHighestFaith.Click += new System.EventHandler(this.btnBattleHighestFaith_Click);
             // 
+            // tbReportShrine
+            // 
+            this.tbReportShrine.BackColor = System.Drawing.Color.White;
+            this.tbReportShrine.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tbReportShrine.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel3,
+            this.toolStripLabel4,
+            this.txtShrineLocation,
+            this.btnShrineLocation});
+            this.tbReportShrine.Location = new System.Drawing.Point(0, 75);
+            this.tbReportShrine.Name = "tbReportShrine";
+            this.tbReportShrine.Size = new System.Drawing.Size(658, 25);
+            this.tbReportShrine.TabIndex = 25;
+            this.tbReportShrine.Text = "toolStrip1";
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(96, 22);
+            this.toolStripLabel3.Text = "Shrines Report: ";
+            // 
+            // btnShrineLocation
+            // 
+            this.btnShrineLocation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnShrineLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnShrineLocation.Image")));
+            this.btnShrineLocation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShrineLocation.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnShrineLocation.Name = "btnShrineLocation";
+            this.btnShrineLocation.Size = new System.Drawing.Size(160, 22);
+            this.btnShrineLocation.Text = "Get castles in the 20x20 zone";
+            this.btnShrineLocation.Click += new System.EventHandler(this.btnShrineLocation_Click);
+            // 
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.Transparent;
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 75);
+            this.pnlContent.Location = new System.Drawing.Point(0, 100);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(658, 172);
-            this.pnlContent.TabIndex = 24;
+            this.pnlContent.Size = new System.Drawing.Size(658, 147);
+            this.pnlContent.TabIndex = 26;
+            // 
+            // txtShrineLocation
+            // 
+            this.txtShrineLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.txtShrineLocation.Name = "txtShrineLocation";
+            this.txtShrineLocation.Size = new System.Drawing.Size(100, 25);
+            this.txtShrineLocation.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(92, 22);
+            this.toolStripLabel4.Text = "Shrine Location:";
             // 
             // ContentLouVirtues
             // 
@@ -335,6 +387,7 @@
             this.BackgroundImage = global::LouMapInfoApp.Properties.Resources.LordOfUltima;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.tbReportShrine);
             this.Controls.Add(this.tbReportBattle);
             this.Controls.Add(this.tbReportByVirtue);
             this.Controls.Add(this.tbReportByAlliance);
@@ -347,6 +400,8 @@
             this.tbReportByVirtue.PerformLayout();
             this.tbReportBattle.ResumeLayout(false);
             this.tbReportBattle.PerformLayout();
+            this.tbReportShrine.ResumeLayout(false);
+            this.tbReportShrine.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,6 +434,11 @@
         private System.Windows.Forms.ToolStripButton btnBattleHigherLvl;
         private System.Windows.Forms.ToolStripButton btnBattlePalaceCount;
         private System.Windows.Forms.ToolStripButton btnBattleHighestFaith;
+        private System.Windows.Forms.ToolStrip tbReportShrine;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripTextBox txtShrineLocation;
+        private System.Windows.Forms.ToolStripButton btnShrineLocation;
         private System.Windows.Forms.Panel pnlContent;
 
 
