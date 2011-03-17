@@ -12,6 +12,7 @@ using LouMapInfoApp.LouOfficial;
 using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Zeus;
 using LouMapInfoApp.Zeus;
+using LouMapInfoApp.LouOfficial.Empire;
 
 namespace LouMapInfoApp
 {
@@ -75,6 +76,10 @@ namespace LouMapInfoApp
             {
                 FillZeus(false);
             }
+            else if (btn == btnMenuEmpire)
+            {
+                FillEmpire(false);
+            }
             else if (btn == btnMenuMap)
             {
                 AddSubItem(btn, "Continent View", new ContentLMContinent(worlds));
@@ -119,6 +124,8 @@ namespace LouMapInfoApp
         public void FillOfficial()
         {
             FillOfficial(true);
+            FillEmpire(true);
+            FillItems(btnMenuEmpire.Checked ? btnMenuEmpire : btnMenuOfficial);
         }
         private void FillOfficial(bool remove)
         {
@@ -148,6 +155,36 @@ namespace LouMapInfoApp
                 AddSubItem(btnMenuOfficial, "Continent", new ContentLoUOfficial(this, new ContentLouContinent()));
                 AddSubItem(btnMenuOfficial, "Virtues", new ContentLoUOfficial(this, new ContentLouVirtues()));
                 //TODO: AddSubItem(btnMenuOfficial, "Groups", new ContentLoUOfficial(this, new ContentLouGroups()));
+            }
+            if (lstSubItems.Items.Count > 0)
+                lstSubItems.SelectedIndex = 0;
+
+        }
+
+        public void FillEmpire()
+        {
+            FillEmpire(true);
+        }
+        private void FillEmpire(bool remove)
+        {
+            lstSubItems.Items.Clear();
+            if (remove)
+            {
+                string[] keys = new string[tabs.Keys.Count];
+                tabs.Keys.CopyTo(keys, 0);
+                foreach (string k in keys)
+                    if (k.StartsWith(btnMenuEmpire.Name) && k != (btnMenuEmpire.Name + "_" + CONNECT))
+                        tabs.Remove(k);
+            }
+            if (m_Session == null)
+            {
+                AddSubItem(btnMenuEmpire, CONNECT, new ContentLouConnection(this));
+            }
+            else
+            {
+                AddSubItem(btnMenuOfficial, m_Session.World.Player(m_Session.PlayerID).Name, new ContentLoUOfficial(this, new ContentLouMyPlayer()));
+                if (m_Session.AllianceID > 0)
+                    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance()));
             }
             if (lstSubItems.Items.Count > 0)
                 lstSubItems.SelectedIndex = 0;

@@ -127,6 +127,18 @@
     <Compile Include="LouOfficial\ContentLouGroups.Designer.cs">
       <DependentUpon>ContentLouGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="LouOfficial\Empire\ContentLouMyPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LouOfficial\Empire\ContentLouMyPlayer.Designer.cs">
+      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LouOfficial\Empire\ContentLouMyAlliance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LouOfficial\Empire\ContentLouMyAlliance.Designer.cs">
+      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
+    </Compile>
     <Compile Include="LouOfficial\ILouContent.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -219,6 +231,12 @@
     <EmbeddedResource Include="LouOfficial\ContentLouGroups.resx">
       <DependentUpon>ContentLouGroups.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LouOfficial\Empire\ContentLouMyPlayer.resx">
+      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LouOfficial\Empire\ContentLouMyAlliance.resx">
+      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
+    <None Include="Resources\empire.png" />
     <None Include="Resources\Office-excel-csv-icon.png" />
     <None Include="Resources\LordOfUltima.png" />
     <None Include="Resources\Refresh-icon.png" />
