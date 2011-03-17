@@ -79,6 +79,12 @@
     <Compile Include="LouOfficial\ContentLouConnection.Designer.cs">
       <DependentUpon>ContentLouConnection.cs</DependentUpon>
     </Compile>
+    <Compile Include="LouOfficial\ContentLouGroupsManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LouOfficial\ContentLouGroupsManage.Designer.cs">
+      <DependentUpon>ContentLouGroupsManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="LouOfficial\ContentLoUOfficial.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LouOfficial\ContentLouConnection.resx">
       <DependentUpon>ContentLouConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LouOfficial\ContentLouGroupsManage.resx">
+      <DependentUpon>ContentLouGroupsManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LouOfficial\ContentLoUOfficial.resx">
       <DependentUpon>ContentLoUOfficial.cs</DependentUpon>

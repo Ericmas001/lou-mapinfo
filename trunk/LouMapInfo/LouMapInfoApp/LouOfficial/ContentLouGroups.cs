@@ -63,7 +63,7 @@ namespace LouMapInfoApp.LouOfficial
                 Invoke(new BoolHandler(ContentEnabling), value);
                 return;
             }
-            tbReportAllianceOverview.Enabled = value;
+            tbReportGroupOverview.Enabled = value;
             if (value)
                 Frame.StopWaiting();
             else
@@ -93,7 +93,18 @@ namespace LouMapInfoApp.LouOfficial
 
         private void btnGroupReportManage_Click(object sender, EventArgs e)
         {
+            pnlContent.Controls.Clear();
+            ContentLouGroupsManage content = new ContentLouGroupsManage();
+            pnlContent.Controls.Add(content);
+            content.Dock = DockStyle.Fill;
+            content.CloseIsIminent += new ContentLouGroupsManage.EmptyHandler(content_CloseIsIminent);
+            tbReportGroupOverview.Enabled = false;
+        }
 
+        void content_CloseIsIminent()
+        {
+            pnlContent.Controls.Clear();
+            tbReportGroupOverview.Enabled = true;
         }
     }
 }

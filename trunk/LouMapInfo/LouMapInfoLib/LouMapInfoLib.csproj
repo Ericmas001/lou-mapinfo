@@ -71,6 +71,7 @@
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
     <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
+    <Compile Include="Reports\OfficialLOU\LoUShrineCastlesReport.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUDetailedPalaceInfoReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\LoUBattlePalaceReport.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUDetailedCityInfoReportItem.cs" />
