@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoLib", "LouMapInfo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityWinForms_4.0", "..\..\..\Desktop\Programmation\C#\LouMapInfo\EricUtilityWinForms\EricUtilityWinForms_4.0.csproj", "{13AC29CB-866A-4954-B376-7FCA5412DDF1}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LouMapInfoSetup", "LouMapInfoSetup\LouMapInfoSetup.vdproj", "{DE356E4B-2D62-4CCF-B241-DAF3153778C9}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -87,6 +89,12 @@ Global
 		{13AC29CB-866A-4954-B376-7FCA5412DDF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{13AC29CB-866A-4954-B376-7FCA5412DDF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{13AC29CB-866A-4954-B376-7FCA5412DDF1}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE356E4B-2D62-4CCF-B241-DAF3153778C9}.Debug|Any CPU.ActiveCfg = Debug
+		{DE356E4B-2D62-4CCF-B241-DAF3153778C9}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{DE356E4B-2D62-4CCF-B241-DAF3153778C9}.Debug|x86.ActiveCfg = Debug
+		{DE356E4B-2D62-4CCF-B241-DAF3153778C9}.Release|Any CPU.ActiveCfg = Release
+		{DE356E4B-2D62-4CCF-B241-DAF3153778C9}.Release|Mixed Platforms.ActiveCfg = Release
+		{DE356E4B-2D62-4CCF-B241-DAF3153778C9}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
