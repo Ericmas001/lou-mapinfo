@@ -69,7 +69,7 @@
             // 
             this.btnMenuEmpire.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuEmpire.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuEmpire.Image = global::LouMapInfoApp.Properties.Resources.empire;
+            this.btnMenuEmpire.Image = global::LouMapInfoApp.Properties.Resources.menu_Empire;
             this.btnMenuEmpire.Location = new System.Drawing.Point(0, 70);
             this.btnMenuEmpire.Name = "btnMenuEmpire";
             this.btnMenuEmpire.Size = new System.Drawing.Size(208, 71);
@@ -98,7 +98,7 @@
             // 
             this.btnMenuTools.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuTools.Image = global::LouMapInfoApp.Properties.Resources.icon_tool;
+            this.btnMenuTools.Image = global::LouMapInfoApp.Properties.Resources.menu_Tools;
             this.btnMenuTools.Location = new System.Drawing.Point(0, 280);
             this.btnMenuTools.Name = "btnMenuTools";
             this.btnMenuTools.Size = new System.Drawing.Size(208, 71);
@@ -113,7 +113,7 @@
             // 
             this.btnMenuMap.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuMap.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuMap.Image")));
+            this.btnMenuMap.Image = global::LouMapInfoApp.Properties.Resources.menu_Map;
             this.btnMenuMap.Location = new System.Drawing.Point(0, 210);
             this.btnMenuMap.Name = "btnMenuMap";
             this.btnMenuMap.Size = new System.Drawing.Size(208, 71);
@@ -128,7 +128,7 @@
             // 
             this.btnMenuZeus.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuZeus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuZeus.Image = global::LouMapInfoApp.Properties.Resources.Zeus_icon;
+            this.btnMenuZeus.Image = global::LouMapInfoApp.Properties.Resources.menu_Zeus;
             this.btnMenuZeus.Location = new System.Drawing.Point(0, 140);
             this.btnMenuZeus.Name = "btnMenuZeus";
             this.btnMenuZeus.Size = new System.Drawing.Size(208, 71);
@@ -144,7 +144,7 @@
             this.btnMenuOfficial.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuOfficial.Checked = true;
             this.btnMenuOfficial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuOfficial.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
+            this.btnMenuOfficial.Image = global::LouMapInfoApp.Properties.Resources.menu_Official;
             this.btnMenuOfficial.Location = new System.Drawing.Point(0, 0);
             this.btnMenuOfficial.Name = "btnMenuOfficial";
             this.btnMenuOfficial.Size = new System.Drawing.Size(208, 71);

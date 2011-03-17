@@ -15,14 +15,16 @@ namespace LouMapInfoApp.LouOfficial
         private System.Windows.Forms.Timer waitingTimer;
         private int waitingCounter = 0;
         private MainForm m_Parent;
+        private Image m_Logo;
 
         public MainForm MainForm
         {
             get { return m_Parent; }
         }
 
-        public ContentLoUOfficial(MainForm parent, ILouContent content)
+        public ContentLoUOfficial(MainForm parent, ILouContent content, Image logo)
         {
+            m_Logo = logo;
             m_Parent = parent;
             content.Frame = this;
             Control child = content as Control;
@@ -32,6 +34,7 @@ namespace LouMapInfoApp.LouOfficial
             InitializeComponent();
             string pName = session.World.Player(session.PlayerID).Name;
             string aName = session.World.Alliance(session.AllianceID).Name;
+            lblImage.Image = m_Logo;
             lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")")) + " on " + session.World.Name;
         }
 
@@ -68,7 +71,7 @@ namespace LouMapInfoApp.LouOfficial
             {
                 waitingTimer.Stop();
                 waitingTimer = null;
-                lblImage.Image = Properties.Resources.logo_LOU;
+                lblImage.Image = m_Logo;
             }
         }
 

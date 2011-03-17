@@ -126,7 +126,7 @@
             // 
             this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.lblImage.AutoSize = false;
-            this.lblImage.BackgroundImage = global::LouMapInfoApp.Properties.Resources.map;
+            this.lblImage.BackgroundImage = global::LouMapInfoApp.Properties.Resources.menu_Map;
             this.lblImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.lblImage.Name = "lblImage";

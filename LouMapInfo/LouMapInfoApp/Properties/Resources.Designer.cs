@@ -116,6 +116,41 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap menu_Empire {
+            get {
+                object obj = ResourceManager.GetObject("menu_Empire", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap menu_Map {
+            get {
+                object obj = ResourceManager.GetObject("menu_Map", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap menu_Official {
+            get {
+                object obj = ResourceManager.GetObject("menu_Official", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap menu_Tools {
+            get {
+                object obj = ResourceManager.GetObject("menu_Tools", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap menu_Zeus {
+            get {
+                object obj = ResourceManager.GetObject("menu_Zeus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Office_excel_csv_icon {
             get {
                 object obj = ResourceManager.GetObject("Office_excel_csv_icon", resourceCulture);

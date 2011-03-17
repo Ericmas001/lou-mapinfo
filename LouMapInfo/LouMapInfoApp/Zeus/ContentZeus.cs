@@ -68,7 +68,7 @@ namespace LouMapInfoApp.Zeus
             {
                 waitingTimer.Stop();
                 waitingTimer = null;
-                lblImage.BackgroundImage = Properties.Resources.Zeus_icon;
+                lblImage.BackgroundImage = Properties.Resources.menu_Zeus;
             }
         }
 

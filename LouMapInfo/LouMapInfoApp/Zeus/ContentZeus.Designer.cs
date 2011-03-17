@@ -60,7 +60,7 @@
             // 
             this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.lblImage.AutoSize = false;
-            this.lblImage.BackgroundImage = global::LouMapInfoApp.Properties.Resources.Zeus_icon;
+            this.lblImage.BackgroundImage = global::LouMapInfoApp.Properties.Resources.menu_Zeus;
             this.lblImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.lblImage.Name = "lblImage";

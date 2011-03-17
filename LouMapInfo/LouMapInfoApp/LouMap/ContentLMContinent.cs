@@ -42,69 +42,7 @@ namespace LouMapInfoApp.LouMap
             InitializeComponent();
             lvl = Properties.Settings.Default.lastWDetailLvl;
 
-            //CityCastleType t = (CityCastleType)Properties.Settings.Default.lastCCityType;
-            //switch (t)
-            //{
-            //    case CityCastleType.Both: btnBoth_Click(null, new EventArgs()); break;
-            //    case CityCastleType.Castle: btnCastles_Click(null, new EventArgs()); break;
-            //    case CityCastleType.City: btnCities_Click(null, new EventArgs()); break;
-            //}
-            //switch (lvl)
-            //{
-            //    case 1: btnReportsLvl1_Click(null, new EventArgs()); break;
-            //    case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
-            //    case 3: btnReportsLvl3_Click(null, new EventArgs()); break;
-            //}
         }
-        //private void btnCityType_ButtonClick(object sender, EventArgs e)
-        //{
-        //    btnCityType.ShowDropDown();
-        //}
-
-        //private void btnBoth_Click(object sender, EventArgs e)
-        //{
-        //    btnCityType.Text = btnBoth.Text;
-        //    btnBoth.Checked = true;
-        //    btnCities.Checked = false;
-        //    btnCastles.Checked = false;
-        //    type = CityCastleType.Both;
-        //    if (sender != null)
-        //    {
-        //        RenderGrid();
-        //        Properties.Settings.Default.lastCCityType = (int)type;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
-
-        //private void btnCastles_Click(object sender, EventArgs e)
-        //{
-        //    btnCityType.Text = btnCastles.Text;
-        //    btnBoth.Checked = false;
-        //    btnCities.Checked = false;
-        //    btnCastles.Checked = true;
-        //    type = CityCastleType.Castle;
-        //    if (sender != null)
-        //    {
-        //        RenderGrid();
-        //        Properties.Settings.Default.lastCCityType = (int)type;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
-
-        //private void btnCities_Click(object sender, EventArgs e)
-        //{
-        //    btnCityType.Text = btnCities.Text;
-        //    btnBoth.Checked = false;
-        //    btnCities.Checked = true;
-        //    btnCastles.Checked = false;
-        //    type = CityCastleType.City;
-        //    if (sender != null)
-        //    {
-        //        RenderGrid();
-        //        Properties.Settings.Default.lastCCityType = (int)type;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
         private void btnChooseContinent_Click(object sender, EventArgs e)
         {
             ContinentPicker cp = new ContinentPicker();
@@ -161,7 +99,7 @@ namespace LouMapInfoApp.LouMap
             {
                 waitingTimer.Stop();
                 waitingTimer = null;
-                lblImage.BackgroundImage = Properties.Resources.map;
+                lblImage.BackgroundImage = Properties.Resources.menu_Map;
             }
         }
 
@@ -217,7 +155,6 @@ namespace LouMapInfoApp.LouMap
                 GlobalLoading.LoadUpdated(worlds);
                 WorldLoading.LoadShrines(worlds, world);
                 ContinentLoading.LoadContinent(worlds, world, continent);
-                //ContinentLoading.LoadOverlay(worlds,world, continent);
                 EndLoadContinent();
 
             }
@@ -226,21 +163,6 @@ namespace LouMapInfoApp.LouMap
                 EndLoadContinentBadly();
             }
         }
-        //private void RenderGrid()
-        //{
-        //    dgvCities.Rows.Clear();
-        //    foreach (AllianceInfo a in worlds[world].Cont(continent).AlliancesOldWay.Values)
-        //    {
-        //        foreach (PlayerInfo p in a.PlayersOldWay.Values)
-        //        {
-        //            foreach (CityInfo c in p.AllCities)
-        //            {
-        //                if (type == CityCastleType.Both || (!c.Castle && type == CityCastleType.City) || (c.Castle && type == CityCastleType.Castle))
-        //                    dgvCities.Rows.Add(a.Name, a.Score, p.Name, p.Score, c.Location.X, c.Location.Y, c.Name, c.Castle, c.Score);
-        //            }
-        //        }
-        //    }
-        //}
         public delegate void IntIntHandler(KeyValuePair<int, int> info);
         private void EndLoadContinent()
         {
@@ -250,11 +172,9 @@ namespace LouMapInfoApp.LouMap
                 return;
             }
             StopWaiting();
-            //dgvCities.Sort(dgvCities.Columns["AllianceName"], ListSortDirection.Ascending);
             Enable(true);
             lblLastUpdated.Text = String.Format("Last Updated: {0:yyyy}-{0:MM}-{0:dd}", World.LastUpdated); ;
             lblLastUpdated.Visible = true;
-            //RenderGrid();
             pnlContent.Visible = true;
         }
         private void EndLoadContinentBadly()
@@ -308,54 +228,6 @@ namespace LouMapInfoApp.LouMap
             cr.Dock = DockStyle.Fill;
             cr.Invalidate();
         }
-
-        //private void btnReportsLvl_ButtonClick(object sender, EventArgs e)
-        //{
-        //    btnReportsLvl.ShowDropDown();
-        //}
-
-        //private void btnReportsLvl1_Click(object sender, EventArgs e)
-        //{
-        //    lvl = 1;
-        //    btnReportsLvl.Text = btnReportsLvl1.Text + ":";
-        //    btnReportsLvl1.Checked = true;
-        //    btnReportsLvl2.Checked = false;
-        //    btnReportsLvl3.Checked = false;
-        //    if (sender != null)
-        //    {
-        //        Properties.Settings.Default.lastCDetailLvl = lvl;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
-
-        //private void btnReportsLvl2_Click(object sender, EventArgs e)
-        //{
-        //    lvl = 2;
-        //    btnReportsLvl.Text = btnReportsLvl2.Text + ":";
-        //    btnReportsLvl1.Checked = false;
-        //    btnReportsLvl2.Checked = true;
-        //    btnReportsLvl3.Checked = false;
-        //    if (sender != null)
-        //    {
-        //        Properties.Settings.Default.lastCDetailLvl = lvl;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
-
-        //private void btnReportsLvl3_Click(object sender, EventArgs e)
-        //{
-        //    lvl = 3;
-        //    btnReportsLvl.Text = btnReportsLvl3.Text + ":";
-        //    btnReportsLvl1.Checked = false;
-        //    btnReportsLvl2.Checked = false;
-        //    btnReportsLvl3.Checked = true;
-        //    if (sender != null)
-        //    {
-        //        Properties.Settings.Default.lastCDetailLvl = lvl;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(linkLabel1.Text);

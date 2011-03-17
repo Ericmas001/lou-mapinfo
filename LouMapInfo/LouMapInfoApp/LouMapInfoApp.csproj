@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LouMapInfoApp</RootNamespace>
-    <AssemblyName>LouMapInfoApp</AssemblyName>
+    <AssemblyName>LoUMapInfo</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icone-LOU.ico</ApplicationIcon>
+    <ApplicationIcon>icon_Official.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>LouMapInfoApp.Program</StartupObject>
@@ -306,6 +306,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
+    <Content Include="icon_Official.ico" />
+    <None Include="Resources\menu_Zeus.png" />
+    <None Include="Resources\menu_Tools.png" />
+    <None Include="Resources\menu_Official.png" />
+    <None Include="Resources\menu_Map.png" />
+    <None Include="Resources\menu_Empire.png" />
     <None Include="Resources\empire.png" />
     <None Include="Resources\Office-excel-csv-icon.png" />
     <None Include="Resources\LordOfUltima.png" />
