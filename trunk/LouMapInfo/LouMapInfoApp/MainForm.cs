@@ -149,11 +149,11 @@ namespace LouMapInfoApp
                 if( m_Session.AllianceID > 0 )
                     AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance()));
                 */
-                AddSubItem(btnMenuOfficial, "Rankings", new ContentLoUOfficial(this, new ContentLouRankings()));
-                AddSubItem(btnMenuOfficial, "Players", new ContentLoUOfficial(this, new ContentLouPlayers()));
-                AddSubItem(btnMenuOfficial, "Alliances", new ContentLoUOfficial(this, new ContentLouAlliances()));
-                AddSubItem(btnMenuOfficial, "Continent", new ContentLoUOfficial(this, new ContentLouContinent()));
-                AddSubItem(btnMenuOfficial, "Virtues", new ContentLoUOfficial(this, new ContentLouVirtues()));
+                AddSubItem(btnMenuOfficial, "Rankings", new ContentLoUOfficial(this, new ContentLouRankings(), Properties.Resources.menu_Official));
+                AddSubItem(btnMenuOfficial, "Players", new ContentLoUOfficial(this, new ContentLouPlayers(), Properties.Resources.menu_Official));
+                AddSubItem(btnMenuOfficial, "Alliances", new ContentLoUOfficial(this, new ContentLouAlliances(), Properties.Resources.menu_Official));
+                AddSubItem(btnMenuOfficial, "Continent", new ContentLoUOfficial(this, new ContentLouContinent(), Properties.Resources.menu_Official));
+                AddSubItem(btnMenuOfficial, "Virtues", new ContentLoUOfficial(this, new ContentLouVirtues(), Properties.Resources.menu_Official));
                 //TODO: AddSubItem(btnMenuOfficial, "Groups", new ContentLoUOfficial(this, new ContentLouGroups()));
             }
             if (lstSubItems.Items.Count > 0)
@@ -182,9 +182,9 @@ namespace LouMapInfoApp
             }
             else
             {
-                AddSubItem(btnMenuOfficial, m_Session.World.Player(m_Session.PlayerID).Name, new ContentLoUOfficial(this, new ContentLouMyPlayer()));
+                AddSubItem(btnMenuOfficial, m_Session.World.Player(m_Session.PlayerID).Name, new ContentLoUOfficial(this, new ContentLouMyPlayer(), Properties.Resources.menu_Empire));
                 if (m_Session.AllianceID > 0)
-                    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance()));
+                    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance(), Properties.Resources.menu_Empire));
             }
             if (lstSubItems.Items.Count > 0)
                 lstSubItems.SelectedIndex = 0;

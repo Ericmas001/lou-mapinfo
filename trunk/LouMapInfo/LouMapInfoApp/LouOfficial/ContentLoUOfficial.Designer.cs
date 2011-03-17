@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentLoUOfficial));
             this.toolbarConnection = new System.Windows.Forms.ToolStrip();
-            this.btnConnect = new System.Windows.Forms.ToolStripButton();
-            this.lblImage = new System.Windows.Forms.ToolStripLabel();
             this.lblWorldInfo = new System.Windows.Forms.ToolStripLabel();
+            this.lblImage = new System.Windows.Forms.ToolStripLabel();
+            this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.toolbarConnection.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,22 @@
             this.toolbarConnection.TabIndex = 1;
             this.toolbarConnection.Text = "toolStrip1";
             // 
+            // lblWorldInfo
+            // 
+            this.lblWorldInfo.Name = "lblWorldInfo";
+            this.lblWorldInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblWorldInfo.Size = new System.Drawing.Size(0, 22);
+            // 
+            // lblImage
+            // 
+            this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblImage.AutoSize = false;
+            this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.menu_Official;
+            this.lblImage.Name = "lblImage";
+            this.lblImage.Size = new System.Drawing.Size(22, 22);
+            this.lblImage.Text = "toolStripLabel1";
+            // 
             // btnConnect
             // 
             this.btnConnect.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -61,22 +77,6 @@
             this.btnConnect.Size = new System.Drawing.Size(70, 22);
             this.btnConnect.Text = "Disconnect";
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // lblImage
-            // 
-            this.lblImage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblImage.AutoSize = false;
-            this.lblImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.lblImage.Image = global::LouMapInfoApp.Properties.Resources.logo_LOU;
-            this.lblImage.Name = "lblImage";
-            this.lblImage.Size = new System.Drawing.Size(22, 22);
-            this.lblImage.Text = "toolStripLabel1";
-            // 
-            // lblWorldInfo
-            // 
-            this.lblWorldInfo.Name = "lblWorldInfo";
-            this.lblWorldInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblWorldInfo.Size = new System.Drawing.Size(0, 22);
             // 
             // ContentLoUOfficial
             // 
