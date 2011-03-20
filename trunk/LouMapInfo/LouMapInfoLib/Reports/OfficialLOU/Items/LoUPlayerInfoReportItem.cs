@@ -22,6 +22,7 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
         public override string Value(ReportOption options)
         {
             string s = String.Format("[player]{0}[/player]", m_Info.Name);
+
             int score = m_Continent == -1 ? m_Info.Score : m_Info.CScore(m_Continent);
             if ((options & ReportOption.PlayerScore) != 0)
                 s += String.Format(" ([score]{0}[/score])", score.ToString("N0"));

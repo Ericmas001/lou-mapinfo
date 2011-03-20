@@ -35,11 +35,11 @@
             this.lstExistings = new System.Windows.Forms.ToolStripComboBox();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.tbSaveCancel = new System.Windows.Forms.ToolStrip();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.tbManaging.SuspendLayout();
             this.tbSaveCancel.SuspendLayout();
             this.SuspendLayout();
@@ -99,6 +99,18 @@
             this.btnDelete.Size = new System.Drawing.Size(44, 22);
             this.btnDelete.Text = "Delete";
             // 
+            // btnClose
+            // 
+            this.btnClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClose.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(40, 22);
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // tbSaveCancel
             // 
             this.tbSaveCancel.BackColor = System.Drawing.Color.White;
@@ -139,18 +151,6 @@
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(47, 22);
             this.toolStripButton6.Text = "Cancel";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClose.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(40, 22);
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // ContentLouGroupsManage
             // 

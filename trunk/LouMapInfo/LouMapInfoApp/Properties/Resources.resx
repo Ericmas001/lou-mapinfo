@@ -151,9 +151,197 @@
   <data name="Office_excel_csv_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Office-excel-csv-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bg_land" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_land.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_water" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_water.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_barracks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_barracks.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_barracks_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_barracks_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_casern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_casern.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_casern_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_casern_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_cityguard_house" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_cityguard_house.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_cityguard_house_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_cityguard_house_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_cottage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_cottage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_cottage_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_cottage_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_farm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_farm.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_farm_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_farm_new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_farm_new_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_farm_new_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_harbour" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_harbour.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_harbour_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_harbour_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_hideout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_hideout.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_hideout_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_hideout_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_hut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_hut.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_hut_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_hut_new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_hut_new_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_hut_new_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_iron_furnace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_iron_furnace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_iron_furnace_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_iron_furnace_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_lumber_mill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_lumber_mill.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_lumber_mill_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_lumber_mill_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_mage_tower" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_mage_tower.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_mage_tower_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_mage_tower_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_market_place" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_market_place.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_market_place_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_market_place_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_mill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_mill.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_mill_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_mill_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_mine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_mine.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_ore_mine_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_ore_mine_new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_ore_mine_new_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_ore_mine_new_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_palace_level_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_palace_level_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_palace_level_01_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_palace_level_01_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_palace_level_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_palace_level_02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_palace_level_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_palace_level_03.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_palace_level_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_palace_level_04.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_palace_level_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_palace_level_05.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_palace_level_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_palace_level_06.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_quarry_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_quarry_new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_quarry_new_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_quarry_new_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_shipyard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_shipyard.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_shipyard_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_shipyard_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_stables" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_stables.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_stables_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_stables_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_stonecutter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_stonecutter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_stonecutter_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_stonecutter_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_stone_quarry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_stone_quarry.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_storage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_storage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_storage_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_storage_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_stronghold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_stronghold.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_stronghold_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_stronghold_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_temple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_temple.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_temple_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_temple_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_townhouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_townhouse.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_townhouse_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_townhouse_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_weapon_factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_weapon_factory.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="building_weapon_factory_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\building_weapon_factory_menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="corn_1x1_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corn_1x1_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="empire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\empire.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forrest_big_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forrest_big_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iron_r_1x1_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iron_r_1x1_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lake_m_1x1_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lake_m_1x1_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="menu_Empire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menu_Empire.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,5 +357,165 @@
   </data>
   <data name="menu_Zeus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menu_Zeus.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stone_m_1x1_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stone_m_1x1_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pl_building_barracks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_barracks.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_casern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_casern.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_cityguard_house" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_cityguard_house.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_cottage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_cottage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_farm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_farm.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_farm_old" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_farm_old.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_harbour" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_harbour.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_hideout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_hideout.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_hut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_hut.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_hut_old" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_hut_old.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_iron_furnace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_iron_furnace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_lumber_mill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_lumber_mill.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_mage_tower" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_mage_tower.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_market_place" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_market_place.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_mill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_mill.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_mine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_mine.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_mine_old" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_mine_old.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_none.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_shipyard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_shipyard.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_stables" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_stables.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_stonecutter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_stonecutter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_stone_quarry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_stone_quarry.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_stone_quarry_old" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_stone_quarry_old.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_storage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_storage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_stronghold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_stronghold.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_temple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_temple.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_townhall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_townhall.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_townhouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_townhouse.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_building_weapon_factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_building_weapon_factory.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_center" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_center.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_center_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_center_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_center_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_center_hover.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_left.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_left_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_left_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_left_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_left_hover.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_right.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_right_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_right_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_button_right_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_button_right_hover.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_decal_building_valid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_decal_building_valid.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_decal_select_building" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_decal_select_building.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_footer_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_footer_bg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_header_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_header_bg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_header_bg_military" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_header_bg_military.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_menu_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_menu_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_menu_highlight_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_menu_highlight_grey.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_res_farmland" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_res_farmland.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_res_forest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_res_forest.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_res_iron" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_res_iron.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_res_lake" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_res_lake.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_res_stone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_res_stone.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_town_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_town_bg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pl_town_bg_water" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pl_town_bg_water.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
