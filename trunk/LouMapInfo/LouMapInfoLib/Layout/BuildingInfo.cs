@@ -100,7 +100,7 @@ namespace LouMapInfo.Layout
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Woodcutter, "Woodcutter's hut", '2', '2'));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Quarry, "Quarry", '3', '3'));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMine, "Iron Mine", '4', '4'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Farm, "Farm", '5', '2'));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Farm, "Farm", '5', '1'));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Sawmill, "Sawmill", 'K', 'L'));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Stonemasson, "Stonemasson", 'L', 'A'));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Foundry, "Foundry", 'M', 'D'));

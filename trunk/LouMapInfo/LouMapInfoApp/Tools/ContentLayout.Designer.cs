@@ -122,7 +122,7 @@
             // 
             // pbCity
             // 
-            this.pbCity.BackgroundImage = global::LouMapInfoApp.Properties.Resources.pl_town_bg;
+            this.pbCity.BackgroundImage = global::LouMapInfoApp.Properties.Resources.pl_town_bg_water;
             this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbCity.Location = new System.Drawing.Point(0, 0);
@@ -130,7 +130,10 @@
             this.pbCity.Size = new System.Drawing.Size(768, 480);
             this.pbCity.TabIndex = 3;
             this.pbCity.TabStop = false;
+            this.pbCity.Click += new System.EventHandler(this.pbCity_Click);
             this.pbCity.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCity_Paint);
+            this.pbCity.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbCity_MouseClick);
+            this.pbCity.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCity_MouseMove);
             // 
             // toolStrip3
             // 
