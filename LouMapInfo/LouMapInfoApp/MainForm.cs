@@ -37,6 +37,9 @@ namespace LouMapInfoApp
         {
             InitializeComponent();
             menuButton_CheckedChanged(btnMenuOfficial, new EventArgs());
+
+            //TEMP:
+            btnMenuTools.Checked = true;
         }
 
         private void menuButton_CheckedChanged(object sender, EventArgs e)
@@ -52,12 +55,12 @@ namespace LouMapInfoApp
                     if (c.Top > buttonY && c.Top < lstOldY)
                     {
                         c.Location = new Point(c.Left, c.Top + lstSubItems.Height);
-                        c.Anchor = (AnchorStyles)(AnchorStyles.Left | AnchorStyles.Bottom);
+                        c.Anchor = (AnchorStyles)(AnchorStyles.Right | AnchorStyles.Bottom);
                     }
                     else if (c.Top <= buttonY && c.Top > lstOldY)
                     {
                         c.Location = new Point(c.Left, c.Top - lstSubItems.Height);
-                        c.Anchor = (AnchorStyles)(AnchorStyles.Left | AnchorStyles.Top);
+                        c.Anchor = (AnchorStyles)(AnchorStyles.Right | AnchorStyles.Top);
                     }
                 }
             int lstNewY = btn.Bottom - 1;
@@ -87,6 +90,7 @@ namespace LouMapInfoApp
             }
             else if (btn == btnMenuTools)
             {
+                AddSubItem(btn, "Layout", new ContentLayout());
                 AddSubItem(btn, "About", new ContentAbout());
                 AddSubItem(btn, "FAQ", new ContentFAQ());
             }
@@ -208,6 +212,20 @@ namespace LouMapInfoApp
                 pe.SubPanel.Dock = DockStyle.Fill;
                 pe.SubPanel.BackColor = Color.White;
                 pe.SubPanel.BorderStyle = BorderStyle.FixedSingle;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (button1.Text == "<")
+            {
+                splitContainer1.SplitterDistance -= 197;
+                button1.Text = ">";
+            }
+            else
+            {
+                splitContainer1.SplitterDistance += 197;
+                button1.Text = "<";
             }
         }
     }

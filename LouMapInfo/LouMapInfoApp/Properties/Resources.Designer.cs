@@ -60,9 +60,436 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap bg_land {
+            get {
+                object obj = ResourceManager.GetObject("bg_land", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bg_water {
+            get {
+                object obj = ResourceManager.GetObject("bg_water", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_barracks {
+            get {
+                object obj = ResourceManager.GetObject("building_barracks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_barracks_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_barracks_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_casern {
+            get {
+                object obj = ResourceManager.GetObject("building_casern", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_casern_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_casern_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_cityguard_house {
+            get {
+                object obj = ResourceManager.GetObject("building_cityguard_house", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_cityguard_house_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_cityguard_house_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_cottage {
+            get {
+                object obj = ResourceManager.GetObject("building_cottage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_cottage_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_cottage_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_farm {
+            get {
+                object obj = ResourceManager.GetObject("building_farm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_farm_new {
+            get {
+                object obj = ResourceManager.GetObject("building_farm_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_farm_new_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_farm_new_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_harbour {
+            get {
+                object obj = ResourceManager.GetObject("building_harbour", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_harbour_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_harbour_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_hideout {
+            get {
+                object obj = ResourceManager.GetObject("building_hideout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_hideout_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_hideout_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_hut {
+            get {
+                object obj = ResourceManager.GetObject("building_hut", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_hut_new {
+            get {
+                object obj = ResourceManager.GetObject("building_hut_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_hut_new_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_hut_new_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_iron_furnace {
+            get {
+                object obj = ResourceManager.GetObject("building_iron_furnace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_iron_furnace_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_iron_furnace_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_lumber_mill {
+            get {
+                object obj = ResourceManager.GetObject("building_lumber_mill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_lumber_mill_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_lumber_mill_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_mage_tower {
+            get {
+                object obj = ResourceManager.GetObject("building_mage_tower", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_mage_tower_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_mage_tower_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_market_place {
+            get {
+                object obj = ResourceManager.GetObject("building_market_place", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_market_place_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_market_place_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_mill {
+            get {
+                object obj = ResourceManager.GetObject("building_mill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_mill_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_mill_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_mine {
+            get {
+                object obj = ResourceManager.GetObject("building_mine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_ore_mine_new {
+            get {
+                object obj = ResourceManager.GetObject("building_ore_mine_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_ore_mine_new_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_ore_mine_new_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_palace_level_01 {
+            get {
+                object obj = ResourceManager.GetObject("building_palace_level_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_palace_level_01_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_palace_level_01_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_palace_level_02 {
+            get {
+                object obj = ResourceManager.GetObject("building_palace_level_02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_palace_level_03 {
+            get {
+                object obj = ResourceManager.GetObject("building_palace_level_03", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_palace_level_04 {
+            get {
+                object obj = ResourceManager.GetObject("building_palace_level_04", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_palace_level_05 {
+            get {
+                object obj = ResourceManager.GetObject("building_palace_level_05", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_palace_level_06 {
+            get {
+                object obj = ResourceManager.GetObject("building_palace_level_06", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_quarry_new {
+            get {
+                object obj = ResourceManager.GetObject("building_quarry_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_quarry_new_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_quarry_new_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_shipyard {
+            get {
+                object obj = ResourceManager.GetObject("building_shipyard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_shipyard_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_shipyard_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_stables {
+            get {
+                object obj = ResourceManager.GetObject("building_stables", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_stables_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_stables_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_stone_quarry {
+            get {
+                object obj = ResourceManager.GetObject("building_stone_quarry", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_stonecutter {
+            get {
+                object obj = ResourceManager.GetObject("building_stonecutter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_stonecutter_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_stonecutter_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_storage {
+            get {
+                object obj = ResourceManager.GetObject("building_storage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_storage_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_storage_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_stronghold {
+            get {
+                object obj = ResourceManager.GetObject("building_stronghold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_stronghold_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_stronghold_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_temple {
+            get {
+                object obj = ResourceManager.GetObject("building_temple", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_temple_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_temple_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_townhouse {
+            get {
+                object obj = ResourceManager.GetObject("building_townhouse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_townhouse_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_townhouse_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_weapon_factory {
+            get {
+                object obj = ResourceManager.GetObject("building_weapon_factory", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap building_weapon_factory_menu {
+            get {
+                object obj = ResourceManager.GetObject("building_weapon_factory_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap corn_1x1_01 {
+            get {
+                object obj = ResourceManager.GetObject("corn_1x1_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap empire {
             get {
                 object obj = ResourceManager.GetObject("empire", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap forrest_big_01 {
+            get {
+                object obj = ResourceManager.GetObject("forrest_big_01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -92,6 +519,20 @@ namespace LouMapInfoApp.Properties {
             get {
                 object obj = ResourceManager.GetObject("icone_LOU", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iron_r_1x1_01 {
+            get {
+                object obj = ResourceManager.GetObject("iron_r_1x1_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap lake_m_1x1_01 {
+            get {
+                object obj = ResourceManager.GetObject("lake_m_1x1_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -158,6 +599,370 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap pl_building_barracks {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_barracks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_casern {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_casern", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_cityguard_house {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_cityguard_house", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_cottage {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_cottage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_farm {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_farm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_farm_old {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_farm_old", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_harbour {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_harbour", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_hideout {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_hideout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_hut {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_hut", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_hut_old {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_hut_old", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_iron_furnace {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_iron_furnace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_lumber_mill {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_lumber_mill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_mage_tower {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_mage_tower", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_market_place {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_market_place", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_mill {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_mill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_mine {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_mine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_mine_old {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_mine_old", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_none {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_none", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_shipyard {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_shipyard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_stables {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_stables", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_stone_quarry {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_stone_quarry", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_stone_quarry_old {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_stone_quarry_old", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_stonecutter {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_stonecutter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_storage {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_storage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_stronghold {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_stronghold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_temple {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_temple", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_townhall {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_townhall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_townhouse {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_townhouse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_building_weapon_factory {
+            get {
+                object obj = ResourceManager.GetObject("pl_building_weapon_factory", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_center {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_center", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_center_down {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_center_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_center_hover {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_center_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_left {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_left_down {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_left_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_left_hover {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_left_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_right {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_right_down {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_right_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_button_right_hover {
+            get {
+                object obj = ResourceManager.GetObject("pl_button_right_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_decal_building_valid {
+            get {
+                object obj = ResourceManager.GetObject("pl_decal_building_valid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_decal_select_building {
+            get {
+                object obj = ResourceManager.GetObject("pl_decal_select_building", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_footer_bg {
+            get {
+                object obj = ResourceManager.GetObject("pl_footer_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_header_bg {
+            get {
+                object obj = ResourceManager.GetObject("pl_header_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_header_bg_military {
+            get {
+                object obj = ResourceManager.GetObject("pl_header_bg_military", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_menu_highlight {
+            get {
+                object obj = ResourceManager.GetObject("pl_menu_highlight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_menu_highlight_grey {
+            get {
+                object obj = ResourceManager.GetObject("pl_menu_highlight_grey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_res_farmland {
+            get {
+                object obj = ResourceManager.GetObject("pl_res_farmland", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_res_forest {
+            get {
+                object obj = ResourceManager.GetObject("pl_res_forest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_res_iron {
+            get {
+                object obj = ResourceManager.GetObject("pl_res_iron", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_res_lake {
+            get {
+                object obj = ResourceManager.GetObject("pl_res_lake", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_res_stone {
+            get {
+                object obj = ResourceManager.GetObject("pl_res_stone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_town_bg {
+            get {
+                object obj = ResourceManager.GetObject("pl_town_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl_town_bg_water {
+            get {
+                object obj = ResourceManager.GetObject("pl_town_bg_water", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap popup_icon {
             get {
                 object obj = ResourceManager.GetObject("popup_icon", resourceCulture);
@@ -168,6 +973,13 @@ namespace LouMapInfoApp.Properties {
         internal static System.Drawing.Bitmap Refresh_icon {
             get {
                 object obj = ResourceManager.GetObject("Refresh_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap stone_m_1x1_01 {
+            get {
+                object obj = ResourceManager.GetObject("stone_m_1x1_01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
