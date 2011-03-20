@@ -15,18 +15,37 @@ namespace LouMapInfoApp.Tools
 {
     public partial class ContentLayout : UserControl
     {
+        bool water = true;
+        private Point mouse = new Point(-1, -1);
+        private Point coords = new Point(-1, -1);
+        int x0 = 64;
+        int y0 = 26;
+        int dx = 34;
+        int dy = 21;
+        bool validClick = false;
         private static bool m_Loaded = false;
-        private static Dictionary<BuildingType, Bitmap> m_DONOTUSE_Buildings = new Dictionary<BuildingType,Bitmap>();
+        private static Dictionary<BuildingType, Bitmap> m_DONOTUSE_Buildings = new Dictionary<BuildingType, Bitmap>();
+        private static List<LayoutEntry> m_DONOTUSE_Layout = new List<LayoutEntry>();
+        private static LayoutEntry[,] m_CoordLayout = new LayoutEntry[20, 20];
         public static Dictionary<BuildingType, Bitmap> Buildings
         {
             get
             {
                 if (!m_Loaded)
-                    Load();
+                    LoadAll();
                 return m_DONOTUSE_Buildings;
             }
         }
-        public static void Load()
+        public static List<LayoutEntry> CityLayout
+        {
+            get
+            {
+                if (!m_Loaded)
+                    LoadAll();
+                return m_DONOTUSE_Layout;
+            }
+        }
+        public static void LoadAll()
         {
             m_Loaded = true;
             m_DONOTUSE_Buildings.Add(BuildingType.None, new Bitmap(1,1));//Destroy", '0', '-'));
@@ -61,22 +80,7 @@ namespace LouMapInfoApp.Tools
             m_DONOTUSE_Buildings.Add(BuildingType.Harbor, Properties.Resources.pl_building_harbour);//Harbor", 'T', 'R'));
             m_DONOTUSE_Buildings.Add(BuildingType.Shipyard, Properties.Resources.pl_building_shipyard);//Shipyard", 'Y', 'V'));
             m_DONOTUSE_Buildings.Add(BuildingType.Castle, Properties.Resources.pl_building_stronghold);//Castle", 'X', 'X'));
-        }
 
-
-        private BuildingType m_CurBuilding = BuildingType.None;
-        private ToolStripButton m_CurButton = null;
-        public ContentLayout()
-        {
-            InitializeComponent();
-        }
-        private void pbCity_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            int x0 = 64;
-            int y0 = 26;
-            int dx = 34;
-            int dy = 21;
             Point[][] lines = new Point[][]{
                 new Point[]{ new Point(2,8), new Point(10,16)},
                 new Point[]{ new Point(1,8), new Point(10,17)},
@@ -87,7 +91,7 @@ namespace LouMapInfoApp.Tools
                 new Point[]{ new Point(0,3), new Point(6,12), new Point(15,18)},
                 new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
                 new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
-                new Point[]{ new Point(5,8), new Point(10,13)},
+                new Point[]{ new Point(5,13)},
                 new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
                 new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
                 new Point[]{ new Point(0,3), new Point(6,12), new Point(15,18)},
@@ -99,12 +103,39 @@ namespace LouMapInfoApp.Tools
                 new Point[]{ new Point(2,8), new Point(10,16)},
             };
             for (int y = 0; y < lines.Length; ++y)
-            {
-                if (y == 9)
-                    g.DrawImage(Properties.Resources.pl_building_townhall, x0 + (9 * dx), y0 + (y * dy), 48, 48);
                 foreach (Point p in lines[y])
                     for (int x = p.X; x <= p.Y; ++x)
-                        g.DrawImage(Buildings[m_CurBuilding], x0 + (x * dx), y0 + (y * dy), 48, 48);
+                    {
+                        LayoutEntry le = new LayoutEntry(x, y, BuildingType.None);
+                        m_DONOTUSE_Layout.Add(le);
+                        if( x !=9 || y !=9 )
+                            m_CoordLayout[x, y] = le;
+                    }
+        }
+
+
+        private BuildingType m_CurBuilding = BuildingType.None;
+        private ToolStripButton m_CurButton = null;
+        public ContentLayout()
+        {
+            InitializeComponent();
+            m_CurButton = btnDestroy;
+            btnDestroy.BackColor = SystemColors.Highlight;
+        }
+        private void pbCity_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            int mousex = coords.X;
+            int mousey = coords.Y;
+            if (validClick)
+                    g.DrawImage(Properties.Resources.pl_decal_select_building, x0 + (mousex * dx), y0 + 15 + (mousey * dy), 48, 48);
+            
+            foreach (LayoutEntry l in CityLayout)
+            {
+                if (l.X == 9 && l.Y == 9)
+                    g.DrawImage(Properties.Resources.pl_building_townhall, x0 + (9 * dx), y0 + (9 * dy), 48, 48);
+                else
+                    g.DrawImage(Buildings[l.Info], x0 + (l.X * dx), y0 + (l.Y * dy), 48, 48);
             }
         }
         public void ChooseTool(ToolStripButton btn, BuildingType type)
@@ -274,6 +305,133 @@ namespace LouMapInfoApp.Tools
         private void btnShipyard_Click(object sender, EventArgs e)
         {
             ChooseTool((ToolStripButton)sender, BuildingType.Shipyard);
+        }
+        public void verifyValid()
+        {
+            verifyValid(false);
+        }
+        public void verifyValid(bool demo)
+        {
+            bool demol = demo || m_CurBuilding != BuildingType.None;
+            validClick = false;
+            int mousex = coords.X;
+            int mousey = coords.Y;
+            if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
+            {
+                if (!water && (m_CurBuilding == BuildingType.Harbor || m_CurBuilding == BuildingType.Shipyard))
+                    return;
+                if (water)
+                {
+                    bool waterSpot = false;
+                    foreach (Point p in new Point[] { new Point(15, 14), new Point(16, 14), new Point(14, 15), new Point(17, 15), new Point(14, 16), new Point(18, 16), new Point(15, 17), new Point(16, 18) })
+                        if (p.X == mousex && p.Y == mousey)
+                        {
+                            waterSpot = true;
+                            if (demol && m_CurBuilding != BuildingType.Harbor && m_CurBuilding != BuildingType.Shipyard)
+                                return;
+                        }
+                    if (!waterSpot && (m_CurBuilding == BuildingType.Harbor || m_CurBuilding == BuildingType.Shipyard))
+                        return;
+                    foreach (Point p in new Point[] { new Point(15, 15), new Point(16, 15), new Point(15, 16), new Point(16, 16), new Point(17, 16), new Point(16, 17), new Point(17, 17)})
+                        if (p.X == mousex && p.Y == mousey)
+                            return;
+                }
+                        
+                      
+                
+                if (!demo&&m_CurBuilding == m_CoordLayout[mousex, mousey].Info)
+                    return;
+
+                validClick = true;
+            }
+        }
+        private void pbCity_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+            mouse = e.Location;
+            Point nc = new Point((mouse.X - x0 - 3) / dx, (mouse.Y - y0 - 13) / dy);
+            if (nc.X != coords.X || nc.Y != coords.Y)
+            {
+                coords = nc;
+                verifyValid();
+                pbCity.Invalidate();
+            }
+        }
+
+        private void pbCity_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        public void Import(string patente)
+        {
+            if( patente.Contains("ShareString"))
+            {
+                if (patente.Contains("];"))
+                    water = true;
+                string s = patente.Substring(patente.IndexOf('#')).Replace("#", "").Replace("T", "-").Replace("_", "-");
+                for (int i = 0; i < s.Length; ++i)
+                {
+                    int j = i;
+                    if (water)
+                    {
+                      if (i >= 242)
+                            j += 2;
+                        if (i >= 258)
+                            j += 3;
+                        if (i >= 272)
+                            j += 2;
+                    }
+                    CityLayout[j].Info = BuildingInfo.ByLetterShareString[s[i]].BType;
+                }
+            }
+            else if (patente.Contains("lou-fcp.co.uk"))
+            {
+                string s = patente.Substring(patente.IndexOf('=') + 1);
+                if (s[0] == 'W')
+                    water = true;
+                for (int i = 0; i < s.Length - 1; ++i)
+                {
+                    CityLayout[i].Info = BuildingInfo.ByLetterFlashPlanner[s[i + 1]].BType;
+                }
+            }
+            if (water)
+                pbCity.BackgroundImage = Properties.Resources.pl_town_bg_water;
+            else
+                pbCity.BackgroundImage = Properties.Resources.pl_town_bg;
+            btnShipyard.Enabled = water;
+            btnHarbor.Enabled = water;
+        }
+
+        private void pbCity_MouseClick(object sender, MouseEventArgs e)
+        {
+            bool demo = m_CurBuilding == BuildingType.None || e.Button == System.Windows.Forms.MouseButtons.Right;
+            verifyValid(demo);
+            if (validClick)
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    int mousex = coords.X;
+                    int mousey = coords.Y;
+                    if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
+                    {
+                        m_CoordLayout[mousex, mousey].Info = m_CurBuilding;
+                    }
+                }
+                else if (e.Button == System.Windows.Forms.MouseButtons.Right) 
+                {
+                    int mousex = coords.X;
+                    int mousey = coords.Y;
+                    if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
+                    {
+                        m_CoordLayout[mousex, mousey].Info = BuildingType.None;
+                    }
+                }
+                verifyValid();
+                pbCity.Invalidate();
+            }
+
         }
     }
 }
