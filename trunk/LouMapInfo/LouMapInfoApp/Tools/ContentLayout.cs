@@ -23,11 +23,11 @@ namespace LouMapInfoApp.Tools
         int dx = 34;
         int dy = 21;
         bool validClick = false;
-        private static bool m_Loaded = false;
-        private static Dictionary<BuildingType, Bitmap> m_DONOTUSE_Buildings = new Dictionary<BuildingType, Bitmap>();
-        private static List<LayoutEntry> m_DONOTUSE_Layout = new List<LayoutEntry>();
-        private static LayoutEntry[,] m_CoordLayout = new LayoutEntry[20, 20];
-        public static Dictionary<BuildingType, Bitmap> Buildings
+        private bool m_Loaded = false;
+        private  Dictionary<BuildingType, Bitmap> m_DONOTUSE_Buildings = new Dictionary<BuildingType, Bitmap>();
+        private  List<LayoutEntry> m_DONOTUSE_Layout = new List<LayoutEntry>();
+        private  LayoutEntry[,] m_CoordLayout = new LayoutEntry[20, 20];
+        public  Dictionary<BuildingType, Bitmap> Buildings
         {
             get
             {
@@ -36,7 +36,7 @@ namespace LouMapInfoApp.Tools
                 return m_DONOTUSE_Buildings;
             }
         }
-        public static List<LayoutEntry> CityLayout
+        public  List<LayoutEntry> CityLayout
         {
             get
             {
@@ -45,10 +45,11 @@ namespace LouMapInfoApp.Tools
                 return m_DONOTUSE_Layout;
             }
         }
-        public static void LoadAll()
+        private Dictionary<ResourceType, int> m_Production = new Dictionary<ResourceType, int>();
+        public  void LoadAll()
         {
             m_Loaded = true;
-            m_DONOTUSE_Buildings.Add(BuildingType.None, new Bitmap(1,1));//Destroy", '0', '-'));
+            m_DONOTUSE_Buildings.Add(BuildingType.None, new Bitmap(1, 1));//Destroy", '0', '-'));
             m_DONOTUSE_Buildings.Add(BuildingType.ResWood, Properties.Resources.pl_res_forest);//Wood", 'A', '.'));
             m_DONOTUSE_Buildings.Add(BuildingType.ResStone, Properties.Resources.pl_res_stone);//Stone", 'B', ':'));
             m_DONOTUSE_Buildings.Add(BuildingType.ResIron, Properties.Resources.pl_res_iron);//Iron", 'C', ','));
@@ -80,6 +81,7 @@ namespace LouMapInfoApp.Tools
             m_DONOTUSE_Buildings.Add(BuildingType.Harbor, Properties.Resources.pl_building_harbour);//Harbor", 'T', 'R'));
             m_DONOTUSE_Buildings.Add(BuildingType.Shipyard, Properties.Resources.pl_building_shipyard);//Shipyard", 'Y', 'V'));
             m_DONOTUSE_Buildings.Add(BuildingType.Castle, Properties.Resources.pl_building_stronghold);//Castle", 'X', 'X'));
+            m_DONOTUSE_Buildings.Add(BuildingType.FarmLand, Properties.Resources.pl_res_farmland);//Farm Land", ' ', ' '));
 
             Point[][] lines = new Point[][]{
                 new Point[]{ new Point(2,8), new Point(10,16)},
@@ -107,20 +109,62 @@ namespace LouMapInfoApp.Tools
                     for (int x = p.X; x <= p.Y; ++x)
                     {
                         LayoutEntry le = new LayoutEntry(x, y, BuildingType.None);
+                        le.RefreshResourceProduction += new ResourceTypeHandler(le_RefreshResourceProduction);
                         m_DONOTUSE_Layout.Add(le);
-                        if( x !=9 || y !=9 )
+                        if (x != 9 || y != 9)
                             m_CoordLayout[x, y] = le;
                     }
+            foreach (LayoutEntry le in CityLayout)
+                for (int xi = -1; xi <= 1; ++xi)
+                    for (int yi = -1; yi <= 1; ++yi)
+                        if (xi != 0 || yi != 0)
+                            if (le.X + xi >= 0 && le.X + xi < 20 && le.Y + yi >= 0 && le.Y + yi < 20 && m_CoordLayout[le.X + xi, le.Y + yi] != null)
+                                le.AddNeighbor(m_CoordLayout[le.X + xi, le.Y + yi]);
+        }
+
+        void le_RefreshResourceProduction(ResourceType res)
+        {
+            int total = 0;
+            foreach (LayoutEntry le in CityLayout)
+                total += le.Production(res);
+            if (res == ResourceType.Wood)
+                total += 300;
+            m_Production[res] = total; 
+            RefreshCounters();
         }
 
 
         private BuildingType m_CurBuilding = BuildingType.None;
         private ToolStripButton m_CurButton = null;
+        private void RefreshCounters()
+        {
+            lblGold.Text = m_Production[ResourceType.Gold].ToString("N0") + "/h";
+            lblWood.Text = m_Production[ResourceType.Wood].ToString("N0") + "/h";
+            lblStone.Text = m_Production[ResourceType.Stone].ToString("N0") + "/h";
+            lblIron.Text = m_Production[ResourceType.Iroon].ToString("N0") + "/h";
+            lblFood.Text = m_Production[ResourceType.Food].ToString("N0") + "/h";
+            lblTotalRes.Text = (m_Production[ResourceType.Wood] + m_Production[ResourceType.Stone] + m_Production[ResourceType.Iroon] + m_Production[ResourceType.Food]).ToString("N0") + "/h";
+
+        }
+        private void ResetCounters()
+        {
+            m_Production.Clear();
+            m_Production.Add(ResourceType.Gold, 0);
+            m_Production.Add(ResourceType.Wood, 300);
+            m_Production.Add(ResourceType.Stone, 0);
+            m_Production.Add(ResourceType.Iroon, 0);
+            m_Production.Add(ResourceType.Food, 0); 
+
+        }
         public ContentLayout()
         {
+            ResetCounters();
             InitializeComponent();
             m_CurButton = btnDestroy;
             btnDestroy.BackColor = SystemColors.Highlight;
+            CreateNew(true);
+            RefreshCounters();
+            Import("http://www.lou-fcp.co.uk/map.php?map=W000O4M403B30000B00C4C4B3L30000000000CC003O3000D00000000000CC00D0000KO0000000AA222A00000D000A0OAAACMAA03300000222C442A2LBB0RCZBBK0CCO2K2330DZCZ03L300O2A00D003B3O2K2ABZZZ00000BB3O0000000000003L3C0000A00000000000BJJJJ00D000AJJTTJJ03O002A2AD00JT00TJB3L3AAK2O000JT000T3B3O222C000JJT000000A0C0A00JJT");
         }
         private void pbCity_Paint(object sender, PaintEventArgs e)
         {
@@ -347,7 +391,7 @@ namespace LouMapInfoApp.Tools
         }
         private void pbCity_MouseMove(object sender, MouseEventArgs e)
         {
-            
+
             mouse = e.Location;
             Point nc = new Point((mouse.X - x0 - 3) / dx, (mouse.Y - y0 - 13) / dy);
             if (nc.X != coords.X || nc.Y != coords.Y)
@@ -357,19 +401,28 @@ namespace LouMapInfoApp.Tools
                 pbCity.Invalidate();
             }
         }
-
-        private void pbCity_Click(object sender, EventArgs e)
+        public void CreateNew(bool w)
         {
-            
-            
-        }
+            ResetCounters();
+            water = w;
+            if (water)
+                pbCity.BackgroundImage = Properties.Resources.pl_town_bg_water;
+            else
+                pbCity.BackgroundImage = Properties.Resources.pl_town_bg;
+            btnShipyard.Enabled = water;
+            btnHarbor.Enabled = water;
 
+            foreach (LayoutEntry le in CityLayout)
+            {
+                le.Water = water;
+                le.Info = BuildingType.None;
+            }
+        }
         public void Import(string patente)
         {
             if( patente.Contains("ShareString"))
             {
-                if (patente.Contains("];"))
-                    water = true;
+                CreateNew(patente.Contains("];"));
                 string s = patente.Substring(patente.IndexOf('#')).Replace("#", "").Replace("T", "-").Replace("_", "-");
                 for (int i = 0; i < s.Length; ++i)
                 {
@@ -389,19 +442,12 @@ namespace LouMapInfoApp.Tools
             else if (patente.Contains("lou-fcp.co.uk"))
             {
                 string s = patente.Substring(patente.IndexOf('=') + 1);
-                if (s[0] == 'W')
-                    water = true;
+                CreateNew(s[0] == 'W');
                 for (int i = 0; i < s.Length - 1; ++i)
                 {
                     CityLayout[i].Info = BuildingInfo.ByLetterFlashPlanner[s[i + 1]].BType;
                 }
             }
-            if (water)
-                pbCity.BackgroundImage = Properties.Resources.pl_town_bg_water;
-            else
-                pbCity.BackgroundImage = Properties.Resources.pl_town_bg;
-            btnShipyard.Enabled = water;
-            btnHarbor.Enabled = water;
         }
 
         private void pbCity_MouseClick(object sender, MouseEventArgs e)

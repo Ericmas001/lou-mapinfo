@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -47,6 +48,9 @@
     <Compile Include="Entities\PlayerInfo.cs" />
     <Compile Include="Layout\BuildingInfo.cs" />
     <Compile Include="Layout\BuildingType.cs" />
+    <Compile Include="Layout\LayoutEntry.cs" />
+    <Compile Include="Layout\ProductionType.cs" />
+    <Compile Include="Layout\ResourceType.cs" />
     <Compile Include="OfficialLOU\LoUBattleType.cs" />
     <Compile Include="OfficialLOU\Entities\LoUMoonGateInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUShrineInfo.cs" />
