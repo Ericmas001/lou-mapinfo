@@ -37,7 +37,7 @@ namespace LouMapInfo.Layout
         Workshop,
         Harbor,
         Shipyard,
-        Castle
-        
+        Castle,
+        FarmLand
     }
 }

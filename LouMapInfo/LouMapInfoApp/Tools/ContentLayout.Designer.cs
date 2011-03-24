@@ -76,6 +76,22 @@
             this.btnOldFarm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDestroy = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.lblGold = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.lblFood = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.lblIron = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.lblStone = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
+            this.lblWood = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
+            this.lblTotalRes = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.pnlContent.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlCity.SuspendLayout();
@@ -83,6 +99,7 @@
             this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -102,6 +119,7 @@
             // 
             this.pnlRight.BackColor = System.Drawing.Color.White;
             this.pnlRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnlRight.Controls.Add(this.toolStrip4);
             this.pnlRight.Controls.Add(this.pnlCity);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRight.Location = new System.Drawing.Point(164, 0);
@@ -130,7 +148,6 @@
             this.pbCity.Size = new System.Drawing.Size(768, 480);
             this.pbCity.TabIndex = 3;
             this.pbCity.TabStop = false;
-            this.pbCity.Click += new System.EventHandler(this.pbCity_Click);
             this.pbCity.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCity_Paint);
             this.pbCity.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbCity_MouseClick);
             this.pbCity.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCity_MouseMove);
@@ -592,6 +609,125 @@
             this.btnDestroy.Text = "Destroy";
             this.btnDestroy.Click += new System.EventHandler(this.btnDestroy_Click);
             // 
+            // toolStrip4
+            // 
+            this.toolStrip4.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel3,
+            this.toolStripLabel8,
+            this.lblWood,
+            this.toolStripLabel6,
+            this.lblStone,
+            this.toolStripLabel4,
+            this.lblIron,
+            this.toolStripLabel2,
+            this.lblFood,
+            this.toolStripSeparator10,
+            this.toolStripLabel5,
+            this.lblTotalRes,
+            this.toolStripSeparator11,
+            this.toolStripLabel1,
+            this.lblGold});
+            this.toolStrip4.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.Size = new System.Drawing.Size(1022, 25);
+            this.toolStrip4.TabIndex = 6;
+            this.toolStrip4.Text = "toolStrip4";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(39, 22);
+            this.toolStripLabel1.Text = "Gold: ";
+            // 
+            // lblGold
+            // 
+            this.lblGold.Name = "lblGold";
+            this.lblGold.Size = new System.Drawing.Size(25, 22);
+            this.lblGold.Text = "0/h";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel2.Text = "Food: ";
+            // 
+            // lblFood
+            // 
+            this.lblFood.Name = "lblFood";
+            this.lblFood.Size = new System.Drawing.Size(25, 22);
+            this.lblFood.Text = "0/h";
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(36, 22);
+            this.toolStripLabel4.Text = "Iron: ";
+            // 
+            // lblIron
+            // 
+            this.lblIron.Name = "lblIron";
+            this.lblIron.Size = new System.Drawing.Size(25, 22);
+            this.lblIron.Text = "0/h";
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(46, 22);
+            this.toolStripLabel6.Text = "Stone: ";
+            // 
+            // lblStone
+            // 
+            this.lblStone.Name = "lblStone";
+            this.lblStone.Size = new System.Drawing.Size(25, 22);
+            this.lblStone.Text = "0/h";
+            // 
+            // toolStripLabel8
+            // 
+            this.toolStripLabel8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel8.Name = "toolStripLabel8";
+            this.toolStripLabel8.Size = new System.Drawing.Size(46, 22);
+            this.toolStripLabel8.Text = "Wood: ";
+            // 
+            // lblWood
+            // 
+            this.lblWood.Name = "lblWood";
+            this.lblWood.Size = new System.Drawing.Size(25, 22);
+            this.lblWood.Text = "0/h";
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(75, 22);
+            this.toolStripLabel3.Text = "Production:  ";
+            // 
+            // toolStripLabel5
+            // 
+            this.toolStripLabel5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel5.Name = "toolStripLabel5";
+            this.toolStripLabel5.Size = new System.Drawing.Size(41, 22);
+            this.toolStripLabel5.Text = "Total: ";
+            // 
+            // lblTotalRes
+            // 
+            this.lblTotalRes.Name = "lblTotalRes";
+            this.lblTotalRes.Size = new System.Drawing.Size(25, 22);
+            this.lblTotalRes.Text = "0/h";
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
+            // 
             // ContentLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,6 +741,7 @@
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
             this.pnlRight.ResumeLayout(false);
+            this.pnlRight.PerformLayout();
             this.pnlCity.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.toolStrip3.ResumeLayout(false);
@@ -613,6 +750,8 @@
             this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.toolStrip4.ResumeLayout(false);
+            this.toolStrip4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -667,6 +806,22 @@
         private System.Windows.Forms.ToolStripButton btnHarbor;
         private System.Windows.Forms.Panel pnlCity;
         private System.Windows.Forms.PictureBox pbCity;
+        private System.Windows.Forms.ToolStrip toolStrip4;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel lblGold;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel8;
+        private System.Windows.Forms.ToolStripLabel lblWood;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel6;
+        private System.Windows.Forms.ToolStripLabel lblStone;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripLabel lblIron;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripLabel lblFood;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel5;
+        private System.Windows.Forms.ToolStripLabel lblTotalRes;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
 
 
 

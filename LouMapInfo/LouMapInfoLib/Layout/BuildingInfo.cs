@@ -34,13 +34,30 @@ namespace LouMapInfo.Layout
             get { return m_LetterShareString; }
             set { m_LetterShareString = value; }
         }
-        public BuildingInfo(BuildingType t, string n, char lfcp, char lss)
+
+        private bool m_HelpingNeighbors;
+
+        public bool HelpingNeighbors
+        {
+            get { return m_HelpingNeighbors; }
+            set { m_HelpingNeighbors = value; }
+        }
+
+        private ResourceType m_ResourceProduced;
+
+        public ResourceType ResourceProduced
+        {
+            get { return m_ResourceProduced; }
+            set { m_ResourceProduced = value; }
+        }
+        public BuildingInfo(BuildingType t, string n, char lfcp, char lss, bool helping, ResourceType prodRes)
         {
             m_BType = t;
             m_Name = n;
             m_LetterFlashPlanner = lfcp;
             m_LetterShareString = lss;
-            
+            m_HelpingNeighbors = helping;
+            m_ResourceProduced = prodRes;
         }
 
 
@@ -88,38 +105,39 @@ namespace LouMapInfo.Layout
         private static void Load()
         {
             m_Loaded = true;
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.None, "Destroy", '0', '-'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResWood, "Wood", 'A', '.'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResStone, "Stone", 'B', ':'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResIron, "Iron", 'C', ','));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResFood, "Food", 'D', ';'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.WoodcutterOld, "Woodcutter's hut (old)", 'F', 'W'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.QuarryOld, "Quarry (old)", 'G', 'Q'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMineOld, "Iron Mine (old)", 'H', 'I'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.FarmOld, "Farm (old)", 'I', 'F'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Woodcutter, "Woodcutter's hut", '2', '2'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Quarry, "Quarry", '3', '3'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMine, "Iron Mine", '4', '4'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Farm, "Farm", '5', '1'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Sawmill, "Sawmill", 'K', 'L'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Stonemasson, "Stonemasson", 'L', 'A'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Foundry, "Foundry", 'M', 'D'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Mill, "Mill", 'N', 'M'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Warehouse, "Warehouse", 'Z', 'S'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Cottage, "Cottage", 'O', 'C'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Hideout, "Hideout", '1', 'H'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Marketplace, "Marketplace", 'J', 'P'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Townhouse, "Townhouse", 'E', 'U'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Barracks, "Barracks", 'P', 'B'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.CityGuardHouse, "CityGuardHouse", 'S', 'K'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.TrainingGround, "Training Ground", 'Q', 'G'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Stable, "Stable", 'U', 'E'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.MoonglowTower, "Moonglow Tower", 'R', 'J'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.TrinsicTemple, "Trinsic Temple", 'W', 'Z'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Workshop, "Workshop", 'V', 'Y'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Harbor, "Harbor", 'T', 'R'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Shipyard, "Shipyard", 'Y', 'V'));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Castle, "Castle", 'X', 'X'));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.None, "Nothing", '0', '-',false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResWood, "Wood", 'A', '.', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResStone, "Stone", 'B', ':', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResIron, "Iron", 'C', ',', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResFood, "Food", 'D', ';', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.WoodcutterOld, "Woodcutter's hut (old)", 'F', 'W', false,ResourceType.Wood));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.QuarryOld, "Quarry (old)", 'G', 'Q', false,ResourceType.Stone));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMineOld, "Iron Mine (old)", 'H', 'I', false,ResourceType.Iroon));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.FarmOld, "Farm (old)", 'I', 'F', false,ResourceType.Food));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Woodcutter, "Woodcutter's hut", '2', '2', false,ResourceType.Wood));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Quarry, "Quarry", '3', '3', false,ResourceType.Stone));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMine, "Iron Mine", '4', '4', false,ResourceType.Iroon));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Farm, "Farm", '5', '1', false,ResourceType.Food));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Sawmill, "Sawmill", 'K', 'L', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Stonemasson, "Stonemasson", 'L', 'A', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Foundry, "Foundry", 'M', 'D', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Mill, "Mill", 'N', 'M', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Warehouse, "Warehouse", 'Z', 'S', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Cottage, "Cottage", 'O', 'C', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Hideout, "Hideout", '1', 'H', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Marketplace, "Marketplace", 'J', 'P', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Townhouse, "Townhouse", 'E', 'U', false, ResourceType.Gold));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Barracks, "Barracks", 'P', 'B', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.CityGuardHouse, "CityGuardHouse", 'S', 'K', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.TrainingGround, "Training Ground", 'Q', 'G', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Stable, "Stable", 'U', 'E', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.MoonglowTower, "Moonglow Tower", 'R', 'J', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.TrinsicTemple, "Trinsic Temple", 'W', 'Z', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Workshop, "Workshop", 'V', 'Y', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Harbor, "Harbor", 'T', 'R', true, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Shipyard, "Shipyard", 'Y', 'V', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Castle, "Castle", 'X', 'X', false, ResourceType.None));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.FarmLand, "Farm Land", ' ', ' ', true, ResourceType.None));
             foreach (BuildingInfo bi in m_AllOfThem)
             {
                 m_ByType.Add(bi.BType, bi);
