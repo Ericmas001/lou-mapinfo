@@ -7,10 +7,12 @@ using System.Drawing;
 namespace LouMapInfo.Layout
 {
     public delegate void ResourceTypeHandler(ResourceType res);
+    public delegate void BuildingTypeHandler(BuildingType res);
     public delegate void EmptyHandler();
     public class LayoutEntry
     {
         public event ResourceTypeHandler RefreshResourceProduction = delegate { };
+        public event BuildingTypeHandler RefreshRecruitmentSpeed = delegate { };
         public event EmptyHandler RefreshResourceStorage = delegate { };
         public event EmptyHandler RefreshResourceHidden = delegate { };
         public event EmptyHandler RefreshTransport = delegate { };
@@ -77,6 +79,7 @@ namespace LouMapInfo.Layout
         private List<LayoutEntry> m_Neighbors = new List<LayoutEntry>();
 
         private Dictionary<ResourceType, int> m_Production = new Dictionary<ResourceType, int>();
+        private Dictionary<BuildingType, int> m_Recruitment = new Dictionary<BuildingType, int>();
         private Dictionary<ResourceType, int> m_Storage = new Dictionary<ResourceType, int>();
         private int m_Hidden = 0;
         private int m_Carts = 0;
@@ -137,6 +140,10 @@ namespace LouMapInfo.Layout
         public int Storage(ResourceType res)
         {
             return m_Storage[res];
+        }
+        public int Recruitment(BuildingType type)
+        {
+            return m_Recruitment[type];
         }
         public void AddNeighbor(LayoutEntry n)
         {
@@ -209,6 +216,14 @@ namespace LouMapInfo.Layout
             m_Storage.Add(ResourceType.Stone, 0);
             m_Storage.Add(ResourceType.Iroon, 0);
             m_Storage.Add(ResourceType.Food, 0);
+            m_Recruitment.Clear();
+            m_Recruitment.Add(BuildingType.CityGuardHouse, 0);
+            m_Recruitment.Add(BuildingType.TrainingGround, 0);
+            m_Recruitment.Add(BuildingType.Stable, 0);
+            m_Recruitment.Add(BuildingType.MoonglowTower, 0);
+            m_Recruitment.Add(BuildingType.TrinsicTemple, 0);
+            m_Recruitment.Add(BuildingType.Workshop, 0);
+            m_Recruitment.Add(BuildingType.Shipyard, 0);
             m_Hidden = 0;
             m_Carts = 0;
             m_Ships = 0;
@@ -234,6 +249,9 @@ namespace LouMapInfo.Layout
             if (b == BuildingType.Barracks || b == BuildingType.Castle)
                 RefreshArmySize();
 
+            if (m_Recruitment.ContainsKey(b))
+                RefreshRecruitmentSpeed(b);
+
             RefreshBuildingCount();
         }
         public void Refresh(bool alsoNeighbors)
@@ -243,7 +261,7 @@ namespace LouMapInfo.Layout
         public void Refresh(bool alsoNeighbors, BuildingType oldb, BuildingType newb)
         {
             if (alsoNeighbors)
-                foreach (LayoutEntry le in Neighbors)
+                foreach (LayoutEntry le in NeighborsWithWater)
                     le.Refresh(false);
             Reset(oldb);
             if (m_Info == BuildingType.Barracks)
@@ -253,6 +271,16 @@ namespace LouMapInfo.Layout
             }
             else if (m_Info == BuildingType.Castle)
                 RefreshArmySize();
+            else if (m_Recruitment.ContainsKey(m_Info))
+            {
+                int numB = 0;
+                foreach (LayoutEntry le in NeighborsWithWater)
+                    if (le.m_Info == BuildingType.Barracks)
+                        numB++;
+                int speed = 150 + (numB * 25);
+                m_Recruitment[m_Info] = speed;
+                RefreshRecruitmentSpeed(m_Info);
+            }
             else if (m_Info == BuildingType.Cottage)
             {
                 m_ConsSpeed = 100;
@@ -420,43 +448,43 @@ namespace LouMapInfo.Layout
                 int numR = 0;
                 int numC = 0;
                 int numL = 0;
-                 bool hasB = false;
-                 foreach (LayoutEntry le in NeighborsWithWater)
-                     if (le.m_Info == BuildingType.ResFood)
-                         numR++;
-                     else if (le.m_Info == BuildingType.Cottage)
-                         numC++;
-                     else if (le.m_Info == BuildingType.FarmLand)
-                         numL++;
-                     else if (le.m_Info == BuildingType.Mill)
-                         hasB = true;
-                 if (m_Info == BuildingType.Farm)
-                 {
-                     int basic = 300;
-                     int resBonus = numR > 0 ? 110 + (40 * numL) : 100;
-                     int step1 = basic * resBonus;
-                     step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
-                     int step2 = step1 * (100 + 30 * numC);
-                     step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
-                     int step3 = step2 * (100 + 50 * numR);
-                     step3 = step3 % 100 != 0 ? step3 / 100 + 1 : step3 / 100;
-                     int step4 = hasB ? step3 * 175 : step3 * 100;
-                     step4 = step4 % 100 != 0 ? step4 / 100 + 1 : step4 / 100;
-                     m_Production[ResourceType.Food] = step4;
-                 }
-                 else
-                 {
-                     int basic = 400;
-                     int resBonus = numR > 0 ? 100 + (25 * numL) + (50 * numC) : 100;
-                     int step1 = basic * resBonus;
-                     step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
-                     int step2 = step1 * (100 + 50 * numR);
-                     step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
-                     int step3 = hasB ? step2 * 175 : step2 * 100;
-                     step3 = step3 % 100 != 0 ? step3 / 100 + 1 : step3 / 100;
-                     m_Production[ResourceType.Food] = step3;
-                 }
-                 RefreshResourceProduction(ResourceType.Food);
+                bool hasB = false;
+                foreach (LayoutEntry le in NeighborsWithWater)
+                    if (le.m_Info == BuildingType.ResFood)
+                        numR++;
+                    else if (le.m_Info == BuildingType.Cottage)
+                        numC++;
+                    else if (le.m_Info == BuildingType.FarmLand)
+                        numL++;
+                    else if (le.m_Info == BuildingType.Mill)
+                        hasB = true;
+                if (m_Info == BuildingType.Farm)
+                {
+                    int basic = 300;
+                    int resBonus = numR > 0 ? 110 + (40 * numL) : 100;
+                    int step1 = basic * resBonus;
+                    step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
+                    int step2 = step1 * (100 + 30 * numC);
+                    step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
+                    int step3 = step2 * (100 + 50 * numR);
+                    step3 = step3 % 100 != 0 ? step3 / 100 + 1 : step3 / 100;
+                    int step4 = hasB ? step3 * 175 : step3 * 100;
+                    step4 = step4 % 100 != 0 ? step4 / 100 + 1 : step4 / 100;
+                    m_Production[ResourceType.Food] = step4;
+                }
+                else
+                {
+                    int basic = 400;
+                    int resBonus = numR > 0 ? 100 + (25 * numL) + (50 * numC) : 100;
+                    int step1 = basic * resBonus;
+                    step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
+                    int step2 = step1 * (100 + 50 * numR);
+                    step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
+                    int step3 = hasB ? step2 * 175 : step2 * 100;
+                    step3 = step3 % 100 != 0 ? step3 / 100 + 1 : step3 / 100;
+                    m_Production[ResourceType.Food] = step3;
+                }
+                RefreshResourceProduction(ResourceType.Food);
             }
             if (m_Info == BuildingType.None || m_Info == BuildingType.ResWood || m_Info == BuildingType.ResStone || m_Info == BuildingType.ResIron || m_Info == BuildingType.ResFood || m_Info == BuildingType.FarmLand)
                 m_BuildingCount = 0;

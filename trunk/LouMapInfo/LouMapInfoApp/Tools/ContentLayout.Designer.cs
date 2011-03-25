@@ -137,6 +137,27 @@
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
             this.lblArmySize = new System.Windows.Forms.ToolStripLabel();
+            this.toolStrip7 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip8 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip9 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel18 = new System.Windows.Forms.ToolStripLabel();
+            this.lblCityGuard = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblTrainingGround = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel21 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel14 = new System.Windows.Forms.ToolStripLabel();
+            this.lblTrinsic = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator25 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel25 = new System.Windows.Forms.ToolStripLabel();
+            this.lblMoonglow = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel27 = new System.Windows.Forms.ToolStripLabel();
+            this.lblWorkShop = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator27 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel29 = new System.Windows.Forms.ToolStripLabel();
+            this.lblShipyard = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel23 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator24 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblStable = new System.Windows.Forms.ToolStripLabel();
             this.pnlContent.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlCity.SuspendLayout();
@@ -146,11 +167,15 @@
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbCityInfo.SuspendLayout();
+            this.tbCityMilitary.SuspendLayout();
             this.toolStrip6.SuspendLayout();
             this.toolStrip5.SuspendLayout();
             this.toolStrip4.SuspendLayout();
             this.tbImport.SuspendLayout();
             this.tbCreate.SuspendLayout();
+            this.toolStrip7.SuspendLayout();
+            this.toolStrip8.SuspendLayout();
+            this.toolStrip9.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -691,6 +716,9 @@
             // 
             // tbCityMilitary
             // 
+            this.tbCityMilitary.Controls.Add(this.toolStrip9);
+            this.tbCityMilitary.Controls.Add(this.toolStrip8);
+            this.tbCityMilitary.Controls.Add(this.toolStrip7);
             this.tbCityMilitary.Location = new System.Drawing.Point(4, 22);
             this.tbCityMilitary.Name = "tbCityMilitary";
             this.tbCityMilitary.Padding = new System.Windows.Forms.Padding(3);
@@ -1191,6 +1219,161 @@
             this.lblArmySize.Size = new System.Drawing.Size(13, 23);
             this.lblArmySize.Text = "0";
             // 
+            // toolStrip7
+            // 
+            this.toolStrip7.BackColor = System.Drawing.Color.White;
+            this.toolStrip7.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel18,
+            this.lblCityGuard,
+            this.toolStripSeparator22,
+            this.toolStripLabel21,
+            this.lblTrainingGround});
+            this.toolStrip7.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip7.Name = "toolStrip7";
+            this.toolStrip7.Size = new System.Drawing.Size(756, 25);
+            this.toolStrip7.TabIndex = 10;
+            this.toolStrip7.Text = "toolStrip7";
+            // 
+            // toolStrip8
+            // 
+            this.toolStrip8.BackColor = System.Drawing.Color.White;
+            this.toolStrip8.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip8.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel14,
+            this.lblTrinsic,
+            this.toolStripSeparator25,
+            this.toolStripLabel25,
+            this.lblMoonglow});
+            this.toolStrip8.Location = new System.Drawing.Point(3, 28);
+            this.toolStrip8.Name = "toolStrip8";
+            this.toolStrip8.Size = new System.Drawing.Size(756, 25);
+            this.toolStrip8.TabIndex = 11;
+            this.toolStrip8.Text = "toolStrip8";
+            // 
+            // toolStrip9
+            // 
+            this.toolStrip9.BackColor = System.Drawing.Color.White;
+            this.toolStrip9.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip9.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel23,
+            this.lblStable,
+            this.toolStripSeparator24,
+            this.toolStripLabel27,
+            this.lblWorkShop,
+            this.toolStripSeparator27,
+            this.toolStripLabel29,
+            this.lblShipyard});
+            this.toolStrip9.Location = new System.Drawing.Point(3, 53);
+            this.toolStrip9.Name = "toolStrip9";
+            this.toolStrip9.Size = new System.Drawing.Size(756, 25);
+            this.toolStrip9.TabIndex = 12;
+            this.toolStrip9.Text = "toolStrip9";
+            // 
+            // toolStripLabel18
+            // 
+            this.toolStripLabel18.Name = "toolStripLabel18";
+            this.toolStripLabel18.Size = new System.Drawing.Size(103, 22);
+            this.toolStripLabel18.Text = "City Guard House:";
+            // 
+            // lblCityGuard
+            // 
+            this.lblCityGuard.Name = "lblCityGuard";
+            this.lblCityGuard.Size = new System.Drawing.Size(35, 22);
+            this.lblCityGuard.Text = "100%";
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            this.toolStripSeparator22.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblTrainingGround
+            // 
+            this.lblTrainingGround.Name = "lblTrainingGround";
+            this.lblTrainingGround.Size = new System.Drawing.Size(35, 22);
+            this.lblTrainingGround.Text = "100%";
+            // 
+            // toolStripLabel21
+            // 
+            this.toolStripLabel21.Name = "toolStripLabel21";
+            this.toolStripLabel21.Size = new System.Drawing.Size(97, 22);
+            this.toolStripLabel21.Text = "Training Ground:";
+            // 
+            // toolStripLabel14
+            // 
+            this.toolStripLabel14.Name = "toolStripLabel14";
+            this.toolStripLabel14.Size = new System.Drawing.Size(88, 22);
+            this.toolStripLabel14.Text = "Trinsic Temple:";
+            // 
+            // lblTrinsic
+            // 
+            this.lblTrinsic.Name = "lblTrinsic";
+            this.lblTrinsic.Size = new System.Drawing.Size(35, 22);
+            this.lblTrinsic.Text = "100%";
+            // 
+            // toolStripSeparator25
+            // 
+            this.toolStripSeparator25.Name = "toolStripSeparator25";
+            this.toolStripSeparator25.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel25
+            // 
+            this.toolStripLabel25.Name = "toolStripLabel25";
+            this.toolStripLabel25.Size = new System.Drawing.Size(104, 22);
+            this.toolStripLabel25.Text = "Moonglow Tower:";
+            // 
+            // lblMoonglow
+            // 
+            this.lblMoonglow.Name = "lblMoonglow";
+            this.lblMoonglow.Size = new System.Drawing.Size(35, 22);
+            this.lblMoonglow.Text = "100%";
+            // 
+            // toolStripLabel27
+            // 
+            this.toolStripLabel27.Name = "toolStripLabel27";
+            this.toolStripLabel27.Size = new System.Drawing.Size(65, 22);
+            this.toolStripLabel27.Text = "WorkShop:";
+            // 
+            // lblWorkShop
+            // 
+            this.lblWorkShop.Name = "lblWorkShop";
+            this.lblWorkShop.Size = new System.Drawing.Size(35, 22);
+            this.lblWorkShop.Text = "100%";
+            // 
+            // toolStripSeparator27
+            // 
+            this.toolStripSeparator27.Name = "toolStripSeparator27";
+            this.toolStripSeparator27.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel29
+            // 
+            this.toolStripLabel29.Name = "toolStripLabel29";
+            this.toolStripLabel29.Size = new System.Drawing.Size(56, 22);
+            this.toolStripLabel29.Text = "Shipyard:";
+            // 
+            // lblShipyard
+            // 
+            this.lblShipyard.Name = "lblShipyard";
+            this.lblShipyard.Size = new System.Drawing.Size(35, 22);
+            this.lblShipyard.Text = "100%";
+            // 
+            // toolStripLabel23
+            // 
+            this.toolStripLabel23.Name = "toolStripLabel23";
+            this.toolStripLabel23.Size = new System.Drawing.Size(42, 22);
+            this.toolStripLabel23.Text = "Stable:";
+            // 
+            // toolStripSeparator24
+            // 
+            this.toolStripSeparator24.Name = "toolStripSeparator24";
+            this.toolStripSeparator24.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblStable
+            // 
+            this.lblStable.Name = "lblStable";
+            this.lblStable.Size = new System.Drawing.Size(35, 22);
+            this.lblStable.Text = "100%";
+            // 
             // ContentLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1215,6 +1398,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tbCityInfo.ResumeLayout(false);
             this.tbCityInfo.PerformLayout();
+            this.tbCityMilitary.ResumeLayout(false);
+            this.tbCityMilitary.PerformLayout();
             this.toolStrip6.ResumeLayout(false);
             this.toolStrip6.PerformLayout();
             this.toolStrip5.ResumeLayout(false);
@@ -1224,6 +1409,12 @@
             this.tbImport.ResumeLayout(false);
             this.tbImport.PerformLayout();
             this.tbCreate.ResumeLayout(false);
+            this.toolStrip7.ResumeLayout(false);
+            this.toolStrip7.PerformLayout();
+            this.toolStrip8.ResumeLayout(false);
+            this.toolStrip8.PerformLayout();
+            this.toolStrip9.ResumeLayout(false);
+            this.toolStrip9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1339,6 +1530,27 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripLabel toolStripLabel10;
         private System.Windows.Forms.ToolStripLabel lblArmySize;
+        private System.Windows.Forms.ToolStrip toolStrip9;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel23;
+        private System.Windows.Forms.ToolStripLabel lblStable;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator24;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel27;
+        private System.Windows.Forms.ToolStripLabel lblWorkShop;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator27;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel29;
+        private System.Windows.Forms.ToolStripLabel lblShipyard;
+        private System.Windows.Forms.ToolStrip toolStrip8;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel14;
+        private System.Windows.Forms.ToolStripLabel lblTrinsic;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator25;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel25;
+        private System.Windows.Forms.ToolStripLabel lblMoonglow;
+        private System.Windows.Forms.ToolStrip toolStrip7;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel18;
+        private System.Windows.Forms.ToolStripLabel lblCityGuard;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel21;
+        private System.Windows.Forms.ToolStripLabel lblTrainingGround;
 
 
 
