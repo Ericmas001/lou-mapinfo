@@ -501,6 +501,20 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icon_build_slots {
+            get {
+                object obj = ResourceManager.GetObject("icon_build_slots", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap icon_gold {
+            get {
+                object obj = ResourceManager.GetObject("icon_gold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap icon_help {
             get {
                 object obj = ResourceManager.GetObject("icon_help", resourceCulture);
@@ -977,9 +991,51 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap res_food {
+            get {
+                object obj = ResourceManager.GetObject("res_food", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap res_iron {
+            get {
+                object obj = ResourceManager.GetObject("res_iron", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap res_stone {
+            get {
+                object obj = ResourceManager.GetObject("res_stone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap res_wood {
+            get {
+                object obj = ResourceManager.GetObject("res_wood", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap stone_m_1x1_01 {
             get {
                 object obj = ResourceManager.GetObject("stone_m_1x1_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap trade_cart {
+            get {
+                object obj = ResourceManager.GetObject("trade_cart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap trade_ship {
+            get {
+                object obj = ResourceManager.GetObject("trade_ship", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

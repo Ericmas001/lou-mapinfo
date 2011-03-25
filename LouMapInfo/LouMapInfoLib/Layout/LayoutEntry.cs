@@ -7,9 +7,15 @@ using System.Drawing;
 namespace LouMapInfo.Layout
 {
     public delegate void ResourceTypeHandler(ResourceType res);
+    public delegate void EmptyHandler();
     public class LayoutEntry
     {
         public event ResourceTypeHandler RefreshResourceProduction = delegate { };
+        public event EmptyHandler RefreshResourceStorage = delegate { };
+        public event EmptyHandler RefreshResourceHidden = delegate { };
+        public event EmptyHandler RefreshTransport = delegate { };
+        public event EmptyHandler RefreshBuildingCount = delegate { };
+        public event EmptyHandler RefreshConsSpeed = delegate { };
         private static readonly Point[] InvalidOnWater = new Point[] { new Point(15, 14), new Point(16, 14), new Point(14, 15), new Point(17, 15), new Point(14, 16), new Point(18, 16), new Point(15, 17), new Point(16, 18), new Point(15, 15), new Point(16, 15), new Point(15, 16), new Point(16, 16), new Point(17, 16), new Point(16, 17), new Point(17, 17) };
         private static readonly Point[] SuperInvalidOnWater = new Point[] { new Point(15, 15), new Point(16, 15), new Point(15, 16), new Point(16, 16), new Point(17, 16), new Point(16, 17), new Point(17, 17) };
         
@@ -70,6 +76,42 @@ namespace LouMapInfo.Layout
         private List<LayoutEntry> m_Neighbors = new List<LayoutEntry>();
 
         private Dictionary<ResourceType, int> m_Production = new Dictionary<ResourceType, int>();
+        private Dictionary<ResourceType, int> m_Storage = new Dictionary<ResourceType, int>();
+        private int m_Hidden = 0;
+        private int m_Carts = 0;
+        private int m_Ships = 0;
+        private int m_BuildingCount = 0;
+        private int m_ConsSpeed = 0;
+
+        public int ConsSpeed
+        {
+            get { return m_ConsSpeed; }
+            set { m_ConsSpeed = value; }
+        }
+
+        public int BuildingCount
+        {
+            get { return m_BuildingCount; }
+            set { m_BuildingCount = value; }
+        }
+
+        public int Carts
+        {
+            get { return m_Carts; }
+            set { m_Carts = value; }
+        }
+
+        public int Ships
+        {
+            get { return m_Ships; }
+            set { m_Ships = value; }
+        }
+
+        public int Hidden
+        {
+            get { return m_Hidden; }
+            set { m_Hidden = value; }
+        }
         public LayoutEntry(int x, int y, BuildingType type)
         {
             Reset(BuildingType.None);
@@ -82,13 +124,11 @@ namespace LouMapInfo.Layout
         }
         public int Production(ResourceType res)
         {
-            int val = 0;
-            if (res == ResourceType.None)
-                foreach (ResourceType t in m_Production.Keys)
-                    val += m_Production[t];
-            else
-                val = m_Production[res];
-            return val;
+            return m_Production[res];
+        }
+        public int Storage(ResourceType res)
+        {
+            return m_Storage[res];
         }
         public void AddNeighbor(LayoutEntry n)
         {
@@ -148,14 +188,41 @@ namespace LouMapInfo.Layout
         public void Reset(BuildingType b)
         {
             m_Production.Clear();
+            m_Production.Add(ResourceType.None, 0);
             m_Production.Add(ResourceType.Gold, 0);
             m_Production.Add(ResourceType.Wood, 0);
             m_Production.Add(ResourceType.Stone, 0);
             m_Production.Add(ResourceType.Iroon, 0);
             m_Production.Add(ResourceType.Food, 0);
+            m_Storage.Clear();
+            m_Storage.Add(ResourceType.None, 0);
+            m_Storage.Add(ResourceType.Gold, 0);
+            m_Storage.Add(ResourceType.Wood, 0);
+            m_Storage.Add(ResourceType.Stone, 0);
+            m_Storage.Add(ResourceType.Iroon, 0);
+            m_Storage.Add(ResourceType.Food, 0);
+            m_Hidden = 0;
+            m_Carts = 0;
+            m_Ships = 0;
+            m_BuildingCount = 0;
+            m_ConsSpeed = 0;
 
             if (BuildingInfo.ByType[b].ResourceProduced != ResourceType.None)
                 RefreshResourceProduction(BuildingInfo.ByType[b].ResourceProduced);
+
+            if (b == BuildingType.Warehouse)
+                RefreshResourceStorage();
+
+            if (b == BuildingType.Hideout)
+                RefreshResourceHidden();
+
+            if (b == BuildingType.Marketplace || b == BuildingType.Harbor)
+                RefreshTransport();
+
+            if (b == BuildingType.Cottage)
+                RefreshConsSpeed();
+
+            RefreshBuildingCount();
         }
         public void Refresh(bool alsoNeighbors)
         {
@@ -167,7 +234,52 @@ namespace LouMapInfo.Layout
                 foreach (LayoutEntry le in Neighbors)
                     le.Refresh(false);
             Reset(oldb);
-            if (BuildingInfo.ByType[m_Info].ResourceProduced == ResourceType.Gold)
+            if (m_Info == BuildingType.Cottage)
+            {
+                m_ConsSpeed = 100;
+                RefreshConsSpeed();
+            }
+            else if (m_Info == BuildingType.Harbor)
+            {
+                m_Ships = 30;
+                RefreshTransport();
+            }
+            else if (m_Info == BuildingType.Marketplace)
+            {
+                m_Carts = 200;
+                RefreshTransport();
+            }
+            else if (m_Info == BuildingType.Hideout)
+            {
+                int numW = 0;
+                foreach (LayoutEntry le in NeighborsWithWater)
+                    if (le.m_Info == BuildingType.ResWood)
+                        numW++;
+                m_Hidden = 150 * (100 + numW * 25);
+                RefreshResourceHidden();
+            }
+            else if (m_Info == BuildingType.Warehouse)
+            {
+                int numW = 0;
+                int numS = 0;
+                int numI = 0;
+                int numF = 0;
+                foreach (LayoutEntry le in NeighborsWithWater)
+                    if (le.m_Info == BuildingType.Sawmill)
+                        numW++;
+                    else if (le.m_Info == BuildingType.Stonemasson)
+                        numS++;
+                    else if (le.m_Info == BuildingType.Foundry)
+                        numI++;
+                    else if (le.m_Info == BuildingType.Mill)
+                        numF++;
+                m_Storage[ResourceType.Wood] = 2000 * (100 + numW * 200);
+                m_Storage[ResourceType.Stone] = 2000 * (100 + numS * 200);
+                m_Storage[ResourceType.Iroon] = 2000 * (100 + numI * 200);
+                m_Storage[ResourceType.Food] = 2000 * (100 + numF * 200);
+                RefreshResourceStorage();
+            }
+            else if (BuildingInfo.ByType[m_Info].ResourceProduced == ResourceType.Gold)
             {
                 int numH = 0;
                 int numMP = 0;
@@ -327,6 +439,11 @@ namespace LouMapInfo.Layout
                  }
                  RefreshResourceProduction(ResourceType.Food);
             }
+            if (m_Info == BuildingType.None || m_Info == BuildingType.ResWood || m_Info == BuildingType.ResStone || m_Info == BuildingType.ResIron || m_Info == BuildingType.ResFood || m_Info == BuildingType.FarmLand)
+                m_BuildingCount = 0;
+            else
+                m_BuildingCount = 1;
+            RefreshBuildingCount();
         }
     }
 }

@@ -46,7 +46,13 @@ namespace LouMapInfoApp.Tools
             }
         }
         private Dictionary<ResourceType, int> m_Production = new Dictionary<ResourceType, int>();
-        public  void LoadAll()
+        private Dictionary<ResourceType, int> m_Storage = new Dictionary<ResourceType, int>();
+        private int m_Hidden;
+        private int m_Carts;
+        private int m_Ships;
+        private int m_BuildingCount;
+        private int m_ConsSpeed;
+        public void LoadAll()
         {
             m_Loaded = true;
             m_DONOTUSE_Buildings.Add(BuildingType.None, new Bitmap(1, 1));//Destroy", '0', '-'));
@@ -110,6 +116,11 @@ namespace LouMapInfoApp.Tools
                     {
                         LayoutEntry le = new LayoutEntry(x, y, BuildingType.None);
                         le.RefreshResourceProduction += new ResourceTypeHandler(le_RefreshResourceProduction);
+                        le.RefreshResourceStorage += new EmptyHandler(le_RefreshResourceStorage);
+                        le.RefreshResourceHidden += new EmptyHandler(le_RefreshResourceHidden);
+                        le.RefreshTransport += new EmptyHandler(le_RefreshTransport);
+                        le.RefreshBuildingCount += new EmptyHandler(le_RefreshBuildingCount);
+                        le.RefreshConsSpeed += new EmptyHandler(le_RefreshConsSpeed);
                         m_DONOTUSE_Layout.Add(le);
                         if (x != 9 || y != 9)
                             m_CoordLayout[x, y] = le;
@@ -120,6 +131,67 @@ namespace LouMapInfoApp.Tools
                         if (xi != 0 || yi != 0)
                             if (le.X + xi >= 0 && le.X + xi < 20 && le.Y + yi >= 0 && le.Y + yi < 20 && m_CoordLayout[le.X + xi, le.Y + yi] != null)
                                 le.AddNeighbor(m_CoordLayout[le.X + xi, le.Y + yi]);
+        }
+
+        void le_RefreshConsSpeed()
+        {
+            int total = 100;
+            foreach (LayoutEntry le in CityLayout)
+                total += le.ConsSpeed;
+            m_ConsSpeed = total;
+            RefreshCounters();
+        }
+
+        void le_RefreshBuildingCount()
+        {
+            int total = 0;
+            foreach (LayoutEntry le in CityLayout)
+                total += le.BuildingCount;
+            m_BuildingCount = total;
+            RefreshCounters();
+        }
+
+        void le_RefreshTransport()
+        {
+            int totalC = 0;
+            int totalS = 0;
+            foreach (LayoutEntry le in CityLayout)
+            {
+                totalC += le.Carts;
+                totalS += le.Ships;
+            }
+            m_Carts = totalC;
+            m_Ships = totalS;
+            RefreshCounters();
+        }
+
+        void le_RefreshResourceHidden()
+        {
+            int total = 0;
+            foreach (LayoutEntry le in CityLayout)
+                total += le.Hidden;
+            m_Hidden = total;
+            RefreshCounters();
+        }
+
+        void le_RefreshResourceStorage()
+        {
+            int totalW = 175000;
+            int totalS = 175000;
+            int totalI = 175000;
+            int totalF = 175000;
+            foreach (LayoutEntry le in CityLayout)
+            {
+                totalW += le.Storage(ResourceType.Wood);
+                totalS += le.Storage(ResourceType.Stone);
+                totalI += le.Storage(ResourceType.Iroon);
+                totalF += le.Storage(ResourceType.Food);
+            }
+            m_Storage[ResourceType.Wood] = totalW;
+            m_Storage[ResourceType.Stone] = totalS;
+            m_Storage[ResourceType.Iroon] = totalI;
+            m_Storage[ResourceType.Food] = totalF;
+            RefreshCounters();
         }
 
         void le_RefreshResourceProduction(ResourceType res)
@@ -144,6 +216,20 @@ namespace LouMapInfoApp.Tools
             lblIron.Text = m_Production[ResourceType.Iroon].ToString("N0") + "/h";
             lblFood.Text = m_Production[ResourceType.Food].ToString("N0") + "/h";
             lblTotalRes.Text = (m_Production[ResourceType.Wood] + m_Production[ResourceType.Stone] + m_Production[ResourceType.Iroon] + m_Production[ResourceType.Food]).ToString("N0") + "/h";
+            lblStorWood.Text = m_Storage[ResourceType.Wood].ToString("N0");
+            lblStorStone.Text = m_Storage[ResourceType.Stone].ToString("N0");
+            lblStorIron.Text = m_Storage[ResourceType.Iroon].ToString("N0");
+            lblStorFood.Text = m_Storage[ResourceType.Food].ToString("N0");
+            lblStorHidden.Text = m_Hidden.ToString("N0");
+            lblNbCarts.Text = m_Carts.ToString("N0") + " (" + (m_Carts * 1000).ToString("N0") + ")";
+            lblNbShips.Text = m_Ships.ToString("N0") + " (" + (m_Ships * 10000).ToString("N0") + ")";
+            lblBuildingsLeft.Text = "" + (100 - m_BuildingCount);
+            if (m_BuildingCount > 100)
+                lblBuildingsLeft.ForeColor = Color.Red;
+            else
+                lblBuildingsLeft.ForeColor = Color.Black;
+            lblConsSpeed.Text = m_ConsSpeed.ToString("N0") + "%";
+
 
         }
         private void ResetCounters()
@@ -153,7 +239,17 @@ namespace LouMapInfoApp.Tools
             m_Production.Add(ResourceType.Wood, 300);
             m_Production.Add(ResourceType.Stone, 0);
             m_Production.Add(ResourceType.Iroon, 0);
-            m_Production.Add(ResourceType.Food, 0); 
+            m_Production.Add(ResourceType.Food, 0);
+            m_Storage.Clear();
+            m_Storage.Add(ResourceType.Wood, 175000);
+            m_Storage.Add(ResourceType.Stone, 175000);
+            m_Storage.Add(ResourceType.Iroon, 175000);
+            m_Storage.Add(ResourceType.Food, 175000);
+            m_Hidden = 0;
+            m_Carts = 0;
+            m_Ships = 0;
+            m_BuildingCount = 100;
+            m_ConsSpeed = 100;
 
         }
         public ContentLayout()
@@ -164,7 +260,7 @@ namespace LouMapInfoApp.Tools
             btnDestroy.BackColor = SystemColors.Highlight;
             CreateNew(true);
             RefreshCounters();
-            Import("http://www.lou-fcp.co.uk/map.php?map=W000O4M403B30000B00C4C4B3L30000000000CC003O3000D00000000000CC00D0000KO0000000AA222A00000D000A0OAAACMAA03300000222C442A2LBB0RCZBBK0CCO2K2330DZCZ03L300O2A00D003B3O2K2ABZZZ00000BB3O0000000000003L3C0000A00000000000BJJJJ00D000AJJTTJJ03O002A2AD00JT00TJB3L3AAK2O000JT000T3B3O222C000JJT000000A0C0A00JJT");
+            Import("http://www.lou-fcp.co.uk/map.php?map=WC00000DOOOO00B00000000OODO00B0A000N0C00OOO000000000500CC0OOD0C000000D0000000A000000JJ0J000AA000B000ZZZZ00A0000B0J0LZKZNZJ00000000JZZZZZZZ00000JZMZ0ZMZJ0000J0ZZZZZZ0CRPW0000J0NZKZLZJC00DBB0CZZZZZZ0JJJ00B000JJ0JJJJEJD0000C0JETTJ0AA0000000C0JJT00TJ0000B000CCCJET000T0000000C0CJJJT00D000D000C0B0JT");
         }
         private void pbCity_Paint(object sender, PaintEventArgs e)
         {
