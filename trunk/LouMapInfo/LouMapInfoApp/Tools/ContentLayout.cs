@@ -10,6 +10,7 @@ using LouMapInfo.Reports.core;
 using LouMapInfo.Reports.OfficialLOU;
 using System.Threading;
 using LouMapInfo.Layout;
+using EricUtility.Windows.Forms;
 
 namespace LouMapInfoApp.Tools
 {
@@ -260,7 +261,15 @@ namespace LouMapInfoApp.Tools
             btnDestroy.BackColor = SystemColors.Highlight;
             CreateNew(true);
             RefreshCounters();
-            Import("http://www.lou-fcp.co.uk/map.php?map=WC00000DOOOO00B00000000OODO00B0A000N0C00OOO000000000500CC0OOD0C000000D0000000A000000JJ0J000AA000B000ZZZZ00A0000B0J0LZKZNZJ00000000JZZZZZZZ00000JZMZ0ZMZJ0000J0ZZZZZZ0CRPW0000J0NZKZLZJC00DBB0CZZZZZZ0JJJ00B000JJ0JJJJEJD0000C0JETTJ0AA0000000C0JJT00TJ0000B000CCCJET000T0000000C0CJJJT00D000D000C0B0JT");
+            tabControl1.SelectedTab = tbImport;
+            //Import("http://www.lou-fcp.co.uk/map.php?map=WC00000DOOOO00B00000000OODO00B0A000N0C00OOO000000000500CC0OOD0C000000D0000000A000000JJ0J000AA000B000ZZZZ00A0000B0J0LZKZNZJ00000000JZZZZZZZ00000JZMZ0ZMZJ0000J0ZZZZZZ0CRPW0000J0NZKZLZJC00DBB0CZZZZZZ0JJJ00B000JJ0JJJJEJD0000C0JETTJ0AA0000000C0JJT00TJ0000B000CCCJET000T0000000C0CJJJT00D000D000C0B0JT");
+
+            ImageList list = new ImageList();
+            tabControl1.ImageList = list;
+            list.Images.Add(Properties.Resources.icon_build_slots);
+            list.Images.Add(Properties.Resources.icon_recruit_slots);
+            tbCityInfo.ImageIndex = 0;
+            tbCityMilitary.ImageIndex = 1;
         }
         private void pbCity_Paint(object sender, PaintEventArgs e)
         {
@@ -516,16 +525,16 @@ namespace LouMapInfoApp.Tools
         }
         public void Import(string patente)
         {
-            if( patente.Contains("ShareString"))
+            if (patente.Contains("ShareString"))
             {
                 CreateNew(patente.Contains("];"));
-                string s = patente.Substring(patente.IndexOf('#')).Replace("#", "").Replace("T", "-").Replace("_", "-");
+                string s = patente.Substring(patente.IndexOf('#')).Replace("#", "").Replace("T", "-").Replace("_", "-").Replace("[/ShareString]", "");
                 for (int i = 0; i < s.Length; ++i)
                 {
                     int j = i;
                     if (water)
                     {
-                      if (i >= 242)
+                        if (i >= 242)
                             j += 2;
                         if (i >= 258)
                             j += 3;
@@ -544,6 +553,8 @@ namespace LouMapInfoApp.Tools
                     CityLayout[i].Info = BuildingInfo.ByLetterFlashPlanner[s[i + 1]].BType;
                 }
             }
+            else
+                throw (new NotImplementedException());
         }
 
         private void pbCity_MouseClick(object sender, MouseEventArgs e)
@@ -574,6 +585,34 @@ namespace LouMapInfoApp.Tools
                 pbCity.Invalidate();
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtImport.Text))
+            {
+                try
+                {
+                    Import(txtImport.Text);
+                    txtImport.Text = "";
+                    tabControl1.SelectedIndex = 0;
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private void btnCreateLand_Click(object sender, EventArgs e)
+        {
+            CreateNew(false);
+            RefreshCounters();
+        }
+
+        private void btnCreateWater_Click(object sender, EventArgs e)
+        {
+            CreateNew(true);
+            RefreshCounters();
         }
     }
 }
