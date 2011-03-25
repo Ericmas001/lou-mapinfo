@@ -316,6 +316,14 @@
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
     <Content Include="icon_Official.ico" />
+    <None Include="Resources\icon_build_slots.png" />
+    <None Include="Resources\trade_ship.png" />
+    <None Include="Resources\trade_cart.png" />
+    <None Include="Resources\res_wood.png" />
+    <None Include="Resources\res_stone.png" />
+    <None Include="Resources\res_iron.png" />
+    <None Include="Resources\res_food.png" />
+    <None Include="Resources\icon_gold.png" />
     <None Include="Resources\pl_town_bg_water.png" />
     <None Include="Resources\pl_town_bg.png" />
     <None Include="Resources\pl_res_stone.png" />
