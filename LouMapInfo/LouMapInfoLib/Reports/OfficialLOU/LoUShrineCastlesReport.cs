@@ -49,10 +49,12 @@ namespace LouMapInfo.Reports.OfficialLOU
                     {
                         foreach (LoUCityInfo c in p.Cities(OldLoUCityType.CastlePalace, cont.Id))
                         {
-                            int d = Math.Abs(c.Location.X - location.X) + Math.Abs(c.Location.Y - location.Y);
-                            if (d <= 20)
+                            double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
+                            //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);
+                            int dist = (int)(0.9999999 + d);
+                            if (dist <= 20)
                             {
-                                cities[d].Add(c);
+                                cities[dist].Add(c);
                                 alls.Add(c);
                             }
                         }
