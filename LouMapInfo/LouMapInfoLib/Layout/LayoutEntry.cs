@@ -461,7 +461,7 @@ namespace LouMapInfo.Layout
                 if (m_Info == BuildingType.Farm)
                 {
                     int basic = 300;
-                    int resBonus = numR > 0 ? 110 + (40 * numL) : 100;
+                    int resBonus = numL > 0 ? 110 + (40 * numL) : 100;
                     int step1 = basic * resBonus;
                     step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
                     int step2 = step1 * (100 + 30 * numC);
@@ -475,7 +475,7 @@ namespace LouMapInfo.Layout
                 else
                 {
                     int basic = 400;
-                    int resBonus = numR > 0 ? 100 + (25 * numL) + (50 * numC) : 100;
+                    int resBonus = 100 + (25 * numL) + (50 * numC);
                     int step1 = basic * resBonus;
                     step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
                     int step2 = step1 * (100 + 50 * numR);
