@@ -161,6 +161,18 @@
             this.btnCopySS = new System.Windows.Forms.Button();
             this.btnCopyFCP = new System.Windows.Forms.Button();
             this.btnOpenFCP = new System.Windows.Forms.Button();
+            this.btnAutoPlanCity = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudAPUseSlots = new System.Windows.Forms.NumericUpDown();
+            this.nudAPCottages = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkAPKeepExtraNodes = new System.Windows.Forms.CheckBox();
+            this.chkAPClearBuildings = new System.Windows.Forms.CheckBox();
+            this.chkAPBuildOnlyOnOpen = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtAPPlacement = new System.Windows.Forms.TextBox();
+            this.btnHelpAutoPlanner = new System.Windows.Forms.Button();
+            this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
             this.pnlContent.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -174,17 +186,22 @@
             this.toolStrip7.SuspendLayout();
             this.tbCreate.SuspendLayout();
             this.tbImport.SuspendLayout();
+            this.tbAutoPlanner.SuspendLayout();
             this.tbExport.SuspendLayout();
             this.pnlCity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPCottages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.White;
+            this.pnlContent.Controls.Add(this.statePictureBox1);
             this.pnlContent.Controls.Add(this.pnlRight);
             this.pnlContent.Controls.Add(this.toolStrip3);
             this.pnlContent.Controls.Add(this.toolStrip2);
@@ -889,6 +906,17 @@
             // 
             // tbAutoPlanner
             // 
+            this.tbAutoPlanner.Controls.Add(this.btnHelpAutoPlanner);
+            this.tbAutoPlanner.Controls.Add(this.txtAPPlacement);
+            this.tbAutoPlanner.Controls.Add(this.label4);
+            this.tbAutoPlanner.Controls.Add(this.chkAPBuildOnlyOnOpen);
+            this.tbAutoPlanner.Controls.Add(this.chkAPClearBuildings);
+            this.tbAutoPlanner.Controls.Add(this.chkAPKeepExtraNodes);
+            this.tbAutoPlanner.Controls.Add(this.nudAPCottages);
+            this.tbAutoPlanner.Controls.Add(this.label3);
+            this.tbAutoPlanner.Controls.Add(this.nudAPUseSlots);
+            this.tbAutoPlanner.Controls.Add(this.label2);
+            this.tbAutoPlanner.Controls.Add(this.btnAutoPlanCity);
             this.tbAutoPlanner.Location = new System.Drawing.Point(4, 22);
             this.tbAutoPlanner.Name = "tbAutoPlanner";
             this.tbAutoPlanner.Padding = new System.Windows.Forms.Padding(3);
@@ -1434,6 +1462,141 @@
             this.btnOpenFCP.UseVisualStyleBackColor = true;
             this.btnOpenFCP.Click += new System.EventHandler(this.btnOpenFCP_Click);
             // 
+            // btnAutoPlanCity
+            // 
+            this.btnAutoPlanCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAutoPlanCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoPlanCity.Location = new System.Drawing.Point(6, 52);
+            this.btnAutoPlanCity.Name = "btnAutoPlanCity";
+            this.btnAutoPlanCity.Size = new System.Drawing.Size(750, 23);
+            this.btnAutoPlanCity.TabIndex = 0;
+            this.btnAutoPlanCity.Text = "Generate Layout";
+            this.btnAutoPlanCity.UseVisualStyleBackColor = true;
+            this.btnAutoPlanCity.Click += new System.EventHandler(this.btnAutoPlanCity_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Use Slots:";
+            // 
+            // nudAPUseSlots
+            // 
+            this.nudAPUseSlots.Location = new System.Drawing.Point(68, 5);
+            this.nudAPUseSlots.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudAPUseSlots.Name = "nudAPUseSlots";
+            this.nudAPUseSlots.Size = new System.Drawing.Size(48, 20);
+            this.nudAPUseSlots.TabIndex = 2;
+            this.nudAPUseSlots.Value = new decimal(new int[] {
+            72,
+            0,
+            0,
+            0});
+            // 
+            // nudAPCottages
+            // 
+            this.nudAPCottages.Location = new System.Drawing.Point(68, 28);
+            this.nudAPCottages.Name = "nudAPCottages";
+            this.nudAPCottages.Size = new System.Drawing.Size(48, 20);
+            this.nudAPCottages.TabIndex = 4;
+            this.nudAPCottages.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Cottages:";
+            // 
+            // chkAPKeepExtraNodes
+            // 
+            this.chkAPKeepExtraNodes.AutoSize = true;
+            this.chkAPKeepExtraNodes.Location = new System.Drawing.Point(123, 2);
+            this.chkAPKeepExtraNodes.Name = "chkAPKeepExtraNodes";
+            this.chkAPKeepExtraNodes.Size = new System.Drawing.Size(134, 17);
+            this.chkAPKeepExtraNodes.TabIndex = 5;
+            this.chkAPKeepExtraNodes.Text = "Keep Extra Res Nodes";
+            this.chkAPKeepExtraNodes.UseVisualStyleBackColor = true;
+            // 
+            // chkAPClearBuildings
+            // 
+            this.chkAPClearBuildings.AutoSize = true;
+            this.chkAPClearBuildings.Checked = true;
+            this.chkAPClearBuildings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAPClearBuildings.Location = new System.Drawing.Point(123, 18);
+            this.chkAPClearBuildings.Name = "chkAPClearBuildings";
+            this.chkAPClearBuildings.Size = new System.Drawing.Size(95, 17);
+            this.chkAPClearBuildings.TabIndex = 6;
+            this.chkAPClearBuildings.Text = "Clear Buildings";
+            this.chkAPClearBuildings.UseVisualStyleBackColor = true;
+            // 
+            // chkAPBuildOnlyOnOpen
+            // 
+            this.chkAPBuildOnlyOnOpen.AutoSize = true;
+            this.chkAPBuildOnlyOnOpen.Location = new System.Drawing.Point(123, 34);
+            this.chkAPBuildOnlyOnOpen.Name = "chkAPBuildOnlyOnOpen";
+            this.chkAPBuildOnlyOnOpen.Size = new System.Drawing.Size(117, 17);
+            this.chkAPBuildOnlyOnOpen.TabIndex = 7;
+            this.chkAPBuildOnlyOnOpen.Text = "Build Only on Open";
+            this.chkAPBuildOnlyOnOpen.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(264, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Placement Schedule:";
+            // 
+            // txtAPPlacement
+            // 
+            this.txtAPPlacement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAPPlacement.Location = new System.Drawing.Point(267, 27);
+            this.txtAPPlacement.Name = "txtAPPlacement";
+            this.txtAPPlacement.Size = new System.Drawing.Size(489, 20);
+            this.txtAPPlacement.TabIndex = 9;
+            this.txtAPPlacement.Text = "F,*2,WSI,*10";
+            // 
+            // btnHelpAutoPlanner
+            // 
+            this.btnHelpAutoPlanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelpAutoPlanner.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelpAutoPlanner.BackgroundImage = global::LouMapInfoApp.Properties.Resources.icon_help;
+            this.btnHelpAutoPlanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHelpAutoPlanner.Location = new System.Drawing.Point(734, -1);
+            this.btnHelpAutoPlanner.Name = "btnHelpAutoPlanner";
+            this.btnHelpAutoPlanner.Size = new System.Drawing.Size(26, 26);
+            this.btnHelpAutoPlanner.TabIndex = 10;
+            this.btnHelpAutoPlanner.UseVisualStyleBackColor = false;
+            this.btnHelpAutoPlanner.Click += new System.EventHandler(this.btnHelpAutoPlanner_Click);
+            // 
+            // statePictureBox1
+            // 
+            this.statePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.statePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.None;
+            this.statePictureBox1.Location = new System.Drawing.Point(911, 0);
+            this.statePictureBox1.Name = "statePictureBox1";
+            this.statePictureBox1.Size = new System.Drawing.Size(21, 21);
+            this.statePictureBox1.TabIndex = 11;
+            this.statePictureBox1.TabStop = false;
+            // 
             // ContentLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1468,6 +1631,8 @@
             this.tbCreate.ResumeLayout(false);
             this.tbImport.ResumeLayout(false);
             this.tbImport.PerformLayout();
+            this.tbAutoPlanner.ResumeLayout(false);
+            this.tbAutoPlanner.PerformLayout();
             this.tbExport.ResumeLayout(false);
             this.pnlCity.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
@@ -1477,6 +1642,9 @@
             this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPCottages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1616,6 +1784,18 @@
         private System.Windows.Forms.Button btnOpenFCP;
         private System.Windows.Forms.Button btnCopyFCP;
         private System.Windows.Forms.Button btnCopySS;
+        private System.Windows.Forms.Button btnAutoPlanCity;
+        private System.Windows.Forms.NumericUpDown nudAPUseSlots;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnHelpAutoPlanner;
+        private System.Windows.Forms.TextBox txtAPPlacement;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkAPBuildOnlyOnOpen;
+        private System.Windows.Forms.CheckBox chkAPClearBuildings;
+        private System.Windows.Forms.CheckBox chkAPKeepExtraNodes;
+        private System.Windows.Forms.NumericUpDown nudAPCottages;
+        private System.Windows.Forms.Label label3;
+        private EricUtility.Windows.Forms.StatePictureBox statePictureBox1;
 
 
 

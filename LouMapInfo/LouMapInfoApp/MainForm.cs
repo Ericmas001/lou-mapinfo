@@ -39,7 +39,7 @@ namespace LouMapInfoApp
             menuButton_CheckedChanged(btnMenuOfficial, new EventArgs());
 
             //TEMP:
-            btnMenuTools.Checked = true;
+            //btnMenuTools.Checked = true;
         }
 
         private void menuButton_CheckedChanged(object sender, EventArgs e)
