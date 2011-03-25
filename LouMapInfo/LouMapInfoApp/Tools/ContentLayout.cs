@@ -11,6 +11,7 @@ using LouMapInfo.Reports.OfficialLOU;
 using System.Threading;
 using LouMapInfo.Layout;
 using EricUtility.Windows.Forms;
+using System.Diagnostics;
 
 namespace LouMapInfoApp.Tools
 {
@@ -55,6 +56,29 @@ namespace LouMapInfoApp.Tools
         private int m_BuildingCount;
         private int m_ConsSpeed;
         private int m_ArmySize;
+
+
+
+        public ContentLayout()
+        {
+            ResetCounters();
+            InitializeComponent();
+            m_CurButton = btnDestroy;
+            btnDestroy.BackColor = SystemColors.Highlight;
+            CreateNew(true);
+            RefreshCounters();
+            tabControl1.SelectedTab = tbCityInfo;
+
+            ImageList list = new ImageList();
+            tabControl1.ImageList = list;
+            list.Images.Add(Properties.Resources.icon_build_slots);
+            list.Images.Add(Properties.Resources.icon_recruit_slots);
+            tbCityInfo.ImageIndex = 0;
+            tbCityMilitary.ImageIndex = 1;
+        }
+
+
+
         public void LoadAll()
         {
             m_Loaded = true;
@@ -294,23 +318,6 @@ namespace LouMapInfoApp.Tools
             m_ConsSpeed = 100;
 
         }
-        public ContentLayout()
-        {
-            ResetCounters();
-            InitializeComponent();
-            m_CurButton = btnDestroy;
-            btnDestroy.BackColor = SystemColors.Highlight;
-            CreateNew(true);
-            RefreshCounters();
-            tabControl1.SelectedTab = tbImport;
-            
-            ImageList list = new ImageList();
-            tabControl1.ImageList = list;
-            list.Images.Add(Properties.Resources.icon_build_slots);
-            list.Images.Add(Properties.Resources.icon_recruit_slots);
-            tbCityInfo.ImageIndex = 0;
-            tbCityMilitary.ImageIndex = 1;
-        }
         private void pbCity_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -334,6 +341,7 @@ namespace LouMapInfoApp.Tools
             m_CurButton = btn;
             m_CurButton.BackColor = SystemColors.Highlight;
             m_CurBuilding = type;
+            pbCity_MouseMove(pbCity, new MouseEventArgs(System.Windows.Forms.MouseButtons.None, 0, mouse.X, mouse.Y, 0));
             pbCity.Invalidate();
         }
         private void btnTree_Click(object sender, EventArgs e)
@@ -647,6 +655,128 @@ namespace LouMapInfoApp.Tools
             CreateNew(true);
             RefreshCounters();
             tabControl1.SelectedIndex = 0;
+        }
+
+        public void ContentLayout_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!txtImport.Focused)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.W: btnWoodcutter_Click(btnWoodcutter, e); break;
+                    case Keys.P: btnMarket_Click(btnMarket, e); break;
+                    case Keys.V: btnShipyard_Click(btnShipyard, e); break;
+                    case Keys.J: btnMoonglowTower_Click(btnMoonglowTower, e); break;
+
+                    case Keys.Q: btnQuarry_Click(btnQuarry, e); break;
+                    case Keys.L: btnSawmill_Click(btnSawmill, e); break;
+                    case Keys.K: btnCityGuardHouse_Click(btnCityGuardHouse, e); break;
+                    case Keys.Z: btnTrinsicTemple_Click(btnTrinsicTemple, e); break;
+
+                    case Keys.I: btnIronMine_Click(btnIronMine, e); break;
+                    case Keys.A: btnStonemasson_Click(btnStonemasson, e); break;
+                    case Keys.B: btnBarrack_Click(btnBarrack, e); break;
+                    case Keys.D1: btnTree_Click(btnTree, e); break;
+
+                    case Keys.F: btnFarm_Click(btnFarm, e); break;
+                    case Keys.D: btnFoundry_Click(btnFoundry, e); break;
+                    case Keys.G: btnTrainingGround_Click(btnTrainingGround, e); break;
+                    case Keys.D2: btnStone_Click(btnStone, e); break;
+
+                    case Keys.C: btnCottage_Click(btnCottage, e); break;
+                    case Keys.M: btnMill_Click(btnMill, e); break;
+                    case Keys.E: btnStable_Click(btnStable, e); break;
+                    case Keys.D3: btnIron_Click(btnIron, e); break;
+
+                    case Keys.S: btnWarehouse_Click(btnWarehouse, e); break;
+                    case Keys.T: btnTownhouse_Click(btnTownhouse, e); break;
+                    case Keys.U: btnTownhouse_Click(btnTownhouse, e); break;
+                    case Keys.Y: btnWorkshop_Click(btnWorkshop, e); break;
+                    case Keys.D4: btnWater_Click(btnWater, e); break;
+
+                    case Keys.H: btnHideout_Click(btnHideout, e); break;
+                    case Keys.R: btnHarbor_Click(btnHarbor, e); break;
+                    case Keys.X: btnCastle_Click(btnCastle, e); break;
+                    case Keys.D0: btnDestroy_Click(btnDestroy, e); break;
+
+                    case Keys.D5: btnOldWoodcutter_Click(btnOldWoodcutter, e); break;
+                    case Keys.D6: btnOldQuarry_Click(btnOldQuarry, e); break;
+                    case Keys.D7: btnOldIronMine_Click(btnOldIronMine, e); break;
+                    case Keys.D8: btnOldFarm_Click(btnOldFarm, e); break;
+
+                }
+            }
+        }
+
+        private void btnOpenFCP_Click(object sender, EventArgs e)
+        {
+            Process.Start(generateFlashCityPlanner());
+        }
+
+        private string generateFlashCityPlanner()
+        {
+            string basic = "http://www.lou-fcp.co.uk/map.php?map=";
+            char t = water ? 'W' : 'L';
+            string layout = "";
+            foreach (LayoutEntry le in CityLayout)
+            {
+                BuildingType b = le.Info;
+                if (le.Info == BuildingType.FarmLand)
+                    b = BuildingType.None;
+                layout += BuildingInfo.ByType[b].LetterFlashPlanner;
+            }
+            return basic + t + layout;
+        }
+
+        private void btnCopyFCP_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(generateFlashCityPlanner());
+        }
+
+        private void btnCopySS_Click(object sender, EventArgs e)
+        {
+            const string basicW = "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######----T----#######----#---------#----##----#---------#----##----##-------##----##-----##-----##-----##------#######--__--##---------#----_##_-##---------#----_###_###--------#-----_#######-------#------_########################[/ShareString]";
+            const string basicL = "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######----T----#######----#---------#----##----#---------#----##----##-------##----##-----##-----##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################[/ShareString]";
+            bool started = false;
+            int ri = 0;
+            string s = "";
+            List<LayoutEntry> layout = CityLayout;
+            for (int i = 0; i < basicL.Length; ++i)
+            {
+                if (!started)
+                {
+                    if (basicL[i] == '#')
+                        started = true;
+                    s += water ? basicW[i] : basicL[i];
+                }
+                else
+                {
+                    if (water && basicL[i] == '-' && basicW[i] == '#')
+                    {
+                        ri++;
+                        s += basicW[i];
+                    }
+                    else if (basicL[i] == '-')
+                    {
+                        LayoutEntry le = layout[ri++];
+                        BuildingType b = le.Info;
+                        if (le.Info == BuildingType.FarmLand)
+                            b = BuildingType.None;
+                        if (water && b == BuildingType.None && basicW[i] == '_')
+                            s += basicW[i];
+                        else
+                            s += BuildingInfo.ByType[b].LetterShareString;
+                    }
+                    else if (basicL[i] == 'T')
+                    {
+                        ri++;
+                        s += basicL[i];
+                    }
+                    else
+                        s += basicL[i];
+                }
+            }
+            Clipboard.SetText(s);
         }
     }
 }

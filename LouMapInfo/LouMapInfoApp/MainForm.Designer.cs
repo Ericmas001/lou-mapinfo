@@ -80,6 +80,7 @@
             this.button1.Text = "<";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // btnMenuEmpire
             // 
@@ -97,6 +98,7 @@
             this.btnMenuEmpire.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMenuEmpire.UseVisualStyleBackColor = true;
             this.btnMenuEmpire.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
+            this.btnMenuEmpire.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // lstSubItems
             // 
@@ -111,6 +113,7 @@
             this.lstSubItems.Size = new System.Drawing.Size(196, 211);
             this.lstSubItems.TabIndex = 8;
             this.lstSubItems.SelectedIndexChanged += new System.EventHandler(this.lstSubItems_SelectedIndexChanged);
+            this.lstSubItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // btnMenuTools
             // 
@@ -127,6 +130,7 @@
             this.btnMenuTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMenuTools.UseVisualStyleBackColor = true;
             this.btnMenuTools.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
+            this.btnMenuTools.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // btnMenuMap
             // 
@@ -143,6 +147,7 @@
             this.btnMenuMap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMenuMap.UseVisualStyleBackColor = true;
             this.btnMenuMap.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
+            this.btnMenuMap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // btnMenuZeus
             // 
@@ -160,6 +165,7 @@
             this.btnMenuZeus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMenuZeus.UseVisualStyleBackColor = true;
             this.btnMenuZeus.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
+            this.btnMenuZeus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // btnMenuOfficial
             // 
@@ -178,6 +184,7 @@
             this.btnMenuOfficial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMenuOfficial.UseVisualStyleBackColor = true;
             this.btnMenuOfficial.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
+            this.btnMenuOfficial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // MainForm
             // 
@@ -189,6 +196,7 @@
             this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "MainForm";
             this.Text = "LoU Map Info";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
