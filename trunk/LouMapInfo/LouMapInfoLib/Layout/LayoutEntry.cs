@@ -16,6 +16,7 @@ namespace LouMapInfo.Layout
         public event EmptyHandler RefreshTransport = delegate { };
         public event EmptyHandler RefreshBuildingCount = delegate { };
         public event EmptyHandler RefreshConsSpeed = delegate { };
+        public event EmptyHandler RefreshArmySize = delegate { };
         private static readonly Point[] InvalidOnWater = new Point[] { new Point(15, 14), new Point(16, 14), new Point(14, 15), new Point(17, 15), new Point(14, 16), new Point(18, 16), new Point(15, 17), new Point(16, 18), new Point(15, 15), new Point(16, 15), new Point(15, 16), new Point(16, 16), new Point(17, 16), new Point(16, 17), new Point(17, 17) };
         private static readonly Point[] SuperInvalidOnWater = new Point[] { new Point(15, 15), new Point(16, 15), new Point(15, 16), new Point(16, 16), new Point(17, 16), new Point(16, 17), new Point(17, 17) };
         
@@ -82,6 +83,13 @@ namespace LouMapInfo.Layout
         private int m_Ships = 0;
         private int m_BuildingCount = 0;
         private int m_ConsSpeed = 0;
+        private int m_ArmySize = 0;
+
+        public int ArmySize
+        {
+            get { return m_ArmySize; }
+            set { m_ArmySize = value; }
+        }
 
         public int ConsSpeed
         {
@@ -206,6 +214,7 @@ namespace LouMapInfo.Layout
             m_Ships = 0;
             m_BuildingCount = 0;
             m_ConsSpeed = 0;
+            m_ArmySize = 0;
 
             if (BuildingInfo.ByType[b].ResourceProduced != ResourceType.None)
                 RefreshResourceProduction(BuildingInfo.ByType[b].ResourceProduced);
@@ -222,6 +231,9 @@ namespace LouMapInfo.Layout
             if (b == BuildingType.Cottage)
                 RefreshConsSpeed();
 
+            if (b == BuildingType.Barracks || b == BuildingType.Castle)
+                RefreshArmySize();
+
             RefreshBuildingCount();
         }
         public void Refresh(bool alsoNeighbors)
@@ -234,7 +246,14 @@ namespace LouMapInfo.Layout
                 foreach (LayoutEntry le in Neighbors)
                     le.Refresh(false);
             Reset(oldb);
-            if (m_Info == BuildingType.Cottage)
+            if (m_Info == BuildingType.Barracks)
+            {
+                m_ArmySize = 1000;
+                RefreshArmySize();
+            }
+            else if (m_Info == BuildingType.Castle)
+                RefreshArmySize();
+            else if (m_Info == BuildingType.Cottage)
             {
                 m_ConsSpeed = 100;
                 RefreshConsSpeed();
