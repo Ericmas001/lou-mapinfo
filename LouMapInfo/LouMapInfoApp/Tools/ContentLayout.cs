@@ -53,6 +53,7 @@ namespace LouMapInfoApp.Tools
         private int m_Ships;
         private int m_BuildingCount;
         private int m_ConsSpeed;
+        private int m_ArmySize;
         public void LoadAll()
         {
             m_Loaded = true;
@@ -122,6 +123,7 @@ namespace LouMapInfoApp.Tools
                         le.RefreshTransport += new EmptyHandler(le_RefreshTransport);
                         le.RefreshBuildingCount += new EmptyHandler(le_RefreshBuildingCount);
                         le.RefreshConsSpeed += new EmptyHandler(le_RefreshConsSpeed);
+                        le.RefreshArmySize += new EmptyHandler(le_RefreshArmySize);
                         m_DONOTUSE_Layout.Add(le);
                         if (x != 9 || y != 9)
                             m_CoordLayout[x, y] = le;
@@ -132,6 +134,20 @@ namespace LouMapInfoApp.Tools
                         if (xi != 0 || yi != 0)
                             if (le.X + xi >= 0 && le.X + xi < 20 && le.Y + yi >= 0 && le.Y + yi < 20 && m_CoordLayout[le.X + xi, le.Y + yi] != null)
                                 le.AddNeighbor(m_CoordLayout[le.X + xi, le.Y + yi]);
+        }
+
+        void le_RefreshArmySize()
+        {
+            int multi = 1;
+            int total = 0;
+            foreach (LayoutEntry le in CityLayout)
+            {
+                total += le.ArmySize;
+                if (le.Info == BuildingType.Castle)
+                    multi = 4;
+            }
+            m_ArmySize = total * multi;
+            RefreshCounters();
         }
 
         void le_RefreshConsSpeed()
@@ -230,8 +246,7 @@ namespace LouMapInfoApp.Tools
             else
                 lblBuildingsLeft.ForeColor = Color.Black;
             lblConsSpeed.Text = m_ConsSpeed.ToString("N0") + "%";
-
-
+            lblArmySize.Text = m_ArmySize.ToString("N0");
         }
         private void ResetCounters()
         {
@@ -262,8 +277,7 @@ namespace LouMapInfoApp.Tools
             CreateNew(true);
             RefreshCounters();
             tabControl1.SelectedTab = tbImport;
-            //Import("http://www.lou-fcp.co.uk/map.php?map=WC00000DOOOO00B00000000OODO00B0A000N0C00OOO000000000500CC0OOD0C000000D0000000A000000JJ0J000AA000B000ZZZZ00A0000B0J0LZKZNZJ00000000JZZZZZZZ00000JZMZ0ZMZJ0000J0ZZZZZZ0CRPW0000J0NZKZLZJC00DBB0CZZZZZZ0JJJ00B000JJ0JJJJEJD0000C0JETTJ0AA0000000C0JJT00TJ0000B000CCCJET000T0000000C0CJJJT00D000D000C0B0JT");
-
+            
             ImageList list = new ImageList();
             tabControl1.ImageList = list;
             list.Images.Add(Properties.Resources.icon_build_slots);
@@ -599,12 +613,14 @@ namespace LouMapInfoApp.Tools
         {
             CreateNew(false);
             RefreshCounters();
+            tabControl1.SelectedIndex = 0;
         }
 
         private void btnCreateWater_Click(object sender, EventArgs e)
         {
             CreateNew(true);
             RefreshCounters();
+            tabControl1.SelectedIndex = 0;
         }
     }
 }

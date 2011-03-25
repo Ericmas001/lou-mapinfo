@@ -134,6 +134,9 @@
             this.tbExport = new System.Windows.Forms.TabPage();
             this.btnCreateLand = new System.Windows.Forms.Button();
             this.btnCreateWater = new System.Windows.Forms.Button();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
+            this.lblArmySize = new System.Windows.Forms.ToolStripLabel();
             this.pnlContent.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlCity.SuspendLayout();
@@ -710,23 +713,26 @@
             this.lblNbCarts,
             this.toolStripSeparator20,
             this.toolStripLabel19,
-            this.lblNbShips});
+            this.lblNbShips,
+            this.toolStripSeparator21,
+            this.toolStripLabel10,
+            this.lblArmySize});
             this.toolStrip6.Location = new System.Drawing.Point(3, 53);
             this.toolStrip6.Name = "toolStrip6";
-            this.toolStrip6.Size = new System.Drawing.Size(756, 25);
+            this.toolStrip6.Size = new System.Drawing.Size(756, 26);
             this.toolStrip6.TabIndex = 11;
             this.toolStrip6.Text = "toolStrip6";
             // 
             // lblBuildingsLeft
             // 
             this.lblBuildingsLeft.Name = "lblBuildingsLeft";
-            this.lblBuildingsLeft.Size = new System.Drawing.Size(25, 22);
+            this.lblBuildingsLeft.Size = new System.Drawing.Size(25, 23);
             this.lblBuildingsLeft.Text = "100";
             // 
             // toolStripSeparator23
             // 
             this.toolStripSeparator23.Name = "toolStripSeparator23";
-            this.toolStripSeparator23.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator23.Size = new System.Drawing.Size(6, 26);
             // 
             // toolStripLabel12
             // 
@@ -735,19 +741,19 @@
             this.toolStripLabel12.Image = global::LouMapInfoApp.Properties.Resources.icon_build_slots;
             this.toolStripLabel12.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripLabel12.Name = "toolStripLabel12";
-            this.toolStripLabel12.Size = new System.Drawing.Size(28, 22);
+            this.toolStripLabel12.Size = new System.Drawing.Size(28, 23);
             this.toolStripLabel12.Text = "Construction Speed";
             // 
             // lblConsSpeed
             // 
             this.lblConsSpeed.Name = "lblConsSpeed";
-            this.lblConsSpeed.Size = new System.Drawing.Size(35, 22);
+            this.lblConsSpeed.Size = new System.Drawing.Size(35, 23);
             this.lblConsSpeed.Text = "100%";
             // 
             // toolStripSeparator19
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 26);
             // 
             // toolStripLabel16
             // 
@@ -756,19 +762,19 @@
             this.toolStripLabel16.Image = global::LouMapInfoApp.Properties.Resources.trade_cart;
             this.toolStripLabel16.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripLabel16.Name = "toolStripLabel16";
-            this.toolStripLabel16.Size = new System.Drawing.Size(28, 22);
+            this.toolStripLabel16.Size = new System.Drawing.Size(28, 23);
             this.toolStripLabel16.Text = "Carts";
             // 
             // lblNbCarts
             // 
             this.lblNbCarts.Name = "lblNbCarts";
-            this.lblNbCarts.Size = new System.Drawing.Size(30, 22);
+            this.lblNbCarts.Size = new System.Drawing.Size(30, 23);
             this.lblNbCarts.Text = "0 (0)";
             // 
             // toolStripSeparator20
             // 
             this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator20.Size = new System.Drawing.Size(6, 26);
             // 
             // toolStripLabel19
             // 
@@ -777,13 +783,13 @@
             this.toolStripLabel19.Image = global::LouMapInfoApp.Properties.Resources.trade_ship;
             this.toolStripLabel19.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripLabel19.Name = "toolStripLabel19";
-            this.toolStripLabel19.Size = new System.Drawing.Size(28, 22);
+            this.toolStripLabel19.Size = new System.Drawing.Size(28, 23);
             this.toolStripLabel19.Text = "Ships";
             // 
             // lblNbShips
             // 
             this.lblNbShips.Name = "lblNbShips";
-            this.lblNbShips.Size = new System.Drawing.Size(30, 22);
+            this.lblNbShips.Size = new System.Drawing.Size(30, 23);
             this.lblNbShips.Text = "0 (0)";
             // 
             // toolStrip5
@@ -1164,6 +1170,27 @@
             this.btnCreateWater.UseVisualStyleBackColor = true;
             this.btnCreateWater.Click += new System.EventHandler(this.btnCreateWater_Click);
             // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripLabel10
+            // 
+            this.toolStripLabel10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripLabel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel10.Image = global::LouMapInfoApp.Properties.Resources.icon_recruit_slots;
+            this.toolStripLabel10.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripLabel10.Name = "toolStripLabel10";
+            this.toolStripLabel10.Size = new System.Drawing.Size(30, 23);
+            this.toolStripLabel10.Text = "Army Size";
+            // 
+            // lblArmySize
+            // 
+            this.lblArmySize.Name = "lblArmySize";
+            this.lblArmySize.Size = new System.Drawing.Size(13, 23);
+            this.lblArmySize.Text = "0";
+            // 
             // ContentLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1309,6 +1336,9 @@
         private System.Windows.Forms.TabPage tbExport;
         private System.Windows.Forms.Button btnCreateWater;
         private System.Windows.Forms.Button btnCreateLand;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel10;
+        private System.Windows.Forms.ToolStripLabel lblArmySize;
 
 
 
