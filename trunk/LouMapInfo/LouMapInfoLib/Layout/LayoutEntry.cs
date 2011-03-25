@@ -286,38 +286,46 @@ namespace LouMapInfo.Layout
             }
             else if (BuildingInfo.ByType[m_Info].ResourceProduced == ResourceType.Food)
             {
-                /* int numR = 0;
-                 int numC = 0;
+                int numR = 0;
+                int numC = 0;
+                int numL = 0;
                  bool hasB = false;
                  foreach (LayoutEntry le in NeighborsWithWater)
                      if (le.m_Info == BuildingType.ResFood)
                          numR++;
                      else if (le.m_Info == BuildingType.Cottage)
                          numC++;
+                     else if (le.m_Info == BuildingType.FarmLand)
+                         numL++;
                      else if (le.m_Info == BuildingType.Mill)
                          hasB = true;
                  if (m_Info == BuildingType.Farm)
                  {
                      int basic = 300;
-                     int resBonus = numR > 0 ? 110 + (40 * numR) : 100;
+                     int resBonus = numR > 0 ? 110 + (40 * numL) : 100;
                      int step1 = basic * resBonus;
                      step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
                      int step2 = step1 * (100 + 30 * numC);
+                     step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
+                     int step3 = step2 * (100 + 50 * numR);
+                     step3 = step3 % 100 != 0 ? step3 / 100 + 1 : step3 / 100;
+                     int step4 = hasB ? step3 * 175 : step3 * 100;
+                     step4 = step4 % 100 != 0 ? step4 / 100 + 1 : step4 / 100;
+                     m_Production[ResourceType.Food] = step4;
+                 }
+                 else
+                 {
+                     int basic = 400;
+                     int resBonus = numR > 0 ? 100 + (25 * numL) + (50 * numC) : 100;
+                     int step1 = basic * resBonus;
+                     step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
+                     int step2 = step1 * (100 + 50 * numR);
                      step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
                      int step3 = hasB ? step2 * 175 : step2 * 100;
                      step3 = step3 % 100 != 0 ? step3 / 100 + 1 : step3 / 100;
                      m_Production[ResourceType.Food] = step3;
                  }
-                 else
-                 {
-                     int basic = 300;
-                     int step1 = basic * (100 + numR * 25 + numC * 50);
-                     step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
-                     int step2 = hasB ? step1 * 175 : step1 * 100;
-                     step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
-                     m_Production[ResourceType.Food] = step2;
-                 }
-                 RefreshResourceProduction(ResourceType.Food);*/
+                 RefreshResourceProduction(ResourceType.Food);
             }
         }
     }
