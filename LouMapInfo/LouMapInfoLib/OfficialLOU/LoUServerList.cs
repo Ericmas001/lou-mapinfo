@@ -41,6 +41,7 @@ namespace LouMapInfo.OfficialLOU
             m_Servers.Add("World 25 (USA West Coast)", "http://prodgame02.lordofultima.com/39");
             m_Servers.Add("World 26 (Australia)", "http://prodgame03.lordofultima.com/40");
             m_Servers.Add("World 27 (Europe)", "http://prodgame08.lordofultima.com/41");
+            m_Servers.Add("World 28 (USA East Coast)", "http://prodgame05.lordofultima.com/42");
             m_Servers.Add("Castle 1", "http://prodgame03.lordofultima.com/37");
             m_Servers.Add("(de) Welt 1", "http://prodgame07.lordofultima.com/4");
             m_Servers.Add("(de) Welt 2", "http://prodgame03.lordofultima.com/13");
@@ -48,11 +49,17 @@ namespace LouMapInfo.OfficialLOU
             m_Servers.Add("(de) Welt 4", "http://prodgame12.lordofultima.com/25");
             m_Servers.Add("(de) Welt 5", "http://prodgame02.lordofultima.com/36");
             m_Servers.Add("(es) Mundo 1", "http://prodgame05.lordofultima.com/28");
+            m_Servers.Add("(es) Mundo 2", "http://prodgame07.lordofultima.com/46");
             m_Servers.Add("(fr) Monde 1", "http://prodgame13.lordofultima.com/26");
+            m_Servers.Add("(fr) Monde 2", "http://prodgame08.lordofultima.com/48");
             m_Servers.Add("(it) Mondo 1", "http://prodgame04.lordofultima.com/27");
+            m_Servers.Add("(it) Mondo 2", "http://prodgame07.lordofultima.com/47");
             m_Servers.Add("(pl) Świata 1", "http://prodgame08.lordofultima.com/31");
+            m_Servers.Add("(pl) Świata 2", "http://prodgame05.lordofultima.com/43");
             m_Servers.Add("(pt) Mundo 1", "http://prodgame06.lordofultima.com/29");
+            m_Servers.Add("(pt) Mundo 2", "http://prodgame04.lordofultima.com/45");
             m_Servers.Add("(ru) Мир 1", "http://prodgame07.lordofultima.com/30");
+            m_Servers.Add("(ru) Мир 2", "http://prodgame04.lordofultima.com/44");
             m_Loaded = true;
         }
     }
