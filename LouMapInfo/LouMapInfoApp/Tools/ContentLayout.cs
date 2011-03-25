@@ -48,6 +48,7 @@ namespace LouMapInfoApp.Tools
         }
         private Dictionary<ResourceType, int> m_Production = new Dictionary<ResourceType, int>();
         private Dictionary<ResourceType, int> m_Storage = new Dictionary<ResourceType, int>();
+        private Dictionary<BuildingType, int> m_Recruitment = new Dictionary<BuildingType, int>();
         private int m_Hidden;
         private int m_Carts;
         private int m_Ships;
@@ -124,6 +125,7 @@ namespace LouMapInfoApp.Tools
                         le.RefreshBuildingCount += new EmptyHandler(le_RefreshBuildingCount);
                         le.RefreshConsSpeed += new EmptyHandler(le_RefreshConsSpeed);
                         le.RefreshArmySize += new EmptyHandler(le_RefreshArmySize);
+                        le.RefreshRecruitmentSpeed += new BuildingTypeHandler(le_RefreshRecruitmentSpeed);
                         m_DONOTUSE_Layout.Add(le);
                         if (x != 9 || y != 9)
                             m_CoordLayout[x, y] = le;
@@ -134,6 +136,15 @@ namespace LouMapInfoApp.Tools
                         if (xi != 0 || yi != 0)
                             if (le.X + xi >= 0 && le.X + xi < 20 && le.Y + yi >= 0 && le.Y + yi < 20 && m_CoordLayout[le.X + xi, le.Y + yi] != null)
                                 le.AddNeighbor(m_CoordLayout[le.X + xi, le.Y + yi]);
+        }
+
+        void le_RefreshRecruitmentSpeed(BuildingType type)
+        {
+            int total = 100;
+            foreach (LayoutEntry le in CityLayout)
+                total += le.Recruitment(type);
+            m_Recruitment[type] = total;
+            RefreshCounters();
         }
 
         void le_RefreshArmySize()
@@ -247,6 +258,13 @@ namespace LouMapInfoApp.Tools
                 lblBuildingsLeft.ForeColor = Color.Black;
             lblConsSpeed.Text = m_ConsSpeed.ToString("N0") + "%";
             lblArmySize.Text = m_ArmySize.ToString("N0");
+            lblCityGuard.Text = m_Recruitment[BuildingType.CityGuardHouse].ToString("N0") + "%";
+            lblTrainingGround.Text = m_Recruitment[BuildingType.TrainingGround].ToString("N0") + "%";
+            lblStable.Text = m_Recruitment[BuildingType.Stable].ToString("N0") + "%";
+            lblTrinsic.Text = m_Recruitment[BuildingType.TrinsicTemple].ToString("N0") + "%";
+            lblMoonglow.Text = m_Recruitment[BuildingType.MoonglowTower].ToString("N0") + "%";
+            lblWorkShop.Text = m_Recruitment[BuildingType.Workshop].ToString("N0") + "%";
+            lblShipyard.Text = m_Recruitment[BuildingType.Shipyard].ToString("N0") + "%";
         }
         private void ResetCounters()
         {
@@ -261,6 +279,14 @@ namespace LouMapInfoApp.Tools
             m_Storage.Add(ResourceType.Stone, 175000);
             m_Storage.Add(ResourceType.Iroon, 175000);
             m_Storage.Add(ResourceType.Food, 175000);
+            m_Recruitment.Clear();
+            m_Recruitment.Add(BuildingType.CityGuardHouse, 100);
+            m_Recruitment.Add(BuildingType.TrainingGround, 100);
+            m_Recruitment.Add(BuildingType.Stable, 100);
+            m_Recruitment.Add(BuildingType.MoonglowTower, 100);
+            m_Recruitment.Add(BuildingType.TrinsicTemple, 100);
+            m_Recruitment.Add(BuildingType.Workshop, 100);
+            m_Recruitment.Add(BuildingType.Shipyard, 100);
             m_Hidden = 0;
             m_Carts = 0;
             m_Ships = 0;
