@@ -228,5 +228,13 @@ namespace LouMapInfoApp
                 button1.Text = "<";
             }
         }
+
+        private void lstSubItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (splitContainer1.Panel2.Controls.Count == 1 && splitContainer1.Panel2.Controls[0] is ContentLayout)
+            {
+                ((ContentLayout)splitContainer1.Panel2.Controls[0]).ContentLayout_KeyDown(sender, e);
+            }
+        }
     }
 }
