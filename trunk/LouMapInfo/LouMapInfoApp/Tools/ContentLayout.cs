@@ -65,6 +65,14 @@ namespace LouMapInfoApp.Tools
         {
             ResetCounters();
             InitializeComponent();
+
+            nudAPUseSlots.Value = Properties.Settings.Default.apUseSlots;
+            nudAPCottages.Value = Properties.Settings.Default.apNumCottages;
+            txtAPPlacement.Text = Properties.Settings.Default.apPlacementSchedule;
+            chkAPBuildOnlyOnOpen.Checked = Properties.Settings.Default.apBuildOnlyOnOpen;
+            chkAPClearBuildings.Checked = Properties.Settings.Default.apClearBuildings;
+            chkAPKeepExtraNodes.Checked = Properties.Settings.Default.apKeepExtraResNodes;
+
             m_CurButton = btnDestroy;
             btnDestroy.BackColor = SystemColors.Highlight;
             CreateNew(true);
@@ -822,6 +830,15 @@ namespace LouMapInfoApp.Tools
                 Invoke(new StringHandler(EndAutoPlanner), res);
                 return;
             }
+
+            Properties.Settings.Default.apUseSlots = (int)nudAPUseSlots.Value;
+            Properties.Settings.Default.apNumCottages = (int)nudAPCottages.Value;
+            Properties.Settings.Default.apPlacementSchedule = txtAPPlacement.Text;
+            Properties.Settings.Default.apBuildOnlyOnOpen = chkAPBuildOnlyOnOpen.Checked;
+            Properties.Settings.Default.apClearBuildings = chkAPClearBuildings.Checked;
+            Properties.Settings.Default.apKeepExtraResNodes = chkAPKeepExtraNodes.Checked;
+            Properties.Settings.Default.Save();
+
             Import(res);
             tabControl1.SelectedTab = tbCityInfo;
             statePictureBox1.Etat = StatePictureBoxStates.None;
