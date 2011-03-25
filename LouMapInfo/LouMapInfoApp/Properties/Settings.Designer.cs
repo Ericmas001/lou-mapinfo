@@ -298,5 +298,77 @@ namespace LouMapInfoApp.Properties {
                 this["zeusPassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int apUseSlots {
+            get {
+                return ((int)(this["apUseSlots"]));
+            }
+            set {
+                this["apUseSlots"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int apNumCottages {
+            get {
+                return ((int)(this["apNumCottages"]));
+            }
+            set {
+                this["apNumCottages"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool apKeepExtraResNodes {
+            get {
+                return ((bool)(this["apKeepExtraResNodes"]));
+            }
+            set {
+                this["apKeepExtraResNodes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool apClearBuildings {
+            get {
+                return ((bool)(this["apClearBuildings"]));
+            }
+            set {
+                this["apClearBuildings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool apBuildOnlyOnOpen {
+            get {
+                return ((bool)(this["apBuildOnlyOnOpen"]));
+            }
+            set {
+                this["apBuildOnlyOnOpen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F,*2,WSI,*100")]
+        public string apPlacementSchedule {
+            get {
+                return ((string)(this["apPlacementSchedule"]));
+            }
+            set {
+                this["apPlacementSchedule"] = value;
+            }
+        }
     }
 }

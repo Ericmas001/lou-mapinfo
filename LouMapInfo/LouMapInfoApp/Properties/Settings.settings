@@ -71,5 +71,23 @@
     <Setting Name="zeusPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="apUseSlots" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="apNumCottages" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="apKeepExtraResNodes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="apClearBuildings" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="apBuildOnlyOnOpen" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="apPlacementSchedule" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F,*2,WSI,*100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
