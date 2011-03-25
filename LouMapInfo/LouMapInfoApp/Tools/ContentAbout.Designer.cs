@@ -46,6 +46,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
             this.pnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +63,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 23);
+            this.label1.Size = new System.Drawing.Size(300, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "LoU Map Info 4.2";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,6 +71,13 @@
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContent.Controls.Add(this.label17);
+            this.pnlContent.Controls.Add(this.linkLabel8);
+            this.pnlContent.Controls.Add(this.label16);
+            this.pnlContent.Controls.Add(this.linkLabel7);
+            this.pnlContent.Controls.Add(this.label14);
+            this.pnlContent.Controls.Add(this.linkLabel6);
+            this.pnlContent.Controls.Add(this.linkLabel5);
             this.pnlContent.Controls.Add(this.label13);
             this.pnlContent.Controls.Add(this.linkLabel4);
             this.pnlContent.Controls.Add(this.label12);
@@ -83,29 +97,27 @@
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 23);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(358, 292);
+            this.pnlContent.Size = new System.Drawing.Size(300, 347);
             this.pnlContent.TabIndex = 1;
             // 
             // label13
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Location = new System.Drawing.Point(5, 242);
+            this.label13.Location = new System.Drawing.Point(3, 241);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(349, 13);
+            this.label13.Size = new System.Drawing.Size(189, 13);
             this.label13.TabIndex = 19;
             this.label13.Text = "Their clean code was a big reference !";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // linkLabel4
             // 
-            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel4.AutoSize = true;
             this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel4.Location = new System.Drawing.Point(5, 220);
+            this.linkLabel4.Location = new System.Drawing.Point(3, 228);
             this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(350, 22);
+            this.linkLabel4.Size = new System.Drawing.Size(139, 13);
             this.linkLabel4.TabIndex = 18;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "http://empire.lou-tools.com/";
@@ -115,24 +127,22 @@
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Location = new System.Drawing.Point(6, 193);
+            this.label12.Location = new System.Drawing.Point(3, 206);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(348, 13);
+            this.label12.Size = new System.Drawing.Size(297, 13);
             this.label12.TabIndex = 17;
-            this.label12.Text = "Their JSONs were more than useful";
+            this.label12.Text = "They are what made this application possible at the beginning";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // linkLabel3
             // 
-            this.linkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel3.AutoSize = true;
             this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Location = new System.Drawing.Point(5, 171);
+            this.linkLabel3.Location = new System.Drawing.Point(3, 193);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(350, 22);
+            this.linkLabel3.Size = new System.Drawing.Size(125, 13);
             this.linkLabel3.TabIndex = 16;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "http://www.lou-map.com";
@@ -148,7 +158,7 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 135);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(352, 24);
+            this.label11.Size = new System.Drawing.Size(294, 24);
             this.label11.TabIndex = 15;
             this.label11.Text = "Special Thanks";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -258,7 +268,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(2, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(352, 24);
+            this.label2.Size = new System.Drawing.Size(294, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "About the Author";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,13 +280,102 @@
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Location = new System.Drawing.Point(0, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(355, 22);
+            this.linkLabel1.Size = new System.Drawing.Size(297, 22);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "http://code.google.com/p/lou-mapinfo/";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Blue;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GeneralUrl_LinkClicked);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Location = new System.Drawing.Point(3, 324);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(243, 13);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "An amazing tool who is used by my Layout section";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // linkLabel5
+            // 
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel5.Location = new System.Drawing.Point(3, 311);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(209, 13);
+            this.linkLabel5.TabIndex = 20;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = "http://2.latest.loof78.appspot.com/lou_city";
+            this.linkLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel5.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GeneralUrl_LinkClicked);
+            // 
+            // linkLabel6
+            // 
+            this.linkLabel6.AutoSize = true;
+            this.linkLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel6.Location = new System.Drawing.Point(3, 263);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(132, 13);
+            this.linkLabel6.TabIndex = 20;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Text = "http://www.lou-fcp.co.uk/";
+            this.linkLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel6.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GeneralUrl_LinkClicked);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Location = new System.Drawing.Point(3, 289);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(283, 13);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Great planner tool that helped me make the Layout section";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // linkLabel7
+            // 
+            this.linkLabel7.AutoSize = true;
+            this.linkLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel7.Location = new System.Drawing.Point(3, 276);
+            this.linkLabel7.Name = "linkLabel7";
+            this.linkLabel7.Size = new System.Drawing.Size(168, 13);
+            this.linkLabel7.TabIndex = 22;
+            this.linkLabel7.TabStop = true;
+            this.linkLabel7.Text = "http://www.olivereberlei.com/lou/";
+            this.linkLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel7.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GeneralUrl_LinkClicked);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Location = new System.Drawing.Point(3, 174);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(152, 13);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "For providing this great game :)";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // linkLabel8
+            // 
+            this.linkLabel8.AutoSize = true;
+            this.linkLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel8.Location = new System.Drawing.Point(3, 161);
+            this.linkLabel8.Name = "linkLabel8";
+            this.linkLabel8.Size = new System.Drawing.Size(141, 13);
+            this.linkLabel8.TabIndex = 24;
+            this.linkLabel8.TabStop = true;
+            this.linkLabel8.Text = "http://www.lordofultima.com";
+            this.linkLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel8.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GeneralUrl_LinkClicked);
             // 
             // ContentAbout
             // 
@@ -290,7 +389,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "ContentAbout";
-            this.Size = new System.Drawing.Size(358, 315);
+            this.Size = new System.Drawing.Size(300, 370);
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
             this.ResumeLayout(false);
@@ -317,5 +416,12 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.LinkLabel linkLabel8;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.LinkLabel linkLabel7;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.LinkLabel linkLabel5;
     }
 }
