@@ -179,26 +179,41 @@ namespace LouMapInfoApp.LouOfficial
             OpenBattleReport(LoUBattleType.HighestFaith);
         }
 
-        private void btnShrineLocation_Click(object sender, EventArgs e)
+        private void btnShrineLocationExclude_Click(object sender, EventArgs e)
         {
             try
             {
                 LoUPt loc = new LoUPt(txtShrineLocation.Text);
-                OpenShrineReport(loc);
+                ContentEnabling(false);
+                new Thread(new ParameterizedThreadStart(OpenShrineReport1Async)).Start(loc);
             }
             catch { }
         }
 
-        private void OpenShrineReport(LoUPt pt)
-        {
-            ContentEnabling(false);
-            new Thread(new ParameterizedThreadStart(OpenShrineReportAsync)).Start(pt);
-        }
-
-        private void OpenShrineReportAsync(object o)
+        private void OpenShrineReport1Async(object o)
         {
             LoUPt pt = (LoUPt)o;
-            LoUShrineCastlesReport rep = new LoUShrineCastlesReport(Session.World, pt);
+            LoUShrineCastlesReport rep = new LoUShrineCastlesReport(Session.World, pt,false);
+            rep.LoadIfNeeded();
+            OpenReport(rep);
+            ContentEnabling(true);
+        }
+
+        private void btnShrineLocationInclude_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoUPt loc = new LoUPt(txtShrineLocation.Text);
+                ContentEnabling(false);
+                new Thread(new ParameterizedThreadStart(OpenShrineReport2Async)).Start(loc);
+            }
+            catch { }
+        }
+
+        private void OpenShrineReport2Async(object o)
+        {
+            LoUPt pt = (LoUPt)o;
+            LoUShrineCastlesReport rep = new LoUShrineCastlesReport(Session.World, pt, true);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);

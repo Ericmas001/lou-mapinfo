@@ -15,11 +15,13 @@ namespace LouMapInfo.Reports.OfficialLOU
     {
         private LoUWorldInfo world;
         private LoUPt location;
-        public LoUShrineCastlesReport(LoUWorldInfo w, LoUPt l)
+        private bool includeNoAlliance;
+        public LoUShrineCastlesReport(LoUWorldInfo w, LoUPt l, bool noAlliance)
             : base(OldLoUCityType.CastlePalace)
         {
             this.world = w;
             this.location = l;
+            includeNoAlliance = noAlliance;
             LoadIfNeeded();
         }
 
@@ -31,6 +33,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         protected override void OnLoad()
         {
             title = new TextReportItem("Castles surrounding" + location, true);
+            subtitle = new TextReportItem((includeNoAlliance ? "Including " : "Excluding ") + "players without an alliance",true);
             LoUContinentInfo cont = world.Continent(location.Continent);
             Dictionary<int, List<LoUCityInfo>> cities = new Dictionary<int, List<LoUCityInfo>>();
             List<LoUCityInfo> alls = new List<LoUCityInfo>();
@@ -40,15 +43,18 @@ namespace LouMapInfo.Reports.OfficialLOU
             }
             foreach (LoUAllianceInfo a in cont.Alliances)
             {
-                foreach (LoUPlayerInfo p in a.Players())
+                if (includeNoAlliance || a.Name != "")
                 {
-                    foreach (LoUCityInfo c in p.Cities(OldLoUCityType.CastlePalace, cont.Id))
+                    foreach (LoUPlayerInfo p in a.Players())
                     {
-                        int d = Math.Abs(c.Location.X - location.X) + Math.Abs(c.Location.Y - location.Y);
-                        if (d <= 20)
+                        foreach (LoUCityInfo c in p.Cities(OldLoUCityType.CastlePalace, cont.Id))
                         {
-                            cities[d].Add(c);
-                            alls.Add(c);
+                            int d = Math.Abs(c.Location.X - location.X) + Math.Abs(c.Location.Y - location.Y);
+                            if (d <= 20)
+                            {
+                                cities[d].Add(c);
+                                alls.Add(c);
+                            }
                         }
                     }
                 }
