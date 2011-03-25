@@ -12,6 +12,8 @@ using System.Threading;
 using LouMapInfo.Layout;
 using EricUtility.Windows.Forms;
 using System.Diagnostics;
+using EricUtility.Networking.Gathering;
+using EricUtility;
 
 namespace LouMapInfoApp.Tools
 {
@@ -143,12 +145,12 @@ namespace LouMapInfoApp.Tools
                     {
                         LayoutEntry le = new LayoutEntry(x, y, BuildingType.None);
                         le.RefreshResourceProduction += new ResourceTypeHandler(le_RefreshResourceProduction);
-                        le.RefreshResourceStorage += new EmptyHandler(le_RefreshResourceStorage);
-                        le.RefreshResourceHidden += new EmptyHandler(le_RefreshResourceHidden);
-                        le.RefreshTransport += new EmptyHandler(le_RefreshTransport);
-                        le.RefreshBuildingCount += new EmptyHandler(le_RefreshBuildingCount);
-                        le.RefreshConsSpeed += new EmptyHandler(le_RefreshConsSpeed);
-                        le.RefreshArmySize += new EmptyHandler(le_RefreshArmySize);
+                        le.RefreshResourceStorage += new LouMapInfo.Layout.EmptyHandler(le_RefreshResourceStorage);
+                        le.RefreshResourceHidden += new LouMapInfo.Layout.EmptyHandler(le_RefreshResourceHidden);
+                        le.RefreshTransport += new LouMapInfo.Layout.EmptyHandler(le_RefreshTransport);
+                        le.RefreshBuildingCount += new LouMapInfo.Layout.EmptyHandler(le_RefreshBuildingCount);
+                        le.RefreshConsSpeed += new LouMapInfo.Layout.EmptyHandler(le_RefreshConsSpeed);
+                        le.RefreshArmySize += new LouMapInfo.Layout.EmptyHandler(le_RefreshArmySize);
                         le.RefreshRecruitmentSpeed += new BuildingTypeHandler(le_RefreshRecruitmentSpeed);
                         m_DONOTUSE_Layout.Add(le);
                         if (x != 9 || y != 9)
@@ -777,6 +779,68 @@ namespace LouMapInfoApp.Tools
                 }
             }
             Clipboard.SetText(s);
+        }
+
+        private void btnAutoPlanCity_Click(object sender, EventArgs e)
+        {
+            statePictureBox1.Etat = StatePictureBoxStates.Waiting;
+            Enabled = false;
+            string args = "";
+            args += " use_slots=" + (int)nudAPUseSlots.Value;
+            args += " num_cottages=" + (int)nudAPCottages.Value;
+            args += " keep_extra_res_nodes=" + (chkAPKeepExtraNodes.Checked ? "1" : "0");
+            args += " build_only_on_open=" + (chkAPBuildOnlyOnOpen.Checked ? "1" : "0");
+            args += " clear_buildings=" + (chkAPClearBuildings.Checked ? "1" : "0");
+            if (!String.IsNullOrEmpty(txtAPPlacement.Text))
+            {
+                args += " placement_schedule=" + txtAPPlacement.Text;
+            }
+            string postArgs = "content=" + generateFlashCityPlanner() + args;
+            new Thread(new ParameterizedThreadStart(CallAutoPlanner)).Start(postArgs);
+            
+        }
+        private void CallAutoPlanner(object o)
+        {
+            string postArgs = o as string;
+            string askURL = "http://2.latest.loof78.appspot.com/lou_city/calc";
+            string s = GatheringUtility.GetPageSource(askURL, postArgs);
+            if (s.Contains("error:"))
+            {
+                EndAutoPlannerBadly(StringUtility.RemoveHTMLTags(s.Substring(s.IndexOf("error:"))));
+            }
+            else
+            {
+                int u = s.LastIndexOf("http://www.lou-fcp.co.uk/map.php?map=");
+                string url = s.Substring(u, s.IndexOf("</a>") - u);
+                EndAutoPlanner(url);
+            }
+        }
+        private void EndAutoPlanner(string res)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new StringHandler(EndAutoPlanner), res);
+                return;
+            }
+            Import(res);
+            tabControl1.SelectedTab = tbCityInfo;
+            statePictureBox1.Etat = StatePictureBoxStates.None;
+            Enabled = true;
+        }
+        private void EndAutoPlannerBadly(string res)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new StringHandler(EndAutoPlannerBadly), res);
+                return;
+            }
+            MessageBox.Show(res);
+            statePictureBox1.Etat = StatePictureBoxStates.None;
+            Enabled = true;
+        }
+        private void btnHelpAutoPlanner_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("control the # of slots used (default 72) and best-effort cottages placed (default 15). the cottages are included in use_slots, so use_slots better be > than num_cottages -- generally at least 3x greater. \n\n list of options in the form option=default\nuse_slots=72\nnum_cottages=15\nkeep_extra_res_nodes=0\nplacement_schedule=WSI (format: [WSIF]+(,[WSIF]+)* -- commas seperate the res set to use for each wave. if more waves are needed to place all res buildings than there are res sets in placement_schedule, placement_schedule will be repeated as needed. the order of letters within each per-wave res set does not matter. duplicate letters within a wave have no effect. e.g. for one wave, 'WWWF' has the same meaning as 'FW': place food or wood on that wave. )\nclear_buildings=1\nbuild_only_on_open=0");
         }
     }
 }
