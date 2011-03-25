@@ -457,11 +457,6 @@ namespace LouMapInfoApp.Tools
         }
         public void verifyValid()
         {
-            verifyValid(false);
-        }
-        public void verifyValid(bool demo)
-        {
-            bool demol = demo || m_CurBuilding != BuildingType.None;
             validClick = false;
             int mousex = coords.X;
             int mousey = coords.Y;
@@ -476,7 +471,7 @@ namespace LouMapInfoApp.Tools
                         if (p.X == mousex && p.Y == mousey)
                         {
                             waterSpot = true;
-                            if (demol && m_CurBuilding != BuildingType.Harbor && m_CurBuilding != BuildingType.Shipyard)
+                            if (m_CurBuilding != BuildingType.None && m_CurBuilding != BuildingType.Harbor && m_CurBuilding != BuildingType.Shipyard)
                                 return;
                         }
                     if (!waterSpot && (m_CurBuilding == BuildingType.Harbor || m_CurBuilding == BuildingType.Shipyard))
@@ -485,10 +480,10 @@ namespace LouMapInfoApp.Tools
                         if (p.X == mousex && p.Y == mousey)
                             return;
                 }
-                        
-                      
-                
-                if (!demo&&m_CurBuilding == m_CoordLayout[mousex, mousey].Info)
+
+
+
+                if (m_CurBuilding == m_CoordLayout[mousex, mousey].Info)
                     return;
 
                 validClick = true;
@@ -560,10 +555,16 @@ namespace LouMapInfoApp.Tools
         private void pbCity_MouseClick(object sender, MouseEventArgs e)
         {
             bool demo = m_CurBuilding == BuildingType.None || e.Button == System.Windows.Forms.MouseButtons.Right;
-            verifyValid(demo);
-            if (validClick)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                int mousex = coords.X;
+                int mousey = coords.Y;
+                if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
+                {
+                    m_CoordLayout[mousex, mousey].Info = BuildingType.None;
+                }
+            }
+            else if (validClick && e.Button == System.Windows.Forms.MouseButtons.Left)
                 {
                     int mousex = coords.X;
                     int mousey = coords.Y;
@@ -571,19 +572,10 @@ namespace LouMapInfoApp.Tools
                     {
                         m_CoordLayout[mousex, mousey].Info = m_CurBuilding;
                     }
-                }
-                else if (e.Button == System.Windows.Forms.MouseButtons.Right) 
-                {
-                    int mousex = coords.X;
-                    int mousey = coords.Y;
-                    if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
-                    {
-                        m_CoordLayout[mousex, mousey].Info = BuildingType.None;
-                    }
-                }
+            }
                 verifyValid();
                 pbCity.Invalidate();
-            }
+            
 
         }
 
