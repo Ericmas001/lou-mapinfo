@@ -48,6 +48,7 @@
     <Compile Include="Entities\PlayerInfo.cs" />
     <Compile Include="Layout\BuildingInfo.cs" />
     <Compile Include="Layout\BuildingType.cs" />
+    <Compile Include="Layout\CompleteLayout.cs" />
     <Compile Include="Layout\LayoutEntry.cs" />
     <Compile Include="Layout\ProductionType.cs" />
     <Compile Include="Layout\ResourceType.cs" />
