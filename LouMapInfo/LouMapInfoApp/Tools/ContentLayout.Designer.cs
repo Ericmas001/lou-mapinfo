@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbCityInfo = new System.Windows.Forms.TabPage();
@@ -111,9 +112,23 @@
             this.txtImport = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbAutoPlanner = new System.Windows.Forms.TabPage();
+            this.btnHelpAutoPlanner = new System.Windows.Forms.Button();
+            this.txtAPPlacement = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.chkAPBuildOnlyOnOpen = new System.Windows.Forms.CheckBox();
+            this.chkAPClearBuildings = new System.Windows.Forms.CheckBox();
+            this.chkAPKeepExtraNodes = new System.Windows.Forms.CheckBox();
+            this.nudAPCottages = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nudAPUseSlots = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAutoPlanCity = new System.Windows.Forms.Button();
             this.tbExport = new System.Windows.Forms.TabPage();
+            this.btnOpenFCP = new System.Windows.Forms.Button();
+            this.btnCopyFCP = new System.Windows.Forms.Button();
+            this.btnCopySS = new System.Windows.Forms.Button();
             this.pnlCity = new System.Windows.Forms.Panel();
-            this.pbCity = new System.Windows.Forms.PictureBox();
+            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnSawmill = new System.Windows.Forms.ToolStripButton();
             this.btnStonemasson = new System.Windows.Forms.ToolStripButton();
@@ -158,22 +173,8 @@
             this.btnOldFarm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDestroy = new System.Windows.Forms.ToolStripButton();
-            this.btnCopySS = new System.Windows.Forms.Button();
-            this.btnCopyFCP = new System.Windows.Forms.Button();
-            this.btnOpenFCP = new System.Windows.Forms.Button();
-            this.btnAutoPlanCity = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.nudAPUseSlots = new System.Windows.Forms.NumericUpDown();
-            this.nudAPCottages = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chkAPKeepExtraNodes = new System.Windows.Forms.CheckBox();
-            this.chkAPClearBuildings = new System.Windows.Forms.CheckBox();
-            this.chkAPBuildOnlyOnOpen = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtAPPlacement = new System.Windows.Forms.TextBox();
-            this.btnHelpAutoPlanner = new System.Windows.Forms.Button();
-            this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
             this.pnlContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
             this.pnlRight.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbCityInfo.SuspendLayout();
@@ -187,15 +188,14 @@
             this.tbCreate.SuspendLayout();
             this.tbImport.SuspendLayout();
             this.tbAutoPlanner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPCottages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).BeginInit();
             this.tbExport.SuspendLayout();
             this.pnlCity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAPCottages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -211,6 +211,17 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(934, 797);
             this.pnlContent.TabIndex = 19;
+            // 
+            // statePictureBox1
+            // 
+            this.statePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.statePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.None;
+            this.statePictureBox1.Location = new System.Drawing.Point(911, 0);
+            this.statePictureBox1.Name = "statePictureBox1";
+            this.statePictureBox1.Size = new System.Drawing.Size(21, 21);
+            this.statePictureBox1.TabIndex = 11;
+            this.statePictureBox1.TabStop = false;
             // 
             // pnlRight
             // 
@@ -925,6 +936,130 @@
             this.tbAutoPlanner.Text = "Auto Planner";
             this.tbAutoPlanner.UseVisualStyleBackColor = true;
             // 
+            // btnHelpAutoPlanner
+            // 
+            this.btnHelpAutoPlanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelpAutoPlanner.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelpAutoPlanner.BackgroundImage = global::LouMapInfoApp.Properties.Resources.icon_help;
+            this.btnHelpAutoPlanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHelpAutoPlanner.Location = new System.Drawing.Point(734, -1);
+            this.btnHelpAutoPlanner.Name = "btnHelpAutoPlanner";
+            this.btnHelpAutoPlanner.Size = new System.Drawing.Size(26, 26);
+            this.btnHelpAutoPlanner.TabIndex = 10;
+            this.btnHelpAutoPlanner.UseVisualStyleBackColor = false;
+            this.btnHelpAutoPlanner.Click += new System.EventHandler(this.btnHelpAutoPlanner_Click);
+            // 
+            // txtAPPlacement
+            // 
+            this.txtAPPlacement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAPPlacement.Location = new System.Drawing.Point(267, 27);
+            this.txtAPPlacement.Name = "txtAPPlacement";
+            this.txtAPPlacement.Size = new System.Drawing.Size(489, 20);
+            this.txtAPPlacement.TabIndex = 9;
+            this.txtAPPlacement.Text = "F,*2,WSI,*10";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(264, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Placement Schedule:";
+            // 
+            // chkAPBuildOnlyOnOpen
+            // 
+            this.chkAPBuildOnlyOnOpen.AutoSize = true;
+            this.chkAPBuildOnlyOnOpen.Location = new System.Drawing.Point(123, 34);
+            this.chkAPBuildOnlyOnOpen.Name = "chkAPBuildOnlyOnOpen";
+            this.chkAPBuildOnlyOnOpen.Size = new System.Drawing.Size(117, 17);
+            this.chkAPBuildOnlyOnOpen.TabIndex = 7;
+            this.chkAPBuildOnlyOnOpen.Text = "Build Only on Open";
+            this.chkAPBuildOnlyOnOpen.UseVisualStyleBackColor = true;
+            // 
+            // chkAPClearBuildings
+            // 
+            this.chkAPClearBuildings.AutoSize = true;
+            this.chkAPClearBuildings.Checked = true;
+            this.chkAPClearBuildings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAPClearBuildings.Location = new System.Drawing.Point(123, 18);
+            this.chkAPClearBuildings.Name = "chkAPClearBuildings";
+            this.chkAPClearBuildings.Size = new System.Drawing.Size(95, 17);
+            this.chkAPClearBuildings.TabIndex = 6;
+            this.chkAPClearBuildings.Text = "Clear Buildings";
+            this.chkAPClearBuildings.UseVisualStyleBackColor = true;
+            // 
+            // chkAPKeepExtraNodes
+            // 
+            this.chkAPKeepExtraNodes.AutoSize = true;
+            this.chkAPKeepExtraNodes.Location = new System.Drawing.Point(123, 2);
+            this.chkAPKeepExtraNodes.Name = "chkAPKeepExtraNodes";
+            this.chkAPKeepExtraNodes.Size = new System.Drawing.Size(134, 17);
+            this.chkAPKeepExtraNodes.TabIndex = 5;
+            this.chkAPKeepExtraNodes.Text = "Keep Extra Res Nodes";
+            this.chkAPKeepExtraNodes.UseVisualStyleBackColor = true;
+            // 
+            // nudAPCottages
+            // 
+            this.nudAPCottages.Location = new System.Drawing.Point(68, 28);
+            this.nudAPCottages.Name = "nudAPCottages";
+            this.nudAPCottages.Size = new System.Drawing.Size(48, 20);
+            this.nudAPCottages.TabIndex = 4;
+            this.nudAPCottages.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Cottages:";
+            // 
+            // nudAPUseSlots
+            // 
+            this.nudAPUseSlots.Location = new System.Drawing.Point(68, 5);
+            this.nudAPUseSlots.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudAPUseSlots.Name = "nudAPUseSlots";
+            this.nudAPUseSlots.Size = new System.Drawing.Size(48, 20);
+            this.nudAPUseSlots.TabIndex = 2;
+            this.nudAPUseSlots.Value = new decimal(new int[] {
+            72,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Use Slots:";
+            // 
+            // btnAutoPlanCity
+            // 
+            this.btnAutoPlanCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAutoPlanCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoPlanCity.Location = new System.Drawing.Point(6, 52);
+            this.btnAutoPlanCity.Name = "btnAutoPlanCity";
+            this.btnAutoPlanCity.Size = new System.Drawing.Size(750, 23);
+            this.btnAutoPlanCity.TabIndex = 0;
+            this.btnAutoPlanCity.Text = "Generate Layout";
+            this.btnAutoPlanCity.UseVisualStyleBackColor = true;
+            this.btnAutoPlanCity.Click += new System.EventHandler(this.btnAutoPlanCity_Click);
+            // 
             // tbExport
             // 
             this.tbExport.Controls.Add(this.btnOpenFCP);
@@ -937,6 +1072,45 @@
             this.tbExport.TabIndex = 5;
             this.tbExport.Text = "Export";
             this.tbExport.UseVisualStyleBackColor = true;
+            // 
+            // btnOpenFCP
+            // 
+            this.btnOpenFCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenFCP.Location = new System.Drawing.Point(6, 55);
+            this.btnOpenFCP.Name = "btnOpenFCP";
+            this.btnOpenFCP.Size = new System.Drawing.Size(750, 23);
+            this.btnOpenFCP.TabIndex = 5;
+            this.btnOpenFCP.Text = "Open FlashCityPlanner in Browser";
+            this.btnOpenFCP.UseVisualStyleBackColor = true;
+            this.btnOpenFCP.Click += new System.EventHandler(this.btnOpenFCP_Click);
+            // 
+            // btnCopyFCP
+            // 
+            this.btnCopyFCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyFCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopyFCP.Location = new System.Drawing.Point(6, 29);
+            this.btnCopyFCP.Name = "btnCopyFCP";
+            this.btnCopyFCP.Size = new System.Drawing.Size(750, 23);
+            this.btnCopyFCP.TabIndex = 4;
+            this.btnCopyFCP.Text = "Copy FlashCityPlanner URL to Clipboard";
+            this.btnCopyFCP.UseVisualStyleBackColor = true;
+            this.btnCopyFCP.Click += new System.EventHandler(this.btnCopyFCP_Click);
+            // 
+            // btnCopySS
+            // 
+            this.btnCopySS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopySS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopySS.Location = new System.Drawing.Point(6, 3);
+            this.btnCopySS.Name = "btnCopySS";
+            this.btnCopySS.Size = new System.Drawing.Size(750, 23);
+            this.btnCopySS.TabIndex = 3;
+            this.btnCopySS.Text = "Copy ShareString to Clipboard";
+            this.btnCopySS.UseVisualStyleBackColor = true;
+            this.btnCopySS.Click += new System.EventHandler(this.btnCopySS_Click);
             // 
             // pnlCity
             // 
@@ -953,15 +1127,16 @@
             // 
             this.pbCity.BackgroundImage = global::LouMapInfoApp.Properties.Resources.pl_town_bg_water;
             this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCity.CurBuilding = LouMapInfo.Layout.BuildingType.None;
             this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbCity.Location = new System.Drawing.Point(0, 0);
             this.pbCity.Name = "pbCity";
             this.pbCity.Size = new System.Drawing.Size(768, 480);
             this.pbCity.TabIndex = 3;
             this.pbCity.TabStop = false;
-            this.pbCity.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCity_Paint);
-            this.pbCity.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbCity_MouseClick);
-            this.pbCity.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCity_MouseMove);
+            this.pbCity.Water = true;
+            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
+            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
             // 
             // toolStrip3
             // 
@@ -999,7 +1174,7 @@
             this.btnSawmill.Name = "btnSawmill";
             this.btnSawmill.Size = new System.Drawing.Size(42, 44);
             this.btnSawmill.Text = "Sawmill";
-            this.btnSawmill.Click += new System.EventHandler(this.btnSawmill_Click);
+            this.btnSawmill.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnStonemasson
             // 
@@ -1009,7 +1184,7 @@
             this.btnStonemasson.Name = "btnStonemasson";
             this.btnStonemasson.Size = new System.Drawing.Size(42, 44);
             this.btnStonemasson.Text = "Stonemasson";
-            this.btnStonemasson.Click += new System.EventHandler(this.btnStonemasson_Click);
+            this.btnStonemasson.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnFoundry
             // 
@@ -1019,7 +1194,7 @@
             this.btnFoundry.Name = "btnFoundry";
             this.btnFoundry.Size = new System.Drawing.Size(42, 44);
             this.btnFoundry.Text = "Foundry";
-            this.btnFoundry.Click += new System.EventHandler(this.btnFoundry_Click);
+            this.btnFoundry.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnMill
             // 
@@ -1029,7 +1204,7 @@
             this.btnMill.Name = "btnMill";
             this.btnMill.Size = new System.Drawing.Size(42, 44);
             this.btnMill.Text = "Mill";
-            this.btnMill.Click += new System.EventHandler(this.btnMill_Click);
+            this.btnMill.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator3
             // 
@@ -1045,7 +1220,7 @@
             this.btnWarehouse.Name = "btnWarehouse";
             this.btnWarehouse.Size = new System.Drawing.Size(42, 44);
             this.btnWarehouse.Text = "Warehouse";
-            this.btnWarehouse.Click += new System.EventHandler(this.btnWarehouse_Click);
+            this.btnWarehouse.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnTownhouse
             // 
@@ -1055,7 +1230,7 @@
             this.btnTownhouse.Name = "btnTownhouse";
             this.btnTownhouse.Size = new System.Drawing.Size(42, 44);
             this.btnTownhouse.Text = "Townhouse";
-            this.btnTownhouse.Click += new System.EventHandler(this.btnTownhouse_Click);
+            this.btnTownhouse.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator7
             // 
@@ -1071,7 +1246,7 @@
             this.btnCityGuardHouse.Name = "btnCityGuardHouse";
             this.btnCityGuardHouse.Size = new System.Drawing.Size(42, 44);
             this.btnCityGuardHouse.Text = "City Guard House";
-            this.btnCityGuardHouse.Click += new System.EventHandler(this.btnCityGuardHouse_Click);
+            this.btnCityGuardHouse.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnStable
             // 
@@ -1081,7 +1256,7 @@
             this.btnStable.Name = "btnStable";
             this.btnStable.Size = new System.Drawing.Size(42, 44);
             this.btnStable.Text = "Stable";
-            this.btnStable.Click += new System.EventHandler(this.btnStable_Click);
+            this.btnStable.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnTrinsicTemple
             // 
@@ -1091,7 +1266,7 @@
             this.btnTrinsicTemple.Name = "btnTrinsicTemple";
             this.btnTrinsicTemple.Size = new System.Drawing.Size(42, 44);
             this.btnTrinsicTemple.Text = "Trinsic Temple";
-            this.btnTrinsicTemple.Click += new System.EventHandler(this.btnTrinsicTemple_Click);
+            this.btnTrinsicTemple.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnCastle
             // 
@@ -1101,7 +1276,7 @@
             this.btnCastle.Name = "btnCastle";
             this.btnCastle.Size = new System.Drawing.Size(42, 44);
             this.btnCastle.Text = "Castle";
-            this.btnCastle.Click += new System.EventHandler(this.btnCastle_Click);
+            this.btnCastle.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator9
             // 
@@ -1117,7 +1292,7 @@
             this.btnShipyard.Name = "btnShipyard";
             this.btnShipyard.Size = new System.Drawing.Size(42, 44);
             this.btnShipyard.Text = "Shipyard";
-            this.btnShipyard.Click += new System.EventHandler(this.btnShipyard_Click);
+            this.btnShipyard.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStrip2
             // 
@@ -1155,7 +1330,7 @@
             this.btnWoodcutter.Name = "btnWoodcutter";
             this.btnWoodcutter.Size = new System.Drawing.Size(42, 44);
             this.btnWoodcutter.Text = "Woodcutter\'s Hut";
-            this.btnWoodcutter.Click += new System.EventHandler(this.btnWoodcutter_Click);
+            this.btnWoodcutter.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnQuarry
             // 
@@ -1165,7 +1340,7 @@
             this.btnQuarry.Name = "btnQuarry";
             this.btnQuarry.Size = new System.Drawing.Size(42, 44);
             this.btnQuarry.Text = "Quarry";
-            this.btnQuarry.Click += new System.EventHandler(this.btnQuarry_Click);
+            this.btnQuarry.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnIronMine
             // 
@@ -1175,7 +1350,7 @@
             this.btnIronMine.Name = "btnIronMine";
             this.btnIronMine.Size = new System.Drawing.Size(42, 44);
             this.btnIronMine.Text = "Iron Mine";
-            this.btnIronMine.Click += new System.EventHandler(this.btnIronMine_Click);
+            this.btnIronMine.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnFarm
             // 
@@ -1185,7 +1360,7 @@
             this.btnFarm.Name = "btnFarm";
             this.btnFarm.Size = new System.Drawing.Size(42, 44);
             this.btnFarm.Text = "Farm";
-            this.btnFarm.Click += new System.EventHandler(this.btnFarm_Click);
+            this.btnFarm.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1201,7 +1376,7 @@
             this.btnCottage.Name = "btnCottage";
             this.btnCottage.Size = new System.Drawing.Size(42, 44);
             this.btnCottage.Text = "Cottage";
-            this.btnCottage.Click += new System.EventHandler(this.btnCottage_Click);
+            this.btnCottage.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnMarket
             // 
@@ -1211,7 +1386,7 @@
             this.btnMarket.Name = "btnMarket";
             this.btnMarket.Size = new System.Drawing.Size(42, 44);
             this.btnMarket.Text = "Marketplace";
-            this.btnMarket.Click += new System.EventHandler(this.btnMarket_Click);
+            this.btnMarket.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator6
             // 
@@ -1227,7 +1402,7 @@
             this.btnBarrack.Name = "btnBarrack";
             this.btnBarrack.Size = new System.Drawing.Size(42, 44);
             this.btnBarrack.Text = "Barracks";
-            this.btnBarrack.Click += new System.EventHandler(this.btnBarrack_Click);
+            this.btnBarrack.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnTrainingGround
             // 
@@ -1237,7 +1412,7 @@
             this.btnTrainingGround.Name = "btnTrainingGround";
             this.btnTrainingGround.Size = new System.Drawing.Size(42, 44);
             this.btnTrainingGround.Text = "Training Ground";
-            this.btnTrainingGround.Click += new System.EventHandler(this.btnTrainingGround_Click);
+            this.btnTrainingGround.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnMoonglowTower
             // 
@@ -1247,7 +1422,7 @@
             this.btnMoonglowTower.Name = "btnMoonglowTower";
             this.btnMoonglowTower.Size = new System.Drawing.Size(42, 44);
             this.btnMoonglowTower.Text = "Moonglow Tower";
-            this.btnMoonglowTower.Click += new System.EventHandler(this.btnMoonglowTower_Click);
+            this.btnMoonglowTower.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnWorkshop
             // 
@@ -1257,7 +1432,7 @@
             this.btnWorkshop.Name = "btnWorkshop";
             this.btnWorkshop.Size = new System.Drawing.Size(42, 44);
             this.btnWorkshop.Text = "Workshop";
-            this.btnWorkshop.Click += new System.EventHandler(this.btnWorkshop_Click);
+            this.btnWorkshop.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator8
             // 
@@ -1273,7 +1448,7 @@
             this.btnHarbor.Name = "btnHarbor";
             this.btnHarbor.Size = new System.Drawing.Size(42, 44);
             this.btnHarbor.Text = "Harbor";
-            this.btnHarbor.Click += new System.EventHandler(this.btnHarbor_Click);
+            this.btnHarbor.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStrip1
             // 
@@ -1311,7 +1486,7 @@
             this.btnTree.Name = "btnTree";
             this.btnTree.Size = new System.Drawing.Size(71, 44);
             this.btnTree.Text = "Wood";
-            this.btnTree.Click += new System.EventHandler(this.btnTree_Click);
+            this.btnTree.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnStone
             // 
@@ -1321,7 +1496,7 @@
             this.btnStone.Name = "btnStone";
             this.btnStone.Size = new System.Drawing.Size(71, 44);
             this.btnStone.Text = "Stone";
-            this.btnStone.Click += new System.EventHandler(this.btnStone_Click);
+            this.btnStone.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnIron
             // 
@@ -1331,7 +1506,7 @@
             this.btnIron.Name = "btnIron";
             this.btnIron.Size = new System.Drawing.Size(71, 44);
             this.btnIron.Text = "Iron";
-            this.btnIron.Click += new System.EventHandler(this.btnIron_Click);
+            this.btnIron.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnWater
             // 
@@ -1341,7 +1516,7 @@
             this.btnWater.Name = "btnWater";
             this.btnWater.Size = new System.Drawing.Size(71, 44);
             this.btnWater.Text = "Lake";
-            this.btnWater.Click += new System.EventHandler(this.btnWater_Click);
+            this.btnWater.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1357,7 +1532,7 @@
             this.btnHideout.Name = "btnHideout";
             this.btnHideout.Size = new System.Drawing.Size(71, 44);
             this.btnHideout.Text = "Hideout";
-            this.btnHideout.Click += new System.EventHandler(this.btnHideout_Click);
+            this.btnHideout.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator2
             // 
@@ -1373,7 +1548,7 @@
             this.btnOldWoodcutter.Name = "btnOldWoodcutter";
             this.btnOldWoodcutter.Size = new System.Drawing.Size(71, 44);
             this.btnOldWoodcutter.Text = "Woodcutter\'s Hut (old)";
-            this.btnOldWoodcutter.Click += new System.EventHandler(this.btnOldWoodcutter_Click);
+            this.btnOldWoodcutter.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnOldQuarry
             // 
@@ -1383,7 +1558,7 @@
             this.btnOldQuarry.Name = "btnOldQuarry";
             this.btnOldQuarry.Size = new System.Drawing.Size(71, 44);
             this.btnOldQuarry.Text = "Quarry (old)";
-            this.btnOldQuarry.Click += new System.EventHandler(this.btnOldQuarry_Click);
+            this.btnOldQuarry.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnOldIronMine
             // 
@@ -1393,7 +1568,7 @@
             this.btnOldIronMine.Name = "btnOldIronMine";
             this.btnOldIronMine.Size = new System.Drawing.Size(71, 44);
             this.btnOldIronMine.Text = "Iron Mine (old)";
-            this.btnOldIronMine.Click += new System.EventHandler(this.btnOldIronMine_Click);
+            this.btnOldIronMine.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // btnOldFarm
             // 
@@ -1403,7 +1578,7 @@
             this.btnOldFarm.Name = "btnOldFarm";
             this.btnOldFarm.Size = new System.Drawing.Size(71, 44);
             this.btnOldFarm.Text = "Farm (old)";
-            this.btnOldFarm.Click += new System.EventHandler(this.btnOldFarm_Click);
+            this.btnOldFarm.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1421,181 +1596,7 @@
             this.btnDestroy.Name = "btnDestroy";
             this.btnDestroy.Size = new System.Drawing.Size(71, 25);
             this.btnDestroy.Text = "Destroy";
-            this.btnDestroy.Click += new System.EventHandler(this.btnDestroy_Click);
-            // 
-            // btnCopySS
-            // 
-            this.btnCopySS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopySS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopySS.Location = new System.Drawing.Point(6, 3);
-            this.btnCopySS.Name = "btnCopySS";
-            this.btnCopySS.Size = new System.Drawing.Size(750, 23);
-            this.btnCopySS.TabIndex = 3;
-            this.btnCopySS.Text = "Copy ShareString to Clipboard";
-            this.btnCopySS.UseVisualStyleBackColor = true;
-            this.btnCopySS.Click += new System.EventHandler(this.btnCopySS_Click);
-            // 
-            // btnCopyFCP
-            // 
-            this.btnCopyFCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyFCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopyFCP.Location = new System.Drawing.Point(6, 29);
-            this.btnCopyFCP.Name = "btnCopyFCP";
-            this.btnCopyFCP.Size = new System.Drawing.Size(750, 23);
-            this.btnCopyFCP.TabIndex = 4;
-            this.btnCopyFCP.Text = "Copy FlashCityPlanner URL to Clipboard";
-            this.btnCopyFCP.UseVisualStyleBackColor = true;
-            this.btnCopyFCP.Click += new System.EventHandler(this.btnCopyFCP_Click);
-            // 
-            // btnOpenFCP
-            // 
-            this.btnOpenFCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenFCP.Location = new System.Drawing.Point(6, 55);
-            this.btnOpenFCP.Name = "btnOpenFCP";
-            this.btnOpenFCP.Size = new System.Drawing.Size(750, 23);
-            this.btnOpenFCP.TabIndex = 5;
-            this.btnOpenFCP.Text = "Open FlashCityPlanner in Browser";
-            this.btnOpenFCP.UseVisualStyleBackColor = true;
-            this.btnOpenFCP.Click += new System.EventHandler(this.btnOpenFCP_Click);
-            // 
-            // btnAutoPlanCity
-            // 
-            this.btnAutoPlanCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAutoPlanCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoPlanCity.Location = new System.Drawing.Point(6, 52);
-            this.btnAutoPlanCity.Name = "btnAutoPlanCity";
-            this.btnAutoPlanCity.Size = new System.Drawing.Size(750, 23);
-            this.btnAutoPlanCity.TabIndex = 0;
-            this.btnAutoPlanCity.Text = "Generate Layout";
-            this.btnAutoPlanCity.UseVisualStyleBackColor = true;
-            this.btnAutoPlanCity.Click += new System.EventHandler(this.btnAutoPlanCity_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Use Slots:";
-            // 
-            // nudAPUseSlots
-            // 
-            this.nudAPUseSlots.Location = new System.Drawing.Point(68, 5);
-            this.nudAPUseSlots.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudAPUseSlots.Name = "nudAPUseSlots";
-            this.nudAPUseSlots.Size = new System.Drawing.Size(48, 20);
-            this.nudAPUseSlots.TabIndex = 2;
-            this.nudAPUseSlots.Value = new decimal(new int[] {
-            72,
-            0,
-            0,
-            0});
-            // 
-            // nudAPCottages
-            // 
-            this.nudAPCottages.Location = new System.Drawing.Point(68, 28);
-            this.nudAPCottages.Name = "nudAPCottages";
-            this.nudAPCottages.Size = new System.Drawing.Size(48, 20);
-            this.nudAPCottages.TabIndex = 4;
-            this.nudAPCottages.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Cottages:";
-            // 
-            // chkAPKeepExtraNodes
-            // 
-            this.chkAPKeepExtraNodes.AutoSize = true;
-            this.chkAPKeepExtraNodes.Location = new System.Drawing.Point(123, 2);
-            this.chkAPKeepExtraNodes.Name = "chkAPKeepExtraNodes";
-            this.chkAPKeepExtraNodes.Size = new System.Drawing.Size(134, 17);
-            this.chkAPKeepExtraNodes.TabIndex = 5;
-            this.chkAPKeepExtraNodes.Text = "Keep Extra Res Nodes";
-            this.chkAPKeepExtraNodes.UseVisualStyleBackColor = true;
-            // 
-            // chkAPClearBuildings
-            // 
-            this.chkAPClearBuildings.AutoSize = true;
-            this.chkAPClearBuildings.Checked = true;
-            this.chkAPClearBuildings.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAPClearBuildings.Location = new System.Drawing.Point(123, 18);
-            this.chkAPClearBuildings.Name = "chkAPClearBuildings";
-            this.chkAPClearBuildings.Size = new System.Drawing.Size(95, 17);
-            this.chkAPClearBuildings.TabIndex = 6;
-            this.chkAPClearBuildings.Text = "Clear Buildings";
-            this.chkAPClearBuildings.UseVisualStyleBackColor = true;
-            // 
-            // chkAPBuildOnlyOnOpen
-            // 
-            this.chkAPBuildOnlyOnOpen.AutoSize = true;
-            this.chkAPBuildOnlyOnOpen.Location = new System.Drawing.Point(123, 34);
-            this.chkAPBuildOnlyOnOpen.Name = "chkAPBuildOnlyOnOpen";
-            this.chkAPBuildOnlyOnOpen.Size = new System.Drawing.Size(117, 17);
-            this.chkAPBuildOnlyOnOpen.TabIndex = 7;
-            this.chkAPBuildOnlyOnOpen.Text = "Build Only on Open";
-            this.chkAPBuildOnlyOnOpen.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(264, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Placement Schedule:";
-            // 
-            // txtAPPlacement
-            // 
-            this.txtAPPlacement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAPPlacement.Location = new System.Drawing.Point(267, 27);
-            this.txtAPPlacement.Name = "txtAPPlacement";
-            this.txtAPPlacement.Size = new System.Drawing.Size(489, 20);
-            this.txtAPPlacement.TabIndex = 9;
-            this.txtAPPlacement.Text = "F,*2,WSI,*10";
-            // 
-            // btnHelpAutoPlanner
-            // 
-            this.btnHelpAutoPlanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHelpAutoPlanner.BackColor = System.Drawing.Color.Transparent;
-            this.btnHelpAutoPlanner.BackgroundImage = global::LouMapInfoApp.Properties.Resources.icon_help;
-            this.btnHelpAutoPlanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnHelpAutoPlanner.Location = new System.Drawing.Point(734, -1);
-            this.btnHelpAutoPlanner.Name = "btnHelpAutoPlanner";
-            this.btnHelpAutoPlanner.Size = new System.Drawing.Size(26, 26);
-            this.btnHelpAutoPlanner.TabIndex = 10;
-            this.btnHelpAutoPlanner.UseVisualStyleBackColor = false;
-            this.btnHelpAutoPlanner.Click += new System.EventHandler(this.btnHelpAutoPlanner_Click);
-            // 
-            // statePictureBox1
-            // 
-            this.statePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.statePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.None;
-            this.statePictureBox1.Location = new System.Drawing.Point(911, 0);
-            this.statePictureBox1.Name = "statePictureBox1";
-            this.statePictureBox1.Size = new System.Drawing.Size(21, 21);
-            this.statePictureBox1.TabIndex = 11;
-            this.statePictureBox1.TabStop = false;
+            this.btnDestroy.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
             // ContentLayout
             // 
@@ -1610,6 +1611,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContentLayout_KeyDown);
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).EndInit();
             this.pnlRight.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tbCityInfo.ResumeLayout(false);
@@ -1633,6 +1635,8 @@
             this.tbImport.PerformLayout();
             this.tbAutoPlanner.ResumeLayout(false);
             this.tbAutoPlanner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPCottages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).EndInit();
             this.tbExport.ResumeLayout(false);
             this.pnlCity.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
@@ -1642,9 +1646,6 @@
             this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAPCottages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1698,7 +1699,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton btnHarbor;
         private System.Windows.Forms.Panel pnlCity;
-        private System.Windows.Forms.PictureBox pbCity;
+        private LayoutPictureBox pbCity;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tbCityInfo;
         private System.Windows.Forms.ToolStrip toolStrip6;

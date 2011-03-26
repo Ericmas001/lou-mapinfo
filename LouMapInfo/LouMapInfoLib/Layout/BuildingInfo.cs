@@ -144,7 +144,7 @@ namespace LouMapInfo.Layout
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Foundry, "Foundry", 'M', 'D', true, ResourceType.None, 411));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Mill, "Mill", 'N', 'M', true, ResourceType.None, 408));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Warehouse, "Warehouse", 'Z', 'S', false, ResourceType.None, 420));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.Cottage, "Cottage", 'O', 'C', true, ResourceType.None, 421));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.Cottage, "Cottage", 'O', 'C', true, ResourceType.None, 404));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Hideout, "Hideout", '1', 'H', false, ResourceType.None, 409));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Marketplace, "Marketplace", 'J', 'P', true, ResourceType.None, 405));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Townhouse, "Townhouse", 'E', 'U', false, ResourceType.Gold, 413));

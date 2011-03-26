@@ -136,7 +136,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                     int id = (int)((JsonNumericValue)joc["i"]).Value;
                     buildings.Add(id, joc);
                 }
-                JsonObjectCollection city = LoUEndPoint.GetMyCityInfo(m_World.Url, m_SessionID, cid);
+                //JsonObjectCollection city = LoUEndPoint.GetMyCityInfo(m_World.Url, m_SessionID, cid);
                 m_MyAID = (int)((JsonNumericValue)me["AllianceId"]).Value;
 
                 m_Connected = true;
