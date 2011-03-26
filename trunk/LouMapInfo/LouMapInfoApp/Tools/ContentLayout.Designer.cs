@@ -1127,7 +1127,6 @@
             // 
             this.pbCity.BackgroundImage = global::LouMapInfoApp.Properties.Resources.pl_town_bg_water;
             this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCity.CurBuilding = LouMapInfo.Layout.BuildingType.None;
             this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbCity.Location = new System.Drawing.Point(0, 0);
             this.pbCity.Name = "pbCity";

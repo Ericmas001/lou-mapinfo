@@ -172,7 +172,7 @@ namespace LouMapInfoApp.Tools
 
         public void ContentLayout_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!txtImport.Focused)
+            if (!txtImport.Focused && !txtAPPlacement.Focused && !nudAPCottages.Focused && !nudAPUseSlots.Focused)
             {
                 pbCity.FireOnKeyDown(e);
             }
