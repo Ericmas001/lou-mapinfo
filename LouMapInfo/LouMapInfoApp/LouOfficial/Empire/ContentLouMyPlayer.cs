@@ -9,6 +9,7 @@ using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Reports.core;
 using LouMapInfo.Reports.OfficialLOU;
 using System.Threading;
+using LouMapInfo.Layout;
 
 namespace LouMapInfoApp.LouOfficial.Empire
 {
@@ -18,7 +19,10 @@ namespace LouMapInfoApp.LouOfficial.Empire
 
         public LoUSessionInfo Session
         {
-            get { return m_Frame.MainForm.Session; }
+            get
+            {
+                return m_Frame.MainForm.Session;
+            }
         }
         public ContentLoUOfficial Frame
         {
@@ -26,6 +30,14 @@ namespace LouMapInfoApp.LouOfficial.Empire
             set
             {
                 m_Frame = value;
+
+
+                LoUPlayerInfo pj = Session.World.Player(Session.PlayerID);
+                toolStripComboBox1.Items.Clear();
+                foreach (LoUCityInfo c in pj.Cities())
+                {
+                    toolStripComboBox1.Items.Add(c);
+                }
             }
         }
         public ContentLouMyPlayer()
@@ -44,6 +56,16 @@ namespace LouMapInfoApp.LouOfficial.Empire
             ContentReport content = new ContentReport(r, Properties.Settings.Default.lastWDetailLvl);
             pnlContent.Controls.Add(content);
             content.Dock = DockStyle.Fill;
+        }
+
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (toolStripComboBox1.SelectedIndex != -1)
+            {
+                LoUCityInfo c = (LoUCityInfo)toolStripComboBox1.SelectedItem;
+                CompleteLayout l = CompleteLayout.GetLayoutFromCity(c);
+                layoutPictureBox1.Import(l);
+            }
         }
     }
 }
