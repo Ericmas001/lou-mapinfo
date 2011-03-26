@@ -195,6 +195,16 @@ namespace LouMapInfoApp
         {
             m_Layout.Import(patente);
         }
+        public void Import(CompleteLayout layout)
+        {
+            layout.CurBuilding = m_Layout.CurBuilding;
+            m_Layout = layout;
+            m_Layout.MapChanged += new EmptyHandler(m_Layout_MapChanged);
+            m_Layout.CounterRefreshed += new EmptyHandler(m_Layout_CounterRefreshed);
+            m_Layout.BuildingChanged += new BuildingTypeHandler(m_Layout_BuildingChanged);
+            m_Layout_MapChanged();
+            m_Layout_CounterRefreshed();
+        }
         public void ChooseTool(BuildingType res)
         {
             m_Layout.ChooseTool(res);

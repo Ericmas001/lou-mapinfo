@@ -4,6 +4,7 @@ using System.Text;
 using EricUtility;
 using EricUtility.Networking.JSON;
 using EricUtility.Networking.Gathering;
+using LouMapInfo.Layout;
 
 namespace LouMapInfo.OfficialLOU.Entities
 {
@@ -82,6 +83,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 }
             }
             m_PlayersById[m_Session.PlayerID].ForceLoad();
+            //CompleteLayout cl = CompleteLayout.GetLayoutFromCity(m_PlayersById[m_Session.PlayerID].Cities()[10]);
             string[] vkeys = new string[] { "c", "o", "h", "u", "ju", "f", "s", "v" };
             for( int k = 1; k <= 8; ++k)
                 m_PalacesOwnersByVirtue.Add((LoUVirtue)k, new List<string>());

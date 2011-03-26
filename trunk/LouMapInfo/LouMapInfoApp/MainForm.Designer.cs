@@ -86,7 +86,6 @@
             // 
             this.btnMenuEmpire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMenuEmpire.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnMenuEmpire.Enabled = false;
             this.btnMenuEmpire.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuEmpire.Image = global::LouMapInfoApp.Properties.Resources.menu_Empire;
             this.btnMenuEmpire.Location = new System.Drawing.Point(-2, 70);

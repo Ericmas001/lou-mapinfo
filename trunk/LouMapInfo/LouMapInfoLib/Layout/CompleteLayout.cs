@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using LouMapInfo.OfficialLOU.Entities;
+using EricUtility.Networking.JSON;
+using LouMapInfo.OfficialLOU;
 
 namespace LouMapInfo.Layout
 {
@@ -115,6 +118,12 @@ namespace LouMapInfo.Layout
             m_CurBuilding = BuildingType.None;
             CreateNew(true);
             RefreshCounters();
+        }
+
+
+        public CompleteLayout(string s) : this()
+        {
+            Import(s);
         }
 
 
@@ -408,6 +417,52 @@ namespace LouMapInfo.Layout
             }
             return s;
         }
-    }
 
+        public static CompleteLayout GetLayoutFromCity(LoUCityInfo city)
+        {
+            JsonArrayCollection jac = LoUEndPoint.GetCityLayout(city.Player.Alliance.World.Url, city.Player.Alliance.World.Session.SessionID, city.Id);
+            string s = "http://www.lou-fcp.co.uk/map.php?map=";
+            s += city.Bordering == LoUBorderingType.Water ? "W" : "L";
+            foreach (JsonObjectCollection joc in jac)
+            {
+                int t = (int)((JsonNumericValue)joc["t"]).Value;
+                if (t == 4)
+                {
+                    int v = (int)((JsonNumericValue)joc["v"]).Value;
+                    if (v != 12 && v <= 50 && (v < 27 || v > 30))
+                    {
+                        BuildingInfo bi = BuildingInfo.ByOfficialID[400 +v];
+                        s += bi.LetterFlashPlanner;
+                    }
+                    else if (v == 12 || (v >= 27 && v <= 30) || v <= 100)
+                    {
+                        BuildingInfo bi = BuildingInfo.ByOfficialID[501];
+                        s += bi.LetterFlashPlanner;
+                    }
+                }
+                else if (t == 5)
+                {
+                    int b = (int)((JsonNumericValue)joc["b"]).Value;
+                    if (b == 1)
+                    {
+                        BuildingInfo bi = BuildingInfo.ByOfficialID[501];
+                        s += bi.LetterFlashPlanner;
+                    }
+                }
+                else if (t == 9)
+                {
+                    int r = (int)((JsonNumericValue)joc["r"]).Value;
+                        BuildingInfo bi = BuildingInfo.ByOfficialID[900+r];
+                        s += bi.LetterFlashPlanner;
+                }
+            }
+            if (city.Bordering == LoUBorderingType.Water)
+            {
+                s = s.Insert(279, "00");
+                s = s.Insert(297, "000");
+                s = s.Insert(315, "00");
+            }
+            return new CompleteLayout(s);
+        }
+    }
 }

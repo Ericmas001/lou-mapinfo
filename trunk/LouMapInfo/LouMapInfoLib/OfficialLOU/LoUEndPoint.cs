@@ -159,36 +159,82 @@ namespace LouMapInfo.OfficialLOU
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
 
-        public static JsonObjectCollection GetMyCityInfo(string baseurl, string session, int cid)
+        public static JsonArrayCollection GetCityLayout(string baseurl, string session, int cid)
         {
-            string endpoint = "GetAllianceInfo";
-            JsonObjectCollection args = new JsonObjectCollection();
-            args.Add(new JsonStringValue("session", session));
-            args.Add(new JsonNumericValue("id", cid));
-            return (JsonObjectCollection)Query(baseurl, endpoint, args);
-        }
-
-        public static JsonObject TestPoll(string baseurl, string session)
-        {
-            string endpoint = "Poll"; //
+            string endpoint = "Poll"; 
             JsonObjectCollection args = new JsonObjectCollection();
             args.Add(new JsonStringValue("session", session));
             args.Add(new JsonStringValue("requestid", "42"));
-            //args.Add(new JsonStringValue("requests", "VIS:w:0:0:-0:-0:1000000:1000000"));
-            //args.Add(new JsonStringValue("requests", "TM:83,2,\fCAT:6\fSERVER:\fALLIANCE:\fQUEST:\fTE:\fPLAYER:\fCITY:17957336\fWC:\fWORLD:\fVIS:c:17957336:0:-964:-582:1016:677\fUFP:\fREPORT:\fMAIL:\fFRIENDINV:\fTIME:1301161087866\fCHAT:\fSUBSTITUTION:\fINV:\fALL_AT:\fMAT:17957336\fFRIENDL:\f"));
-            args.Add(new JsonStringValue("requests", "VIS:c:27787423:0:-964:-582:1016:677"));
-            JsonObject jo = Query(baseurl, endpoint, args);
-            return jo;
-            /*
-            JsonArrayCollection ac1 = jo as JsonArrayCollection;
-            foreach (JsonObjectCollection oc1 in ac1)
-            {
-                if (((JsonStringValue)oc1["C"]).Value == "VIS")
-                {
-                    return ((JsonObjectCollection)((JsonObjectCollection)oc1["D"]))["u"] as JsonArrayCollection;
-                }
-            }
-            return null;*/
+            args.Add(new JsonStringValue("requests", "VIS:c:"+cid+":0:-964:-582:1016:677"));
+            JsonArrayCollection jo = (JsonArrayCollection)Query(baseurl, endpoint, args);
+            JsonObjectCollection vis = (JsonObjectCollection)jo[1];
+            JsonObjectCollection content = (JsonObjectCollection)vis["D"];
+            return (JsonArrayCollection)content["u"];
+                //CHARS AVAILABLE IN CITYNOTES: 1000
+                //USED BY LAYOUT: 331 (294 sans le début)
+
+                //x: /128
+                //y: /80
+                //t: type
+                // 4: Building
+                //  v = buildingType
+                //     1: WoodCutterOld
+                //     2: QuarryOld
+                //     3: FarmOld
+                //     4: Cottage
+                //     5: Marketplace
+                //     6: IronMineOld
+                //     7: Sawmill
+                //     8: Mill
+                //     9: Hideout
+                //    10: Stonemasson
+                //    11: Foundry
+                //    12: TownHall
+                //    13: Townhouse
+                //    14: Barrack
+                //    15: CityGuardHouse
+                //    16: TrainingGround
+                //    17: Stable
+                //    18: Workshop
+                //    19: Shipyard
+                //    20: Warehouse
+                //    21: Castle
+                //    22: Harbor
+                //    36: MoonglowTower
+                //    37: TrinsicTemple
+                //    38: LookoutTower
+                //    39: BallistaTower
+                //    40: GuardianTower
+                //    41: RangerTower
+                //    42: TemplarTower
+                //    43: PitfallTrap
+                //    44: Barricade
+                //    45: ArcaneTrap
+                //    46: CamouflageTrap
+                //    47: WoodcutterNew
+                //    48: QuarryNew
+                //    49: IronMineNew
+                //    50: FarmNew
+                //    51: Palace
+                //  l = level
+                //  s = ?
+                //  ss = ?
+                //  se = ?
+                //  
+                // 5: BuildingPlace
+                //   b = buildingType
+                //     1: Normal
+                //     2: Tower
+                // 9: Resource
+                // -> v0r2 iron, v1r1 wood, v0r3 lake, v2r1 wood
+                //   v = imageId
+                //   r = resourceType
+                //     0: Stone
+                //     1: Wood
+                //     2: Iron
+                //     3: Lake
+                // 10: Un bout de Wall
+                // 13: Wall, the object
         }
     }
 }
