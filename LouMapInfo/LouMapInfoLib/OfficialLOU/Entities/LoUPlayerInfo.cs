@@ -8,19 +8,19 @@ namespace LouMapInfo.OfficialLOU.Entities
 {
     public class LoUPlayerInfo : AbstractLoadingTuple, IComparable<LoUPlayerInfo>
     {
-        private readonly Dictionary<string, LoUCityInfo> m_CitiesByCoords = new Dictionary<string, LoUCityInfo>();
-        private readonly Dictionary<int, LoUCityInfo> m_CitiesById = new Dictionary<int, LoUCityInfo>();
-        private readonly Dictionary<int, List<LoUCityInfo>> m_CitiesByContinent = new Dictionary<int, List<LoUCityInfo>>();
-        private readonly Dictionary<int, int> m_ScoreByContinent = new Dictionary<int, int>();
+        protected readonly Dictionary<string, LoUCityInfo> m_CitiesByCoords = new Dictionary<string, LoUCityInfo>();
+        protected readonly Dictionary<int, LoUCityInfo> m_CitiesById = new Dictionary<int, LoUCityInfo>();
+        protected readonly Dictionary<int, List<LoUCityInfo>> m_CitiesByContinent = new Dictionary<int, List<LoUCityInfo>>();
+        protected readonly Dictionary<int, int> m_ScoreByContinent = new Dictionary<int, int>();
 
 
-        private readonly string m_Name;
-        private readonly int m_Id;
-        private readonly LoUAllianceInfo m_Alliance;
-        private readonly LoUWorldInfo m_World;
-        private int m_Score;
-        private int m_Rank;
-        private readonly int m_InitCityCount;
+        protected readonly string m_Name;
+        protected readonly int m_Id;
+        protected readonly LoUAllianceInfo m_Alliance;
+        protected readonly LoUWorldInfo m_World;
+        protected int m_Score;
+        protected int m_Rank;
+        protected readonly int m_InitCityCount;
 
         public int Id { get { return m_Id; } }
         public string Name { get { return m_Name; } }

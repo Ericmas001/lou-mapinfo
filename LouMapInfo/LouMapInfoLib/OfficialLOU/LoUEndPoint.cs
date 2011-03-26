@@ -37,14 +37,6 @@ namespace LouMapInfo.OfficialLOU
             return new JsonTextParser().Parse(res);
         }
 
-        public static JsonObjectCollection GetPlayerInfo(string baseurl, string session)
-        {
-            string endpoint = "GetPlayerInfo";
-            JsonObjectCollection args = new JsonObjectCollection();
-            args.Add(new JsonStringValue("session", session));
-            return (JsonObjectCollection) Query(baseurl, endpoint, args);
-        }
-
         public static JsonArrayCollection GetPlayerList(string baseurl, string session, int continent)
         {
             string endpoint = "PlayerGetRange";
@@ -148,6 +140,55 @@ namespace LouMapInfo.OfficialLOU
             args.Add(new JsonStringValue("session", session));
             args.Add(new JsonNumericValue("id", idCity));
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
+
+        public static JsonObjectCollection GetMyPlayerInfo(string baseurl, string session)
+        {
+            string endpoint = "GetPlayerInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonObjectCollection GetMyAllianceInfo(string baseurl, string session)
+        {
+            string endpoint = "GetAllianceInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonObjectCollection GetMyCityInfo(string baseurl, string session, int cid)
+        {
+            string endpoint = "GetAllianceInfo";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonNumericValue("id", cid));
+            return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonObject TestPoll(string baseurl, string session)
+        {
+            string endpoint = "Poll"; //
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonStringValue("requestid", "42"));
+            //args.Add(new JsonStringValue("requests", "VIS:w:0:0:-0:-0:1000000:1000000"));
+            //args.Add(new JsonStringValue("requests", "TM:83,2,\fCAT:6\fSERVER:\fALLIANCE:\fQUEST:\fTE:\fPLAYER:\fCITY:17957336\fWC:\fWORLD:\fVIS:c:17957336:0:-964:-582:1016:677\fUFP:\fREPORT:\fMAIL:\fFRIENDINV:\fTIME:1301161087866\fCHAT:\fSUBSTITUTION:\fINV:\fALL_AT:\fMAT:17957336\fFRIENDL:\f"));
+            args.Add(new JsonStringValue("requests", "VIS:c:27787423:0:-964:-582:1016:677"));
+            JsonObject jo = Query(baseurl, endpoint, args);
+            return jo;
+            /*
+            JsonArrayCollection ac1 = jo as JsonArrayCollection;
+            foreach (JsonObjectCollection oc1 in ac1)
+            {
+                if (((JsonStringValue)oc1["C"]).Value == "VIS")
+                {
+                    return ((JsonObjectCollection)((JsonObjectCollection)oc1["D"]))["u"] as JsonArrayCollection;
+                }
+            }
+            return null;*/
         }
     }
 }
