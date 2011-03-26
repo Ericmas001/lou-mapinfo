@@ -152,6 +152,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -159,7 +172,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\LouMapInfoSetup_4.1.msi"
+        "OutputFilename" = "8:Release\\LouMapInfoSetup_4.2.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -462,7 +475,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LoU Map Info"
         "ProductCode" = "8:{7227AA10-5B77-455A-A413-C8F9DF6A713A}"
-        "PackageCode" = "8:{352C459B-614B-4816-AB2A-47F6C7573350}"
+        "PackageCode" = "8:{F31BB739-AD8F-41CD-82E9-764CF94835F8}"
         "UpgradeCode" = "8:{C7E702F4-99A2-4A98-BB07-5C5703E75242}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1011,7 +1024,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DBA3355ABF5F48C69266B61D762C1E0C"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\LouMapInfoApp\\obj\\x86\\Release\\LoUMapInfo.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_01C6617E247F4F9285B20CCF562D14CB"
