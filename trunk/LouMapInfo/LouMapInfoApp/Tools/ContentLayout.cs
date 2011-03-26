@@ -19,51 +19,32 @@ namespace LouMapInfoApp.Tools
 {
     public partial class ContentLayout : UserControl
     {
-        bool water = true;
-        private Point mouse = new Point(-1, -1);
-        private Point coords = new Point(-1, -1);
-        int x0 = 64;
-        int y0 = 26;
-        int dx = 34;
-        int dy = 21;
-        bool validClick = false;
+        
         private bool m_Loaded = false;
-        private  Dictionary<BuildingType, Bitmap> m_DONOTUSE_Buildings = new Dictionary<BuildingType, Bitmap>();
-        private  List<LayoutEntry> m_DONOTUSE_Layout = new List<LayoutEntry>();
-        private  LayoutEntry[,] m_CoordLayout = new LayoutEntry[20, 20];
-        public  Dictionary<BuildingType, Bitmap> Buildings
+        private Dictionary<ToolStripButton, BuildingType> m_DONOTUSE_ButtonToBuilding = new Dictionary<ToolStripButton, BuildingType>();
+        private Dictionary<BuildingType, ToolStripButton> m_DONOTUSE_BuildingToButton = new Dictionary<BuildingType, ToolStripButton>();
+        private ToolStripButton m_CurButton = null;
+        
+        public Dictionary<ToolStripButton, BuildingType> ButtonToBuilding
         {
             get
             {
                 if (!m_Loaded)
                     LoadAll();
-                return m_DONOTUSE_Buildings;
+                return m_DONOTUSE_ButtonToBuilding;
             }
         }
-        public  List<LayoutEntry> CityLayout
+        public Dictionary<BuildingType, ToolStripButton> BuildingToButton
         {
             get
             {
                 if (!m_Loaded)
                     LoadAll();
-                return m_DONOTUSE_Layout;
+                return m_DONOTUSE_BuildingToButton;
             }
         }
-        private Dictionary<ResourceType, int> m_Production = new Dictionary<ResourceType, int>();
-        private Dictionary<ResourceType, int> m_Storage = new Dictionary<ResourceType, int>();
-        private Dictionary<BuildingType, int> m_Recruitment = new Dictionary<BuildingType, int>();
-        private int m_Hidden;
-        private int m_Carts;
-        private int m_Ships;
-        private int m_BuildingCount;
-        private int m_ConsSpeed;
-        private int m_ArmySize;
-
-
-
         public ContentLayout()
         {
-            ResetCounters();
             InitializeComponent();
 
             nudAPUseSlots.Value = Properties.Settings.Default.apUseSlots;
@@ -73,10 +54,8 @@ namespace LouMapInfoApp.Tools
             chkAPClearBuildings.Checked = Properties.Settings.Default.apClearBuildings;
             chkAPKeepExtraNodes.Checked = Properties.Settings.Default.apKeepExtraResNodes;
 
-            m_CurButton = btnDestroy;
-            btnDestroy.BackColor = SystemColors.Highlight;
-            CreateNew(true);
-            RefreshCounters();
+            pbCity.ChooseTool(BuildingType.None);
+            pbCity.CreateNew(true);
             tabControl1.SelectedTab = tbCityInfo;
 
             ImageList list = new ImageList();
@@ -92,558 +71,84 @@ namespace LouMapInfoApp.Tools
         public void LoadAll()
         {
             m_Loaded = true;
-            m_DONOTUSE_Buildings.Add(BuildingType.None, new Bitmap(1, 1));//Destroy", '0', '-'));
-            m_DONOTUSE_Buildings.Add(BuildingType.ResWood, Properties.Resources.pl_res_forest);//Wood", 'A', '.'));
-            m_DONOTUSE_Buildings.Add(BuildingType.ResStone, Properties.Resources.pl_res_stone);//Stone", 'B', ':'));
-            m_DONOTUSE_Buildings.Add(BuildingType.ResIron, Properties.Resources.pl_res_iron);//Iron", 'C', ','));
-            m_DONOTUSE_Buildings.Add(BuildingType.ResFood, Properties.Resources.pl_res_lake);//Food", 'D', ';'));
-            m_DONOTUSE_Buildings.Add(BuildingType.WoodcutterOld, Properties.Resources.pl_building_hut_old);//Woodcutter's hut (old)", 'F', 'W'));
-            m_DONOTUSE_Buildings.Add(BuildingType.QuarryOld, Properties.Resources.pl_building_stone_quarry_old);//Quarry (old)", 'G', 'Q'));
-            m_DONOTUSE_Buildings.Add(BuildingType.IronMineOld, Properties.Resources.pl_building_mine_old);//Iron Mine (old)", 'H', 'I'));
-            m_DONOTUSE_Buildings.Add(BuildingType.FarmOld, Properties.Resources.pl_building_farm_old);//Farm (old)", 'I', 'F'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Woodcutter, Properties.Resources.pl_building_hut);//Woodcutter's hut", '2', '2'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Quarry, Properties.Resources.pl_building_stone_quarry);//Quarry", '3', '3'));
-            m_DONOTUSE_Buildings.Add(BuildingType.IronMine, Properties.Resources.pl_building_mine);//Iron Mine", '4', '4'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Farm, Properties.Resources.pl_building_farm);//Farm", '5', '2'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Sawmill, Properties.Resources.pl_building_lumber_mill);//Sawmill", 'K', 'L'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Stonemasson, Properties.Resources.pl_building_stonecutter);//Stonemasson", 'L', 'A'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Foundry, Properties.Resources.pl_building_iron_furnace);//Foundry", 'M', 'D'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Mill, Properties.Resources.pl_building_mill);//Mill", 'N', 'M'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Warehouse, Properties.Resources.pl_building_storage);//Warehouse", 'Z', 'S'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Cottage, Properties.Resources.pl_building_cottage);//Cottage", 'O', 'C'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Hideout, Properties.Resources.pl_building_hideout);//Hideout", '1', 'H'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Marketplace, Properties.Resources.pl_building_market_place);//Marketplm_DONOTUSE_Buildings.Add(ace", 'J', 'P'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Townhouse, Properties.Resources.pl_building_townhouse);//Townhouse", 'E', 'U'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Barracks, Properties.Resources.pl_building_barracks);//Barracks", 'P', 'B'));
-            m_DONOTUSE_Buildings.Add(BuildingType.CityGuardHouse, Properties.Resources.pl_building_cityguard_house);//CityGuardHouse", 'S', 'K'));
-            m_DONOTUSE_Buildings.Add(BuildingType.TrainingGround, Properties.Resources.pl_building_casern);//Training Ground", 'Q', 'G'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Stable, Properties.Resources.pl_building_stables);//Stable", 'U', 'E'));
-            m_DONOTUSE_Buildings.Add(BuildingType.MoonglowTower, Properties.Resources.pl_building_mage_tower);//Moonglow Tower", 'R', 'J'));
-            m_DONOTUSE_Buildings.Add(BuildingType.TrinsicTemple, Properties.Resources.pl_building_temple);//Trinsic Temple", 'W', 'Z'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Workshop, Properties.Resources.pl_building_weapon_factory);//Workshop", 'V', 'Y'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Harbor, Properties.Resources.pl_building_harbour);//Harbor", 'T', 'R'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Shipyard, Properties.Resources.pl_building_shipyard);//Shipyard", 'Y', 'V'));
-            m_DONOTUSE_Buildings.Add(BuildingType.Castle, Properties.Resources.pl_building_stronghold);//Castle", 'X', 'X'));
-            m_DONOTUSE_Buildings.Add(BuildingType.FarmLand, Properties.Resources.pl_res_farmland);//Farm Land", ' ', ' '));
 
-            Point[][] lines = new Point[][]{
-                new Point[]{ new Point(2,8), new Point(10,16)},
-                new Point[]{ new Point(1,8), new Point(10,17)},
-                new Point[]{ new Point(0,8), new Point(10,18)},
-                new Point[]{ new Point(0,8), new Point(10,18)},
-                new Point[]{ new Point(0,5), new Point(13,18)},
-                new Point[]{ new Point(0,4), new Point(7,11), new Point(14,18)},
-                new Point[]{ new Point(0,3), new Point(6,12), new Point(15,18)},
-                new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
-                new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
-                new Point[]{ new Point(5,13)},
-                new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
-                new Point[]{ new Point(0,3), new Point(5,13), new Point(15,18)},
-                new Point[]{ new Point(0,3), new Point(6,12), new Point(15,18)},
-                new Point[]{ new Point(0,4), new Point(7,11), new Point(14,18)},
-                new Point[]{ new Point(0,5), new Point(13,18)},
-                new Point[]{ new Point(0,8), new Point(10,18)},
-                new Point[]{ new Point(0,8), new Point(10,18)},
-                new Point[]{ new Point(1,8), new Point(10,17)},
-                new Point[]{ new Point(2,8), new Point(10,16)},
-            };
-            for (int y = 0; y < lines.Length; ++y)
-                foreach (Point p in lines[y])
-                    for (int x = p.X; x <= p.Y; ++x)
-                    {
-                        LayoutEntry le = new LayoutEntry(x, y, BuildingType.None);
-                        le.RefreshResourceProduction += new ResourceTypeHandler(le_RefreshResourceProduction);
-                        le.RefreshResourceStorage += new LouMapInfo.Layout.EmptyHandler(le_RefreshResourceStorage);
-                        le.RefreshResourceHidden += new LouMapInfo.Layout.EmptyHandler(le_RefreshResourceHidden);
-                        le.RefreshTransport += new LouMapInfo.Layout.EmptyHandler(le_RefreshTransport);
-                        le.RefreshBuildingCount += new LouMapInfo.Layout.EmptyHandler(le_RefreshBuildingCount);
-                        le.RefreshConsSpeed += new LouMapInfo.Layout.EmptyHandler(le_RefreshConsSpeed);
-                        le.RefreshArmySize += new LouMapInfo.Layout.EmptyHandler(le_RefreshArmySize);
-                        le.RefreshRecruitmentSpeed += new BuildingTypeHandler(le_RefreshRecruitmentSpeed);
-                        m_DONOTUSE_Layout.Add(le);
-                        if (x != 9 || y != 9)
-                            m_CoordLayout[x, y] = le;
-                    }
-            foreach (LayoutEntry le in CityLayout)
-                for (int xi = -1; xi <= 1; ++xi)
-                    for (int yi = -1; yi <= 1; ++yi)
-                        if (xi != 0 || yi != 0)
-                            if (le.X + xi >= 0 && le.X + xi < 20 && le.Y + yi >= 0 && le.Y + yi < 20 && m_CoordLayout[le.X + xi, le.Y + yi] != null)
-                                le.AddNeighbor(m_CoordLayout[le.X + xi, le.Y + yi]);
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.None, btnDestroy);//Destroy", '0', '-'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.ResWood, btnTree);//Wood", 'A', '.'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.ResStone, btnStone);//Stone", 'B', ':'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.ResIron, btnIron);//Iron", 'C', ','));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.ResFood, btnWater);//Food", 'D', ';'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.WoodcutterOld, btnOldWoodcutter);//Woodcutter's hut (old)", 'F', 'W'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.QuarryOld, btnOldQuarry);//Quarry (old)", 'G', 'Q'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.IronMineOld, btnOldIronMine);//Iron Mine (old)", 'H', 'I'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.FarmOld, btnOldFarm);//Farm (old)", 'I', 'F'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Woodcutter, btnWoodcutter);//Woodcutter's hut", '2', '2'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Quarry, btnQuarry);//Quarry", '3', '3'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.IronMine, btnIronMine);//Iron Mine", '4', '4'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Farm, btnFarm);//Farm", '5', '2'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Sawmill, btnSawmill);//Sawmill", 'K', 'L'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Stonemasson, btnStonemasson);//Stonemasson", 'L', 'A'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Foundry, btnFoundry);//Foundry", 'M', 'D'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Mill, btnMill);//Mill", 'N', 'M'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Warehouse, btnWarehouse);//Warehouse", 'Z', 'S'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Cottage, btnCottage);//Cottage", 'O', 'C'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Hideout, btnHideout);//Hideout", '1', 'H'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Marketplace, btnMarket);//Marketplm_DONOTUSE_Buildings.Add(ace", 'J', 'P'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Townhouse, btnTownhouse);//Townhouse", 'E', 'U'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Barracks, btnBarrack);//Barracks", 'P', 'B'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.CityGuardHouse, btnCityGuardHouse);//CityGuardHouse", 'S', 'K'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.TrainingGround, btnTrainingGround);//Training Ground", 'Q', 'G'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Stable, btnStable);//Stable", 'U', 'E'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.MoonglowTower, btnMoonglowTower);//Moonglow Tower", 'R', 'J'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.TrinsicTemple, btnTrinsicTemple);//Trinsic Temple", 'W', 'Z'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Workshop, btnWorkshop);//Workshop", 'V', 'Y'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Harbor, btnHarbor);//Harbor", 'T', 'R'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Shipyard, btnShipyard);//Shipyard", 'Y', 'V'));
+            m_DONOTUSE_BuildingToButton.Add(BuildingType.Castle, btnCastle);//Castle", 'X', 'X'));
+
+            foreach (BuildingType bt in m_DONOTUSE_BuildingToButton.Keys)
+                m_DONOTUSE_ButtonToBuilding.Add(m_DONOTUSE_BuildingToButton[bt], bt);
         }
-
-        void le_RefreshRecruitmentSpeed(BuildingType type)
-        {
-            int total = 100;
-            foreach (LayoutEntry le in CityLayout)
-                total += le.Recruitment(type);
-            m_Recruitment[type] = total;
-            RefreshCounters();
-        }
-
-        void le_RefreshArmySize()
-        {
-            int multi = 1;
-            int total = 0;
-            foreach (LayoutEntry le in CityLayout)
-            {
-                total += le.ArmySize;
-                if (le.Info == BuildingType.Castle)
-                    multi = 4;
-            }
-            m_ArmySize = total * multi;
-            RefreshCounters();
-        }
-
-        void le_RefreshConsSpeed()
-        {
-            int total = 100;
-            foreach (LayoutEntry le in CityLayout)
-                total += le.ConsSpeed;
-            m_ConsSpeed = total;
-            RefreshCounters();
-        }
-
-        void le_RefreshBuildingCount()
-        {
-            int total = 0;
-            foreach (LayoutEntry le in CityLayout)
-                total += le.BuildingCount;
-            m_BuildingCount = total;
-            RefreshCounters();
-        }
-
-        void le_RefreshTransport()
-        {
-            int totalC = 0;
-            int totalS = 0;
-            foreach (LayoutEntry le in CityLayout)
-            {
-                totalC += le.Carts;
-                totalS += le.Ships;
-            }
-            m_Carts = totalC;
-            m_Ships = totalS;
-            RefreshCounters();
-        }
-
-        void le_RefreshResourceHidden()
-        {
-            int total = 0;
-            foreach (LayoutEntry le in CityLayout)
-                total += le.Hidden;
-            m_Hidden = total;
-            RefreshCounters();
-        }
-
-        void le_RefreshResourceStorage()
-        {
-            int totalW = 175000;
-            int totalS = 175000;
-            int totalI = 175000;
-            int totalF = 175000;
-            foreach (LayoutEntry le in CityLayout)
-            {
-                totalW += le.Storage(ResourceType.Wood);
-                totalS += le.Storage(ResourceType.Stone);
-                totalI += le.Storage(ResourceType.Iroon);
-                totalF += le.Storage(ResourceType.Food);
-            }
-            m_Storage[ResourceType.Wood] = totalW;
-            m_Storage[ResourceType.Stone] = totalS;
-            m_Storage[ResourceType.Iroon] = totalI;
-            m_Storage[ResourceType.Food] = totalF;
-            RefreshCounters();
-        }
-
-        void le_RefreshResourceProduction(ResourceType res)
-        {
-            int total = 0;
-            foreach (LayoutEntry le in CityLayout)
-                total += le.Production(res);
-            if (res == ResourceType.Wood)
-                total += 300;
-            m_Production[res] = total; 
-            RefreshCounters();
-        }
-
-
-        private BuildingType m_CurBuilding = BuildingType.None;
-        private ToolStripButton m_CurButton = null;
         private void RefreshCounters()
         {
-            lblGold.Text = m_Production[ResourceType.Gold].ToString("N0") + "/h";
-            lblWood.Text = m_Production[ResourceType.Wood].ToString("N0") + "/h";
-            lblStone.Text = m_Production[ResourceType.Stone].ToString("N0") + "/h";
-            lblIron.Text = m_Production[ResourceType.Iroon].ToString("N0") + "/h";
-            lblFood.Text = m_Production[ResourceType.Food].ToString("N0") + "/h";
-            lblTotalRes.Text = (m_Production[ResourceType.Wood] + m_Production[ResourceType.Stone] + m_Production[ResourceType.Iroon] + m_Production[ResourceType.Food]).ToString("N0") + "/h";
-            lblStorWood.Text = m_Storage[ResourceType.Wood].ToString("N0");
-            lblStorStone.Text = m_Storage[ResourceType.Stone].ToString("N0");
-            lblStorIron.Text = m_Storage[ResourceType.Iroon].ToString("N0");
-            lblStorFood.Text = m_Storage[ResourceType.Food].ToString("N0");
-            lblStorHidden.Text = m_Hidden.ToString("N0");
-            lblNbCarts.Text = m_Carts.ToString("N0") + " (" + (m_Carts * 1000).ToString("N0") + ")";
-            lblNbShips.Text = m_Ships.ToString("N0") + " (" + (m_Ships * 10000).ToString("N0") + ")";
-            lblBuildingsLeft.Text = "" + (100 - m_BuildingCount);
-            if (m_BuildingCount > 100)
+            lblGold.Text = pbCity.Production[ResourceType.Gold].ToString("N0") + "/h";
+            lblWood.Text = pbCity.Production[ResourceType.Wood].ToString("N0") + "/h";
+            lblStone.Text = pbCity.Production[ResourceType.Stone].ToString("N0") + "/h";
+            lblIron.Text = pbCity.Production[ResourceType.Iroon].ToString("N0") + "/h";
+            lblFood.Text = pbCity.Production[ResourceType.Food].ToString("N0") + "/h";
+            lblTotalRes.Text = (pbCity.Production[ResourceType.Wood] + pbCity.Production[ResourceType.Stone] + pbCity.Production[ResourceType.Iroon] + pbCity.Production[ResourceType.Food]).ToString("N0") + "/h";
+            lblStorWood.Text = pbCity.Storage[ResourceType.Wood].ToString("N0");
+            lblStorStone.Text = pbCity.Storage[ResourceType.Stone].ToString("N0");
+            lblStorIron.Text = pbCity.Storage[ResourceType.Iroon].ToString("N0");
+            lblStorFood.Text = pbCity.Storage[ResourceType.Food].ToString("N0");
+            lblStorHidden.Text = pbCity.Hidden.ToString("N0");
+            lblNbCarts.Text = pbCity.Carts.ToString("N0") + " (" + (pbCity.Carts * 1000).ToString("N0") + ")";
+            lblNbShips.Text = pbCity.Ships.ToString("N0") + " (" + (pbCity.Ships * 10000).ToString("N0") + ")";
+            lblBuildingsLeft.Text = "" + (100 - pbCity.BuildingCount);
+            if (pbCity.BuildingCount > 100)
                 lblBuildingsLeft.ForeColor = Color.Red;
             else
                 lblBuildingsLeft.ForeColor = Color.Black;
-            lblConsSpeed.Text = m_ConsSpeed.ToString("N0") + "%";
-            lblArmySize.Text = m_ArmySize.ToString("N0");
-            lblCityGuard.Text = m_Recruitment[BuildingType.CityGuardHouse].ToString("N0") + "%";
-            lblTrainingGround.Text = m_Recruitment[BuildingType.TrainingGround].ToString("N0") + "%";
-            lblStable.Text = m_Recruitment[BuildingType.Stable].ToString("N0") + "%";
-            lblTrinsic.Text = m_Recruitment[BuildingType.TrinsicTemple].ToString("N0") + "%";
-            lblMoonglow.Text = m_Recruitment[BuildingType.MoonglowTower].ToString("N0") + "%";
-            lblWorkShop.Text = m_Recruitment[BuildingType.Workshop].ToString("N0") + "%";
-            lblShipyard.Text = m_Recruitment[BuildingType.Shipyard].ToString("N0") + "%";
+            lblConsSpeed.Text = pbCity.ConsSpeed.ToString("N0") + "%";
+            lblArmySize.Text = pbCity.ArmySize.ToString("N0");
+            lblCityGuard.Text = pbCity.Recruitment[BuildingType.CityGuardHouse].ToString("N0") + "%";
+            lblTrainingGround.Text = pbCity.Recruitment[BuildingType.TrainingGround].ToString("N0") + "%";
+            lblStable.Text = pbCity.Recruitment[BuildingType.Stable].ToString("N0") + "%";
+            lblTrinsic.Text = pbCity.Recruitment[BuildingType.TrinsicTemple].ToString("N0") + "%";
+            lblMoonglow.Text = pbCity.Recruitment[BuildingType.MoonglowTower].ToString("N0") + "%";
+            lblWorkShop.Text = pbCity.Recruitment[BuildingType.Workshop].ToString("N0") + "%";
+            lblShipyard.Text = pbCity.Recruitment[BuildingType.Shipyard].ToString("N0") + "%";
         }
-        private void ResetCounters()
+        private void btnBuilding_Click(object sender, EventArgs e)
         {
-            m_Production.Clear();
-            m_Production.Add(ResourceType.Gold, 0);
-            m_Production.Add(ResourceType.Wood, 300);
-            m_Production.Add(ResourceType.Stone, 0);
-            m_Production.Add(ResourceType.Iroon, 0);
-            m_Production.Add(ResourceType.Food, 0);
-            m_Storage.Clear();
-            m_Storage.Add(ResourceType.Wood, 175000);
-            m_Storage.Add(ResourceType.Stone, 175000);
-            m_Storage.Add(ResourceType.Iroon, 175000);
-            m_Storage.Add(ResourceType.Food, 175000);
-            m_Recruitment.Clear();
-            m_Recruitment.Add(BuildingType.CityGuardHouse, 100);
-            m_Recruitment.Add(BuildingType.TrainingGround, 100);
-            m_Recruitment.Add(BuildingType.Stable, 100);
-            m_Recruitment.Add(BuildingType.MoonglowTower, 100);
-            m_Recruitment.Add(BuildingType.TrinsicTemple, 100);
-            m_Recruitment.Add(BuildingType.Workshop, 100);
-            m_Recruitment.Add(BuildingType.Shipyard, 100);
-            m_Hidden = 0;
-            m_Carts = 0;
-            m_Ships = 0;
-            m_BuildingCount = 100;
-            m_ConsSpeed = 100;
-
+            pbCity.ChooseTool(ButtonToBuilding[(ToolStripButton)sender]);
         }
-        private void pbCity_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            int mousex = coords.X;
-            int mousey = coords.Y;
-            if (validClick)
-                    g.DrawImage(Properties.Resources.pl_decal_select_building, x0 + (mousex * dx), y0 + 15 + (mousey * dy), 48, 48);
-            
-            foreach (LayoutEntry l in CityLayout)
-            {
-                if (l.X == 9 && l.Y == 9)
-                    g.DrawImage(Properties.Resources.pl_building_townhall, x0 + (9 * dx), y0 + (9 * dy), 48, 48);
-                else
-                    g.DrawImage(Buildings[l.Info], x0 + (l.X * dx), y0 + (l.Y * dy), 48, 48);
-            }
-        }
-        public void ChooseTool(ToolStripButton btn, BuildingType type)
-        {
-            if (m_CurButton != null)
-                m_CurButton.BackColor = Color.White;
-            m_CurButton = btn;
-            m_CurButton.BackColor = SystemColors.Highlight;
-            m_CurBuilding = type;
-            pbCity_MouseMove(pbCity, new MouseEventArgs(System.Windows.Forms.MouseButtons.None, 0, mouse.X, mouse.Y, 0));
-            pbCity.Invalidate();
-        }
-        private void btnTree_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.ResWood);
-        }
-
-        private void btnStone_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.ResStone);
-        }
-
-        private void btnIron_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.ResIron);
-        }
-
-        private void btnWater_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.ResFood);
-        }
-
-        private void btnHideout_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Hideout);
-        }
-
-        private void btnOldWoodcutter_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.WoodcutterOld);
-        }
-
-        private void btnOldQuarry_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.QuarryOld);
-        }
-
-        private void btnOldIronMine_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.IronMineOld);
-        }
-
-        private void btnOldFarm_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.FarmOld);
-        }
-
-        private void btnDestroy_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.None);
-        }
-
-        private void btnWoodcutter_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Woodcutter);
-        }
-
-        private void btnQuarry_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Quarry);
-        }
-
-        private void btnIronMine_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.IronMine);
-        }
-
-        private void btnFarm_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Farm);
-        }
-
-        private void btnCottage_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Cottage);
-        }
-
-        private void btnMarket_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Marketplace);
-        }
-
-        private void btnBarrack_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Barracks);
-        }
-
-        private void btnTrainingGround_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.TrainingGround);
-        }
-
-        private void btnMoonglowTower_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.MoonglowTower);
-        }
-
-        private void btnWorkshop_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Workshop);
-        }
-
-        private void btnHarbor_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Harbor);
-        }
-
-        private void btnSawmill_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Sawmill);
-        }
-
-        private void btnStonemasson_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Stonemasson);
-        }
-
-        private void btnFoundry_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Foundry);
-        }
-
-        private void btnMill_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Mill);
-        }
-
-        private void btnWarehouse_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Warehouse);
-        }
-
-        private void btnTownhouse_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Townhouse);
-        }
-
-        private void btnCityGuardHouse_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.CityGuardHouse);
-        }
-
-        private void btnStable_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Stable);
-        }
-
-        private void btnTrinsicTemple_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.TrinsicTemple);
-        }
-
-        private void btnCastle_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Castle);
-        }
-
-        private void btnShipyard_Click(object sender, EventArgs e)
-        {
-            ChooseTool((ToolStripButton)sender, BuildingType.Shipyard);
-        }
-        public void verifyValid()
-        {
-            validClick = false;
-            int mousex = coords.X;
-            int mousey = coords.Y;
-            if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
-            {
-                if (!water && (m_CurBuilding == BuildingType.Harbor || m_CurBuilding == BuildingType.Shipyard))
-                    return;
-                if (water)
-                {
-                    bool waterSpot = false;
-                    foreach (Point p in new Point[] { new Point(15, 14), new Point(16, 14), new Point(14, 15), new Point(17, 15), new Point(14, 16), new Point(18, 16), new Point(15, 17), new Point(16, 18) })
-                        if (p.X == mousex && p.Y == mousey)
-                        {
-                            waterSpot = true;
-                            if (m_CurBuilding != BuildingType.None && m_CurBuilding != BuildingType.Harbor && m_CurBuilding != BuildingType.Shipyard)
-                                return;
-                        }
-                    if (!waterSpot && (m_CurBuilding == BuildingType.Harbor || m_CurBuilding == BuildingType.Shipyard))
-                        return;
-                    foreach (Point p in new Point[] { new Point(15, 15), new Point(16, 15), new Point(15, 16), new Point(16, 16), new Point(17, 16), new Point(16, 17), new Point(17, 17)})
-                        if (p.X == mousex && p.Y == mousey)
-                            return;
-                }
-
-
-
-                if (m_CurBuilding == m_CoordLayout[mousex, mousey].Info)
-                    return;
-
-                validClick = true;
-            }
-        }
-        private void pbCity_MouseMove(object sender, MouseEventArgs e)
-        {
-
-            mouse = e.Location;
-            Point nc = new Point((mouse.X - x0 - 3) / dx, (mouse.Y - y0 - 13) / dy);
-            if (nc.X != coords.X || nc.Y != coords.Y)
-            {
-                coords = nc;
-                verifyValid();
-                pbCity.Invalidate();
-            }
-        }
-        public void CreateNew(bool w)
-        {
-            ResetCounters();
-            water = w;
-            if (water)
-                pbCity.BackgroundImage = Properties.Resources.pl_town_bg_water;
-            else
-                pbCity.BackgroundImage = Properties.Resources.pl_town_bg;
-            btnShipyard.Enabled = water;
-            btnHarbor.Enabled = water;
-
-            foreach (LayoutEntry le in CityLayout)
-            {
-                le.Water = water;
-                le.Info = BuildingType.None;
-            }
-        }
-        public void Import(string patente)
-        {
-            if (patente.Contains("ShareString"))
-            {
-                CreateNew(patente.Contains("];"));
-                string s = patente.Substring(patente.IndexOf('#')).Replace("#", "").Replace("T", "-").Replace("_", "-").Replace("[/ShareString]", "");
-                for (int i = 0; i < s.Length; ++i)
-                {
-                    int j = i;
-                    if (water)
-                    {
-                        if (i >= 242)
-                            j += 2;
-                        if (i >= 258)
-                            j += 3;
-                        if (i >= 272)
-                            j += 2;
-                    }
-                    CityLayout[j].Info = BuildingInfo.ByLetterShareString[s[i]].BType;
-                }
-            }
-            else if (patente.Contains("lou-fcp.co.uk"))
-            {
-                string s = patente.Substring(patente.IndexOf('=') + 1);
-                CreateNew(s[0] == 'W');
-                for (int i = 0; i < s.Length - 1; ++i)
-                {
-                    CityLayout[i].Info = BuildingInfo.ByLetterFlashPlanner[s[i + 1]].BType;
-                }
-            }
-            else
-                throw (new NotImplementedException());
-        }
-
-        private void pbCity_MouseClick(object sender, MouseEventArgs e)
-        {
-            bool demo = m_CurBuilding == BuildingType.None || e.Button == System.Windows.Forms.MouseButtons.Right;
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-                int mousex = coords.X;
-                int mousey = coords.Y;
-                if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
-                {
-                    m_CoordLayout[mousex, mousey].Info = BuildingType.None;
-                }
-            }
-            else if (validClick && e.Button == System.Windows.Forms.MouseButtons.Left)
-                {
-                    int mousex = coords.X;
-                    int mousey = coords.Y;
-                    if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_CoordLayout[mousex, mousey] != null)
-                    {
-                        m_CoordLayout[mousex, mousey].Info = m_CurBuilding;
-                    }
-            }
-                verifyValid();
-                pbCity.Invalidate();
-            
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtImport.Text))
             {
                 try
                 {
-                    Import(txtImport.Text);
+                    pbCity.Import(txtImport.Text);
                     txtImport.Text = "";
                     tabControl1.SelectedIndex = 0;
                 }
@@ -655,15 +160,13 @@ namespace LouMapInfoApp.Tools
 
         private void btnCreateLand_Click(object sender, EventArgs e)
         {
-            CreateNew(false);
-            RefreshCounters();
+            pbCity.CreateNew(false);
             tabControl1.SelectedIndex = 0;
         }
 
         private void btnCreateWater_Click(object sender, EventArgs e)
         {
-            CreateNew(true);
-            RefreshCounters();
+            pbCity.CreateNew(true);
             tabControl1.SelectedIndex = 0;
         }
 
@@ -671,122 +174,23 @@ namespace LouMapInfoApp.Tools
         {
             if (!txtImport.Focused)
             {
-                switch (e.KeyCode)
-                {
-                    case Keys.W: btnWoodcutter_Click(btnWoodcutter, e); break;
-                    case Keys.P: btnMarket_Click(btnMarket, e); break;
-                    case Keys.V: btnShipyard_Click(btnShipyard, e); break;
-                    case Keys.J: btnMoonglowTower_Click(btnMoonglowTower, e); break;
-
-                    case Keys.Q: btnQuarry_Click(btnQuarry, e); break;
-                    case Keys.L: btnSawmill_Click(btnSawmill, e); break;
-                    case Keys.K: btnCityGuardHouse_Click(btnCityGuardHouse, e); break;
-                    case Keys.Z: btnTrinsicTemple_Click(btnTrinsicTemple, e); break;
-
-                    case Keys.I: btnIronMine_Click(btnIronMine, e); break;
-                    case Keys.A: btnStonemasson_Click(btnStonemasson, e); break;
-                    case Keys.B: btnBarrack_Click(btnBarrack, e); break;
-                    case Keys.D1: btnTree_Click(btnTree, e); break;
-
-                    case Keys.F: btnFarm_Click(btnFarm, e); break;
-                    case Keys.D: btnFoundry_Click(btnFoundry, e); break;
-                    case Keys.G: btnTrainingGround_Click(btnTrainingGround, e); break;
-                    case Keys.D2: btnStone_Click(btnStone, e); break;
-
-                    case Keys.C: btnCottage_Click(btnCottage, e); break;
-                    case Keys.M: btnMill_Click(btnMill, e); break;
-                    case Keys.E: btnStable_Click(btnStable, e); break;
-                    case Keys.D3: btnIron_Click(btnIron, e); break;
-
-                    case Keys.S: btnWarehouse_Click(btnWarehouse, e); break;
-                    case Keys.T: btnTownhouse_Click(btnTownhouse, e); break;
-                    case Keys.U: btnTownhouse_Click(btnTownhouse, e); break;
-                    case Keys.Y: btnWorkshop_Click(btnWorkshop, e); break;
-                    case Keys.D4: btnWater_Click(btnWater, e); break;
-
-                    case Keys.H: btnHideout_Click(btnHideout, e); break;
-                    case Keys.R: btnHarbor_Click(btnHarbor, e); break;
-                    case Keys.X: btnCastle_Click(btnCastle, e); break;
-                    case Keys.D0: btnDestroy_Click(btnDestroy, e); break;
-
-                    case Keys.D5: btnOldWoodcutter_Click(btnOldWoodcutter, e); break;
-                    case Keys.D6: btnOldQuarry_Click(btnOldQuarry, e); break;
-                    case Keys.D7: btnOldIronMine_Click(btnOldIronMine, e); break;
-                    case Keys.D8: btnOldFarm_Click(btnOldFarm, e); break;
-
-                }
+                pbCity.FireOnKeyDown(e);
             }
         }
 
         private void btnOpenFCP_Click(object sender, EventArgs e)
         {
-            Process.Start(generateFlashCityPlanner());
-        }
-
-        private string generateFlashCityPlanner()
-        {
-            string basic = "http://www.lou-fcp.co.uk/map.php?map=";
-            char t = water ? 'W' : 'L';
-            string layout = "";
-            foreach (LayoutEntry le in CityLayout)
-            {
-                BuildingType b = le.Info;
-                if (le.Info == BuildingType.FarmLand)
-                    b = BuildingType.None;
-                layout += BuildingInfo.ByType[b].LetterFlashPlanner;
-            }
-            return basic + t + layout;
+            Process.Start(pbCity.GenerateFlashCityPlanner());
         }
 
         private void btnCopyFCP_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(generateFlashCityPlanner());
+            Clipboard.SetText(pbCity.GenerateFlashCityPlanner());
         }
 
         private void btnCopySS_Click(object sender, EventArgs e)
         {
-            const string basicW = "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######----T----#######----#---------#----##----#---------#----##----##-------##----##-----##-----##-----##------#######--__--##---------#----_##_-##---------#----_###_###--------#-----_#######-------#------_########################[/ShareString]";
-            const string basicL = "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######----T----#######----#---------#----##----#---------#----##----##-------##----##-----##-----##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################[/ShareString]";
-            bool started = false;
-            int ri = 0;
-            string s = "";
-            List<LayoutEntry> layout = CityLayout;
-            for (int i = 0; i < basicL.Length; ++i)
-            {
-                if (!started)
-                {
-                    if (basicL[i] == '#')
-                        started = true;
-                    s += water ? basicW[i] : basicL[i];
-                }
-                else
-                {
-                    if (water && basicL[i] == '-' && basicW[i] == '#')
-                    {
-                        ri++;
-                        s += basicW[i];
-                    }
-                    else if (basicL[i] == '-')
-                    {
-                        LayoutEntry le = layout[ri++];
-                        BuildingType b = le.Info;
-                        if (le.Info == BuildingType.FarmLand)
-                            b = BuildingType.None;
-                        if (water && b == BuildingType.None && basicW[i] == '_')
-                            s += basicW[i];
-                        else
-                            s += BuildingInfo.ByType[b].LetterShareString;
-                    }
-                    else if (basicL[i] == 'T')
-                    {
-                        ri++;
-                        s += basicL[i];
-                    }
-                    else
-                        s += basicL[i];
-                }
-            }
-            Clipboard.SetText(s);
+            Clipboard.SetText(pbCity.GenerateShareString());
         }
 
         private void btnAutoPlanCity_Click(object sender, EventArgs e)
@@ -803,7 +207,7 @@ namespace LouMapInfoApp.Tools
             {
                 args += " placement_schedule=" + txtAPPlacement.Text;
             }
-            string postArgs = "content=" + generateFlashCityPlanner() + args;
+            string postArgs = "content=" + pbCity.GenerateFlashCityPlanner() + args;
             new Thread(new ParameterizedThreadStart(CallAutoPlanner)).Start(postArgs);
             
         }
@@ -839,7 +243,7 @@ namespace LouMapInfoApp.Tools
             Properties.Settings.Default.apKeepExtraResNodes = chkAPKeepExtraNodes.Checked;
             Properties.Settings.Default.Save();
 
-            Import(res);
+            pbCity.Import(res);
             tabControl1.SelectedTab = tbCityInfo;
             statePictureBox1.Etat = StatePictureBoxStates.None;
             Enabled = true;
@@ -858,6 +262,19 @@ namespace LouMapInfoApp.Tools
         private void btnHelpAutoPlanner_Click(object sender, EventArgs e)
         {
             MessageBox.Show("control the # of slots used (default 72) and best-effort cottages placed (default 15). the cottages are included in use_slots, so use_slots better be > than num_cottages -- generally at least 3x greater. \n\n list of options in the form option=default\nuse_slots=72\nnum_cottages=15\nkeep_extra_res_nodes=0\nplacement_schedule=WSI (format: [WSIF]+(,[WSIF]+)* -- commas seperate the res set to use for each wave. if more waves are needed to place all res buildings than there are res sets in placement_schedule, placement_schedule will be repeated as needed. the order of letters within each per-wave res set does not matter. duplicate letters within a wave have no effect. e.g. for one wave, 'WWWF' has the same meaning as 'FW': place food or wood on that wave. )\nclear_buildings=1\nbuild_only_on_open=0");
+        }
+
+        private void pbCity_BuildingChanged(BuildingType res)
+        {
+            if (m_CurButton != null)
+                m_CurButton.BackColor = Color.White;
+            m_CurButton = BuildingToButton[res];
+            m_CurButton.BackColor = SystemColors.Highlight;
+        }
+
+        private void pbCity_CounterRefreshed()
+        {
+            RefreshCounters();
         }
     }
 }
