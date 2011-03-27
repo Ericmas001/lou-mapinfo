@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Reports.Items;
 using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Reports.OfficialLOU.core;
 using LouMapInfo.Reports.OfficialLOU.Items;
@@ -12,7 +10,7 @@ using LouMapInfo.Reports.Features;
 
 namespace LouMapInfo.Reports.OfficialLOU
 {
-    public class LoUShrineCastlesReport : LoUReportInfo
+    public class LoUShrineCastlesReport : ReportInfo
     {
         private LoUWorldInfo world;
         private LoUPt location;

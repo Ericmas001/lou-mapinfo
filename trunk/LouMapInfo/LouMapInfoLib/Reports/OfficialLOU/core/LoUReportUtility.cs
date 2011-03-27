@@ -9,8 +9,10 @@ namespace LouMapInfo.Reports.OfficialLOU.core
     {
         public static string SayCityType(params LoUCityType[] type)
         {
-
-            List<LoUCityType> types = new List<LoUCityType>(type);
+            return SayCityType(new List<LoUCityType>(type));
+        }
+        public static string SayCityType(List<LoUCityType> types)
+        {
             if (types.Count == 0)
                 return "No cities displayed";
             else if (types.Count == 1)
