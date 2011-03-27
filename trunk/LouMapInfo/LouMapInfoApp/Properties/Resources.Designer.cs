@@ -284,6 +284,13 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icon_help {
+            get {
+                object obj = ResourceManager.GetObject("icon_help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap icon_recruit_slots {
             get {
                 object obj = ResourceManager.GetObject("icon_recruit_slots", resourceCulture);
