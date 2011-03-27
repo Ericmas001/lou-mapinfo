@@ -7,25 +7,25 @@ namespace LouMapInfo.Reports.OfficialLOU.core
 {
     public static class LoUReportUtility
     {
-        public static string SayCityType(OldLoUCityType type)
+        public static string SayCityType(LoUCityType type)
         {
             switch (type)
             {
-                case OldLoUCityType.None:
+                case LoUCityType.None:
                     return "No cities displayed";
-                case OldLoUCityType.City:
+                case LoUCityType.City:
                     return "Non-Castled cities only";
-                case OldLoUCityType.Castle:
+                case LoUCityType.Castle:
                     return "Castles only";
-                case OldLoUCityType.Palace:
+                case LoUCityType.Palace:
                     return "Palaces only";
-                case OldLoUCityType.CastlePalace:
+                case LoUCityType.CastlePalace:
                     return "Non-Castled cities excluded";
-                case OldLoUCityType.CityPalace:
+                case LoUCityType.CityPalace:
                     return "Castles excluded";
-                case OldLoUCityType.CityCastle:
+                case LoUCityType.CityCastle:
                     return "Palaces excluded";
-                case OldLoUCityType.CityCastlePalace:
+                case LoUCityType.CityCastlePalace:
                     return "All cities displayed";
             }
             return null;

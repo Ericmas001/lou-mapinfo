@@ -17,7 +17,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         private LoUPt location;
         private bool includeNoAlliance;
         public LoUShrineCastlesReport(LoUWorldInfo w, LoUPt l, bool noAlliance)
-            : base(OldLoUCityType.CastlePalace)
+            : base(LoUCityType.CastlePalace)
         {
             this.world = w;
             this.location = l;
@@ -47,7 +47,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                 {
                     foreach (LoUPlayerInfo p in a.Players())
                     {
-                        foreach (LoUCityInfo c in p.Cities(OldLoUCityType.CastlePalace, cont.Id))
+                        foreach (LoUCityInfo c in p.Cities(LoUCityType.CastlePalace, cont.Id))
                         {
                             double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
                             //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);

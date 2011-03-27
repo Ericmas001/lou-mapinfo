@@ -17,7 +17,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         private LoUVirtue virtue;
         private LoUAllianceInfo alliance;
         public LoUVirtuePalaceReport(LoUWorldInfo w, LoUVirtue v, LoUAllianceInfo a)
-            : base(OldLoUCityType.CityCastlePalace)
+            : base(LoUCityType.CityCastlePalace)
         {
             this.world = w;
             this.virtue = v;
@@ -55,7 +55,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                     {
                         LoUPlayerInfo pl = world.Player(p);
                         pl.LoadIfNeeded();
-                        foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
+                        foreach (LoUCityInfo city in pl.Cities(LoUCityType.Palace))
                         {
                             city.LoadIfNeeded();
                             if (city.VirtueType == v)
@@ -78,7 +78,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                     foreach (LoUVirtue v in virtues)
                     {
                         bool something2 = false;
-                        ReportItem r2 = new LoUCityTypeReportItem(palaces[i][v].Key.Count + palaces[i][v].Value.Count, OldLoUCityType.Palace, v, false);
+                        ReportItem r2 = new LoUCityTypeReportItem(palaces[i][v].Key.Count + palaces[i][v].Value.Count, LoUCityType.Palace, v, false);
                         if (palaces[i][v].Key.Count > 0)
                         {
                             ReportItem r3 = new LoUBorderingTypeReportItem(palaces[i][v].Key.Count, LoUBorderingType.Water, true);

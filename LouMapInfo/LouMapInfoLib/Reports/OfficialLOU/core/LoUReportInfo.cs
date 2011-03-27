@@ -11,41 +11,41 @@ namespace LouMapInfo.Reports.OfficialLOU.core
     //TODO: This is TEMPORARY
     public abstract class LoUReportInfo : ReportInfo
     {
-        public LoUReportInfo(OldLoUCityType type) : base()
+        public LoUReportInfo(LoUCityType type) : base()
         {
             switch (type)
             {
-                case OldLoUCityType.None:
+                case LoUCityType.None:
                     m_Type = CityCastleType.None; break;
-                case OldLoUCityType.City:
+                case LoUCityType.City:
                     m_Type = CityCastleType.City; break;
-                case OldLoUCityType.Castle:
-                case OldLoUCityType.Palace:
-                case OldLoUCityType.CastlePalace:
+                case LoUCityType.Castle:
+                case LoUCityType.Palace:
+                case LoUCityType.CastlePalace:
                     m_Type = CityCastleType.Castle; break;
-                case OldLoUCityType.CityPalace:
-                case OldLoUCityType.CityCastle:
-                case OldLoUCityType.CityCastlePalace:
+                case LoUCityType.CityPalace:
+                case LoUCityType.CityCastle:
+                case LoUCityType.CityCastlePalace:
                     m_Type = CityCastleType.Both; break;
             }
 
         }
-        protected OldLoUCityType LoUType
+        protected LoUCityType LoUType
         {
             get
             {
                 switch (m_Type)
                 {
                     case CityCastleType.None:
-                        return OldLoUCityType.None;
+                        return LoUCityType.None;
                     case CityCastleType.City:
-                        return OldLoUCityType.City;
+                        return LoUCityType.City;
                     case CityCastleType.Castle:
-                        return OldLoUCityType.CastlePalace;
+                        return LoUCityType.CastlePalace;
                     case CityCastleType.Both:
-                        return OldLoUCityType.CityCastlePalace;
+                        return LoUCityType.CityCastlePalace;
                 }
-                return OldLoUCityType.None;
+                return LoUCityType.None;
             }
         }
     }
