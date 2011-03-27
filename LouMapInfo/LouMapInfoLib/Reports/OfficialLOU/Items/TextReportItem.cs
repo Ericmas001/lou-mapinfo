@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Reports.core;
 
-namespace LouMapInfo.Reports.Items
+namespace LouMapInfo.Reports.OfficialLOU.Items
 {
     public class TextReportItem : ReportItem
     {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Entities;
 using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfo.Reports.OfficialLOU.Items

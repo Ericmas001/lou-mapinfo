@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Entities;
 
-namespace LouMapInfo.Reports.Items
+namespace LouMapInfo.Reports.OfficialLOU.Items
 {
     public class MultiLineReportItem : ReportItem
     {

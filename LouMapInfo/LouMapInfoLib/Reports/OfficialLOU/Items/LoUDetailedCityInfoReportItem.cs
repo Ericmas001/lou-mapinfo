@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Entities;
 using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfo.Reports.OfficialLOU.Items
@@ -26,9 +25,9 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
             string s = base.Value(options);
             if (m_ShowCont)
                 s = String.Format("C{0:00}: {1}", m_Info.Location.Continent,s);
-            if (m_PInfo && m_Info.Player.Name != PlayerInfo.LAWLESS)
+            if (m_PInfo && m_Info.Player.Name != "")
                 s += ", " + new LoUPlayerInfoReportItem(m_Info.Player, -1, true).Value(options);
-            if (m_AInfo && m_Info.Player.Alliance.Name != AllianceInfo.NO_ALLIANCE)
+            if (m_AInfo && m_Info.Player.Alliance.Name != "")
                 s += ", " + new LoUAllianceInfoReportItem(m_Info.Player.Alliance, true).Value(options);
             return s;
         }

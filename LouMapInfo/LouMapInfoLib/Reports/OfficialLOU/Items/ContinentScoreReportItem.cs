@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Entities;
 
-namespace LouMapInfo.Reports.Items
+namespace LouMapInfo.Reports.OfficialLOU.Items
 {
     public class ContinentScoreReportItem : ReportItem
     {
@@ -24,7 +23,7 @@ namespace LouMapInfo.Reports.Items
         {
             string s = "C" + String.Format("{0:00}", m_C);
             if (m_Score >= 0 && ((m_IsPlayer && (options & ReportOption.PlayerScore) != 0) || (!m_IsPlayer && (options & ReportOption.AllianceScore) != 0)))
-                s += String.Format(" ({0})", DisplayUtility.Score(m_Score));
+                s += String.Format(" ({0})", m_Score.ToString("N0"));
             return s;
         }
     }

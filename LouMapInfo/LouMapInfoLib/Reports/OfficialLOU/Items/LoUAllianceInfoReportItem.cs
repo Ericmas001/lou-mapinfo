@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Entities;
 using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfo.Reports.OfficialLOU.Items
@@ -32,7 +31,7 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
                 s += String.Format("#{0:00} : ", m_Rank);
             s += String.Format(" [alliance]{0}[/alliance]", m_Info.Name);
             if ((options & ReportOption.AllianceScore) != 0)
-                s += String.Format(" ({0})", DisplayUtility.Score(m_Info.Score));
+                s += String.Format(" ({0})", m_Info.Score.ToString("N0"));
             return s;
         }
     }
