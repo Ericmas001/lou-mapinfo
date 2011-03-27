@@ -317,6 +317,7 @@
   <ItemGroup>
     <Content Include="icone-LOU.ico" />
     <Content Include="icon_Official.ico" />
+    <None Include="Resources\icon-help.png" />
     <None Include="Resources\internet-browser-icon.png" />
     <None Include="Resources\clipboard-icon.png" />
     <None Include="Resources\icon_recruit_slots.png" />
