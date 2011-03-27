@@ -187,8 +187,8 @@ namespace LouMapInfoApp
             else
             {
                 AddSubItem(btnMenuOfficial, m_Session.World.Player(m_Session.PlayerID).Name, new ContentLoUOfficial(this, new ContentLouMyPlayer(), Properties.Resources.menu_Empire));
-                if (m_Session.AllianceID > 0)
-                    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance(), Properties.Resources.menu_Empire));
+                //if (m_Session.AllianceID > 0)
+                //    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance(), Properties.Resources.menu_Empire));
             }
             if (lstSubItems.Items.Count > 0)
                 lstSubItems.SelectedIndex = 0;
@@ -234,6 +234,10 @@ namespace LouMapInfoApp
             if (splitContainer1.Panel2.Controls.Count == 1 && splitContainer1.Panel2.Controls[0] is ContentLayout)
             {
                 ((ContentLayout)splitContainer1.Panel2.Controls[0]).ContentLayout_KeyDown(sender, e);
+            }
+            else if (splitContainer1.Panel2.Controls.Count == 1 && splitContainer1.Panel2.Controls[0] is ContentLoUOfficial && ((ContentLoUOfficial)splitContainer1.Panel2.Controls[0]).Child is ContentLouMyPlayer)
+            {
+                ((ContentLouMyPlayer)((ContentLoUOfficial)splitContainer1.Panel2.Controls[0]).Child).FireKeyDown(e);
             }
         }
     }

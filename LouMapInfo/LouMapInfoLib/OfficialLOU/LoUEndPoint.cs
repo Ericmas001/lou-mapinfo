@@ -159,19 +159,52 @@ namespace LouMapInfo.OfficialLOU
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
 
+        public static void CityNoteSet(string baseurl, string session, int cid, string title, string text)
+        {
+            //CHARS AVAILABLE IN CITYNOTES: 1000
+            //USED BY LAYOUT: 331 (294 sans le début)
+            string endpoint = "CityNoteSet";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonStringValue("cityid", "" + cid));
+            args.Add(new JsonStringValue("reference", title));
+            args.Add(new JsonStringValue("text", text));
+            Query(baseurl, endpoint, args);
+        }
+
+        public static void RenameCity(string baseurl, string session, int cid, string name)
+        {
+            string endpoint = "RenameCity";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonStringValue("cityid", "" + cid));
+            args.Add(new JsonStringValue("name", name));
+            Query(baseurl, endpoint, args);
+        }
+
+        public static JsonObjectCollection GetCityInfo(string baseurl, string session, int cid)
+        {
+            string endpoint = "Poll";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonStringValue("requestid", "42"));
+            args.Add(new JsonStringValue("requests", "CITY:" + cid));
+            JsonArrayCollection jo = (JsonArrayCollection)Query(baseurl, endpoint, args);
+            JsonObjectCollection city = (JsonObjectCollection)jo[1];
+            return (JsonObjectCollection)city["D"];
+        }
+
         public static JsonArrayCollection GetCityLayout(string baseurl, string session, int cid)
         {
             string endpoint = "Poll"; 
             JsonObjectCollection args = new JsonObjectCollection();
             args.Add(new JsonStringValue("session", session));
             args.Add(new JsonStringValue("requestid", "42"));
-            args.Add(new JsonStringValue("requests", "VIS:c:"+cid+":0:-964:-582:1016:677"));
+            args.Add(new JsonStringValue("requests", "VIS:c:" + cid + ":0:-964:-582:1016:677"));
             JsonArrayCollection jo = (JsonArrayCollection)Query(baseurl, endpoint, args);
             JsonObjectCollection vis = (JsonObjectCollection)jo[1];
             JsonObjectCollection content = (JsonObjectCollection)vis["D"];
             return (JsonArrayCollection)content["u"];
-                //CHARS AVAILABLE IN CITYNOTES: 1000
-                //USED BY LAYOUT: 331 (294 sans le début)
 
                 //x: /128
                 //y: /80

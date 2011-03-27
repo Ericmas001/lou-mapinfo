@@ -276,5 +276,19 @@ namespace LouMapInfoApp.Tools
         {
             RefreshCounters();
         }
+
+        public void Import(CompleteLayout l)
+        {
+            pbCity.Import(l);
+        }
+
+        public void Import(string s)
+        {
+            pbCity.Import(s);
+        }
+        public string GenerateFlashCityPlanner()
+        {
+            return pbCity.GenerateFlashCityPlanner();
+        }
     }
 }
