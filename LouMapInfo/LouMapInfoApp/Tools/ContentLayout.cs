@@ -178,11 +178,6 @@ namespace LouMapInfoApp.Tools
             }
         }
 
-        private void btnOpenFCP_Click(object sender, EventArgs e)
-        {
-            Process.Start(pbCity.GenerateFlashCityPlanner());
-        }
-
         private void btnCopyFCP_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(pbCity.GenerateFlashCityPlanner());
@@ -289,6 +284,19 @@ namespace LouMapInfoApp.Tools
         public string GenerateFlashCityPlanner()
         {
             return pbCity.GenerateFlashCityPlanner();
+        }
+
+        private void btnCopyFCPShort_Click(object sender, EventArgs e)
+        {
+            string s = GatheringUtility.GetPageSource(pbCity.GenerateFlashCityPlanner().Replace("map.php", "bitly.php"));
+            int iU = s.IndexOf("http://bit.ly/");
+            int iUf = s.IndexOf('<',iU);
+            Clipboard.SetText(s.Substring(iU,iUf-iU));
+        }
+
+        private void btnOpenFCP_Click(object sender, EventArgs e)
+        {
+            Process.Start(pbCity.GenerateFlashCityPlanner());
         }
     }
 }
