@@ -1,65 +1,129 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfo.OfficialLOU
 {
     public static class LoUServerList
     {
-        public static string WORLD_10 { get { return "World 10 (Europe)"; } }
-        public static string WORLD_21 { get { return "World 21 (USA East Coast)"; } }
+        //private static string WORLD_10 { get { return "World 10 (Europe)"; } }
+        //private static string WORLD_21 { get { return "World 21 (USA East Coast)"; } }
 
-        private static readonly Dictionary<string, string> m_Servers = new Dictionary<string, string>();
+        private static readonly List<LoUServerInfo> m_AllServers = new List<LoUServerInfo>();
+        private static readonly Dictionary<string, LoUServerInfo> m_ServersByName = new Dictionary<string, LoUServerInfo>();
+        private static readonly Dictionary<int, LoUServerInfo> m_ServersById = new Dictionary<int, LoUServerInfo>();
+
+        public static List<LoUServerInfo> AllServers
+        {
+            get 
+            {
+                if (!m_Loaded)
+                    Load();
+                return LoUServerList.m_AllServers;
+            }
+        }
+        public static Dictionary<string, LoUServerInfo> ServersByName
+        {
+            get
+            {
+                if (!m_Loaded)
+                    Load();
+                return LoUServerList.m_ServersByName;
+            }
+        }
+        public static Dictionary<int, LoUServerInfo> ServersById
+        {
+            get
+            {
+                if (!m_Loaded)
+                    Load();
+                return LoUServerList.m_ServersById;
+            }
+        }
+        public static LoUServerInfo WORLD_10
+        {
+            get
+            {
+                if (!m_Loaded)
+                    Load();
+                return m_ServersById[14];
+            }
+        }
+        public static LoUServerInfo WORLD_21
+        {
+            get
+            {
+                if (!m_Loaded)
+                    Load();
+                return m_ServersById[33];
+            }
+        }
+        
         private static bool m_Loaded = false;
-        public static Dictionary<string, string> Servers { get { if (!m_Loaded)Load(); return m_Servers; } }
         private static void Load()
         {
-            m_Servers.Add("World 1 (Europe)", "http://prodgame02.lordofultima.com/2");
-            m_Servers.Add("World 2 (Europe)", "http://prodgame05.lordofultima.com/3");
-            m_Servers.Add("World 3 (USA East Coast)", "http://prodgame09.lordofultima.com/5");
-            m_Servers.Add("World 4 (Europe)", "http://prodgame04.lordofultima.com/6");
-            m_Servers.Add("World 5 (USA East Coast)", "http://prodgame01.lordofultima.com/7");
-            m_Servers.Add("World 6 (Europe)", "http://prodgame02.lordofultima.com/9");
-            m_Servers.Add("World 7 (USA East Coast)", "http://prodgame06.lordofultima.com/10");
-            m_Servers.Add("World 8 (Europe)", "http://prodgame08.lordofultima.com/11");
-            m_Servers.Add("World 9 (USA East Coast)", "http://prodgame10.lordofultima.com/12");
-            m_Servers.Add("World 10 (Europe)", "http://prodgame05.lordofultima.com/14");
-            m_Servers.Add("World 11 (USA East Coast)", "http://prodgame07.lordofultima.com/15");
-            m_Servers.Add("World 12 (Europe)", "http://prodgame04.lordofultima.com/16");
-            m_Servers.Add("World 13 (USA West Coast)", "http://prodgame10.lordofultima.com/17");
-            m_Servers.Add("World 14 (USA East Coast)", "http://prodgame05.lordofultima.com/18");
-            m_Servers.Add("World 15 (Europe)", "http://prodgame12.lordofultima.com/20");
-            m_Servers.Add("World 16 (USA West Coast)", "http://prodgame12.lordofultima.com/21");
-            m_Servers.Add("World 17 (USA East Coast)", "http://prodgame13.lordofultima.com/22");
-            m_Servers.Add("World 18 (Europe)", "http://prodgame13.lordofultima.com/23");
-            m_Servers.Add("World 19 (Europe)", "http://prodgame11.lordofultima.com/24");
-            m_Servers.Add("World 20 (USA West Coast)", "http://prodgame09.lordofultima.com/32");
-            m_Servers.Add("World 21 (USA East Coast)", "http://prodgame10.lordofultima.com/33");
-            m_Servers.Add("World 22 (Australia)", "http://prodgame04.lordofultima.com/34");
-            m_Servers.Add("World 23 (Europe)", "http://prodgame01.lordofultima.com/35");
-            m_Servers.Add("World 24 (USA East Coast)", "http://prodgame06.lordofultima.com/38");
-            m_Servers.Add("World 25 (USA West Coast)", "http://prodgame02.lordofultima.com/39");
-            m_Servers.Add("World 26 (Australia)", "http://prodgame03.lordofultima.com/40");
-            m_Servers.Add("World 27 (Europe)", "http://prodgame08.lordofultima.com/41");
-            m_Servers.Add("World 28 (USA East Coast)", "http://prodgame05.lordofultima.com/42");
-            m_Servers.Add("Castle 1", "http://prodgame03.lordofultima.com/37");
-            m_Servers.Add("(de) Welt 1", "http://prodgame07.lordofultima.com/4");
-            m_Servers.Add("(de) Welt 2", "http://prodgame03.lordofultima.com/13");
-            m_Servers.Add("(de) Welt 3", "http://prodgame11.lordofultima.com/19");
-            m_Servers.Add("(de) Welt 4", "http://prodgame12.lordofultima.com/25");
-            m_Servers.Add("(de) Welt 5", "http://prodgame02.lordofultima.com/36");
-            m_Servers.Add("(es) Mundo 1", "http://prodgame05.lordofultima.com/28");
-            m_Servers.Add("(es) Mundo 2", "http://prodgame07.lordofultima.com/46");
-            m_Servers.Add("(fr) Monde 1", "http://prodgame13.lordofultima.com/26");
-            m_Servers.Add("(fr) Monde 2", "http://prodgame08.lordofultima.com/48");
-            m_Servers.Add("(it) Mondo 1", "http://prodgame04.lordofultima.com/27");
-            m_Servers.Add("(it) Mondo 2", "http://prodgame07.lordofultima.com/47");
-            m_Servers.Add("(pl) Świata 1", "http://prodgame08.lordofultima.com/31");
-            m_Servers.Add("(pl) Świata 2", "http://prodgame05.lordofultima.com/43");
-            m_Servers.Add("(pt) Mundo 1", "http://prodgame06.lordofultima.com/29");
-            m_Servers.Add("(pt) Mundo 2", "http://prodgame04.lordofultima.com/45");
-            m_Servers.Add("(ru) Мир 1", "http://prodgame07.lordofultima.com/30");
-            m_Servers.Add("(ru) Мир 2", "http://prodgame04.lordofultima.com/44");
+            m_AllServers.Add(new LoUServerInfo(2, "World 1 (Europe)", 2));
+            m_AllServers.Add(new LoUServerInfo(3, "World 2 (Europe)", 5));
+            m_AllServers.Add(new LoUServerInfo(5, "World 3 (USA East Coast)", 9));
+            m_AllServers.Add(new LoUServerInfo(6, "World 4 (Europe)", 4));
+            m_AllServers.Add(new LoUServerInfo(7, "World 5 (USA East Coast)", 1));
+            m_AllServers.Add(new LoUServerInfo(9, "World 6 (Europe)", 2));
+            m_AllServers.Add(new LoUServerInfo(10, "World 7 (USA East Coast)", 6));
+            m_AllServers.Add(new LoUServerInfo(11, "World 8 (Europe)", 8));
+            m_AllServers.Add(new LoUServerInfo(12, "World 9 (USA East Coast)", 10));
+            m_AllServers.Add(new LoUServerInfo(14, "World 10 (Europe)", 5));
+            m_AllServers.Add(new LoUServerInfo(15, "World 11 (USA East Coast)", 7));
+            m_AllServers.Add(new LoUServerInfo(16, "World 12 (Europe)", 4));
+            m_AllServers.Add(new LoUServerInfo(17, "World 13 (USA West Coast)", 10));
+            m_AllServers.Add(new LoUServerInfo(18, "World 14 (USA East Coast)", 5));
+            m_AllServers.Add(new LoUServerInfo(20, "World 15 (Europe)", 12));
+            m_AllServers.Add(new LoUServerInfo(21, "World 16 (USA West Coast)", 12));
+            m_AllServers.Add(new LoUServerInfo(22, "World 17 (USA East Coast)", 13));
+            m_AllServers.Add(new LoUServerInfo(23, "World 18 (Europe)", 13));
+            m_AllServers.Add(new LoUServerInfo(24, "World 19 (Europe)", 11));
+            m_AllServers.Add(new LoUServerInfo(32, "World 20 (USA West Coast)", 9));
+            m_AllServers.Add(new LoUServerInfo(33, "World 21 (USA East Coast)", 10));
+            m_AllServers.Add(new LoUServerInfo(34, "World 22 (Australia)", 4));
+            m_AllServers.Add(new LoUServerInfo(35, "World 23 (Europe)", 1));
+            m_AllServers.Add(new LoUServerInfo(38, "World 24 (USA East Coast)", 6));
+            m_AllServers.Add(new LoUServerInfo(39, "World 25 (USA West Coast)", 2));
+            m_AllServers.Add(new LoUServerInfo(40, "World 26 (Australia)", 3));
+            m_AllServers.Add(new LoUServerInfo(41, "World 27 (Europe)", 8));
+            m_AllServers.Add(new LoUServerInfo(42, "World 28 (USA East Coast)", 5));
+
+            m_AllServers.Add(new LoUServerInfo(37, "Castle 1", 3));
+
+            m_AllServers.Add(new LoUServerInfo(4, "(de) Welt 1", 7));
+            m_AllServers.Add(new LoUServerInfo(13, "(de) Welt 2", 3));
+            m_AllServers.Add(new LoUServerInfo(19, "(de) Welt 3", 11));
+            m_AllServers.Add(new LoUServerInfo(25, "(de) Welt 4", 12));
+            m_AllServers.Add(new LoUServerInfo(36, "(de) Welt 5", 2));
+
+            m_AllServers.Add(new LoUServerInfo(28, "(es) Mundo 1", 5));
+            m_AllServers.Add(new LoUServerInfo(46, "(es) Mundo 2", 7));
+
+            m_AllServers.Add(new LoUServerInfo(26, "(fr) Monde 1", 13));
+            m_AllServers.Add(new LoUServerInfo(48, "(fr) Monde 2", 8));
+
+            m_AllServers.Add(new LoUServerInfo(27, "(it) Mondo 1", 4));
+            m_AllServers.Add(new LoUServerInfo(47, "(it) Mondo 2", 7));
+
+            m_AllServers.Add(new LoUServerInfo(31, "(pl) Świata 1", 8));
+            m_AllServers.Add(new LoUServerInfo(43, "(pl) Świata 2", 5));
+
+            m_AllServers.Add(new LoUServerInfo(29, "(pt) Mundo 1", 6));
+            m_AllServers.Add(new LoUServerInfo(45, "(pt) Mundo 2", 4));
+
+            m_AllServers.Add(new LoUServerInfo(30, "(ru) Мир 1", 7));
+            m_AllServers.Add(new LoUServerInfo(44, "(ru) Мир 2", 4));
+
+            foreach (LoUServerInfo info in m_AllServers)
+            {
+                m_ServersById.Add(info.Id, info);
+                m_ServersByName.Add(info.Name, info);
+            }
+
             m_Loaded = true;
         }
     }

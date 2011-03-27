@@ -18,10 +18,10 @@ namespace LouMapInfoApp.LouOfficial
         {
             m_Parent = parent;
             InitializeComponent();
-            foreach (string s in LoUServerList.Servers.Keys)
+            foreach (LoUServerInfo s in LoUServerList.AllServers)
             {
-                lstServerNames1.Items.Add(s);
-                lstServerNames2.Items.Add(s);
+                lstServerNames1.Items.Add(s.Name);
+                lstServerNames2.Items.Add(s.Name);
             }
             txtUsername.Text = Properties.Settings.Default.liveUsername;
             txtPassword.Text = Properties.Settings.Default.livePassword;

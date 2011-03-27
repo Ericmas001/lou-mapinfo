@@ -61,7 +61,9 @@
     <Compile Include="ContentCSV.Designer.cs">
       <DependentUpon>ContentCSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="LayoutPictureBox.cs" />
+    <Compile Include="LayoutPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LouMap\ContentLMContinent.cs">
       <SubType>UserControl</SubType>
     </Compile>

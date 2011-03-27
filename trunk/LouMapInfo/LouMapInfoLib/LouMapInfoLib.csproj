@@ -52,6 +52,7 @@
     <Compile Include="Layout\LayoutEntry.cs" />
     <Compile Include="Layout\ProductionType.cs" />
     <Compile Include="Layout\ResourceType.cs" />
+    <Compile Include="OfficialLOU\Entities\LoUServerInfo.cs" />
     <Compile Include="OfficialLOU\LoUBattleType.cs" />
     <Compile Include="OfficialLOU\Entities\LoUMoonGateInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUShrineInfo.cs" />
