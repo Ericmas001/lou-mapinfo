@@ -11,10 +11,10 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
     public class LoUCityTypeReportItem : ReportItem
     {
         private int m_Count;
-        private OldLoUCityType m_Type;
+        private LoUCityType m_Type;
         private LoUVirtue m_Virtue;
 
-        public LoUCityTypeReportItem(int count, OldLoUCityType type, LoUVirtue virtue, bool showIfEmpty)
+        public LoUCityTypeReportItem(int count, LoUCityType type, LoUVirtue virtue, bool showIfEmpty)
             : base(showIfEmpty)
         {
             m_Count = count;
@@ -22,7 +22,7 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
             m_Virtue = virtue;
         }
 
-        public LoUCityTypeReportItem(int count, OldLoUCityType type, bool showIfEmpty)
+        public LoUCityTypeReportItem(int count, LoUCityType type, bool showIfEmpty)
             : this( count,  type, LoUVirtue.None, showIfEmpty)
         {
         }
@@ -37,11 +37,11 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
             String name = "";
             switch (m_Type)
             {
-                case OldLoUCityType.City:
+                case LoUCityType.City:
                     name = "Non-Castled Cit" + (m_Count <= 1 ? "y" : "ies"); break;
-                case OldLoUCityType.Castle:
+                case LoUCityType.Castle:
                     name = "Castle" + (m_Count <= 1 ? "" : "s"); break;
-                case OldLoUCityType.Palace:
+                case LoUCityType.Palace:
                     name = (m_Virtue != LoUVirtue.None ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
             }
 

@@ -14,7 +14,7 @@ namespace LouMapInfo.Reports.OfficialLOU
     {
         private Dictionary<int, LoUMoonGateInfo[]> allGates;
         public LoUMoongatesReport(Dictionary<int, LoUMoonGateInfo[]> l)
-            : base(OldLoUCityType.None)
+            : base(LoUCityType.None)
         {
             allGates = l;
             LoadIfNeeded();

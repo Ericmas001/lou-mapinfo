@@ -16,7 +16,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         private LoUWorldInfo world;
         private LoUBattleType type;
         public LoUBattlePalaceReport(LoUWorldInfo w, LoUBattleType b)
-            : base(OldLoUCityType.CityCastlePalace)
+            : base(LoUCityType.CityCastlePalace)
         {
             this.world = w;
             this.type = b;
@@ -62,7 +62,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                 {
                     LoUPlayerInfo pl = world.Player(p);
                     pl.LoadIfNeeded();
-                    foreach (LoUCityInfo city in pl.Cities(OldLoUCityType.Palace))
+                    foreach (LoUCityInfo city in pl.Cities(LoUCityType.Palace))
                     {
                         city.LoadIfNeeded();
                         if (city.VirtueType == v)

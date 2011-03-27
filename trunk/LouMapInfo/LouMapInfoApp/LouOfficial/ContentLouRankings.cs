@@ -75,7 +75,7 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, OldLoUCityType.CityCastlePalace);
+                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, LoUCityType.CityCastlePalace);
                 rep.LoadIfNeeded();
                 OpenReport(rep, 4);
                 ContentEnabling(true);
@@ -100,7 +100,7 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, OldLoUCityType.CityCastlePalace);
+                LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, LoUCityType.CityCastlePalace);
                 rep.LoadIfNeeded();
                 OpenReport(rep, 4);
                 ContentEnabling(true);

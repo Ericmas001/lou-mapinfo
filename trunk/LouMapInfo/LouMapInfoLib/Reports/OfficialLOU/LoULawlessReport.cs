@@ -13,7 +13,7 @@ namespace LouMapInfo.Reports.OfficialLOU
     public class LoULawlessReport : LoUReportInfo
     {
         private Dictionary<int, LoUCityInfo[]> allLawless;
-        public LoULawlessReport(Dictionary<int, LoUCityInfo[]> l, OldLoUCityType type)
+        public LoULawlessReport(Dictionary<int, LoUCityInfo[]> l, LoUCityType type)
             : base(type)
         {
             allLawless = l;
@@ -34,10 +34,10 @@ namespace LouMapInfo.Reports.OfficialLOU
                 if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
                 {
                     List<LoUCityInfo> correct = new List<LoUCityInfo>();
-                    LoUCityTypeReportItem r2 = new LoUCityTypeReportItem(0, OldLoUCityType.Castle, true);
+                    LoUCityTypeReportItem r2 = new LoUCityTypeReportItem(0, LoUCityType.Castle, true);
                     foreach( LoUCityInfo c in cities )
                     {
-                        if( c.TypeCity == OldLoUCityType.Castle )
+                        if( c.TypeCity == LoUCityType.Castle )
                             r2.Items.Add(new LoUCityInfoReportItem(c, true));
                     }
                     r2.setCountAsItemCount();
@@ -48,10 +48,10 @@ namespace LouMapInfo.Reports.OfficialLOU
                 if (m_Type == CityCastleType.Both || m_Type == CityCastleType.City)
                 {
                     List<LoUCityInfo> correct = new List<LoUCityInfo>();
-                    LoUCityTypeReportItem r2 = new LoUCityTypeReportItem(0, OldLoUCityType.City, true);
+                    LoUCityTypeReportItem r2 = new LoUCityTypeReportItem(0, LoUCityType.City, true);
                     foreach( LoUCityInfo c in cities )
                     {
-                        if( c.TypeCity == OldLoUCityType.City )
+                        if( c.TypeCity == LoUCityType.City )
                             r2.Items.Add(new LoUCityInfoReportItem(c, true));
                     }
                     r2.setCountAsItemCount();

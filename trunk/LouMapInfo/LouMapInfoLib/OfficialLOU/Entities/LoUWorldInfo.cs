@@ -135,7 +135,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                                     int p = (int)((JsonNumericValue)oc2["p"]).Value; // score
                                     int c = (int)((JsonNumericValue)oc2["k"]).Value; // continent
                                     LoUPt loc = new LoUPt(x, y);
-                                    LoUCityInfo ci = new LoUCityInfo(this, null, name, i, loc, LoUBorderingType.Unknown, name.Contains("castle") ? OldLoUCityType.Castle : OldLoUCityType.City, p);
+                                    LoUCityInfo ci = new LoUCityInfo(this, null, name, i, loc, LoUBorderingType.Unknown, name.Contains("castle") ? LoUCityType.Castle : LoUCityType.City, p);
                                     if (!m_LawlessByCont.ContainsKey(c))
                                         m_LawlessByCont.Add(c, new List<LoUCityInfo>());
                                     m_LawlessByCont[c].Add(ci);
