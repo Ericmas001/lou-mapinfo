@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using LouMapInfo.Reports.core;
 using EricUtility.Windows.Forms;
-using LouMapInfo.Entities;
 using EricUtility;
 using System.Threading;
 

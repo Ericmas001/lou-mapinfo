@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LouMapInfoApp.Tools;
-using LouMapInfoApp.LouMap;
-using LouMapInfo.Entities;
 using LouMapInfoApp.LouOfficial;
 using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Zeus;
@@ -31,7 +29,6 @@ namespace LouMapInfoApp
             get { return m_ZeusSession; }
             set { m_ZeusSession = value; }
         }
-        private Dictionary<int, WorldInfo> worlds = new Dictionary<int, WorldInfo>();
         public Dictionary<string, PanelEntry> tabs = new Dictionary<string, PanelEntry>();
         public MainForm()
         {
@@ -82,11 +79,6 @@ namespace LouMapInfoApp
             else if (btn == btnMenuEmpire)
             {
                 FillEmpire(false);
-            }
-            else if (btn == btnMenuMap)
-            {
-                AddSubItem(btn, "Continent View", new ContentLMContinent(worlds));
-                AddSubItem(btn, "World View", new ContentLMWorld(worlds));
             }
             else if (btn == btnMenuTools)
             {

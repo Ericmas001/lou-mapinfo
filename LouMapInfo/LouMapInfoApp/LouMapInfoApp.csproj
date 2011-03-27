@@ -64,18 +64,6 @@
     <Compile Include="LayoutPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="LouMap\ContentLMContinent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LouMap\ContentLMContinent.Designer.cs">
-      <DependentUpon>ContentLMContinent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LouMap\ContentLMWorld.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LouMap\ContentLMWorld.Designer.cs">
-      <DependentUpon>ContentLMWorld.cs</DependentUpon>
-    </Compile>
     <Compile Include="LouOfficial\ContentLouConnection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -206,12 +194,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ContentCSV.resx">
       <DependentUpon>ContentCSV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LouMap\ContentLMContinent.resx">
-      <DependentUpon>ContentLMContinent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LouMap\ContentLMWorld.resx">
-      <DependentUpon>ContentLMWorld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LouOfficial\ContentLouConnection.resx">
       <DependentUpon>ContentLouConnection.cs</DependentUpon>
