@@ -45,8 +45,8 @@ namespace LouMapInfo.Reports.OfficialLOU
                     //First palaces
                     if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
                     {
-                        LoUCityInfo[] citiesW = p.Cities(OldLoUCityType.Palace, LoUBorderingType.Water, cont.Id);
-                        LoUCityInfo[] citiesL = p.Cities(OldLoUCityType.Palace, LoUBorderingType.Land, cont.Id);
+                        LoUCityInfo[] citiesW = p.Cities(OldLoUCityType.Palace, false,true, cont.Id);
+                        LoUCityInfo[] citiesL = p.Cities(OldLoUCityType.Palace, true,false, cont.Id);
                         ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, OldLoUCityType.Palace, true);
                         if (citiesW.Length > 0)
                         {
@@ -72,8 +72,8 @@ namespace LouMapInfo.Reports.OfficialLOU
                     //Then castles
                     if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
                     {
-                        LoUCityInfo[] citiesW = p.Cities(OldLoUCityType.Castle, LoUBorderingType.Water, cont.Id);
-                        LoUCityInfo[] citiesL = p.Cities(OldLoUCityType.Castle, LoUBorderingType.Land, cont.Id);
+                        LoUCityInfo[] citiesW = p.Cities(OldLoUCityType.Castle, false,true, cont.Id);
+                        LoUCityInfo[] citiesL = p.Cities(OldLoUCityType.Castle, true,false, cont.Id);
                         ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, OldLoUCityType.Castle, true);
                         if (citiesW.Length > 0)
                         {
@@ -99,8 +99,8 @@ namespace LouMapInfo.Reports.OfficialLOU
                     //Then non-castled cities
                     if (m_Type == CityCastleType.Both || m_Type == CityCastleType.City)
                     {
-                        LoUCityInfo[] citiesW = p.Cities(OldLoUCityType.City, LoUBorderingType.Water,cont.Id);
-                        LoUCityInfo[] citiesL = p.Cities(OldLoUCityType.City, LoUBorderingType.Land, cont.Id);
+                        LoUCityInfo[] citiesW = p.Cities(OldLoUCityType.City, false,true, cont.Id);
+                        LoUCityInfo[] citiesL = p.Cities(OldLoUCityType.City, true, false, cont.Id);
                         ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, OldLoUCityType.City, true);
                         if (citiesW.Length > 0)
                         {
