@@ -7,9 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using LouMapInfo.Reports.core;
 using EricUtility.Windows.Forms;
-using LouMapInfo.Entities;
 using EricUtility;
 using System.Threading;
+using LouMapInfo.OfficialLOU.Entities;
 
 namespace LouMapInfoApp
 {
@@ -20,7 +20,7 @@ namespace LouMapInfoApp
         public ContentReport(ReportInfo r, int d)
         {
             InitializeComponent();
-            r.Type = (CityCastleType)Properties.Settings.Default.lastWCityType;
+            r.SetTypes(LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
             CustomTabControl tctl = new CustomTabControl();
             tctl.Controls.Add(this.tpageReport);
             tctl.Controls.Add(this.tpageBBCode);
@@ -55,12 +55,6 @@ namespace LouMapInfoApp
             report = r;
             depth = d;
             Text = StringUtility.RemoveBBCodeTags(r.Title);
-            switch (r.Type)
-            {
-                case LouMapInfo.Entities.CityCastleType.Both: btnBoth_Click(null, new EventArgs()); break;
-                case LouMapInfo.Entities.CityCastleType.City: btnCities_Click(null, new EventArgs()); break;
-                case LouMapInfo.Entities.CityCastleType.Castle: btnCastles_Click(null, new EventArgs()); break;
-            }
             switch (d)
             {
                 case 1: btnReportsLvl1_Click(null, new EventArgs()); break;
@@ -94,9 +88,9 @@ namespace LouMapInfoApp
             report.SetOption(ro, true);
             RefreshReport();
         }
-        private void ChangeType(CityCastleType t)
+        private void ChangeType(params LoUCityType[] t)
         {
-            report.Type = t;
+            report.SetTypes(t);
         }
         private void RefreshReport()
         {
@@ -209,13 +203,11 @@ namespace LouMapInfoApp
 
         private void btnBoth_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.lastWCityType = (int)CityCastleType.Both;
-            Properties.Settings.Default.Save();
             btnCityType.Text = btnBoth.Text;
             btnBoth.Checked = true;
             btnCities.Checked = false;
             btnCastles.Checked = false;
-            ChangeType(CityCastleType.Both);
+            ChangeType(LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
             if (sender != null)
             {
                 RefreshReport();
@@ -225,13 +217,11 @@ namespace LouMapInfoApp
 
         private void btnCastles_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.lastWCityType = (int)CityCastleType.Castle;
-            Properties.Settings.Default.Save();
             btnCityType.Text = btnCastles.Text;
             btnBoth.Checked = false;
             btnCities.Checked = false;
             btnCastles.Checked = true;
-            ChangeType(CityCastleType.Castle);
+            ChangeType(LoUCityType.Castle, LoUCityType.Palace);
             if (sender != null)
             {
                 RefreshReport();
@@ -240,13 +230,11 @@ namespace LouMapInfoApp
 
         private void btnCities_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.lastWCityType = (int)CityCastleType.City;
-            Properties.Settings.Default.Save();
             btnCityType.Text = btnCities.Text;
             btnBoth.Checked = false;
             btnCities.Checked = true;
             btnCastles.Checked = false;
-            ChangeType(CityCastleType.City);
+            ChangeType(LoUCityType.City);
             if (sender != null)
             {
                 RefreshReport();

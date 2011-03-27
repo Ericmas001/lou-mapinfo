@@ -34,7 +34,6 @@
             this.btnMenuEmpire = new System.Windows.Forms.RadioButton();
             this.lstSubItems = new System.Windows.Forms.ListBox();
             this.btnMenuTools = new System.Windows.Forms.RadioButton();
-            this.btnMenuMap = new System.Windows.Forms.RadioButton();
             this.btnMenuZeus = new System.Windows.Forms.RadioButton();
             this.btnMenuOfficial = new System.Windows.Forms.RadioButton();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -54,7 +53,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuEmpire);
             this.splitContainer1.Panel1.Controls.Add(this.lstSubItems);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuTools);
-            this.splitContainer1.Panel1.Controls.Add(this.btnMenuMap);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuZeus);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuOfficial);
             this.splitContainer1.Panel1MinSize = 10;
@@ -107,9 +105,9 @@
             this.lstSubItems.FormattingEnabled = true;
             this.lstSubItems.IntegralHeight = false;
             this.lstSubItems.ItemHeight = 16;
-            this.lstSubItems.Location = new System.Drawing.Point(0, 351);
+            this.lstSubItems.Location = new System.Drawing.Point(0, 280);
             this.lstSubItems.Name = "lstSubItems";
-            this.lstSubItems.Size = new System.Drawing.Size(196, 211);
+            this.lstSubItems.Size = new System.Drawing.Size(196, 282);
             this.lstSubItems.TabIndex = 8;
             this.lstSubItems.SelectedIndexChanged += new System.EventHandler(this.lstSubItems_SelectedIndexChanged);
             this.lstSubItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
@@ -120,7 +118,7 @@
             this.btnMenuTools.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuTools.Image = global::LouMapInfoApp.Properties.Resources.menu_Tools;
-            this.btnMenuTools.Location = new System.Drawing.Point(-2, 280);
+            this.btnMenuTools.Location = new System.Drawing.Point(-2, 210);
             this.btnMenuTools.Name = "btnMenuTools";
             this.btnMenuTools.Size = new System.Drawing.Size(198, 71);
             this.btnMenuTools.TabIndex = 7;
@@ -130,23 +128,6 @@
             this.btnMenuTools.UseVisualStyleBackColor = true;
             this.btnMenuTools.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
             this.btnMenuTools.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
-            // 
-            // btnMenuMap
-            // 
-            this.btnMenuMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMenuMap.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnMenuMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuMap.Image = global::LouMapInfoApp.Properties.Resources.menu_Map;
-            this.btnMenuMap.Location = new System.Drawing.Point(-2, 210);
-            this.btnMenuMap.Name = "btnMenuMap";
-            this.btnMenuMap.Size = new System.Drawing.Size(198, 71);
-            this.btnMenuMap.TabIndex = 6;
-            this.btnMenuMap.Text = "LoU-Map";
-            this.btnMenuMap.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMenuMap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMenuMap.UseVisualStyleBackColor = true;
-            this.btnMenuMap.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
-            this.btnMenuMap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
             // btnMenuZeus
             // 
@@ -206,7 +187,6 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.RadioButton btnMenuOfficial;
-        private System.Windows.Forms.RadioButton btnMenuMap;
         private System.Windows.Forms.RadioButton btnMenuZeus;
         private System.Windows.Forms.RadioButton btnMenuTools;
         private System.Windows.Forms.ListBox lstSubItems;
