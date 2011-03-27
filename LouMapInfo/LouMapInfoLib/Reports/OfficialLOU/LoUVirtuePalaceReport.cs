@@ -8,16 +8,17 @@ using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Reports.OfficialLOU.core;
 using LouMapInfo.Reports.OfficialLOU.Items;
 using LouMapInfo.OfficialLOU;
+using LouMapInfo.Reports.Features;
 
 namespace LouMapInfo.Reports.OfficialLOU
 {
     public class LoUVirtuePalaceReport : LoUReportInfo
     {
         private LoUWorldInfo world;
-        private LoUVirtue virtue;
+        private LoUVirtueType virtue;
         private LoUAllianceInfo alliance;
-        public LoUVirtuePalaceReport(LoUWorldInfo w, LoUVirtue v, LoUAllianceInfo a)
-            : base(LoUCityType.CityCastlePalace)
+        public LoUVirtuePalaceReport(LoUWorldInfo w, LoUVirtueType v, LoUAllianceInfo a)
+            : base(LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace)
         {
             this.world = w;
             this.virtue = v;
@@ -32,21 +33,21 @@ namespace LouMapInfo.Reports.OfficialLOU
 
         protected override void OnLoad()
         {
-            title = new TextReportItem((virtue == LoUVirtue.None ? "Virtues" : virtue.ToString() ) + " Overview", true);
+            title = new TextReportItem((virtue == LoUVirtueType.None ? "Virtues" : virtue.ToString() ) + " Overview", true);
             string a = alliance == null ? "" : alliance.Name;
             if (alliance != null)
                 subtitle = new LoUAllianceInfoReportItem(alliance, true);
-            Dictionary<int, Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>> palaces = new Dictionary<int, Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>>();
-            LoUVirtue[] virtues = (virtue == LoUVirtue.None ? new LoUVirtue[]{ LoUVirtue.Compassion, LoUVirtue.Honesty, LoUVirtue.Honor, LoUVirtue.Humility, LoUVirtue.Justice, LoUVirtue.Sacrifice, LoUVirtue.Spirituality, LoUVirtue.Valor} : new LoUVirtue[]{ virtue });
+            Dictionary<int, Dictionary<LoUVirtueType, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>> palaces = new Dictionary<int, Dictionary<LoUVirtueType, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>>();
+            LoUVirtueType[] virtues = (virtue == LoUVirtueType.None ? new LoUVirtueType[]{ LoUVirtueType.Compassion, LoUVirtueType.Honesty, LoUVirtueType.Honor, LoUVirtueType.Humility, LoUVirtueType.Justice, LoUVirtueType.Sacrifice, LoUVirtueType.Spirituality, LoUVirtueType.Valor} : new LoUVirtueType[]{ virtue });
 
             List<string> members = new List<string>(alliance == null ? new string[0] : world.PalacesOwnersByAlliance(a));
             for (int i = 10; i > 0; --i)
             {
-                palaces.Add(i, new Dictionary<LoUVirtue, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>());
-                foreach (LoUVirtue v in virtues)
+                palaces.Add(i, new Dictionary<LoUVirtueType, KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>>());
+                foreach (LoUVirtueType v in virtues)
                     palaces[i].Add(v, new KeyValuePair<List<LoUCityInfo>, List<LoUCityInfo>>(new List<LoUCityInfo>(), new List<LoUCityInfo>()));
             }
-            foreach (LoUVirtue v in virtues)
+            foreach (LoUVirtueType v in virtues)
             {
                 string[] players = world.PalacesOwnersByVirtue(v);
                 foreach (string p in players)
@@ -55,7 +56,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                     {
                         LoUPlayerInfo pl = world.Player(p);
                         pl.LoadIfNeeded();
-                        foreach (LoUCityInfo city in pl.Cities(LoUCityType.Palace))
+                        foreach (LoUCityInfo city in pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
                         {
                             city.LoadIfNeeded();
                             if (city.VirtueType == v)
@@ -75,7 +76,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                 if (palaces[i].Count > 0)
                 {
                     ReportItem r = new TextReportItem("Level " + i + " Palaces", false);
-                    foreach (LoUVirtue v in virtues)
+                    foreach (LoUVirtueType v in virtues)
                     {
                         bool something2 = false;
                         ReportItem r2 = new LoUCityTypeReportItem(palaces[i][v].Key.Count + palaces[i][v].Value.Count, LoUCityType.Palace, v, false);

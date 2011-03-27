@@ -7,28 +7,34 @@ namespace LouMapInfo.Reports.OfficialLOU.core
 {
     public static class LoUReportUtility
     {
-        public static string SayCityType(LoUCityType type)
+        public static string SayCityType(params LoUCityType[] type)
         {
-            switch (type)
+
+            List<LoUCityType> types = new List<LoUCityType>(type);
+            if (types.Count == 0)
+                return "No cities displayed";
+            else if (types.Count == 1)
             {
-                case LoUCityType.None:
-                    return "No cities displayed";
-                case LoUCityType.City:
-                    return "Non-Castled cities only";
-                case LoUCityType.Castle:
-                    return "Castles only";
-                case LoUCityType.Palace:
-                    return "Palaces only";
-                case LoUCityType.CastlePalace:
-                    return "Non-Castled cities excluded";
-                case LoUCityType.CityPalace:
-                    return "Castles excluded";
-                case LoUCityType.CityCastle:
-                    return "Palaces excluded";
-                case LoUCityType.CityCastlePalace:
-                    return "All cities displayed";
+                switch (types[0])
+                {
+                    case LoUCityType.City:
+                        return "Non-Castled cities only";
+                    case LoUCityType.Castle:
+                        return "Castles only";
+                    case LoUCityType.Palace:
+                        return "Palaces only";
+                }
             }
-            return null;
+            else if (types.Count == 2)
+            {
+                if (!types.Contains(LoUCityType.City))
+                    return "Non-Castled cities excluded";
+                if (!types.Contains(LoUCityType.Castle))
+                    return "Castles excluded";
+                if (!types.Contains(LoUCityType.Palace))
+                    return "Palaces excluded";
+            }
+            return "All cities displayed";
         }
     }
 }

@@ -70,7 +70,7 @@ namespace LouMapInfoApp.LouOfficial
                 LoUContinentInfo c = Session.World.Continent((int)o);
                 if (c != null)
                 {
-                    LoUContinentOverviewReport rep = new LoUContinentOverviewReport(c, LoUCityType.CityCastlePalace);
+                    LoUContinentOverviewReport rep = new LoUContinentOverviewReport(c, LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
                     rep.LoadIfNeeded();
                     OpenReport(rep);
                 }
@@ -87,7 +87,7 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, LoUCityType.CityCastlePalace);
+                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);

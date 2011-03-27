@@ -63,7 +63,7 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, LoUCityType.CityCastlePalace);
+                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);

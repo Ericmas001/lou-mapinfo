@@ -76,7 +76,7 @@ namespace LouMapInfoApp.LouOfficial
             else
             {
 
-                LoUVirtuePalaceReport rep = new LoUVirtuePalaceReport(Session.World, LoUVirtue.None, a);
+                LoUVirtuePalaceReport rep = new LoUVirtuePalaceReport(Session.World, LoUVirtueType.None, a);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);
@@ -130,12 +130,12 @@ namespace LouMapInfoApp.LouOfficial
         private void OpenVirtueReportAsync(object o)
         {
             string v = o as string;
-            LoUVirtue virtue;
+            LoUVirtueType virtue;
 
             if (String.IsNullOrEmpty(v))
-                virtue = LoUVirtue.None;
+                virtue = LoUVirtueType.None;
             else
-                virtue = (LoUVirtue)Enum.Parse(typeof(LoUVirtue), v);
+                virtue = (LoUVirtueType)Enum.Parse(typeof(LoUVirtueType), v);
 
             LoUVirtuePalaceReport rep = new LoUVirtuePalaceReport(Session.World, virtue, null);
             rep.LoadIfNeeded();
