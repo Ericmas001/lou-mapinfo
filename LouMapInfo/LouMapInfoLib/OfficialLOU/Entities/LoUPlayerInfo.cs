@@ -76,7 +76,7 @@ namespace LouMapInfo.OfficialLOU.Entities
                 {
                     m_CitiesByContinent.Add(pt.Continent, new List<LoUCityInfo>());
                     m_ScoreByContinent.Add(pt.Continent, 0);
-                } 
+                }
                 m_CitiesByContinent[pt.Continent].Add(city);
                 m_CitiesByCoords.Add(pt.ToString(), city);
                 m_CitiesById.Add(cI, city);
@@ -104,49 +104,49 @@ namespace LouMapInfo.OfficialLOU.Entities
             list.CopyTo(res, 0);
             return res;
         }
-        private LoUCityInfo[] Cities(ICollection<LoUCityInfo> list, OldLoUCityType type, LoUBorderingType type2)
+        private LoUCityInfo[] Cities(ICollection<LoUCityInfo> list, OldLoUCityType type, bool land, bool water)
         {
             LoUCityInfo[] all = new LoUCityInfo[list.Count];
             list.CopyTo(all, 0);
             if (type == OldLoUCityType.CityCastlePalace)
                 return all;
             List<LoUCityInfo> res = new List<LoUCityInfo>();
-            foreach( LoUCityInfo c in all )
+            foreach (LoUCityInfo c in all)
             {
-                switch( c.TypeCity )
+                switch (c.TypeCity)
                 {
                     case OldLoUCityType.City:
-                        switch( type )
+                        switch (type)
                         {
                             case OldLoUCityType.City:
                             case OldLoUCityType.CityCastle:
                             case OldLoUCityType.CityCastlePalace:
                             case OldLoUCityType.CityPalace:
-                                if( type2 == LoUBorderingType.LandOrWater || type2 == c.Bordering )
+                                if ((c.Bordering == LoUBorderingType.Land && land) || (c.Bordering == LoUBorderingType.Water && water))
                                     res.Add(c);
                                 break;
                         }
                         break;
                     case OldLoUCityType.Castle:
-                        switch( type )
+                        switch (type)
                         {
                             case OldLoUCityType.Castle:
                             case OldLoUCityType.CityCastle:
                             case OldLoUCityType.CityCastlePalace:
                             case OldLoUCityType.CastlePalace:
-                                if( type2 == LoUBorderingType.LandOrWater || type2 == c.Bordering )
+                                if ((c.Bordering == LoUBorderingType.Land && land) || (c.Bordering == LoUBorderingType.Water && water))
                                     res.Add(c);
                                 break;
                         }
                         break;
                     case OldLoUCityType.Palace:
-                        switch( type )
+                        switch (type)
                         {
                             case OldLoUCityType.Palace:
                             case OldLoUCityType.CastlePalace:
                             case OldLoUCityType.CityCastlePalace:
                             case OldLoUCityType.CityPalace:
-                                if( type2 == LoUBorderingType.LandOrWater || type2 == c.Bordering )
+                                if ((c.Bordering == LoUBorderingType.Land && land) || (c.Bordering == LoUBorderingType.Water && water))
                                     res.Add(c);
                                 break;
                         }
@@ -155,15 +155,15 @@ namespace LouMapInfo.OfficialLOU.Entities
             }
             return Cities(res);
         }
-        private LoUCityInfo[] Cities(ICollection<LoUCityInfo> list, LoUBorderingType type)
+        private LoUCityInfo[] Cities(ICollection<LoUCityInfo> list, bool land, bool water)
         {
-            return Cities(list, OldLoUCityType.CityCastlePalace, type);
+            return Cities(list, OldLoUCityType.CityCastlePalace, land, water);
         }
         private LoUCityInfo[] Cities(ICollection<LoUCityInfo> list, OldLoUCityType type)
         {
-            return Cities(list, type, LoUBorderingType.LandOrWater);
+            return Cities(list, type, true, true);
         }
-        
+
         public LoUCityInfo[] Cities()
         {
             return Cities(m_CitiesById.Values);
@@ -176,23 +176,23 @@ namespace LouMapInfo.OfficialLOU.Entities
         }
         public LoUCityInfo[] Cities(OldLoUCityType type)
         {
-            return Cities(Cities(),type);
-        }
-        public LoUCityInfo[] Cities(LoUBorderingType type)
-        {
             return Cities(Cities(), type);
+        }
+        public LoUCityInfo[] Cities(bool land, bool water)
+        {
+            return Cities(Cities(), land, water);
         }
         public LoUCityInfo[] Cities(OldLoUCityType type, int continent)
         {
             return Cities(Cities(continent), type);
         }
-        public LoUCityInfo[] Cities(LoUBorderingType type, int continent)
+        public LoUCityInfo[] Cities(bool land, bool water, int continent)
         {
-            return Cities(Cities(continent), type);
+            return Cities(Cities(continent), land, water);
         }
-        public LoUCityInfo[] Cities(OldLoUCityType type, LoUBorderingType type2, int continent)
+        public LoUCityInfo[] Cities(OldLoUCityType type, bool land, bool water, int continent)
         {
-            return Cities(Cities(continent), type, type2);
+            return Cities(Cities(continent), type, land, water);
         }
         public LoUCityInfo City(string location)
         {

@@ -4,11 +4,10 @@ using System.Text;
 
 namespace LouMapInfo.OfficialLOU.Entities
 {
-    public enum LoUCityFlag
+    public enum LoUBorderingType
     {
-        None = 0,
-        City = 1,
-        Castle = 2,
-        Palace = 4
+        Unknown,
+        Land,
+        Water
     }
 }
