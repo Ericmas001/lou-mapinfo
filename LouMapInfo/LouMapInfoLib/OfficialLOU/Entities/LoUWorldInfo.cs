@@ -12,7 +12,7 @@ namespace LouMapInfo.OfficialLOU.Entities
     {
         private readonly LoUSessionInfo m_Session;
         private readonly string m_Name;
-        private readonly string m_Url;
+        private readonly LoUServerInfo m_Server;
         private bool m_VisLoaded = false;
         private readonly Dictionary<string, LoUPlayerInfo> m_PlayersByName = new Dictionary<string, LoUPlayerInfo>();
         private readonly Dictionary<int, LoUPlayerInfo> m_PlayersById = new Dictionary<int, LoUPlayerInfo>();
@@ -27,7 +27,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         private readonly Dictionary<string, List<string>> m_PalacesOwnersByAlliance = new Dictionary<string, List<string>>();
             
         public LoUSessionInfo Session { get { return m_Session; } }
-        public string Url { get { return m_Url; } }
+        public string Url { get { return m_Server.Url; } }
         public string Name { get { return m_Name; } }
         public LoUPlayerInfo[] Players
         {
@@ -44,7 +44,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         {
             m_Session = session;
             m_Name = name;
-            m_Url = LoUServerList.Servers[name];
+            m_Server = LoUServerList.ServersByName[name];
         }
         protected override void OnLoad()
         {
@@ -52,7 +52,7 @@ namespace LouMapInfo.OfficialLOU.Entities
             m_PlayersById.Clear();
             m_AlliancesByName.Clear();
             m_AlliancesById.Clear();
-            JsonArrayCollection players = LoUEndPoint.GetPlayerList(m_Url,m_Session.SessionID);
+            JsonArrayCollection players = LoUEndPoint.GetPlayerList(Url,m_Session.SessionID);
             foreach (JsonObjectCollection p in players)
             {
                 int pI = (int)((JsonNumericValue)p["i"]).Value;
