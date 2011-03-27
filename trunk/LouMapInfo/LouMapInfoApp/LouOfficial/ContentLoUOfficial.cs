@@ -16,6 +16,13 @@ namespace LouMapInfoApp.LouOfficial
         private int waitingCounter = 0;
         private MainForm m_Parent;
         private Image m_Logo;
+        private Control child;
+
+        public Control Child
+        {
+            get { return child; }
+            set { child = value; }
+        }
 
         public MainForm MainForm
         {
@@ -27,7 +34,7 @@ namespace LouMapInfoApp.LouOfficial
             m_Logo = logo;
             m_Parent = parent;
             content.Frame = this;
-            Control child = content as Control;
+            child = content as Control;
             Controls.Add(child);
             child.Dock = DockStyle.Fill;
             LoUSessionInfo session = m_Parent.Session;

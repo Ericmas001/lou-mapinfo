@@ -11,7 +11,7 @@ namespace LouMapInfo.OfficialLOU.Entities
         private readonly LoUPlayerInfo m_Player;
         private readonly LoUWorldInfo m_World;
 
-        private readonly string m_Name;
+        private string m_Name;
         private readonly int m_Id;
         private readonly LoUBorderingType m_Bordering;
         private readonly OldLoUCityType m_TypeCity;
@@ -56,6 +56,25 @@ namespace LouMapInfo.OfficialLOU.Entities
         public override string ToString()
         {
             return m_Location.ToString() + "  " + m_Name + " (" + m_Score.ToString("N0") + ")";
+        }
+
+        public void Rename(string newName)
+        {
+            m_Name = newName;
+            LoUEndPoint.RenameCity(Player.Alliance.World.Url, Player.Alliance.World.Session.SessionID, Id, newName);
+        }
+
+        public void SetCityNote(string title, string text)
+        {
+            LoUEndPoint.CityNoteSet(Player.Alliance.World.Url, Player.Alliance.World.Session.SessionID, Id, title,text);
+        }
+
+        public KeyValuePair<string,string> GetCityNote()
+        {
+            JsonObjectCollection joc = LoUEndPoint.GetCityInfo(Player.Alliance.World.Url, Player.Alliance.World.Session.SessionID, Id);
+            string title = ((JsonStringValue)joc["nr"]).Value;
+            string text = ((JsonStringValue)joc["ns"]).Value;
+            return new KeyValuePair<string, string>(title,text);
         }
 
         #region IComparable<LoUCityInfo> Members
