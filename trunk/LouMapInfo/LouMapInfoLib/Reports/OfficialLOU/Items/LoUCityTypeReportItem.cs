@@ -12,9 +12,9 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
     {
         private int m_Count;
         private LoUCityType m_Type;
-        private LoUVirtue m_Virtue;
+        private LoUVirtueType m_Virtue;
 
-        public LoUCityTypeReportItem(int count, LoUCityType type, LoUVirtue virtue, bool showIfEmpty)
+        public LoUCityTypeReportItem(int count, LoUCityType type, LoUVirtueType virtue, bool showIfEmpty)
             : base(showIfEmpty)
         {
             m_Count = count;
@@ -23,7 +23,7 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
         }
 
         public LoUCityTypeReportItem(int count, LoUCityType type, bool showIfEmpty)
-            : this( count,  type, LoUVirtue.None, showIfEmpty)
+            : this( count,  type, LoUVirtueType.None, showIfEmpty)
         {
         }
 
@@ -42,7 +42,7 @@ namespace LouMapInfo.Reports.OfficialLOU.Items
                 case LoUCityType.Castle:
                     name = "Castle" + (m_Count <= 1 ? "" : "s"); break;
                 case LoUCityType.Palace:
-                    name = (m_Virtue != LoUVirtue.None ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
+                    name = (m_Virtue != LoUVirtueType.None ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
             }
 
             String s = "";

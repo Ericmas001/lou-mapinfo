@@ -8,6 +8,7 @@ using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Reports.OfficialLOU.core;
 using LouMapInfo.Reports.OfficialLOU.Items;
 using LouMapInfo.OfficialLOU;
+using LouMapInfo.Reports.Features;
 
 namespace LouMapInfo.Reports.OfficialLOU
 {
@@ -17,7 +18,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         private LoUPt location;
         private bool includeNoAlliance;
         public LoUShrineCastlesReport(LoUWorldInfo w, LoUPt l, bool noAlliance)
-            : base(LoUCityType.CastlePalace)
+            : base(LoUCityType.Castle, LoUCityType.Palace)
         {
             this.world = w;
             this.location = l;
@@ -47,7 +48,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                 {
                     foreach (LoUPlayerInfo p in a.Players())
                     {
-                        foreach (LoUCityInfo c in p.Cities(LoUCityType.CastlePalace, cont.Id))
+                        foreach (LoUCityInfo c in p.Cities(cont.Id, ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
                         {
                             double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
                             //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);

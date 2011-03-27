@@ -8,6 +8,7 @@ using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Reports.OfficialLOU.core;
 using LouMapInfo.Reports.OfficialLOU.Items;
 using LouMapInfo.OfficialLOU;
+using LouMapInfo.Reports.Features;
 
 namespace LouMapInfo.Reports.OfficialLOU
 {
@@ -16,7 +17,7 @@ namespace LouMapInfo.Reports.OfficialLOU
         private LoUWorldInfo world;
         private LoUBattleType type;
         public LoUBattlePalaceReport(LoUWorldInfo w, LoUBattleType b)
-            : base(LoUCityType.CityCastlePalace)
+            : base(LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace)
         {
             this.world = w;
             this.type = b;
@@ -52,9 +53,9 @@ namespace LouMapInfo.Reports.OfficialLOU
                 case LoUBattleType.HighestLevel: title = new TextReportItem("Highest Level Battle", true); break;
                 default: return;
             }
-            LoUVirtue[] virtues = new LoUVirtue[] { LoUVirtue.Compassion, LoUVirtue.Honesty, LoUVirtue.Honor, LoUVirtue.Humility, LoUVirtue.Justice, LoUVirtue.Sacrifice, LoUVirtue.Spirituality, LoUVirtue.Valor };
-            Dictionary<LoUVirtue, Dictionary<string, LoUCityInfo>> palaces = new Dictionary<LoUVirtue, Dictionary<string, LoUCityInfo>>();
-            foreach (LoUVirtue v in virtues)
+            LoUVirtueType[] virtues = new LoUVirtueType[] { LoUVirtueType.Compassion, LoUVirtueType.Honesty, LoUVirtueType.Honor, LoUVirtueType.Humility, LoUVirtueType.Justice, LoUVirtueType.Sacrifice, LoUVirtueType.Spirituality, LoUVirtueType.Valor };
+            Dictionary<LoUVirtueType, Dictionary<string, LoUCityInfo>> palaces = new Dictionary<LoUVirtueType, Dictionary<string, LoUCityInfo>>();
+            foreach (LoUVirtueType v in virtues)
             {
                 palaces.Add(v, new Dictionary<string, LoUCityInfo>());
                 string[] players = world.PalacesOwnersByVirtue(v);
@@ -62,7 +63,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                 {
                     LoUPlayerInfo pl = world.Player(p);
                     pl.LoadIfNeeded();
-                    foreach (LoUCityInfo city in pl.Cities(LoUCityType.Palace))
+                    foreach (LoUCityInfo city in pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
                     {
                         city.LoadIfNeeded();
                         if (city.VirtueType == v)
@@ -75,7 +76,7 @@ namespace LouMapInfo.Reports.OfficialLOU
                     }
                 }
             }
-            foreach (LoUVirtue v in virtues)
+            foreach (LoUVirtueType v in virtues)
             {
                 if (palaces[v].Count > 0)
                 {

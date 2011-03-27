@@ -49,7 +49,7 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, LoUCityType.CityCastlePalace);
+                LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);

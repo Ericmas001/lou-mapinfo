@@ -8,13 +8,14 @@ using LouMapInfo.Reports.Entities;
 using LouMapInfo.OfficialLOU.Entities;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.OfficialLOU.Items;
+using LouMapInfo.Reports.Features;
 
 namespace LouMapInfo.Reports.OfficialLOU
 {
     public class LoUPlayerOverviewReport : LoUReportInfo
     {
         private LoUPlayerInfo player;
-        public LoUPlayerOverviewReport(LoUPlayerInfo p, LoUCityType type)
+        public LoUPlayerOverviewReport(LoUPlayerInfo p, params LoUCityType[] type)
             : base(type)
         {
             player = p;
@@ -40,8 +41,8 @@ namespace LouMapInfo.Reports.OfficialLOU
                 //First palaces
                 if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
                 {
-                    LoUCityInfo[] citiesW = player.Cities(LoUCityType.Palace, false, true, ic);
-                    LoUCityInfo[] citiesL = player.Cities(LoUCityType.Palace, true, false, ic);
+                    LoUCityInfo[] citiesW = player.Cities(ic, ReportFeatureType.BorderingWater, ReportFeatureType.TypePalace);
+                    LoUCityInfo[] citiesL = player.Cities(ic, ReportFeatureType.BorderingLand, ReportFeatureType.TypePalace);
                     ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, LoUCityType.Palace, true);
                     if (citiesW.Length > 0)
                     {
@@ -67,8 +68,8 @@ namespace LouMapInfo.Reports.OfficialLOU
                 //Then castles
                 if (m_Type == CityCastleType.Both || m_Type == CityCastleType.Castle)
                 {
-                    LoUCityInfo[] citiesW = player.Cities(LoUCityType.Castle, false,true, ic);
-                    LoUCityInfo[] citiesL = player.Cities(LoUCityType.Castle, true,false, ic);
+                    LoUCityInfo[] citiesW = player.Cities(ic, ReportFeatureType.BorderingWater, ReportFeatureType.TypeCastle);
+                    LoUCityInfo[] citiesL = player.Cities(ic, ReportFeatureType.BorderingLand, ReportFeatureType.TypeCastle);
                     ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, LoUCityType.Castle, true);
                     if (citiesW.Length > 0)
                     {
@@ -94,8 +95,8 @@ namespace LouMapInfo.Reports.OfficialLOU
                 //Then non-castled cities
                 if (m_Type == CityCastleType.Both || m_Type == CityCastleType.City)
                 {
-                    LoUCityInfo[] citiesW = player.Cities(LoUCityType.City, false,true, ic);
-                    LoUCityInfo[] citiesL = player.Cities(LoUCityType.City, true,false, ic);
+                    LoUCityInfo[] citiesW = player.Cities(ic, ReportFeatureType.BorderingWater, ReportFeatureType.TypeCity);
+                    LoUCityInfo[] citiesL = player.Cities(ic, ReportFeatureType.BorderingLand, ReportFeatureType.TypeCity);
                     ReportItem r3 = new LoUCityTypeReportItem(citiesW.Length + citiesL.Length, LoUCityType.City, true);
                     if (citiesW.Length > 0)
                     {

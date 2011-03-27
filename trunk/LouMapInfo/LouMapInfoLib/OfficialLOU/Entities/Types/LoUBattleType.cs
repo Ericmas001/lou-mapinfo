@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LouMapInfo.OfficialLOU
+namespace LouMapInfo.OfficialLOU.Entities
 {
     public enum LoUBattleType
     {

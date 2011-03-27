@@ -53,7 +53,7 @@
     <Compile Include="Layout\ProductionType.cs" />
     <Compile Include="Layout\ResourceType.cs" />
     <Compile Include="OfficialLOU\Entities\LoUServerInfo.cs" />
-    <Compile Include="OfficialLOU\LoUBattleType.cs" />
+    <Compile Include="OfficialLOU\Entities\Types\LoUBattleType.cs" />
     <Compile Include="OfficialLOU\Entities\LoUMoonGateInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUShrineInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUContinentInfo.cs" />
@@ -72,18 +72,19 @@
     <Compile Include="OfficialLOU\LoUServerList.cs" />
     <Compile Include="OfficialLOU\Entities\LoUSessionInfo.cs" />
     <Compile Include="OfficialLOU\Entities\LoUWorldInfo.cs" />
-    <Compile Include="OfficialLOU\LoUVirtue.cs" />
+    <Compile Include="OfficialLOU\Entities\Types\LoUVirtueType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
+    <Compile Include="Reports\Features\ReportFeatureInfo.cs" />
+    <Compile Include="Reports\Features\ReportFeatures.cs" />
+    <Compile Include="Reports\Features\ReportFeatureType.cs" />
     <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\LoUShrineCastlesReport.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUDetailedPalaceInfoReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\LoUBattlePalaceReport.cs" />
     <Compile Include="Reports\OfficialLOU\Items\LoUDetailedCityInfoReportItem.cs" />
     <Compile Include="Reports\OfficialLOU\LoUVirtuePalaceReport.cs" />
-    <Compile Include="Reports\OfficialLOU\LoUMoongatesReport.cs" />
-    <Compile Include="Reports\OfficialLOU\LoULawlessReport.cs" />
     <Compile Include="Reports\OfficialLOU\LoUContinentOverviewReport.cs" />
     <Compile Include="Reports\OfficialLOU\LoUAllianceOverviewReport.cs" />
     <Compile Include="Reports\OfficialLOU\core\LoUReportInfo.cs" />
@@ -140,6 +141,7 @@
       <Name>EricUtility_4.0</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
