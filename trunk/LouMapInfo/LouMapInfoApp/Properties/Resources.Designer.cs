@@ -473,6 +473,13 @@ namespace LouMapInfoApp.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap clipboard_icon {
+            get {
+                object obj = ResourceManager.GetObject("clipboard_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap corn_1x1_01 {
             get {
                 object obj = ResourceManager.GetObject("corn_1x1_01", resourceCulture);
@@ -540,6 +547,13 @@ namespace LouMapInfoApp.Properties {
             get {
                 object obj = ResourceManager.GetObject("icone_LOU", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap internet_browser_icon {
+            get {
+                object obj = ResourceManager.GetObject("internet_browser_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

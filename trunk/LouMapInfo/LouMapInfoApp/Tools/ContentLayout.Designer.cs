@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentLayout));
             this.pnlContent = new System.Windows.Forms.Panel();
             this.statePictureBox1 = new EricUtility.Windows.Forms.StatePictureBox();
             this.pnlRight = new System.Windows.Forms.Panel();
@@ -128,7 +129,6 @@
             this.btnCopyFCP = new System.Windows.Forms.Button();
             this.btnCopySS = new System.Windows.Forms.Button();
             this.pnlCity = new System.Windows.Forms.Panel();
-            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnSawmill = new System.Windows.Forms.ToolStripButton();
             this.btnStonemasson = new System.Windows.Forms.ToolStripButton();
@@ -173,6 +173,8 @@
             this.btnOldFarm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDestroy = new System.Windows.Forms.ToolStripButton();
+            this.btnCopyFCPShort = new System.Windows.Forms.Button();
+            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
             this.pnlRight.SuspendLayout();
@@ -192,10 +194,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).BeginInit();
             this.tbExport.SuspendLayout();
             this.pnlCity.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -1062,6 +1064,7 @@
             // 
             // tbExport
             // 
+            this.tbExport.Controls.Add(this.btnCopyFCPShort);
             this.tbExport.Controls.Add(this.btnOpenFCP);
             this.tbExport.Controls.Add(this.btnCopyFCP);
             this.tbExport.Controls.Add(this.btnCopySS);
@@ -1075,40 +1078,43 @@
             // 
             // btnOpenFCP
             // 
-            this.btnOpenFCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenFCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenFCP.Location = new System.Drawing.Point(6, 55);
+            this.btnOpenFCP.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFCP.Image")));
+            this.btnOpenFCP.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnOpenFCP.Location = new System.Drawing.Point(315, 3);
             this.btnOpenFCP.Name = "btnOpenFCP";
-            this.btnOpenFCP.Size = new System.Drawing.Size(750, 23);
+            this.btnOpenFCP.Size = new System.Drawing.Size(97, 72);
             this.btnOpenFCP.TabIndex = 5;
-            this.btnOpenFCP.Text = "Open FlashCityPlanner in Browser";
+            this.btnOpenFCP.Text = "FlashPlanner";
+            this.btnOpenFCP.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOpenFCP.UseVisualStyleBackColor = true;
             this.btnOpenFCP.Click += new System.EventHandler(this.btnOpenFCP_Click);
             // 
             // btnCopyFCP
             // 
-            this.btnCopyFCP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyFCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopyFCP.Location = new System.Drawing.Point(6, 29);
+            this.btnCopyFCP.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyFCP.Image")));
+            this.btnCopyFCP.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCopyFCP.Location = new System.Drawing.Point(109, 3);
             this.btnCopyFCP.Name = "btnCopyFCP";
-            this.btnCopyFCP.Size = new System.Drawing.Size(750, 23);
+            this.btnCopyFCP.Size = new System.Drawing.Size(97, 72);
             this.btnCopyFCP.TabIndex = 4;
-            this.btnCopyFCP.Text = "Copy FlashCityPlanner URL to Clipboard";
+            this.btnCopyFCP.Text = "LongURL";
+            this.btnCopyFCP.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCopyFCP.UseVisualStyleBackColor = true;
             this.btnCopyFCP.Click += new System.EventHandler(this.btnCopyFCP_Click);
             // 
             // btnCopySS
             // 
-            this.btnCopySS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopySS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopySS.Image = ((System.Drawing.Image)(resources.GetObject("btnCopySS.Image")));
+            this.btnCopySS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCopySS.Location = new System.Drawing.Point(6, 3);
             this.btnCopySS.Name = "btnCopySS";
-            this.btnCopySS.Size = new System.Drawing.Size(750, 23);
+            this.btnCopySS.Size = new System.Drawing.Size(97, 72);
             this.btnCopySS.TabIndex = 3;
-            this.btnCopySS.Text = "Copy ShareString to Clipboard";
+            this.btnCopySS.Text = "ShareString";
+            this.btnCopySS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCopySS.UseVisualStyleBackColor = true;
             this.btnCopySS.Click += new System.EventHandler(this.btnCopySS_Click);
             // 
@@ -1122,20 +1128,6 @@
             this.pnlCity.Name = "pnlCity";
             this.pnlCity.Size = new System.Drawing.Size(768, 480);
             this.pnlCity.TabIndex = 5;
-            // 
-            // pbCity
-            // 
-            this.pbCity.BackgroundImage = global::LouMapInfoApp.Properties.Resources.pl_town_bg_water;
-            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbCity.Location = new System.Drawing.Point(0, 0);
-            this.pbCity.Name = "pbCity";
-            this.pbCity.Size = new System.Drawing.Size(768, 480);
-            this.pbCity.TabIndex = 3;
-            this.pbCity.TabStop = false;
-            this.pbCity.Water = true;
-            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
-            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
             // 
             // toolStrip3
             // 
@@ -1597,6 +1589,34 @@
             this.btnDestroy.Text = "Destroy";
             this.btnDestroy.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
+            // btnCopyFCPShort
+            // 
+            this.btnCopyFCPShort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopyFCPShort.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyFCPShort.Image")));
+            this.btnCopyFCPShort.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCopyFCPShort.Location = new System.Drawing.Point(212, 3);
+            this.btnCopyFCPShort.Name = "btnCopyFCPShort";
+            this.btnCopyFCPShort.Size = new System.Drawing.Size(97, 72);
+            this.btnCopyFCPShort.TabIndex = 6;
+            this.btnCopyFCPShort.Text = "ShortURL";
+            this.btnCopyFCPShort.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCopyFCPShort.UseVisualStyleBackColor = true;
+            this.btnCopyFCPShort.Click += new System.EventHandler(this.btnCopyFCPShort_Click);
+            // 
+            // pbCity
+            // 
+            this.pbCity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCity.BackgroundImage")));
+            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbCity.Location = new System.Drawing.Point(0, 0);
+            this.pbCity.Name = "pbCity";
+            this.pbCity.Size = new System.Drawing.Size(768, 480);
+            this.pbCity.TabIndex = 3;
+            this.pbCity.TabStop = false;
+            this.pbCity.Water = true;
+            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
+            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
+            // 
             // ContentLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1638,13 +1658,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).EndInit();
             this.tbExport.ResumeLayout(false);
             this.pnlCity.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1796,6 +1816,7 @@
         private System.Windows.Forms.NumericUpDown nudAPCottages;
         private System.Windows.Forms.Label label3;
         private EricUtility.Windows.Forms.StatePictureBox statePictureBox1;
+        private System.Windows.Forms.Button btnCopyFCPShort;
 
 
 
