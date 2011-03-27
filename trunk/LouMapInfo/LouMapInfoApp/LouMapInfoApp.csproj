@@ -61,9 +61,7 @@
     <Compile Include="ContentCSV.Designer.cs">
       <DependentUpon>ContentCSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="LayoutPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="LayoutPictureBox.cs" />
     <Compile Include="LouMap\ContentLMContinent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -337,22 +335,7 @@
     <None Include="Resources\pl_res_iron.png" />
     <None Include="Resources\pl_res_forest.png" />
     <None Include="Resources\pl_res_farmland.png" />
-    <None Include="Resources\pl_menu_highlight_grey.png" />
-    <None Include="Resources\pl_menu_highlight.png" />
-    <None Include="Resources\pl_header_bg_military.png" />
-    <None Include="Resources\pl_header_bg.png" />
-    <None Include="Resources\pl_footer_bg.png" />
     <None Include="Resources\pl_decal_select_building.png" />
-    <None Include="Resources\pl_decal_building_valid.png" />
-    <None Include="Resources\pl_button_right_hover.png" />
-    <None Include="Resources\pl_button_right_down.png" />
-    <None Include="Resources\pl_button_right.png" />
-    <None Include="Resources\pl_button_left_hover.png" />
-    <None Include="Resources\pl_button_left_down.png" />
-    <None Include="Resources\pl_button_left.png" />
-    <None Include="Resources\pl_button_center_hover.png" />
-    <None Include="Resources\pl_button_center_down.png" />
-    <None Include="Resources\pl_button_center.png" />
     <None Include="Resources\pl_building_weapon_factory.png" />
     <None Include="Resources\pl_building_townhouse.png" />
     <None Include="Resources\pl_building_townhall.png" />
@@ -364,7 +347,6 @@
     <None Include="Resources\pl_building_stone_quarry.png" />
     <None Include="Resources\pl_building_stables.png" />
     <None Include="Resources\pl_building_shipyard.png" />
-    <None Include="Resources\pl_building_none.png" />
     <None Include="Resources\pl_building_mine_old.png" />
     <None Include="Resources\pl_building_mine.png" />
     <None Include="Resources\pl_building_mill.png" />
@@ -387,39 +369,10 @@
     <None Include="Resources\iron_r_1x1_01.png" />
     <None Include="Resources\forrest_big_01.png" />
     <None Include="Resources\corn_1x1_01.png" />
-    <None Include="Resources\building_weapon_factory.png" />
-    <None Include="Resources\building_townhouse.png" />
-    <None Include="Resources\building_temple.png" />
-    <None Include="Resources\building_stronghold.png" />
-    <None Include="Resources\building_storage.png" />
-    <None Include="Resources\building_stonecutter.png" />
     <None Include="Resources\building_stone_quarry.png" />
-    <None Include="Resources\building_stables.png" />
-    <None Include="Resources\building_shipyard.png" />
-    <None Include="Resources\building_quarry_new.png" />
-    <None Include="Resources\building_palace_level_06.png" />
-    <None Include="Resources\building_palace_level_05.png" />
-    <None Include="Resources\building_palace_level_04.png" />
-    <None Include="Resources\building_palace_level_03.png" />
-    <None Include="Resources\building_palace_level_02.png" />
-    <None Include="Resources\building_palace_level_01.png" />
-    <None Include="Resources\building_ore_mine_new.png" />
     <None Include="Resources\building_mine.png" />
-    <None Include="Resources\building_mill.png" />
-    <None Include="Resources\building_market_place.png" />
-    <None Include="Resources\building_mage_tower.png" />
-    <None Include="Resources\building_lumber_mill.png" />
-    <None Include="Resources\building_iron_furnace.png" />
-    <None Include="Resources\building_hut_new.png" />
     <None Include="Resources\building_hut.png" />
-    <None Include="Resources\building_hideout.png" />
-    <None Include="Resources\building_harbour.png" />
-    <None Include="Resources\building_farm_new.png" />
     <None Include="Resources\building_farm.png" />
-    <None Include="Resources\building_cottage.png" />
-    <None Include="Resources\building_cityguard_house.png" />
-    <None Include="Resources\building_casern.png" />
-    <None Include="Resources\building_barracks.png" />
     <None Include="Resources\building_weapon_factory_menu.png" />
     <None Include="Resources\building_townhouse_menu.png" />
     <None Include="Resources\building_temple_menu.png" />
@@ -429,7 +382,6 @@
     <None Include="Resources\building_stables_menu.png" />
     <None Include="Resources\building_shipyard_menu.png" />
     <None Include="Resources\building_quarry_new_menu.png" />
-    <None Include="Resources\building_palace_level_01_menu.png" />
     <None Include="Resources\building_ore_mine_new_menu.png" />
     <None Include="Resources\building_mill_menu.png" />
     <None Include="Resources\building_market_place_menu.png" />
@@ -444,23 +396,15 @@
     <None Include="Resources\building_cityguard_house_menu.png" />
     <None Include="Resources\building_casern_menu.png" />
     <None Include="Resources\building_barracks_menu.png" />
-    <None Include="Resources\bg_water.png" />
-    <None Include="Resources\bg_land.png" />
     <None Include="Resources\menu_Zeus.png" />
     <None Include="Resources\menu_Tools.png" />
     <None Include="Resources\menu_Official.png" />
     <None Include="Resources\menu_Map.png" />
     <None Include="Resources\menu_Empire.png" />
-    <None Include="Resources\empire.png" />
     <None Include="Resources\Office-excel-csv-icon.png" />
     <None Include="Resources\LordOfUltima.png" />
     <None Include="Resources\Refresh-icon.png" />
     <None Include="Resources\popup_icon.gif" />
-    <None Include="Resources\map.png" />
-    <None Include="Resources\Zeus_icon.png" />
-    <None Include="Resources\icon-tool.png" />
-    <None Include="Resources\icon-help.png" />
-    <None Include="Resources\icon-about.png" />
     <None Include="logo-LOU.png" />
   </ItemGroup>
   <ItemGroup />
