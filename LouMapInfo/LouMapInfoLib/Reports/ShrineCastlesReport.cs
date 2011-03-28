@@ -14,7 +14,7 @@ namespace LouMapInfo.Reports
         private WorldInfo world;
         private Pt location;
         public ShrineCastlesReport(WorldInfo w, Pt l)
-            : base(CityType.Castle, CityType.Palace)
+            : base()
         {
             this.world = w;
             this.location = l;
@@ -34,7 +34,10 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
-            title = new TextReportItem("Castles surrounding" + location, true);
+            title = new TextReportItem("Cities surrounding" + location, true);
+            string[] lines = SayCityType();
+            if (lines.Length > 0)
+                subtitle = new MultiLineReportItem(true, lines);
             ContinentInfo cont = world.Continent(location.Continent);
             Dictionary<int, List<CityInfo>> cities = new Dictionary<int, List<CityInfo>>();
             List<CityInfo> alls = new List<CityInfo>();

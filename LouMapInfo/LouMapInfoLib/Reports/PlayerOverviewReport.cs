@@ -11,8 +11,8 @@ namespace LouMapInfo.Reports
     public class PlayerOverviewReport : ReportInfo
     {
         private PlayerInfo player;
-        public PlayerOverviewReport(PlayerInfo p, params CityType[] type)
-            : base(type)
+        public PlayerOverviewReport(PlayerInfo p)
+            : base()
         {
             player = p;
             m_Features.Add(ReportFeatureType.BorderingLand, true);
@@ -31,17 +31,25 @@ namespace LouMapInfo.Reports
         protected override void OnLoad()
         {
             title = new PlayerInfoReportItem(player, -1, true);
-            subtitle = new MultiLineReportItem(true,
-                    new AllianceInfoReportItem(player.Alliance, true),
-                    new TextReportItem("", true),
-                    new TextReportItem(ReportUtility.SayCityType(m_Types), true)); 
+            string[] lines = SayCityType();
+            if (lines.Length > 0)
+            {
+                ReportItem[] items = new ReportItem[lines.Length + 2];
+                items[0] = new AllianceInfoReportItem(player.Alliance, true);
+                items[1] = new TextReportItem("", true);
+                for( int i = 0; i < lines.Length; ++i)
+                    items[i + 2] = new TextReportItem(lines[i],true);
+                subtitle = new MultiLineReportItem(true,items);
+            }
+            else
+                subtitle = new AllianceInfoReportItem(player.Alliance, true);
 
             foreach (int ic in player.ActiveContinents)
             {
                 ReportItem r = new ContinentScoreReportItem(ic, player.CScore(ic), true, false);
 
                 //First palaces
-                if (m_Types.Contains(CityType.Palace))
+                if (FeatureEnabled(ReportFeatureType.TypePalace))
                 {
                     CityInfo[] citiesW = player.Cities(ic, ReportFeatureType.BorderingWater, ReportFeatureType.TypePalace);
                     CityInfo[] citiesL = player.Cities(ic, ReportFeatureType.BorderingLand, ReportFeatureType.TypePalace);
@@ -68,7 +76,7 @@ namespace LouMapInfo.Reports
                 }
 
                 //Then castles
-                if (m_Types.Contains(CityType.Castle))
+                if (FeatureEnabled(ReportFeatureType.TypeCastle))
                 {
                     CityInfo[] citiesW = player.Cities(ic, ReportFeatureType.BorderingWater, ReportFeatureType.TypeCastle);
                     CityInfo[] citiesL = player.Cities(ic, ReportFeatureType.BorderingLand, ReportFeatureType.TypeCastle);
@@ -95,7 +103,7 @@ namespace LouMapInfo.Reports
                 }
 
                 //Then non-castled cities
-                if (m_Types.Contains(CityType.City))
+                if (FeatureEnabled(ReportFeatureType.TypeCity))
                 {
                     CityInfo[] citiesW = player.Cities(ic, ReportFeatureType.BorderingWater, ReportFeatureType.TypeCity);
                     CityInfo[] citiesL = player.Cities(ic, ReportFeatureType.BorderingLand, ReportFeatureType.TypeCity);

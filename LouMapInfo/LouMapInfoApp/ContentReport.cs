@@ -21,7 +21,6 @@ namespace LouMapInfoApp
         public ContentReport(ReportInfo r, int d)
         {
             InitializeComponent();
-            r.SetTypes(CityType.City, CityType.Castle, CityType.Palace);
 
             btnFeatureCastle.Visible = r.hasFeature(ReportFeatureType.TypeCastle);
             btnFeatureCity.Visible = r.hasFeature(ReportFeatureType.TypeCity);
@@ -114,10 +113,6 @@ namespace LouMapInfoApp
             btnDisplayOptionsAllianceRank.Checked = (ro & ReportOption.AllianceRank) != 0;
             report.SetOption(ro, true);
             RefreshReport();
-        }
-        private void ChangeType(params CityType[] t)
-        {
-            report.SetTypes(t);
         }
         private void RefreshReport()
         {

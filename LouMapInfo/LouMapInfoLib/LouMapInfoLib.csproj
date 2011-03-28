@@ -78,7 +78,6 @@
     <Compile Include="Reports\VirtuePalaceReport.cs" />
     <Compile Include="Reports\ContinentOverviewReport.cs" />
     <Compile Include="Reports\AllianceOverviewReport.cs" />
-    <Compile Include="Reports\core\ReportUtility.cs" />
     <Compile Include="Reports\Items\AllianceInfoReportItem.cs" />
     <Compile Include="Reports\Items\BorderingTypeReportItem.cs" />
     <Compile Include="Reports\Items\CityInfoReportItem.cs" />

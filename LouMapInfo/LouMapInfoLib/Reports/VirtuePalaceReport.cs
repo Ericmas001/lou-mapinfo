@@ -15,7 +15,7 @@ namespace LouMapInfo.Reports
         private VirtueType virtue;
         private AllianceInfo alliance;
         public VirtuePalaceReport(WorldInfo w, VirtueType v, AllianceInfo a)
-            : base(CityType.City, CityType.Castle, CityType.Palace)
+            : base()
         {
             this.world = w;
             this.virtue = v;
@@ -33,7 +33,10 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
-            title = new TextReportItem((virtue == VirtueType.None ? "Virtues" : virtue.ToString() ) + " Overview", true);
+            title = new TextReportItem((virtue == VirtueType.None ? "Virtues" : virtue.ToString()) + " Overview", true);
+            string[] lines = SayCityType();
+            if (lines.Length > 0)
+                subtitle = new MultiLineReportItem(true, lines);
             string a = alliance == null ? "" : alliance.Name;
             if (alliance != null)
                 subtitle = new AllianceInfoReportItem(alliance, true);
