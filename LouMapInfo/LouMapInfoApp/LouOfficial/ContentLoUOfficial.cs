@@ -5,8 +5,8 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
-using LouMapInfo.OfficialLOU;
+using LouMapInfo.Entities;
+using LouMapInfo;
 
 namespace LouMapInfoApp.LouOfficial
 {
@@ -37,7 +37,7 @@ namespace LouMapInfoApp.LouOfficial
             child = content as Control;
             Controls.Add(child);
             child.Dock = DockStyle.Fill;
-            LoUSessionInfo session = m_Parent.Session;
+            SessionInfo session = m_Parent.Session;
             InitializeComponent();
             string pName = session.World.Player(session.PlayerID).Name;
             string aName = session.World.Alliance(session.AllianceID).Name;

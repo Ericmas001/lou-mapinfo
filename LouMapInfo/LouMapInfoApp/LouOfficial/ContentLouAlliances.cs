@@ -5,9 +5,9 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Reports.OfficialLOU;
+using LouMapInfo.Reports;
 using System.Threading;
 using LouMapInfo.CSV;
 
@@ -17,7 +17,7 @@ namespace LouMapInfoApp.LouOfficial
     {
         private ContentLoUOfficial m_Frame;
 
-        public LoUSessionInfo Session
+        public SessionInfo Session
         {
             get { return m_Frame.MainForm.Session; }
         }
@@ -71,7 +71,7 @@ namespace LouMapInfoApp.LouOfficial
 
         private void OpenAllianceReportAsync(object o)
         {
-            LoUAllianceInfo a = null;
+            AllianceInfo a = null;
             if (o is int)
                 a = Session.World.Alliance((int)o);
             else if (o is string)
@@ -81,7 +81,7 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUAllianceOverviewReport rep = new LoUAllianceOverviewReport(a, LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
+                AllianceOverviewReport rep = new AllianceOverviewReport(a, CityType.City, CityType.Castle, CityType.Palace);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);
@@ -150,7 +150,7 @@ namespace LouMapInfoApp.LouOfficial
         private void OpenCityListCSVAsync(object o)
         {
             KeyValuePair<object, string> kvp = (KeyValuePair<object, string>)o;
-            LoUAllianceInfo a = null;
+            AllianceInfo a = null;
             if (kvp.Key is int)
                 a = Session.World.Alliance((int)kvp.Key);
             else if (kvp.Key is string)

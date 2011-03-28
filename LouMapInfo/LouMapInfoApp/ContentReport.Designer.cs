@@ -35,11 +35,6 @@
             this.btnReportsLvl2 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReportsLvl3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnCityType = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnBoth = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCastles = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCities = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDisplayOptions = new System.Windows.Forms.ToolStripSplitButton();
             this.btnDisplayOptionsCityCount = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsCityScore = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +63,18 @@
             this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.citiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.castlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.palacesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.landLockedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.waterBasedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.noCitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.noAllianceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
@@ -83,7 +90,7 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnReportsLvl,
             this.toolStripSeparator2,
-            this.btnCityType,
+            this.toolStripDropDownButton1,
             this.toolStripSeparator3,
             this.btnDisplayOptions,
             this.toolStripButton1,
@@ -137,49 +144,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnCityType
-            // 
-            this.btnCityType.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnCityType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnBoth,
-            this.btnCastles,
-            this.btnCities});
-            this.btnCityType.Image = ((System.Drawing.Image)(resources.GetObject("btnCityType.Image")));
-            this.btnCityType.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCityType.Name = "btnCityType";
-            this.btnCityType.Size = new System.Drawing.Size(117, 22);
-            this.btnCityType.Text = "Cities And Castles";
-            this.btnCityType.ButtonClick += new System.EventHandler(this.btnCityType_ButtonClick);
-            // 
-            // btnBoth
-            // 
-            this.btnBoth.Checked = true;
-            this.btnBoth.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.btnBoth.Name = "btnBoth";
-            this.btnBoth.Size = new System.Drawing.Size(166, 22);
-            this.btnBoth.Text = "Cities and Castles";
-            this.btnBoth.Click += new System.EventHandler(this.btnBoth_Click);
-            // 
-            // btnCastles
-            // 
-            this.btnCastles.Name = "btnCastles";
-            this.btnCastles.Size = new System.Drawing.Size(166, 22);
-            this.btnCastles.Text = "Castles Only";
-            this.btnCastles.Click += new System.EventHandler(this.btnCastles_Click);
-            // 
-            // btnCities
-            // 
-            this.btnCities.Name = "btnCities";
-            this.btnCities.Size = new System.Drawing.Size(166, 22);
-            this.btnCities.Text = "Cities Only";
-            this.btnCities.Click += new System.EventHandler(this.btnCities_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnDisplayOptions
             // 
             this.btnDisplayOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -201,49 +165,49 @@
             // btnDisplayOptionsCityCount
             // 
             this.btnDisplayOptionsCityCount.Name = "btnDisplayOptionsCityCount";
-            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsCityCount.Text = "City Count";
             this.btnDisplayOptionsCityCount.Click += new System.EventHandler(this.btnDisplayOptionsCityCount_Click);
             // 
             // btnDisplayOptionsCityScore
             // 
             this.btnDisplayOptionsCityScore.Name = "btnDisplayOptionsCityScore";
-            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsCityScore.Text = "City Score";
             this.btnDisplayOptionsCityScore.Click += new System.EventHandler(this.btnDisplayOptionsCityScore_Click);
             // 
             // btnDisplayOptionsCityName
             // 
             this.btnDisplayOptionsCityName.Name = "btnDisplayOptionsCityName";
-            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsCityName.Text = "City Name";
             this.btnDisplayOptionsCityName.Click += new System.EventHandler(this.btnDisplayOptionsCityName_Click);
             // 
             // btnDisplayOptionsPlayerCount
             // 
             this.btnDisplayOptionsPlayerCount.Name = "btnDisplayOptionsPlayerCount";
-            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsPlayerCount.Text = "Player Count";
             this.btnDisplayOptionsPlayerCount.Click += new System.EventHandler(this.btnDisplayOptionsPlayerCount_Click);
             // 
             // btnDisplayOptionsPlayerScore
             // 
             this.btnDisplayOptionsPlayerScore.Name = "btnDisplayOptionsPlayerScore";
-            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsPlayerScore.Text = "Player Score";
             this.btnDisplayOptionsPlayerScore.Click += new System.EventHandler(this.btnDisplayOptionsPlayerScore_Click);
             // 
             // btnDisplayOptionsAllianceScore
             // 
             this.btnDisplayOptionsAllianceScore.Name = "btnDisplayOptionsAllianceScore";
-            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsAllianceScore.Text = "Alliance Score";
             this.btnDisplayOptionsAllianceScore.Click += new System.EventHandler(this.btnDisplayOptionsAllianceScore_Click);
             // 
             // btnDisplayOptionsAllianceRank
             // 
             this.btnDisplayOptionsAllianceRank.Name = "btnDisplayOptionsAllianceRank";
-            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsAllianceRank.Text = "Alliance Rank";
             this.btnDisplayOptionsAllianceRank.Click += new System.EventHandler(this.btnDisplayOptionsAllianceRank_Click);
             // 
@@ -458,6 +422,88 @@
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.citiesToolStripMenuItem,
+            this.castlesToolStripMenuItem,
+            this.palacesToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.landLockedToolStripMenuItem,
+            this.waterBasedToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.noCitiesToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.noAllianceToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(101, 22);
+            this.toolStripDropDownButton1.Text = "Report Content";
+            // 
+            // citiesToolStripMenuItem
+            // 
+            this.citiesToolStripMenuItem.Name = "citiesToolStripMenuItem";
+            this.citiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.citiesToolStripMenuItem.Text = "Cities";
+            // 
+            // castlesToolStripMenuItem
+            // 
+            this.castlesToolStripMenuItem.Name = "castlesToolStripMenuItem";
+            this.castlesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.castlesToolStripMenuItem.Text = "Castles";
+            // 
+            // palacesToolStripMenuItem
+            // 
+            this.palacesToolStripMenuItem.Name = "palacesToolStripMenuItem";
+            this.palacesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.palacesToolStripMenuItem.Text = "Palaces";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // landLockedToolStripMenuItem
+            // 
+            this.landLockedToolStripMenuItem.Name = "landLockedToolStripMenuItem";
+            this.landLockedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.landLockedToolStripMenuItem.Text = "Land-Locked";
+            // 
+            // waterBasedToolStripMenuItem
+            // 
+            this.waterBasedToolStripMenuItem.Name = "waterBasedToolStripMenuItem";
+            this.waterBasedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.waterBasedToolStripMenuItem.Text = "Water-Based";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // noCitiesToolStripMenuItem
+            // 
+            this.noCitiesToolStripMenuItem.Name = "noCitiesToolStripMenuItem";
+            this.noCitiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.noCitiesToolStripMenuItem.Text = "No Cities";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // noAllianceToolStripMenuItem
+            // 
+            this.noAllianceToolStripMenuItem.Name = "noAllianceToolStripMenuItem";
+            this.noAllianceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.noAllianceToolStripMenuItem.Text = "No Alliance";
+            // 
             // ContentReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,11 +551,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnBBCodePlayer;
         private System.Windows.Forms.ToolStripMenuItem btnBBCodeAlliance;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSplitButton btnCityType;
-        private System.Windows.Forms.ToolStripMenuItem btnBoth;
-        private System.Windows.Forms.ToolStripMenuItem btnCastles;
-        private System.Windows.Forms.ToolStripMenuItem btnCities;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSplitButton btnDisplayOptions;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsCityCount;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsCityScore;
@@ -521,6 +562,18 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.WebBrowser reportBrowser;
         private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem citiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem castlesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem palacesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem landLockedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem waterBasedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem noCitiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem noAllianceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 
     }
 }

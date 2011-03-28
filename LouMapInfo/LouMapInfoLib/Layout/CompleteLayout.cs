@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using EricUtility.Networking.JSON;
-using LouMapInfo.OfficialLOU;
+using LouMapInfo;
 
 namespace LouMapInfo.Layout
 {
@@ -253,12 +253,12 @@ namespace LouMapInfo.Layout
             {
                 totalW += le.Storage(ResourceType.Wood);
                 totalS += le.Storage(ResourceType.Stone);
-                totalI += le.Storage(ResourceType.Iroon);
+                totalI += le.Storage(ResourceType.Iron);
                 totalF += le.Storage(ResourceType.Food);
             }
             m_Storage[ResourceType.Wood] = totalW;
             m_Storage[ResourceType.Stone] = totalS;
-            m_Storage[ResourceType.Iroon] = totalI;
+            m_Storage[ResourceType.Iron] = totalI;
             m_Storage[ResourceType.Food] = totalF;
             RefreshCounters();
         }
@@ -283,12 +283,12 @@ namespace LouMapInfo.Layout
             m_Production.Add(ResourceType.Gold, 0);
             m_Production.Add(ResourceType.Wood, 300);
             m_Production.Add(ResourceType.Stone, 0);
-            m_Production.Add(ResourceType.Iroon, 0);
+            m_Production.Add(ResourceType.Iron, 0);
             m_Production.Add(ResourceType.Food, 0);
             m_Storage.Clear();
             m_Storage.Add(ResourceType.Wood, 175000);
             m_Storage.Add(ResourceType.Stone, 175000);
-            m_Storage.Add(ResourceType.Iroon, 175000);
+            m_Storage.Add(ResourceType.Iron, 175000);
             m_Storage.Add(ResourceType.Food, 175000);
             m_Recruitment.Clear();
             m_Recruitment.Add(BuildingType.CityGuardHouse, 100);
@@ -418,11 +418,11 @@ namespace LouMapInfo.Layout
             return s;
         }
 
-        public static CompleteLayout GetLayoutFromCity(LoUCityInfo city)
+        public static CompleteLayout GetLayoutFromCity(CityInfo city)
         {
-            JsonArrayCollection jac = LoUEndPoint.GetCityLayout(city.Player.Alliance.World.Url, city.Player.Alliance.World.Session.SessionID, city.Id);
+            JsonArrayCollection jac = EndPoint.GetCityLayout(city.Player.Alliance.World.Url, city.Player.Alliance.World.Session.SessionID, city.Id);
             string s = "http://www.lou-fcp.co.uk/map.php?map=";
-            s += city.Bordering == LoUBorderingType.Water ? "W" : "L";
+            s += city.Bordering == BorderingType.Water ? "W" : "L";
             foreach (JsonObjectCollection joc in jac)
             {
                 int t = (int)((JsonNumericValue)joc["t"]).Value;
@@ -456,7 +456,7 @@ namespace LouMapInfo.Layout
                         s += bi.LetterFlashPlanner;
                 }
             }
-            if (city.Bordering == LoUBorderingType.Water)
+            if (city.Bordering == BorderingType.Water)
             {
                 s = s.Insert(279, "00");
                 s = s.Insert(297, "000");

@@ -31,10 +31,10 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.customTabControl1 = new System.Windows.Forms.TabControl();
             this.tpageReport = new System.Windows.Forms.TabPage();
+            this.btnOpenCSV = new System.Windows.Forms.Button();
             this.tpageBBCode = new System.Windows.Forms.TabPage();
             this.txtBBCode = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnOpenCSV = new System.Windows.Forms.Button();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
             this.tpageReport.SuspendLayout();
@@ -77,6 +77,20 @@
             this.tpageReport.UseVisualStyleBackColor = true;
             this.tpageReport.SizeChanged += new System.EventHandler(this.tpageReport_SizeChanged);
             // 
+            // btnOpenCSV
+            // 
+            this.btnOpenCSV.BackgroundImage = global::LouMapInfoApp.Properties.Resources.Office_excel_csv_icon;
+            this.btnOpenCSV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnOpenCSV.Location = new System.Drawing.Point(312, 122);
+            this.btnOpenCSV.Name = "btnOpenCSV";
+            this.btnOpenCSV.Size = new System.Drawing.Size(158, 189);
+            this.btnOpenCSV.TabIndex = 0;
+            this.btnOpenCSV.Text = "Open CSV";
+            this.btnOpenCSV.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOpenCSV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnOpenCSV.UseVisualStyleBackColor = true;
+            this.btnOpenCSV.Click += new System.EventHandler(this.btnOpenCSV_Click);
+            // 
             // tpageBBCode
             // 
             this.tpageBBCode.Controls.Add(this.txtBBCode);
@@ -111,20 +125,6 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Grid";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnOpenCSV
-            // 
-            this.btnOpenCSV.BackgroundImage = global::LouMapInfoApp.Properties.Resources.Office_excel_csv_icon;
-            this.btnOpenCSV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnOpenCSV.Location = new System.Drawing.Point(312, 122);
-            this.btnOpenCSV.Name = "btnOpenCSV";
-            this.btnOpenCSV.Size = new System.Drawing.Size(158, 189);
-            this.btnOpenCSV.TabIndex = 0;
-            this.btnOpenCSV.Text = "Open CSV";
-            this.btnOpenCSV.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnOpenCSV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnOpenCSV.UseVisualStyleBackColor = true;
-            this.btnOpenCSV.Click += new System.EventHandler(this.btnOpenCSV_Click);
             // 
             // ContentCSV
             // 

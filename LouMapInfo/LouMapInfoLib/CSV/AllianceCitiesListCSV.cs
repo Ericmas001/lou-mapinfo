@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using System.Globalization;
 using System.IO;
 
@@ -9,11 +9,11 @@ namespace LouMapInfo.CSV
 {
     public class AllianceCitiesListCSV : ReportCSV
     {
-        private LoUAllianceInfo m_Alliance;
+        private AllianceInfo m_Alliance;
         Dictionary<String, int> m_Players = new Dictionary<String, int>();
         List<String[]> m_Lines = new List<string[]>();
 
-        public AllianceCitiesListCSV(LoUAllianceInfo alliance)
+        public AllianceCitiesListCSV(AllianceInfo alliance)
         {
             m_Alliance = alliance;
         }
@@ -22,7 +22,7 @@ namespace LouMapInfo.CSV
         {
             m_Alliance.LoadIfNeeded();
             int i = 1;
-            foreach (LoUPlayerInfo p in m_Alliance.Players())
+            foreach (PlayerInfo p in m_Alliance.Players())
             {
                 p.LoadIfNeeded();
                 m_Players.Add(p.Name, i++);
@@ -42,14 +42,14 @@ namespace LouMapInfo.CSV
                 Log("C" + ic.ToString("00") + " ...", ConsoleColor.White);
 
                 min = max;
-                LoUPlayerInfo[] pjs = m_Alliance.Players(ic);
-                foreach (LoUPlayerInfo p in pjs)
+                PlayerInfo[] pjs = m_Alliance.Players(ic);
+                foreach (PlayerInfo p in pjs)
                 {
                     int curr = min;
-                    LoUCityInfo[] cities = p.Cities(ic);
+                    CityInfo[] cities = p.Cities(ic);
                     Array.Sort(cities);
                     Array.Reverse(cities);
-                    foreach (LoUCityInfo c in cities)
+                    foreach (CityInfo c in cities)
                     {
                         if (curr == max)
                         {

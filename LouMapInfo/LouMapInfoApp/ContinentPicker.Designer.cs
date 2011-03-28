@@ -97,14 +97,6 @@
             // toolStrip7
             // 
             this.toolStrip7.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton43,
-            this.toolStripButton44,
-            this.toolStripButton45,
-            this.toolStripButton46,
-            this.toolStripButton47,
-            this.toolStripButton48,
-            this.toolStripButton49});
             this.toolStrip7.Location = new System.Drawing.Point(0, 150);
             this.toolStrip7.Name = "toolStrip7";
             this.toolStrip7.Size = new System.Drawing.Size(163, 25);
@@ -184,14 +176,6 @@
             // toolStrip6
             // 
             this.toolStrip6.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton31,
-            this.toolStripButton32,
-            this.toolStripButton33,
-            this.toolStripButton34,
-            this.toolStripButton35,
-            this.toolStripButton42,
-            this.toolStripButton36});
             this.toolStrip6.Location = new System.Drawing.Point(0, 125);
             this.toolStrip6.Name = "toolStrip6";
             this.toolStrip6.Size = new System.Drawing.Size(163, 25);
@@ -271,14 +255,6 @@
             // toolStrip5
             // 
             this.toolStrip5.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton25,
-            this.toolStripButton26,
-            this.toolStripButton27,
-            this.toolStripButton28,
-            this.toolStripButton29,
-            this.toolStripButton41,
-            this.toolStripButton30});
             this.toolStrip5.Location = new System.Drawing.Point(0, 100);
             this.toolStrip5.Name = "toolStrip5";
             this.toolStrip5.Size = new System.Drawing.Size(163, 25);
@@ -358,14 +334,6 @@
             // toolStrip4
             // 
             this.toolStrip4.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton19,
-            this.toolStripButton20,
-            this.toolStripButton21,
-            this.toolStripButton22,
-            this.toolStripButton23,
-            this.toolStripButton40,
-            this.toolStripButton24});
             this.toolStrip4.Location = new System.Drawing.Point(0, 75);
             this.toolStrip4.Name = "toolStrip4";
             this.toolStrip4.Size = new System.Drawing.Size(163, 25);
@@ -445,14 +413,6 @@
             // toolStrip3
             // 
             this.toolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton13,
-            this.toolStripButton14,
-            this.toolStripButton15,
-            this.toolStripButton16,
-            this.toolStripButton17,
-            this.toolStripButton39,
-            this.toolStripButton18});
             this.toolStrip3.Location = new System.Drawing.Point(0, 50);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(163, 25);
@@ -532,14 +492,6 @@
             // toolStrip2
             // 
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton7,
-            this.toolStripButton8,
-            this.toolStripButton9,
-            this.toolStripButton10,
-            this.toolStripButton11,
-            this.toolStripButton38,
-            this.toolStripButton12});
             this.toolStrip2.Location = new System.Drawing.Point(0, 25);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(163, 25);
@@ -619,14 +571,6 @@
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton6,
-            this.toolStripButton5,
-            this.toolStripButton4,
-            this.toolStripButton3,
-            this.toolStripButton2,
-            this.toolStripButton37,
-            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(163, 25);
