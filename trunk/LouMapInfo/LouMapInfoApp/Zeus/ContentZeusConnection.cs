@@ -5,8 +5,8 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
-using LouMapInfo.OfficialLOU;
+using LouMapInfo.Entities;
+using LouMapInfo;
 using System.Threading;
 using LouMapInfo.Zeus;
 
@@ -21,8 +21,8 @@ namespace LouMapInfoApp.Zeus
             InitializeComponent();
             //foreach (string s in LoUServerList.Servers.Keys)
             //{
-            lstServerNames1.Items.Add(LoUServerList.WORLD_10);
-            lstServerNames2.Items.Add(LoUServerList.WORLD_10);
+            lstServerNames1.Items.Add(ServerList.WORLD_10);
+            lstServerNames2.Items.Add(ServerList.WORLD_10);
             //}
             txtUsername.Text = Properties.Settings.Default.zeusUsername;
             txtUsername2.Text = Properties.Settings.Default.zeusUsername;

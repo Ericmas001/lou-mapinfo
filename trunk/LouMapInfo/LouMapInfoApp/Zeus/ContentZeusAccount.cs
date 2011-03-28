@@ -5,9 +5,9 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Reports.OfficialLOU;
+using LouMapInfo.Reports;
 using System.Threading;
 using LouMapInfo.Zeus;
 

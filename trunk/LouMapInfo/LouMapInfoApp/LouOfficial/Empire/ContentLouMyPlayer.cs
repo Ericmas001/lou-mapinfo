@@ -5,13 +5,13 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Reports.OfficialLOU;
+using LouMapInfo.Reports;
 using System.Threading;
 using LouMapInfo.Layout;
 using LouMapInfoApp.Tools;
-using LouMapInfo.OfficialLOU;
+using LouMapInfo;
 
 namespace LouMapInfoApp.LouOfficial.Empire
 {
@@ -19,14 +19,14 @@ namespace LouMapInfoApp.LouOfficial.Empire
     {
         private class CityEntry : IComparable<CityEntry>
         {
-            private LoUCityInfo info;
+            private CityInfo info;
 
-            public LoUCityInfo Info
+            public CityInfo Info
             {
                 get { return info; }
                 set { info = value; }
             }
-            public CityEntry(LoUCityInfo i)
+            public CityEntry(CityInfo i)
             {
                 info = i;
             }
@@ -58,7 +58,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
         private ContentLayout cl = new ContentLayout();
         private ContentLoUOfficial m_Frame;
 
-        public LoUSessionInfo Session
+        public SessionInfo Session
         {
             get
             {
@@ -73,9 +73,9 @@ namespace LouMapInfoApp.LouOfficial.Empire
                 m_Frame = value;
 
 
-                LoUPlayerInfo pj = Session.World.Player(Session.PlayerID);
+                PlayerInfo pj = Session.World.Player(Session.PlayerID);
                 lstCities.Items.Clear();
-                LoUCityInfo[] cities = pj.Cities();
+                CityInfo[] cities = pj.Cities();
                 entrys = new CityEntry[cities.Length];
                 for (int i = 0; i < cities.Length; ++i)
                     entrys[i] = new CityEntry(cities[i]);
@@ -104,7 +104,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
             pnlContent.Controls.Add(content);
             content.Dock = DockStyle.Fill;
         }
-        private void LoadCity(LoUCityInfo c)
+        private void LoadCity(CityInfo c)
         {
             btnRename.Enabled = true;
             txtRename.Visible = false;
@@ -152,7 +152,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
         {
             if (lstCities.SelectedIndex != -1)
             {
-                LoUCityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
+                CityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
                 LoadCity(c);
             }
         }
@@ -260,7 +260,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
             }
             inEdit = false;
             lstCities.Enabled = true;
-            LoUCityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
+            CityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
             int i = -1;
             KeyValuePair<string, string> notes = c.GetCityNote();
             string s = notes.Value;
@@ -294,7 +294,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
             txtRename.Visible = true;
             btnRenameCancel.Visible = true;
             btnRenameSave.Visible = true;
-            LoUCityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
+            CityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
             txtRename.Text = c.Name;
             txtRename.Focus();
         }
@@ -305,7 +305,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
             {
                 CityEntry et = (CityEntry)lstCities.SelectedItem;
                 lstCities.SelectedIndex = -1;
-                LoUCityInfo c = et.Info;
+                CityInfo c = et.Info;
                 c.Rename(txtRename.Text);
                 Array.Sort(entrys);
                 lstCities.Items.Clear();
@@ -316,7 +316,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
 
         private void btnRenameCancel_Click(object sender, EventArgs e)
         {
-            LoUCityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
+            CityInfo c = ((CityEntry)lstCities.SelectedItem).Info;
             LoadCity(c);
         }
     }

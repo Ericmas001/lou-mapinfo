@@ -5,8 +5,8 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
-using LouMapInfo.OfficialLOU;
+using LouMapInfo.Entities;
+using LouMapInfo;
 using LouMapInfo.Zeus;
 
 namespace LouMapInfoApp.Zeus

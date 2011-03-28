@@ -207,14 +207,14 @@ namespace LouMapInfo.Layout
             m_Production.Add(ResourceType.Gold, 0);
             m_Production.Add(ResourceType.Wood, 0);
             m_Production.Add(ResourceType.Stone, 0);
-            m_Production.Add(ResourceType.Iroon, 0);
+            m_Production.Add(ResourceType.Iron, 0);
             m_Production.Add(ResourceType.Food, 0);
             m_Storage.Clear();
             m_Storage.Add(ResourceType.None, 0);
             m_Storage.Add(ResourceType.Gold, 0);
             m_Storage.Add(ResourceType.Wood, 0);
             m_Storage.Add(ResourceType.Stone, 0);
-            m_Storage.Add(ResourceType.Iroon, 0);
+            m_Storage.Add(ResourceType.Iron, 0);
             m_Storage.Add(ResourceType.Food, 0);
             m_Recruitment.Clear();
             m_Recruitment.Add(BuildingType.CityGuardHouse, 0);
@@ -322,7 +322,7 @@ namespace LouMapInfo.Layout
                         numF++;
                 m_Storage[ResourceType.Wood] = 2000 * (100 + numW * 200);
                 m_Storage[ResourceType.Stone] = 2000 * (100 + numS * 200);
-                m_Storage[ResourceType.Iroon] = 2000 * (100 + numI * 200);
+                m_Storage[ResourceType.Iron] = 2000 * (100 + numI * 200);
                 m_Storage[ResourceType.Food] = 2000 * (100 + numF * 200);
                 RefreshResourceStorage();
             }
@@ -408,7 +408,7 @@ namespace LouMapInfo.Layout
                 }
                 RefreshResourceProduction(ResourceType.Stone);
             }
-            else if (BuildingInfo.ByType[m_Info].ResourceProduced == ResourceType.Iroon)
+            else if (BuildingInfo.ByType[m_Info].ResourceProduced == ResourceType.Iron)
             {
                 int numR = 0;
                 int numC = 0;
@@ -430,7 +430,7 @@ namespace LouMapInfo.Layout
                     step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
                     int step3 = hasB ? step2 * 175 : step2 * 100;
                     step3 = step3 % 100 != 0 ? step3 / 100 + 1 : step3 / 100;
-                    m_Production[ResourceType.Iroon] = step3;
+                    m_Production[ResourceType.Iron] = step3;
                 }
                 else
                 {
@@ -439,9 +439,9 @@ namespace LouMapInfo.Layout
                     step1 = step1 % 100 != 0 ? step1 / 100 + 1 : step1 / 100;
                     int step2 = hasB ? step1 * 175 : step1 * 100;
                     step2 = step2 % 100 != 0 ? step2 / 100 + 1 : step2 / 100;
-                    m_Production[ResourceType.Iroon] = step2;
+                    m_Production[ResourceType.Iron] = step2;
                 }
-                RefreshResourceProduction(ResourceType.Iroon);
+                RefreshResourceProduction(ResourceType.Iron);
             }
             else if (BuildingInfo.ByType[m_Info].ResourceProduced == ResourceType.Food)
             {

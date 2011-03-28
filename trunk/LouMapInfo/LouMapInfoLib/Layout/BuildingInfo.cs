@@ -133,11 +133,11 @@ namespace LouMapInfo.Layout
             m_AllOfThem.Add(new BuildingInfo(BuildingType.ResFood, "Food", 'D', ';', true, ResourceType.None, 903));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.WoodcutterOld, "Woodcutter's hut (old)", 'F', 'W', false,ResourceType.Wood, 401));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.QuarryOld, "Quarry (old)", 'G', 'Q', false,ResourceType.Stone, 402));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMineOld, "Iron Mine (old)", 'H', 'I', false,ResourceType.Iroon, 406));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMineOld, "Iron Mine (old)", 'H', 'I', false,ResourceType.Iron, 406));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.FarmOld, "Farm (old)", 'I', 'F', false,ResourceType.Food, 403));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Woodcutter, "Woodcutter's hut", '2', '2', false,ResourceType.Wood, 447));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Quarry, "Quarry", '3', '3', false,ResourceType.Stone, 448));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMine, "Iron Mine", '4', '4', false,ResourceType.Iroon, 449));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMine, "Iron Mine", '4', '4', false,ResourceType.Iron, 449));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Farm, "Farm", '5', '1', false,ResourceType.Food, 450));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Sawmill, "Sawmill", 'K', 'L', true, ResourceType.None, 407));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.Stonemasson, "Stonemasson", 'L', 'A', true, ResourceType.None, 410));

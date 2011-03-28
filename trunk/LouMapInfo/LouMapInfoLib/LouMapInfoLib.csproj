@@ -46,47 +46,47 @@
     <Compile Include="Layout\LayoutEntry.cs" />
     <Compile Include="Layout\ProductionType.cs" />
     <Compile Include="Layout\ResourceType.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUServerInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\Types\LoUBattleType.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUMoonGateInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUShrineInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUContinentInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUCityInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUPt.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUAllianceInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\Types\LoUShrineType.cs" />
-    <Compile Include="OfficialLOU\Entities\Types\LoUCityType.cs" />
-    <Compile Include="OfficialLOU\Entities\Types\LoUBorderingType.cs" />
-    <Compile Include="OfficialLOU\LoUEndPoint.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUPlayerInfo.cs" />
-    <Compile Include="OfficialLOU\LoUServerList.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUSessionInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\LoUWorldInfo.cs" />
-    <Compile Include="OfficialLOU\Entities\Types\LoUVirtueType.cs" />
+    <Compile Include="Entities\ServerInfo.cs" />
+    <Compile Include="Entities\Types\BattleType.cs" />
+    <Compile Include="Entities\MoonGateInfo.cs" />
+    <Compile Include="Entities\ShrineInfo.cs" />
+    <Compile Include="Entities\ContinentInfo.cs" />
+    <Compile Include="Entities\CityInfo.cs" />
+    <Compile Include="Entities\Pt.cs" />
+    <Compile Include="Entities\AllianceInfo.cs" />
+    <Compile Include="Entities\Types\ShrineType.cs" />
+    <Compile Include="Entities\Types\CityType.cs" />
+    <Compile Include="Entities\Types\BorderingType.cs" />
+    <Compile Include="EndPoint.cs" />
+    <Compile Include="Entities\PlayerInfo.cs" />
+    <Compile Include="ServerList.cs" />
+    <Compile Include="Entities\SessionInfo.cs" />
+    <Compile Include="Entities\WorldInfo.cs" />
+    <Compile Include="Entities\Types\VirtueType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\Features\ReportFeatureInfo.cs" />
     <Compile Include="Reports\Features\ReportFeatures.cs" />
     <Compile Include="Reports\Features\ReportFeatureType.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\ContinentScoreReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\MultiLineReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\PlayerCountReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\TextReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\LoUShrineCastlesReport.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\LoUDetailedPalaceInfoReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\LoUBattlePalaceReport.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\LoUDetailedCityInfoReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\LoUVirtuePalaceReport.cs" />
-    <Compile Include="Reports\OfficialLOU\LoUContinentOverviewReport.cs" />
-    <Compile Include="Reports\OfficialLOU\LoUAllianceOverviewReport.cs" />
-    <Compile Include="Reports\OfficialLOU\core\LoUReportUtility.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\LoUAllianceInfoReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\LoUBorderingTypeReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\LoUCityInfoReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\LoUCityTypeReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\LoUPlayerOverviewReport.cs" />
+    <Compile Include="Reports\Items\ContinentScoreReportItem.cs" />
+    <Compile Include="Reports\Items\MultiLineReportItem.cs" />
+    <Compile Include="Reports\Items\PlayerCountReportItem.cs" />
+    <Compile Include="Reports\Items\TextReportItem.cs" />
+    <Compile Include="Reports\ShrineCastlesReport.cs" />
+    <Compile Include="Reports\Items\DetailedPalaceInfoReportItem.cs" />
+    <Compile Include="Reports\BattlePalaceReport.cs" />
+    <Compile Include="Reports\Items\DetailedCityInfoReportItem.cs" />
+    <Compile Include="Reports\VirtuePalaceReport.cs" />
+    <Compile Include="Reports\ContinentOverviewReport.cs" />
+    <Compile Include="Reports\AllianceOverviewReport.cs" />
+    <Compile Include="Reports\core\ReportUtility.cs" />
+    <Compile Include="Reports\Items\AllianceInfoReportItem.cs" />
+    <Compile Include="Reports\Items\BorderingTypeReportItem.cs" />
+    <Compile Include="Reports\Items\CityInfoReportItem.cs" />
+    <Compile Include="Reports\Items\CityTypeReportItem.cs" />
+    <Compile Include="Reports\PlayerOverviewReport.cs" />
     <Compile Include="Reports\core\ReportOption.cs" />
     <Compile Include="Reports\core\ReportItem.cs" />
-    <Compile Include="Reports\OfficialLOU\Items\LoUPlayerInfoReportItem.cs" />
+    <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
     <Compile Include="Reports\core\ReportInfo.cs" />
     <Compile Include="Zeus\AbstractLobbyCommand.cs" />
     <Compile Include="Zeus\AbstractLobbyResponse.cs" />
@@ -115,7 +115,10 @@
       <Name>EricUtility_4.0</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="OfficialLOU\" />
+    <Folder Include="Reports\OfficialLOU\core\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using EricUtility;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 
 namespace LouMapInfo.Reports.core
 {
@@ -14,7 +14,7 @@ namespace LouMapInfo.Reports.core
         protected ReportItem subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
-        protected List<LoUCityType> m_Types;
+        protected List<CityType> m_Types;
 
         public ReportOption Options
         {
@@ -29,13 +29,13 @@ namespace LouMapInfo.Reports.core
                 options &= ~o;
         }
 
-        public List<LoUCityType> Types
+        public List<CityType> Types
         {
             get { return m_Types; }
         }
-        public void SetTypes(params LoUCityType[] types)
+        public void SetTypes(params CityType[] types)
         {
-            m_Types = new List<LoUCityType>(types);
+            m_Types = new List<CityType>(types);
             title = null;
             subtitle = null;
             root = new List<ReportItem>();
@@ -53,10 +53,10 @@ namespace LouMapInfo.Reports.core
             BBCodeDisplay.Add("alliance", true);
         }
 
-        public ReportInfo(params LoUCityType[] types)
+        public ReportInfo(params CityType[] types)
             : this()
         {
-            m_Types = new List<LoUCityType>(types);
+            m_Types = new List<CityType>(types);
         }
 
         public string Report(int d)

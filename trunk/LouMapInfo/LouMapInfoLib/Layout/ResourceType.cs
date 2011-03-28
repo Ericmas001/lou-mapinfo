@@ -9,7 +9,7 @@ namespace LouMapInfo.Layout
         None,
         Wood,
         Stone,
-        Iroon,
+        Iron,
         Food,
         Gold
     }

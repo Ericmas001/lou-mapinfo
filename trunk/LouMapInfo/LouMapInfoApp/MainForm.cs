@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using LouMapInfoApp.Tools;
 using LouMapInfoApp.LouOfficial;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using LouMapInfo.Zeus;
 using LouMapInfoApp.Zeus;
 using LouMapInfoApp.LouOfficial.Empire;
@@ -16,10 +16,10 @@ namespace LouMapInfoApp
 {
     public partial class MainForm : Form
     {
-        private LoUSessionInfo m_Session = null;
+        private SessionInfo m_Session = null;
         private ZeusSessionInfo m_ZeusSession = null;
 
-        public LoUSessionInfo Session
+        public SessionInfo Session
         {
             get { return m_Session; }
             set { m_Session = value; }

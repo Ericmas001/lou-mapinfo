@@ -5,8 +5,8 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
-using LouMapInfo.OfficialLOU;
+using LouMapInfo.Entities;
+using LouMapInfo;
 using System.Threading;
 
 namespace LouMapInfoApp.LouOfficial
@@ -18,7 +18,7 @@ namespace LouMapInfoApp.LouOfficial
         {
             m_Parent = parent;
             InitializeComponent();
-            foreach (LoUServerInfo s in LoUServerList.AllServers)
+            foreach (ServerInfo s in ServerList.AllServers)
             {
                 lstServerNames1.Items.Add(s.Name);
                 lstServerNames2.Items.Add(s.Name);
@@ -43,7 +43,7 @@ namespace LouMapInfoApp.LouOfficial
                 Properties.Settings.Default.Save();
                 EnableAll(false);
                 statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.Waiting;
-                LoUSessionInfo session = new LoUSessionInfo(txtSessionID.Text, lstServerNames2.SelectedItem.ToString());
+                SessionInfo session = new SessionInfo(txtSessionID.Text, lstServerNames2.SelectedItem.ToString());
                 new Thread(new ParameterizedThreadStart(Connect)).Start(session);
             }
         }
@@ -59,14 +59,14 @@ namespace LouMapInfoApp.LouOfficial
                 Properties.Settings.Default.Save();
                 EnableAll(false);
                 statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.Waiting;
-                LoUSessionInfo session = new LoUSessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames1.SelectedItem.ToString());
+                SessionInfo session = new SessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames1.SelectedItem.ToString());
                 new Thread(new ParameterizedThreadStart(Connect)).Start(session);
             }
         }
 
         private void Connect(object state_session)
         {
-            LoUSessionInfo session = (LoUSessionInfo)state_session;
+            SessionInfo session = (SessionInfo)state_session;
             bool connect = session.Connect();
             if (connect)
             {
@@ -90,8 +90,8 @@ namespace LouMapInfoApp.LouOfficial
 
 
 
-        delegate void SessionHandler(LoUSessionInfo isConnected);
-        private void InitSession(LoUSessionInfo session)
+        delegate void SessionHandler(SessionInfo isConnected);
+        private void InitSession(SessionInfo session)
         {
             if (InvokeRequired)
             {

@@ -5,12 +5,12 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Reports.OfficialLOU;
+using LouMapInfo.Reports;
 using System.Threading;
 using LouMapInfo.CSV;
-using LouMapInfo.OfficialLOU;
+using LouMapInfo;
 using EricUtility.Networking.JSON;
 
 namespace LouMapInfoApp.LouOfficial
@@ -19,7 +19,7 @@ namespace LouMapInfoApp.LouOfficial
     {
         private ContentLoUOfficial m_Frame;
 
-        public LoUSessionInfo Session
+        public SessionInfo Session
         {
             get { return m_Frame.MainForm.Session; }
         }
@@ -65,7 +65,7 @@ namespace LouMapInfoApp.LouOfficial
 
         private void OpenAllianceReportAsync(object o)
         {
-            LoUAllianceInfo a = null;
+            AllianceInfo a = null;
             if (o is int)
                 a = Session.World.Alliance((int)o);
             else if (o is string)
@@ -76,7 +76,7 @@ namespace LouMapInfoApp.LouOfficial
             else
             {
 
-                LoUVirtuePalaceReport rep = new LoUVirtuePalaceReport(Session.World, LoUVirtueType.None, a);
+                VirtuePalaceReport rep = new VirtuePalaceReport(Session.World, VirtueType.None, a);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);
@@ -130,14 +130,14 @@ namespace LouMapInfoApp.LouOfficial
         private void OpenVirtueReportAsync(object o)
         {
             string v = o as string;
-            LoUVirtueType virtue;
+            VirtueType virtue;
 
             if (String.IsNullOrEmpty(v))
-                virtue = LoUVirtueType.None;
+                virtue = VirtueType.None;
             else
-                virtue = (LoUVirtueType)Enum.Parse(typeof(LoUVirtueType), v);
+                virtue = (VirtueType)Enum.Parse(typeof(VirtueType), v);
 
-            LoUVirtuePalaceReport rep = new LoUVirtuePalaceReport(Session.World, virtue, null);
+            VirtuePalaceReport rep = new VirtuePalaceReport(Session.World, virtue, null);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);
@@ -148,7 +148,7 @@ namespace LouMapInfoApp.LouOfficial
             OpenVirtueReport("");
         }
 
-        private void OpenBattleReport(LoUBattleType type)
+        private void OpenBattleReport(BattleType type)
         {
             ContentEnabling(false);
             new Thread(new ParameterizedThreadStart(OpenBattleReportAsync)).Start(type);
@@ -156,9 +156,9 @@ namespace LouMapInfoApp.LouOfficial
 
         private void OpenBattleReportAsync(object o)
         {
-            LoUBattleType type = (LoUBattleType)o;
+            BattleType type = (BattleType)o;
 
-            LoUBattlePalaceReport rep = new LoUBattlePalaceReport(Session.World, type);
+            BattlePalaceReport rep = new BattlePalaceReport(Session.World, type);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);
@@ -166,24 +166,24 @@ namespace LouMapInfoApp.LouOfficial
 
         private void btnBattleHigherLvl_Click(object sender, EventArgs e)
         {
-            OpenBattleReport(LoUBattleType.HighestLevel);
+            OpenBattleReport(BattleType.HighestLevel);
         }
 
         private void btnBattlePalaceCount_Click(object sender, EventArgs e)
         {
-            OpenBattleReport(LoUBattleType.MostPalaces);
+            OpenBattleReport(BattleType.MostPalaces);
         }
 
         private void btnBattleHighestFaith_Click(object sender, EventArgs e)
         {
-            OpenBattleReport(LoUBattleType.HighestFaith);
+            OpenBattleReport(BattleType.HighestFaith);
         }
 
         private void btnShrineLocationExclude_Click(object sender, EventArgs e)
         {
             try
             {
-                LoUPt loc = new LoUPt(txtShrineLocation.Text);
+                Pt loc = new Pt(txtShrineLocation.Text);
                 ContentEnabling(false);
                 new Thread(new ParameterizedThreadStart(OpenShrineReport1Async)).Start(loc);
             }
@@ -192,8 +192,8 @@ namespace LouMapInfoApp.LouOfficial
 
         private void OpenShrineReport1Async(object o)
         {
-            LoUPt pt = (LoUPt)o;
-            LoUShrineCastlesReport rep = new LoUShrineCastlesReport(Session.World, pt,false);
+            Pt pt = (Pt)o;
+            ShrineCastlesReport rep = new ShrineCastlesReport(Session.World, pt,false);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);
@@ -203,7 +203,7 @@ namespace LouMapInfoApp.LouOfficial
         {
             try
             {
-                LoUPt loc = new LoUPt(txtShrineLocation.Text);
+                Pt loc = new Pt(txtShrineLocation.Text);
                 ContentEnabling(false);
                 new Thread(new ParameterizedThreadStart(OpenShrineReport2Async)).Start(loc);
             }
@@ -212,8 +212,8 @@ namespace LouMapInfoApp.LouOfficial
 
         private void OpenShrineReport2Async(object o)
         {
-            LoUPt pt = (LoUPt)o;
-            LoUShrineCastlesReport rep = new LoUShrineCastlesReport(Session.World, pt, true);
+            Pt pt = (Pt)o;
+            ShrineCastlesReport rep = new ShrineCastlesReport(Session.World, pt, true);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);

@@ -5,9 +5,9 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Reports.OfficialLOU;
+using LouMapInfo.Reports;
 using System.Threading;
 
 namespace LouMapInfoApp.LouOfficial
@@ -16,7 +16,7 @@ namespace LouMapInfoApp.LouOfficial
     {
         private ContentLoUOfficial m_Frame;
 
-        public LoUSessionInfo Session
+        public SessionInfo Session
         {
             get { return m_Frame.MainForm.Session; }
         }
@@ -53,7 +53,7 @@ namespace LouMapInfoApp.LouOfficial
 
         private void OpenPlayerReportAsync(object o)
         {
-            LoUPlayerInfo p = null;
+            PlayerInfo p = null;
             if (o is int)
                 p = Session.World.Player((int)o);
             else if (o is string)
@@ -63,7 +63,7 @@ namespace LouMapInfoApp.LouOfficial
                 ContentEnabling(true);
             else
             {
-                LoUPlayerOverviewReport rep = new LoUPlayerOverviewReport(p, LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
+                PlayerOverviewReport rep = new PlayerOverviewReport(p, CityType.City, CityType.Castle, CityType.Palace);
                 rep.LoadIfNeeded();
                 OpenReport(rep);
                 ContentEnabling(true);

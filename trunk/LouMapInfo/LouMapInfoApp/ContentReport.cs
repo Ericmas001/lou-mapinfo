@@ -9,7 +9,7 @@ using LouMapInfo.Reports.core;
 using EricUtility.Windows.Forms;
 using EricUtility;
 using System.Threading;
-using LouMapInfo.OfficialLOU.Entities;
+using LouMapInfo.Entities;
 
 namespace LouMapInfoApp
 {
@@ -20,7 +20,7 @@ namespace LouMapInfoApp
         public ContentReport(ReportInfo r, int d)
         {
             InitializeComponent();
-            r.SetTypes(LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
+            r.SetTypes(CityType.City, CityType.Castle, CityType.Palace);
             CustomTabControl tctl = new CustomTabControl();
             tctl.Controls.Add(this.tpageReport);
             tctl.Controls.Add(this.tpageBBCode);
@@ -88,14 +88,13 @@ namespace LouMapInfoApp
             report.SetOption(ro, true);
             RefreshReport();
         }
-        private void ChangeType(params LoUCityType[] t)
+        private void ChangeType(params CityType[] t)
         {
             report.SetTypes(t);
         }
         private void RefreshReport()
         {
             btnReportsLvl.Enabled = false;
-            btnCityType.Enabled = false;
             btnDisplayOptions.Enabled = false;
             pnlContent.Enabled = false;
             RefreshReportAsync();
@@ -117,7 +116,6 @@ namespace LouMapInfoApp
             }
             txtBBCode.Text = b;
             btnReportsLvl.Enabled = true;
-            btnCityType.Enabled = true;
             btnDisplayOptions.Enabled = true;
             pnlContent.Enabled = true;
             reportBrowser.DocumentText = r;
@@ -196,51 +194,6 @@ namespace LouMapInfoApp
                 RefreshReport();
             }
         }
-        private void btnCityType_ButtonClick(object sender, EventArgs e)
-        {
-            btnCityType.ShowDropDown();
-        }
-
-        private void btnBoth_Click(object sender, EventArgs e)
-        {
-            btnCityType.Text = btnBoth.Text;
-            btnBoth.Checked = true;
-            btnCities.Checked = false;
-            btnCastles.Checked = false;
-            ChangeType(LoUCityType.City, LoUCityType.Castle, LoUCityType.Palace);
-            if (sender != null)
-            {
-                RefreshReport();
-
-            }
-        }
-
-        private void btnCastles_Click(object sender, EventArgs e)
-        {
-            btnCityType.Text = btnCastles.Text;
-            btnBoth.Checked = false;
-            btnCities.Checked = false;
-            btnCastles.Checked = true;
-            ChangeType(LoUCityType.Castle, LoUCityType.Palace);
-            if (sender != null)
-            {
-                RefreshReport();
-            }
-        }
-
-        private void btnCities_Click(object sender, EventArgs e)
-        {
-            btnCityType.Text = btnCities.Text;
-            btnBoth.Checked = false;
-            btnCities.Checked = true;
-            btnCastles.Checked = false;
-            ChangeType(LoUCityType.City);
-            if (sender != null)
-            {
-                RefreshReport();
-            }
-        }
-
         private void btnDisplayOptions_ButtonClick(object sender, EventArgs e)
         {
             btnDisplayOptions.ShowDropDown();
