@@ -18,6 +18,8 @@ namespace LouMapInfo.Reports
         {
             this.world = w;
             this.type = b;
+            m_Features.Add(ReportFeatureType.BorderingLand, true);
+            m_Features.Add(ReportFeatureType.BorderingWater, true);
             LoadIfNeeded();
         }
 
