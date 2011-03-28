@@ -179,41 +179,21 @@ namespace LouMapInfoApp.LouOfficial
             OpenBattleReport(BattleType.HighestFaith);
         }
 
-        private void btnShrineLocationExclude_Click(object sender, EventArgs e)
+        private void btnShrineLocation_Click(object sender, EventArgs e)
         {
             try
             {
                 Pt loc = new Pt(txtShrineLocation.Text);
                 ContentEnabling(false);
-                new Thread(new ParameterizedThreadStart(OpenShrineReport1Async)).Start(loc);
+                new Thread(new ParameterizedThreadStart(OpenShrineReportAsync)).Start(loc);
             }
             catch { }
         }
 
-        private void OpenShrineReport1Async(object o)
+        private void OpenShrineReportAsync(object o)
         {
             Pt pt = (Pt)o;
-            ShrineCastlesReport rep = new ShrineCastlesReport(Session.World, pt,false);
-            rep.LoadIfNeeded();
-            OpenReport(rep);
-            ContentEnabling(true);
-        }
-
-        private void btnShrineLocationInclude_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Pt loc = new Pt(txtShrineLocation.Text);
-                ContentEnabling(false);
-                new Thread(new ParameterizedThreadStart(OpenShrineReport2Async)).Start(loc);
-            }
-            catch { }
-        }
-
-        private void OpenShrineReport2Async(object o)
-        {
-            Pt pt = (Pt)o;
-            ShrineCastlesReport rep = new ShrineCastlesReport(Session.World, pt, true);
+            ShrineCastlesReport rep = new ShrineCastlesReport(Session.World, pt);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);

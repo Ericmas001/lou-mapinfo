@@ -58,9 +58,8 @@
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.txtShrineLocation = new System.Windows.Forms.ToolStripTextBox();
-            this.btnShrineLocationExclude = new System.Windows.Forms.ToolStripButton();
-            this.pnlContent = new System.Windows.Forms.Panel();
             this.btnShrineLocationInclude = new System.Windows.Forms.ToolStripButton();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.tbReportByAlliance.SuspendLayout();
             this.tbReportByVirtue.SuspendLayout();
             this.tbReportBattle.SuspendLayout();
@@ -333,8 +332,7 @@
             this.toolStripLabel3,
             this.toolStripLabel4,
             this.txtShrineLocation,
-            this.btnShrineLocationInclude,
-            this.btnShrineLocationExclude});
+            this.btnShrineLocationInclude});
             this.tbReportShrine.Location = new System.Drawing.Point(0, 75);
             this.tbReportShrine.Name = "tbReportShrine";
             this.tbReportShrine.Size = new System.Drawing.Size(658, 25);
@@ -361,16 +359,16 @@
             this.txtShrineLocation.Size = new System.Drawing.Size(100, 25);
             this.txtShrineLocation.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnShrineLocationExclude
+            // btnShrineLocationInclude
             // 
-            this.btnShrineLocationExclude.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnShrineLocationExclude.Image = ((System.Drawing.Image)(resources.GetObject("btnShrineLocationExclude.Image")));
-            this.btnShrineLocationExclude.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShrineLocationExclude.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnShrineLocationExclude.Name = "btnShrineLocationExclude";
-            this.btnShrineLocationExclude.Size = new System.Drawing.Size(112, 22);
-            this.btnShrineLocationExclude.Text = "Exclude NoAlliance";
-            this.btnShrineLocationExclude.Click += new System.EventHandler(this.btnShrineLocationExclude_Click);
+            this.btnShrineLocationInclude.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnShrineLocationInclude.Image = ((System.Drawing.Image)(resources.GetObject("btnShrineLocationInclude.Image")));
+            this.btnShrineLocationInclude.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShrineLocationInclude.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
+            this.btnShrineLocationInclude.Name = "btnShrineLocationInclude";
+            this.btnShrineLocationInclude.Size = new System.Drawing.Size(152, 22);
+            this.btnShrineLocationInclude.Text = "Get cities in the 20x20 zone";
+            this.btnShrineLocationInclude.Click += new System.EventHandler(this.btnShrineLocation_Click);
             // 
             // pnlContent
             // 
@@ -380,17 +378,6 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(658, 147);
             this.pnlContent.TabIndex = 26;
-            // 
-            // btnShrineLocationInclude
-            // 
-            this.btnShrineLocationInclude.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnShrineLocationInclude.Image = ((System.Drawing.Image)(resources.GetObject("btnShrineLocationInclude.Image")));
-            this.btnShrineLocationInclude.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShrineLocationInclude.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
-            this.btnShrineLocationInclude.Name = "btnShrineLocationInclude";
-            this.btnShrineLocationInclude.Size = new System.Drawing.Size(111, 22);
-            this.btnShrineLocationInclude.Text = "Include NoAlliance";
-            this.btnShrineLocationInclude.Click += new System.EventHandler(this.btnShrineLocationInclude_Click);
             // 
             // ContentLouVirtues
             // 
@@ -451,7 +438,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripTextBox txtShrineLocation;
-        private System.Windows.Forms.ToolStripButton btnShrineLocationExclude;
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.ToolStripButton btnShrineLocationInclude;
 
