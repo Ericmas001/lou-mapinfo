@@ -95,7 +95,7 @@ namespace LouMapInfoApp
 
         void m_Layout_BuildingChanged(BuildingType res)
         {
-            OnMouseMove(new MouseEventArgs(System.Windows.Forms.MouseButtons.None, 0, mouse.X, mouse.Y, 0));
+            MouseMoveAction(true);
             Invalidate();
             BuildingChanged(res);
         }
@@ -226,17 +226,21 @@ namespace LouMapInfoApp
                     g.DrawImage(Buildings[l.Info], x0 + (l.X * dx), y0 + (l.Y * dy), 48, 48);
             }
         }
-        protected override void OnMouseMove(MouseEventArgs e)
+        void MouseMoveAction(bool forced)
         {
-            base.OnMouseMove(e);
-            mouse = e.Location;
             Point nc = new Point((mouse.X - x0 - 3) / dx, (mouse.Y - y0 - 13) / dy);
-            if (nc.X != coords.X || nc.Y != coords.Y)
+            if (forced || nc.X != coords.X || nc.Y != coords.Y)
             {
                 coords = nc;
                 verifyValid();
                 Invalidate();
             }
+        }
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            mouse = e.Location;
+            MouseMoveAction(false);
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
