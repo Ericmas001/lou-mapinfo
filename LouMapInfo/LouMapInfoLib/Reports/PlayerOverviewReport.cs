@@ -15,6 +15,12 @@ namespace LouMapInfo.Reports
             : base(type)
         {
             player = p;
+            m_Features.Add(ReportFeatureType.BorderingLand, true);
+            m_Features.Add(ReportFeatureType.BorderingWater, true);
+            m_Features.Add(ReportFeatureType.NoCities, true);
+            m_Features.Add(ReportFeatureType.TypeCastle, true);
+            m_Features.Add(ReportFeatureType.TypeCity, true);
+            m_Features.Add(ReportFeatureType.TypePalace, true);
             LoadIfNeeded();
         }
 

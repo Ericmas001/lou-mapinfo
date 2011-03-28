@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EricUtility;
 using LouMapInfo.Entities;
+using LouMapInfo.Reports.Features;
 
 namespace LouMapInfo.Reports.core
 {
@@ -13,8 +14,18 @@ namespace LouMapInfo.Reports.core
         protected ReportItem title;
         protected ReportItem subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
+        protected Dictionary<ReportFeatureType, bool> m_Features = new Dictionary<ReportFeatureType, bool>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
         protected List<CityType> m_Types;
+
+        public bool hasFeature(ReportFeatureType f)
+        {
+            return m_Features.ContainsKey(f);
+        }
+        public bool FeatureEnabled(ReportFeatureType f)
+        {
+            return !m_Features.ContainsKey(f) || m_Features[f];
+        }
 
         public ReportOption Options
         {

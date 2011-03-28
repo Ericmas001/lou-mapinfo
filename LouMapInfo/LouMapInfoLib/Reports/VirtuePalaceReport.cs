@@ -20,6 +20,9 @@ namespace LouMapInfo.Reports
             this.world = w;
             this.virtue = v;
             this.alliance = a;
+
+            m_Features.Add(ReportFeatureType.BorderingLand, true);
+            m_Features.Add(ReportFeatureType.BorderingWater, true);
             LoadIfNeeded();
         }
 

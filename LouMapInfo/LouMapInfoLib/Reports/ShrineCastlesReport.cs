@@ -13,13 +13,17 @@ namespace LouMapInfo.Reports
     {
         private WorldInfo world;
         private Pt location;
-        private bool includeNoAlliance;
-        public ShrineCastlesReport(WorldInfo w, Pt l, bool noAlliance)
+        public ShrineCastlesReport(WorldInfo w, Pt l)
             : base(CityType.Castle, CityType.Palace)
         {
             this.world = w;
             this.location = l;
-            includeNoAlliance = noAlliance;
+            m_Features.Add(ReportFeatureType.BorderingLand, true);
+            m_Features.Add(ReportFeatureType.BorderingWater, true);
+            m_Features.Add(ReportFeatureType.NoAlliance, true);
+            m_Features.Add(ReportFeatureType.TypeCastle, true);
+            m_Features.Add(ReportFeatureType.TypePalace, true);
+            m_Features.Add(ReportFeatureType.TypeCity, true);
             LoadIfNeeded();
         }
 
@@ -31,7 +35,6 @@ namespace LouMapInfo.Reports
         protected override void OnLoad()
         {
             title = new TextReportItem("Castles surrounding" + location, true);
-            subtitle = new TextReportItem((includeNoAlliance ? "Including " : "Excluding ") + "players without an alliance",true);
             ContinentInfo cont = world.Continent(location.Continent);
             Dictionary<int, List<CityInfo>> cities = new Dictionary<int, List<CityInfo>>();
             List<CityInfo> alls = new List<CityInfo>();
@@ -41,20 +44,17 @@ namespace LouMapInfo.Reports
             }
             foreach (AllianceInfo a in cont.Alliances)
             {
-                if (includeNoAlliance || a.Name != "")
+                foreach (PlayerInfo p in a.Players())
                 {
-                    foreach (PlayerInfo p in a.Players())
+                    foreach (CityInfo c in p.Cities(cont.Id, ReportFeatureType.TypePalace, ReportFeatureType.TypeCastle, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
                     {
-                        foreach (CityInfo c in p.Cities(cont.Id, ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
+                        double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
+                        //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);
+                        int dist = (int)(0.9999999 + d);
+                        if (dist <= 20)
                         {
-                            double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
-                            //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);
-                            int dist = (int)(0.9999999 + d);
-                            if (dist <= 20)
-                            {
-                                cities[dist].Add(c);
-                                alls.Add(c);
-                            }
+                            cities[dist].Add(c);
+                            alls.Add(c);
                         }
                     }
                 }
