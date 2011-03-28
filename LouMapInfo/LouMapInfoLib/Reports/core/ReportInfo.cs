@@ -22,9 +22,41 @@ namespace LouMapInfo.Reports.core
         {
             return m_Features.ContainsKey(f);
         }
+        public bool hasType0Feature()
+        {
+            return m_Features.ContainsKey(ReportFeatureType.TypeCastle) || m_Features.ContainsKey(ReportFeatureType.TypeCity) || m_Features.ContainsKey(ReportFeatureType.TypePalace);
+        }
+        public bool hasType1Feature()
+        {
+            return m_Features.ContainsKey(ReportFeatureType.BorderingLand) || m_Features.ContainsKey(ReportFeatureType.BorderingWater);
+        }
+        public bool hasType2Feature()
+        {
+            return m_Features.ContainsKey(ReportFeatureType.NoCities);
+        }
+        public bool hasType3Feature()
+        {
+            return m_Features.ContainsKey(ReportFeatureType.NoAlliance);
+        }
         public bool FeatureEnabled(ReportFeatureType f)
         {
             return !m_Features.ContainsKey(f) || m_Features[f];
+        }
+
+        public void SetFeature(ReportFeatureType f, bool value)
+        {
+            if (m_Features.ContainsKey(f))
+            {
+                bool old = m_Features[f];
+                m_Features[f] = value;
+                if (old != value)
+                {
+                    title = null;
+                    subtitle = null;
+                    root = new List<ReportItem>();
+                    ForceLoad();
+                }
+            }
         }
 
         public ReportOption Options
