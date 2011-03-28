@@ -14,7 +14,7 @@ namespace LouMapInfo.Reports
         private WorldInfo world;
         private BattleType type;
         public BattlePalaceReport(WorldInfo w, BattleType b)
-            : base(CityType.City, CityType.Castle, CityType.Palace)
+            : base()
         {
             this.world = w;
             this.type = b;
@@ -52,6 +52,9 @@ namespace LouMapInfo.Reports
                 case BattleType.HighestLevel: title = new TextReportItem("Highest Level Battle", true); break;
                 default: return;
             }
+            string[] lines = SayCityType();
+            if (lines.Length > 0)
+                subtitle = new MultiLineReportItem(true, lines);
             VirtueType[] virtues = new VirtueType[] { VirtueType.Compassion, VirtueType.Honesty, VirtueType.Honor, VirtueType.Humility, VirtueType.Justice, VirtueType.Sacrifice, VirtueType.Spirituality, VirtueType.Valor };
             Dictionary<VirtueType, Dictionary<string, CityInfo>> palaces = new Dictionary<VirtueType, Dictionary<string, CityInfo>>();
             foreach (VirtueType v in virtues)

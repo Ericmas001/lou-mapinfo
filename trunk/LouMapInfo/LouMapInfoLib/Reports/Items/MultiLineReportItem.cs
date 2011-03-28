@@ -21,6 +21,13 @@ namespace LouMapInfo.Reports.Items
             m_Lines.AddRange(items);
         }
 
+        public MultiLineReportItem(bool showIfEmpty, params string[] items)
+            : base(showIfEmpty)
+        {
+            foreach (string s in items)
+                m_Lines.Add(new TextReportItem(s, showIfEmpty));
+        }
+
         public override string Value(ReportOption options)
         {
             String s = "";

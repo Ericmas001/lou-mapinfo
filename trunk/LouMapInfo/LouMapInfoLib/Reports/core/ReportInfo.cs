@@ -16,8 +16,7 @@ namespace LouMapInfo.Reports.core
         protected List<ReportItem> root = new List<ReportItem>();
         protected Dictionary<ReportFeatureType, bool> m_Features = new Dictionary<ReportFeatureType, bool>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
-        protected List<CityType> m_Types;
-
+        
         public bool hasFeature(ReportFeatureType f)
         {
             return m_Features.ContainsKey(f);
@@ -72,18 +71,6 @@ namespace LouMapInfo.Reports.core
                 options &= ~o;
         }
 
-        public List<CityType> Types
-        {
-            get { return m_Types; }
-        }
-        public void SetTypes(params CityType[] types)
-        {
-            m_Types = new List<CityType>(types);
-            title = null;
-            subtitle = null;
-            root = new List<ReportItem>();
-            ForceLoad();
-        }
         public ReportInfo()
         {
             BBCodeDisplay.Add("b", true);
@@ -94,12 +81,6 @@ namespace LouMapInfo.Reports.core
             BBCodeDisplay.Add("city", false);
             BBCodeDisplay.Add("player", true);
             BBCodeDisplay.Add("alliance", true);
-        }
-
-        public ReportInfo(params CityType[] types)
-            : this()
-        {
-            m_Types = new List<CityType>(types);
         }
 
         public string Report(int d)
@@ -270,6 +251,69 @@ namespace LouMapInfo.Reports.core
                     res = res
                         .Replace("["+b+"]", "")
                         .Replace("[/" + b + "]", "");
+            return res;
+        }
+        public string[] SayCityType()
+        {
+            List<string> lines = new List<string>();
+            if (hasType0Feature())
+            {
+                bool hci = hasFeature(ReportFeatureType.TypeCity);
+                bool hca = hasFeature(ReportFeatureType.TypeCastle);
+                bool hpa = hasFeature(ReportFeatureType.TypePalace);
+                bool eci = FeatureEnabled(ReportFeatureType.TypeCity);
+                bool eca = FeatureEnabled(ReportFeatureType.TypeCastle);
+                bool epa = FeatureEnabled(ReportFeatureType.TypePalace);
+
+                if ((hci && !eci) || (hca && !eca) || (hpa && !epa))
+                {
+                    if (eci && (!hca || !eca) && (!hpa || !epa))
+                        lines.Add("Non-Castled cities only");
+                    else if (eca && (!hci || !eci) && (!hpa || !epa))
+                        lines.Add("Castles only");
+                    else if (epa && (!hci || !eci) && (!hca || !eca))
+                        lines.Add("Palaces only");
+                    else if (!eci)
+                        lines.Add("Non-Castled cities excluded");
+                    else if (!eca)
+                        lines.Add("Castles excluded");
+                    else if (!epa)
+                        lines.Add("Palaces excluded");
+                }
+            }
+            if (hasType1Feature())
+            {
+                bool hl = hasFeature(ReportFeatureType.BorderingLand);
+                bool hw = hasFeature(ReportFeatureType.BorderingWater);
+                bool el = FeatureEnabled(ReportFeatureType.BorderingLand);
+                bool ew = FeatureEnabled(ReportFeatureType.BorderingWater);
+
+                if ((hl && !el) || (hw && !ew))
+                {
+                    if (el)
+                        lines.Add("Land-Locked only");
+                    else if (ew)
+                        lines.Add("Water-Based only");
+                }
+            }
+            if (hasType2Feature())
+            {
+                bool h = hasFeature(ReportFeatureType.NoCities);
+                bool e = FeatureEnabled(ReportFeatureType.NoCities);
+
+                if (h && !e)
+                    lines.Add("No Cities excluded");
+            }
+            if (hasType3Feature())
+            {
+                bool h = hasFeature(ReportFeatureType.NoAlliance);
+                bool e = FeatureEnabled(ReportFeatureType.NoAlliance);
+
+                if (h && !e)
+                    lines.Add("No Alliance excluded");
+            }
+            string[] res = new string[lines.Count];
+            lines.CopyTo(res, 0);
             return res;
         }
     }
