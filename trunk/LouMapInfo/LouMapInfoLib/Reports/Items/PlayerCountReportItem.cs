@@ -9,6 +9,12 @@ namespace LouMapInfo.Reports.Items
     {
         private int m_Count;
 
+        public int Count
+        {
+            get { return m_Count; }
+            set { m_Count = value; }
+        }
+
         public PlayerCountReportItem(int count, bool showIfEmpty)
             : base(showIfEmpty)
         {
