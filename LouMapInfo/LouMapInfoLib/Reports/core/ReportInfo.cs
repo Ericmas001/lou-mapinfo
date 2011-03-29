@@ -302,7 +302,7 @@ namespace LouMapInfo.Reports.core
                 bool e = FeatureEnabled(ReportFeatureType.NoCities);
 
                 if (h && !e)
-                    lines.Add("No Cities excluded");
+                    lines.Add("\"No Cities\" excluded");
             }
             if (hasType3Feature())
             {
@@ -310,7 +310,7 @@ namespace LouMapInfo.Reports.core
                 bool e = FeatureEnabled(ReportFeatureType.NoAlliance);
 
                 if (h && !e)
-                    lines.Add("No Alliance excluded");
+                    lines.Add("\"No Alliance\" excluded");
             }
             string[] res = new string[lines.Count];
             lines.CopyTo(res, 0);

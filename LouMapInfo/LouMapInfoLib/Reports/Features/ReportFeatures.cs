@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using LouMapInfo.Entities;
 
 namespace LouMapInfo.Reports.Features
 {
@@ -16,6 +17,15 @@ namespace LouMapInfo.Reports.Features
         public ReportFeatures(params ReportFeatureType[] features)
         {
             m_Features.AddRange(features);
+        }
+        public static ReportFeatureType Feature(CityType type)
+        {
+            if (type == CityType.City)
+                return ReportFeatureType.TypeCity;
+            else if (type == CityType.Castle)
+                return ReportFeatureType.TypeCastle;
+            else
+                return ReportFeatureType.TypePalace;
         }
     }
 }

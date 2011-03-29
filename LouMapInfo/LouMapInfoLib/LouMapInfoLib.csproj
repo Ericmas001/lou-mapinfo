@@ -64,7 +64,6 @@
     <Compile Include="Entities\WorldInfo.cs" />
     <Compile Include="Entities\Types\VirtueType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\Features\ReportFeatureInfo.cs" />
     <Compile Include="Reports\Features\ReportFeatures.cs" />
     <Compile Include="Reports\Features\ReportFeatureType.cs" />
     <Compile Include="Reports\Items\ContinentScoreReportItem.cs" />

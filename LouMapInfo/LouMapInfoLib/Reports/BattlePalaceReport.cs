@@ -94,7 +94,7 @@ namespace LouMapInfo.Reports
                     foreach( CityInfo p in cities )
                     {
                         ReportItem r2 = new AllianceInfoReportItem(p.Player.Alliance, true, rank++);
-                        r2.Items.Add(new DetailedPalaceInfoReportItem(p, true, true, false, true, true));
+                        r2.Items.Add(new DetailedPalaceInfoReportItem(p, true, true, false, true, true,false));
                         r.Items.Add(r2);
                     }
                     root.Add(r);

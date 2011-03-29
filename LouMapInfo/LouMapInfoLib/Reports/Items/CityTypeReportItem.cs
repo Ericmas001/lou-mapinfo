@@ -12,17 +12,27 @@ namespace LouMapInfo.Reports.Items
         private int m_Count;
         private CityType m_Type;
         private VirtueType m_Virtue;
+        private BorderingType m_Border;
 
-        public CityTypeReportItem(int count, CityType type, VirtueType virtue, bool showIfEmpty)
+        public CityTypeReportItem(int count, CityType type, BorderingType border, VirtueType virtue, bool showIfEmpty)
             : base(showIfEmpty)
         {
             m_Count = count;
             m_Type = type;
             m_Virtue = virtue;
+            m_Border = border;
+        }
+        public CityTypeReportItem(int count, CityType type, VirtueType virtue, bool showIfEmpty)
+            : this(count, type, BorderingType.Unknown, virtue, showIfEmpty)
+        {
+        }
+        public CityTypeReportItem(int count, CityType type, BorderingType border, bool showIfEmpty)
+            : this( count,  type, border,VirtueType.None, showIfEmpty)
+        {
         }
 
         public CityTypeReportItem(int count, CityType type, bool showIfEmpty)
-            : this( count,  type, VirtueType.None, showIfEmpty)
+            : this( count,  type, BorderingType.Unknown,VirtueType.None, showIfEmpty)
         {
         }
 
@@ -34,14 +44,20 @@ namespace LouMapInfo.Reports.Items
         public override string Value(ReportOption options)
         {
             String name = "";
+
+            if (m_Border == BorderingType.Land)
+                name = "Land-Locked ";
+            else if (m_Border == BorderingType.Water)
+                name = "Water-Based ";
+
             switch (m_Type)
             {
                 case CityType.City:
-                    name = "Non-Castled Cit" + (m_Count <= 1 ? "y" : "ies"); break;
+                    name = name + "Non-Castled Cit" + (m_Count <= 1 ? "y" : "ies"); break;
                 case CityType.Castle:
-                    name = "Castle" + (m_Count <= 1 ? "" : "s"); break;
+                    name = name + "Castle" + (m_Count <= 1 ? "" : "s"); break;
                 case CityType.Palace:
-                    name = (m_Virtue != VirtueType.None ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
+                    name = name + (m_Virtue != VirtueType.None ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
             }
 
             String s = "";
