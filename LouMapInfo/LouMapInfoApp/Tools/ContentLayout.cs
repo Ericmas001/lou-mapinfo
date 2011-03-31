@@ -196,7 +196,8 @@ namespace LouMapInfoApp.Tools
             args += " use_slots=" + (int)nudAPUseSlots.Value;
             args += " num_cottages=" + (int)nudAPCottages.Value;
             args += " keep_extra_res_nodes=" + (chkAPKeepExtraNodes.Checked ? "1" : "0");
-            args += " build_only_on_open=" + (chkAPBuildOnlyOnOpen.Checked ? "1" : "0");
+            args += " build_on_nrs=" + (chkAPBuildOnlyOnOpen.Checked ? "0" : "1");
+            args += " also_clear_castle=0";
             args += " clear_buildings=" + (chkAPClearBuildings.Checked ? "1" : "0");
             if (!String.IsNullOrEmpty(txtAPPlacement.Text))
             {
@@ -256,7 +257,7 @@ namespace LouMapInfoApp.Tools
         }
         private void btnHelpAutoPlanner_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("control the # of slots used (default 72) and best-effort cottages placed (default 15). the cottages are included in use_slots, so use_slots better be > than num_cottages -- generally at least 3x greater. \n\n list of options in the form option=default\nuse_slots=72\nnum_cottages=15\nkeep_extra_res_nodes=0\nplacement_schedule=WSI (format: [WSIF]+(,[WSIF]+)* -- commas seperate the res set to use for each wave. if more waves are needed to place all res buildings than there are res sets in placement_schedule, placement_schedule will be repeated as needed. the order of letters within each per-wave res set does not matter. duplicate letters within a wave have no effect. e.g. for one wave, 'WWWF' has the same meaning as 'FW': place food or wood on that wave. )\nclear_buildings=1\nbuild_only_on_open=0");
+            MessageBox.Show("control the # of slots used (default 72) and best-effort cottages placed (default 0). the cottages are included in use_slots, so use_slots better be > than num_cottages -- generally at least 3x greater. \n\n list of options in the form option=default\nuse_slots=72\nnum_cottages=0\nkeep_extra_res_nodes=0\nplacement_schedule=WSI (format: [WSIF]+(,[WSIF]+)* -- commas seperate the res set to use for each wave. if more waves are needed to place all res buildings than there are res sets in placement_schedule, placement_schedule will be repeated as needed. the order of letters within each per-wave res set does not matter. duplicate letters within a wave have no effect. e.g. for one wave, 'WWWF' has the same meaning as 'FW': place food or wood on that wave. )\nclear_buildings=1\nalso_clear_castle=0\nbuild_on_nrs=1");
         }
 
         private void pbCity_BuildingChanged(BuildingType res)
