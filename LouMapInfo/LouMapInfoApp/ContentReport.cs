@@ -22,27 +22,27 @@ namespace LouMapInfoApp
         {
             InitializeComponent();
 
-            btnFeatureCastle.Visible = r.hasFeature(FilterType.TypeCastle);
-            btnFeatureCity.Visible = r.hasFeature(FilterType.TypeCity);
-            btnFeaturePalace.Visible = r.hasFeature(FilterType.TypePalace);
-            sepFeature1.Visible = r.hasType0Feature() &&( r.hasType1Feature() || r.hasType2Feature() || r.hasType3Feature());
+            btnFilterCastle.Visible = r.hasFilter(FilterType.TypeCastle);
+            btnFilterCity.Visible = r.hasFilter(FilterType.TypeCity);
+            btnFilterPalace.Visible = r.hasFilter(FilterType.TypePalace);
+            sepFilter1.Visible = r.hasType0Filter() &&( r.hasType1Filter() || r.hasType2Filter() || r.hasType3Filter());
             
-            btnFeatureLand.Visible = r.hasFeature(FilterType.BorderingLand);
-            btnFeatureWater.Visible = r.hasFeature(FilterType.BorderingWater);
-            sepFeature2.Visible = r.hasType1Feature() && (r.hasType2Feature() || r.hasType3Feature());
+            btnFilterLand.Visible = r.hasFilter(FilterType.BorderingLand);
+            btnFilterWater.Visible = r.hasFilter(FilterType.BorderingWater);
+            sepFilter2.Visible = r.hasType1Filter() && (r.hasType2Filter() || r.hasType3Filter());
 
-            btnFeatureNoCities.Visible = r.hasFeature(FilterType.NoCities);
-            sepFeature3.Visible = r.hasType2Feature() && r.hasType3Feature();
+            btnFilterNoCities.Visible = r.hasFilter(FilterType.NoCities);
+            sepFilter3.Visible = r.hasType2Filter() && r.hasType3Filter();
 
-            btnFeatureNoAlliance.Visible = r.hasFeature(FilterType.NoAlliance);
+            btnFilterNoAlliance.Visible = r.hasFilter(FilterType.NoAlliance);
 
-            btnFeatureCastle.Checked = r.FeatureEnabled(FilterType.TypeCastle);
-            btnFeatureCity.Checked = r.FeatureEnabled(FilterType.TypeCity);
-            btnFeaturePalace.Checked = r.FeatureEnabled(FilterType.TypePalace);
-            btnFeatureLand.Checked = r.FeatureEnabled(FilterType.BorderingLand);
-            btnFeatureWater.Checked = r.FeatureEnabled(FilterType.BorderingWater);
-            btnFeatureNoCities.Checked = r.FeatureEnabled(FilterType.NoCities);
-            btnFeatureNoAlliance.Checked = r.FeatureEnabled(FilterType.NoAlliance);
+            btnFilterCastle.Checked = r.FilterEnabled(FilterType.TypeCastle);
+            btnFilterCity.Checked = r.FilterEnabled(FilterType.TypeCity);
+            btnFilterPalace.Checked = r.FilterEnabled(FilterType.TypePalace);
+            btnFilterLand.Checked = r.FilterEnabled(FilterType.BorderingLand);
+            btnFilterWater.Checked = r.FilterEnabled(FilterType.BorderingWater);
+            btnFilterNoCities.Checked = r.FilterEnabled(FilterType.NoCities);
+            btnFilterNoAlliance.Checked = r.FilterEnabled(FilterType.NoAlliance);
             
 
 
@@ -323,76 +323,76 @@ namespace LouMapInfoApp
             }
         }
 
-        private void btnFeatureCity_Click(object sender, EventArgs e)
+        private void btnFilterCity_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(FilterType.TypeCity);
-            if (newVal || report.FeatureEnabled(FilterType.TypeCastle) || report.FeatureEnabled(FilterType.TypePalace))
+            bool newVal = !report.FilterEnabled(FilterType.TypeCity);
+            if (newVal || report.FilterEnabled(FilterType.TypeCastle) || report.FilterEnabled(FilterType.TypePalace))
             {
-                report.SetFeature(FilterType.TypeCity,newVal);
-                btnFeatureCity.Checked = newVal;
+                report.SetFilter(FilterType.TypeCity,newVal);
+                btnFilterCity.Checked = newVal;
                 RefreshReport();
             }
         }
 
-        private void btnFeatureCastle_Click(object sender, EventArgs e)
+        private void btnFilterCastle_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(FilterType.TypeCastle);
-            if (newVal || report.FeatureEnabled(FilterType.TypeCity) || report.FeatureEnabled(FilterType.TypePalace))
+            bool newVal = !report.FilterEnabled(FilterType.TypeCastle);
+            if (newVal || report.FilterEnabled(FilterType.TypeCity) || report.FilterEnabled(FilterType.TypePalace))
             {
-                report.SetFeature(FilterType.TypeCastle, newVal);
-                btnFeatureCastle.Checked = newVal;
+                report.SetFilter(FilterType.TypeCastle, newVal);
+                btnFilterCastle.Checked = newVal;
                 RefreshReport();
             }
         }
 
-        private void btnFeaturePalace_Click(object sender, EventArgs e)
+        private void btnFilterPalace_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(FilterType.TypePalace);
-            if (newVal || report.FeatureEnabled(FilterType.TypeCastle) || report.FeatureEnabled(FilterType.TypeCity))
+            bool newVal = !report.FilterEnabled(FilterType.TypePalace);
+            if (newVal || report.FilterEnabled(FilterType.TypeCastle) || report.FilterEnabled(FilterType.TypeCity))
             {
-                report.SetFeature(FilterType.TypePalace, newVal);
-                btnFeaturePalace.Checked = newVal;
+                report.SetFilter(FilterType.TypePalace, newVal);
+                btnFilterPalace.Checked = newVal;
                 RefreshReport();
             }
         }
 
-        private void btnFeatureLand_Click(object sender, EventArgs e)
+        private void btnFilterLand_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(FilterType.BorderingLand);
-            if (newVal || report.FeatureEnabled(FilterType.BorderingWater))
+            bool newVal = !report.FilterEnabled(FilterType.BorderingLand);
+            if (newVal || report.FilterEnabled(FilterType.BorderingWater))
             {
-                report.SetFeature(FilterType.BorderingLand, newVal);
-                btnFeatureLand.Checked = newVal;
-                RefreshReport();
-            }
-
-        }
-
-        private void btnFeatureWater_Click(object sender, EventArgs e)
-        {
-            bool newVal = !report.FeatureEnabled(FilterType.BorderingWater);
-            if (newVal || report.FeatureEnabled(FilterType.BorderingLand))
-            {
-                report.SetFeature(FilterType.BorderingWater, newVal);
-                btnFeatureWater.Checked = newVal;
+                report.SetFilter(FilterType.BorderingLand, newVal);
+                btnFilterLand.Checked = newVal;
                 RefreshReport();
             }
 
         }
 
-        private void btnFeatureNoCities_Click(object sender, EventArgs e)
+        private void btnFilterWater_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(FilterType.NoCities);
-            report.SetFeature(FilterType.NoCities, newVal);
-            btnFeatureNoCities.Checked = newVal;
+            bool newVal = !report.FilterEnabled(FilterType.BorderingWater);
+            if (newVal || report.FilterEnabled(FilterType.BorderingLand))
+            {
+                report.SetFilter(FilterType.BorderingWater, newVal);
+                btnFilterWater.Checked = newVal;
+                RefreshReport();
+            }
+
+        }
+
+        private void btnFilterNoCities_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.FilterEnabled(FilterType.NoCities);
+            report.SetFilter(FilterType.NoCities, newVal);
+            btnFilterNoCities.Checked = newVal;
             RefreshReport();
         }
 
-        private void btnFeatureNoAlliance_Click(object sender, EventArgs e)
+        private void btnFilterNoAlliance_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(FilterType.NoAlliance);
-            report.SetFeature(FilterType.NoAlliance, newVal);
-            btnFeatureNoAlliance.Checked = newVal;
+            bool newVal = !report.FilterEnabled(FilterType.NoAlliance);
+            report.SetFilter(FilterType.NoAlliance, newVal);
+            btnFilterNoAlliance.Checked = newVal;
             RefreshReport();
         }
     }

@@ -7,16 +7,16 @@ namespace LouMapInfo.Entities.Filter
 {
     public class Filters
     {
-        private List<FilterType> m_Features = new List<FilterType>();
+        private List<FilterType> m_Filters = new List<FilterType>();
 
-        public List<FilterType> Features
+        public List<FilterType> AllFilters
         {
-            get { return m_Features; }
-            set { m_Features = value; }
+            get { return m_Filters; }
+            set { m_Filters = value; }
         }
         public Filters(params FilterType[] features)
         {
-            m_Features.AddRange(features);
+            m_Filters.AddRange(features);
         }
         public static FilterType Filter(CityType type)
         {
