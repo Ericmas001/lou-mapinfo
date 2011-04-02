@@ -107,11 +107,11 @@ namespace LouMapInfo.Entities
             foreach (CityInfo c in all)
             {
                 bool ok = true;
-                ok = ok && (c.Bordering != BorderingType.Land || f.Features.Contains(FilterType.BorderingLand));
-                ok = ok && (c.Bordering != BorderingType.Water || f.Features.Contains(FilterType.BorderingWater));
-                ok = ok && (c.TypeCity != CityType.City || f.Features.Contains(FilterType.TypeCity));
-                ok = ok && (c.TypeCity != CityType.Castle || f.Features.Contains(FilterType.TypeCastle));
-                ok = ok && (c.TypeCity != CityType.Palace || f.Features.Contains(FilterType.TypePalace));
+                ok = ok && (c.Bordering != BorderingType.Land || f.AllFilters.Contains(FilterType.BorderingLand));
+                ok = ok && (c.Bordering != BorderingType.Water || f.AllFilters.Contains(FilterType.BorderingWater));
+                ok = ok && (c.TypeCity != CityType.City || f.AllFilters.Contains(FilterType.TypeCity));
+                ok = ok && (c.TypeCity != CityType.Castle || f.AllFilters.Contains(FilterType.TypeCastle));
+                ok = ok && (c.TypeCity != CityType.Palace || f.AllFilters.Contains(FilterType.TypePalace));
 
                 if (ok)
                     res.Add(c);

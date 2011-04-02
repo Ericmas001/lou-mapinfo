@@ -15,12 +15,12 @@ namespace LouMapInfo.Reports
             : base()
         {
             player = p;
-            m_Features.Add(FilterType.BorderingLand, true);
-            m_Features.Add(FilterType.BorderingWater, true);
-            m_Features.Add(FilterType.NoCities, true);
-            m_Features.Add(FilterType.TypeCastle, true);
-            m_Features.Add(FilterType.TypeCity, true);
-            m_Features.Add(FilterType.TypePalace, true);
+            m_Filters.Add(FilterType.BorderingLand, true);
+            m_Filters.Add(FilterType.BorderingWater, true);
+            m_Filters.Add(FilterType.NoCities, true);
+            m_Filters.Add(FilterType.TypeCastle, true);
+            m_Filters.Add(FilterType.TypeCity, true);
+            m_Filters.Add(FilterType.TypePalace, true);
             LoadIfNeeded();
         }
 
@@ -49,7 +49,7 @@ namespace LouMapInfo.Reports
                 ReportItem r = new ContinentScoreReportItem(ic, player.CScore(ic), true, false);
 
                 //First palaces
-                if (FeatureEnabled(FilterType.TypePalace))
+                if (FilterEnabled(FilterType.TypePalace))
                 {
                     CityInfo[] citiesW = player.Cities(ic, FilterType.BorderingWater, FilterType.TypePalace);
                     CityInfo[] citiesL = player.Cities(ic, FilterType.BorderingLand, FilterType.TypePalace);
@@ -76,7 +76,7 @@ namespace LouMapInfo.Reports
                 }
 
                 //Then castles
-                if (FeatureEnabled(FilterType.TypeCastle))
+                if (FilterEnabled(FilterType.TypeCastle))
                 {
                     CityInfo[] citiesW = player.Cities(ic, FilterType.BorderingWater, FilterType.TypeCastle);
                     CityInfo[] citiesL = player.Cities(ic, FilterType.BorderingLand, FilterType.TypeCastle);
@@ -103,7 +103,7 @@ namespace LouMapInfo.Reports
                 }
 
                 //Then non-castled cities
-                if (FeatureEnabled(FilterType.TypeCity))
+                if (FilterEnabled(FilterType.TypeCity))
                 {
                     CityInfo[] citiesW = player.Cities(ic, FilterType.BorderingWater, FilterType.TypeCity);
                     CityInfo[] citiesL = player.Cities(ic, FilterType.BorderingLand, FilterType.TypeCity);

@@ -36,16 +36,16 @@
             this.btnReportsLvl3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReportContent = new System.Windows.Forms.ToolStripDropDownButton();
-            this.btnFeatureCity = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFeatureCastle = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFeaturePalace = new System.Windows.Forms.ToolStripMenuItem();
-            this.sepFeature1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnFeatureLand = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFeatureWater = new System.Windows.Forms.ToolStripMenuItem();
-            this.sepFeature2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnFeatureNoCities = new System.Windows.Forms.ToolStripMenuItem();
-            this.sepFeature3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnFeatureNoAlliance = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFilterCity = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFilterCastle = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFilterPalace = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepFilter1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFilterLand = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFilterWater = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepFilter2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFilterNoCities = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepFilter3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFilterNoAlliance = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDisplayOptions = new System.Windows.Forms.ToolStripSplitButton();
             this.btnDisplayOptionsCityCount = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,85 +148,85 @@
             // 
             this.btnReportContent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnReportContent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnFeatureCity,
-            this.btnFeatureCastle,
-            this.btnFeaturePalace,
-            this.sepFeature1,
-            this.btnFeatureLand,
-            this.btnFeatureWater,
-            this.sepFeature2,
-            this.btnFeatureNoCities,
-            this.sepFeature3,
-            this.btnFeatureNoAlliance});
+            this.btnFilterCity,
+            this.btnFilterCastle,
+            this.btnFilterPalace,
+            this.sepFilter1,
+            this.btnFilterLand,
+            this.btnFilterWater,
+            this.sepFilter2,
+            this.btnFilterNoCities,
+            this.sepFilter3,
+            this.btnFilterNoAlliance});
             this.btnReportContent.Image = ((System.Drawing.Image)(resources.GetObject("btnReportContent.Image")));
             this.btnReportContent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReportContent.Name = "btnReportContent";
             this.btnReportContent.Size = new System.Drawing.Size(51, 22);
             this.btnReportContent.Text = "Filters";
             // 
-            // btnFeatureCity
+            // btnFilterCity
             // 
-            this.btnFeatureCity.Name = "btnFeatureCity";
-            this.btnFeatureCity.Size = new System.Drawing.Size(152, 22);
-            this.btnFeatureCity.Text = "Cities";
-            this.btnFeatureCity.Click += new System.EventHandler(this.btnFeatureCity_Click);
+            this.btnFilterCity.Name = "btnFilterCity";
+            this.btnFilterCity.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterCity.Text = "Cities";
+            this.btnFilterCity.Click += new System.EventHandler(this.btnFilterCity_Click);
             // 
-            // btnFeatureCastle
+            // btnFilterCastle
             // 
-            this.btnFeatureCastle.Name = "btnFeatureCastle";
-            this.btnFeatureCastle.Size = new System.Drawing.Size(152, 22);
-            this.btnFeatureCastle.Text = "Castles";
-            this.btnFeatureCastle.Click += new System.EventHandler(this.btnFeatureCastle_Click);
+            this.btnFilterCastle.Name = "btnFilterCastle";
+            this.btnFilterCastle.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterCastle.Text = "Castles";
+            this.btnFilterCastle.Click += new System.EventHandler(this.btnFilterCastle_Click);
             // 
-            // btnFeaturePalace
+            // btnFilterPalace
             // 
-            this.btnFeaturePalace.Name = "btnFeaturePalace";
-            this.btnFeaturePalace.Size = new System.Drawing.Size(152, 22);
-            this.btnFeaturePalace.Text = "Palaces";
-            this.btnFeaturePalace.Click += new System.EventHandler(this.btnFeaturePalace_Click);
+            this.btnFilterPalace.Name = "btnFilterPalace";
+            this.btnFilterPalace.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterPalace.Text = "Palaces";
+            this.btnFilterPalace.Click += new System.EventHandler(this.btnFilterPalace_Click);
             // 
-            // sepFeature1
+            // sepFilter1
             // 
-            this.sepFeature1.Name = "sepFeature1";
-            this.sepFeature1.Size = new System.Drawing.Size(149, 6);
+            this.sepFilter1.Name = "sepFilter1";
+            this.sepFilter1.Size = new System.Drawing.Size(149, 6);
             // 
-            // btnFeatureLand
+            // btnFilterLand
             // 
-            this.btnFeatureLand.Name = "btnFeatureLand";
-            this.btnFeatureLand.Size = new System.Drawing.Size(152, 22);
-            this.btnFeatureLand.Text = "Land-Locked";
-            this.btnFeatureLand.Click += new System.EventHandler(this.btnFeatureLand_Click);
+            this.btnFilterLand.Name = "btnFilterLand";
+            this.btnFilterLand.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterLand.Text = "Land-Locked";
+            this.btnFilterLand.Click += new System.EventHandler(this.btnFilterLand_Click);
             // 
-            // btnFeatureWater
+            // btnFilterWater
             // 
-            this.btnFeatureWater.Name = "btnFeatureWater";
-            this.btnFeatureWater.Size = new System.Drawing.Size(152, 22);
-            this.btnFeatureWater.Text = "Water-Based";
-            this.btnFeatureWater.Click += new System.EventHandler(this.btnFeatureWater_Click);
+            this.btnFilterWater.Name = "btnFilterWater";
+            this.btnFilterWater.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterWater.Text = "Water-Based";
+            this.btnFilterWater.Click += new System.EventHandler(this.btnFilterWater_Click);
             // 
-            // sepFeature2
+            // sepFilter2
             // 
-            this.sepFeature2.Name = "sepFeature2";
-            this.sepFeature2.Size = new System.Drawing.Size(149, 6);
+            this.sepFilter2.Name = "sepFilter2";
+            this.sepFilter2.Size = new System.Drawing.Size(149, 6);
             // 
-            // btnFeatureNoCities
+            // btnFilterNoCities
             // 
-            this.btnFeatureNoCities.Name = "btnFeatureNoCities";
-            this.btnFeatureNoCities.Size = new System.Drawing.Size(152, 22);
-            this.btnFeatureNoCities.Text = "No Cities";
-            this.btnFeatureNoCities.Click += new System.EventHandler(this.btnFeatureNoCities_Click);
+            this.btnFilterNoCities.Name = "btnFilterNoCities";
+            this.btnFilterNoCities.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterNoCities.Text = "No Cities";
+            this.btnFilterNoCities.Click += new System.EventHandler(this.btnFilterNoCities_Click);
             // 
-            // sepFeature3
+            // sepFilter3
             // 
-            this.sepFeature3.Name = "sepFeature3";
-            this.sepFeature3.Size = new System.Drawing.Size(149, 6);
+            this.sepFilter3.Name = "sepFilter3";
+            this.sepFilter3.Size = new System.Drawing.Size(149, 6);
             // 
-            // btnFeatureNoAlliance
+            // btnFilterNoAlliance
             // 
-            this.btnFeatureNoAlliance.Name = "btnFeatureNoAlliance";
-            this.btnFeatureNoAlliance.Size = new System.Drawing.Size(152, 22);
-            this.btnFeatureNoAlliance.Text = "No Alliance";
-            this.btnFeatureNoAlliance.Click += new System.EventHandler(this.btnFeatureNoAlliance_Click);
+            this.btnFilterNoAlliance.Name = "btnFilterNoAlliance";
+            this.btnFilterNoAlliance.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterNoAlliance.Text = "No Alliance";
+            this.btnFilterNoAlliance.Click += new System.EventHandler(this.btnFilterNoAlliance_Click);
             // 
             // toolStripSeparator3
             // 
@@ -570,16 +570,16 @@
         private System.Windows.Forms.WebBrowser reportBrowser;
         private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.ToolStripDropDownButton btnReportContent;
-        private System.Windows.Forms.ToolStripMenuItem btnFeatureCity;
-        private System.Windows.Forms.ToolStripMenuItem btnFeatureCastle;
-        private System.Windows.Forms.ToolStripMenuItem btnFeaturePalace;
-        private System.Windows.Forms.ToolStripSeparator sepFeature1;
-        private System.Windows.Forms.ToolStripMenuItem btnFeatureLand;
-        private System.Windows.Forms.ToolStripMenuItem btnFeatureWater;
-        private System.Windows.Forms.ToolStripSeparator sepFeature2;
-        private System.Windows.Forms.ToolStripMenuItem btnFeatureNoCities;
-        private System.Windows.Forms.ToolStripSeparator sepFeature3;
-        private System.Windows.Forms.ToolStripMenuItem btnFeatureNoAlliance;
+        private System.Windows.Forms.ToolStripMenuItem btnFilterCity;
+        private System.Windows.Forms.ToolStripMenuItem btnFilterCastle;
+        private System.Windows.Forms.ToolStripMenuItem btnFilterPalace;
+        private System.Windows.Forms.ToolStripSeparator sepFilter1;
+        private System.Windows.Forms.ToolStripMenuItem btnFilterLand;
+        private System.Windows.Forms.ToolStripMenuItem btnFilterWater;
+        private System.Windows.Forms.ToolStripSeparator sepFilter2;
+        private System.Windows.Forms.ToolStripMenuItem btnFilterNoCities;
+        private System.Windows.Forms.ToolStripSeparator sepFilter3;
+        private System.Windows.Forms.ToolStripMenuItem btnFilterNoAlliance;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 
     }

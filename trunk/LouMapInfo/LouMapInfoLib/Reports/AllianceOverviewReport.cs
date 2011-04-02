@@ -15,12 +15,12 @@ namespace LouMapInfo.Reports
             : base()
         {
             this.alliance = a;
-            m_Features.Add(FilterType.BorderingLand, true);
-            m_Features.Add(FilterType.BorderingWater, true);
-            m_Features.Add(FilterType.NoCities, true);
-            m_Features.Add(FilterType.TypeCastle, true);
-            m_Features.Add(FilterType.TypeCity, true);
-            m_Features.Add(FilterType.TypePalace, true);
+            m_Filters.Add(FilterType.BorderingLand, true);
+            m_Filters.Add(FilterType.BorderingWater, true);
+            m_Filters.Add(FilterType.NoCities, true);
+            m_Filters.Add(FilterType.TypeCastle, true);
+            m_Filters.Add(FilterType.TypeCity, true);
+            m_Filters.Add(FilterType.TypePalace, true);
             LoadIfNeeded();
         }
 
@@ -32,10 +32,10 @@ namespace LouMapInfo.Reports
         public int ShowCities(ReportItem r, CityType cityType, int ic, PlayerInfo p)
         {
             FilterType type = Filters.Filter(cityType);
-            if (FeatureEnabled(type))
+            if (FilterEnabled(type))
             {
-                bool el = FeatureEnabled(FilterType.BorderingLand);
-                bool ew = FeatureEnabled(FilterType.BorderingWater);
+                bool el = FilterEnabled(FilterType.BorderingLand);
+                bool ew = FilterEnabled(FilterType.BorderingWater);
                 CityInfo[] citiesW = p.Cities(ic, FilterType.BorderingWater, type);
                 CityInfo[] citiesL = p.Cities(ic, FilterType.BorderingLand, type);
                 int count = 0;
@@ -43,7 +43,7 @@ namespace LouMapInfo.Reports
                     count += citiesL.Length;
                 if (ew)
                     count += citiesW.Length;
-                if (FeatureEnabled(FilterType.NoCities) || count > 0)
+                if (FilterEnabled(FilterType.NoCities) || count > 0)
                 {
                     ReportItem r3;
                     if (!el)
@@ -120,14 +120,14 @@ namespace LouMapInfo.Reports
                     count += ShowCities(r2, CityType.Palace, ic, p);
                     count += ShowCities(r2, CityType.Castle, ic, p);
                     count += ShowCities(r2, CityType.City, ic, p);
-                    if (FeatureEnabled(FilterType.NoCities) || count > 0)
+                    if (FilterEnabled(FilterType.NoCities) || count > 0)
                     {
                         supercount++;
                         r.Items.Add(r2);
                     }
                 }
                 pcri.Count = supercount;
-                if (FeatureEnabled(FilterType.NoCities) || supercount > 0)
+                if (FilterEnabled(FilterType.NoCities) || supercount > 0)
                     root.Add(r);
             }
         }

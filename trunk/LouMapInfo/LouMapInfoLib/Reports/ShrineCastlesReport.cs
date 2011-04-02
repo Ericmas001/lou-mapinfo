@@ -18,12 +18,12 @@ namespace LouMapInfo.Reports
         {
             this.world = w;
             this.location = l;
-            m_Features.Add(FilterType.BorderingLand, true);
-            m_Features.Add(FilterType.BorderingWater, true);
-            m_Features.Add(FilterType.NoAlliance, true);
-            m_Features.Add(FilterType.TypeCastle, true);
-            m_Features.Add(FilterType.TypePalace, true);
-            m_Features.Add(FilterType.TypeCity, true);
+            m_Filters.Add(FilterType.BorderingLand, true);
+            m_Filters.Add(FilterType.BorderingWater, true);
+            m_Filters.Add(FilterType.NoAlliance, true);
+            m_Filters.Add(FilterType.TypeCastle, true);
+            m_Filters.Add(FilterType.TypePalace, true);
+            m_Filters.Add(FilterType.TypeCity, true);
             LoadIfNeeded();
         }
 

@@ -21,8 +21,8 @@ namespace LouMapInfo.Reports
             this.virtue = v;
             this.alliance = a;
 
-            m_Features.Add(FilterType.BorderingLand, true);
-            m_Features.Add(FilterType.BorderingWater, true);
+            m_Filters.Add(FilterType.BorderingLand, true);
+            m_Filters.Add(FilterType.BorderingWater, true);
             LoadIfNeeded();
         }
 
@@ -33,8 +33,8 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
-            bool el = FeatureEnabled(FilterType.BorderingLand);
-            bool ew = FeatureEnabled(FilterType.BorderingWater);
+            bool el = FilterEnabled(FilterType.BorderingLand);
+            bool ew = FilterEnabled(FilterType.BorderingWater);
             title = new TextReportItem((virtue == VirtueType.None ? "Virtues" : virtue.ToString()) + " Overview", true);
             string[] lines = SayCityType();
             if (lines.Length > 0)

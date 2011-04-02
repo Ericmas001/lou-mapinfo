@@ -18,8 +18,8 @@ namespace LouMapInfo.Reports
         {
             this.world = w;
             this.type = b;
-            m_Features.Add(FilterType.BorderingLand, true);
-            m_Features.Add(FilterType.BorderingWater, true);
+            m_Filters.Add(FilterType.BorderingLand, true);
+            m_Filters.Add(FilterType.BorderingWater, true);
             LoadIfNeeded();
         }
 
@@ -47,8 +47,8 @@ namespace LouMapInfo.Reports
         }
         protected override void OnLoad()
         {
-            bool el = FeatureEnabled(FilterType.BorderingLand);
-            bool ew = FeatureEnabled(FilterType.BorderingWater);
+            bool el = FilterEnabled(FilterType.BorderingLand);
+            bool ew = FilterEnabled(FilterType.BorderingWater);
             switch (type)
             {
                 case BattleType.HighestLevel: title = new TextReportItem("Highest Level Battle", true); break;
