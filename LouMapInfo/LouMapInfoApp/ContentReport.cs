@@ -10,7 +10,7 @@ using EricUtility.Windows.Forms;
 using EricUtility;
 using System.Threading;
 using LouMapInfo.Entities;
-using LouMapInfo.Reports.Features;
+using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfoApp
 {
@@ -22,27 +22,27 @@ namespace LouMapInfoApp
         {
             InitializeComponent();
 
-            btnFeatureCastle.Visible = r.hasFeature(ReportFeatureType.TypeCastle);
-            btnFeatureCity.Visible = r.hasFeature(ReportFeatureType.TypeCity);
-            btnFeaturePalace.Visible = r.hasFeature(ReportFeatureType.TypePalace);
+            btnFeatureCastle.Visible = r.hasFeature(FilterType.TypeCastle);
+            btnFeatureCity.Visible = r.hasFeature(FilterType.TypeCity);
+            btnFeaturePalace.Visible = r.hasFeature(FilterType.TypePalace);
             sepFeature1.Visible = r.hasType0Feature() &&( r.hasType1Feature() || r.hasType2Feature() || r.hasType3Feature());
             
-            btnFeatureLand.Visible = r.hasFeature(ReportFeatureType.BorderingLand);
-            btnFeatureWater.Visible = r.hasFeature(ReportFeatureType.BorderingWater);
+            btnFeatureLand.Visible = r.hasFeature(FilterType.BorderingLand);
+            btnFeatureWater.Visible = r.hasFeature(FilterType.BorderingWater);
             sepFeature2.Visible = r.hasType1Feature() && (r.hasType2Feature() || r.hasType3Feature());
 
-            btnFeatureNoCities.Visible = r.hasFeature(ReportFeatureType.NoCities);
+            btnFeatureNoCities.Visible = r.hasFeature(FilterType.NoCities);
             sepFeature3.Visible = r.hasType2Feature() && r.hasType3Feature();
 
-            btnFeatureNoAlliance.Visible = r.hasFeature(ReportFeatureType.NoAlliance);
+            btnFeatureNoAlliance.Visible = r.hasFeature(FilterType.NoAlliance);
 
-            btnFeatureCastle.Checked = r.FeatureEnabled(ReportFeatureType.TypeCastle);
-            btnFeatureCity.Checked = r.FeatureEnabled(ReportFeatureType.TypeCity);
-            btnFeaturePalace.Checked = r.FeatureEnabled(ReportFeatureType.TypePalace);
-            btnFeatureLand.Checked = r.FeatureEnabled(ReportFeatureType.BorderingLand);
-            btnFeatureWater.Checked = r.FeatureEnabled(ReportFeatureType.BorderingWater);
-            btnFeatureNoCities.Checked = r.FeatureEnabled(ReportFeatureType.NoCities);
-            btnFeatureNoAlliance.Checked = r.FeatureEnabled(ReportFeatureType.NoAlliance);
+            btnFeatureCastle.Checked = r.FeatureEnabled(FilterType.TypeCastle);
+            btnFeatureCity.Checked = r.FeatureEnabled(FilterType.TypeCity);
+            btnFeaturePalace.Checked = r.FeatureEnabled(FilterType.TypePalace);
+            btnFeatureLand.Checked = r.FeatureEnabled(FilterType.BorderingLand);
+            btnFeatureWater.Checked = r.FeatureEnabled(FilterType.BorderingWater);
+            btnFeatureNoCities.Checked = r.FeatureEnabled(FilterType.NoCities);
+            btnFeatureNoAlliance.Checked = r.FeatureEnabled(FilterType.NoAlliance);
             
 
 
@@ -325,10 +325,10 @@ namespace LouMapInfoApp
 
         private void btnFeatureCity_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(ReportFeatureType.TypeCity);
-            if (newVal || report.FeatureEnabled(ReportFeatureType.TypeCastle) || report.FeatureEnabled(ReportFeatureType.TypePalace))
+            bool newVal = !report.FeatureEnabled(FilterType.TypeCity);
+            if (newVal || report.FeatureEnabled(FilterType.TypeCastle) || report.FeatureEnabled(FilterType.TypePalace))
             {
-                report.SetFeature(ReportFeatureType.TypeCity,newVal);
+                report.SetFeature(FilterType.TypeCity,newVal);
                 btnFeatureCity.Checked = newVal;
                 RefreshReport();
             }
@@ -336,10 +336,10 @@ namespace LouMapInfoApp
 
         private void btnFeatureCastle_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(ReportFeatureType.TypeCastle);
-            if (newVal || report.FeatureEnabled(ReportFeatureType.TypeCity) || report.FeatureEnabled(ReportFeatureType.TypePalace))
+            bool newVal = !report.FeatureEnabled(FilterType.TypeCastle);
+            if (newVal || report.FeatureEnabled(FilterType.TypeCity) || report.FeatureEnabled(FilterType.TypePalace))
             {
-                report.SetFeature(ReportFeatureType.TypeCastle, newVal);
+                report.SetFeature(FilterType.TypeCastle, newVal);
                 btnFeatureCastle.Checked = newVal;
                 RefreshReport();
             }
@@ -347,10 +347,10 @@ namespace LouMapInfoApp
 
         private void btnFeaturePalace_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(ReportFeatureType.TypePalace);
-            if (newVal || report.FeatureEnabled(ReportFeatureType.TypeCastle) || report.FeatureEnabled(ReportFeatureType.TypeCity))
+            bool newVal = !report.FeatureEnabled(FilterType.TypePalace);
+            if (newVal || report.FeatureEnabled(FilterType.TypeCastle) || report.FeatureEnabled(FilterType.TypeCity))
             {
-                report.SetFeature(ReportFeatureType.TypePalace, newVal);
+                report.SetFeature(FilterType.TypePalace, newVal);
                 btnFeaturePalace.Checked = newVal;
                 RefreshReport();
             }
@@ -358,10 +358,10 @@ namespace LouMapInfoApp
 
         private void btnFeatureLand_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(ReportFeatureType.BorderingLand);
-            if (newVal || report.FeatureEnabled(ReportFeatureType.BorderingWater))
+            bool newVal = !report.FeatureEnabled(FilterType.BorderingLand);
+            if (newVal || report.FeatureEnabled(FilterType.BorderingWater))
             {
-                report.SetFeature(ReportFeatureType.BorderingLand, newVal);
+                report.SetFeature(FilterType.BorderingLand, newVal);
                 btnFeatureLand.Checked = newVal;
                 RefreshReport();
             }
@@ -370,10 +370,10 @@ namespace LouMapInfoApp
 
         private void btnFeatureWater_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(ReportFeatureType.BorderingWater);
-            if (newVal || report.FeatureEnabled(ReportFeatureType.BorderingLand))
+            bool newVal = !report.FeatureEnabled(FilterType.BorderingWater);
+            if (newVal || report.FeatureEnabled(FilterType.BorderingLand))
             {
-                report.SetFeature(ReportFeatureType.BorderingWater, newVal);
+                report.SetFeature(FilterType.BorderingWater, newVal);
                 btnFeatureWater.Checked = newVal;
                 RefreshReport();
             }
@@ -382,16 +382,16 @@ namespace LouMapInfoApp
 
         private void btnFeatureNoCities_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(ReportFeatureType.NoCities);
-            report.SetFeature(ReportFeatureType.NoCities, newVal);
+            bool newVal = !report.FeatureEnabled(FilterType.NoCities);
+            report.SetFeature(FilterType.NoCities, newVal);
             btnFeatureNoCities.Checked = newVal;
             RefreshReport();
         }
 
         private void btnFeatureNoAlliance_Click(object sender, EventArgs e)
         {
-            bool newVal = !report.FeatureEnabled(ReportFeatureType.NoAlliance);
-            report.SetFeature(ReportFeatureType.NoAlliance, newVal);
+            bool newVal = !report.FeatureEnabled(FilterType.NoAlliance);
+            report.SetFeature(FilterType.NoAlliance, newVal);
             btnFeatureNoAlliance.Checked = newVal;
             RefreshReport();
         }

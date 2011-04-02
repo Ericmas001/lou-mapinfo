@@ -4,7 +4,7 @@ using System.Text;
 using LouMapInfo.Reports.core;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.Items;
-using LouMapInfo.Reports.Features;
+using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfo.Reports
 {
@@ -15,13 +15,13 @@ namespace LouMapInfo.Reports
             : base()
         {
             this.cont = c;
-            m_Features.Add(ReportFeatureType.BorderingLand, true);
-            m_Features.Add(ReportFeatureType.BorderingWater, true);
-            m_Features.Add(ReportFeatureType.NoCities, true);
-            m_Features.Add(ReportFeatureType.NoAlliance, true);
-            m_Features.Add(ReportFeatureType.TypeCastle, true);
-            m_Features.Add(ReportFeatureType.TypeCity, true);
-            m_Features.Add(ReportFeatureType.TypePalace, true);
+            m_Features.Add(FilterType.BorderingLand, true);
+            m_Features.Add(FilterType.BorderingWater, true);
+            m_Features.Add(FilterType.NoCities, true);
+            m_Features.Add(FilterType.NoAlliance, true);
+            m_Features.Add(FilterType.TypeCastle, true);
+            m_Features.Add(FilterType.TypeCity, true);
+            m_Features.Add(FilterType.TypePalace, true);
             LoadIfNeeded();
         }
 
@@ -50,10 +50,10 @@ namespace LouMapInfo.Reports
                     ReportItem r2 = new PlayerInfoReportItem(p, cont.Id, false);
 
                     //First palaces
-                    if (FeatureEnabled(ReportFeatureType.TypePalace))
+                    if (FeatureEnabled(FilterType.TypePalace))
                     {
-                        CityInfo[] citiesW = p.Cities(cont.Id,ReportFeatureType.BorderingWater, ReportFeatureType.TypePalace);
-                        CityInfo[] citiesL = p.Cities(cont.Id, ReportFeatureType.BorderingLand, ReportFeatureType.TypePalace);
+                        CityInfo[] citiesW = p.Cities(cont.Id,FilterType.BorderingWater, FilterType.TypePalace);
+                        CityInfo[] citiesL = p.Cities(cont.Id, FilterType.BorderingLand, FilterType.TypePalace);
                         ReportItem r3 = new CityTypeReportItem(citiesW.Length + citiesL.Length, CityType.Palace, true);
                         if (citiesW.Length > 0)
                         {
@@ -77,10 +77,10 @@ namespace LouMapInfo.Reports
                     }
 
                     //Then castles
-                    if (FeatureEnabled(ReportFeatureType.TypeCastle))
+                    if (FeatureEnabled(FilterType.TypeCastle))
                     {
-                        CityInfo[] citiesW = p.Cities(cont.Id, ReportFeatureType.BorderingWater, ReportFeatureType.TypeCastle);
-                        CityInfo[] citiesL = p.Cities(cont.Id, ReportFeatureType.BorderingLand, ReportFeatureType.TypeCastle);
+                        CityInfo[] citiesW = p.Cities(cont.Id, FilterType.BorderingWater, FilterType.TypeCastle);
+                        CityInfo[] citiesL = p.Cities(cont.Id, FilterType.BorderingLand, FilterType.TypeCastle);
                         ReportItem r3 = new CityTypeReportItem(citiesW.Length + citiesL.Length, CityType.Castle, true);
                         if (citiesW.Length > 0)
                         {
@@ -104,10 +104,10 @@ namespace LouMapInfo.Reports
                     }
 
                     //Then non-castled cities
-                    if (FeatureEnabled(ReportFeatureType.TypeCity))
+                    if (FeatureEnabled(FilterType.TypeCity))
                     {
-                        CityInfo[] citiesW = p.Cities(cont.Id, ReportFeatureType.BorderingWater, ReportFeatureType.TypeCity);
-                        CityInfo[] citiesL = p.Cities(cont.Id, ReportFeatureType.BorderingLand, ReportFeatureType.TypeCity);
+                        CityInfo[] citiesW = p.Cities(cont.Id, FilterType.BorderingWater, FilterType.TypeCity);
+                        CityInfo[] citiesL = p.Cities(cont.Id, FilterType.BorderingLand, FilterType.TypeCity);
                         ReportItem r3 = new CityTypeReportItem(citiesW.Length + citiesL.Length, CityType.City, true);
                         if (citiesW.Length > 0)
                         {

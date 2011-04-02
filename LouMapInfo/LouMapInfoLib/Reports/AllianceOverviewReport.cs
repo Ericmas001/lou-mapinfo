@@ -4,7 +4,7 @@ using System.Text;
 using LouMapInfo.Reports.core;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.Items;
-using LouMapInfo.Reports.Features;
+using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfo.Reports
 {
@@ -15,12 +15,12 @@ namespace LouMapInfo.Reports
             : base()
         {
             this.alliance = a;
-            m_Features.Add(ReportFeatureType.BorderingLand, true);
-            m_Features.Add(ReportFeatureType.BorderingWater, true);
-            m_Features.Add(ReportFeatureType.NoCities, true);
-            m_Features.Add(ReportFeatureType.TypeCastle, true);
-            m_Features.Add(ReportFeatureType.TypeCity, true);
-            m_Features.Add(ReportFeatureType.TypePalace, true);
+            m_Features.Add(FilterType.BorderingLand, true);
+            m_Features.Add(FilterType.BorderingWater, true);
+            m_Features.Add(FilterType.NoCities, true);
+            m_Features.Add(FilterType.TypeCastle, true);
+            m_Features.Add(FilterType.TypeCity, true);
+            m_Features.Add(FilterType.TypePalace, true);
             LoadIfNeeded();
         }
 
@@ -31,19 +31,19 @@ namespace LouMapInfo.Reports
 
         public int ShowCities(ReportItem r, CityType cityType, int ic, PlayerInfo p)
         {
-            ReportFeatureType type = ReportFeatures.Feature(cityType);
+            FilterType type = Filters.Filter(cityType);
             if (FeatureEnabled(type))
             {
-                bool el = FeatureEnabled(ReportFeatureType.BorderingLand);
-                bool ew = FeatureEnabled(ReportFeatureType.BorderingWater);
-                CityInfo[] citiesW = p.Cities(ic, ReportFeatureType.BorderingWater, type);
-                CityInfo[] citiesL = p.Cities(ic, ReportFeatureType.BorderingLand, type);
+                bool el = FeatureEnabled(FilterType.BorderingLand);
+                bool ew = FeatureEnabled(FilterType.BorderingWater);
+                CityInfo[] citiesW = p.Cities(ic, FilterType.BorderingWater, type);
+                CityInfo[] citiesL = p.Cities(ic, FilterType.BorderingLand, type);
                 int count = 0;
                 if (el)
                     count += citiesL.Length;
                 if (ew)
                     count += citiesW.Length;
-                if (FeatureEnabled(ReportFeatureType.NoCities) || count > 0)
+                if (FeatureEnabled(FilterType.NoCities) || count > 0)
                 {
                     ReportItem r3;
                     if (!el)
@@ -120,14 +120,14 @@ namespace LouMapInfo.Reports
                     count += ShowCities(r2, CityType.Palace, ic, p);
                     count += ShowCities(r2, CityType.Castle, ic, p);
                     count += ShowCities(r2, CityType.City, ic, p);
-                    if (FeatureEnabled(ReportFeatureType.NoCities) || count > 0)
+                    if (FeatureEnabled(FilterType.NoCities) || count > 0)
                     {
                         supercount++;
                         r.Items.Add(r2);
                     }
                 }
                 pcri.Count = supercount;
-                if (FeatureEnabled(ReportFeatureType.NoCities) || supercount > 0)
+                if (FeatureEnabled(FilterType.NoCities) || supercount > 0)
                     root.Add(r);
             }
         }

@@ -64,8 +64,8 @@
     <Compile Include="Entities\WorldInfo.cs" />
     <Compile Include="Entities\Types\VirtueType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\Features\ReportFeatures.cs" />
-    <Compile Include="Reports\Features\ReportFeatureType.cs" />
+    <Compile Include="Entities\Filter\Filters.cs" />
+    <Compile Include="Entities\Filter\FilterType.cs" />
     <Compile Include="Reports\Items\ContinentScoreReportItem.cs" />
     <Compile Include="Reports\Items\MultiLineReportItem.cs" />
     <Compile Include="Reports\Items\PlayerCountReportItem.cs" />
