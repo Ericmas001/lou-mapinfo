@@ -39,99 +39,35 @@ namespace LouMapInfo.Reports
 
             for (int i = 0; i < cont.Alliances.Length; ++i)
             {
-                PlayerInfo[] players = cont.Alliances[i].Players();
-                ReportItem r = new MultiLineReportItem(false,
-                    new AllianceInfoReportItem(cont.Alliances[i], false, i + 1),
-                    new PlayerCountReportItem(players.Length, false)
-                    );
-
-                foreach (PlayerInfo p in players)
+                if (cont.Alliances[i].Name != "" || FilterEnabled(FilterType.NoAlliance))
                 {
-                    ReportItem r2 = new PlayerInfoReportItem(p, cont.Id, false);
+                    int supercount = 0;
+                    PlayerInfo[] players = cont.Alliances[i].Players();
+                    PlayerCountReportItem pcri = new PlayerCountReportItem(players.Length, false);
+                    ReportItem r = new MultiLineReportItem(false,
+                        new AllianceInfoReportItem(cont.Alliances[i], false, i + 1),
+                        pcri
+                        );
 
-                    //First palaces
-                    if (FilterEnabled(FilterType.TypePalace))
+                    foreach (PlayerInfo p in players)
                     {
-                        CityInfo[] citiesW = p.Cities(cont.Id,FilterType.BorderingWater, FilterType.TypePalace);
-                        CityInfo[] citiesL = p.Cities(cont.Id, FilterType.BorderingLand, FilterType.TypePalace);
-                        ReportItem r3 = new CityTypeReportItem(citiesW.Length + citiesL.Length, CityType.Palace, true);
-                        if (citiesW.Length > 0)
-                        {
-                            ReportItem r4 = new BorderingTypeReportItem(citiesW.Length, BorderingType.Water, true);
-                            Array.Sort(citiesW);
-                            Array.Reverse(citiesW);
-                            foreach (CityInfo c in citiesW)
-                                r4.Items.Add(new CityInfoReportItem(c, true));
-                            r3.Items.Add(r4);
-                        }
-                        if (citiesL.Length > 0)
-                        {
-                            ReportItem r4 = new BorderingTypeReportItem(citiesL.Length, BorderingType.Land, true);
-                            Array.Sort(citiesL);
-                            Array.Reverse(citiesL);
-                            foreach (CityInfo c in citiesL)
-                                r4.Items.Add(new CityInfoReportItem(c, true));
-                            r3.Items.Add(r4);
-                        }
-                        r2.Items.Add(r3);
-                    }
+                        ReportItem r2 = new PlayerInfoReportItem(p, cont.Id, false);
 
-                    //Then castles
-                    if (FilterEnabled(FilterType.TypeCastle))
-                    {
-                        CityInfo[] citiesW = p.Cities(cont.Id, FilterType.BorderingWater, FilterType.TypeCastle);
-                        CityInfo[] citiesL = p.Cities(cont.Id, FilterType.BorderingLand, FilterType.TypeCastle);
-                        ReportItem r3 = new CityTypeReportItem(citiesW.Length + citiesL.Length, CityType.Castle, true);
-                        if (citiesW.Length > 0)
-                        {
-                            ReportItem r4 = new BorderingTypeReportItem(citiesW.Length, BorderingType.Water, true);
-                            Array.Sort(citiesW);
-                            Array.Reverse(citiesW);
-                            foreach (CityInfo c in citiesW)
-                                r4.Items.Add(new CityInfoReportItem(c, true));
-                            r3.Items.Add(r4);
-                        }
-                        if (citiesL.Length > 0)
-                        {
-                            ReportItem r4 = new BorderingTypeReportItem(citiesL.Length, BorderingType.Land, true);
-                            Array.Sort(citiesL);
-                            Array.Reverse(citiesL);
-                            foreach (CityInfo c in citiesL)
-                                r4.Items.Add(new CityInfoReportItem(c, true));
-                            r3.Items.Add(r4);
-                        }
-                        r2.Items.Add(r3);
-                    }
+                        int count = 0;
 
-                    //Then non-castled cities
-                    if (FilterEnabled(FilterType.TypeCity))
-                    {
-                        CityInfo[] citiesW = p.Cities(cont.Id, FilterType.BorderingWater, FilterType.TypeCity);
-                        CityInfo[] citiesL = p.Cities(cont.Id, FilterType.BorderingLand, FilterType.TypeCity);
-                        ReportItem r3 = new CityTypeReportItem(citiesW.Length + citiesL.Length, CityType.City, true);
-                        if (citiesW.Length > 0)
+                        count += ShowCities(r2, CityType.Palace, cont.Id, p);
+                        count += ShowCities(r2, CityType.Castle, cont.Id, p);
+                        count += ShowCities(r2, CityType.City, cont.Id, p);
+                        if (FilterEnabled(FilterType.NoCities) || count > 0)
                         {
-                            ReportItem r4 = new BorderingTypeReportItem(citiesW.Length, BorderingType.Water, true);
-                            Array.Sort(citiesW);
-                            Array.Reverse(citiesW);
-                            foreach (CityInfo c in citiesW)
-                                r4.Items.Add(new CityInfoReportItem(c, true));
-                            r3.Items.Add(r4);
+                            supercount++;
+                            r.Items.Add(r2);
                         }
-                        if (citiesL.Length > 0)
-                        {
-                            ReportItem r4 = new BorderingTypeReportItem(citiesL.Length, BorderingType.Land, true);
-                            Array.Sort(citiesL);
-                            Array.Reverse(citiesL);
-                            foreach (CityInfo c in citiesL)
-                                r4.Items.Add(new CityInfoReportItem(c, true));
-                            r3.Items.Add(r4);
-                        }
-                        r2.Items.Add(r3);
                     }
-                    r.Items.Add(r2);
+                    pcri.Count = supercount;
+                    if (FilterEnabled(FilterType.NoCities) || supercount > 0)
+                        root.Add(r);
                 }
-                root.Add(r);
             }
         }
     }
