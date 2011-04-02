@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LouMapInfo.Reports.Features
+namespace LouMapInfo.Entities.Filter
 {
-    public enum ReportFeatureType
+    public enum FilterType
     {
         TypeCity,
         TypeCastle,

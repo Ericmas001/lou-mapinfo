@@ -5,7 +5,7 @@ using LouMapInfo.Reports.core;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.Items;
 using LouMapInfo;
-using LouMapInfo.Reports.Features;
+using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfo.Reports
 {
@@ -21,8 +21,8 @@ namespace LouMapInfo.Reports
             this.virtue = v;
             this.alliance = a;
 
-            m_Features.Add(ReportFeatureType.BorderingLand, true);
-            m_Features.Add(ReportFeatureType.BorderingWater, true);
+            m_Features.Add(FilterType.BorderingLand, true);
+            m_Features.Add(FilterType.BorderingWater, true);
             LoadIfNeeded();
         }
 
@@ -33,8 +33,8 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
-            bool el = FeatureEnabled(ReportFeatureType.BorderingLand);
-            bool ew = FeatureEnabled(ReportFeatureType.BorderingWater);
+            bool el = FeatureEnabled(FilterType.BorderingLand);
+            bool ew = FeatureEnabled(FilterType.BorderingWater);
             title = new TextReportItem((virtue == VirtueType.None ? "Virtues" : virtue.ToString()) + " Overview", true);
             string[] lines = SayCityType();
             if (lines.Length > 0)
@@ -63,11 +63,11 @@ namespace LouMapInfo.Reports
                         pl.LoadIfNeeded();
                         CityInfo[] cities;
                         if (!el)
-                            cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingWater);
+                            cities = pl.Cities(FilterType.TypePalace, FilterType.BorderingWater);
                         else if (!ew)
-                            cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand);
+                            cities = pl.Cities(FilterType.TypePalace, FilterType.BorderingLand);
                         else
-                            cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater);
+                            cities = pl.Cities(FilterType.TypePalace, FilterType.BorderingLand, FilterType.BorderingWater);
 
                         foreach (CityInfo city in cities)
                         {

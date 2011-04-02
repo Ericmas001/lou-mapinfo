@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EricUtility;
 using LouMapInfo.Entities;
-using LouMapInfo.Reports.Features;
+using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfo.Reports.core
 {
@@ -14,35 +14,35 @@ namespace LouMapInfo.Reports.core
         protected ReportItem title;
         protected ReportItem subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
-        protected Dictionary<ReportFeatureType, bool> m_Features = new Dictionary<ReportFeatureType, bool>();
+        protected Dictionary<FilterType, bool> m_Features = new Dictionary<FilterType, bool>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
         
-        public bool hasFeature(ReportFeatureType f)
+        public bool hasFeature(FilterType f)
         {
             return m_Features.ContainsKey(f);
         }
         public bool hasType0Feature()
         {
-            return m_Features.ContainsKey(ReportFeatureType.TypeCastle) || m_Features.ContainsKey(ReportFeatureType.TypeCity) || m_Features.ContainsKey(ReportFeatureType.TypePalace);
+            return m_Features.ContainsKey(FilterType.TypeCastle) || m_Features.ContainsKey(FilterType.TypeCity) || m_Features.ContainsKey(FilterType.TypePalace);
         }
         public bool hasType1Feature()
         {
-            return m_Features.ContainsKey(ReportFeatureType.BorderingLand) || m_Features.ContainsKey(ReportFeatureType.BorderingWater);
+            return m_Features.ContainsKey(FilterType.BorderingLand) || m_Features.ContainsKey(FilterType.BorderingWater);
         }
         public bool hasType2Feature()
         {
-            return m_Features.ContainsKey(ReportFeatureType.NoCities);
+            return m_Features.ContainsKey(FilterType.NoCities);
         }
         public bool hasType3Feature()
         {
-            return m_Features.ContainsKey(ReportFeatureType.NoAlliance);
+            return m_Features.ContainsKey(FilterType.NoAlliance);
         }
-        public bool FeatureEnabled(ReportFeatureType f)
+        public bool FeatureEnabled(FilterType f)
         {
             return !m_Features.ContainsKey(f) || m_Features[f];
         }
 
-        public void SetFeature(ReportFeatureType f, bool value)
+        public void SetFeature(FilterType f, bool value)
         {
             if (m_Features.ContainsKey(f))
             {
@@ -258,12 +258,12 @@ namespace LouMapInfo.Reports.core
             List<string> lines = new List<string>();
             if (hasType0Feature())
             {
-                bool hci = hasFeature(ReportFeatureType.TypeCity);
-                bool hca = hasFeature(ReportFeatureType.TypeCastle);
-                bool hpa = hasFeature(ReportFeatureType.TypePalace);
-                bool eci = FeatureEnabled(ReportFeatureType.TypeCity);
-                bool eca = FeatureEnabled(ReportFeatureType.TypeCastle);
-                bool epa = FeatureEnabled(ReportFeatureType.TypePalace);
+                bool hci = hasFeature(FilterType.TypeCity);
+                bool hca = hasFeature(FilterType.TypeCastle);
+                bool hpa = hasFeature(FilterType.TypePalace);
+                bool eci = FeatureEnabled(FilterType.TypeCity);
+                bool eca = FeatureEnabled(FilterType.TypeCastle);
+                bool epa = FeatureEnabled(FilterType.TypePalace);
 
                 if ((hci && !eci) || (hca && !eca) || (hpa && !epa))
                 {
@@ -283,10 +283,10 @@ namespace LouMapInfo.Reports.core
             }
             if (hasType1Feature())
             {
-                bool hl = hasFeature(ReportFeatureType.BorderingLand);
-                bool hw = hasFeature(ReportFeatureType.BorderingWater);
-                bool el = FeatureEnabled(ReportFeatureType.BorderingLand);
-                bool ew = FeatureEnabled(ReportFeatureType.BorderingWater);
+                bool hl = hasFeature(FilterType.BorderingLand);
+                bool hw = hasFeature(FilterType.BorderingWater);
+                bool el = FeatureEnabled(FilterType.BorderingLand);
+                bool ew = FeatureEnabled(FilterType.BorderingWater);
 
                 if ((hl && !el) || (hw && !ew))
                 {
@@ -298,16 +298,16 @@ namespace LouMapInfo.Reports.core
             }
             if (hasType2Feature())
             {
-                bool h = hasFeature(ReportFeatureType.NoCities);
-                bool e = FeatureEnabled(ReportFeatureType.NoCities);
+                bool h = hasFeature(FilterType.NoCities);
+                bool e = FeatureEnabled(FilterType.NoCities);
 
                 if (h && !e)
                     lines.Add("\"No Cities\" excluded");
             }
             if (hasType3Feature())
             {
-                bool h = hasFeature(ReportFeatureType.NoAlliance);
-                bool e = FeatureEnabled(ReportFeatureType.NoAlliance);
+                bool h = hasFeature(FilterType.NoAlliance);
+                bool e = FeatureEnabled(FilterType.NoAlliance);
 
                 if (h && !e)
                     lines.Add("\"No Alliance\" excluded");

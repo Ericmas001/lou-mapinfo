@@ -5,7 +5,7 @@ using LouMapInfo.Reports.core;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.Items;
 using LouMapInfo;
-using LouMapInfo.Reports.Features;
+using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfo.Reports
 {
@@ -18,12 +18,12 @@ namespace LouMapInfo.Reports
         {
             this.world = w;
             this.location = l;
-            m_Features.Add(ReportFeatureType.BorderingLand, true);
-            m_Features.Add(ReportFeatureType.BorderingWater, true);
-            m_Features.Add(ReportFeatureType.NoAlliance, true);
-            m_Features.Add(ReportFeatureType.TypeCastle, true);
-            m_Features.Add(ReportFeatureType.TypePalace, true);
-            m_Features.Add(ReportFeatureType.TypeCity, true);
+            m_Features.Add(FilterType.BorderingLand, true);
+            m_Features.Add(FilterType.BorderingWater, true);
+            m_Features.Add(FilterType.NoAlliance, true);
+            m_Features.Add(FilterType.TypeCastle, true);
+            m_Features.Add(FilterType.TypePalace, true);
+            m_Features.Add(FilterType.TypeCity, true);
             LoadIfNeeded();
         }
 
@@ -49,7 +49,7 @@ namespace LouMapInfo.Reports
             {
                 foreach (PlayerInfo p in a.Players())
                 {
-                    foreach (CityInfo c in p.Cities(cont.Id, ReportFeatureType.TypePalace, ReportFeatureType.TypeCastle, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
+                    foreach (CityInfo c in p.Cities(cont.Id, FilterType.TypePalace, FilterType.TypeCastle, FilterType.BorderingLand, FilterType.BorderingWater))
                     {
                         double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
                         //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);

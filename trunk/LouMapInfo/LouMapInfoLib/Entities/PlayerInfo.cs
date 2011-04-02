@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EricUtility;
 using EricUtility.Networking.JSON;
-using LouMapInfo.Reports.Features;
+using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfo.Entities
 {
@@ -99,7 +99,7 @@ namespace LouMapInfo.Entities
             m_CitiesById.Add(city.Id, city);
             m_ScoreByContinent[pt.Continent] += city.Score;
         }
-        private CityInfo[] Cities(ICollection<CityInfo> list, ReportFeatures f)
+        private CityInfo[] Cities(ICollection<CityInfo> list, Filters f)
         {
             CityInfo[] all = new CityInfo[list.Count];
             list.CopyTo(all, 0);
@@ -107,11 +107,11 @@ namespace LouMapInfo.Entities
             foreach (CityInfo c in all)
             {
                 bool ok = true;
-                ok = ok && (c.Bordering != BorderingType.Land || f.Features.Contains(ReportFeatureType.BorderingLand));
-                ok = ok && (c.Bordering != BorderingType.Water || f.Features.Contains(ReportFeatureType.BorderingWater));
-                ok = ok && (c.TypeCity != CityType.City || f.Features.Contains(ReportFeatureType.TypeCity));
-                ok = ok && (c.TypeCity != CityType.Castle || f.Features.Contains(ReportFeatureType.TypeCastle));
-                ok = ok && (c.TypeCity != CityType.Palace || f.Features.Contains(ReportFeatureType.TypePalace));
+                ok = ok && (c.Bordering != BorderingType.Land || f.Features.Contains(FilterType.BorderingLand));
+                ok = ok && (c.Bordering != BorderingType.Water || f.Features.Contains(FilterType.BorderingWater));
+                ok = ok && (c.TypeCity != CityType.City || f.Features.Contains(FilterType.TypeCity));
+                ok = ok && (c.TypeCity != CityType.Castle || f.Features.Contains(FilterType.TypeCastle));
+                ok = ok && (c.TypeCity != CityType.Palace || f.Features.Contains(FilterType.TypePalace));
 
                 if (ok)
                     res.Add(c);
@@ -135,21 +135,21 @@ namespace LouMapInfo.Entities
                 return Cities(m_CitiesByContinent[continent]);
             return new CityInfo[0];
         }
-        public CityInfo[] Cities(ReportFeatures f)
+        public CityInfo[] Cities(Filters f)
         {
             return Cities(Cities(), f);
         }
-        public CityInfo[] Cities(ReportFeatures f, int c)
+        public CityInfo[] Cities(Filters f, int c)
         {
             return Cities(Cities(c), f);
         }
-        public CityInfo[] Cities(params ReportFeatureType[] f)
+        public CityInfo[] Cities(params FilterType[] f)
         {
-            return Cities(Cities(), new ReportFeatures(f));
+            return Cities(Cities(), new Filters(f));
         }
-        public CityInfo[] Cities(int c, params ReportFeatureType[] f)
+        public CityInfo[] Cities(int c, params FilterType[] f)
         {
-            return Cities(Cities(c), new ReportFeatures(f));
+            return Cities(Cities(c), new Filters(f));
         }
         public CityInfo City(string location)
         {
