@@ -4,6 +4,7 @@ using System.Text;
 using EricUtility;
 using LouMapInfo.Entities;
 using LouMapInfo.Entities.Filter;
+using LouMapInfo.Reports.Items;
 
 namespace LouMapInfo.Reports.core
 {
@@ -316,5 +317,71 @@ namespace LouMapInfo.Reports.core
             lines.CopyTo(res, 0);
             return res;
         }
+        protected virtual int ShowCities(ReportItem r, CityType cityType, int ic, PlayerInfo p)
+        {
+            FilterType type = Filters.Filter(cityType);
+            if (FilterEnabled(type))
+            {
+                bool el = FilterEnabled(FilterType.BorderingLand);
+                bool ew = FilterEnabled(FilterType.BorderingWater);
+                CityInfo[] citiesW = p.Cities(ic, FilterType.BorderingWater, type);
+                CityInfo[] citiesL = p.Cities(ic, FilterType.BorderingLand, type);
+                int count = 0;
+                if (el)
+                    count += citiesL.Length;
+                if (ew)
+                    count += citiesW.Length;
+                if (FilterEnabled(FilterType.NoCities) || count > 0)
+                {
+                    ReportItem r3;
+                    if (!el)
+                        r3 = new CityTypeReportItem(citiesW.Length, cityType, BorderingType.Water, true);
+                    else if (!ew)
+                        r3 = new CityTypeReportItem(citiesL.Length, cityType, BorderingType.Land, true);
+                    else
+                        r3 = new CityTypeReportItem(count, cityType, true);
+
+                    if (ew && citiesW.Length > 0)
+                    {
+                        ReportItem r4 = !el ? r3 : new BorderingTypeReportItem(citiesW.Length, BorderingType.Water, true);
+                        Array.Sort(citiesW);
+                        Array.Reverse(citiesW);
+                        foreach (CityInfo c in citiesW)
+                        {
+                            if (c.TypeCity == CityType.Palace)
+                            {
+                                c.LoadIfNeeded();
+                                r4.Items.Add(new DetailedPalaceInfoReportItem(c, true, false, false, false, true, true));
+                            }
+                            else
+                                r4.Items.Add(new CityInfoReportItem(c, true));
+                        }
+                        if (el)
+                            r3.Items.Add(r4);
+                    }
+                    if (el && citiesL.Length > 0)
+                    {
+                        ReportItem r4 = !ew ? r3 : new BorderingTypeReportItem(citiesL.Length, BorderingType.Land, true);
+                        Array.Sort(citiesL);
+                        Array.Reverse(citiesL);
+                        foreach (CityInfo c in citiesL)
+                            if (c.TypeCity == CityType.Palace)
+                            {
+                                c.LoadIfNeeded();
+                                r4.Items.Add(new DetailedPalaceInfoReportItem(c, true, false, false, false, true, true));
+                            }
+                            else
+                                r4.Items.Add(new CityInfoReportItem(c, true));
+                        if (ew)
+                            r3.Items.Add(r4);
+                    }
+                    r.Items.Add(r3);
+                }
+                return count;
+            }
+            return 0;
+        }
     }
+    
+
 }
