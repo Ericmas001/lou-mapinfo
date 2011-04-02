@@ -47,6 +47,8 @@ namespace LouMapInfo.Reports
         }
         protected override void OnLoad()
         {
+            bool el = FeatureEnabled(ReportFeatureType.BorderingLand);
+            bool ew = FeatureEnabled(ReportFeatureType.BorderingWater);
             switch (type)
             {
                 case BattleType.HighestLevel: title = new TextReportItem("Highest Level Battle", true); break;
@@ -65,7 +67,16 @@ namespace LouMapInfo.Reports
                 {
                     PlayerInfo pl = world.Player(p);
                     pl.LoadIfNeeded();
-                    foreach (CityInfo city in pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
+
+                    CityInfo[] cities;
+                    if( !el)
+                        cities =pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingWater);
+                    else if (!ew)
+                        cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand);
+                    else
+                        cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater);
+
+                    foreach (CityInfo city in cities)
                     {
                         city.LoadIfNeeded();
                         if (city.VirtueType == v)

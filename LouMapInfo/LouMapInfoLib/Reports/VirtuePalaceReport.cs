@@ -33,6 +33,8 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
+            bool el = FeatureEnabled(ReportFeatureType.BorderingLand);
+            bool ew = FeatureEnabled(ReportFeatureType.BorderingWater);
             title = new TextReportItem((virtue == VirtueType.None ? "Virtues" : virtue.ToString()) + " Overview", true);
             string[] lines = SayCityType();
             if (lines.Length > 0)
@@ -59,7 +61,15 @@ namespace LouMapInfo.Reports
                     {
                         PlayerInfo pl = world.Player(p);
                         pl.LoadIfNeeded();
-                        foreach (CityInfo city in pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater))
+                        CityInfo[] cities;
+                        if (!el)
+                            cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingWater);
+                        else if (!ew)
+                            cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand);
+                        else
+                            cities = pl.Cities(ReportFeatureType.TypePalace, ReportFeatureType.BorderingLand, ReportFeatureType.BorderingWater);
+
+                        foreach (CityInfo city in cities)
                         {
                             city.LoadIfNeeded();
                             if (city.VirtueType == v)
@@ -82,10 +92,23 @@ namespace LouMapInfo.Reports
                     foreach (VirtueType v in virtues)
                     {
                         bool something2 = false;
-                        ReportItem r2 = new CityTypeReportItem(palaces[i][v].Key.Count + palaces[i][v].Value.Count, CityType.Palace, v, false);
-                        if (palaces[i][v].Key.Count > 0)
+                        //ReportItem r2 = new CityTypeReportItem(palaces[i][v].Key.Count + palaces[i][v].Value.Count, CityType.Palace, v, false);
+
+                        int count = 0;
+                        if (el)
+                            count += palaces[i][v].Value.Count;
+                        if (ew)
+                            count += palaces[i][v].Key.Count; 
+                        ReportItem r2;
+                        if (!el)
+                            r2 = new CityTypeReportItem(count, CityType.Palace, BorderingType.Water, true);
+                        else if (!ew)
+                            r2 = new CityTypeReportItem(count, CityType.Palace, BorderingType.Land, true);
+                        else
+                            r2 = new CityTypeReportItem(count, CityType.Palace, true);
+                        if (ew && palaces[i][v].Key.Count > 0)
                         {
-                            ReportItem r3 = new BorderingTypeReportItem(palaces[i][v].Key.Count, BorderingType.Water, true);
+                            ReportItem r3 = !el ? r2 : new BorderingTypeReportItem(palaces[i][v].Key.Count, BorderingType.Water, true);
                             CityInfo[] cities = new CityInfo[palaces[i][v].Key.Count];
                             palaces[i][v].Key.CopyTo(cities);
                             Array.Sort(cities);
@@ -95,13 +118,14 @@ namespace LouMapInfo.Reports
                                 ReportItem r4 = new DetailedCityInfoReportItem(info, true, true, alliance == null, true);
                                 r3.Items.Add(r4);
                             }
-                            r2.Items.Add(r3);
+                            if( el)
+                                r2.Items.Add(r3);
                             something = true;
                             something2 = true;
                         }
-                        if (palaces[i][v].Value.Count > 0)
+                        if (el && palaces[i][v].Value.Count > 0)
                         {
-                            ReportItem r3 = new BorderingTypeReportItem(palaces[i][v].Value.Count, BorderingType.Land, true);
+                            ReportItem r3 = !ew ? r2 : new BorderingTypeReportItem(palaces[i][v].Value.Count, BorderingType.Land, true);
                             CityInfo[] cities = new CityInfo[palaces[i][v].Value.Count];
                             palaces[i][v].Value.CopyTo(cities);
                             Array.Sort(cities);
@@ -111,7 +135,8 @@ namespace LouMapInfo.Reports
                                 ReportItem r4 = new DetailedCityInfoReportItem(info, true, true, alliance == null, true);
                                 r3.Items.Add(r4);
                             }
-                            r2.Items.Add(r3);
+                            if (ew)
+                                r2.Items.Add(r3);
                             something = true;
                             something2 = true;
                         }

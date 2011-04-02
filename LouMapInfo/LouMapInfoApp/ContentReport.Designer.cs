@@ -161,8 +161,8 @@
             this.btnReportContent.Image = ((System.Drawing.Image)(resources.GetObject("btnReportContent.Image")));
             this.btnReportContent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReportContent.Name = "btnReportContent";
-            this.btnReportContent.Size = new System.Drawing.Size(101, 22);
-            this.btnReportContent.Text = "Report Content";
+            this.btnReportContent.Size = new System.Drawing.Size(51, 22);
+            this.btnReportContent.Text = "Filters";
             // 
             // btnFeatureCity
             // 
@@ -254,49 +254,49 @@
             // btnDisplayOptionsCityCount
             // 
             this.btnDisplayOptionsCityCount.Name = "btnDisplayOptionsCityCount";
-            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsCityCount.Text = "City Count";
             this.btnDisplayOptionsCityCount.Click += new System.EventHandler(this.btnDisplayOptionsCityCount_Click);
             // 
             // btnDisplayOptionsCityScore
             // 
             this.btnDisplayOptionsCityScore.Name = "btnDisplayOptionsCityScore";
-            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsCityScore.Text = "City Score";
             this.btnDisplayOptionsCityScore.Click += new System.EventHandler(this.btnDisplayOptionsCityScore_Click);
             // 
             // btnDisplayOptionsCityName
             // 
             this.btnDisplayOptionsCityName.Name = "btnDisplayOptionsCityName";
-            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsCityName.Text = "City Name";
             this.btnDisplayOptionsCityName.Click += new System.EventHandler(this.btnDisplayOptionsCityName_Click);
             // 
             // btnDisplayOptionsPlayerCount
             // 
             this.btnDisplayOptionsPlayerCount.Name = "btnDisplayOptionsPlayerCount";
-            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsPlayerCount.Text = "Player Count";
             this.btnDisplayOptionsPlayerCount.Click += new System.EventHandler(this.btnDisplayOptionsPlayerCount_Click);
             // 
             // btnDisplayOptionsPlayerScore
             // 
             this.btnDisplayOptionsPlayerScore.Name = "btnDisplayOptionsPlayerScore";
-            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsPlayerScore.Text = "Player Score";
             this.btnDisplayOptionsPlayerScore.Click += new System.EventHandler(this.btnDisplayOptionsPlayerScore_Click);
             // 
             // btnDisplayOptionsAllianceScore
             // 
             this.btnDisplayOptionsAllianceScore.Name = "btnDisplayOptionsAllianceScore";
-            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsAllianceScore.Text = "Alliance Score";
             this.btnDisplayOptionsAllianceScore.Click += new System.EventHandler(this.btnDisplayOptionsAllianceScore_Click);
             // 
             // btnDisplayOptionsAllianceRank
             // 
             this.btnDisplayOptionsAllianceRank.Name = "btnDisplayOptionsAllianceRank";
-            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsAllianceRank.Text = "Alliance Rank";
             this.btnDisplayOptionsAllianceRank.Click += new System.EventHandler(this.btnDisplayOptionsAllianceRank_Click);
             // 
