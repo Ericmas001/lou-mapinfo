@@ -41,23 +41,32 @@ namespace LouMapInfo.Reports
             ContinentInfo cont = world.Continent(location.Continent);
             Dictionary<int, List<CityInfo>> cities = new Dictionary<int, List<CityInfo>>();
             List<CityInfo> alls = new List<CityInfo>();
+            Filters fs = new Filters();
+            foreach (FilterType f in m_Filters.Keys)
+            {
+                if (hasFilter(f) && FilterEnabled(f))
+                    fs.AllFilters.Add(f);
+            }
             for (int i = 1; i <= 20; ++i)
             {
                 cities.Add(i, new List<CityInfo>());
             }
             foreach (AllianceInfo a in cont.Alliances)
             {
-                foreach (PlayerInfo p in a.Players())
+                if (a.Name != "" || FilterEnabled(FilterType.NoAlliance))
                 {
-                    foreach (CityInfo c in p.Cities(cont.Id, FilterType.TypePalace, FilterType.TypeCastle, FilterType.BorderingLand, FilterType.BorderingWater))
+                    foreach (PlayerInfo p in a.Players())
                     {
-                        double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
-                        //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);
-                        int dist = (int)(0.9999999 + d);
-                        if (dist <= 20)
+                        foreach (CityInfo c in p.Cities(fs, cont.Id))
                         {
-                            cities[dist].Add(c);
-                            alls.Add(c);
+                            double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
+                            //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);
+                            int dist = (int)(0.9999999 + d);
+                            if (dist <= 20)
+                            {
+                                cities[dist].Add(c);
+                                alls.Add(c);
+                            }
                         }
                     }
                 }
