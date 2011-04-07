@@ -9,11 +9,11 @@ using LouMapInfo.Entities.Filter;
 
 namespace LouMapInfo.Reports
 {
-    public class ShrineCastlesReport : ReportInfo
+    public class ShrineRadiusReport : ReportInfo
     {
         private WorldInfo world;
         private Pt location;
-        public ShrineCastlesReport(WorldInfo w, Pt l)
+        public ShrineRadiusReport(WorldInfo w, Pt l)
             : base()
         {
             this.world = w;
@@ -39,8 +39,8 @@ namespace LouMapInfo.Reports
             if (lines.Length > 0)
                 subtitle = new MultiLineReportItem(true, lines);
             ContinentInfo cont = world.Continent(location.Continent);
-            Dictionary<int, List<CityInfo>> cities = new Dictionary<int, List<CityInfo>>();
-            List<CityInfo> alls = new List<CityInfo>();
+            Dictionary<int, Dictionary<CityInfo,double>> cities = new Dictionary<int, Dictionary<CityInfo,double>>();
+            Dictionary<CityInfo, double> alls = new Dictionary<CityInfo, double>();
             Filters fs = new Filters();
             foreach (FilterType f in m_Filters.Keys)
             {
@@ -49,7 +49,7 @@ namespace LouMapInfo.Reports
             }
             for (int i = 1; i <= 20; ++i)
             {
-                cities.Add(i, new List<CityInfo>());
+                cities.Add(i, new Dictionary<CityInfo,double>());
             }
             foreach (AllianceInfo a in cont.Alliances)
             {
@@ -62,10 +62,12 @@ namespace LouMapInfo.Reports
                             double d = Math.Sqrt(Math.Pow(c.Location.X - location.X, 2.0) + Math.Pow(c.Location.Y - location.Y, 2.0));
                             //int d = Math.Abs() + Math.Abs(c.Location.Y - location.Y);
                             int dist = (int)(0.9999999 + d);
-                            if (dist <= 20)
+                            if (dist > 0 && dist <= 20)
                             {
-                                cities[dist].Add(c);
-                                alls.Add(c);
+                                if (c.TypeCity == CityType.Palace)
+                                    c.LoadIfNeeded();
+                                cities[dist].Add(c, c.Score / (d + 2));
+                                alls.Add(c, c.Score / (d + 2));
                             }
                         }
                     }
@@ -77,11 +79,14 @@ namespace LouMapInfo.Reports
                 {
                     ReportItem r = new TextReportItem(d + " tiles distance", true);
                     CityInfo[] all = new CityInfo[cities[d].Count];
-                    cities[d].CopyTo(all, 0);
+                    cities[d].Keys.CopyTo(all,0);
                     Array.Sort(all);
                     Array.Reverse(all);
                     foreach (CityInfo c in all)
-                        r.Items.Add(new DetailedCityInfoReportItem(c, true, true, true, false));
+                        r.Items.Add(new MultiLineReportItem(true,
+                            new DetailedCityInfoReportItem(c, true, true, true, false),
+                            new EnlightmentScoreReportItem(c.TypeCity, c.Bordering, c.VirtueType, (int)cities[d][c], true)
+                            ));
                     root.Add(r);
                 }
             }
@@ -89,11 +94,14 @@ namespace LouMapInfo.Reports
             {
                 ReportItem r = new TextReportItem("All <= 20 distance", true);
                 CityInfo[] all = new CityInfo[alls.Count];
-                alls.CopyTo(all, 0);
+                alls.Keys.CopyTo(all, 0);
                 Array.Sort(all);
                 Array.Reverse(all);
                 foreach (CityInfo c in all)
-                    r.Items.Add(new DetailedCityInfoReportItem(c, true, true, true, false));
+                    r.Items.Add(new MultiLineReportItem(true,
+                        new DetailedCityInfoReportItem(c, true, true, true, false),
+                        new EnlightmentScoreReportItem(c.TypeCity, c.Bordering, c.VirtueType, (int)alls[c], true)
+                        ));
                 root.Add(r);
             }
         }

@@ -193,7 +193,7 @@ namespace LouMapInfoApp.LouOfficial
         private void OpenShrineReportAsync(object o)
         {
             Pt pt = (Pt)o;
-            ShrineCastlesReport rep = new ShrineCastlesReport(Session.World, pt);
+            ShrineRadiusReport rep = new ShrineRadiusReport(Session.World, pt);
             rep.LoadIfNeeded();
             OpenReport(rep);
             ContentEnabling(true);
