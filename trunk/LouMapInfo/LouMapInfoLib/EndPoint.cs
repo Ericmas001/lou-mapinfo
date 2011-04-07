@@ -37,7 +37,21 @@ namespace LouMapInfo
             return new JsonTextParser().Parse(res);
         }
 
-        public static JsonArrayCollection GetPlayerList(string baseurl, string session, int continent)
+        public static JsonArrayCollection GetAllianceList(string baseurl, string session, int continent, int type, int sort)
+        {
+            string endpoint = "AllianceGetRange";
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonNumericValue("start", 0));
+            args.Add(new JsonNumericValue("end", 999999999));
+            args.Add(new JsonNumericValue("continent", continent));
+            args.Add(new JsonStringValue("sort", sort.ToString()));
+            args.Add(new JsonNumericValue("type", type));
+            args.Add(new JsonBooleanValue("ascending", true));
+            return (JsonArrayCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonArrayCollection GetPlayerList(string baseurl, string session, int continent, int type, int sort)
         {
             string endpoint = "PlayerGetRange";
             JsonObjectCollection args = new JsonObjectCollection();
@@ -45,14 +59,15 @@ namespace LouMapInfo
             args.Add(new JsonNumericValue("start", 0));
             args.Add(new JsonNumericValue("end", 999999999));
             args.Add(new JsonNumericValue("continent", continent));
-            args.Add(new JsonStringValue("sort", "0"));
+            args.Add(new JsonStringValue("sort", sort.ToString()));
+            args.Add(new JsonNumericValue("type", type));
             args.Add(new JsonBooleanValue("ascending", true));
             return (JsonArrayCollection)Query(baseurl, endpoint, args);
         }
 
         public static JsonArrayCollection GetPlayerList(string baseurl, string session)
         {
-            return GetPlayerList(baseurl, session, -1);
+            return GetPlayerList(baseurl, session, -1, 0, 0);
         }
 
         public static JsonObjectCollection GetPublicPlayerInfo(string baseurl, string session, int idPlayer)
