@@ -77,7 +77,7 @@ namespace LouMapInfoApp.LouOfficial
             {
                 PlayerOverviewReport rep = new PlayerOverviewReport(p);
                 rep.LoadIfNeeded();
-                OpenReport(rep, 4);
+                OpenReport(rep, Properties.Settings.Default.detailLevel);
                 ContentEnabling(true);
             }
         }
@@ -102,7 +102,7 @@ namespace LouMapInfoApp.LouOfficial
             {
                 AllianceOverviewReport rep = new AllianceOverviewReport(a);
                 rep.LoadIfNeeded();
-                OpenReport(rep, 4);
+                OpenReport(rep, Properties.Settings.Default.detailLevel);
                 ContentEnabling(true);
             }
         }

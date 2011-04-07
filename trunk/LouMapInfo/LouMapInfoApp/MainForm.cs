@@ -16,6 +16,7 @@ namespace LouMapInfoApp
 {
     public partial class MainForm : Form
     {
+        private ContentLouConnection connectForm;
         private SessionInfo m_Session = null;
         private ZeusSessionInfo m_ZeusSession = null;
 
@@ -33,8 +34,8 @@ namespace LouMapInfoApp
         public MainForm()
         {
             InitializeComponent();
+            connectForm = new ContentLouConnection(this);
             menuButton_CheckedChanged(btnMenuOfficial, new EventArgs());
-
             //TEMP:
             //btnMenuTools.Checked = true;
         }
@@ -82,6 +83,7 @@ namespace LouMapInfoApp
             }
             else if (btn == btnMenuTools)
             {
+                AddSubItem(btn, "Options", new ContentOptions());
                 AddSubItem(btn, "Layout", new ContentLayout());
                 AddSubItem(btn, "About", new ContentAbout());
                 AddSubItem(btn, "FAQ", new ContentFAQ());
@@ -136,7 +138,7 @@ namespace LouMapInfoApp
             }
             if (m_Session == null)
             {
-                AddSubItem(btnMenuOfficial, CONNECT, new ContentLouConnection(this));
+                AddSubItem(btnMenuOfficial, CONNECT, connectForm);
             }
             else
             {
@@ -174,11 +176,11 @@ namespace LouMapInfoApp
             }
             if (m_Session == null)
             {
-                AddSubItem(btnMenuEmpire, CONNECT, new ContentLouConnection(this));
+                AddSubItem(btnMenuEmpire, CONNECT, connectForm);
             }
             else
             {
-                AddSubItem(btnMenuOfficial, m_Session.World.Player(m_Session.PlayerID).Name, new ContentLoUOfficial(this, new ContentLouMyPlayer(), Properties.Resources.menu_Empire));
+                AddSubItem(btnMenuOfficial, "Cities"/*m_Session.World.Player(m_Session.PlayerID).Name*/, new ContentLoUOfficial(this, new ContentEmpireCities(), Properties.Resources.menu_Empire));
                 //if (m_Session.AllianceID > 0)
                 //    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance(), Properties.Resources.menu_Empire));
             }
@@ -227,9 +229,9 @@ namespace LouMapInfoApp
             {
                 ((ContentLayout)splitContainer1.Panel2.Controls[0]).ContentLayout_KeyDown(sender, e);
             }
-            else if (splitContainer1.Panel2.Controls.Count == 1 && splitContainer1.Panel2.Controls[0] is ContentLoUOfficial && ((ContentLoUOfficial)splitContainer1.Panel2.Controls[0]).Child is ContentLouMyPlayer)
+            else if (splitContainer1.Panel2.Controls.Count == 1 && splitContainer1.Panel2.Controls[0] is ContentLoUOfficial && ((ContentLoUOfficial)splitContainer1.Panel2.Controls[0]).Child is ContentEmpireCities)
             {
-                ((ContentLouMyPlayer)((ContentLoUOfficial)splitContainer1.Panel2.Controls[0]).Child).FireKeyDown(e);
+                ((ContentEmpireCities)((ContentLoUOfficial)splitContainer1.Panel2.Controls[0]).Child).FireKeyDown(e);
             }
         }
     }

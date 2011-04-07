@@ -119,7 +119,7 @@ namespace LouMapInfoApp.LouOfficial
                 return;
             }
             // ReportForm.ShowReport(r, Properties.Settings.Default.lastWDetailLvl);
-            ContentReport content = new ContentReport(r, Properties.Settings.Default.lastWDetailLvl);
+            ContentReport content = new ContentReport(r, Properties.Settings.Default.detailLevel);
             pnlContent.Controls.Add(content);
             content.Dock = DockStyle.Fill;
         }

@@ -118,11 +118,11 @@
     <Compile Include="LouOfficial\ContentLouGroups.Designer.cs">
       <DependentUpon>ContentLouGroups.cs</DependentUpon>
     </Compile>
-    <Compile Include="LouOfficial\Empire\ContentLouMyPlayer.cs">
+    <Compile Include="LouOfficial\Empire\ContentEmpireCities.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LouOfficial\Empire\ContentLouMyPlayer.Designer.cs">
-      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
+    <Compile Include="LouOfficial\Empire\ContentEmpireCities.Designer.cs">
+      <DependentUpon>ContentEmpireCities.cs</DependentUpon>
     </Compile>
     <Compile Include="LouOfficial\Empire\ContentLouMyAlliance.cs">
       <SubType>UserControl</SubType>
@@ -170,6 +170,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\ContentOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tools\ContentOptions.Designer.cs">
+      <DependentUpon>ContentOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zeus\ContentZeusAccount.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,8 +228,8 @@
     <EmbeddedResource Include="LouOfficial\ContentLouGroups.resx">
       <DependentUpon>ContentLouGroups.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LouOfficial\Empire\ContentLouMyPlayer.resx">
-      <DependentUpon>ContentLouMyPlayer.cs</DependentUpon>
+    <EmbeddedResource Include="LouOfficial\Empire\ContentEmpireCities.resx">
+      <DependentUpon>ContentEmpireCities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LouOfficial\Empire\ContentLouMyAlliance.resx">
       <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
@@ -256,6 +262,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tools\ContentOptions.resx">
+      <DependentUpon>ContentOptions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Zeus\ContentZeusAccount.resx">
       <DependentUpon>ContentZeusAccount.cs</DependentUpon>
     </EmbeddedResource>
