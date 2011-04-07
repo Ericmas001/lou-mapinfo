@@ -20,6 +20,8 @@ namespace LouMapInfoApp
         int depth;
         public ContentReport(ReportInfo r, int d)
         {
+            report = r;
+            depth = d;
             InitializeComponent();
 
             btnFilterCastle.Visible = r.hasFilter(FilterType.TypeCastle);
@@ -36,16 +38,13 @@ namespace LouMapInfoApp
 
             btnFilterNoAlliance.Visible = r.hasFilter(FilterType.NoAlliance);
 
-            btnFilterCastle.Checked = r.FilterEnabled(FilterType.TypeCastle);
-            btnFilterCity.Checked = r.FilterEnabled(FilterType.TypeCity);
-            btnFilterPalace.Checked = r.FilterEnabled(FilterType.TypePalace);
-            btnFilterLand.Checked = r.FilterEnabled(FilterType.BorderingLand);
-            btnFilterWater.Checked = r.FilterEnabled(FilterType.BorderingWater);
-            btnFilterNoCities.Checked = r.FilterEnabled(FilterType.NoCities);
-            btnFilterNoAlliance.Checked = r.FilterEnabled(FilterType.NoAlliance);
-            
-
-
+            report.SetFilter(FilterType.TypeCastle,btnFilterCastle.Checked = Properties.Settings.Default.filtCastles);
+            report.SetFilter(FilterType.TypeCity, btnFilterCity.Checked = Properties.Settings.Default.filtCities);
+            report.SetFilter(FilterType.TypePalace, btnFilterPalace.Checked = Properties.Settings.Default.filtPalaces);
+            report.SetFilter(FilterType.BorderingLand, btnFilterLand.Checked = Properties.Settings.Default.filtLand);
+            report.SetFilter(FilterType.BorderingWater, btnFilterWater.Checked = Properties.Settings.Default.filtWater);
+            report.SetFilter(FilterType.NoCities, btnFilterNoCities.Checked = Properties.Settings.Default.filtNoCities);
+            report.SetFilter(FilterType.NoAlliance, btnFilterNoAlliance.Checked = Properties.Settings.Default.filtNoAlliance);
 
             CustomTabControl tctl = new CustomTabControl();
             tctl.Controls.Add(this.tpageReport);
@@ -78,8 +77,6 @@ namespace LouMapInfoApp
             tctl.Alignment = TabAlignment.Bottom;
             pnlContent.Controls.Remove(customTabControl1);
             pnlContent.Controls.Add(tctl);
-            report = r;
-            depth = d;
             Text = StringUtility.RemoveBBCodeTags(r.Title);
             switch (d)
             {
@@ -103,15 +100,14 @@ namespace LouMapInfoApp
             r.BBCodeDisplay["city"] = btnBBCodeCity.Checked;
             r.BBCodeDisplay["player"] = btnBBCodePlayer.Checked;
             r.BBCodeDisplay["alliance"] = btnBBCodeAlliance.Checked;
-            ReportOption ro = (ReportOption)Properties.Settings.Default.reportOptions;
-            btnDisplayOptionsAllianceScore.Checked = (ro & ReportOption.AllianceScore) != 0;
-            btnDisplayOptionsCityCount.Checked = (ro & ReportOption.CityCount) != 0;
-            btnDisplayOptionsCityName.Checked = (ro & ReportOption.CityName) != 0;
-            btnDisplayOptionsCityScore.Checked = (ro & ReportOption.CityScore) != 0;
-            btnDisplayOptionsPlayerCount.Checked = (ro & ReportOption.PlayerCount) != 0;
-            btnDisplayOptionsPlayerScore.Checked = (ro & ReportOption.PlayerScore) != 0;
-            btnDisplayOptionsAllianceRank.Checked = (ro & ReportOption.AllianceRank) != 0;
-            report.SetOption(ro, true);
+            report.SetOption(ReportOption.AllianceScore,btnDisplayOptionsAllianceScore.Checked = Properties.Settings.Default.dispAllianceScore);
+            report.SetOption(ReportOption.CityCount,btnDisplayOptionsCityCount.Checked = Properties.Settings.Default.dispCityCount);
+            report.SetOption(ReportOption.CityName,btnDisplayOptionsCityName.Checked = Properties.Settings.Default.dispCityName);
+            report.SetOption(ReportOption.CityScore,btnDisplayOptionsCityScore.Checked = Properties.Settings.Default.dispCityScore);
+            report.SetOption(ReportOption.PlayerCount,btnDisplayOptionsPlayerCount.Checked = Properties.Settings.Default.dispPlayerCount);
+            report.SetOption(ReportOption.PlayerScore,btnDisplayOptionsPlayerScore.Checked = Properties.Settings.Default.dispPlayerScore);
+            report.SetOption(ReportOption.AllianceRank, btnDisplayOptionsAllianceRank.Checked = Properties.Settings.Default.dispAllianceRank);
+            
             RefreshReport();
         }
         private void RefreshReport()
@@ -148,8 +144,8 @@ namespace LouMapInfoApp
             btn.Checked = !btn.Checked;
             string b = btn.Name.Replace("btnBBCode", "").ToLower();
             report.BBCodeDisplay[b] = btn.Checked;
-            Properties.Settings.Default["bbcode_" + b] = btn.Checked;
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default["bbcode_" + b] = btn.Checked;
+            //Properties.Settings.Default.Save();
             txtBBCode.Text = report.BBCode(depth);
         }
 
@@ -177,8 +173,6 @@ namespace LouMapInfoApp
         private void btnReportsLvl1_Click(object sender, EventArgs e)
         {
             depth = 1;
-            Properties.Settings.Default.lastWDetailLvl = 1;
-            Properties.Settings.Default.Save();
             txtBBCode.Text = report.BBCode(depth);
             btnReportsLvl.Text = btnReportsLvl1.Text;
             btnReportsLvl1.Checked = true;
@@ -190,8 +184,6 @@ namespace LouMapInfoApp
         private void btnReportsLvl2_Click(object sender, EventArgs e)
         {
             depth = 2;
-            Properties.Settings.Default.lastWDetailLvl = 2;
-            Properties.Settings.Default.Save();
             btnReportsLvl.Text = btnReportsLvl2.Text;
             btnReportsLvl1.Checked = false;
             btnReportsLvl2.Checked = true;
@@ -205,8 +197,6 @@ namespace LouMapInfoApp
         private void btnReportsLvl3_Click(object sender, EventArgs e)
         {
             depth = 4;
-            Properties.Settings.Default.lastWDetailLvl = 4;
-            Properties.Settings.Default.Save();
             btnReportsLvl.Text = btnReportsLvl3.Text;
             btnReportsLvl1.Checked = false;
             btnReportsLvl2.Checked = false;
@@ -227,6 +217,8 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.AllianceScore, btnDisplayOptionsAllianceScore.Checked);
             if (sender != null)
             {
+                //Properties.Settings.Default.dispAllianceScore = btnDisplayOptionsAllianceScore.Checked;
+                //Properties.Settings.Default.Save();
                 RefreshReport();
             }
         }
@@ -237,8 +229,8 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.PlayerScore, btnDisplayOptionsPlayerScore.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options;
-                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.dispPlayerScore = btnDisplayOptionsPlayerScore.Checked;
+                //Properties.Settings.Default.Save();
                 RefreshReport();
             }
         }
@@ -249,8 +241,8 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.PlayerCount, btnDisplayOptionsPlayerCount.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options;
-                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.dispPlayerCount = btnDisplayOptionsPlayerCount.Checked;
+                //Properties.Settings.Default.Save();
                 RefreshReport();
             }
         }
@@ -261,8 +253,8 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.CityName, btnDisplayOptionsCityName.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options;
-                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.dispCityName = btnDisplayOptionsCityName.Checked;
+                //Properties.Settings.Default.Save();
                 RefreshReport();
             }
         }
@@ -273,8 +265,8 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.CityScore, btnDisplayOptionsCityScore.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options;
-                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.dispCityScore = btnDisplayOptionsCityScore.Checked;
+                //Properties.Settings.Default.Save();
                 RefreshReport();
             }
         }
@@ -285,8 +277,8 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.CityCount, btnDisplayOptionsCityCount.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options;
-                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.dispCityCount = btnDisplayOptionsCityCount.Checked;
+                //Properties.Settings.Default.Save();
                 RefreshReport();
             }
         }
@@ -297,8 +289,8 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.AllianceRank, btnDisplayOptionsAllianceRank.Checked);
             if (sender != null)
             {
-                Properties.Settings.Default.reportOptions = (int)report.Options;
-                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.dispAllianceRank = btnDisplayOptionsAllianceRank.Checked;
+                //Properties.Settings.Default.Save();
                 RefreshReport();
             }
         }

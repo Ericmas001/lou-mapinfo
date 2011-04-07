@@ -53,8 +53,10 @@ namespace LouMapInfoApp.LouOfficial
             if (txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && lstServerNames1.SelectedIndex >= 0)
             {
                 // We connect
-                Properties.Settings.Default.liveUsername = txtUsername.Text;
-                Properties.Settings.Default.livePassword = txtPassword.Text;
+                if( Properties.Settings.Default.liveRememberMail)
+                    Properties.Settings.Default.liveUsername = txtUsername.Text;
+                if (Properties.Settings.Default.liveRememberPass)
+                    Properties.Settings.Default.livePassword = txtPassword.Text;
                 Properties.Settings.Default.liveWorld = lstServerNames1.SelectedItem.ToString();
                 Properties.Settings.Default.Save();
                 EnableAll(false);

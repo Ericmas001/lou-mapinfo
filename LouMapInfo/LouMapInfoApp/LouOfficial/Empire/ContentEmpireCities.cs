@@ -15,7 +15,7 @@ using LouMapInfo;
 
 namespace LouMapInfoApp.LouOfficial.Empire
 {
-    public partial class ContentLouMyPlayer : UserControl, ILouContent
+    public partial class ContentEmpireCities : UserControl, ILouContent
     {
         private class CityEntry : IComparable<CityEntry>
         {
@@ -83,7 +83,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
                 lstCities.Items.AddRange(entrys);
             }
         }
-        public ContentLouMyPlayer()
+        public ContentEmpireCities()
         {
             InitializeComponent();
             lpb.Location = new Point(0, 0);
@@ -100,12 +100,13 @@ namespace LouMapInfoApp.LouOfficial.Empire
                 return;
             }
             // ReportForm.ShowReport(r, Properties.Settings.Default.lastWDetailLvl);
-            ContentReport content = new ContentReport(r, Properties.Settings.Default.lastWDetailLvl);
+            ContentReport content = new ContentReport(r, Properties.Settings.Default.detailLevel);
             pnlContent.Controls.Add(content);
             content.Dock = DockStyle.Fill;
         }
         private void LoadCity(CityInfo c)
         {
+            tbProduction.Enabled = true;
             btnRename.Enabled = true;
             txtRename.Visible = false;
             btnRenameCancel.Visible = false;
@@ -142,6 +143,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
             CompleteLayout l = CompleteLayout.GetLayoutFromCity(c);
             m_CurrentLayout = l.GenerateFlashCityPlanner();
             lpb.Import(l);
+            UpdateCounters();
             sep3.Visible = true;
             btnRename.Visible = true;
             pnlContenu.Controls.Clear();
@@ -159,6 +161,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
 
         private void btnEditLayout_Click(object sender, EventArgs e)
         {
+            tbProduction.Enabled = false;
             sep2.Visible = false;
             btnShowCurrent.BackColor = Color.White;
             btnShowPlan.BackColor = Color.White;
@@ -180,6 +183,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
 
         private void btnCloseEditLayout_Click(object sender, EventArgs e)
         {
+            tbProduction.Enabled = true;
             sep2.Visible = true;
             btnShowCurrent.Visible = true;
             btnCloseEditLayout.Visible = false;
@@ -208,23 +212,35 @@ namespace LouMapInfoApp.LouOfficial.Empire
             if (inEdit)
                 cl.ContentLayout_KeyDown(this,e);
         }
+        private void UpdateCounters()
+        {
+            lblGold.Text = lpb.Production[ResourceType.Gold].ToString("N0") + "/h";
+            lblWood.Text = lpb.Production[ResourceType.Wood].ToString("N0") + "/h";
+            lblStone.Text = lpb.Production[ResourceType.Stone].ToString("N0") + "/h";
+            lblIron.Text = lpb.Production[ResourceType.Iron].ToString("N0") + "/h";
+            lblFood.Text = lpb.Production[ResourceType.Food].ToString("N0") + "/h";
+            lblTotalRes.Text = (lpb.Production[ResourceType.Wood] + lpb.Production[ResourceType.Stone] + lpb.Production[ResourceType.Iron] + lpb.Production[ResourceType.Food]).ToString("N0") + "/h";
 
+        }
         private void btnShowCurrent_Click(object sender, EventArgs e)
         {
             btnShowCurrent.BackColor = SystemColors.Highlight;
             btnShowPlan.BackColor = Color.White;
             lpb.Import(m_CurrentLayout);
-        }
+            UpdateCounters();
+       }
 
         private void btnShowPlan_Click(object sender, EventArgs e)
         {
             btnShowCurrent.BackColor = Color.White;
             btnShowPlan.BackColor = SystemColors.Highlight;
             lpb.Import(m_PlannedLayout);
+            UpdateCounters();
         }
 
         private void btnCreateLayout_Click(object sender, EventArgs e)
         {
+            tbProduction.Enabled = false;
             sep3.Visible = false;
             btnRename.Visible = false;
             btnSaveLayout.Visible = true;
