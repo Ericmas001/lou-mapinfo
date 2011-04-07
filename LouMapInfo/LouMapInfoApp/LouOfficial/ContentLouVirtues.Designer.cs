@@ -343,8 +343,8 @@
             // 
             this.toolStripLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(161, 22);
-            this.toolStripLabel3.Text = "Castles arounnd the Shrine: ";
+            this.toolStripLabel3.Size = new System.Drawing.Size(82, 22);
+            this.toolStripLabel3.Text = "Shrine Radius";
             // 
             // toolStripLabel4
             // 
@@ -366,8 +366,8 @@
             this.btnShrineLocationInclude.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShrineLocationInclude.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
             this.btnShrineLocationInclude.Name = "btnShrineLocationInclude";
-            this.btnShrineLocationInclude.Size = new System.Drawing.Size(152, 22);
-            this.btnShrineLocationInclude.Text = "Get cities in the 20x20 zone";
+            this.btnShrineLocationInclude.Size = new System.Drawing.Size(166, 22);
+            this.btnShrineLocationInclude.Text = "Get cities in the 20 tiles radius";
             this.btnShrineLocationInclude.Click += new System.EventHandler(this.btnShrineLocation_Click);
             // 
             // pnlContent

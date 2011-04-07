@@ -46,9 +46,9 @@ namespace LouMapInfo.Reports.Items
             String name = "";
 
             if (m_Border == BorderingType.Land)
-                name = "Land-Locked ";
+                name = "Land ";
             else if (m_Border == BorderingType.Water)
-                name = "Water-Based ";
+                name = "Water ";
 
             switch (m_Type)
             {
@@ -67,7 +67,7 @@ namespace LouMapInfo.Reports.Items
             }
             else
             {
-                if ((options & ReportOption.CityCount) != 0)
+                if (m_Count > 0 && (options & ReportOption.CityCount) != 0)
                     s = m_Count + " ";
 
                 s += name;

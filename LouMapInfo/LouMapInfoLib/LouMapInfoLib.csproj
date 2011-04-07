@@ -60,6 +60,7 @@
     <Compile Include="Entities\Types\BorderingType.cs" />
     <Compile Include="EndPoint.cs" />
     <Compile Include="Entities\PlayerInfo.cs" />
+    <Compile Include="Reports\Items\EnlightmentScoreReportItem.cs" />
     <Compile Include="ServerList.cs" />
     <Compile Include="Entities\SessionInfo.cs" />
     <Compile Include="Entities\WorldInfo.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="Reports\Items\MultiLineReportItem.cs" />
     <Compile Include="Reports\Items\PlayerCountReportItem.cs" />
     <Compile Include="Reports\Items\TextReportItem.cs" />
-    <Compile Include="Reports\ShrineCastlesReport.cs" />
+    <Compile Include="Reports\ShrineRadiusReport.cs" />
     <Compile Include="Reports\Items\DetailedPalaceInfoReportItem.cs" />
     <Compile Include="Reports\BattlePalaceReport.cs" />
     <Compile Include="Reports\Items\DetailedCityInfoReportItem.cs" />
