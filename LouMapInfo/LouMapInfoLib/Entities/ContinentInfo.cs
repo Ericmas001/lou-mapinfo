@@ -34,7 +34,7 @@ namespace LouMapInfo.Entities
         }
         protected override void OnLoad()
         {
-            JsonArrayCollection players = EndPoint.GetPlayerList(m_World.Url, m_World.Session.SessionID, m_Id);
+            JsonArrayCollection players = EndPoint.GetPlayerList(m_World.Url, m_World.Session.SessionID, m_Id, 0, 0);
             foreach (JsonObjectCollection p in players)
             {
                 string n = ((JsonStringValue)p["n"]).Value;

@@ -25,7 +25,9 @@ namespace LouMapInfo.Entities
         private readonly Dictionary<int, List<MoonGateInfo>> m_MoonGatesByCont = new Dictionary<int, List<MoonGateInfo>>();
         private readonly Dictionary<VirtueType, List<string>> m_PalacesOwnersByVirtue = new Dictionary<VirtueType, List<string>>();
         private readonly Dictionary<string, List<string>> m_PalacesOwnersByAlliance = new Dictionary<string, List<string>>();
-            
+
+        private readonly Dictionary<RankingType, List<object[]>> m_Rankings = new Dictionary<RankingType, List<object[]>>();
+
         public SessionInfo Session { get { return m_Session; } }
         public string Url { get { return m_Server.Url; } }
         public string Name { get { return m_Name; } }
@@ -52,7 +54,7 @@ namespace LouMapInfo.Entities
             m_PlayersById.Clear();
             m_AlliancesByName.Clear();
             m_AlliancesById.Clear();
-            JsonArrayCollection players = EndPoint.GetPlayerList(Url,m_Session.SessionID);
+            JsonArrayCollection players = EndPoint.GetPlayerList(Url, m_Session.SessionID);
             foreach (JsonObjectCollection p in players)
             {
                 int pI = (int)((JsonNumericValue)p["i"]).Value;
@@ -69,7 +71,7 @@ namespace LouMapInfo.Entities
                     m_AlliancesByName.Add(pA, aInfo);
                 }
                 AllianceInfo a = m_AlliancesById[pJ];
-                PlayerInfo pInfo = new PlayerInfo(this,pN, pI, a, pP, pR, pC);
+                PlayerInfo pInfo = new PlayerInfo(this, pN, pI, a, pP, pR, pC);
                 m_PlayersByName.Add(pN, pInfo);
                 m_PlayersById.Add(pI, pInfo);
             }
@@ -85,7 +87,7 @@ namespace LouMapInfo.Entities
             m_PlayersById[m_Session.PlayerID].ForceLoad();
             //CompleteLayout cl = CompleteLayout.GetLayoutFromCity(m_PlayersById[m_Session.PlayerID].Cities()[10]);
             string[] vkeys = new string[] { "c", "o", "h", "u", "ju", "f", "s", "v" };
-            for( int k = 1; k <= 8; ++k)
+            for (int k = 1; k <= 8; ++k)
                 m_PalacesOwnersByVirtue.Add((VirtueType)k, new List<string>());
             JsonArrayCollection jac = EndPoint.GetPlayersWithPalace(Session.World.Url, Session.SessionID);
             foreach (JsonObjectCollection p in jac)
@@ -101,7 +103,109 @@ namespace LouMapInfo.Entities
                         m_PalacesOwnersByVirtue[(VirtueType)(i + 1)].Add(name);
                 }
             }
+
+
         }
+
+        public List<object[]> Ranking(RankingType type)
+        {
+            if (m_Rankings.ContainsKey(type))
+                return m_Rankings[type];
+
+            switch (type)
+            {
+                case RankingType.PRanking:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p0 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 0, 0);
+                        foreach (JsonObjectCollection p in p0)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pJ = (int)((JsonNumericValue)p["j"]).Value;
+                            string pA = (string)((JsonStringValue)p["a"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pC = (int)((JsonNumericValue)p["c"]).Value;
+                            res.Add(new object[] { pR, pN, pP, pA, pC});
+                        }
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.PResources:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p1 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 1, 5);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.PMilitary:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p2 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 2, 11);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.POffense:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p3 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 3, 14);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.PDefense:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p4 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 4, 15);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.PUnits:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p5 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 5, 17);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.PPlunder:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p6 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 6, 16);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.PFaith:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection p7 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 7, 18);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.ARanking:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection a0 = EndPoint.GetAllianceList(Url, Session.SessionID, -1, 0, 0);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.AUnits:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection a1 = EndPoint.GetAllianceList(Url, Session.SessionID, -1, 1, 6);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+                case RankingType.AFaith:
+                    {
+                        List<object[]> res = new List<object[]>();
+                        JsonArrayCollection a2 = EndPoint.GetAllianceList(Url, Session.SessionID, -1, 2, 7);
+                        m_Rankings.Add(type, res);
+                        break;
+                    }
+            }
+            return m_Rankings[type];
+        }
+
         public void LoadVis()
         {
             if (!m_VisLoaded)

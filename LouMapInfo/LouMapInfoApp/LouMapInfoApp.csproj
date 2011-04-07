@@ -124,12 +124,6 @@
     <Compile Include="LouOfficial\Empire\ContentEmpireCities.Designer.cs">
       <DependentUpon>ContentEmpireCities.cs</DependentUpon>
     </Compile>
-    <Compile Include="LouOfficial\Empire\ContentLouMyAlliance.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LouOfficial\Empire\ContentLouMyAlliance.Designer.cs">
-      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tools\ContentLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,9 +224,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LouOfficial\Empire\ContentEmpireCities.resx">
       <DependentUpon>ContentEmpireCities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LouOfficial\Empire\ContentLouMyAlliance.resx">
-      <DependentUpon>ContentLouMyAlliance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ContentLayout.resx">
       <DependentUpon>ContentLayout.cs</DependentUpon>
