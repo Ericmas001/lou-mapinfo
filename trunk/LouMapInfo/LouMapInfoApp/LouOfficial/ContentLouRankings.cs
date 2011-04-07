@@ -47,74 +47,6 @@ namespace LouMapInfoApp.LouOfficial
         DataGridViewTextBoxColumn colVSpirituality = new DataGridViewTextBoxColumn();
         DataGridViewTextBoxColumn colVValor = new DataGridViewTextBoxColumn();
 
-        /*
-         * this.dgvPlayersName = new System.Windows.Forms.DataGridViewLinkColumn();
-                this.dgvPlayersAlliance = new System.Windows.Forms.DataGridViewLinkColumn();
-                this.dgvPlayersScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                this.dgvPlayersRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                this.dgvPlayersCities = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            
-                this.dgvPlayers.AllowUserToAddRows = false;
-                this.dgvPlayers.AllowUserToDeleteRows = false;
-                this.dgvPlayers.AllowUserToOrderColumns = true;
-                this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-                this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-                this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                this.dgvPlayersName,
-                this.dgvPlayersAlliance,
-                this.dgvPlayersScore,
-                this.dgvPlayersRank,
-                this.dgvPlayersCities});
-                this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-                this.dgvPlayers.Location = new System.Drawing.Point(0, 50);
-                this.dgvPlayers.Name = "dgvPlayers";
-                this.dgvPlayers.ReadOnly = true;
-                this.dgvPlayers.RowHeadersVisible = false;
-                this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-                this.dgvPlayers.Size = new System.Drawing.Size(740, 197);
-                this.dgvPlayers.TabIndex = 26;
-         * 
-                // 
-                // dgvPlayersName
-                // 
-                this.dgvPlayersName.ActiveLinkColor = System.Drawing.Color.Black;
-                this.dgvPlayersName.HeaderText = "Name";
-                this.dgvPlayersName.LinkColor = System.Drawing.Color.Black;
-                this.dgvPlayersName.Name = "dgvPlayersName";
-                this.dgvPlayersName.ReadOnly = true;
-                this.dgvPlayersName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-                this.dgvPlayersName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                this.dgvPlayersName.VisitedLinkColor = System.Drawing.Color.Black;
-                // 
-                // dgvPlayersAlliance
-                // 
-                this.dgvPlayersAlliance.ActiveLinkColor = System.Drawing.Color.Black;
-                this.dgvPlayersAlliance.LinkColor = System.Drawing.Color.Black;
-                this.dgvPlayersAlliance.VisitedLinkColor = System.Drawing.Color.Black;
-                this.dgvPlayersAlliance.HeaderText = "Alliance";
-                this.dgvPlayersAlliance.Name = "dgvPlayersAlliance";
-                this.dgvPlayersAlliance.ReadOnly = true;
-                this.dgvPlayersAlliance.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-                this.dgvPlayersAlliance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                // 
-                // dgvPlayersScore
-                // 
-                this.dgvPlayersScore.HeaderText = "Score";
-                this.dgvPlayersScore.Name = "dgvPlayersScore";
-                this.dgvPlayersScore.ReadOnly = true;
-                // 
-                // dgvPlayersRank
-                // 
-                this.dgvPlayersRank.HeaderText = "Rank";
-                this.dgvPlayersRank.Name = "dgvPlayersRank";
-                this.dgvPlayersRank.ReadOnly = true;
-                // 
-                // dgvPlayersCities
-                // 
-                this.dgvPlayersCities.HeaderText = "Cities";
-                this.dgvPlayersCities.Name = "dgvPlayersCities";
-                this.dgvPlayersCities.ReadOnly = true;
-         * */
         private ContentLoUOfficial m_Frame;
         ToolStripButton oldBtn;
         public SessionInfo Session
@@ -127,12 +59,7 @@ namespace LouMapInfoApp.LouOfficial
             set
             {
                 m_Frame = value;
-                FillRanking(btnPRanking, RankingType.PRanking,
-                colRank,
-                colPlayer,
-                colScore,
-                colAlliance,
-                colNbCities);
+                btnARanking_Click(btnARanking, new EventArgs());
             }
         }
         public ContentLouRankings()
@@ -144,13 +71,58 @@ namespace LouMapInfoApp.LouOfficial
             dgvPlayers.CellContentClick += new DataGridViewCellEventHandler(dgvPlayers_CellContentClick);
         }
 
+        bool currentCol(DataGridViewCellFormattingEventArgs e, DataGridViewColumn c)
+        {
+            return (e.ColumnIndex == c.DisplayIndex && c.DataGridView != null);
+        }
+
+        bool currentCol(DataGridViewCellEventArgs e, DataGridViewColumn c)
+        {
+            return (e.ColumnIndex == c.DisplayIndex && c.DataGridView != null);
+        }
+
         void dgvPlayers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == colRank.Index || 
-                e.ColumnIndex == colScore.Index || 
-                e.ColumnIndex == colNbCities.Index)
+            if (currentCol(e, colRank) ||
+                currentCol(e, colScore) ||
+                currentCol(e, colResFood) ||
+                currentCol(e, colResGold) ||
+                currentCol(e, colResIron) ||
+                currentCol(e, colResStone) ||
+                currentCol(e, colResWood) ||
+                currentCol(e, colNbCities) ||
+                currentCol(e, colTS) ||
+                currentCol(e, colTSMax) ||
+                currentCol(e, colRankOverall) ||
+                currentCol(e, colScoreAvg) ||
+                currentCol(e, colMembers) ||
+                currentCol(e, colRecSpeed))
             {
                 e.Value = ((int)e.Value).ToString("N0");
+            }
+            if (currentCol(e, colTSDefeated) ||
+                currentCol(e, colRes))
+            {
+                e.Value = ((long)e.Value).ToString("N0");
+            }
+
+            if (currentCol(e, colVCompassion) ||
+                currentCol(e, colVHonesty) ||
+                currentCol(e, colVHonor) ||
+                currentCol(e, colVHumility) ||
+                currentCol(e, colVJustice) ||
+                currentCol(e, colVSacrifice) ||
+                currentCol(e, colVSpirituality) ||
+                currentCol(e, colVValor) ||
+                currentCol(e, colVTotal))
+            {
+                String[] p = ((string)e.Value).Split('_');
+                e.Value = int.Parse(p[1]) + " (" + int.Parse(p[0]) + "%)";
+            }
+
+            if (currentCol(e,colPlayer) && (string)e.Value == "$")
+            {
+                e.Value = "";
             }
         }
 
@@ -253,10 +225,10 @@ namespace LouMapInfoApp.LouOfficial
         {
             if (e.RowIndex >= 0)
             {
-                if (dgvPlayers.Columns.Contains(colPlayer) && e.ColumnIndex == colPlayer.Index)
+                if (dgvPlayers.Columns.Contains(colPlayer) && currentCol(e,colPlayer))
                     OpenPlayerReport(dgvPlayers[e.ColumnIndex, e.RowIndex].Value.ToString());
 
-                if (dgvPlayers.Columns.Contains(colAlliance) && e.ColumnIndex == colAlliance.Index)
+                if (dgvPlayers.Columns.Contains(colAlliance) && currentCol(e,colAlliance))
                     OpenAllianceReport(dgvPlayers[e.ColumnIndex, e.RowIndex].Value.ToString());
             }
         }
@@ -335,9 +307,6 @@ namespace LouMapInfoApp.LouOfficial
                 return;
             }
             new ReportForm(r, lvl).Show();
-            //ContentReport content = new ContentReport(r, lvl);
-            //pnlContent.Controls.Add(content);
-            //content.Dock = DockStyle.Fill;
         }
 
         private void FillRanking(ToolStripButton btn, RankingType type, params DataGridViewColumn[] cols)

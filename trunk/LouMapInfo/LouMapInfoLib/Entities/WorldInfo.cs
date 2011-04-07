@@ -136,6 +136,19 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection p1 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 1, 5);
+                        foreach (JsonObjectCollection p in p1)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            int pW = (int)((JsonNumericValue)p["w"]).Value;
+                            int pS = (int)((JsonNumericValue)p["s"]).Value;
+                            int pE = (int)((JsonNumericValue)p["e"]).Value;
+                            int pF = (int)((JsonNumericValue)p["f"]).Value;
+                            int pG = (int)((JsonNumericValue)p["g"]).Value;
+                            res.Add(new object[] { pR, pN, pP, pW, pS, pE, pF, pG });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -143,6 +156,16 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection p2 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 2, 11);
+                        foreach (JsonObjectCollection p in p2)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            int pT = (int)((JsonNumericValue)p["t"]).Value;
+                            int pS = (int)((JsonNumericValue)p["s"]).Value;
+                            res.Add(new object[] { pR, pN, pP, pT, pS});
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -150,6 +173,14 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection p3 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 3, 14);
+                        foreach (JsonObjectCollection p in p3)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            res.Add(new object[] { pR, pN, pP });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -157,6 +188,14 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection p4 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 4, 15);
+                        foreach (JsonObjectCollection p in p4)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            res.Add(new object[] { pR, pN, pP });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -164,6 +203,17 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection p5 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 5, 17);
+                        foreach (JsonObjectCollection p in p5)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pJ = (int)((JsonNumericValue)p["j"]).Value;
+                            string pA = (string)((JsonStringValue)p["a"]).Value;
+                            long pP = (long)((JsonNumericValue)p["p"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pG = (int)((JsonNumericValue)p["g"]).Value;
+                            res.Add(new object[] { pR, pN, pP, pA, pG });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -171,6 +221,17 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection p6 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 6, 16);
+                        foreach (JsonObjectCollection p in p6)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pJ = (int)((JsonNumericValue)p["j"]).Value;
+                            string pA = (string)((JsonStringValue)p["a"]).Value;
+                            long pP = (long)((JsonNumericValue)p["p"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pG = (int)((JsonNumericValue)p["g"]).Value;
+                            res.Add(new object[] { pR, pN, pP, pA, pG });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -178,6 +239,43 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection p7 = EndPoint.GetPlayerList(Url, Session.SessionID, -1, 7, 18);
+                        foreach (JsonObjectCollection p in p7)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pJ = (int)((JsonNumericValue)p["j"]).Value;
+                            string pA = (string)((JsonStringValue)p["a"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            int pPP = (int)((JsonNumericValue)p["pp"]).Value;
+                            int pH = (int)((JsonNumericValue)p["h"]).Value;
+                            int pV = (int)((JsonNumericValue)p["v"]).Value;
+                            int pC = (int)((JsonNumericValue)p["c"]).Value;
+                            int pO = (int)((JsonNumericValue)p["o"]).Value;
+                            int pS = (int)((JsonNumericValue)p["s"]).Value;
+                            int pU = (int)((JsonNumericValue)p["u"]).Value;
+                            int pF = (int)((JsonNumericValue)p["f"]).Value;
+                            int pJU = (int)((JsonNumericValue)p["ju"]).Value;
+                            int pHP = (int)((JsonNumericValue)p["hp"]).Value;
+                            int pVP = (int)((JsonNumericValue)p["vp"]).Value;
+                            int pCP = (int)((JsonNumericValue)p["cp"]).Value;
+                            int pOP = (int)((JsonNumericValue)p["op"]).Value;
+                            int pSP = (int)((JsonNumericValue)p["sp"]).Value;
+                            int pUP = (int)((JsonNumericValue)p["up"]).Value;
+                            int pFP = (int)((JsonNumericValue)p["fp"]).Value;
+                            int pJUP = (int)((JsonNumericValue)p["jup"]).Value;
+                            res.Add(new object[] { pR, pN, pA, 
+                                String.Format("{0:0000}_{1:0000}", pPP, pP),
+                                String.Format("{0:0000}_{1:0000}", pCP, pC),
+                                String.Format("{0:0000}_{1:0000}", pOP, pO),
+                                String.Format("{0:0000}_{1:0000}", pHP, pH),
+                                String.Format("{0:0000}_{1:0000}", pUP, pU),
+                                String.Format("{0:0000}_{1:0000}", pJUP, pJU),
+                                String.Format("{0:0000}_{1:0000}", pFP, pF),
+                                String.Format("{0:0000}_{1:0000}", pSP, pS),
+                                String.Format("{0:0000}_{1:0000}", pVP, pV),
+                            });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -185,6 +283,17 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection a0 = EndPoint.GetAllianceList(Url, Session.SessionID, -1, 0, 0);
+                        foreach (JsonObjectCollection p in a0)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pC = (int)((JsonNumericValue)p["c"]).Value;
+                            int pM = (int)((JsonNumericValue)p["m"]).Value;
+                            int pA = (int)((JsonNumericValue)p["a"]).Value;
+                            res.Add(new object[] { pR, pN, pP, pM, pA, pC });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -192,6 +301,14 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection a1 = EndPoint.GetAllianceList(Url, Session.SessionID, -1, 1, 6);
+                        foreach (JsonObjectCollection p in a1)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            long pP = (long)((JsonNumericValue)p["p"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            res.Add(new object[] { pR, pN, pP});
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
@@ -199,6 +316,42 @@ namespace LouMapInfo.Entities
                     {
                         List<object[]> res = new List<object[]>();
                         JsonArrayCollection a2 = EndPoint.GetAllianceList(Url, Session.SessionID, -1, 2, 7);
+
+                        foreach (JsonObjectCollection p in a2)
+                        {
+                            int pI = (int)((JsonNumericValue)p["i"]).Value;
+                            string pN = (string)((JsonStringValue)p["n"]).Value;
+                            int pR = (int)((JsonNumericValue)p["r"]).Value;
+                            int pP = (int)((JsonNumericValue)p["p"]).Value;
+                            int pPP = (int)((JsonNumericValue)p["pp"]).Value;
+                            int pH = (int)((JsonNumericValue)p["h"]).Value;
+                            int pV = (int)((JsonNumericValue)p["v"]).Value;
+                            int pC = (int)((JsonNumericValue)p["c"]).Value;
+                            int pO = (int)((JsonNumericValue)p["o"]).Value;
+                            int pS = (int)((JsonNumericValue)p["s"]).Value;
+                            int pU = (int)((JsonNumericValue)p["u"]).Value;
+                            int pF = (int)((JsonNumericValue)p["f"]).Value;
+                            int pJ = (int)((JsonNumericValue)p["j"]).Value;
+                            int pHP = (int)((JsonNumericValue)p["hp"]).Value;
+                            int pVP = (int)((JsonNumericValue)p["vp"]).Value;
+                            int pCP = (int)((JsonNumericValue)p["cp"]).Value;
+                            int pOP = (int)((JsonNumericValue)p["op"]).Value;
+                            int pSP = (int)((JsonNumericValue)p["sp"]).Value;
+                            int pUP = (int)((JsonNumericValue)p["up"]).Value;
+                            int pFP = (int)((JsonNumericValue)p["fp"]).Value;
+                            int pJP = (int)((JsonNumericValue)p["jp"]).Value;
+                            res.Add(new object[] { pR, pN,
+                                String.Format("{0:0000}_{1:0000}", pPP, pP),
+                                String.Format("{0:0000}_{1:0000}", pCP, pC),
+                                String.Format("{0:0000}_{1:0000}", pOP, pO),
+                                String.Format("{0:0000}_{1:0000}", pHP, pH),
+                                String.Format("{0:0000}_{1:0000}", pUP, pU),
+                                String.Format("{0:0000}_{1:0000}", pJP, pJ),
+                                String.Format("{0:0000}_{1:0000}", pFP, pF),
+                                String.Format("{0:0000}_{1:0000}", pSP, pS),
+                                String.Format("{0:0000}_{1:0000}", pVP, pV),
+                            });
+                        }
                         m_Rankings.Add(type, res);
                         break;
                     }
