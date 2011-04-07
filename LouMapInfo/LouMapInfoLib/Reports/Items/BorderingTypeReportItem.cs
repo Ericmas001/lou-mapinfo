@@ -24,9 +24,9 @@ namespace LouMapInfo.Reports.Items
             switch (m_Type)
             {
                 case BorderingType.Land:
-                    name = "Land-based"; break;
+                    name = "Land-Locked"; break;
                 case BorderingType.Water:
-                    name = "Water-based"; break;
+                    name = "Water-Based"; break;
             }
 
             String s = "";
