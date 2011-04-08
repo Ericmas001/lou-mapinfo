@@ -646,6 +646,78 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "06";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton47_Click);
+
+
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                toolStripButton6,
+                toolStripButton5,
+                toolStripButton4,
+                toolStripButton3,
+                toolStripButton2,
+                toolStripButton37,
+                toolStripButton1
+            });
+
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                toolStripButton7,
+                toolStripButton8,
+                toolStripButton9,
+                toolStripButton10,
+                toolStripButton11,
+                toolStripButton38,
+                toolStripButton12
+            });
+
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                toolStripButton13,
+                toolStripButton14,
+                toolStripButton15,
+                toolStripButton16,
+                toolStripButton17,
+                toolStripButton39,
+                toolStripButton18
+            });
+
+            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                toolStripButton19,
+                toolStripButton20,
+                toolStripButton21,
+                toolStripButton22,
+                toolStripButton23,
+                toolStripButton40,
+                toolStripButton24
+            });
+
+            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                toolStripButton25,
+                toolStripButton26,
+                toolStripButton27,
+                toolStripButton28,
+                toolStripButton29,
+                toolStripButton41,
+                toolStripButton30
+            });
+
+            this.toolStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                toolStripButton31,
+                toolStripButton32,
+                toolStripButton33,
+                toolStripButton34,
+                toolStripButton35,
+                toolStripButton42,
+                toolStripButton36
+            });
+
+            this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                toolStripButton43,
+                toolStripButton44,
+                toolStripButton45,
+                toolStripButton46,
+                toolStripButton47,
+                toolStripButton48,
+                toolStripButton49
+            });
+            
             // 
             // ContinentPicker
             // 
