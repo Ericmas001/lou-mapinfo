@@ -317,15 +317,33 @@ namespace LouMapInfoApp.LouOfficial
                 oldBtn = btn;
                 btn.BackColor = SystemColors.Highlight;
             }
+            dgvPlayers.SuspendLayout();
+            dgvPlayers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvPlayers.Columns.Clear();
             for (int i = cols.Length - 1; i >= 0; --i)
                 cols[i].DisplayIndex = i;
             dgvPlayers.Columns.AddRange(cols);
             dgvPlayers.Rows.Clear();
-            foreach (object[] line in Session.World.Ranking(type))
+            List<object[]> objs = Session.World.Ranking(type);
+            dgvPlayers.Rows.Add(objs.Count);
+            String search1 = Session.World.Player(Session.PlayerID).Name;
+            String search2 = Session.World.Alliance(Session.AllianceID).Name;
+            int row = -1;
+            for( int i = 0; i < objs.Count; ++i)
             {
-                dgvPlayers.Rows.Add(line);
+                dgvPlayers.Rows[i].SetValues(objs[i]);
+                foreach (object s in objs[i])
+                    if (s.ToString() == search1 || (row == -1 && s.ToString() == search2))
+                        row = i;
             }
+            if (row == -1)
+                row = 0;
+            dgvPlayers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPlayers.ResumeLayout();
+            int selectRow = Math.Min(row + 10, dgvPlayers.Rows.Count - 1);
+            dgvPlayers.CurrentCell = dgvPlayers.Rows[selectRow].Cells[0];
+            dgvPlayers.CurrentCell = dgvPlayers.Rows[row].Cells[0];
+            //dgvPlayers.Rows[row].Selected = true;
         }
 
 

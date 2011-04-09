@@ -226,14 +226,17 @@
             this.dgvPlayers.AllowUserToAddRows = false;
             this.dgvPlayers.AllowUserToDeleteRows = false;
             this.dgvPlayers.AllowUserToOrderColumns = true;
-            this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPlayers.AllowUserToResizeRows = false;
+            this.dgvPlayers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPlayers.EnableHeadersVisualStyles = false;
             this.dgvPlayers.Location = new System.Drawing.Point(0, 50);
             this.dgvPlayers.Name = "dgvPlayers";
             this.dgvPlayers.ReadOnly = true;
             this.dgvPlayers.RowHeadersVisible = false;
             this.dgvPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPlayers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlayers.Size = new System.Drawing.Size(740, 197);
             this.dgvPlayers.TabIndex = 26;
             // 
