@@ -33,8 +33,8 @@
             this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel9 = new System.Windows.Forms.ToolStripLabel();
-            this.pnlContent = new System.Windows.Forms.Panel();
             this.btnChooseContinent = new System.Windows.Forms.ToolStripButton();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.tbReportContinentOverview.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,16 @@
             this.toolStripLabel9.Size = new System.Drawing.Size(40, 22);
             this.toolStripLabel9.Text = "Other:";
             // 
+            // btnChooseContinent
+            // 
+            this.btnChooseContinent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnChooseContinent.Image = ((System.Drawing.Image)(resources.GetObject("btnChooseContinent.Image")));
+            this.btnChooseContinent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnChooseContinent.Name = "btnChooseContinent";
+            this.btnChooseContinent.Size = new System.Drawing.Size(136, 22);
+            this.btnChooseContinent.Text = "C?? - Choose Continent";
+            this.btnChooseContinent.Click += new System.EventHandler(this.btnChooseContinent_Click);
+            // 
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.Transparent;
@@ -79,16 +89,6 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(435, 222);
             this.pnlContent.TabIndex = 19;
-            // 
-            // btnChooseContinent
-            // 
-            this.btnChooseContinent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnChooseContinent.Image = ((System.Drawing.Image)(resources.GetObject("btnChooseContinent.Image")));
-            this.btnChooseContinent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnChooseContinent.Name = "btnChooseContinent";
-            this.btnChooseContinent.Size = new System.Drawing.Size(23, 22);
-            this.btnChooseContinent.Text = "??";
-            this.btnChooseContinent.Click += new System.EventHandler(this.btnChooseContinent_Click);
             // 
             // ContentLouContinent
             // 

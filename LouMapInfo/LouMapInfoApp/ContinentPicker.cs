@@ -12,80 +12,29 @@ namespace LouMapInfoApp
     {
         int continent = -1;
         public int Continent { get { return continent; } }
-        public ContinentPicker()
+        public ContinentPicker(int x, int y)
         {
             InitializeComponent();
+            Size = new Size(8 + (23 * x), 23 + (25 * y));
+            for (int i = x-1; i >= 0; --i)
+            {
+                ToolStrip tb = new ToolStrip();
+                tb.GripStyle = ToolStripGripStyle.Hidden;
+                tb.BackColor = Color.White;
+                Controls.Add(tb);
+                for (int j = 0; j < y; ++j)
+                {
+                    ToolStripButton btn = new ToolStripButton("" + i + j);
+                    btn.Click += new EventHandler(ContinentPicked);
+                    tb.Items.Add(btn);
+                }
+            }
         }
 
-        private void toolStripButton47_Click(object sender, EventArgs e)
+        private void ContinentPicked(object sender, EventArgs e)
         {
             continent = int.Parse(((ToolStripButton)sender).Text);
             Close();
-        }
-
-        private void btnReportsLvl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnReportsLvl2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnReportsLvl3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptions_ButtonClick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptionsCityCount_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptionsCityScore_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptionsCityName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptionsPlayerCount_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptionsPlayerScore_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptionsAllianceScore_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDisplayOptionsAllianceRank_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -26,11 +26,15 @@ namespace LouMapInfo.Entities
         private readonly Dictionary<VirtueType, List<string>> m_PalacesOwnersByVirtue = new Dictionary<VirtueType, List<string>>();
         private readonly Dictionary<string, List<string>> m_PalacesOwnersByAlliance = new Dictionary<string, List<string>>();
 
+        private int m_NbContinentsX;
+        private int m_NbContinentsY;
         private readonly Dictionary<RankingType, List<object[]>> m_Rankings = new Dictionary<RankingType, List<object[]>>();
 
         public SessionInfo Session { get { return m_Session; } }
         public string Url { get { return m_Server.Url; } }
         public string Name { get { return m_Name; } }
+        public int NbContinentsX { get { return m_NbContinentsX; } }
+        public int NbContinentsY { get { return m_NbContinentsY; } }
         public PlayerInfo[] Players
         {
             get
@@ -54,6 +58,10 @@ namespace LouMapInfo.Entities
             m_PlayersById.Clear();
             m_AlliancesByName.Clear();
             m_AlliancesById.Clear();
+
+            JsonObjectCollection nfo = EndPoint.GetServerInfo(Url, m_Session.SessionID);
+            m_NbContinentsX = (int)((JsonNumericValue)nfo["cx"]).Value;
+            m_NbContinentsY = (int)((JsonNumericValue)nfo["cy"]).Value;
             JsonArrayCollection players = EndPoint.GetPlayerList(Url, m_Session.SessionID);
             foreach (JsonObjectCollection p in players)
             {
@@ -76,9 +84,9 @@ namespace LouMapInfo.Entities
                 m_PlayersById.Add(pI, pInfo);
             }
 
-            for (int i = 0; i <= 6; ++i)
+            for (int i = 0; i < m_NbContinentsX; ++i)
             {
-                for (int j = 0; j <= 6; ++j)
+                for (int j = 0; j < m_NbContinentsY; ++j)
                 {
                     int c = (i * 10) + j;
                     m_ContinentById.Add(c, new ContinentInfo(this, c));
