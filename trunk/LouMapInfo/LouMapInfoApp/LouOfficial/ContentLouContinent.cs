@@ -43,11 +43,11 @@ namespace LouMapInfoApp.LouOfficial
 
         private void btnChooseContinent_Click(object sender, EventArgs e)
         {
-            ContinentPicker cp = new ContinentPicker();
+            ContinentPicker cp = new ContinentPicker(Session.World.NbContinentsX, Session.World.NbContinentsY);
             cp.ShowDialog();
             if (cp.Continent >= 0)
             {
-                btnChooseContinent.Text = "C" + cp.Continent.ToString("00");
+                btnChooseContinent.Text = "C" + cp.Continent.ToString("00") + " - Choose Continent";
                 OpenContinentReport(cp.Continent);
             }
         }
