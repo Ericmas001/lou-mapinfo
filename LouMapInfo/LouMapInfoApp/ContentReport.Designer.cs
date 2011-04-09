@@ -60,7 +60,6 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.customTabControl1 = new System.Windows.Forms.TabControl();
             this.tpageReport = new System.Windows.Forms.TabPage();
-            this.reportBrowser = new System.Windows.Forms.WebBrowser();
             this.tpageBBCode = new System.Windows.Forms.TabPage();
             this.txtBBCode = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -75,6 +74,7 @@
             this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
+            this.webKitBrowser1 = new WebKit.WebKitBrowser();
             this.toolStrip2.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
@@ -167,64 +167,64 @@
             // btnFilterCity
             // 
             this.btnFilterCity.Name = "btnFilterCity";
-            this.btnFilterCity.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterCity.Size = new System.Drawing.Size(143, 22);
             this.btnFilterCity.Text = "Cities";
             this.btnFilterCity.Click += new System.EventHandler(this.btnFilterCity_Click);
             // 
             // btnFilterCastle
             // 
             this.btnFilterCastle.Name = "btnFilterCastle";
-            this.btnFilterCastle.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterCastle.Size = new System.Drawing.Size(143, 22);
             this.btnFilterCastle.Text = "Castles";
             this.btnFilterCastle.Click += new System.EventHandler(this.btnFilterCastle_Click);
             // 
             // btnFilterPalace
             // 
             this.btnFilterPalace.Name = "btnFilterPalace";
-            this.btnFilterPalace.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterPalace.Size = new System.Drawing.Size(143, 22);
             this.btnFilterPalace.Text = "Palaces";
             this.btnFilterPalace.Click += new System.EventHandler(this.btnFilterPalace_Click);
             // 
             // sepFilter1
             // 
             this.sepFilter1.Name = "sepFilter1";
-            this.sepFilter1.Size = new System.Drawing.Size(149, 6);
+            this.sepFilter1.Size = new System.Drawing.Size(140, 6);
             // 
             // btnFilterLand
             // 
             this.btnFilterLand.Name = "btnFilterLand";
-            this.btnFilterLand.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterLand.Size = new System.Drawing.Size(143, 22);
             this.btnFilterLand.Text = "Land-Locked";
             this.btnFilterLand.Click += new System.EventHandler(this.btnFilterLand_Click);
             // 
             // btnFilterWater
             // 
             this.btnFilterWater.Name = "btnFilterWater";
-            this.btnFilterWater.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterWater.Size = new System.Drawing.Size(143, 22);
             this.btnFilterWater.Text = "Water-Based";
             this.btnFilterWater.Click += new System.EventHandler(this.btnFilterWater_Click);
             // 
             // sepFilter2
             // 
             this.sepFilter2.Name = "sepFilter2";
-            this.sepFilter2.Size = new System.Drawing.Size(149, 6);
+            this.sepFilter2.Size = new System.Drawing.Size(140, 6);
             // 
             // btnFilterNoCities
             // 
             this.btnFilterNoCities.Name = "btnFilterNoCities";
-            this.btnFilterNoCities.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterNoCities.Size = new System.Drawing.Size(143, 22);
             this.btnFilterNoCities.Text = "No Cities";
             this.btnFilterNoCities.Click += new System.EventHandler(this.btnFilterNoCities_Click);
             // 
             // sepFilter3
             // 
             this.sepFilter3.Name = "sepFilter3";
-            this.sepFilter3.Size = new System.Drawing.Size(149, 6);
+            this.sepFilter3.Size = new System.Drawing.Size(140, 6);
             // 
             // btnFilterNoAlliance
             // 
             this.btnFilterNoAlliance.Name = "btnFilterNoAlliance";
-            this.btnFilterNoAlliance.Size = new System.Drawing.Size(152, 22);
+            this.btnFilterNoAlliance.Size = new System.Drawing.Size(143, 22);
             this.btnFilterNoAlliance.Text = "No Alliance";
             this.btnFilterNoAlliance.Click += new System.EventHandler(this.btnFilterNoAlliance_Click);
             // 
@@ -322,6 +322,7 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(23, 22);
             this.btnRefresh.Text = "Refresh Report";
+            this.btnRefresh.Visible = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pnlContent
@@ -348,7 +349,7 @@
             // 
             // tpageReport
             // 
-            this.tpageReport.Controls.Add(this.reportBrowser);
+            this.tpageReport.Controls.Add(this.webKitBrowser1);
             this.tpageReport.Location = new System.Drawing.Point(4, 4);
             this.tpageReport.Name = "tpageReport";
             this.tpageReport.Padding = new System.Windows.Forms.Padding(3);
@@ -356,16 +357,6 @@
             this.tpageReport.TabIndex = 0;
             this.tpageReport.Text = "Report";
             this.tpageReport.UseVisualStyleBackColor = true;
-            // 
-            // reportBrowser
-            // 
-            this.reportBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportBrowser.Location = new System.Drawing.Point(3, 3);
-            this.reportBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.reportBrowser.Name = "reportBrowser";
-            this.reportBrowser.Size = new System.Drawing.Size(693, 411);
-            this.reportBrowser.TabIndex = 1;
-            this.reportBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.reportBrowser_DocumentCompleted);
             // 
             // tpageBBCode
             // 
@@ -511,6 +502,21 @@
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
             // 
+            // webKitBrowser1
+            // 
+            this.webKitBrowser1.AllowDownloads = false;
+            this.webKitBrowser1.AllowNavigation = false;
+            this.webKitBrowser1.AllowNewWindows = false;
+            this.webKitBrowser1.BackColor = System.Drawing.Color.White;
+            this.webKitBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webKitBrowser1.IsScriptingEnabled = false;
+            this.webKitBrowser1.IsWebBrowserContextMenuEnabled = false;
+            this.webKitBrowser1.Location = new System.Drawing.Point(3, 3);
+            this.webKitBrowser1.Name = "webKitBrowser1";
+            this.webKitBrowser1.Size = new System.Drawing.Size(693, 411);
+            this.webKitBrowser1.TabIndex = 0;
+            this.webKitBrowser1.Url = null;
+            // 
             // ContentReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,7 +573,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsAllianceScore;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsAllianceRank;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.WebBrowser reportBrowser;
         private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.ToolStripDropDownButton btnReportContent;
         private System.Windows.Forms.ToolStripMenuItem btnFilterCity;
@@ -581,6 +586,7 @@
         private System.Windows.Forms.ToolStripSeparator sepFilter3;
         private System.Windows.Forms.ToolStripMenuItem btnFilterNoAlliance;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private WebKit.WebKitBrowser webKitBrowser1;
 
     }
 }

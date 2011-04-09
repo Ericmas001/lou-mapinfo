@@ -136,7 +136,8 @@ namespace LouMapInfoApp
             btnReportsLvl.Enabled = true;
             btnDisplayOptions.Enabled = true;
             pnlContent.Enabled = true;
-            reportBrowser.DocumentText = r;
+            webKitBrowser1.DocumentText = r;
+            //reportBrowser.DocumentText = r;
         }
         private void btnBBCode_Click(object sender, EventArgs e)
         {
