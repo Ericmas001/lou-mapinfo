@@ -62,6 +62,8 @@
             this.rdxConnectionRememberAll = new System.Windows.Forms.RadioButton();
             this.rdxConnectionRememberMail = new System.Windows.Forms.RadioButton();
             this.rdxConnectionDontRemember = new System.Windows.Forms.RadioButton();
+            this.chkDisplayPalaceVirtue = new System.Windows.Forms.CheckBox();
+            this.chkDisplayPalaceLevel = new System.Windows.Forms.CheckBox();
             this.pnlContent.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -81,7 +83,7 @@
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(416, 363);
+            this.pnlContent.Size = new System.Drawing.Size(413, 399);
             this.pnlContent.TabIndex = 1;
             // 
             // groupBox5
@@ -94,9 +96,10 @@
             this.groupBox5.Controls.Add(this.chkBBCodeI);
             this.groupBox5.Controls.Add(this.chkBBCodeU);
             this.groupBox5.Controls.Add(this.chkBBCodeB);
-            this.groupBox5.Location = new System.Drawing.Point(205, 186);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(205, 205);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 170);
+            this.groupBox5.Size = new System.Drawing.Size(200, 186);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Displayed BBCode";
@@ -106,7 +109,8 @@
             this.chkBBCodeAlliance.AutoSize = true;
             this.chkBBCodeAlliance.Checked = true;
             this.chkBBCodeAlliance.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBBCodeAlliance.Location = new System.Drawing.Point(6, 145);
+            this.chkBBCodeAlliance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBBCodeAlliance.Location = new System.Drawing.Point(6, 166);
             this.chkBBCodeAlliance.Name = "chkBBCodeAlliance";
             this.chkBBCodeAlliance.Size = new System.Drawing.Size(118, 17);
             this.chkBBCodeAlliance.TabIndex = 15;
@@ -119,7 +123,8 @@
             this.chkBBCodePlayer.AutoSize = true;
             this.chkBBCodePlayer.Checked = true;
             this.chkBBCodePlayer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBBCodePlayer.Location = new System.Drawing.Point(6, 127);
+            this.chkBBCodePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBBCodePlayer.Location = new System.Drawing.Point(6, 145);
             this.chkBBCodePlayer.Name = "chkBBCodePlayer";
             this.chkBBCodePlayer.Size = new System.Drawing.Size(102, 17);
             this.chkBBCodePlayer.TabIndex = 14;
@@ -132,7 +137,8 @@
             this.chkBBCodeCity.AutoSize = true;
             this.chkBBCodeCity.Checked = true;
             this.chkBBCodeCity.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBBCodeCity.Location = new System.Drawing.Point(6, 109);
+            this.chkBBCodeCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBBCodeCity.Location = new System.Drawing.Point(6, 124);
             this.chkBBCodeCity.Name = "chkBBCodeCity";
             this.chkBBCodeCity.Size = new System.Drawing.Size(78, 17);
             this.chkBBCodeCity.TabIndex = 13;
@@ -145,7 +151,8 @@
             this.chkBBCodeUrl.AutoSize = true;
             this.chkBBCodeUrl.Checked = true;
             this.chkBBCodeUrl.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBBCodeUrl.Location = new System.Drawing.Point(6, 91);
+            this.chkBBCodeUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBBCodeUrl.Location = new System.Drawing.Point(6, 103);
             this.chkBBCodeUrl.Name = "chkBBCodeUrl";
             this.chkBBCodeUrl.Size = new System.Drawing.Size(68, 17);
             this.chkBBCodeUrl.TabIndex = 12;
@@ -158,7 +165,8 @@
             this.chkBBCodeS.AutoSize = true;
             this.chkBBCodeS.Checked = true;
             this.chkBBCodeS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBBCodeS.Location = new System.Drawing.Point(6, 73);
+            this.chkBBCodeS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBBCodeS.Location = new System.Drawing.Point(6, 82);
             this.chkBBCodeS.Name = "chkBBCodeS";
             this.chkBBCodeS.Size = new System.Drawing.Size(56, 17);
             this.chkBBCodeS.TabIndex = 11;
@@ -171,7 +179,8 @@
             this.chkBBCodeI.AutoSize = true;
             this.chkBBCodeI.Checked = true;
             this.chkBBCodeI.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBBCodeI.Location = new System.Drawing.Point(6, 55);
+            this.chkBBCodeI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBBCodeI.Location = new System.Drawing.Point(6, 61);
             this.chkBBCodeI.Name = "chkBBCodeI";
             this.chkBBCodeI.Size = new System.Drawing.Size(50, 17);
             this.chkBBCodeI.TabIndex = 10;
@@ -184,7 +193,8 @@
             this.chkBBCodeU.AutoSize = true;
             this.chkBBCodeU.Checked = true;
             this.chkBBCodeU.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBBCodeU.Location = new System.Drawing.Point(6, 37);
+            this.chkBBCodeU.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBBCodeU.Location = new System.Drawing.Point(6, 40);
             this.chkBBCodeU.Name = "chkBBCodeU";
             this.chkBBCodeU.Size = new System.Drawing.Size(58, 17);
             this.chkBBCodeU.TabIndex = 9;
@@ -197,6 +207,7 @@
             this.chkBBCodeB.AutoSize = true;
             this.chkBBCodeB.Checked = true;
             this.chkBBCodeB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkBBCodeB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBBCodeB.Location = new System.Drawing.Point(6, 19);
             this.chkBBCodeB.Name = "chkBBCodeB";
             this.chkBBCodeB.Size = new System.Drawing.Size(58, 17);
@@ -207,6 +218,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chkDisplayPalaceVirtue);
+            this.groupBox4.Controls.Add(this.chkDisplayPalaceLevel);
             this.groupBox4.Controls.Add(this.chkDisplayAllianceRank);
             this.groupBox4.Controls.Add(this.chkDisplayAllianceScore);
             this.groupBox4.Controls.Add(this.chkDisplayPlayerScore);
@@ -214,9 +227,10 @@
             this.groupBox4.Controls.Add(this.chkDisplayCityName);
             this.groupBox4.Controls.Add(this.chkDisplayCityScore);
             this.groupBox4.Controls.Add(this.chkDisplayCityCount);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(3, 205);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(196, 151);
+            this.groupBox4.Size = new System.Drawing.Size(196, 186);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Display Options";
@@ -226,7 +240,8 @@
             this.chkDisplayAllianceRank.AutoSize = true;
             this.chkDisplayAllianceRank.Checked = true;
             this.chkDisplayAllianceRank.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayAllianceRank.Location = new System.Drawing.Point(6, 127);
+            this.chkDisplayAllianceRank.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayAllianceRank.Location = new System.Drawing.Point(6, 163);
             this.chkDisplayAllianceRank.Name = "chkDisplayAllianceRank";
             this.chkDisplayAllianceRank.Size = new System.Drawing.Size(92, 17);
             this.chkDisplayAllianceRank.TabIndex = 14;
@@ -239,7 +254,8 @@
             this.chkDisplayAllianceScore.AutoSize = true;
             this.chkDisplayAllianceScore.Checked = true;
             this.chkDisplayAllianceScore.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayAllianceScore.Location = new System.Drawing.Point(6, 109);
+            this.chkDisplayAllianceScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayAllianceScore.Location = new System.Drawing.Point(6, 145);
             this.chkDisplayAllianceScore.Name = "chkDisplayAllianceScore";
             this.chkDisplayAllianceScore.Size = new System.Drawing.Size(94, 17);
             this.chkDisplayAllianceScore.TabIndex = 13;
@@ -252,7 +268,8 @@
             this.chkDisplayPlayerScore.AutoSize = true;
             this.chkDisplayPlayerScore.Checked = true;
             this.chkDisplayPlayerScore.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayPlayerScore.Location = new System.Drawing.Point(6, 91);
+            this.chkDisplayPlayerScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayPlayerScore.Location = new System.Drawing.Point(6, 127);
             this.chkDisplayPlayerScore.Name = "chkDisplayPlayerScore";
             this.chkDisplayPlayerScore.Size = new System.Drawing.Size(86, 17);
             this.chkDisplayPlayerScore.TabIndex = 12;
@@ -265,7 +282,8 @@
             this.chkDisplayPlayerCount.AutoSize = true;
             this.chkDisplayPlayerCount.Checked = true;
             this.chkDisplayPlayerCount.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayPlayerCount.Location = new System.Drawing.Point(6, 73);
+            this.chkDisplayPlayerCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayPlayerCount.Location = new System.Drawing.Point(6, 109);
             this.chkDisplayPlayerCount.Name = "chkDisplayPlayerCount";
             this.chkDisplayPlayerCount.Size = new System.Drawing.Size(86, 17);
             this.chkDisplayPlayerCount.TabIndex = 11;
@@ -278,6 +296,7 @@
             this.chkDisplayCityName.AutoSize = true;
             this.chkDisplayCityName.Checked = true;
             this.chkDisplayCityName.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayCityName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDisplayCityName.Location = new System.Drawing.Point(6, 55);
             this.chkDisplayCityName.Name = "chkDisplayCityName";
             this.chkDisplayCityName.Size = new System.Drawing.Size(74, 17);
@@ -291,6 +310,7 @@
             this.chkDisplayCityScore.AutoSize = true;
             this.chkDisplayCityScore.Checked = true;
             this.chkDisplayCityScore.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayCityScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDisplayCityScore.Location = new System.Drawing.Point(6, 37);
             this.chkDisplayCityScore.Name = "chkDisplayCityScore";
             this.chkDisplayCityScore.Size = new System.Drawing.Size(74, 17);
@@ -304,6 +324,7 @@
             this.chkDisplayCityCount.AutoSize = true;
             this.chkDisplayCityCount.Checked = true;
             this.chkDisplayCityCount.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayCityCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDisplayCityCount.Location = new System.Drawing.Point(6, 19);
             this.chkDisplayCityCount.Name = "chkDisplayCityCount";
             this.chkDisplayCityCount.Size = new System.Drawing.Size(74, 17);
@@ -317,6 +338,7 @@
             this.groupBox3.Controls.Add(this.rdxDetailDetailed);
             this.groupBox3.Controls.Add(this.rdxDetailSummary);
             this.groupBox3.Controls.Add(this.rdxDetailGlobal);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(3, 104);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(196, 95);
@@ -328,6 +350,7 @@
             // 
             this.rdxDetailDetailed.AutoSize = true;
             this.rdxDetailDetailed.Checked = true;
+            this.rdxDetailDetailed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdxDetailDetailed.Location = new System.Drawing.Point(6, 65);
             this.rdxDetailDetailed.Name = "rdxDetailDetailed";
             this.rdxDetailDetailed.Size = new System.Drawing.Size(99, 17);
@@ -340,6 +363,7 @@
             // rdxDetailSummary
             // 
             this.rdxDetailSummary.AutoSize = true;
+            this.rdxDetailSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdxDetailSummary.Location = new System.Drawing.Point(6, 42);
             this.rdxDetailSummary.Name = "rdxDetailSummary";
             this.rdxDetailSummary.Size = new System.Drawing.Size(103, 17);
@@ -351,6 +375,7 @@
             // rdxDetailGlobal
             // 
             this.rdxDetailGlobal.AutoSize = true;
+            this.rdxDetailGlobal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdxDetailGlobal.Location = new System.Drawing.Point(6, 19);
             this.rdxDetailGlobal.Name = "rdxDetailGlobal";
             this.rdxDetailGlobal.Size = new System.Drawing.Size(90, 17);
@@ -368,9 +393,10 @@
             this.groupBox2.Controls.Add(this.chkFilterTypePalaces);
             this.groupBox2.Controls.Add(this.chkFilterTypeCastles);
             this.groupBox2.Controls.Add(this.chkFilterTypeCities);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(205, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 177);
+            this.groupBox2.Size = new System.Drawing.Size(200, 196);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reports Default Filters";
@@ -380,7 +406,8 @@
             this.chkFilterNoCities.AutoSize = true;
             this.chkFilterNoCities.Checked = true;
             this.chkFilterNoCities.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFilterNoCities.Location = new System.Drawing.Point(9, 148);
+            this.chkFilterNoCities.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFilterNoCities.Location = new System.Drawing.Point(9, 162);
             this.chkFilterNoCities.Name = "chkFilterNoCities";
             this.chkFilterNoCities.Size = new System.Drawing.Size(68, 17);
             this.chkFilterNoCities.TabIndex = 7;
@@ -393,7 +420,8 @@
             this.chkFilterNoAlliance.AutoSize = true;
             this.chkFilterNoAlliance.Checked = true;
             this.chkFilterNoAlliance.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFilterNoAlliance.Location = new System.Drawing.Point(9, 123);
+            this.chkFilterNoAlliance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFilterNoAlliance.Location = new System.Drawing.Point(9, 135);
             this.chkFilterNoAlliance.Name = "chkFilterNoAlliance";
             this.chkFilterNoAlliance.Size = new System.Drawing.Size(80, 17);
             this.chkFilterNoAlliance.TabIndex = 6;
@@ -406,7 +434,8 @@
             this.chkFilterWater.AutoSize = true;
             this.chkFilterWater.Checked = true;
             this.chkFilterWater.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFilterWater.Location = new System.Drawing.Point(9, 98);
+            this.chkFilterWater.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFilterWater.Location = new System.Drawing.Point(9, 108);
             this.chkFilterWater.Name = "chkFilterWater";
             this.chkFilterWater.Size = new System.Drawing.Size(88, 17);
             this.chkFilterWater.TabIndex = 5;
@@ -419,7 +448,8 @@
             this.chkFilterLand.AutoSize = true;
             this.chkFilterLand.Checked = true;
             this.chkFilterLand.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFilterLand.Location = new System.Drawing.Point(9, 80);
+            this.chkFilterLand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFilterLand.Location = new System.Drawing.Point(9, 88);
             this.chkFilterLand.Name = "chkFilterLand";
             this.chkFilterLand.Size = new System.Drawing.Size(89, 17);
             this.chkFilterLand.TabIndex = 4;
@@ -432,7 +462,8 @@
             this.chkFilterTypePalaces.AutoSize = true;
             this.chkFilterTypePalaces.Checked = true;
             this.chkFilterTypePalaces.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFilterTypePalaces.Location = new System.Drawing.Point(9, 55);
+            this.chkFilterTypePalaces.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFilterTypePalaces.Location = new System.Drawing.Point(9, 61);
             this.chkFilterTypePalaces.Name = "chkFilterTypePalaces";
             this.chkFilterTypePalaces.Size = new System.Drawing.Size(64, 17);
             this.chkFilterTypePalaces.TabIndex = 3;
@@ -445,7 +476,8 @@
             this.chkFilterTypeCastles.AutoSize = true;
             this.chkFilterTypeCastles.Checked = true;
             this.chkFilterTypeCastles.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFilterTypeCastles.Location = new System.Drawing.Point(9, 37);
+            this.chkFilterTypeCastles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFilterTypeCastles.Location = new System.Drawing.Point(9, 41);
             this.chkFilterTypeCastles.Name = "chkFilterTypeCastles";
             this.chkFilterTypeCastles.Size = new System.Drawing.Size(60, 17);
             this.chkFilterTypeCastles.TabIndex = 2;
@@ -458,7 +490,8 @@
             this.chkFilterTypeCities.AutoSize = true;
             this.chkFilterTypeCities.Checked = true;
             this.chkFilterTypeCities.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFilterTypeCities.Location = new System.Drawing.Point(9, 19);
+            this.chkFilterTypeCities.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFilterTypeCities.Location = new System.Drawing.Point(9, 21);
             this.chkFilterTypeCities.Name = "chkFilterTypeCities";
             this.chkFilterTypeCities.Size = new System.Drawing.Size(51, 17);
             this.chkFilterTypeCities.TabIndex = 1;
@@ -471,6 +504,7 @@
             this.groupBox1.Controls.Add(this.rdxConnectionRememberAll);
             this.groupBox1.Controls.Add(this.rdxConnectionRememberMail);
             this.groupBox1.Controls.Add(this.rdxConnectionDontRemember);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(196, 95);
@@ -482,6 +516,7 @@
             // 
             this.rdxConnectionRememberAll.AutoSize = true;
             this.rdxConnectionRememberAll.Checked = true;
+            this.rdxConnectionRememberAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdxConnectionRememberAll.Location = new System.Drawing.Point(6, 65);
             this.rdxConnectionRememberAll.Name = "rdxConnectionRememberAll";
             this.rdxConnectionRememberAll.Size = new System.Drawing.Size(175, 17);
@@ -494,6 +529,7 @@
             // rdxConnectionRememberMail
             // 
             this.rdxConnectionRememberMail.AutoSize = true;
+            this.rdxConnectionRememberMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdxConnectionRememberMail.Location = new System.Drawing.Point(6, 42);
             this.rdxConnectionRememberMail.Name = "rdxConnectionRememberMail";
             this.rdxConnectionRememberMail.Size = new System.Drawing.Size(128, 17);
@@ -505,6 +541,7 @@
             // rdxConnectionDontRemember
             // 
             this.rdxConnectionDontRemember.AutoSize = true;
+            this.rdxConnectionDontRemember.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdxConnectionDontRemember.Location = new System.Drawing.Point(6, 19);
             this.rdxConnectionDontRemember.Name = "rdxConnectionDontRemember";
             this.rdxConnectionDontRemember.Size = new System.Drawing.Size(149, 17);
@@ -512,6 +549,34 @@
             this.rdxConnectionDontRemember.Text = "Do not remember anything";
             this.rdxConnectionDontRemember.UseVisualStyleBackColor = true;
             this.rdxConnectionDontRemember.CheckedChanged += new System.EventHandler(this.rdxConnectionDontRemember_CheckedChanged);
+            // 
+            // chkDisplayPalaceVirtue
+            // 
+            this.chkDisplayPalaceVirtue.AutoSize = true;
+            this.chkDisplayPalaceVirtue.Checked = true;
+            this.chkDisplayPalaceVirtue.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayPalaceVirtue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayPalaceVirtue.Location = new System.Drawing.Point(6, 91);
+            this.chkDisplayPalaceVirtue.Name = "chkDisplayPalaceVirtue";
+            this.chkDisplayPalaceVirtue.Size = new System.Drawing.Size(89, 17);
+            this.chkDisplayPalaceVirtue.TabIndex = 16;
+            this.chkDisplayPalaceVirtue.Text = "Palace Virtue";
+            this.chkDisplayPalaceVirtue.UseVisualStyleBackColor = true;
+            this.chkDisplayPalaceVirtue.CheckedChanged += new System.EventHandler(this.chkDisplayPalaceVirtue_CheckedChanged);
+            // 
+            // chkDisplayPalaceLevel
+            // 
+            this.chkDisplayPalaceLevel.AutoSize = true;
+            this.chkDisplayPalaceLevel.Checked = true;
+            this.chkDisplayPalaceLevel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayPalaceLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayPalaceLevel.Location = new System.Drawing.Point(6, 73);
+            this.chkDisplayPalaceLevel.Name = "chkDisplayPalaceLevel";
+            this.chkDisplayPalaceLevel.Size = new System.Drawing.Size(88, 17);
+            this.chkDisplayPalaceLevel.TabIndex = 15;
+            this.chkDisplayPalaceLevel.Text = "Palace Level";
+            this.chkDisplayPalaceLevel.UseVisualStyleBackColor = true;
+            this.chkDisplayPalaceLevel.CheckedChanged += new System.EventHandler(this.chkDisplayPalaceLevel_CheckedChanged);
             // 
             // ContentOptions
             // 
@@ -524,7 +589,7 @@
             this.Controls.Add(this.pnlContent);
             this.DoubleBuffered = true;
             this.Name = "ContentOptions";
-            this.Size = new System.Drawing.Size(416, 363);
+            this.Size = new System.Drawing.Size(413, 399);
             this.pnlContent.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -576,5 +641,7 @@
         private System.Windows.Forms.CheckBox chkDisplayCityName;
         private System.Windows.Forms.CheckBox chkDisplayCityScore;
         private System.Windows.Forms.CheckBox chkDisplayCityCount;
+        private System.Windows.Forms.CheckBox chkDisplayPalaceVirtue;
+        private System.Windows.Forms.CheckBox chkDisplayPalaceLevel;
     }
 }

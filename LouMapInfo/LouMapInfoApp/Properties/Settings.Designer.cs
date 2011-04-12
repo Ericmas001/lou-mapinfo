@@ -466,5 +466,29 @@ namespace LouMapInfoApp.Properties {
                 this["detailLevel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool dispPalaceLevel {
+            get {
+                return ((bool)(this["dispPalaceLevel"]));
+            }
+            set {
+                this["dispPalaceLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool dispPalaceVirtue {
+            get {
+                return ((bool)(this["dispPalaceVirtue"]));
+            }
+            set {
+                this["dispPalaceVirtue"] = value;
+            }
+        }
     }
 }

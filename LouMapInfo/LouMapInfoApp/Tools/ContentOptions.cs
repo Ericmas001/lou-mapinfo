@@ -36,6 +36,8 @@ namespace LouMapInfoApp.Tools
             chkDisplayCityScore.Checked = Properties.Settings.Default.dispCityScore;
             chkDisplayPlayerCount.Checked = Properties.Settings.Default.dispPlayerCount;
             chkDisplayPlayerScore.Checked = Properties.Settings.Default.dispPlayerScore;
+            chkDisplayPalaceLevel.Checked = Properties.Settings.Default.dispPalaceLevel;
+            chkDisplayPalaceVirtue.Checked = Properties.Settings.Default.dispPalaceVirtue;
 
             chkBBCodeAlliance.Checked = Properties.Settings.Default.bbCode_alliance;
             chkBBCodeB.Checked = Properties.Settings.Default.bbCode_b;
@@ -321,6 +323,24 @@ namespace LouMapInfoApp.Tools
             if (started)
             {
                 Properties.Settings.Default.bbCode_alliance = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkDisplayPalaceLevel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.dispPalaceLevel = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkDisplayPalaceVirtue_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.dispPalaceVirtue = ((CheckBox)sender).Checked;
                 Properties.Settings.Default.Save();
             }
         }

@@ -57,7 +57,7 @@ namespace LouMapInfo.Reports.Items
                 case CityType.Castle:
                     name = name + "Castle" + (m_Count <= 1 ? "" : "s"); break;
                 case CityType.Palace:
-                    name = name + (m_Virtue != VirtueType.None ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
+                    name = name + (m_Virtue != VirtueType.None && (options & ReportOption.PalaceVirtue) != 0 ? m_Virtue + " " : "" ) + "Palace" + (m_Count <= 1 ? "" : "s"); break;
             }
 
             String s = "";

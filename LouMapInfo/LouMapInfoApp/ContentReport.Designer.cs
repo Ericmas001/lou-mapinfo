@@ -60,6 +60,7 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.customTabControl1 = new System.Windows.Forms.TabControl();
             this.tpageReport = new System.Windows.Forms.TabPage();
+            this.webKitBrowser1 = new WebKit.WebKitBrowser();
             this.tpageBBCode = new System.Windows.Forms.TabPage();
             this.txtBBCode = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -74,7 +75,8 @@
             this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
-            this.webKitBrowser1 = new WebKit.WebKitBrowser();
+            this.btnDisplayOptionsPalaceLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDisplayOptionsPalaceVirtue = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
@@ -240,6 +242,8 @@
             this.btnDisplayOptionsCityCount,
             this.btnDisplayOptionsCityScore,
             this.btnDisplayOptionsCityName,
+            this.btnDisplayOptionsPalaceLevel,
+            this.btnDisplayOptionsPalaceVirtue,
             this.btnDisplayOptionsPlayerCount,
             this.btnDisplayOptionsPlayerScore,
             this.btnDisplayOptionsAllianceScore,
@@ -254,49 +258,49 @@
             // btnDisplayOptionsCityCount
             // 
             this.btnDisplayOptionsCityCount.Name = "btnDisplayOptionsCityCount";
-            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsCityCount.Text = "City Count";
             this.btnDisplayOptionsCityCount.Click += new System.EventHandler(this.btnDisplayOptionsCityCount_Click);
             // 
             // btnDisplayOptionsCityScore
             // 
             this.btnDisplayOptionsCityScore.Name = "btnDisplayOptionsCityScore";
-            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsCityScore.Text = "City Score";
             this.btnDisplayOptionsCityScore.Click += new System.EventHandler(this.btnDisplayOptionsCityScore_Click);
             // 
             // btnDisplayOptionsCityName
             // 
             this.btnDisplayOptionsCityName.Name = "btnDisplayOptionsCityName";
-            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsCityName.Text = "City Name";
             this.btnDisplayOptionsCityName.Click += new System.EventHandler(this.btnDisplayOptionsCityName_Click);
             // 
             // btnDisplayOptionsPlayerCount
             // 
             this.btnDisplayOptionsPlayerCount.Name = "btnDisplayOptionsPlayerCount";
-            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsPlayerCount.Text = "Player Count";
             this.btnDisplayOptionsPlayerCount.Click += new System.EventHandler(this.btnDisplayOptionsPlayerCount_Click);
             // 
             // btnDisplayOptionsPlayerScore
             // 
             this.btnDisplayOptionsPlayerScore.Name = "btnDisplayOptionsPlayerScore";
-            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsPlayerScore.Text = "Player Score";
             this.btnDisplayOptionsPlayerScore.Click += new System.EventHandler(this.btnDisplayOptionsPlayerScore_Click);
             // 
             // btnDisplayOptionsAllianceScore
             // 
             this.btnDisplayOptionsAllianceScore.Name = "btnDisplayOptionsAllianceScore";
-            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsAllianceScore.Text = "Alliance Score";
             this.btnDisplayOptionsAllianceScore.Click += new System.EventHandler(this.btnDisplayOptionsAllianceScore_Click);
             // 
             // btnDisplayOptionsAllianceRank
             // 
             this.btnDisplayOptionsAllianceRank.Name = "btnDisplayOptionsAllianceRank";
-            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(152, 22);
             this.btnDisplayOptionsAllianceRank.Text = "Alliance Rank";
             this.btnDisplayOptionsAllianceRank.Click += new System.EventHandler(this.btnDisplayOptionsAllianceRank_Click);
             // 
@@ -357,6 +361,21 @@
             this.tpageReport.TabIndex = 0;
             this.tpageReport.Text = "Report";
             this.tpageReport.UseVisualStyleBackColor = true;
+            // 
+            // webKitBrowser1
+            // 
+            this.webKitBrowser1.AllowDownloads = false;
+            this.webKitBrowser1.AllowNavigation = false;
+            this.webKitBrowser1.AllowNewWindows = false;
+            this.webKitBrowser1.BackColor = System.Drawing.Color.White;
+            this.webKitBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webKitBrowser1.IsScriptingEnabled = false;
+            this.webKitBrowser1.IsWebBrowserContextMenuEnabled = false;
+            this.webKitBrowser1.Location = new System.Drawing.Point(3, 3);
+            this.webKitBrowser1.Name = "webKitBrowser1";
+            this.webKitBrowser1.Size = new System.Drawing.Size(693, 411);
+            this.webKitBrowser1.TabIndex = 0;
+            this.webKitBrowser1.Url = null;
             // 
             // tpageBBCode
             // 
@@ -502,20 +521,19 @@
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
             // 
-            // webKitBrowser1
+            // btnDisplayOptionsPalaceLevel
             // 
-            this.webKitBrowser1.AllowDownloads = false;
-            this.webKitBrowser1.AllowNavigation = false;
-            this.webKitBrowser1.AllowNewWindows = false;
-            this.webKitBrowser1.BackColor = System.Drawing.Color.White;
-            this.webKitBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webKitBrowser1.IsScriptingEnabled = false;
-            this.webKitBrowser1.IsWebBrowserContextMenuEnabled = false;
-            this.webKitBrowser1.Location = new System.Drawing.Point(3, 3);
-            this.webKitBrowser1.Name = "webKitBrowser1";
-            this.webKitBrowser1.Size = new System.Drawing.Size(693, 411);
-            this.webKitBrowser1.TabIndex = 0;
-            this.webKitBrowser1.Url = null;
+            this.btnDisplayOptionsPalaceLevel.Name = "btnDisplayOptionsPalaceLevel";
+            this.btnDisplayOptionsPalaceLevel.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsPalaceLevel.Text = "Palace Level";
+            this.btnDisplayOptionsPalaceLevel.Click += new System.EventHandler(this.btnDisplayOptionsPalaceLevel_Click);
+            // 
+            // btnDisplayOptionsPalaceVirtue
+            // 
+            this.btnDisplayOptionsPalaceVirtue.Name = "btnDisplayOptionsPalaceVirtue";
+            this.btnDisplayOptionsPalaceVirtue.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsPalaceVirtue.Text = "Palace Virtue";
+            this.btnDisplayOptionsPalaceVirtue.Click += new System.EventHandler(this.btnDisplayOptionsPalaceVirtue_Click);
             // 
             // ContentReport
             // 
@@ -587,6 +605,8 @@
         private System.Windows.Forms.ToolStripMenuItem btnFilterNoAlliance;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private WebKit.WebKitBrowser webKitBrowser1;
+        private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsPalaceLevel;
+        private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsPalaceVirtue;
 
     }
 }

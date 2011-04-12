@@ -104,9 +104,11 @@ namespace LouMapInfoApp
             report.SetOption(ReportOption.CityCount,btnDisplayOptionsCityCount.Checked = Properties.Settings.Default.dispCityCount);
             report.SetOption(ReportOption.CityName,btnDisplayOptionsCityName.Checked = Properties.Settings.Default.dispCityName);
             report.SetOption(ReportOption.CityScore,btnDisplayOptionsCityScore.Checked = Properties.Settings.Default.dispCityScore);
-            report.SetOption(ReportOption.PlayerCount,btnDisplayOptionsPlayerCount.Checked = Properties.Settings.Default.dispPlayerCount);
-            report.SetOption(ReportOption.PlayerScore,btnDisplayOptionsPlayerScore.Checked = Properties.Settings.Default.dispPlayerScore);
+            report.SetOption(ReportOption.PlayerCount, btnDisplayOptionsPlayerCount.Checked = Properties.Settings.Default.dispPlayerCount);
+            report.SetOption(ReportOption.PlayerScore, btnDisplayOptionsPlayerScore.Checked = Properties.Settings.Default.dispPlayerScore);
             report.SetOption(ReportOption.AllianceRank, btnDisplayOptionsAllianceRank.Checked = Properties.Settings.Default.dispAllianceRank);
+            report.SetOption(ReportOption.PalaceLevel, btnDisplayOptionsPalaceLevel.Checked = Properties.Settings.Default.dispPalaceLevel);
+            report.SetOption(ReportOption.PalaceVirtue, btnDisplayOptionsPalaceVirtue.Checked = Properties.Settings.Default.dispPalaceVirtue);
             
             RefreshReport();
         }
@@ -246,6 +248,32 @@ namespace LouMapInfoApp
                 //Properties.Settings.Default.Save();
                 RefreshReport();
             }
+        }
+
+        private void btnDisplayOptionsPalaceLevel_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsPalaceLevel.Checked = !btnDisplayOptionsPalaceLevel.Checked;
+            report.SetOption(ReportOption.PalaceLevel, btnDisplayOptionsPalaceLevel.Checked);
+            if (sender != null)
+            {
+                //Properties.Settings.Default.dispCityName = btnDisplayOptionsCityName.Checked;
+                //Properties.Settings.Default.Save();
+                RefreshReport();
+            }
+
+        }
+
+        private void btnDisplayOptionsPalaceVirtue_Click(object sender, EventArgs e)
+        {
+            btnDisplayOptionsPalaceVirtue.Checked = !btnDisplayOptionsPalaceVirtue.Checked;
+            report.SetOption(ReportOption.PalaceVirtue, btnDisplayOptionsPalaceVirtue.Checked);
+            if (sender != null)
+            {
+                //Properties.Settings.Default.dispCityName = btnDisplayOptionsCityName.Checked;
+                //Properties.Settings.Default.Save();
+                RefreshReport();
+            }
+
         }
 
         private void btnDisplayOptionsCityName_Click(object sender, EventArgs e)
