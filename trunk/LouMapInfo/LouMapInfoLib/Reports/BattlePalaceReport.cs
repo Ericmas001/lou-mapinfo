@@ -23,11 +23,6 @@ namespace LouMapInfo.Reports
             LoadIfNeeded();
         }
 
-        protected override int depth
-        {
-            get { return 2; }
-        }
-
 
         class PalaceComp : IComparer<CityInfo>
         {

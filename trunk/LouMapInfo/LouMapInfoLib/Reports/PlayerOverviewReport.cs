@@ -23,11 +23,6 @@ namespace LouMapInfo.Reports
             m_Filters.Add(FilterType.TypePalace, true);
             LoadIfNeeded();
         }
-
-        protected override int depth
-        {
-            get { return 3; }
-        }
         protected override void OnLoad()
         {
             title = new PlayerInfoReportItem(player, -1, true);
