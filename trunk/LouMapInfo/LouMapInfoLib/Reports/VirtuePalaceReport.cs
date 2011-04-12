@@ -101,11 +101,11 @@ namespace LouMapInfo.Reports
                             count += palaces[i][v].Key.Count; 
                         ReportItem r2;
                         if (!el)
-                            r2 = new CityTypeReportItem(count, CityType.Palace, BorderingType.Water, true);
+                            r2 = new CityTypeReportItem(count, CityType.Palace, BorderingType.Water, v, true);
                         else if (!ew)
-                            r2 = new CityTypeReportItem(count, CityType.Palace, BorderingType.Land, true);
+                            r2 = new CityTypeReportItem(count, CityType.Palace, BorderingType.Land, v, true);
                         else
-                            r2 = new CityTypeReportItem(count, CityType.Palace, true);
+                            r2 = new CityTypeReportItem(count, CityType.Palace, v, true);
                         if (ew && palaces[i][v].Key.Count > 0)
                         {
                             ReportItem r3 = !el ? r2 : new BorderingTypeReportItem(palaces[i][v].Key.Count, BorderingType.Water, true);
