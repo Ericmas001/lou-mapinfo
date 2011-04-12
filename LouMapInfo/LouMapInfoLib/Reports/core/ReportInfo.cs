@@ -11,7 +11,6 @@ namespace LouMapInfo.Reports.core
     public abstract class ReportInfo : AbstractLoadingTuple
     {
         private ReportOption options = ReportOption.None;
-        protected abstract int depth { get; }
         protected ReportItem title;
         protected ReportItem subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();

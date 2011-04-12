@@ -27,11 +27,6 @@ namespace LouMapInfo.Reports
             LoadIfNeeded();
         }
 
-        protected override int depth
-        {
-            get { return 2; }
-        }
-
         protected override void OnLoad()
         {
             title = new TextReportItem("Cities surrounding" + location, true);
