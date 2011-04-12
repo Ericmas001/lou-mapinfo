@@ -21,9 +21,9 @@ namespace LouMapInfo.Reports.Items
         public override string Value(ReportOption options)
         {
             string s = base.Value(options);
-            string type = m_ShowType ? (m_Info.VirtueType + " ") : "";
+            string type = m_ShowType && (options & ReportOption.PalaceVirtue) != 0 ? (m_Info.VirtueType + " ") : "";
             if (m_Showlvl)
-                s = String.Format(type + "Palace lvl {0}{1}", m_Info.PalaceLvl, m_ShowCont ? " on " : ": ");
+                s = type + "Palace" + ((options & ReportOption.PalaceLevel) != 0 ? " lvl " + m_Info.PalaceLvl : "") + (m_ShowCont ? " on " : ": ");
             return s + base.Value(options);
         }
     }

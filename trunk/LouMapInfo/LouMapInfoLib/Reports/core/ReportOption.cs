@@ -14,5 +14,7 @@ namespace LouMapInfo.Reports.core
         PlayerScore = 16,
         AllianceRank = 32,
         AllianceScore = 64,
+        PalaceLevel = 128,
+        PalaceVirtue = 256,
     }
 }
