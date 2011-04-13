@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BetaMasterPage.master.cs" Inherits="LoUMapInfoOnline.BetaMasterPage" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+    .style1
+    {
+        background-color: #FFFF66;
+    }
+    .style2
+    {
+        font-weight: bold;
+        background-color: #FFFF66;
+    }
+</style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <span class="style2">2011-04-13 2h AM Eastern Time: </span><span class="style1">If you click on Players you will get a report on yourself</span>
+    <asp:Panel ID="pnlDisconnectedMenu" runat="server">
+    <h2>
+        Try LoU Map Info Online as a Beta Tester.
+    </h2>
+    <p>
+        Be aware, it&#39;s beta, so Anything could happen :p
+    </p>
+</asp:Panel>
+<asp:Panel ID="pnlConnectedMenu" runat="server">
+    <b>Connected as: </b>
+    <asp:Label ID="lblbetaSession" runat="server"></asp:Label>
+    &nbsp;<br />
+    <asp:Menu ID="Menu1" runat="server" CssClass="menu2" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+        <Items>
+            <asp:MenuItem NavigateUrl="~/Beta/Players.aspx" Text="Players" 
+                Value="Players"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Beta/Disconnect.aspx" Text="Disconnect" 
+                Value="Disconnect"></asp:MenuItem>
+        </Items>
+    </asp:Menu>
+    </asp:Panel>
+    
+        <div class="main">
+            &nbsp;<asp:ContentPlaceHolder ID="BetaMainContent" runat="server"/>
+            <asp:ContentPlaceHolder ID="BetaReportContent" runat="server"/>
+        </div>
+</asp:Content>

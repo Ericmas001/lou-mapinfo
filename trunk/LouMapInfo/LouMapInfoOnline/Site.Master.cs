@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LouMapInfo.Entities;
+using System.IO;
 
 namespace LoUMapInfoOnline
 {
@@ -11,7 +13,6 @@ namespace LoUMapInfoOnline
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

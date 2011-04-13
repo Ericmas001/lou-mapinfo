@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LoUMapInfoOnline {
+namespace LoUMapInfoOnline.Beta {
     
     
-    public partial class Beta {
+    public partial class Default {
+        
+        /// <summary>
+        /// pnlConnexion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlConnexion;
         
         /// <summary>
         /// lblErrors control.
@@ -74,14 +83,5 @@ namespace LoUMapInfoOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConnect;
-        
-        /// <summary>
-        /// lblResult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResult;
     }
 }

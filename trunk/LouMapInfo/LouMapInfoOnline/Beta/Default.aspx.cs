@@ -4,19 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using LouMapInfo.Entities;
 using LouMapInfo;
+using LouMapInfo.Entities;
 
-namespace LoUMapInfoOnline
+namespace LoUMapInfoOnline.Beta
 {
-    public partial class Beta : System.Web.UI.Page
+    public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            foreach (ServerInfo s in ServerList.AllServers)
+            if (Session["betaSession"] == null)
             {
-                lstWorlds.Items.Add(s.Name);
+                pnlConnexion.Visible = true;
+                foreach (ServerInfo s in ServerList.AllServers)
+                {
+                    lstWorlds.Items.Add(s.Name);
+                }
             }
+            else
+                pnlConnexion.Visible = false;
         }
 
         protected void btnConnect_Click(object sender, EventArgs e)
@@ -45,18 +51,13 @@ namespace LoUMapInfoOnline
                 if (connect)
                 {
                     session.World.ForceLoad();
-                    string pName = session.World.Player(session.PlayerID).Name;
-                    string aName = session.World.Alliance(session.AllianceID).Name;
-                    lblResult.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")")) + " on " + session.World.Name;
-
+                    Session.Add("betaSession", session);
+                    Server.Transfer("~/Beta/Default.aspx");
                     //InitSession(session);
                 }
                 else
                     lblErrors.Text += "Impossible to connect with those credentials <br />";
             }
-            else
-                lblResult.Text = "";
-
         }
     }
 }
