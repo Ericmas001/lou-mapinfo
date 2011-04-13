@@ -10,12 +10,19 @@ namespace LouMapInfo.Reports.core
 {
     public abstract class ReportInfo : AbstractLoadingTuple
     {
+        private bool m_ShowDetail = true;
         private ReportOption options = ReportOption.None;
         protected ReportItem title;
         protected ReportItem subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
         protected Dictionary<FilterType, bool> m_Filters = new Dictionary<FilterType, bool>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
+
+        public bool ShowDetail
+        {
+            get { return m_ShowDetail; }
+            set { m_ShowDetail = value; }
+        }
         
         public bool hasFilter(FilterType f)
         {
@@ -85,19 +92,22 @@ namespace LouMapInfo.Reports.core
 
         private void ReportDetail(StringBuilder sb, ReportItem it)
         {
-            if (it.Items.Count > 0)
+            if (it.Items.Count > 0 )
             {
                 sb.Append("<ul>");
                 foreach (ReportItem it2 in it.Items)
                 {
-                    sb.Append(String.Format("<li>{0}</li>", it2.Value(options)));
-                    ReportDetail(sb, it2);
+                    if (!it2.IsDetailLine || m_ShowDetail)
+                    {
+                        sb.Append(String.Format("<li>{0}</li>", it2.Value(options)));
+                        ReportDetail(sb, it2);
+                    }
                 }
                 sb.Append("</ul>");
             }
         }
 
-        public string Report(int d)
+        public string Report()
         {
             StringBuilder sb = new StringBuilder();
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
@@ -124,14 +134,17 @@ namespace LouMapInfo.Reports.core
             {
                 foreach (ReportItem it2 in it.Items)
                 {
-                    sb.Append(String.Format("{0}\n", it2.Value(options)));
-                    BBCodeDetail(sb, it2);
+                    if (!it2.IsDetailLine || m_ShowDetail)
+                    {
+                        sb.Append(String.Format("{0}\n", it2.Value(options)));
+                        BBCodeDetail(sb, it2);
+                    }
                 }
                 sb.Append("\n");
             }
         }
 
-        public string BBCode(int d)
+        public string BBCode()
         {
             StringBuilder sb = new StringBuilder();
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
