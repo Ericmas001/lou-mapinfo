@@ -253,7 +253,7 @@ namespace LouMapInfoApp.LouOfficial
             {
                 PlayerOverviewReport rep = new PlayerOverviewReport(p);
                 rep.LoadIfNeeded();
-                OpenReport(rep, Properties.Settings.Default.detailLevel);
+                OpenReport(rep);
                 ContentEnabling(true);
             }
         }
@@ -278,7 +278,7 @@ namespace LouMapInfoApp.LouOfficial
             {
                 AllianceOverviewReport rep = new AllianceOverviewReport(a);
                 rep.LoadIfNeeded();
-                OpenReport(rep, Properties.Settings.Default.detailLevel);
+                OpenReport(rep);
                 ContentEnabling(true);
             }
         }
@@ -298,15 +298,15 @@ namespace LouMapInfoApp.LouOfficial
                 Frame.StartWaiting();
             }
         }
-        public delegate void ReportHandler(ReportInfo r, int lvl);
-        public void OpenReport(ReportInfo r, int lvl)
+        public delegate void ReportHandler(ReportInfo r);
+        public void OpenReport(ReportInfo r)
         {
             if (InvokeRequired)
             {
-                Invoke(new ReportHandler(OpenReport), r, lvl);
+                Invoke(new ReportHandler(OpenReport), r);
                 return;
             }
-            new ReportForm(r, lvl).Show();
+            new ReportForm(r).Show();
         }
 
         private void FillRanking(ToolStripButton btn, RankingType type, params DataGridViewColumn[] cols)

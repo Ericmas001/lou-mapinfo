@@ -17,11 +17,9 @@ namespace LouMapInfoApp
     public partial class ContentReport : UserControl
     {
         ReportInfo report;
-        int depth;
-        public ContentReport(ReportInfo r, int d)
+        public ContentReport(ReportInfo r)
         {
             report = r;
-            depth = d;
             InitializeComponent();
 
             btnFilterCastle.Visible = r.hasFilter(FilterType.TypeCastle);
@@ -78,12 +76,6 @@ namespace LouMapInfoApp
             pnlContent.Controls.Remove(customTabControl1);
             pnlContent.Controls.Add(tctl);
             Text = StringUtility.RemoveBBCodeTags(r.Title);
-            switch (d)
-            {
-                case 1: btnReportsLvl1_Click(null, new EventArgs()); break;
-                case 2: btnReportsLvl2_Click(null, new EventArgs()); break;
-                case 3: case 4: btnReportsLvl3_Click(null, new EventArgs()); break;
-            }
             btnBBCodeB.Checked = Properties.Settings.Default.bbCode_b;
             btnBBCodeI.Checked = Properties.Settings.Default.bbCode_i;
             btnBBCodeU.Checked = Properties.Settings.Default.bbCode_u;
@@ -114,7 +106,6 @@ namespace LouMapInfoApp
         }
         private void RefreshReport()
         {
-            btnReportsLvl.Enabled = false;
             btnDisplayOptions.Enabled = false;
             pnlContent.Enabled = false;
             RefreshReportAsync();
@@ -122,8 +113,8 @@ namespace LouMapInfoApp
         }
         private void RefreshReportAsync()
         {
-            string r = report.Report(depth);
-            string b = report.BBCode(depth);
+            string r = report.Report();
+            string b = report.BBCode();
             RefreshReport(r, b);
         }
         private delegate void ReportsHandler(string r, string b);
@@ -135,7 +126,6 @@ namespace LouMapInfoApp
                 return;
             }
             txtBBCode.Text = b;
-            btnReportsLvl.Enabled = true;
             btnDisplayOptions.Enabled = true;
             pnlContent.Enabled = true;
             webKitBrowser1.DocumentText = r;
@@ -149,7 +139,7 @@ namespace LouMapInfoApp
             report.BBCodeDisplay[b] = btn.Checked;
             //Properties.Settings.Default["bbcode_" + b] = btn.Checked;
             //Properties.Settings.Default.Save();
-            txtBBCode.Text = report.BBCode(depth);
+            txtBBCode.Text = report.BBCode();
         }
 
         private void txtBBCode_KeyDown(object sender, KeyEventArgs e)
@@ -168,47 +158,7 @@ namespace LouMapInfoApp
             Clipboard.SetText(txtBBCode.Text);
         }
 
-        private void btnReportsLvl_ButtonClick(object sender, EventArgs e)
-        {
-            btnReportsLvl.ShowDropDown();
-        }
-
-        private void btnReportsLvl1_Click(object sender, EventArgs e)
-        {
-            depth = 1;
-            txtBBCode.Text = report.BBCode(depth);
-            btnReportsLvl.Text = btnReportsLvl1.Text;
-            btnReportsLvl1.Checked = true;
-            btnReportsLvl2.Checked = false;
-            btnReportsLvl3.Checked = false;
-            RefreshReport();
-        }
-
-        private void btnReportsLvl2_Click(object sender, EventArgs e)
-        {
-            depth = 2;
-            btnReportsLvl.Text = btnReportsLvl2.Text;
-            btnReportsLvl1.Checked = false;
-            btnReportsLvl2.Checked = true;
-            btnReportsLvl3.Checked = false;
-            if (sender != null)
-            {
-                RefreshReport();
-            }
-        }
-
-        private void btnReportsLvl3_Click(object sender, EventArgs e)
-        {
-            depth = 4;
-            btnReportsLvl.Text = btnReportsLvl3.Text;
-            btnReportsLvl1.Checked = false;
-            btnReportsLvl2.Checked = false;
-            btnReportsLvl3.Checked = true;
-            if (sender != null)
-            {
-                RefreshReport();
-            }
-        }
+        
         private void btnDisplayOptions_ButtonClick(object sender, EventArgs e)
         {
             btnDisplayOptions.ShowDropDown();
@@ -327,7 +277,7 @@ namespace LouMapInfoApp
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            new ReportForm(report, depth).Show();
+            new ReportForm(report).Show();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -415,6 +365,28 @@ namespace LouMapInfoApp
             report.SetFilter(FilterType.NoAlliance, newVal);
             btnFilterNoAlliance.Checked = newVal;
             RefreshReport();
+        }
+
+        private void btnReportDetailed_Click(object sender, EventArgs e)
+        {
+            if (!report.ShowDetail)
+            {
+                report.ShowDetail = true;
+                btnReportDetailed.BackColor = SystemColors.Highlight;
+                btnReportSummary.BackColor = Color.White;
+                RefreshReport();
+            }
+        }
+
+        private void btnReportSummary_Click(object sender, EventArgs e)
+        {
+            if (report.ShowDetail)
+            {
+                report.ShowDetail = false;
+                btnReportSummary.BackColor = SystemColors.Highlight;
+                btnReportDetailed.BackColor = Color.White;
+                RefreshReport();
+            }
         }
     }
 }
