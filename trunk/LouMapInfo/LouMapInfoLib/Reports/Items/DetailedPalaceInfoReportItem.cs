@@ -11,8 +11,8 @@ namespace LouMapInfo.Reports.Items
         private bool m_Showlvl;
         private bool m_ShowType;
 
-        public DetailedPalaceInfoReportItem(CityInfo info, bool showIfEmpty, bool showPlayer, bool showAlliance, bool showContinent, bool showPalacelvl, bool showPalaceType)
-            : base(info, showIfEmpty, showPlayer, showAlliance, showContinent)
+        public DetailedPalaceInfoReportItem(bool isDetailLine, CityInfo info, bool showPlayer, bool showAlliance, bool showContinent, bool showPalacelvl, bool showPalaceType)
+            : base(isDetailLine, info, showPlayer, showAlliance, showContinent)
         {
             m_Showlvl = showPalacelvl;
             m_ShowType = showPalaceType;

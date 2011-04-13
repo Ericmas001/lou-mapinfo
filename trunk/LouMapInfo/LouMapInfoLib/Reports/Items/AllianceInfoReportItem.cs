@@ -11,13 +11,13 @@ namespace LouMapInfo.Reports.Items
         private AllianceInfo m_Info;
         private int m_Rank = -1;
 
-        public AllianceInfoReportItem(AllianceInfo info, bool showIfEmpty)
-            : base(showIfEmpty)
+        public AllianceInfoReportItem(bool isDetailLine, AllianceInfo info)
+            : base(isDetailLine)
         {
             m_Info = info;
         }
-        public AllianceInfoReportItem(AllianceInfo info, bool showIfEmpty, int rank)
-            : this(info, showIfEmpty)
+        public AllianceInfoReportItem(bool isDetailLine, AllianceInfo info, int rank)
+            : this(isDetailLine, info)
         {
             m_Rank = rank;
         }
