@@ -10,10 +10,16 @@
         font-weight: bold;
         background-color: #FFFF66;
     }
-</style>
+        .style4
+        {
+            font-weight: bold;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style2">2011-04-13 2h AM Eastern Time: </span><span class="style1">If you click on Players you will get a report on yourself</span>
+    <span class="style4">2011-04-13 2h AM Eastern Time: </span>If you click on Players you will get a report on yourself
+        <br />
+    <span class="style2">2011-04-13 4h PM Eastern Time: </span><span class="style1">"Players" Works like in the App, you can get a report on yourself or any player</span>
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
         Try LoU Map Info Online as a Beta Tester.
