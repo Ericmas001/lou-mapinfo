@@ -58,6 +58,33 @@ namespace LoUMapInfoOnline {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder BetaMainContent;
         
         /// <summary>
+        /// pnlReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlReport;
+        
+        /// <summary>
+        /// pnlHtml control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlHtml;
+        
+        /// <summary>
+        /// btnShowBBCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnShowBBCode;
+        
+        /// <summary>
         /// ReportLiteral control.
         /// </summary>
         /// <remarks>
@@ -65,5 +92,32 @@ namespace LoUMapInfoOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ReportLiteral;
+        
+        /// <summary>
+        /// pnlBBCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlBBCode;
+        
+        /// <summary>
+        /// btnShowReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnShowReport;
+        
+        /// <summary>
+        /// BBCodeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BBCodeLabel;
     }
 }
