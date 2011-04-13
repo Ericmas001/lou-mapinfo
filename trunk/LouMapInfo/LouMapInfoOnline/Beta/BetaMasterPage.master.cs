@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LouMapInfo.Entities;
+using LouMapInfo.Reports.core;
 
 namespace LoUMapInfoOnline
 {
@@ -26,6 +27,14 @@ namespace LoUMapInfoOnline
                 pnlConnectedMenu.Visible = false;
                 pnlDisconnectedMenu.Visible = true;
             }
+        }
+        public void OpenReport(ReportInfo report)
+        {
+            foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
+            {
+                report.SetOption(o, true);
+            }
+            ReportLiteral.Text = report.Report();
         }
     }
 }
