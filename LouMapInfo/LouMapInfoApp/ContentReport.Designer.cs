@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentReport));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnReportsLvl = new System.Windows.Forms.ToolStripSplitButton();
-            this.btnReportsLvl1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReportsLvl2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReportsLvl3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReportContent = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnFilterCity = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +47,8 @@
             this.btnDisplayOptionsCityCount = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsCityScore = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsCityName = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDisplayOptionsPalaceLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDisplayOptionsPalaceVirtue = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsPlayerCount = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsPlayerScore = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDisplayOptionsAllianceScore = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,8 +73,8 @@
             this.btnBBCodeCity = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodePlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBBCodeAlliance = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDisplayOptionsPalaceLevel = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDisplayOptionsPalaceVirtue = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReportDetailed = new System.Windows.Forms.ToolStripButton();
+            this.btnReportSummary = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.customTabControl1.SuspendLayout();
@@ -90,7 +88,8 @@
             this.toolStrip2.BackColor = System.Drawing.Color.White;
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReportsLvl,
+            this.btnReportSummary,
+            this.btnReportDetailed,
             this.toolStripSeparator2,
             this.btnReportContent,
             this.toolStripSeparator3,
@@ -102,43 +101,6 @@
             this.toolStrip2.Size = new System.Drawing.Size(707, 25);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // btnReportsLvl
-            // 
-            this.btnReportsLvl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnReportsLvl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReportsLvl1,
-            this.btnReportsLvl2,
-            this.btnReportsLvl3});
-            this.btnReportsLvl.Image = ((System.Drawing.Image)(resources.GetObject("btnReportsLvl.Image")));
-            this.btnReportsLvl.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReportsLvl.Name = "btnReportsLvl";
-            this.btnReportsLvl.Size = new System.Drawing.Size(109, 22);
-            this.btnReportsLvl.Text = "Detailed Reports";
-            this.btnReportsLvl.ButtonClick += new System.EventHandler(this.btnReportsLvl_ButtonClick);
-            // 
-            // btnReportsLvl1
-            // 
-            this.btnReportsLvl1.Name = "btnReportsLvl1";
-            this.btnReportsLvl1.Size = new System.Drawing.Size(168, 22);
-            this.btnReportsLvl1.Text = "Global Reports";
-            this.btnReportsLvl1.Click += new System.EventHandler(this.btnReportsLvl1_Click);
-            // 
-            // btnReportsLvl2
-            // 
-            this.btnReportsLvl2.Name = "btnReportsLvl2";
-            this.btnReportsLvl2.Size = new System.Drawing.Size(168, 22);
-            this.btnReportsLvl2.Text = "Summary Reports";
-            this.btnReportsLvl2.Click += new System.EventHandler(this.btnReportsLvl2_Click);
-            // 
-            // btnReportsLvl3
-            // 
-            this.btnReportsLvl3.Checked = true;
-            this.btnReportsLvl3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.btnReportsLvl3.Name = "btnReportsLvl3";
-            this.btnReportsLvl3.Size = new System.Drawing.Size(168, 22);
-            this.btnReportsLvl3.Text = "Detailed Reports";
-            this.btnReportsLvl3.Click += new System.EventHandler(this.btnReportsLvl3_Click);
             // 
             // toolStripSeparator2
             // 
@@ -169,64 +131,64 @@
             // btnFilterCity
             // 
             this.btnFilterCity.Name = "btnFilterCity";
-            this.btnFilterCity.Size = new System.Drawing.Size(143, 22);
+            this.btnFilterCity.Size = new System.Drawing.Size(152, 22);
             this.btnFilterCity.Text = "Cities";
             this.btnFilterCity.Click += new System.EventHandler(this.btnFilterCity_Click);
             // 
             // btnFilterCastle
             // 
             this.btnFilterCastle.Name = "btnFilterCastle";
-            this.btnFilterCastle.Size = new System.Drawing.Size(143, 22);
+            this.btnFilterCastle.Size = new System.Drawing.Size(152, 22);
             this.btnFilterCastle.Text = "Castles";
             this.btnFilterCastle.Click += new System.EventHandler(this.btnFilterCastle_Click);
             // 
             // btnFilterPalace
             // 
             this.btnFilterPalace.Name = "btnFilterPalace";
-            this.btnFilterPalace.Size = new System.Drawing.Size(143, 22);
+            this.btnFilterPalace.Size = new System.Drawing.Size(152, 22);
             this.btnFilterPalace.Text = "Palaces";
             this.btnFilterPalace.Click += new System.EventHandler(this.btnFilterPalace_Click);
             // 
             // sepFilter1
             // 
             this.sepFilter1.Name = "sepFilter1";
-            this.sepFilter1.Size = new System.Drawing.Size(140, 6);
+            this.sepFilter1.Size = new System.Drawing.Size(149, 6);
             // 
             // btnFilterLand
             // 
             this.btnFilterLand.Name = "btnFilterLand";
-            this.btnFilterLand.Size = new System.Drawing.Size(143, 22);
+            this.btnFilterLand.Size = new System.Drawing.Size(152, 22);
             this.btnFilterLand.Text = "Land-Locked";
             this.btnFilterLand.Click += new System.EventHandler(this.btnFilterLand_Click);
             // 
             // btnFilterWater
             // 
             this.btnFilterWater.Name = "btnFilterWater";
-            this.btnFilterWater.Size = new System.Drawing.Size(143, 22);
+            this.btnFilterWater.Size = new System.Drawing.Size(152, 22);
             this.btnFilterWater.Text = "Water-Based";
             this.btnFilterWater.Click += new System.EventHandler(this.btnFilterWater_Click);
             // 
             // sepFilter2
             // 
             this.sepFilter2.Name = "sepFilter2";
-            this.sepFilter2.Size = new System.Drawing.Size(140, 6);
+            this.sepFilter2.Size = new System.Drawing.Size(149, 6);
             // 
             // btnFilterNoCities
             // 
             this.btnFilterNoCities.Name = "btnFilterNoCities";
-            this.btnFilterNoCities.Size = new System.Drawing.Size(143, 22);
+            this.btnFilterNoCities.Size = new System.Drawing.Size(152, 22);
             this.btnFilterNoCities.Text = "No Cities";
             this.btnFilterNoCities.Click += new System.EventHandler(this.btnFilterNoCities_Click);
             // 
             // sepFilter3
             // 
             this.sepFilter3.Name = "sepFilter3";
-            this.sepFilter3.Size = new System.Drawing.Size(140, 6);
+            this.sepFilter3.Size = new System.Drawing.Size(149, 6);
             // 
             // btnFilterNoAlliance
             // 
             this.btnFilterNoAlliance.Name = "btnFilterNoAlliance";
-            this.btnFilterNoAlliance.Size = new System.Drawing.Size(143, 22);
+            this.btnFilterNoAlliance.Size = new System.Drawing.Size(152, 22);
             this.btnFilterNoAlliance.Text = "No Alliance";
             this.btnFilterNoAlliance.Click += new System.EventHandler(this.btnFilterNoAlliance_Click);
             // 
@@ -258,49 +220,63 @@
             // btnDisplayOptionsCityCount
             // 
             this.btnDisplayOptionsCityCount.Name = "btnDisplayOptionsCityCount";
-            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsCityCount.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsCityCount.Text = "City Count";
             this.btnDisplayOptionsCityCount.Click += new System.EventHandler(this.btnDisplayOptionsCityCount_Click);
             // 
             // btnDisplayOptionsCityScore
             // 
             this.btnDisplayOptionsCityScore.Name = "btnDisplayOptionsCityScore";
-            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsCityScore.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsCityScore.Text = "City Score";
             this.btnDisplayOptionsCityScore.Click += new System.EventHandler(this.btnDisplayOptionsCityScore_Click);
             // 
             // btnDisplayOptionsCityName
             // 
             this.btnDisplayOptionsCityName.Name = "btnDisplayOptionsCityName";
-            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsCityName.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsCityName.Text = "City Name";
             this.btnDisplayOptionsCityName.Click += new System.EventHandler(this.btnDisplayOptionsCityName_Click);
+            // 
+            // btnDisplayOptionsPalaceLevel
+            // 
+            this.btnDisplayOptionsPalaceLevel.Name = "btnDisplayOptionsPalaceLevel";
+            this.btnDisplayOptionsPalaceLevel.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPalaceLevel.Text = "Palace Level";
+            this.btnDisplayOptionsPalaceLevel.Click += new System.EventHandler(this.btnDisplayOptionsPalaceLevel_Click);
+            // 
+            // btnDisplayOptionsPalaceVirtue
+            // 
+            this.btnDisplayOptionsPalaceVirtue.Name = "btnDisplayOptionsPalaceVirtue";
+            this.btnDisplayOptionsPalaceVirtue.Size = new System.Drawing.Size(148, 22);
+            this.btnDisplayOptionsPalaceVirtue.Text = "Palace Virtue";
+            this.btnDisplayOptionsPalaceVirtue.Click += new System.EventHandler(this.btnDisplayOptionsPalaceVirtue_Click);
             // 
             // btnDisplayOptionsPlayerCount
             // 
             this.btnDisplayOptionsPlayerCount.Name = "btnDisplayOptionsPlayerCount";
-            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsPlayerCount.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsPlayerCount.Text = "Player Count";
             this.btnDisplayOptionsPlayerCount.Click += new System.EventHandler(this.btnDisplayOptionsPlayerCount_Click);
             // 
             // btnDisplayOptionsPlayerScore
             // 
             this.btnDisplayOptionsPlayerScore.Name = "btnDisplayOptionsPlayerScore";
-            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsPlayerScore.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsPlayerScore.Text = "Player Score";
             this.btnDisplayOptionsPlayerScore.Click += new System.EventHandler(this.btnDisplayOptionsPlayerScore_Click);
             // 
             // btnDisplayOptionsAllianceScore
             // 
             this.btnDisplayOptionsAllianceScore.Name = "btnDisplayOptionsAllianceScore";
-            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsAllianceScore.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsAllianceScore.Text = "Alliance Score";
             this.btnDisplayOptionsAllianceScore.Click += new System.EventHandler(this.btnDisplayOptionsAllianceScore_Click);
             // 
             // btnDisplayOptionsAllianceRank
             // 
             this.btnDisplayOptionsAllianceRank.Name = "btnDisplayOptionsAllianceRank";
-            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(152, 22);
+            this.btnDisplayOptionsAllianceRank.Size = new System.Drawing.Size(148, 22);
             this.btnDisplayOptionsAllianceRank.Text = "Alliance Rank";
             this.btnDisplayOptionsAllianceRank.Click += new System.EventHandler(this.btnDisplayOptionsAllianceRank_Click);
             // 
@@ -521,19 +497,26 @@
             this.btnBBCodeAlliance.Text = "[alliance] [/alliance]";
             this.btnBBCodeAlliance.Click += new System.EventHandler(this.btnBBCode_Click);
             // 
-            // btnDisplayOptionsPalaceLevel
+            // btnReportDetailed
             // 
-            this.btnDisplayOptionsPalaceLevel.Name = "btnDisplayOptionsPalaceLevel";
-            this.btnDisplayOptionsPalaceLevel.Size = new System.Drawing.Size(152, 22);
-            this.btnDisplayOptionsPalaceLevel.Text = "Palace Level";
-            this.btnDisplayOptionsPalaceLevel.Click += new System.EventHandler(this.btnDisplayOptionsPalaceLevel_Click);
+            this.btnReportDetailed.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnReportDetailed.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReportDetailed.Image = ((System.Drawing.Image)(resources.GetObject("btnReportDetailed.Image")));
+            this.btnReportDetailed.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportDetailed.Name = "btnReportDetailed";
+            this.btnReportDetailed.Size = new System.Drawing.Size(92, 22);
+            this.btnReportDetailed.Text = "Detailed Report";
+            this.btnReportDetailed.Click += new System.EventHandler(this.btnReportDetailed_Click);
             // 
-            // btnDisplayOptionsPalaceVirtue
+            // btnReportSummary
             // 
-            this.btnDisplayOptionsPalaceVirtue.Name = "btnDisplayOptionsPalaceVirtue";
-            this.btnDisplayOptionsPalaceVirtue.Size = new System.Drawing.Size(152, 22);
-            this.btnDisplayOptionsPalaceVirtue.Text = "Palace Virtue";
-            this.btnDisplayOptionsPalaceVirtue.Click += new System.EventHandler(this.btnDisplayOptionsPalaceVirtue_Click);
+            this.btnReportSummary.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReportSummary.Image = ((System.Drawing.Image)(resources.GetObject("btnReportSummary.Image")));
+            this.btnReportSummary.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportSummary.Name = "btnReportSummary";
+            this.btnReportSummary.Size = new System.Drawing.Size(100, 22);
+            this.btnReportSummary.Text = "Summary Report";
+            this.btnReportSummary.Click += new System.EventHandler(this.btnReportSummary_Click);
             // 
             // ContentReport
             // 
@@ -560,10 +543,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripSplitButton btnReportsLvl;
-        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl1;
-        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl2;
-        private System.Windows.Forms.ToolStripMenuItem btnReportsLvl3;
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.TabControl customTabControl1;
         private System.Windows.Forms.TabPage tpageReport;
@@ -607,6 +586,8 @@
         private WebKit.WebKitBrowser webKitBrowser1;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsPalaceLevel;
         private System.Windows.Forms.ToolStripMenuItem btnDisplayOptionsPalaceVirtue;
+        private System.Windows.Forms.ToolStripButton btnReportSummary;
+        private System.Windows.Forms.ToolStripButton btnReportDetailed;
 
     }
 }

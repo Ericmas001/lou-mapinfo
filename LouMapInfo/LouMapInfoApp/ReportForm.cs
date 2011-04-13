@@ -14,11 +14,11 @@ namespace LouMapInfoApp
 {
     public partial class ReportForm : Form
     {
-        public ReportForm(ReportInfo r, int d)
+        public ReportForm(ReportInfo r)
         {
             InitializeComponent();
             Text = StringUtility.RemoveBBCodeTags(r.Title);
-            ContentReport cr = new ContentReport(r, d);
+            ContentReport cr = new ContentReport(r);
             Controls.Add(cr);
             cr.Dock = DockStyle.Fill;
         }
