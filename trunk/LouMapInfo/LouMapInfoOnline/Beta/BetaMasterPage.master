@@ -28,16 +28,23 @@
     &nbsp;<br />
     <asp:Menu ID="Menu1" runat="server" CssClass="menu2" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
         <Items>
+            <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Rankings" 
+                Value="Rankings"></asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Beta/Players.aspx" Text="Players" 
                 Value="Players"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Alliances" 
+                Value="Alliances"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Continent" 
+                Value="Continent"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Virtue" 
+                Value="Virtue"></asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Beta/Disconnect.aspx" Text="Disconnect" 
                 Value="Disconnect"></asp:MenuItem>
         </Items>
     </asp:Menu>
     </asp:Panel>
-    
         <div class="main">
-            &nbsp;<asp:ContentPlaceHolder ID="BetaMainContent" runat="server"/>
+            <asp:ContentPlaceHolder ID="BetaMainContent" runat="server"/><p></p><p></p>
             <asp:ContentPlaceHolder ID="BetaReportContent" runat="server"/>
         </div>
 </asp:Content>

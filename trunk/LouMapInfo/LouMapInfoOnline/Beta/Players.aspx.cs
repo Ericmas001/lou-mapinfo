@@ -21,14 +21,32 @@ namespace LoUMapInfoOnline.Beta
             else
             {
                 SessionInfo session = (SessionInfo)Session["betaSession"];
-                PlayerInfo info = session.World.Player(session.PlayerID);
-                PlayerOverviewReport report = new PlayerOverviewReport(info);
-                foreach(ReportOption o in Enum.GetValues(typeof(ReportOption)))
-                {
-                    report.SetOption(o, true);
-                }
-                ReportLiteral.Text = report.Report();
+                btnMe.Text = session.World.Player(session.PlayerID).Name;
             }
+        }
+
+        protected void btnShowPlayerReport_Click(object sender, EventArgs e)
+        {
+            SessionInfo session = (SessionInfo)Session["betaSession"];
+            PlayerInfo info = session.World.Player(txtPlayerName.Text);
+            PlayerOverviewReport report = new PlayerOverviewReport(info);
+            foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
+            {
+                report.SetOption(o, true);
+            }
+            ReportLiteral.Text = report.Report();
+        }
+
+        protected void btnMe_Click(object sender, EventArgs e)
+        {
+            SessionInfo session = (SessionInfo)Session["betaSession"];
+            PlayerInfo info = session.World.Player(session.PlayerID);
+            PlayerOverviewReport report = new PlayerOverviewReport(info);
+            foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
+            {
+                report.SetOption(o, true);
+            }
+            ReportLiteral.Text = report.Report();
         }
     }
 }
