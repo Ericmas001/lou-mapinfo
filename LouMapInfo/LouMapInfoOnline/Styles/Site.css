@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6
 {
     font-size: 1.5em;
     color: #666666;
-    font-variant: small-caps;
+    /*font-variant: small-caps;*/
     text-transform: none;
     font-weight: 200;
     margin-bottom: 0px;
@@ -101,6 +101,8 @@ first child of the left and right table columns */
     padding: 0px;
     background: #4b6c9e;
     width: 100%;
+	top: 0px;
+	left: 1px;
 }
 
 .header h1
@@ -184,6 +186,46 @@ div.menu ul li a:active
 {
     background-color: #465c71;
     color: #cfdbe6;
+    text-decoration: none;
+}
+
+div.menu2
+{
+    padding: 4px 0px 4px 8px;
+}
+
+div.menu2 ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+div.menu2 ul li a, div.menu2 ul li a:visited
+{
+    background-color: #dde4ec;
+    color: #465c71;
+    border: 1px #4e667d solid;
+    color: #465c71;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu2 ul li a:hover
+{
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu2 ul li a:active
+{
+    background-color: #dde4ec;
+    color: #465c71;
     text-decoration: none;
 }
 
