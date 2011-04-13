@@ -11,8 +11,8 @@ namespace LouMapInfo.Reports.Items
         private int m_Count;
         private BorderingType m_Type;
 
-        public BorderingTypeReportItem(int count, BorderingType type, bool showIfEmpty)
-            : base(showIfEmpty)
+        public BorderingTypeReportItem(bool isDetailLine, int count, BorderingType type)
+            : base(isDetailLine)
         {
             m_Count = count;
             m_Type = type;

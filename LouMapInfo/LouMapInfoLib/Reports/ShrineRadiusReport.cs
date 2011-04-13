@@ -29,7 +29,7 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
-            title = new TextReportItem("Cities surrounding" + location, true);
+            title = new TextReportItem(false, "Cities surrounding" + location);
             string[] lines = SayCityType();
             if (lines.Length > 0)
                 subtitle = new MultiLineReportItem(true, lines);
@@ -72,30 +72,30 @@ namespace LouMapInfo.Reports
             {
                 if (cities[d].Count > 0)
                 {
-                    ReportItem r = new TextReportItem(d + " tiles distance", true);
+                    ReportItem r = new TextReportItem(false, d + " tiles distance");
                     CityInfo[] all = new CityInfo[cities[d].Count];
                     cities[d].Keys.CopyTo(all,0);
                     Array.Sort(all);
                     Array.Reverse(all);
                     foreach (CityInfo c in all)
                         r.Items.Add(new MultiLineReportItem(true,
-                            new DetailedCityInfoReportItem(c, true, true, true, false),
-                            new EnlightmentScoreReportItem(c.TypeCity, c.Bordering, c.VirtueType, (int)cities[d][c], true)
+                            new DetailedCityInfoReportItem(true, c, true, true, false),
+                            new EnlightmentScoreReportItem(true, c.TypeCity, c.Bordering, c.VirtueType, (int)cities[d][c])
                             ));
                     root.Add(r);
                 }
             }
             if (alls.Count > 0)
             {
-                ReportItem r = new TextReportItem("All <= 20 distance", true);
+                ReportItem r = new TextReportItem(false,"All <= 20 distance");
                 CityInfo[] all = new CityInfo[alls.Count];
                 alls.Keys.CopyTo(all, 0);
                 Array.Sort(all);
                 Array.Reverse(all);
                 foreach (CityInfo c in all)
                     r.Items.Add(new MultiLineReportItem(true,
-                        new DetailedCityInfoReportItem(c, true, true, true, false),
-                        new EnlightmentScoreReportItem(c.TypeCity, c.Bordering, c.VirtueType, (int)alls[c], true)
+                        new DetailedCityInfoReportItem(true, c, true, true, false),
+                        new EnlightmentScoreReportItem(true, c.TypeCity, c.Bordering, c.VirtueType, (int)alls[c])
                         ));
                 root.Add(r);
             }

@@ -14,25 +14,25 @@ namespace LouMapInfo.Reports.Items
         private VirtueType m_Virtue;
         private BorderingType m_Border;
 
-        public CityTypeReportItem(int count, CityType type, BorderingType border, VirtueType virtue, bool showIfEmpty)
-            : base(showIfEmpty)
+        public CityTypeReportItem(bool isDetailLine, int count, CityType type, BorderingType border, VirtueType virtue)
+            : base(isDetailLine)
         {
             m_Count = count;
             m_Type = type;
             m_Virtue = virtue;
             m_Border = border;
         }
-        public CityTypeReportItem(int count, CityType type, VirtueType virtue, bool showIfEmpty)
-            : this(count, type, BorderingType.Unknown, virtue, showIfEmpty)
+        public CityTypeReportItem(bool isDetailLine, int count, CityType type, VirtueType virtue)
+            : this(isDetailLine, count, type, BorderingType.Unknown, virtue)
         {
         }
-        public CityTypeReportItem(int count, CityType type, BorderingType border, bool showIfEmpty)
-            : this( count,  type, border,VirtueType.None, showIfEmpty)
+        public CityTypeReportItem(bool isDetailLine, int count, CityType type, BorderingType border)
+            : this(isDetailLine, count, type, border, VirtueType.None)
         {
         }
 
-        public CityTypeReportItem(int count, CityType type, bool showIfEmpty)
-            : this( count,  type, BorderingType.Unknown,VirtueType.None, showIfEmpty)
+        public CityTypeReportItem(bool isDetailLine, int count, CityType type)
+            : this(isDetailLine, count, type, BorderingType.Unknown, VirtueType.None)
         {
         }
 

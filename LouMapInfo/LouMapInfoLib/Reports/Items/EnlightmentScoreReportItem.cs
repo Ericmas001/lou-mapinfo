@@ -14,8 +14,8 @@ namespace LouMapInfo.Reports.Items
         private BorderingType m_Border;
         private VirtueType m_Virtue;
 
-        public EnlightmentScoreReportItem(CityType type, BorderingType border, VirtueType virtue, int score, bool showIfEmpty)
-            : base(showIfEmpty)
+        public EnlightmentScoreReportItem(bool isDetailLine, CityType type, BorderingType border, VirtueType virtue, int score)
+            : base(isDetailLine)
         {
             m_Type = type;
             m_Border = border;
@@ -26,7 +26,7 @@ namespace LouMapInfo.Reports.Items
         public override string Value(ReportOption options)
         {
             
-            String s = "          " + new CityTypeReportItem(-1,m_Type,m_Border,m_Virtue,true).Value(options);
+            String s = "          " + new CityTypeReportItem(IsDetailLine,-1,m_Type,m_Border,m_Virtue).Value(options);
             s += ", Enlightment Score: " + m_Score.ToString("N0");
             return s;
         }

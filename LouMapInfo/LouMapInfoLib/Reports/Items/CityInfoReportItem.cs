@@ -10,8 +10,8 @@ namespace LouMapInfo.Reports.Items
     {
         protected CityInfo m_Info;
 
-        public CityInfoReportItem(CityInfo info, bool showIfEmpty)
-            : base(showIfEmpty)
+        public CityInfoReportItem(bool isDetailLine, CityInfo info)
+            : base(isDetailLine)
         {
             m_Info = info;
         }

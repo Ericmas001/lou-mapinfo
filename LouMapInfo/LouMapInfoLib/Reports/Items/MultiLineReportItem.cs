@@ -15,17 +15,17 @@ namespace LouMapInfo.Reports.Items
             set { m_Lines = value; }
         }
 
-        public MultiLineReportItem(bool showIfEmpty, params ReportItem[] items)
-            : base(showIfEmpty)
+        public MultiLineReportItem(bool isDetailLine, params ReportItem[] items)
+            : base(isDetailLine)
         {
             m_Lines.AddRange(items);
         }
 
-        public MultiLineReportItem(bool showIfEmpty, params string[] items)
-            : base(showIfEmpty)
+        public MultiLineReportItem(bool isDetailLine, params string[] items)
+            : base(isDetailLine)
         {
             foreach (string s in items)
-                m_Lines.Add(new TextReportItem(s, showIfEmpty));
+                m_Lines.Add(new TextReportItem(isDetailLine, s));
         }
 
         public override string Value(ReportOption options)

@@ -7,12 +7,12 @@ namespace LouMapInfo.Reports.core
     public abstract class ReportItem
     {
         private List<ReportItem> m_Items = new List<ReportItem>();
-        private bool m_ShowEmpty;
+        private bool m_IsDetailLine;
 
-        public bool ShowEmpty
+        public bool IsDetailLine
         {
-            get { return m_ShowEmpty; }
-            set { m_ShowEmpty = value; }
+            get { return m_IsDetailLine; }
+            set { m_IsDetailLine = value; }
         }
 
         public List<ReportItem> Items
@@ -20,9 +20,9 @@ namespace LouMapInfo.Reports.core
             get { return m_Items; }
             set { m_Items = value; }
         }
-        public ReportItem(bool showIfEmpty)
+        public ReportItem(bool isDetailLine)
         {
-            m_ShowEmpty = showIfEmpty;
+            m_IsDetailLine = isDetailLine;
         }
         public abstract string Value(ReportOption options);
     }

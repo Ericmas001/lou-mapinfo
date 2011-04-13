@@ -11,8 +11,8 @@ namespace LouMapInfo.Reports.Items
         private PlayerInfo m_Info;
         private int m_Continent;
 
-        public PlayerInfoReportItem(PlayerInfo info, int cont, bool showIfEmpty)
-            : base(showIfEmpty)
+        public PlayerInfoReportItem(bool isDetailLine, PlayerInfo info, int cont)
+            : base(isDetailLine)
         {
             m_Info = info;
             m_Continent = cont;

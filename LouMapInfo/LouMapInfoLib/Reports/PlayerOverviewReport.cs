@@ -25,23 +25,23 @@ namespace LouMapInfo.Reports
         }
         protected override void OnLoad()
         {
-            title = new PlayerInfoReportItem(player, -1, true);
+            title = new PlayerInfoReportItem(false, player, -1);
             string[] lines = SayCityType();
             if (lines.Length > 0)
             {
                 ReportItem[] items = new ReportItem[lines.Length + 2];
-                items[0] = new AllianceInfoReportItem(player.Alliance, true);
-                items[1] = new TextReportItem("", true);
+                items[0] = new AllianceInfoReportItem(false, player.Alliance);
+                items[1] = new TextReportItem(false, "");
                 for( int i = 0; i < lines.Length; ++i)
-                    items[i + 2] = new TextReportItem(lines[i],true);
+                    items[i + 2] = new TextReportItem(false, lines[i]);
                 subtitle = new MultiLineReportItem(true,items);
             }
             else
-                subtitle = new AllianceInfoReportItem(player.Alliance, true);
+                subtitle = new AllianceInfoReportItem(false, player.Alliance);
 
             foreach (int ic in player.ActiveContinents)
             {
-                ReportItem r = new ContinentScoreReportItem(ic, player.CScore(ic), true, false);
+                ReportItem r = new ContinentScoreReportItem(false, ic, player.CScore(ic), true);
                 int count = 0;
 
                 count += ShowCities(r, CityType.Palace, ic, player);

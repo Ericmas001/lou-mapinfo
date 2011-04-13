@@ -27,7 +27,7 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
-            title = new TextReportItem("C" + cont.Id.ToString("00") + " Overview", true);
+            title = new TextReportItem(false, "C" + cont.Id.ToString("00") + " Overview");
             string[] lines = SayCityType();
             if (lines.Length > 0)
                 subtitle = new MultiLineReportItem(true,lines);
@@ -38,15 +38,15 @@ namespace LouMapInfo.Reports
                 {
                     int supercount = 0;
                     PlayerInfo[] players = cont.Alliances[i].Players();
-                    PlayerCountReportItem pcri = new PlayerCountReportItem(players.Length, false);
+                    PlayerCountReportItem pcri = new PlayerCountReportItem(false, players.Length);
                     ReportItem r = new MultiLineReportItem(false,
-                        new AllianceInfoReportItem(cont.Alliances[i], false, i + 1),
+                        new AllianceInfoReportItem(false, cont.Alliances[i], i + 1),
                         pcri
                         );
 
                     foreach (PlayerInfo p in players)
                     {
-                        ReportItem r2 = new PlayerInfoReportItem(p, cont.Id, false);
+                        ReportItem r2 = new PlayerInfoReportItem(false, p, cont.Id);
 
                         int count = 0;
 

@@ -46,7 +46,7 @@ namespace LouMapInfo.Reports
             bool ew = FilterEnabled(FilterType.BorderingWater);
             switch (type)
             {
-                case BattleType.HighestLevel: title = new TextReportItem("Highest Level Battle", true); break;
+                case BattleType.HighestLevel: title = new TextReportItem(false, "Highest Level Battle"); break;
                 default: return;
             }
             string[] lines = SayCityType();
@@ -88,7 +88,7 @@ namespace LouMapInfo.Reports
             {
                 if (palaces[v].Count > 0)
                 {
-                    ReportItem r = new TextReportItem(v + " Palaces", true);
+                    ReportItem r = new TextReportItem(false, v + " Palaces");
 
                     CityInfo[] cities = new CityInfo[palaces[v].Count];
                     int count = 0;
@@ -99,8 +99,8 @@ namespace LouMapInfo.Reports
                     int rank = 1;
                     foreach( CityInfo p in cities )
                     {
-                        ReportItem r2 = new AllianceInfoReportItem(p.Player.Alliance, true, rank++);
-                        r2.Items.Add(new DetailedPalaceInfoReportItem(p, true, true, false, true, true,false));
+                        ReportItem r2 = new AllianceInfoReportItem(false, p.Player.Alliance, rank++);
+                        r2.Items.Add(new DetailedPalaceInfoReportItem(true, p, true, false, true, true,false));
                         r.Items.Add(r2);
                     }
                     root.Add(r);

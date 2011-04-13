@@ -22,7 +22,7 @@ namespace LouMapInfo
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
-            request.Timeout = 5000;
+            request.Timeout = 50000;
             request.ContentType = "application/json; charset=utf-8";
             request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
             request.ContentLength = bytes.Length;

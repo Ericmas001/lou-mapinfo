@@ -15,8 +15,8 @@ namespace LouMapInfo.Reports.Items
             set { m_Count = value; }
         }
 
-        public PlayerCountReportItem(int count, bool showIfEmpty)
-            : base(showIfEmpty)
+        public PlayerCountReportItem(bool isDetailLine, int count)
+            : base(isDetailLine)
         {
             m_Count = count;
         }

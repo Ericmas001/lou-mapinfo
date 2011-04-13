@@ -15,8 +15,8 @@ namespace LouMapInfo.Reports.Items
             set { m_Text = value; }
         }
 
-        public TextReportItem(string text, bool showIfEmpty)
-            : base(showIfEmpty)
+        public TextReportItem(bool isDetailLine, string text)
+            : base(isDetailLine)
         {
             m_Text = text;
         }

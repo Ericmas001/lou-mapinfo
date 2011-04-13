@@ -83,6 +83,20 @@ namespace LouMapInfo.Reports.core
             BBCodeDisplay.Add("alliance", true);
         }
 
+        private void ReportDetail(StringBuilder sb, ReportItem it)
+        {
+            if (it.Items.Count > 0)
+            {
+                sb.Append("<ul>");
+                foreach (ReportItem it2 in it.Items)
+                {
+                    sb.Append(String.Format("<li>{0}</li>", it2.Value(options)));
+                    ReportDetail(sb, it2);
+                }
+                sb.Append("</ul>");
+            }
+        }
+
         public string Report(int d)
         {
             StringBuilder sb = new StringBuilder();
@@ -93,58 +107,28 @@ namespace LouMapInfo.Reports.core
             sb.Append(String.Format("<p align=\"right\">{0:yyyy}-{0:MM}-{0:dd}</p>", DateTime.Now));
             foreach (ReportItem it1 in root)
             {
-                if (it1.ShowEmpty || it1.Items.Count > 0)
+                if (it1.Items.Count > 0)
                 {
                     sb.Append("<hr />");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
                         sb.Append(String.Format("<center><h3>{0}</h3></center>", StringUtility.RemoveBBCodeTags(it1.Value(options))));
-                    sb.Append("<ul>");
-                    foreach (ReportItem it2 in it1.Items)
-                    {
-                        if (it2.ShowEmpty || it2.Items.Count > 0 || d == 1)
-                        {
-                            if (!String.IsNullOrEmpty(it2.Value(options)))
-                                sb.Append(String.Format("<li>{0}</li>", it2.Value(options)));
-                            if (d > 1 && it2.Items.Count > 0)
-                            {
-                                sb.Append("<ul>");
-                                foreach (ReportItem it3 in it2.Items)
-                                {
-                                    if (it3.ShowEmpty || it3.Items.Count > 0 || d == 2)
-                                    {
-                                        sb.Append(String.Format("<li>{0}</li>", it3.Value(options)));
-                                        if (d > 2 && it3.Items.Count > 0)
-                                        {
-                                            sb.Append("<ul>");
-                                            foreach (ReportItem it4 in it3.Items)
-                                            {
-                                                if (it4.ShowEmpty || it4.Items.Count > 0 || d == 3)
-                                                {
-                                                    sb.Append(String.Format("<li>{0}</li>", it4.Value(options)));
-                                                    if (d > 3 && it4.Items.Count > 0)
-                                                    {
-                                                        sb.Append("<ul>");
-                                                        foreach (ReportItem it5 in it4.Items)
-                                                        {
-                                                            sb.Append(String.Format("<li>{0}</li>", it5.Value(options)));
-                                                        }
-                                                        sb.Append("</ul>");
-                                                    }
-                                                }
-                                            }
-                                            sb.Append("</ul>");
-                                        }
-                                    }
-                                }
-                                sb.Append("</ul>");
-                            }
-
-                        }
-                    }
-                    sb.Append("</ul>");
+                    ReportDetail(sb, it1);
                 }
             }
             return ReportText(sb.ToString());
+        }
+
+        private void BBCodeDetail(StringBuilder sb, ReportItem it)
+        {
+            if (it.Items.Count > 0)
+            {
+                foreach (ReportItem it2 in it.Items)
+                {
+                    sb.Append(String.Format("{0}\n", it2.Value(options)));
+                    BBCodeDetail(sb, it2);
+                }
+                sb.Append("\n");
+            }
         }
 
         public string BBCode(int d)
@@ -159,52 +143,12 @@ namespace LouMapInfo.Reports.core
             sb.Append("\n");
             foreach (ReportItem it1 in root)
             {
-                if (it1.ShowEmpty || it1.Items.Count > 0)
+                if (it1.Items.Count > 0)
                 {
                     sb.Append("[hr]\n");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
                         sb.Append(String.Format("[b]{0}[/b]", it1.Value(options)));
-                    if (it1.Items.Count > 0)
-                        sb.Append("\n");
-
-                    foreach (ReportItem it2 in it1.Items)
-                    {
-                        if (it2.ShowEmpty || it2.Items.Count > 0 || d == 1)
-                        {
-                            if (d > 1 && it2.Items.Count > 0)
-                                sb.Append("\n");
-                            if (!String.IsNullOrEmpty(it2.Value(options)))
-                                sb.Append(String.Format("{0}\n", it2.Value(options)));
-                            if (d > 1 && it2.Items.Count > 0)
-                            {
-                                foreach (ReportItem it3 in it2.Items)
-                                {
-                                    if (it3.ShowEmpty || it3.Items.Count > 0 || d == 2)
-                                    {
-                                        sb.Append(String.Format("{0}\n", it3.Value(options)));
-                                        if (d > 2 && it3.Items.Count > 0)
-                                        {
-                                            foreach (ReportItem it4 in it3.Items)
-                                            {
-                                                if (it4.ShowEmpty || it4.Items.Count > 0 || d == 3)
-                                                {
-                                                    sb.Append(String.Format("{0}\n", it4.Value(options)));
-                                                    if (d > 3 && it4.Items.Count > 0)
-                                                    {
-                                                        foreach (ReportItem it5 in it4.Items)
-                                                        {
-                                                            sb.Append(String.Format("{0}\n", it5.Value(options)));
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
-                    }
+                    BBCodeDetail(sb, it1);
                 }
             }
             return BBCodeText(sb.ToString());
@@ -334,15 +278,15 @@ namespace LouMapInfo.Reports.core
                 {
                     ReportItem r3;
                     if (!el)
-                        r3 = new CityTypeReportItem(citiesW.Length, cityType, BorderingType.Water, true);
+                        r3 = new CityTypeReportItem(false, citiesW.Length, cityType, BorderingType.Water);
                     else if (!ew)
-                        r3 = new CityTypeReportItem(citiesL.Length, cityType, BorderingType.Land, true);
+                        r3 = new CityTypeReportItem(false, citiesL.Length, cityType, BorderingType.Land);
                     else
-                        r3 = new CityTypeReportItem(count, cityType, true);
+                        r3 = new CityTypeReportItem(false, count, cityType);
 
                     if (ew && citiesW.Length > 0)
                     {
-                        ReportItem r4 = !el ? r3 : new BorderingTypeReportItem(citiesW.Length, BorderingType.Water, true);
+                        ReportItem r4 = !el ? r3 : new BorderingTypeReportItem(false, citiesW.Length, BorderingType.Water);
                         Array.Sort(citiesW);
                         Array.Reverse(citiesW);
                         foreach (CityInfo c in citiesW)
@@ -350,27 +294,27 @@ namespace LouMapInfo.Reports.core
                             if (c.TypeCity == CityType.Palace)
                             {
                                 c.LoadIfNeeded();
-                                r4.Items.Add(new DetailedPalaceInfoReportItem(c, true, false, false, false, true, true));
+                                r4.Items.Add(new DetailedPalaceInfoReportItem(true, c, false, false, false, true, true));
                             }
                             else
-                                r4.Items.Add(new CityInfoReportItem(c, true));
+                                r4.Items.Add(new CityInfoReportItem(true, c));
                         }
                         if (el)
                             r3.Items.Add(r4);
                     }
                     if (el && citiesL.Length > 0)
                     {
-                        ReportItem r4 = !ew ? r3 : new BorderingTypeReportItem(citiesL.Length, BorderingType.Land, true);
+                        ReportItem r4 = !ew ? r3 : new BorderingTypeReportItem(false, citiesL.Length, BorderingType.Land);
                         Array.Sort(citiesL);
                         Array.Reverse(citiesL);
                         foreach (CityInfo c in citiesL)
                             if (c.TypeCity == CityType.Palace)
                             {
                                 c.LoadIfNeeded();
-                                r4.Items.Add(new DetailedPalaceInfoReportItem(c, true, false, false, false, true, true));
+                                r4.Items.Add(new DetailedPalaceInfoReportItem(true, c, false, false, false, true, true));
                             }
                             else
-                                r4.Items.Add(new CityInfoReportItem(c, true));
+                                r4.Items.Add(new CityInfoReportItem(true, c));
                         if (ew)
                             r3.Items.Add(r4);
                     }
