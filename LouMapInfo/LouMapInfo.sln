@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityWinForms_4.0", "
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "LouMapInfoInstallShield", "LouMapInfoInstallShield\LouMapInfoInstallShield.isproj", "{0AFBA132-21FF-439B-9967-D3DA56484386}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoUMapInfoOnline", "LoUMapInfoOnline\LoUMapInfoOnline.csproj", "{42724157-1008-4F85-8739-52AAA0BC5705}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -218,6 +220,31 @@ Global
 		{0AFBA132-21FF-439B-9967-D3DA56484386}.SingleImage|Mixed Platforms.Build.0 = SingleImage
 		{0AFBA132-21FF-439B-9967-D3DA56484386}.SingleImage|x86.ActiveCfg = SingleImage
 		{0AFBA132-21FF-439B-9967-D3DA56484386}.SingleImage|x86.Build.0 = SingleImage
+		{42724157-1008-4F85-8739-52AAA0BC5705}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.Release|x86.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
+		{42724157-1008-4F85-8739-52AAA0BC5705}.SingleImage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
