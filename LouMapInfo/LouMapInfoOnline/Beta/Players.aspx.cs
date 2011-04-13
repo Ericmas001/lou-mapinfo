@@ -12,9 +12,12 @@ namespace LoUMapInfoOnline.Beta
 {
     public partial class Players : System.Web.UI.Page
     {
+        BetaMasterPage Beta;
         static PlayerInfo[] list = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Beta = Master as BetaMasterPage;
+            Page.Form.DefaultButton = btnShowPlayerReport.UniqueID;
             if (Session["betaSession"] == null)
             {
                 Server.Transfer("Default.aspx");
@@ -32,24 +35,16 @@ namespace LoUMapInfoOnline.Beta
         {
             SessionInfo session = (SessionInfo)Session["betaSession"];
             PlayerInfo info = session.World.Player(txtPlayerName.Text);
-            PlayerOverviewReport report = new PlayerOverviewReport(info);
-            foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
-            {
-                report.SetOption(o, true);
-            }
-            ReportLiteral.Text = report.Report();
+            if (info != null)
+                Beta.OpenReport(new PlayerOverviewReport(info));
         }
 
         protected void btnMe_Click(object sender, EventArgs e)
         {
             SessionInfo session = (SessionInfo)Session["betaSession"];
             PlayerInfo info = session.World.Player(session.PlayerID);
-            PlayerOverviewReport report = new PlayerOverviewReport(info);
-            foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
-            {
-                report.SetOption(o, true);
-            }
-            ReportLiteral.Text = report.Report();
+            if (info != null)
+                Beta.OpenReport(new PlayerOverviewReport(info));
         }
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[] GetCompletionList(string prefixText, int count, string contextKey)
