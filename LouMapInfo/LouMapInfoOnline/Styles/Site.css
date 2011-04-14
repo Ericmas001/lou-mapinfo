@@ -63,6 +63,10 @@ h2
 h3
 {
     font-size: 1.2em;
+    color: #b6b7bc;
+    background-color:#666666;
+    width:100%;
+    font-weight: bold
 }
 
 h4

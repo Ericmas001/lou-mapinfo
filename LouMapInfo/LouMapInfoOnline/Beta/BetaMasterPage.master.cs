@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
+using LouMapInfo.Entities.Filter;
 
 namespace LoUMapInfoOnline
 {
@@ -31,13 +32,33 @@ namespace LoUMapInfoOnline
         public void OpenReport(ReportInfo report)
         {
             Session["report"] = report;
+            chkFilterCastle.Visible = report.hasFilter(FilterType.TypeCastle);
+            chkFilterCity.Visible = report.hasFilter(FilterType.TypeCity);
+            chkFilterPalace.Visible = report.hasFilter(FilterType.TypePalace);
+            sepFilter1.Visible = report.hasType0Filter() && (report.hasType1Filter() || report.hasType2Filter() || report.hasType3Filter());
+
+            chkFilterLand.Visible = report.hasFilter(FilterType.BorderingLand);
+            chkFilterWater.Visible = report.hasFilter(FilterType.BorderingWater);
+            sepFilter2.Visible = report.hasType1Filter() && (report.hasType2Filter() || report.hasType3Filter());
+
+            chkFilterNoCities.Visible = report.hasFilter(FilterType.NoCities);
+            sepFilter3.Visible = report.hasType2Filter() && report.hasType3Filter();
+
+            chkFilterNoAlliance.Visible = report.hasFilter(FilterType.NoAlliance);
+
             foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
-            {
                 report.SetOption(o, true);
-            }
-            ReportLiteral.Text = report.Report();
-            BBCodeLabel.Text = report.BBCode().Replace("\n", "<br />");
+            foreach (FilterType o in Enum.GetValues(typeof(FilterType)))
+                report.SetFilter(o, true);
+            
             pnlReport.Visible = true;
+            RefreshReports();
+        }
+        private void RefreshReports()
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            ReportLiteral.Text = report.Report().Replace("<hr />", "");
+            BBCodeLabel.Text = report.BBCode().Replace("\n", "<br />");
         }
 
         protected void btnShowBBCode_Click(object sender, EventArgs e)
@@ -61,8 +82,81 @@ namespace LoUMapInfoOnline
         {
             ReportInfo report = (ReportInfo)Session["report"];
             report.ShowDetail = (RadioButtonList1.SelectedIndex == 0);
-            ReportLiteral.Text = report.Report();
-            BBCodeLabel.Text = report.BBCode().Replace("\n", "<br />");
+            RefreshReports();
+        }
+
+        protected void chkFilterCastle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkFilterCastle.Checked && !chkFilterCity.Checked && !chkFilterPalace.Checked)
+                chkFilterCastle.Checked = true;
+            else
+            {
+                ReportInfo report = (ReportInfo)Session["report"];
+                report.SetFilter(FilterType.TypeCastle, chkFilterCastle.Checked);
+                RefreshReports();
+            }
+        }
+
+        protected void chkFilterCity_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkFilterCastle.Checked && !chkFilterCity.Checked && !chkFilterPalace.Checked)
+                chkFilterCity.Checked = true;
+            else
+            {
+                ReportInfo report = (ReportInfo)Session["report"];
+                report.SetFilter(FilterType.TypeCity, chkFilterCity.Checked);
+                RefreshReports();
+            }
+        }
+
+        protected void chkFilterPalace_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkFilterCastle.Checked && !chkFilterCity.Checked && !chkFilterPalace.Checked)
+                chkFilterPalace.Checked = true;
+            else
+            {
+                ReportInfo report = (ReportInfo)Session["report"];
+                report.SetFilter(FilterType.TypePalace, chkFilterPalace.Checked);
+                RefreshReports();
+            }
+        }
+
+        protected void chkFilterLand_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkFilterLand.Checked && !chkFilterWater.Checked)
+                chkFilterLand.Checked = true;
+            else
+            {
+                ReportInfo report = (ReportInfo)Session["report"];
+                report.SetFilter(FilterType.BorderingLand, chkFilterLand.Checked);
+                RefreshReports();
+            }
+        }
+
+        protected void chkFilterWater_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkFilterLand.Checked && !chkFilterWater.Checked)
+                chkFilterWater.Checked = true;
+            else
+            {
+                ReportInfo report = (ReportInfo)Session["report"];
+                report.SetFilter(FilterType.BorderingWater, chkFilterWater.Checked);
+                RefreshReports();
+            }
+        }
+
+        protected void chkFilterNoCities_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetFilter(FilterType.NoCities, chkFilterNoCities.Checked);
+            RefreshReports();
+        }
+
+        protected void chkFilterNoAlliance_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetFilter(FilterType.NoAlliance, chkFilterNoAlliance.Checked);
+            RefreshReports();
         }
     }
 }

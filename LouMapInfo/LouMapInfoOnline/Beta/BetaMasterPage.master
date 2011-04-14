@@ -17,15 +17,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-13 2h00 AM Eastern Time: </span>If you click on Players you will get a report on yourself
-        <br />
     <span class="style4">2011-04-13 4h00 PM Eastern Time: </span>"Players" Works like in the App, you can get a report on yourself or any player
         <br />
     <span class="style4">2011-04-13 5h30 PM Eastern Time: </span>"Players" Use auto-completion, doesn't crash and is enterkey-user-frienly
          <br />
     <span class="style4">2011-04-13 8h30 PM Eastern Time: </span>It's back online and you can switch between Reports & BBCode
          <br />
-    <span class="style2">2011-04-13 9h00 PM Eastern Time: </span><span class="style1">Reports support Detailed and Summary</span>
+    <span class="style4">2011-04-13 9h00 PM Eastern Time: </span>Reports support Detailed and Summary
+         <br />
+    <span class="style2">2011-04-13 9h30 PM Eastern Time: </span><span class="style1">Reports support Filters</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
@@ -57,8 +57,8 @@
     </asp:Panel>
         <div class="main">
             <asp:ContentPlaceHolder ID="BetaMainContent" runat="server"/><p></p><p></p>
-            
             <asp:Panel ID="pnlReport" runat="server" Visible="False">
+            <hr />
                 <asp:Panel ID="pnlHtml" runat="server">
                     <b>Report Type:</b><asp:RadioButtonList ID="RadioButtonList1" runat="server" 
                         AutoPostBack="True" Height="23px" 
@@ -67,10 +67,31 @@
                         <asp:ListItem Selected="True" Value="Detailed">Detailed Report</asp:ListItem>
                         <asp:ListItem Value="Summary">Summary Report</asp:ListItem>
                     </asp:RadioButtonList>
-&nbsp;<br />
+&nbsp;<br /> <b>Filters:</b><asp:CheckBox ID="chkFilterCity" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkFilterCity_CheckedChanged" Text="Cities" />
+                    <asp:CheckBox ID="chkFilterCastle" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkFilterCastle_CheckedChanged" 
+                        Text="Castles" />
+                    <asp:CheckBox ID="chkFilterPalace" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkFilterPalace_CheckedChanged" 
+                        Text="Palaces" />
+                    <asp:Label ID="sepFilter1" runat="server" Text="&nbsp; -&nbsp; "></asp:Label>
+                    <asp:CheckBox ID="chkFilterLand" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkFilterLand_CheckedChanged" Text="Land" />
+                    <asp:CheckBox ID="chkFilterWater" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkFilterWater_CheckedChanged" Text="Water" />
+                    <asp:Label ID="sepFilter2" runat="server" Text="&nbsp; -&nbsp;  "></asp:Label>
+                    <asp:CheckBox ID="chkFilterNoCities" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkFilterNoCities_CheckedChanged" 
+                        Text="No Cities" />
+                    <asp:Label ID="sepFilter3" runat="server" Text="&nbsp; -&nbsp;  "></asp:Label>
+                    <asp:CheckBox ID="chkFilterNoAlliance" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkFilterNoAlliance_CheckedChanged" 
+                        Text="No Alliance" />
+                    <br />
                 <asp:Button ID="btnShowBBCode" runat="server" onclick="btnShowBBCode_Click" 
                     Text="Show BBCode" />
-                    <br />
+                    <hr />
                     <asp:Literal ID="ReportLiteral" runat="server"></asp:Literal>
                 </asp:Panel>
                 <asp:Panel ID="pnlBBCode" runat="server" Visible="False">
