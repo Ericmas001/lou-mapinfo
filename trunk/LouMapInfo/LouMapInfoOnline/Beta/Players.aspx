@@ -43,5 +43,4 @@
                     }
                 }
             </script>
-    </form>
 </asp:Content>

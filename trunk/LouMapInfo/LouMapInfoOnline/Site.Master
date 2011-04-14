@@ -34,14 +34,21 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/Beta/" Text="LoU Official"/>
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
-                        <asp:MenuItem NavigateUrl="~/Beta/" Text="Beta"/>
                     </Items>
                 </asp:Menu>
             </div>
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
             
         <script type="text/javascript"><!--
             google_ad_client = "ca-pub-2323638635500542";
@@ -54,12 +61,5 @@
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
-        </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="footer">
-    </div>
-    </form>
 </body>
 </html>

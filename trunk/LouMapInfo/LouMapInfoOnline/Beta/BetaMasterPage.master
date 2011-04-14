@@ -54,6 +54,7 @@
     </asp:Panel>
         <div class="main">
             <asp:ContentPlaceHolder ID="BetaMainContent" runat="server"/><p></p><p></p>
+            
             <asp:Panel ID="pnlReport" runat="server" Visible="False">
                 <asp:Panel ID="pnlHtml" runat="server">
                 <asp:Button ID="btnShowBBCode" runat="server" onclick="btnShowBBCode_Click" 
@@ -65,7 +66,7 @@
                 <asp:Button ID="btnShowReport" runat="server" onclick="btnShowReport_Click" 
                     Text="Show Report" />
                 <br />
-            <asp:Label ID="BBCodeLabel" runat="server"></asp:Label>
+            <asp:Label ID="BBCodeLabel" runat="server" BorderStyle="Solid" BorderWidth="2px"></asp:Label>
                 </asp:Panel>
             </asp:Panel>
         </div>

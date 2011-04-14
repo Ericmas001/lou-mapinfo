@@ -11,7 +11,6 @@ namespace LoUMapInfoOnline
 {
     public partial class BetaMasterPage : System.Web.UI.MasterPage
     {
-        ReportInfo report;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["betaSession"] != null)
@@ -29,9 +28,9 @@ namespace LoUMapInfoOnline
                 pnlDisconnectedMenu.Visible = true;
             }
         }
-        public void OpenReport(ReportInfo r)
+        public void OpenReport(ReportInfo report)
         {
-            report = r;
+            Session["report"] = report;
             foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
             {
                 report.SetOption(o, true);
@@ -43,14 +42,15 @@ namespace LoUMapInfoOnline
 
         protected void btnShowBBCode_Click(object sender, EventArgs e)
         {
-            BBCodeLabel.Text = report.BBCode();
+            ReportInfo report = (ReportInfo)Session["report"];
+            BBCodeLabel.Text = report.BBCode().Replace("\n","<br />");
             pnlBBCode.Visible = true;
             pnlHtml.Visible = false;
         }
 
         protected void btnShowReport_Click(object sender, EventArgs e)
         {
-            ReportLiteral.Text = report.Report();
+            ReportInfo report = (ReportInfo)Session["report"];
             pnlBBCode.Visible = false;
             pnlHtml.Visible = true;
         }
