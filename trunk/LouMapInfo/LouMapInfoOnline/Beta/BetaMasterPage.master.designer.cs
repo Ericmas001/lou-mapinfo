@@ -76,15 +76,6 @@ namespace LoUMapInfoOnline {
         protected global::System.Web.UI.WebControls.Panel pnlReport;
         
         /// <summary>
-        /// pnlHtml control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlHtml;
-        
-        /// <summary>
         /// RadioButtonList1 control.
         /// </summary>
         /// <remarks>
@@ -283,6 +274,15 @@ namespace LoUMapInfoOnline {
         protected global::System.Web.UI.WebControls.CheckBox chkDisplayAllianceRank;
         
         /// <summary>
+        /// pnlHtml control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlHtml;
+        
+        /// <summary>
         /// btnShowBBCode control.
         /// </summary>
         /// <remarks>
@@ -317,6 +317,78 @@ namespace LoUMapInfoOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnShowReport;
+        
+        /// <summary>
+        /// chkBBCodeB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodeB;
+        
+        /// <summary>
+        /// chkBBCodeU control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodeU;
+        
+        /// <summary>
+        /// chkBBCodeI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodeI;
+        
+        /// <summary>
+        /// chkBBCodeS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodeS;
+        
+        /// <summary>
+        /// chkBBCodeUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodeUrl;
+        
+        /// <summary>
+        /// chkBBCodeCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodeCity;
+        
+        /// <summary>
+        /// chkBBCodePlayer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodePlayer;
+        
+        /// <summary>
+        /// chkBBCodeAlliance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBBCodeAlliance;
         
         /// <summary>
         /// BBCodeLabel control.

@@ -17,15 +17,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-13 05h30 PM Eastern Time: </span>"Players" Use auto-completion, doesn't crash and is enterkey-user-frienly
-         <br />
     <span class="style4">2011-04-13 08h30 PM Eastern Time: </span>It's back online and you can switch between Reports & BBCode
          <br />
     <span class="style4">2011-04-13 09h00 PM Eastern Time: </span>Reports support Detailed and Summary
          <br />
     <span class="style4">2011-04-13 09h30 PM Eastern Time: </span>Reports support Filters
          <br />
-    <span class="style2">2011-04-14 11h00 AM Eastern Time: </span><span class="style1">Reports support Display Options</span>
+    <span class="style4">2011-04-14 11h00 AM Eastern Time: </span>Reports support Display Options
+        <br />
+    <span class="style2">2011-04-14 03h30 PM Eastern Time: </span><span class="style1">Reports support BBCode Options</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
@@ -39,7 +39,7 @@
     <b>Connected as: </b>
     <asp:Label ID="lblbetaSession" runat="server"></asp:Label> &nbsp; &nbsp; 
     <asp:Button ID="btnDisconnect" runat="server" Text="Disconnect" 
-        onclick="btnDisconnect_Click" />
+        onclick="btnDisconnect_Click" /> <br />
     <asp:Menu ID="Menu1" runat="server" CssClass="menu2" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
         <Items>
             <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Rankings" 
@@ -59,7 +59,6 @@
             <asp:ContentPlaceHolder ID="BetaMainContent" runat="server"/><p></p><p></p>
             <asp:Panel ID="pnlReport" runat="server" Visible="False">
             <hr />
-                <asp:Panel ID="pnlHtml" runat="server">
                     <b>Report Type:</b><asp:RadioButtonList ID="RadioButtonList1" runat="server" 
                         AutoPostBack="True" Height="23px" 
                         onselectedindexchanged="RadioButtonList1_SelectedIndexChanged" 
@@ -121,6 +120,7 @@
                         Checked="True" oncheckedchanged="chkDisplayAllianceRank_CheckedChanged" 
                         Text="Alliance Rank" />
                     <br />
+                <asp:Panel ID="pnlHtml" runat="server">
                 <asp:Button ID="btnShowBBCode" runat="server" onclick="btnShowBBCode_Click" 
                     Text="Show BBCode" />
                     <hr />
@@ -130,7 +130,35 @@
                 <asp:Button ID="btnShowReport" runat="server" onclick="btnShowReport_Click" 
                     Text="Show Report" />
                 <br />
-            <asp:Label ID="BBCodeLabel" runat="server" BorderStyle="Solid" BorderWidth="2px"></asp:Label>
+                    <b>BBCode:</b><asp:CheckBox ID="chkBBCodeB" runat="server" 
+                        AutoPostBack="True" Checked="True" Text="[b] [/b]" 
+                        oncheckedchanged="chkBBCodeB_CheckedChanged" />
+                    <asp:CheckBox ID="chkBBCodeU" runat="server" AutoPostBack="True" 
+                        Checked="True" 
+                        Text="[u] [/u]" oncheckedchanged="chkBBCodeU_CheckedChanged" />
+                    <asp:CheckBox ID="chkBBCodeI" runat="server" AutoPostBack="True" 
+                        Checked="True" 
+                        Text="[i] [/i]" oncheckedchanged="chkBBCodeI_CheckedChanged" />
+                    <asp:CheckBox ID="chkBBCodeS" runat="server" AutoPostBack="True" 
+                        Checked="True" 
+                        Text="[s] [/s]" oncheckedchanged="chkBBCodeS_CheckedChanged" />
+                    <asp:CheckBox ID="chkBBCodeUrl" runat="server" AutoPostBack="True" 
+                        Checked="True" 
+                        Text="[url] [/url]" oncheckedchanged="chkBBCodeUrl_CheckedChanged" />
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:CheckBox ID="chkBBCodeCity" runat="server" AutoPostBack="True" 
+                        Text="[city][/city]" oncheckedchanged="chkBBCodeCity_CheckedChanged" />
+                    <asp:CheckBox ID="chkBBCodePlayer" runat="server" AutoPostBack="True" 
+                        Checked="True" 
+                        Text="[player] [/player]" 
+                        oncheckedchanged="chkBBCodePlayer_CheckedChanged" />
+                    <asp:CheckBox ID="chkBBCodeAlliance" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="[alliance] [/alliance]" 
+                        oncheckedchanged="chkBBCodeAlliance_CheckedChanged" />
+                    <br />
+                    <asp:Label ID="BBCodeLabel" runat="server" BorderStyle="Solid" 
+                        BorderWidth="2px"></asp:Label>
                 </asp:Panel>
             </asp:Panel>
         </div>
