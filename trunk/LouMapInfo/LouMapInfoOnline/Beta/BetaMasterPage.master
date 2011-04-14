@@ -17,15 +17,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-13 4h00 PM Eastern Time: </span>"Players" Works like in the App, you can get a report on yourself or any player
-        <br />
-    <span class="style4">2011-04-13 5h30 PM Eastern Time: </span>"Players" Use auto-completion, doesn't crash and is enterkey-user-frienly
+    <span class="style4">2011-04-13 05h30 PM Eastern Time: </span>"Players" Use auto-completion, doesn't crash and is enterkey-user-frienly
          <br />
-    <span class="style4">2011-04-13 8h30 PM Eastern Time: </span>It's back online and you can switch between Reports & BBCode
+    <span class="style4">2011-04-13 08h30 PM Eastern Time: </span>It's back online and you can switch between Reports & BBCode
          <br />
-    <span class="style4">2011-04-13 9h00 PM Eastern Time: </span>Reports support Detailed and Summary
+    <span class="style4">2011-04-13 09h00 PM Eastern Time: </span>Reports support Detailed and Summary
          <br />
-    <span class="style2">2011-04-13 9h30 PM Eastern Time: </span><span class="style1">Reports support Filters</span>
+    <span class="style4">2011-04-13 09h30 PM Eastern Time: </span>Reports support Filters
+         <br />
+    <span class="style2">2011-04-14 11h00 AM Eastern Time: </span><span class="style1">Reports support Display Options</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
@@ -88,6 +88,38 @@
                     <asp:CheckBox ID="chkFilterNoAlliance" runat="server" AutoPostBack="True" 
                         Checked="True" oncheckedchanged="chkFilterNoAlliance_CheckedChanged" 
                         Text="No Alliance" />
+                    <br />
+                    <b>Display:</b><asp:CheckBox ID="chkDisplayCityCount" runat="server" 
+                        AutoPostBack="True" Checked="True" 
+                        oncheckedchanged="chkDisplayCityCount_CheckedChanged" Text="City Count" />
+                    <asp:CheckBox ID="chkDisplayCityScore" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayCityScore_CheckedChanged" 
+                        Text="City Score" />
+                    <asp:CheckBox ID="chkDisplayCityName" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayCityName_CheckedChanged" 
+                        Text="City Name" />
+                    <asp:Label ID="sepFilter4" runat="server" Text="&nbsp; -&nbsp; "></asp:Label>
+                    <asp:CheckBox ID="chkDisplayPalaceLvl" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayPalaceLvl_CheckedChanged" 
+                        Text="Palace Level" />
+                    <asp:CheckBox ID="chkDisplayPalaceVirtue" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayPalaceVirtue_CheckedChanged" 
+                        Text="Palace Virtue" />
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:CheckBox ID="chkDisplayPlayerCount" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayPlayerCount_CheckedChanged" 
+                        Text="Player Count" />
+                    <asp:CheckBox ID="chkDisplayPlayerScore" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayPlayerScore_CheckedChanged" 
+                        Text="Player Score" />
+                    <asp:Label ID="sepFilter6" runat="server" Text="&nbsp; -&nbsp;  "></asp:Label>
+                    <asp:CheckBox ID="chkDisplayAllianceScore" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayAllianceScore_CheckedChanged" 
+                        Text="Alliance Score" />
+                    <asp:CheckBox ID="chkDisplayAllianceRank" runat="server" AutoPostBack="True" 
+                        Checked="True" oncheckedchanged="chkDisplayAllianceRank_CheckedChanged" 
+                        Text="Alliance Rank" />
                     <br />
                 <asp:Button ID="btnShowBBCode" runat="server" onclick="btnShowBBCode_Click" 
                     Text="Show BBCode" />

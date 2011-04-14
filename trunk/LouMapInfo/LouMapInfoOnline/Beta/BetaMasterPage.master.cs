@@ -158,5 +158,68 @@ namespace LoUMapInfoOnline
             report.SetFilter(FilterType.NoAlliance, chkFilterNoAlliance.Checked);
             RefreshReports();
         }
+
+        protected void chkDisplayCityCount_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.CityCount, chkDisplayCityCount.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayCityScore_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.CityScore, chkDisplayCityScore.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayCityName_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.CityName, chkDisplayCityName.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayPalaceLvl_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.PalaceLevel, chkDisplayPalaceLvl.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayPalaceVirtue_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.PalaceVirtue, chkDisplayPalaceVirtue.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayPlayerCount_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.PlayerCount, chkDisplayPlayerCount.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayPlayerScore_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.PlayerScore, chkDisplayPlayerScore.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayAllianceScore_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.AllianceScore, chkDisplayAllianceScore.Checked);
+            RefreshReports();
+        }
+
+        protected void chkDisplayAllianceRank_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetOption(ReportOption.AllianceRank, chkDisplayAllianceRank.Checked);
+            RefreshReports();
+        }
     }
 }
