@@ -61,6 +61,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Beta\Alliances.aspx" />
     <Content Include="Beta\Disconnect.aspx" />
     <Content Include="Beta\Players.aspx" />
     <Content Include="Beta\Default.aspx" />
@@ -117,6 +118,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Beta\Alliances.aspx.cs">
+      <DependentUpon>Alliances.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Beta\Alliances.aspx.designer.cs">
+      <DependentUpon>Alliances.aspx</DependentUpon>
     </Compile>
     <Compile Include="Beta\Disconnect.aspx.cs">
       <DependentUpon>Disconnect.aspx</DependentUpon>

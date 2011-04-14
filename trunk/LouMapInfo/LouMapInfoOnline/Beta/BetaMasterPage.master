@@ -46,7 +46,7 @@
                 Value="Rankings"></asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Beta/Players.aspx" Text="Players" 
                 Value="Players"></asp:MenuItem>
-            <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Alliances" 
+            <asp:MenuItem NavigateUrl="~/Beta/Alliances.aspx" Text="Alliances" 
                 Value="Alliances"></asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Continent" 
                 Value="Continent"></asp:MenuItem>

@@ -44,6 +44,15 @@ namespace LouMapInfo.Entities
                 return res;
             }
         }
+        public AllianceInfo[] Alliances
+        {
+            get
+            {
+                AllianceInfo[] res = new AllianceInfo[m_AlliancesByName.Count];
+                m_AlliancesByName.Values.CopyTo(res, 0);
+                return res;
+            }
+        }
 
         public WorldInfo(SessionInfo session, string name)
             : base()
