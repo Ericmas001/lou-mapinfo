@@ -184,6 +184,105 @@ namespace LoUMapInfoOnline {
         protected global::System.Web.UI.WebControls.CheckBox chkFilterNoAlliance;
         
         /// <summary>
+        /// chkDisplayCityCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayCityCount;
+        
+        /// <summary>
+        /// chkDisplayCityScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayCityScore;
+        
+        /// <summary>
+        /// chkDisplayCityName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayCityName;
+        
+        /// <summary>
+        /// sepFilter4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label sepFilter4;
+        
+        /// <summary>
+        /// chkDisplayPalaceLvl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayPalaceLvl;
+        
+        /// <summary>
+        /// chkDisplayPalaceVirtue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayPalaceVirtue;
+        
+        /// <summary>
+        /// chkDisplayPlayerCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayPlayerCount;
+        
+        /// <summary>
+        /// chkDisplayPlayerScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayPlayerScore;
+        
+        /// <summary>
+        /// sepFilter6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label sepFilter6;
+        
+        /// <summary>
+        /// chkDisplayAllianceScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayAllianceScore;
+        
+        /// <summary>
+        /// chkDisplayAllianceRank control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDisplayAllianceRank;
+        
+        /// <summary>
         /// btnShowBBCode control.
         /// </summary>
         /// <remarks>
