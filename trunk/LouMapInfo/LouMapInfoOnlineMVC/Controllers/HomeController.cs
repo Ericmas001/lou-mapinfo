@@ -11,13 +11,14 @@ namespace LouMapInfoOnlineMVC.Controllers
     {
         public ActionResult Index()
         {
-            ViewData["Message"] = "Welcome to LoU Map Info Online";
+            ViewData["Header"] = "Welcome to LoU Map Info Online";
 
             return View();
         }
 
         public ActionResult About()
         {
+            ViewData["Header"] = "About";
             return View();
         }
     }
