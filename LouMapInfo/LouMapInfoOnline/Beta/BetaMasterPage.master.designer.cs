@@ -40,6 +40,15 @@ namespace LoUMapInfoOnline {
         protected global::System.Web.UI.WebControls.Label lblbetaSession;
         
         /// <summary>
+        /// btnDisconnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDisconnect;
+        
+        /// <summary>
         /// Menu1 control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace LoUMapInfoOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlHtml;
+        
+        /// <summary>
+        /// RadioButtonList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
         
         /// <summary>
         /// btnShowBBCode control.
