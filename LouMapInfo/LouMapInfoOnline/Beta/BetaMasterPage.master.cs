@@ -221,5 +221,61 @@ namespace LoUMapInfoOnline
             report.SetOption(ReportOption.AllianceRank, chkDisplayAllianceRank.Checked);
             RefreshReports();
         }
+
+        protected void chkBBCodeB_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["b"] = chkBBCodeB.Checked;
+            RefreshReports();
+        }
+
+        protected void chkBBCodeU_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["u"] = chkBBCodeU.Checked;
+            RefreshReports();
+        }
+
+        protected void chkBBCodeI_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["i"] = chkBBCodeI.Checked;
+            RefreshReports();
+        }
+
+        protected void chkBBCodeS_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["i"] = chkBBCodeS.Checked;
+            RefreshReports();
+        }
+
+        protected void chkBBCodeUrl_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["url"] = chkBBCodeUrl.Checked;
+            RefreshReports();
+        }
+
+        protected void chkBBCodeCity_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["city"] = chkBBCodeCity.Checked;
+            RefreshReports();
+        }
+
+        protected void chkBBCodePlayer_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["player"] = chkBBCodePlayer.Checked;
+            RefreshReports();
+        }
+
+        protected void chkBBCodeAlliance_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.BBCodeDisplay["alliance"] = chkBBCodeAlliance.Checked;
+            RefreshReports();
+        }
     }
 }
