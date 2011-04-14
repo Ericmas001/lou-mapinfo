@@ -36,23 +36,33 @@ namespace LoUMapInfoOnline
                 report.SetOption(o, true);
             }
             ReportLiteral.Text = report.Report();
-            BBCodeLabel.Text = report.BBCode();
+            BBCodeLabel.Text = report.BBCode().Replace("\n", "<br />");
             pnlReport.Visible = true;
         }
 
         protected void btnShowBBCode_Click(object sender, EventArgs e)
         {
-            ReportInfo report = (ReportInfo)Session["report"];
-            BBCodeLabel.Text = report.BBCode().Replace("\n","<br />");
             pnlBBCode.Visible = true;
             pnlHtml.Visible = false;
         }
 
         protected void btnShowReport_Click(object sender, EventArgs e)
         {
-            ReportInfo report = (ReportInfo)Session["report"];
             pnlBBCode.Visible = false;
             pnlHtml.Visible = true;
+        }
+
+        protected void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Disconnect.aspx");
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.ShowDetail = (RadioButtonList1.SelectedIndex == 0);
+            ReportLiteral.Text = report.Report();
+            BBCodeLabel.Text = report.BBCode().Replace("\n", "<br />");
         }
     }
 }
