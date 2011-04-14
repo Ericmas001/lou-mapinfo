@@ -6,20 +6,21 @@ using System.Web.Mvc;
 
 namespace LouMapInfoOnlineMVC.Controllers
 {
-    [HandleError]
-    public class HomeController : Controller
+    public class OfficialController : Controller
     {
+        //
+        // GET: /Official/
+
         public ActionResult Index()
         {
-            ViewData["Header"] = "Welcome to LoU Map Info Online";
-
-            return View();
+            if (Session["louSession"] == null)
+                return View("Connect");
+            return View("Players");
         }
-
-        public ActionResult About()
+        public ActionResult Connect()
         {
-            ViewData["Header"] = "About";
             return View();
         }
+
     }
 }
