@@ -17,15 +17,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-13 08h30 PM Eastern Time: </span>It's back online and you can switch between Reports & BBCode
-         <br />
-    <span class="style4">2011-04-13 09h00 PM Eastern Time: </span>Reports support Detailed and Summary
-         <br />
     <span class="style4">2011-04-13 09h30 PM Eastern Time: </span>Reports support Filters
          <br />
     <span class="style4">2011-04-14 11h00 AM Eastern Time: </span>Reports support Display Options
         <br />
-    <span class="style2">2011-04-14 03h30 PM Eastern Time: </span><span class="style1">Reports support BBCode Options</span>
+    <span class="style4">2011-04-14 03h30 PM Eastern Time: </span>Reports support BBCode Options
+        <br />
+    <span class="style4">2011-04-14 04h00 PM Eastern Time: </span>Alliance Reports works with all the reports Feature, auto complete, etc.
+        <br />
+    <span class="style2">2011-04-14 09h30 PM Eastern Time: </span><span class="style1">Continent Reports works with all the reports Features and have a continent picker working</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
@@ -48,7 +48,7 @@
                 Value="Players"></asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Beta/Alliances.aspx" Text="Alliances" 
                 Value="Alliances"></asp:MenuItem>
-            <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Continent" 
+            <asp:MenuItem NavigateUrl="~/Beta/Continents.aspx" Text="Continent" 
                 Value="Continent"></asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Beta/Default.aspx" Text="Virtue" 
                 Value="Virtue"></asp:MenuItem>
