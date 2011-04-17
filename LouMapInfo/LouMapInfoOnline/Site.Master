@@ -16,7 +16,7 @@
                     <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/menu_Official.png" 
                         ImageAlign="Middle" />
                     &nbsp;
-                    LoU Map Info Online
+                    LoU Map Info Online (Beta)
                 </h1>
             </div><!---
             <div class="loginDisplay">
@@ -34,7 +34,7 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/Beta/" Text="LoU Official"/>
+                        <asp:MenuItem NavigateUrl="~/Official/" Text="LoU Official"/>
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
                     </Items>
                 </asp:Menu>
