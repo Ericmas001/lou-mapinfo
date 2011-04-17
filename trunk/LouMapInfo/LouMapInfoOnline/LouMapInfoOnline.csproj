@@ -61,11 +61,11 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Beta\Alliances.aspx" />
-    <Content Include="Beta\Continents.aspx" />
-    <Content Include="Beta\Disconnect.aspx" />
-    <Content Include="Beta\Players.aspx" />
-    <Content Include="Beta\Default.aspx" />
+    <Content Include="Official\Alliances.aspx" />
+    <Content Include="Official\Continents.aspx" />
+    <Content Include="Official\Disconnect.aspx" />
+    <Content Include="Official\Players.aspx" />
+    <Content Include="Official\Default.aspx" />
     <Content Include="favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -120,46 +120,46 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Beta\Alliances.aspx.cs">
+    <Compile Include="Official\Alliances.aspx.cs">
       <DependentUpon>Alliances.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Beta\Alliances.aspx.designer.cs">
+    <Compile Include="Official\Alliances.aspx.designer.cs">
       <DependentUpon>Alliances.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Beta\Continents.aspx.cs">
+    <Compile Include="Official\Continents.aspx.cs">
       <DependentUpon>Continents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Beta\Continents.aspx.designer.cs">
+    <Compile Include="Official\Continents.aspx.designer.cs">
       <DependentUpon>Continents.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Beta\Disconnect.aspx.cs">
+    <Compile Include="Official\Disconnect.aspx.cs">
       <DependentUpon>Disconnect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Beta\Disconnect.aspx.designer.cs">
+    <Compile Include="Official\Disconnect.aspx.designer.cs">
       <DependentUpon>Disconnect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Beta\Players.aspx.cs">
+    <Compile Include="Official\Players.aspx.cs">
       <DependentUpon>Players.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Beta\Players.aspx.designer.cs">
+    <Compile Include="Official\Players.aspx.designer.cs">
       <DependentUpon>Players.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Beta\BetaMasterPage.master.cs">
-      <DependentUpon>BetaMasterPage.master</DependentUpon>
+    <Compile Include="Official\OfficialMasterPage.master.cs">
+      <DependentUpon>OfficialMasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Beta\BetaMasterPage.master.designer.cs">
-      <DependentUpon>BetaMasterPage.master</DependentUpon>
+    <Compile Include="Official\OfficialMasterPage.master.designer.cs">
+      <DependentUpon>OfficialMasterPage.master</DependentUpon>
     </Compile>
-    <Compile Include="Beta\Default.aspx.cs">
+    <Compile Include="Official\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Beta\Default.aspx.designer.cs">
+    <Compile Include="Official\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -199,7 +199,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Beta\BetaMasterPage.master" />
+    <Content Include="Official\OfficialMasterPage.master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
