@@ -24,8 +24,13 @@ namespace LoUMapInfoOnline
 
         void Application_Error(object sender, EventArgs e)
         {
-            // Code that runs when an unhandled error occurs
+            //uncomment this to narrow down 'helpful' microsoft messages
+            //HttpRequest request = ((HttpApplication)sender).Context.Request; 
 
+
+            Exception ex = Server.GetLastError();
+            //ErrorManager is a custom error handling module
+            Response.Redirect("Default.aspx?error=" + HttpUtility.UrlEncode(ex.Message), true);
         }
 
         void Session_Start(object sender, EventArgs e)
