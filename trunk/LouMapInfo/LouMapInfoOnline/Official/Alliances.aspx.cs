@@ -18,13 +18,13 @@ namespace LoUMapInfoOnline.Official
         {
             Official = Master as OfficialMasterPage;
             Page.Form.DefaultButton = btnShowAllianceReport.UniqueID;
-            if (Session["betaSession"] == null)
+            if (Session["louSession"] == null)
             {
                 Server.Transfer("Default.aspx");
             }
             else
             {
-                SessionInfo session = (SessionInfo)Session["betaSession"];
+                SessionInfo session = (SessionInfo)Session["louSession"];
                 if (Alliance.list == null)
                     Alliance.list = session.World.Alliances;
                 if (session.AllianceID > 0)
@@ -39,7 +39,7 @@ namespace LoUMapInfoOnline.Official
 
         protected void btnShowAllianceReport_Click(object sender, EventArgs e)
         {
-            SessionInfo session = (SessionInfo)Session["betaSession"];
+            SessionInfo session = (SessionInfo)Session["louSession"];
             AllianceInfo info = session.World.Alliance(txtAllianceName.Text);
             if (info != null)
                 Official.OpenReport(new AllianceOverviewReport(info));
@@ -47,7 +47,7 @@ namespace LoUMapInfoOnline.Official
 
         protected void btnMe_Click(object sender, EventArgs e)
         {
-            SessionInfo session = (SessionInfo)Session["betaSession"];
+            SessionInfo session = (SessionInfo)Session["louSession"];
             AllianceInfo info = session.World.Alliance(session.AllianceID);
             if (info != null)
                 Official.OpenReport(new AllianceOverviewReport(info));

@@ -14,14 +14,14 @@ namespace LoUMapInfoOnline
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["betaSession"] != null)
+            if (Session["louSession"] != null)
             {
                 pnlConnectedMenu.Visible = true;
                 pnlDisconnectedMenu.Visible = false;
-                SessionInfo session = (SessionInfo)Session["betaSession"];
+                SessionInfo session = (SessionInfo)Session["louSession"];
                 string pName = session.World.Player(session.PlayerID).Name;
                 string aName = session.World.Alliance(session.AllianceID).Name;
-                lblbetaSession.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")")) + " on " + session.World.Name;
+                lbllouSession.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")")) + " on " + session.World.Name;
             }
             else
             {

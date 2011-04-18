@@ -11,7 +11,7 @@ namespace LoUMapInfoOnline.Official
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["betaSession"] = null;
+            Session["louSession"] = null;
             Server.Transfer("~/Default.aspx");
         }
     }

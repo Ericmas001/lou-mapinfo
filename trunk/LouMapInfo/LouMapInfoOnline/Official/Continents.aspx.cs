@@ -16,13 +16,13 @@ namespace LoUMapInfoOnline.Official
         protected void Page_Load(object sender, EventArgs e)
         {
             Official = Master as OfficialMasterPage;
-            if (Session["betaSession"] == null)
+            if (Session["louSession"] == null)
             {
                 Server.Transfer("Default.aspx");
             }
             else
             {
-                SessionInfo session = (SessionInfo)Session["betaSession"];
+                SessionInfo session = (SessionInfo)Session["louSession"];
                 foreach (int c in session.World.Player(session.PlayerID).ActiveContinents)
                 {
                     Button b = new Button();
@@ -42,7 +42,7 @@ namespace LoUMapInfoOnline.Official
 
         protected void btnContinent_Click(object sender, EventArgs e)
         {
-            SessionInfo session = (SessionInfo)Session["betaSession"];
+            SessionInfo session = (SessionInfo)Session["louSession"];
             string c = ((Button)sender).Text;
             Official.OpenReport(new ContinentOverviewReport(session.World.Continent(int.Parse(c))));
         }

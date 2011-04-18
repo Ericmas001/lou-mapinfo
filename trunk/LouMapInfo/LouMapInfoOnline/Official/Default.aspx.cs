@@ -13,7 +13,7 @@ namespace LoUMapInfoOnline.Official
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["betaSession"] == null)
+            if (Session["louSession"] == null)
             {
                 pnlConnexion.Visible = true;
                 foreach (ServerInfo s in ServerList.AllServers)
@@ -51,7 +51,7 @@ namespace LoUMapInfoOnline.Official
                 if (connect)
                 {
                     session.World.ForceLoad();
-                    Session.Add("betaSession", session);
+                    Session.Add("louSession", session);
                     Server.Transfer("~/Official/Default.aspx");
                     //InitSession(session);
                 }

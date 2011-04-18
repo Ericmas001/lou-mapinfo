@@ -18,13 +18,13 @@ namespace LoUMapInfoOnline.Official
         {
             Official = Master as OfficialMasterPage;
             Page.Form.DefaultButton = btnShowPlayerReport.UniqueID;
-            if (Session["betaSession"] == null)
+            if (Session["louSession"] == null)
             {
                 Server.Transfer("Default.aspx");
             }
             else
             {
-                SessionInfo session = (SessionInfo)Session["betaSession"];
+                SessionInfo session = (SessionInfo)Session["louSession"];
                 if (Players.list == null)
                     Players.list = session.World.Players;
                 btnMe.Text = session.World.Player(session.PlayerID).Name;
@@ -33,7 +33,7 @@ namespace LoUMapInfoOnline.Official
 
         protected void btnShowPlayerReport_Click(object sender, EventArgs e)
         {
-            SessionInfo session = (SessionInfo)Session["betaSession"];
+            SessionInfo session = (SessionInfo)Session["louSession"];
             PlayerInfo info = session.World.Player(txtPlayerName.Text);
             if (info != null)
                 Official.OpenReport(new PlayerOverviewReport(info));
@@ -41,7 +41,7 @@ namespace LoUMapInfoOnline.Official
 
         protected void btnMe_Click(object sender, EventArgs e)
         {
-            SessionInfo session = (SessionInfo)Session["betaSession"];
+            SessionInfo session = (SessionInfo)Session["louSession"];
             PlayerInfo info = session.World.Player(session.PlayerID);
             if (info != null)
                 Official.OpenReport(new PlayerOverviewReport(info));

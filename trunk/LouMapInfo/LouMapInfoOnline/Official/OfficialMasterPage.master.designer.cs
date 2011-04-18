@@ -31,13 +31,13 @@ namespace LoUMapInfoOnline {
         protected global::System.Web.UI.WebControls.Panel pnlConnectedMenu;
         
         /// <summary>
-        /// lblbetaSession control.
+        /// lbllouSession control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblbetaSession;
+        protected global::System.Web.UI.WebControls.Label lbllouSession;
         
         /// <summary>
         /// btnDisconnect control.

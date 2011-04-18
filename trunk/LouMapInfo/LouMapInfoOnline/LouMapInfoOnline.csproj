@@ -63,6 +63,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Official\Alliances.aspx" />
     <Content Include="Official\Continents.aspx" />
+    <Content Include="Official\Virtues.aspx" />
     <Content Include="Official\Disconnect.aspx" />
     <Content Include="Official\Players.aspx" />
     <Content Include="Official\Default.aspx" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="Official\Continents.aspx.designer.cs">
       <DependentUpon>Continents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Virtues.aspx.cs">
+      <DependentUpon>Virtues.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\Virtues.aspx.designer.cs">
+      <DependentUpon>Virtues.aspx</DependentUpon>
     </Compile>
     <Compile Include="Official\Disconnect.aspx.cs">
       <DependentUpon>Disconnect.aspx</DependentUpon>

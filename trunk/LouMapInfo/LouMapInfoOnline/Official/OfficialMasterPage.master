@@ -17,15 +17,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-14 11h00 AM Eastern Time: </span>Reports support Display Options
-        <br />
     <span class="style4">2011-04-14 03h30 PM Eastern Time: </span>Reports support BBCode Options
         <br />
     <span class="style4">2011-04-14 04h00 PM Eastern Time: </span>Alliance Reports works with all the reports Feature, auto complete, etc.
         <br />
     <span class="style4">2011-04-14 09h30 PM Eastern Time: </span>Continent Reports works with all the reports Features and have a continent picker working
         <br />
-    <span class="style2">2011-04-17 05h00 PM Eastern Time: </span><span class="style1">The website has been filled with the right info</span>
+    <span class="style4">2011-04-17 05h00 PM Eastern Time: </span>The website has been filled with the right info
+        <br />
+    <span class="style2">2011-04-17 08h30 PM Eastern Time: </span><span class="style1">Virtues overview by alliance & by virtue reports</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
@@ -37,7 +37,7 @@
 </asp:Panel>
 <asp:Panel ID="pnlConnectedMenu" runat="server">
     <b>Connected as: </b>
-    <asp:Label ID="lblbetaSession" runat="server"></asp:Label> &nbsp; &nbsp; 
+    <asp:Label ID="lbllouSession" runat="server"></asp:Label> &nbsp; &nbsp; 
     <asp:Button ID="btnDisconnect" runat="server" Text="Disconnect" 
         onclick="btnDisconnect_Click" /> <br />
     <asp:Menu ID="Menu1" runat="server" CssClass="menu2" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
@@ -50,7 +50,7 @@
                 Value="Alliances"></asp:MenuItem>
             <asp:MenuItem NavigateUrl="~/Official/Continents.aspx" Text="Continent" 
                 Value="Continent"></asp:MenuItem>
-            <asp:MenuItem NavigateUrl="~/Official/Default.aspx" Text="Virtue" 
+            <asp:MenuItem NavigateUrl="~/Official/Virtues.aspx" Text="Virtue" 
                 Value="Virtue"></asp:MenuItem>
         </Items>
     </asp:Menu>
