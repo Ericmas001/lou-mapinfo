@@ -9,7 +9,7 @@
     </h2>
     <p>
         Since November 2010, I developped an application to help you get information from the game.<br />
-        This Application is called <a href="http://code.google.com/p/lou-mapinfo/" title="LoU Map Info Google Code Website">LoU Map Info</a>.
+        This Application is called <a href="http://code.google.com/p/lou-mapinfo/" target="_blank" title="LoU Map Info Google Code Website">LoU Map Info</a>.
     </p>
     <p>
         In April 2011, I decided to start make the App available to more people by bringing it online.<br />
