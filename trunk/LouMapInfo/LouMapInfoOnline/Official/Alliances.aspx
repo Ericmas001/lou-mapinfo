@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="OfficialMainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
 </asp:ToolkitScriptManager>
-        Alliance Overview:
+        <b>Alliance Overview:</b>
         <asp:Button ID="btnMe" runat="server" onclick="btnMe_Click" Text="Me" />
     <asp:Label ID="lblOther" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp; Other:"></asp:Label>
         <asp:TextBox ID="txtAllianceName" runat="server" ></asp:TextBox>

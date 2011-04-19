@@ -17,15 +17,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-14 03h30 PM Eastern Time: </span>Reports support BBCode Options
-        <br />
     <span class="style4">2011-04-14 04h00 PM Eastern Time: </span>Alliance Reports works with all the reports Feature, auto complete, etc.
         <br />
     <span class="style4">2011-04-14 09h30 PM Eastern Time: </span>Continent Reports works with all the reports Features and have a continent picker working
         <br />
     <span class="style4">2011-04-17 05h00 PM Eastern Time: </span>The website has been filled with the right info
         <br />
-    <span class="style2">2011-04-17 08h30 PM Eastern Time: </span><span class="style1">Virtues overview by alliance & by virtue reports</span>
+    <span class="style4">2011-04-17 08h30 PM Eastern Time: </span>Virtues overview by alliance & by virtue reports
+        <br />
+    <span class="style2">2011-04-19 07h30 PM Eastern Time: </span><span class="style1">The last Virtues reports have been added. Now all the reports are available online !!</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
