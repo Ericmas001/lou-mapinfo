@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="OfficialMainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
 </asp:ToolkitScriptManager>
-        Continent Overview:<asp:Panel ID="pnlActiveContinent" runat="server">
+        <b>Continent Overview:</b><asp:Panel ID="pnlActiveContinent" runat="server">
     
         <asp:Button ID="btnChooseContinent" runat="server" Text="Choose Continent" OnClientClick="return false;" />
       </asp:Panel>          <asp:Panel ID="pnlChooseContinent" runat="server" CssClass="popupControl">

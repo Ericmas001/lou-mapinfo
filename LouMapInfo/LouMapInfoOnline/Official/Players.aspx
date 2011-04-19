@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="OfficialMainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
 </asp:ToolkitScriptManager>
-        Player Overview:
+        <b>Player Overview:</b>
         <asp:Button ID="btnMe" runat="server" onclick="btnMe_Click" Text="Me" />
 &nbsp;&nbsp;&nbsp;&nbsp; Other:
         <asp:TextBox ID="txtPlayerName" runat="server" ></asp:TextBox>

@@ -112,5 +112,18 @@ namespace LoUMapInfoOnline.Official
             SessionInfo session = (SessionInfo)Session["louSession"];
             Official.OpenReport(new VirtuePalaceReport(session.World, VirtueType.Valor, null));
         }
+
+        protected void btnShrineRadius_Click(object sender, EventArgs e)
+        {
+            SessionInfo session = (SessionInfo)Session["louSession"];
+            Pt loc = new Pt(txtShrineLocation.Text);
+            Official.OpenReport(new ShrineRadiusReport(session.World, loc));
+        }
+
+        protected void btnHighestLevel_Click(object sender, EventArgs e)
+        {
+            SessionInfo session = (SessionInfo)Session["louSession"];
+            Official.OpenReport(new BattlePalaceReport(session.World, BattleType.HighestLevel));
+        }
     }
 }

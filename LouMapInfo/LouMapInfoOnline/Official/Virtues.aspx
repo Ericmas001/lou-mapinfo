@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="OfficialMainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
 </asp:ToolkitScriptManager>
-        By Alliance Report:
+        <b>By Alliance Report:</b>
         <asp:Button ID="btnMe" runat="server" onclick="btnMe_Click" Text="Me" 
     style="height: 26px" />
     <asp:Label ID="lblOther" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp; Other:"></asp:Label>
@@ -46,7 +46,7 @@
             </script>
 
             <br />
-            By Virtue Report:
+            <b>By Virtue Report:</b>
     <asp:Button ID="btnAll" runat="server" Text="All" onclick="btnAll_Click" />&nbsp;&nbsp;&nbsp;&nbsp; 
     <asp:Button ID="btnCompassion" runat="server" Text="Compassion" 
     onclick="btnCompassion_Click" />
@@ -64,4 +64,14 @@
     onclick="btnSpirituality_Click" />
     <asp:Button ID="btnValor" runat="server" Text="Valor" 
     onclick="btnValor_Click" />
+    
+            <br />
+            <b>Alliances Battle:</b>
+<asp:Button ID="btnHighestLevel"
+        runat="server" Text="Highest Level Palace" onclick="btnHighestLevel_Click" />
+            <br />
+            <b>Shrine Radius:</b> Shrine Location: 
+    <asp:TextBox ID="txtShrineLocation" runat="server"></asp:TextBox>
+    <asp:Button ID="btnShrineRadius"
+        runat="server" Text="Get cities in the 20 tiles radius" onclick="btnShrineRadius_Click" />
 </asp:Content>
