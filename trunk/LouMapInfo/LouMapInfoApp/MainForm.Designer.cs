@@ -36,6 +36,7 @@
             this.btnMenuTools = new System.Windows.Forms.RadioButton();
             this.btnMenuZeus = new System.Windows.Forms.RadioButton();
             this.btnMenuOfficial = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.LinkLabel();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,7 @@
             this.splitContainer1.Panel2.BackgroundImage = global::LouMapInfoApp.Properties.Resources.LordOfUltima;
             this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.splitContainer1.Panel2MinSize = 10;
-            this.splitContainer1.Size = new System.Drawing.Size(934, 562);
+            this.splitContainer1.Size = new System.Drawing.Size(934, 537);
             this.splitContainer1.SplitterDistance = 210;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
@@ -73,7 +74,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(196, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(14, 562);
+            this.button1.Size = new System.Drawing.Size(14, 537);
             this.button1.TabIndex = 10;
             this.button1.Text = "<";
             this.button1.UseVisualStyleBackColor = true;
@@ -107,7 +108,7 @@
             this.lstSubItems.ItemHeight = 16;
             this.lstSubItems.Location = new System.Drawing.Point(0, 280);
             this.lstSubItems.Name = "lstSubItems";
-            this.lstSubItems.Size = new System.Drawing.Size(196, 282);
+            this.lstSubItems.Size = new System.Drawing.Size(196, 257);
             this.lstSubItems.TabIndex = 8;
             this.lstSubItems.SelectedIndexChanged += new System.EventHandler(this.lstSubItems_SelectedIndexChanged);
             this.lstSubItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
@@ -166,12 +167,27 @@
             this.btnMenuOfficial.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
             this.btnMenuOfficial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.LightSalmon;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Location = new System.Drawing.Point(0, 537);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(934, 25);
+            this.label1.TabIndex = 1;
+            this.label1.TabStop = true;
+            this.label1.Text = "Get your reports online at http://www.loumapinfo.com";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.label1_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 562);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "MainForm";
@@ -192,5 +208,6 @@
         private System.Windows.Forms.ListBox lstSubItems;
         private System.Windows.Forms.RadioButton btnMenuEmpire;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel label1;
     }
 }

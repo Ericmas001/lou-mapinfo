@@ -11,6 +11,7 @@ using LouMapInfo.Entities;
 using LouMapInfo.Zeus;
 using LouMapInfoApp.Zeus;
 using LouMapInfoApp.LouOfficial.Empire;
+using System.Diagnostics;
 
 namespace LouMapInfoApp
 {
@@ -233,6 +234,11 @@ namespace LouMapInfoApp
             {
                 ((ContentEmpireCities)((ContentLoUOfficial)splitContainer1.Panel2.Controls[0]).Child).FireKeyDown(e);
             }
+        }
+
+        private void label1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.loumapinfo.com");
         }
     }
 }
