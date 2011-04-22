@@ -71,11 +71,14 @@ namespace LouMapInfo.Entities
             JsonObjectCollection nfo = EndPoint.GetServerInfo(Url, m_Session.SessionID);
             m_NbContinentsX = (int)((JsonNumericValue)nfo["cx"]).Value;
             m_NbContinentsY = (int)((JsonNumericValue)nfo["cy"]).Value;
+            int v = (int)((JsonNumericValue)nfo["sv"]).Value;
             JsonArrayCollection players = EndPoint.GetPlayerList(Url, m_Session.SessionID);
             foreach (JsonObjectCollection p in players)
             {
                 int pI = (int)((JsonNumericValue)p["i"]).Value;
                 string pN = (string)((JsonStringValue)p["n"]).Value;
+                if (v >= 314249) //Stupid A prefix :)
+                    pN = pN.Substring(1);
                 int pJ = (int)((JsonNumericValue)p["j"]).Value;
                 string pA = (string)((JsonStringValue)p["a"]).Value;
                 int pP = (int)((JsonNumericValue)p["p"]).Value;
