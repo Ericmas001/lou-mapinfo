@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EricUtility;
 using EricUtility.Networking.JSON;
-using LouMapInfo.Entities.Filter;
+using LouMapInfo.Reports;
 
 namespace LouMapInfo.Entities
 {

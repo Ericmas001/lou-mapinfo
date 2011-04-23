@@ -5,7 +5,7 @@ using LouMapInfo.Reports.core;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.Items;
 using LouMapInfo;
-using LouMapInfo.Entities.Filter;
+
 
 namespace LouMapInfo.Reports
 {
