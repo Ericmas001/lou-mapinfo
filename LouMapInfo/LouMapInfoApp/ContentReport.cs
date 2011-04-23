@@ -10,7 +10,7 @@ using EricUtility.Windows.Forms;
 using EricUtility;
 using System.Threading;
 using LouMapInfo.Entities;
-using LouMapInfo.Entities.Filter;
+
 
 namespace LouMapInfoApp
 {

@@ -21,6 +21,11 @@ namespace LouMapInfo.Reports
             m_Filters.Add(FilterType.TypeCastle, true);
             m_Filters.Add(FilterType.TypeCity, true);
             m_Filters.Add(FilterType.TypePalace, true);
+
+            m_Grouping.Add(GroupingType.Continent, true);
+            m_Grouping.Add(GroupingType.Player, true);
+            m_Grouping.Add(GroupingType.CityType, true);
+            m_Grouping.Add(GroupingType.Bordering, true);
             LoadIfNeeded();
         }
 

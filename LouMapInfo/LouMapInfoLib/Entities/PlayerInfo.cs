@@ -4,6 +4,7 @@ using System.Text;
 using EricUtility;
 using EricUtility.Networking.JSON;
 using LouMapInfo.Reports;
+using LouMapInfo.Reports.core;
 
 namespace LouMapInfo.Entities
 {
