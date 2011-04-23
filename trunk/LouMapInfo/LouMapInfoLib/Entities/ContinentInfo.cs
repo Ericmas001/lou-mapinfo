@@ -38,6 +38,8 @@ namespace LouMapInfo.Entities
             foreach (JsonObjectCollection p in players)
             {
                 string n = ((JsonStringValue)p["n"]).Value;
+                if (World.ServerVersion >= 314249) //Stupid A prefix :)
+                    n = n.Substring(1);
                 int r = (int)((JsonNumericValue)p["r"]).Value;
                 int c = (int)((JsonNumericValue)p["c"]).Value;
                 PlayerInfo player = World.Player(n);

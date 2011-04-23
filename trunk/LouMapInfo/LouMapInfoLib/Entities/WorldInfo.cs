@@ -28,6 +28,12 @@ namespace LouMapInfo.Entities
 
         private int m_NbContinentsX;
         private int m_NbContinentsY;
+        private int m_ServerVersion;
+
+        public int ServerVersion
+        {
+            get { return m_ServerVersion; }
+        }
         private readonly Dictionary<RankingType, List<object[]>> m_Rankings = new Dictionary<RankingType, List<object[]>>();
 
         public SessionInfo Session { get { return m_Session; } }
@@ -71,13 +77,13 @@ namespace LouMapInfo.Entities
             JsonObjectCollection nfo = EndPoint.GetServerInfo(Url, m_Session.SessionID);
             m_NbContinentsX = (int)((JsonNumericValue)nfo["cx"]).Value;
             m_NbContinentsY = (int)((JsonNumericValue)nfo["cy"]).Value;
-            int v = (int)((JsonNumericValue)nfo["sv"]).Value;
+            m_ServerVersion = (int)((JsonNumericValue)nfo["sv"]).Value;
             JsonArrayCollection players = EndPoint.GetPlayerList(Url, m_Session.SessionID);
             foreach (JsonObjectCollection p in players)
             {
                 int pI = (int)((JsonNumericValue)p["i"]).Value;
                 string pN = (string)((JsonStringValue)p["n"]).Value;
-                if (v >= 314249) //Stupid A prefix :)
+                if (m_ServerVersion >= 314249) //Stupid A prefix :)
                     pN = pN.Substring(1);
                 int pJ = (int)((JsonNumericValue)p["j"]).Value;
                 string pA = (string)((JsonStringValue)p["a"]).Value;
@@ -113,6 +119,8 @@ namespace LouMapInfo.Entities
             foreach (JsonObjectCollection p in jac)
             {
                 string name = ((JsonStringValue)p["n"]).Value;
+                if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                    name = name.Substring(1);
                 string alliance = ((JsonStringValue)p["a"]).Value;
                 if (!m_PalacesOwnersByAlliance.ContainsKey(alliance))
                     m_PalacesOwnersByAlliance.Add(alliance, new List<string>());
@@ -142,6 +150,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pJ = (int)((JsonNumericValue)p["j"]).Value;
                             string pA = (string)((JsonStringValue)p["a"]).Value;
                             int pP = (int)((JsonNumericValue)p["p"]).Value;
@@ -160,6 +170,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
                             int pP = (int)((JsonNumericValue)p["p"]).Value;
                             int pW = (int)((JsonNumericValue)p["w"]).Value;
@@ -180,6 +192,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
                             int pP = (int)((JsonNumericValue)p["p"]).Value;
                             int pT = (int)((JsonNumericValue)p["t"]).Value;
@@ -197,6 +211,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
                             int pP = (int)((JsonNumericValue)p["p"]).Value;
                             res.Add(new object[] { pR, pN, pP });
@@ -212,6 +228,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
                             int pP = (int)((JsonNumericValue)p["p"]).Value;
                             res.Add(new object[] { pR, pN, pP });
@@ -227,6 +245,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pJ = (int)((JsonNumericValue)p["j"]).Value;
                             string pA = (string)((JsonStringValue)p["a"]).Value;
                             long pP = (long)((JsonNumericValue)p["p"]).Value;
@@ -245,6 +265,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pJ = (int)((JsonNumericValue)p["j"]).Value;
                             string pA = (string)((JsonStringValue)p["a"]).Value;
                             long pP = (long)((JsonNumericValue)p["p"]).Value;
@@ -263,6 +285,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pJ = (int)((JsonNumericValue)p["j"]).Value;
                             string pA = (string)((JsonStringValue)p["a"]).Value;
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
@@ -307,6 +331,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pP = (int)((JsonNumericValue)p["p"]).Value;
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
                             int pC = (int)((JsonNumericValue)p["c"]).Value;
@@ -325,6 +351,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             long pP = (long)((JsonNumericValue)p["p"]).Value;
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
                             res.Add(new object[] { pR, pN, pP});
@@ -341,6 +369,8 @@ namespace LouMapInfo.Entities
                         {
                             int pI = (int)((JsonNumericValue)p["i"]).Value;
                             string pN = (string)((JsonStringValue)p["n"]).Value;
+                            if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                                pN = pN.Substring(1);
                             int pR = (int)((JsonNumericValue)p["r"]).Value;
                             int pP = (int)((JsonNumericValue)p["p"]).Value;
                             int pPP = (int)((JsonNumericValue)p["pp"]).Value;
