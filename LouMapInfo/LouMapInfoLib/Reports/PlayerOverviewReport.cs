@@ -4,7 +4,7 @@ using System.Text;
 using LouMapInfo.Reports.core;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.Items;
-using LouMapInfo.Entities.Filter;
+
 
 namespace LouMapInfo.Reports
 {
