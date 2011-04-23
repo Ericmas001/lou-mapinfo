@@ -70,36 +70,38 @@ namespace LouMapInfo.Reports
                     }
                 }
             }
-            foreach (int d in cities.Keys)
+            if (GroupingEnabled(GroupingType.Distance))
             {
-                if (cities[d].Count > 0)
+                foreach (int d in cities.Keys)
                 {
-                    ReportItem r = new TextReportItem(false, d + " tiles distance");
-                    CityInfo[] all = new CityInfo[cities[d].Count];
-                    cities[d].Keys.CopyTo(all,0);
-                    Array.Sort(all);
-                    Array.Reverse(all);
-                    foreach (CityInfo c in all)
-                        r.Items.Add(new MultiLineReportItem(true,
-                            new DetailedCityInfoReportItem(true, c, true, true, false),
-                            new EnlightmentScoreReportItem(true, c.TypeCity, c.Bordering, c.VirtueType, (int)cities[d][c])
-                            ));
-                    root.Add(r);
+                    if (cities[d].Count > 0)
+                    {
+                        ReportItem r = new TextReportItem(false, d + " tiles distance");
+                        CityInfo[] all = new CityInfo[cities[d].Count];
+                        cities[d].Keys.CopyTo(all, 0);
+                        Array.Sort(all);
+                        Array.Reverse(all);
+                        foreach (CityInfo c in all)
+                            r.Items.Add(new MultiLineReportItem(true,
+                                new DetailedCityInfoReportItem(true, c, true, true, false),
+                                new EnlightmentScoreReportItem(true, c.TypeCity, c.Bordering, c.VirtueType, (int)cities[d][c])
+                                ));
+                        root.Add(r);
+                    }
                 }
             }
-            if (alls.Count > 0)
+            else
             {
-                ReportItem r = new TextReportItem(false,"All <= 20 distance");
+                //ReportItem r = new TextReportItem(false,"All <= 20 distance");
                 CityInfo[] all = new CityInfo[alls.Count];
                 alls.Keys.CopyTo(all, 0);
                 Array.Sort(all);
                 Array.Reverse(all);
                 foreach (CityInfo c in all)
-                    r.Items.Add(new MultiLineReportItem(true,
+                    root.Add(new MultiLineReportItem(true,
                         new DetailedCityInfoReportItem(true, c, true, true, false),
                         new EnlightmentScoreReportItem(true, c.TypeCity, c.Bordering, c.VirtueType, (int)alls[c])
                         ));
-                root.Add(r);
             }
         }
     }
