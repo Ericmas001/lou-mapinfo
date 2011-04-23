@@ -22,12 +22,10 @@ namespace LouMapInfoApp.Tools
             else
                 rdxConnectionDontRemember.Checked = true;
 
-            if (Properties.Settings.Default.detailLevel >= 3)
+            if (Properties.Settings.Default.showDetail)
                 rdxDetailDetailed.Checked = true;
-            else if (Properties.Settings.Default.detailLevel >= 2)
-                rdxDetailSummary.Checked = true;
             else
-                rdxDetailGlobal.Checked = true;
+                rdxDetailSummary.Checked = true;
 
             chkDisplayAllianceRank.Checked = Properties.Settings.Default.dispAllianceRank;
             chkDisplayAllianceScore.Checked = Properties.Settings.Default.dispAllianceScore;
@@ -55,6 +53,15 @@ namespace LouMapInfoApp.Tools
             chkFilterTypeCities.Checked = Properties.Settings.Default.filtCities;
             chkFilterTypePalaces.Checked = Properties.Settings.Default.filtPalaces;
             chkFilterWater.Checked = Properties.Settings.Default.filtWater;
+
+            chkGroupAlliance.Checked = Properties.Settings.Default.groupAlliance;
+            chkGroupBordering.Checked = Properties.Settings.Default.groupBordering;
+            chkGroupCityType.Checked = Properties.Settings.Default.groupCityType;
+            chkGroupContinent.Checked = Properties.Settings.Default.groupContinent;
+            chkGroupDistance.Checked = Properties.Settings.Default.groupDistance;
+            chkGroupPalaceLvl.Checked = Properties.Settings.Default.groupPalaceLvl;
+            chkGroupPlayer.Checked = Properties.Settings.Default.groupPlayer;
+            chkGroupVirtueType.Checked = Properties.Settings.Default.groupVirtueType;
 
             started = true;
         }
@@ -102,20 +109,11 @@ namespace LouMapInfoApp.Tools
             }
         }
 
-        private void rdxDetailGlobal_CheckedChanged(object sender, EventArgs e)
-        {
-            if (started)
-            {
-                Properties.Settings.Default.detailLevel = 1;
-                Properties.Settings.Default.Save();
-            }
-        }
-
         private void rdxDetailSummary_CheckedChanged(object sender, EventArgs e)
         {
             if (started)
             {
-                Properties.Settings.Default.detailLevel = 2;
+                Properties.Settings.Default.showDetail = false;
                 Properties.Settings.Default.Save();
             }
         }
@@ -124,7 +122,7 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.detailLevel = 4;
+                Properties.Settings.Default.showDetail = true;
                 Properties.Settings.Default.Save();
             }
         }
@@ -341,6 +339,78 @@ namespace LouMapInfoApp.Tools
             if (started)
             {
                 Properties.Settings.Default.dispPalaceVirtue = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupContinent_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupContinent = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupAlliance_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupAlliance = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupPlayer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupPlayer = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupDistance_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupDistance = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupPalaceLvl_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupPalaceLvl = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupCityType_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupCityType = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupVirtueType_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupVirtueType = ((CheckBox)sender).Checked;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void chkGroupBordering_CheckedChanged(object sender, EventArgs e)
+        {
+            if (started)
+            {
+                Properties.Settings.Default.groupBordering = ((CheckBox)sender).Checked;
                 Properties.Settings.Default.Save();
             }
         }

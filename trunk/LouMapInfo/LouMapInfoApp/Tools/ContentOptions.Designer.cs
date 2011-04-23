@@ -39,6 +39,8 @@
             this.chkBBCodeU = new System.Windows.Forms.CheckBox();
             this.chkBBCodeB = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkDisplayPalaceVirtue = new System.Windows.Forms.CheckBox();
+            this.chkDisplayPalaceLevel = new System.Windows.Forms.CheckBox();
             this.chkDisplayAllianceRank = new System.Windows.Forms.CheckBox();
             this.chkDisplayAllianceScore = new System.Windows.Forms.CheckBox();
             this.chkDisplayPlayerScore = new System.Windows.Forms.CheckBox();
@@ -49,7 +51,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rdxDetailDetailed = new System.Windows.Forms.RadioButton();
             this.rdxDetailSummary = new System.Windows.Forms.RadioButton();
-            this.rdxDetailGlobal = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkFilterNoCities = new System.Windows.Forms.CheckBox();
             this.chkFilterNoAlliance = new System.Windows.Forms.CheckBox();
@@ -62,19 +63,28 @@
             this.rdxConnectionRememberAll = new System.Windows.Forms.RadioButton();
             this.rdxConnectionRememberMail = new System.Windows.Forms.RadioButton();
             this.rdxConnectionDontRemember = new System.Windows.Forms.RadioButton();
-            this.chkDisplayPalaceVirtue = new System.Windows.Forms.CheckBox();
-            this.chkDisplayPalaceLevel = new System.Windows.Forms.CheckBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.chkGroupPalaceLvl = new System.Windows.Forms.CheckBox();
+            this.chkGroupDistance = new System.Windows.Forms.CheckBox();
+            this.chkGroupBordering = new System.Windows.Forms.CheckBox();
+            this.chkGroupVirtueType = new System.Windows.Forms.CheckBox();
+            this.chkGroupCityType = new System.Windows.Forms.CheckBox();
+            this.chkGroupPlayer = new System.Windows.Forms.CheckBox();
+            this.chkGroupAlliance = new System.Windows.Forms.CheckBox();
+            this.chkGroupContinent = new System.Windows.Forms.CheckBox();
             this.pnlContent.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContent.Controls.Add(this.groupBox6);
             this.pnlContent.Controls.Add(this.groupBox5);
             this.pnlContent.Controls.Add(this.groupBox4);
             this.pnlContent.Controls.Add(this.groupBox3);
@@ -83,7 +93,7 @@
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(413, 399);
+            this.pnlContent.Size = new System.Drawing.Size(710, 547);
             this.pnlContent.TabIndex = 1;
             // 
             // groupBox5
@@ -97,9 +107,9 @@
             this.groupBox5.Controls.Add(this.chkBBCodeU);
             this.groupBox5.Controls.Add(this.chkBBCodeB);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(205, 205);
+            this.groupBox5.Location = new System.Drawing.Point(205, 195);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 186);
+            this.groupBox5.Size = new System.Drawing.Size(196, 186);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Displayed BBCode";
@@ -228,12 +238,40 @@
             this.groupBox4.Controls.Add(this.chkDisplayCityScore);
             this.groupBox4.Controls.Add(this.chkDisplayCityCount);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(3, 205);
+            this.groupBox4.Location = new System.Drawing.Point(205, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(196, 186);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Display Options";
+            // 
+            // chkDisplayPalaceVirtue
+            // 
+            this.chkDisplayPalaceVirtue.AutoSize = true;
+            this.chkDisplayPalaceVirtue.Checked = true;
+            this.chkDisplayPalaceVirtue.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayPalaceVirtue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayPalaceVirtue.Location = new System.Drawing.Point(6, 91);
+            this.chkDisplayPalaceVirtue.Name = "chkDisplayPalaceVirtue";
+            this.chkDisplayPalaceVirtue.Size = new System.Drawing.Size(89, 17);
+            this.chkDisplayPalaceVirtue.TabIndex = 16;
+            this.chkDisplayPalaceVirtue.Text = "Palace Virtue";
+            this.chkDisplayPalaceVirtue.UseVisualStyleBackColor = true;
+            this.chkDisplayPalaceVirtue.CheckedChanged += new System.EventHandler(this.chkDisplayPalaceVirtue_CheckedChanged);
+            // 
+            // chkDisplayPalaceLevel
+            // 
+            this.chkDisplayPalaceLevel.AutoSize = true;
+            this.chkDisplayPalaceLevel.Checked = true;
+            this.chkDisplayPalaceLevel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayPalaceLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDisplayPalaceLevel.Location = new System.Drawing.Point(6, 73);
+            this.chkDisplayPalaceLevel.Name = "chkDisplayPalaceLevel";
+            this.chkDisplayPalaceLevel.Size = new System.Drawing.Size(88, 17);
+            this.chkDisplayPalaceLevel.TabIndex = 15;
+            this.chkDisplayPalaceLevel.Text = "Palace Level";
+            this.chkDisplayPalaceLevel.UseVisualStyleBackColor = true;
+            this.chkDisplayPalaceLevel.CheckedChanged += new System.EventHandler(this.chkDisplayPalaceLevel_CheckedChanged);
             // 
             // chkDisplayAllianceRank
             // 
@@ -337,11 +375,10 @@
             // 
             this.groupBox3.Controls.Add(this.rdxDetailDetailed);
             this.groupBox3.Controls.Add(this.rdxDetailSummary);
-            this.groupBox3.Controls.Add(this.rdxDetailGlobal);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(3, 104);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(196, 95);
+            this.groupBox3.Size = new System.Drawing.Size(196, 67);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reports Defaut Detail Level";
@@ -351,7 +388,7 @@
             this.rdxDetailDetailed.AutoSize = true;
             this.rdxDetailDetailed.Checked = true;
             this.rdxDetailDetailed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdxDetailDetailed.Location = new System.Drawing.Point(6, 65);
+            this.rdxDetailDetailed.Location = new System.Drawing.Point(6, 43);
             this.rdxDetailDetailed.Name = "rdxDetailDetailed";
             this.rdxDetailDetailed.Size = new System.Drawing.Size(99, 17);
             this.rdxDetailDetailed.TabIndex = 2;
@@ -364,25 +401,13 @@
             // 
             this.rdxDetailSummary.AutoSize = true;
             this.rdxDetailSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdxDetailSummary.Location = new System.Drawing.Point(6, 42);
+            this.rdxDetailSummary.Location = new System.Drawing.Point(6, 20);
             this.rdxDetailSummary.Name = "rdxDetailSummary";
             this.rdxDetailSummary.Size = new System.Drawing.Size(103, 17);
             this.rdxDetailSummary.TabIndex = 1;
             this.rdxDetailSummary.Text = "Summary Report";
             this.rdxDetailSummary.UseVisualStyleBackColor = true;
             this.rdxDetailSummary.CheckedChanged += new System.EventHandler(this.rdxDetailSummary_CheckedChanged);
-            // 
-            // rdxDetailGlobal
-            // 
-            this.rdxDetailGlobal.AutoSize = true;
-            this.rdxDetailGlobal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdxDetailGlobal.Location = new System.Drawing.Point(6, 19);
-            this.rdxDetailGlobal.Name = "rdxDetailGlobal";
-            this.rdxDetailGlobal.Size = new System.Drawing.Size(90, 17);
-            this.rdxDetailGlobal.TabIndex = 0;
-            this.rdxDetailGlobal.Text = "Global Report";
-            this.rdxDetailGlobal.UseVisualStyleBackColor = true;
-            this.rdxDetailGlobal.CheckedChanged += new System.EventHandler(this.rdxDetailGlobal_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -394,9 +419,9 @@
             this.groupBox2.Controls.Add(this.chkFilterTypeCastles);
             this.groupBox2.Controls.Add(this.chkFilterTypeCities);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(205, 3);
+            this.groupBox2.Location = new System.Drawing.Point(407, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 196);
+            this.groupBox2.Size = new System.Drawing.Size(196, 196);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reports Default Filters";
@@ -550,33 +575,135 @@
             this.rdxConnectionDontRemember.UseVisualStyleBackColor = true;
             this.rdxConnectionDontRemember.CheckedChanged += new System.EventHandler(this.rdxConnectionDontRemember_CheckedChanged);
             // 
-            // chkDisplayPalaceVirtue
+            // groupBox6
             // 
-            this.chkDisplayPalaceVirtue.AutoSize = true;
-            this.chkDisplayPalaceVirtue.Checked = true;
-            this.chkDisplayPalaceVirtue.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayPalaceVirtue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDisplayPalaceVirtue.Location = new System.Drawing.Point(6, 91);
-            this.chkDisplayPalaceVirtue.Name = "chkDisplayPalaceVirtue";
-            this.chkDisplayPalaceVirtue.Size = new System.Drawing.Size(89, 17);
-            this.chkDisplayPalaceVirtue.TabIndex = 16;
-            this.chkDisplayPalaceVirtue.Text = "Palace Virtue";
-            this.chkDisplayPalaceVirtue.UseVisualStyleBackColor = true;
-            this.chkDisplayPalaceVirtue.CheckedChanged += new System.EventHandler(this.chkDisplayPalaceVirtue_CheckedChanged);
+            this.groupBox6.Controls.Add(this.chkGroupPalaceLvl);
+            this.groupBox6.Controls.Add(this.chkGroupDistance);
+            this.groupBox6.Controls.Add(this.chkGroupBordering);
+            this.groupBox6.Controls.Add(this.chkGroupVirtueType);
+            this.groupBox6.Controls.Add(this.chkGroupCityType);
+            this.groupBox6.Controls.Add(this.chkGroupPlayer);
+            this.groupBox6.Controls.Add(this.chkGroupAlliance);
+            this.groupBox6.Controls.Add(this.chkGroupContinent);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(3, 177);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(196, 201);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Reports Default Grouping";
             // 
-            // chkDisplayPalaceLevel
+            // chkGroupPalaceLvl
             // 
-            this.chkDisplayPalaceLevel.AutoSize = true;
-            this.chkDisplayPalaceLevel.Checked = true;
-            this.chkDisplayPalaceLevel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayPalaceLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDisplayPalaceLevel.Location = new System.Drawing.Point(6, 73);
-            this.chkDisplayPalaceLevel.Name = "chkDisplayPalaceLevel";
-            this.chkDisplayPalaceLevel.Size = new System.Drawing.Size(88, 17);
-            this.chkDisplayPalaceLevel.TabIndex = 15;
-            this.chkDisplayPalaceLevel.Text = "Palace Level";
-            this.chkDisplayPalaceLevel.UseVisualStyleBackColor = true;
-            this.chkDisplayPalaceLevel.CheckedChanged += new System.EventHandler(this.chkDisplayPalaceLevel_CheckedChanged);
+            this.chkGroupPalaceLvl.AutoSize = true;
+            this.chkGroupPalaceLvl.Checked = true;
+            this.chkGroupPalaceLvl.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupPalaceLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupPalaceLvl.Location = new System.Drawing.Point(6, 106);
+            this.chkGroupPalaceLvl.Name = "chkGroupPalaceLvl";
+            this.chkGroupPalaceLvl.Size = new System.Drawing.Size(103, 17);
+            this.chkGroupPalaceLvl.TabIndex = 16;
+            this.chkGroupPalaceLvl.Text = "By Palace Level";
+            this.chkGroupPalaceLvl.UseVisualStyleBackColor = true;
+            this.chkGroupPalaceLvl.CheckedChanged += new System.EventHandler(this.chkGroupPalaceLvl_CheckedChanged);
+            // 
+            // chkGroupDistance
+            // 
+            this.chkGroupDistance.AutoSize = true;
+            this.chkGroupDistance.Checked = true;
+            this.chkGroupDistance.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupDistance.Location = new System.Drawing.Point(6, 85);
+            this.chkGroupDistance.Name = "chkGroupDistance";
+            this.chkGroupDistance.Size = new System.Drawing.Size(83, 17);
+            this.chkGroupDistance.TabIndex = 15;
+            this.chkGroupDistance.Text = "By Distance";
+            this.chkGroupDistance.UseVisualStyleBackColor = true;
+            this.chkGroupDistance.CheckedChanged += new System.EventHandler(this.chkGroupDistance_CheckedChanged);
+            // 
+            // chkGroupBordering
+            // 
+            this.chkGroupBordering.AutoSize = true;
+            this.chkGroupBordering.Checked = true;
+            this.chkGroupBordering.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupBordering.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupBordering.Location = new System.Drawing.Point(6, 169);
+            this.chkGroupBordering.Name = "chkGroupBordering";
+            this.chkGroupBordering.Size = new System.Drawing.Size(113, 17);
+            this.chkGroupBordering.TabIndex = 13;
+            this.chkGroupBordering.Text = "By Bordering Type";
+            this.chkGroupBordering.UseVisualStyleBackColor = true;
+            this.chkGroupBordering.CheckedChanged += new System.EventHandler(this.chkGroupBordering_CheckedChanged);
+            // 
+            // chkGroupVirtueType
+            // 
+            this.chkGroupVirtueType.AutoSize = true;
+            this.chkGroupVirtueType.Checked = true;
+            this.chkGroupVirtueType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupVirtueType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupVirtueType.Location = new System.Drawing.Point(6, 148);
+            this.chkGroupVirtueType.Name = "chkGroupVirtueType";
+            this.chkGroupVirtueType.Size = new System.Drawing.Size(95, 17);
+            this.chkGroupVirtueType.TabIndex = 12;
+            this.chkGroupVirtueType.Text = "By Virtue Type";
+            this.chkGroupVirtueType.UseVisualStyleBackColor = true;
+            this.chkGroupVirtueType.CheckedChanged += new System.EventHandler(this.chkGroupVirtueType_CheckedChanged);
+            // 
+            // chkGroupCityType
+            // 
+            this.chkGroupCityType.AutoSize = true;
+            this.chkGroupCityType.Checked = true;
+            this.chkGroupCityType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupCityType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupCityType.Location = new System.Drawing.Point(6, 127);
+            this.chkGroupCityType.Name = "chkGroupCityType";
+            this.chkGroupCityType.Size = new System.Drawing.Size(85, 17);
+            this.chkGroupCityType.TabIndex = 11;
+            this.chkGroupCityType.Text = "By City Type";
+            this.chkGroupCityType.UseVisualStyleBackColor = true;
+            this.chkGroupCityType.CheckedChanged += new System.EventHandler(this.chkGroupCityType_CheckedChanged);
+            // 
+            // chkGroupPlayer
+            // 
+            this.chkGroupPlayer.AutoSize = true;
+            this.chkGroupPlayer.Checked = true;
+            this.chkGroupPlayer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupPlayer.Location = new System.Drawing.Point(6, 64);
+            this.chkGroupPlayer.Name = "chkGroupPlayer";
+            this.chkGroupPlayer.Size = new System.Drawing.Size(70, 17);
+            this.chkGroupPlayer.TabIndex = 10;
+            this.chkGroupPlayer.Text = "By Player";
+            this.chkGroupPlayer.UseVisualStyleBackColor = true;
+            this.chkGroupPlayer.CheckedChanged += new System.EventHandler(this.chkGroupPlayer_CheckedChanged);
+            // 
+            // chkGroupAlliance
+            // 
+            this.chkGroupAlliance.AutoSize = true;
+            this.chkGroupAlliance.Checked = true;
+            this.chkGroupAlliance.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupAlliance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupAlliance.Location = new System.Drawing.Point(6, 43);
+            this.chkGroupAlliance.Name = "chkGroupAlliance";
+            this.chkGroupAlliance.Size = new System.Drawing.Size(78, 17);
+            this.chkGroupAlliance.TabIndex = 9;
+            this.chkGroupAlliance.Text = "By Alliance";
+            this.chkGroupAlliance.UseVisualStyleBackColor = true;
+            this.chkGroupAlliance.CheckedChanged += new System.EventHandler(this.chkGroupAlliance_CheckedChanged);
+            // 
+            // chkGroupContinent
+            // 
+            this.chkGroupContinent.AutoSize = true;
+            this.chkGroupContinent.Checked = true;
+            this.chkGroupContinent.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGroupContinent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGroupContinent.Location = new System.Drawing.Point(6, 22);
+            this.chkGroupContinent.Name = "chkGroupContinent";
+            this.chkGroupContinent.Size = new System.Drawing.Size(86, 17);
+            this.chkGroupContinent.TabIndex = 8;
+            this.chkGroupContinent.Text = "By Continent";
+            this.chkGroupContinent.UseVisualStyleBackColor = true;
+            this.chkGroupContinent.CheckedChanged += new System.EventHandler(this.chkGroupContinent_CheckedChanged);
             // 
             // ContentOptions
             // 
@@ -589,7 +716,7 @@
             this.Controls.Add(this.pnlContent);
             this.DoubleBuffered = true;
             this.Name = "ContentOptions";
-            this.Size = new System.Drawing.Size(413, 399);
+            this.Size = new System.Drawing.Size(710, 547);
             this.pnlContent.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -601,6 +728,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -611,7 +740,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rdxDetailDetailed;
         private System.Windows.Forms.RadioButton rdxDetailSummary;
-        private System.Windows.Forms.RadioButton rdxDetailGlobal;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chkFilterNoCities;
         private System.Windows.Forms.CheckBox chkFilterNoAlliance;
@@ -643,5 +771,14 @@
         private System.Windows.Forms.CheckBox chkDisplayCityCount;
         private System.Windows.Forms.CheckBox chkDisplayPalaceVirtue;
         private System.Windows.Forms.CheckBox chkDisplayPalaceLevel;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox chkGroupPalaceLvl;
+        private System.Windows.Forms.CheckBox chkGroupDistance;
+        private System.Windows.Forms.CheckBox chkGroupBordering;
+        private System.Windows.Forms.CheckBox chkGroupVirtueType;
+        private System.Windows.Forms.CheckBox chkGroupCityType;
+        private System.Windows.Forms.CheckBox chkGroupPlayer;
+        private System.Windows.Forms.CheckBox chkGroupAlliance;
+        private System.Windows.Forms.CheckBox chkGroupContinent;
     }
 }
