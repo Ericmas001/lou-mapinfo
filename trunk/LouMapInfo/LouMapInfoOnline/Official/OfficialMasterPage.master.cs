@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LouMapInfo.Entities;
 using LouMapInfo.Reports.core;
-using LouMapInfo.Entities.Filter;
 
 namespace LoUMapInfoOnline
 {

@@ -20,6 +20,8 @@ namespace LouMapInfo.Reports
             this.type = b;
             m_Filters.Add(FilterType.BorderingLand, true);
             m_Filters.Add(FilterType.BorderingWater, true);
+
+            m_Grouping.Add(GroupingType.VirtueType, true);
             LoadIfNeeded();
         }
 

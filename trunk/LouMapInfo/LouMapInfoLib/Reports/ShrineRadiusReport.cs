@@ -24,6 +24,8 @@ namespace LouMapInfo.Reports
             m_Filters.Add(FilterType.TypeCastle, true);
             m_Filters.Add(FilterType.TypePalace, true);
             m_Filters.Add(FilterType.TypeCity, true);
+
+            m_Grouping.Add(GroupingType.Distance, true);
             LoadIfNeeded();
         }
 

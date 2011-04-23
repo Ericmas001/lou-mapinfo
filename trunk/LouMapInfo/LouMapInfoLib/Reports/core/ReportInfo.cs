@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using EricUtility;
 using LouMapInfo.Entities;
-
 using LouMapInfo.Reports.Items;
 
 namespace LouMapInfo.Reports.core
@@ -16,6 +15,7 @@ namespace LouMapInfo.Reports.core
         protected ReportItem subtitle = null;
         protected List<ReportItem> root = new List<ReportItem>();
         protected Dictionary<FilterType, bool> m_Filters = new Dictionary<FilterType, bool>();
+        protected Dictionary<GroupingType, bool> m_Grouping = new Dictionary<GroupingType, bool>();
         public Dictionary<string, bool> BBCodeDisplay = new Dictionary<string, bool>();
 
         public bool ShowDetail
@@ -23,10 +23,14 @@ namespace LouMapInfo.Reports.core
             get { return m_ShowDetail; }
             set { m_ShowDetail = value; }
         }
-        
+
         public bool hasFilter(FilterType f)
         {
             return m_Filters.ContainsKey(f);
+        }
+        public bool hasGrouping(GroupingType g)
+        {
+            return m_Grouping.ContainsKey(g);
         }
         public bool hasType0Filter()
         {
@@ -48,6 +52,10 @@ namespace LouMapInfo.Reports.core
         {
             return !m_Filters.ContainsKey(f) || m_Filters[f];
         }
+        public bool GroupingEnabled(GroupingType f)
+        {
+            return !m_Grouping.ContainsKey(f) || m_Grouping[f];
+        }
 
         public void SetFilter(FilterType f, bool value)
         {
@@ -55,6 +63,22 @@ namespace LouMapInfo.Reports.core
             {
                 bool old = m_Filters[f];
                 m_Filters[f] = value;
+                if (old != value)
+                {
+                    title = null;
+                    subtitle = null;
+                    root = new List<ReportItem>();
+                    ForceLoad();
+                }
+            }
+        }
+
+        public void SetGrouping(GroupingType g, bool value)
+        {
+            if (m_Grouping.ContainsKey(g))
+            {
+                bool old = m_Grouping[g];
+                m_Grouping[g] = value;
                 if (old != value)
                 {
                     title = null;

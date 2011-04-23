@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Entities;
 
-namespace LouMapInfo.Reports
+namespace LouMapInfo.Reports.core
 {
     public class Filters
     {

@@ -4,9 +4,10 @@ using System.Text;
 
 namespace LouMapInfo.Entities
 {
-    public enum FilterType
+    public enum GroupingType
     {
         Continent,
+        Alliance,
         Player,
         Distance,
         PalaceLevel,
