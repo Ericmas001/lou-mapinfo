@@ -114,17 +114,31 @@ namespace LouMapInfo.Reports.core
             BBCodeDisplay.Add("alliance", true);
         }
 
-        private void ReportDetail(StringBuilder sb, ReportItem it)
+        public int ReportDepth
+        {
+            get
+            {
+                int count = 0;
+                foreach (GroupingType g in Enum.GetValues(typeof(GroupingType)))
+                {
+                    if (hasGrouping(g) && GroupingEnabled(g))
+                        count++;
+                }
+                return count;
+            }
+        }
+
+        private void ReportDetail(StringBuilder sb, ReportItem it, bool detail)
         {
             if (it.Items.Count > 0 )
             {
                 sb.Append("<ul>");
                 foreach (ReportItem it2 in it.Items)
                 {
-                    if (!it2.IsDetailLine || m_ShowDetail)
+                    if (!it2.IsDetailLine || detail)
                     {
                         sb.Append(String.Format("<li>{0}</li>", it2.Value(options)));
-                        ReportDetail(sb, it2);
+                        ReportDetail(sb, it2, detail);
                     }
                 }
                 sb.Append("</ul>");
@@ -133,35 +147,44 @@ namespace LouMapInfo.Reports.core
 
         public string Report()
         {
+            bool detail = m_ShowDetail || ReportDepth <= 1;
             StringBuilder sb = new StringBuilder();
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
                 sb.Append(String.Format("<center><h1>{0}</h1></center>", title.Value(options)));
             if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
                 sb.Append(String.Format("<center><h2>{0}</h2></center>", subtitle.Value(options)));
             sb.Append(String.Format("<p align=\"right\">{0:yyyy}-{0:MM}-{0:dd}</p>", DateTime.Now));
+            if (ReportDepth == 0)
+                sb.Append("<ul>");
             foreach (ReportItem it1 in root)
             {
-                if (it1.Items.Count > 0)
+                if (it1.IsDetailLine)
+                {
+                    sb.Append(String.Format("<li>{0}</li>", it1.Value(options)));
+                }
+                else if (it1.Items.Count > 0)
                 {
                     sb.Append("<hr />");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
                         sb.Append(String.Format("<center><h3>{0}</h3></center>", StringUtility.RemoveBBCodeTags(it1.Value(options))));
-                    ReportDetail(sb, it1);
+                    ReportDetail(sb, it1, detail);
                 }
             }
+            if (ReportDepth == 0)
+                sb.Append("</ul>");
             return ReportText(sb.ToString());
         }
 
-        private void BBCodeDetail(StringBuilder sb, ReportItem it)
+        private void BBCodeDetail(StringBuilder sb, ReportItem it, bool detail)
         {
             if (it.Items.Count > 0)
             {
                 foreach (ReportItem it2 in it.Items)
                 {
-                    if (!it2.IsDetailLine || m_ShowDetail)
+                    if (!it2.IsDetailLine || detail)
                     {
                         sb.Append(String.Format("{0}\n", it2.Value(options)));
-                        BBCodeDetail(sb, it2);
+                        BBCodeDetail(sb, it2, detail);
                     }
                 }
                 sb.Append("\n");
@@ -170,6 +193,7 @@ namespace LouMapInfo.Reports.core
 
         public string BBCode()
         {
+            bool detail = m_ShowDetail || ReportDepth <= 1;
             StringBuilder sb = new StringBuilder();
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
                 sb.Append(String.Format("[b][u]{0}[/b][/u]\n", title.Value(options)));
@@ -180,12 +204,16 @@ namespace LouMapInfo.Reports.core
             sb.Append("\n");
             foreach (ReportItem it1 in root)
             {
-                if (it1.Items.Count > 0)
+                if (it1.IsDetailLine)
+                {
+                    sb.Append(String.Format("{0}\n", it1.Value(options)));
+                }
+                else if (it1.Items.Count > 0)
                 {
                     sb.Append("[hr]\n");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
                         sb.Append(String.Format("[b]{0}[/b]", it1.Value(options)));
-                    BBCodeDetail(sb, it1);
+                    BBCodeDetail(sb, it1, detail);
                 }
             }
             return BBCodeText(sb.ToString());
