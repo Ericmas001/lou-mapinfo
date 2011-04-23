@@ -22,6 +22,28 @@ namespace LouMapInfoApp
             report = r;
             InitializeComponent();
 
+            r.ShowDetail = Properties.Settings.Default.showDetail;
+            btnReportDetailed.BackColor = r.ShowDetail ? SystemColors.Highlight : Color.White;
+            btnReportSummary.BackColor = !r.ShowDetail ? SystemColors.Highlight : Color.White;
+
+            btnGroupAlliance.Visible = r.hasGrouping(GroupingType.Alliance);
+            btnGroupBorderingType.Visible = r.hasGrouping(GroupingType.Bordering);
+            btnGroupCityType.Visible = r.hasGrouping(GroupingType.CityType);
+            btnGroupContinent.Visible = r.hasGrouping(GroupingType.Continent);
+            btnGroupDistance.Visible = r.hasGrouping(GroupingType.Distance);
+            btnGroupPalaceLvl.Visible = r.hasGrouping(GroupingType.PalaceLevel);
+            btnGroupPlayer.Visible = r.hasGrouping(GroupingType.Player);
+            btnGroupVirtueType.Visible = r.hasGrouping(GroupingType.VirtueType);
+
+            report.SetGrouping(GroupingType.Alliance, btnGroupAlliance.Checked = Properties.Settings.Default.groupAlliance);
+            report.SetGrouping(GroupingType.Bordering, btnGroupBorderingType.Checked = Properties.Settings.Default.groupBordering);
+            report.SetGrouping(GroupingType.CityType, btnGroupCityType.Checked = Properties.Settings.Default.groupCityType);
+            report.SetGrouping(GroupingType.Continent, btnGroupContinent.Checked = Properties.Settings.Default.groupContinent);
+            report.SetGrouping(GroupingType.Distance, btnGroupDistance.Checked = Properties.Settings.Default.groupDistance);
+            report.SetGrouping(GroupingType.PalaceLevel, btnGroupPalaceLvl.Checked = Properties.Settings.Default.groupPalaceLvl);
+            report.SetGrouping(GroupingType.Player, btnGroupPlayer.Checked = Properties.Settings.Default.groupPlayer);
+            report.SetGrouping(GroupingType.VirtueType, btnGroupVirtueType.Checked = Properties.Settings.Default.groupVirtueType);
+            
             btnFilterCastle.Visible = r.hasFilter(FilterType.TypeCastle);
             btnFilterCity.Visible = r.hasFilter(FilterType.TypeCity);
             btnFilterPalace.Visible = r.hasFilter(FilterType.TypePalace);
@@ -387,6 +409,70 @@ namespace LouMapInfoApp
                 btnReportDetailed.BackColor = Color.White;
                 RefreshReport();
             }
+        }
+
+        private void btnGroupContinent_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.Continent);
+            report.SetGrouping(GroupingType.Continent, newVal);
+            btnGroupContinent.Checked = newVal;
+            RefreshReport();
+        }
+
+        private void btnGroupAlliance_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.Alliance);
+            report.SetGrouping(GroupingType.Alliance, newVal);
+            btnGroupAlliance.Checked = newVal;
+            RefreshReport();
+        }
+
+        private void btnGroupPlayer_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.Player);
+            report.SetGrouping(GroupingType.Player, newVal);
+            btnGroupPlayer.Checked = newVal;
+            RefreshReport();
+        }
+
+        private void btnGroupDistance_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.Distance);
+            report.SetGrouping(GroupingType.Distance, newVal);
+            btnGroupDistance.Checked = newVal;
+            RefreshReport();
+        }
+
+        private void btnGroupPalaceLvl_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.PalaceLevel);
+            report.SetGrouping(GroupingType.PalaceLevel, newVal);
+            btnGroupPalaceLvl.Checked = newVal;
+            RefreshReport();
+        }
+
+        private void btnGroupCityType_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.CityType);
+            report.SetGrouping(GroupingType.CityType, newVal);
+            btnGroupCityType.Checked = newVal;
+            RefreshReport();
+        }
+
+        private void btnGroupVirtueType_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.VirtueType);
+            report.SetGrouping(GroupingType.VirtueType, newVal);
+            btnGroupVirtueType.Checked = newVal;
+            RefreshReport();
+        }
+
+        private void btnBorderingType_Click(object sender, EventArgs e)
+        {
+            bool newVal = !report.GroupingEnabled(GroupingType.Bordering);
+            report.SetGrouping(GroupingType.Bordering, newVal);
+            btnGroupBorderingType.Checked = newVal;
+            RefreshReport();
         }
     }
 }
