@@ -9,6 +9,7 @@ namespace LouMapInfo.Reports.core
 {
     public abstract class ReportInfo : AbstractLoadingTuple
     {
+        protected int m_LockedGroups = 0;
         private bool m_ShowDetail = true;
         private ReportOption options = ReportOption.None;
         protected ReportItem title;
@@ -124,7 +125,7 @@ namespace LouMapInfo.Reports.core
                     if (hasGrouping(g) && GroupingEnabled(g))
                         count++;
                 }
-                return count;
+                return count + m_LockedGroups;
             }
         }
 
@@ -147,30 +148,28 @@ namespace LouMapInfo.Reports.core
 
         public string Report()
         {
-            bool detail = m_ShowDetail || ReportDepth <= 1;
+            bool detail = m_ShowDetail || ReportDepth == 0;
             StringBuilder sb = new StringBuilder();
             if (title != null && !String.IsNullOrEmpty(title.Value(options)))
                 sb.Append(String.Format("<center><h1>{0}</h1></center>", title.Value(options)));
             if (subtitle != null && !String.IsNullOrEmpty(subtitle.Value(options)))
                 sb.Append(String.Format("<center><h2>{0}</h2></center>", subtitle.Value(options)));
             sb.Append(String.Format("<p align=\"right\">{0:yyyy}-{0:MM}-{0:dd}</p>", DateTime.Now));
-            if (ReportDepth == 0)
-                sb.Append("<ul>");
+            if (ReportDepth <= 1)
+                sb.Append("<hr /><ul>");
             foreach (ReportItem it1 in root)
             {
-                if (it1.IsDetailLine)
-                {
-                    sb.Append(String.Format("<li>{0}</li>", it1.Value(options)));
-                }
-                else if (it1.Items.Count > 0)
+                if (ReportDepth > 1)
                 {
                     sb.Append("<hr />");
                     if (!String.IsNullOrEmpty(it1.Value(options)))
                         sb.Append(String.Format("<center><h3>{0}</h3></center>", StringUtility.RemoveBBCodeTags(it1.Value(options))));
-                    ReportDetail(sb, it1, detail);
                 }
+                else
+                    sb.Append(String.Format("<li>{0}</li>", it1.Value(options)));
+                ReportDetail(sb, it1, detail);
             }
-            if (ReportDepth == 0)
+            if (ReportDepth <= 1)
                 sb.Append("</ul>");
             return ReportText(sb.ToString());
         }
@@ -202,6 +201,8 @@ namespace LouMapInfo.Reports.core
             sb.Append("\n");
             sb.Append(String.Format("{0:yyyy}-{0:MM}-{0:dd}", DateTime.Now));
             sb.Append("\n");
+            if (ReportDepth <= 1)
+                sb.Append("[hr]\n");
             foreach (ReportItem it1 in root)
             {
                 if (it1.IsDetailLine)

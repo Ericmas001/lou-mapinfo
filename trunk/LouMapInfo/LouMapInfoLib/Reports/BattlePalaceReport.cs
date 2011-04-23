@@ -22,6 +22,8 @@ namespace LouMapInfo.Reports
             m_Filters.Add(FilterType.BorderingWater, true);
 
             m_Grouping.Add(GroupingType.VirtueType, true);
+
+            m_LockedGroups = 1;
             LoadIfNeeded();
         }
 
@@ -54,9 +56,8 @@ namespace LouMapInfo.Reports
             string[] lines = SayCityType();
             if (lines.Length > 0)
                 subtitle = new MultiLineReportItem(true, lines);
-            VirtueType[] virtues = new VirtueType[] { VirtueType.Compassion, VirtueType.Honesty, VirtueType.Honor, VirtueType.Humility, VirtueType.Justice, VirtueType.Sacrifice, VirtueType.Spirituality, VirtueType.Valor };
             Dictionary<VirtueType, Dictionary<string, CityInfo>> palaces = new Dictionary<VirtueType, Dictionary<string, CityInfo>>();
-            foreach (VirtueType v in virtues)
+            foreach (VirtueType v in Enum.GetValues(typeof(VirtueType)))
             {
                 palaces.Add(v, new Dictionary<string, CityInfo>());
                 string[] players = world.PalacesOwnersByVirtue(v);
@@ -76,7 +77,7 @@ namespace LouMapInfo.Reports
                     foreach (CityInfo city in cities)
                     {
                         city.LoadIfNeeded();
-                        if (city.VirtueType == v)
+                        if (v == VirtueType.None || city.VirtueType == v)
                         {
                             if (!palaces[v].ContainsKey(pl.Alliance.Name))
                                 palaces[v].Add(pl.Alliance.Name, city);
@@ -86,26 +87,50 @@ namespace LouMapInfo.Reports
                     }
                 }
             }
-            foreach (VirtueType v in virtues)
+            if (GroupingEnabled(GroupingType.VirtueType))
             {
-                if (palaces[v].Count > 0)
+                foreach (VirtueType v in Enum.GetValues(typeof(VirtueType)))
                 {
-                    ReportItem r = new TextReportItem(false, v + " Palaces");
+                    if (v != VirtueType.None && palaces[v].Count > 0)
+                    {
+                        ReportItem r = new TextReportItem(false, v + " Palaces");
 
-                    CityInfo[] cities = new CityInfo[palaces[v].Count];
+                        CityInfo[] cities = new CityInfo[palaces[v].Count];
+                        int count = 0;
+                        foreach (string a in palaces[v].Keys)
+                            cities[count++] = palaces[v][a];
+                        Array.Sort(cities, new PalaceComp());
+                        Array.Reverse(cities);
+                        int rank = 1;
+                        foreach (CityInfo p in cities)
+                        {
+                            ReportItem r2 = new AllianceInfoReportItem(false, p.Player.Alliance, rank++);
+                            r2.Items.Add(new DetailedPalaceInfoReportItem(true, p, true, false, true, true, false));
+                            r.Items.Add(r2);
+                        }
+                        root.Add(r);
+                    }
+                }
+            }
+            else
+            {
+                if (palaces[VirtueType.None].Count > 0)
+                {
+                    //ReportItem r = new TextReportItem(false, v + " Palaces");
+
+                    CityInfo[] cities = new CityInfo[palaces[VirtueType.None].Count];
                     int count = 0;
-                    foreach (string a in palaces[v].Keys)
-                        cities[count++] = palaces[v][a];
+                    foreach (string a in palaces[VirtueType.None].Keys)
+                        cities[count++] = palaces[VirtueType.None][a];
                     Array.Sort(cities, new PalaceComp());
                     Array.Reverse(cities);
                     int rank = 1;
-                    foreach( CityInfo p in cities )
+                    foreach (CityInfo p in cities)
                     {
                         ReportItem r2 = new AllianceInfoReportItem(false, p.Player.Alliance, rank++);
-                        r2.Items.Add(new DetailedPalaceInfoReportItem(true, p, true, false, true, true,false));
-                        r.Items.Add(r2);
+                        r2.Items.Add(new DetailedPalaceInfoReportItem(true, p, true, false, true, true, false));
+                        root.Add(r2);
                     }
-                    root.Add(r);
                 }
             }
         }

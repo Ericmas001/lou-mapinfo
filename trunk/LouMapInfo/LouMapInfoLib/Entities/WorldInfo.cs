@@ -113,7 +113,7 @@ namespace LouMapInfo.Entities
             m_PlayersById[m_Session.PlayerID].ForceLoad();
             //CompleteLayout cl = CompleteLayout.GetLayoutFromCity(m_PlayersById[m_Session.PlayerID].Cities()[10]);
             string[] vkeys = new string[] { "c", "o", "h", "u", "ju", "f", "s", "v" };
-            for (int k = 1; k <= 8; ++k)
+            for (int k = 0; k <= 8; ++k)
                 m_PalacesOwnersByVirtue.Add((VirtueType)k, new List<string>());
             JsonArrayCollection jac = EndPoint.GetPlayersWithPalace(Session.World.Url, Session.SessionID);
             foreach (JsonObjectCollection p in jac)
@@ -128,7 +128,11 @@ namespace LouMapInfo.Entities
                 for (int i = 0; i < 8; ++i)
                 {
                     if (((JsonNumericValue)p[vkeys[i]]).Value > 0)
+                    {
                         m_PalacesOwnersByVirtue[(VirtueType)(i + 1)].Add(name);
+                        if (!m_PalacesOwnersByVirtue[VirtueType.None].Contains(name))
+                            m_PalacesOwnersByVirtue[VirtueType.None].Add(name);
+                    }
                 }
             }
 
