@@ -125,10 +125,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAutoPlanCity = new System.Windows.Forms.Button();
             this.tbExport = new System.Windows.Forms.TabPage();
+            this.btnCopyFCPShort = new System.Windows.Forms.Button();
             this.btnOpenFCP = new System.Windows.Forms.Button();
             this.btnCopyFCP = new System.Windows.Forms.Button();
             this.btnCopySS = new System.Windows.Forms.Button();
             this.pnlCity = new System.Windows.Forms.Panel();
+            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnSawmill = new System.Windows.Forms.ToolStripButton();
             this.btnStonemasson = new System.Windows.Forms.ToolStripButton();
@@ -173,8 +175,9 @@
             this.btnOldFarm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDestroy = new System.Windows.Forms.ToolStripButton();
-            this.btnCopyFCPShort = new System.Windows.Forms.Button();
-            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
+            this.toolStripLabel20 = new System.Windows.Forms.ToolStripLabel();
+            this.lblArmySize2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
             this.pnlRight.SuspendLayout();
@@ -194,10 +197,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).BeginInit();
             this.tbExport.SuspendLayout();
             this.pnlCity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -685,7 +688,7 @@
             this.toolStripSeparator27,
             this.toolStripLabel29,
             this.lblShipyard});
-            this.toolStrip9.Location = new System.Drawing.Point(3, 53);
+            this.toolStrip9.Location = new System.Drawing.Point(3, 54);
             this.toolStrip9.Name = "toolStrip9";
             this.toolStrip9.Size = new System.Drawing.Size(756, 25);
             this.toolStrip9.TabIndex = 12;
@@ -750,7 +753,7 @@
             this.toolStripSeparator25,
             this.toolStripLabel25,
             this.lblMoonglow});
-            this.toolStrip8.Location = new System.Drawing.Point(3, 28);
+            this.toolStrip8.Location = new System.Drawing.Point(3, 29);
             this.toolStrip8.Name = "toolStrip8";
             this.toolStrip8.Size = new System.Drawing.Size(756, 25);
             this.toolStrip8.TabIndex = 11;
@@ -792,6 +795,9 @@
             this.toolStrip7.BackColor = System.Drawing.Color.White;
             this.toolStrip7.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel20,
+            this.lblArmySize2,
+            this.toolStripSeparator26,
             this.toolStripLabel18,
             this.lblCityGuard,
             this.toolStripSeparator22,
@@ -799,7 +805,7 @@
             this.lblTrainingGround});
             this.toolStrip7.Location = new System.Drawing.Point(3, 3);
             this.toolStrip7.Name = "toolStrip7";
-            this.toolStrip7.Size = new System.Drawing.Size(756, 25);
+            this.toolStrip7.Size = new System.Drawing.Size(756, 26);
             this.toolStrip7.TabIndex = 10;
             this.toolStrip7.Text = "toolStrip7";
             // 
@@ -807,31 +813,31 @@
             // 
             this.toolStripLabel18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripLabel18.Name = "toolStripLabel18";
-            this.toolStripLabel18.Size = new System.Drawing.Size(106, 22);
+            this.toolStripLabel18.Size = new System.Drawing.Size(106, 23);
             this.toolStripLabel18.Text = "City Guard House:";
             // 
             // lblCityGuard
             // 
             this.lblCityGuard.Name = "lblCityGuard";
-            this.lblCityGuard.Size = new System.Drawing.Size(35, 22);
+            this.lblCityGuard.Size = new System.Drawing.Size(35, 23);
             this.lblCityGuard.Text = "100%";
             // 
             // toolStripSeparator22
             // 
             this.toolStripSeparator22.Name = "toolStripSeparator22";
-            this.toolStripSeparator22.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator22.Size = new System.Drawing.Size(6, 26);
             // 
             // toolStripLabel21
             // 
             this.toolStripLabel21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripLabel21.Name = "toolStripLabel21";
-            this.toolStripLabel21.Size = new System.Drawing.Size(100, 22);
+            this.toolStripLabel21.Size = new System.Drawing.Size(100, 23);
             this.toolStripLabel21.Text = "Training Ground:";
             // 
             // lblTrainingGround
             // 
             this.lblTrainingGround.Name = "lblTrainingGround";
-            this.lblTrainingGround.Size = new System.Drawing.Size(35, 22);
+            this.lblTrainingGround.Size = new System.Drawing.Size(35, 23);
             this.lblTrainingGround.Text = "100%";
             // 
             // tbCreate
@@ -1076,6 +1082,20 @@
             this.tbExport.Text = "Export";
             this.tbExport.UseVisualStyleBackColor = true;
             // 
+            // btnCopyFCPShort
+            // 
+            this.btnCopyFCPShort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopyFCPShort.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyFCPShort.Image")));
+            this.btnCopyFCPShort.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCopyFCPShort.Location = new System.Drawing.Point(212, 3);
+            this.btnCopyFCPShort.Name = "btnCopyFCPShort";
+            this.btnCopyFCPShort.Size = new System.Drawing.Size(97, 72);
+            this.btnCopyFCPShort.TabIndex = 6;
+            this.btnCopyFCPShort.Text = "ShortURL";
+            this.btnCopyFCPShort.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCopyFCPShort.UseVisualStyleBackColor = true;
+            this.btnCopyFCPShort.Click += new System.EventHandler(this.btnCopyFCPShort_Click);
+            // 
             // btnOpenFCP
             // 
             this.btnOpenFCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1128,6 +1148,20 @@
             this.pnlCity.Name = "pnlCity";
             this.pnlCity.Size = new System.Drawing.Size(768, 480);
             this.pnlCity.TabIndex = 5;
+            // 
+            // pbCity
+            // 
+            this.pbCity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCity.BackgroundImage")));
+            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbCity.Location = new System.Drawing.Point(0, 0);
+            this.pbCity.Name = "pbCity";
+            this.pbCity.Size = new System.Drawing.Size(768, 480);
+            this.pbCity.TabIndex = 3;
+            this.pbCity.TabStop = false;
+            this.pbCity.Water = true;
+            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
+            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
             // 
             // toolStrip3
             // 
@@ -1589,33 +1623,26 @@
             this.btnDestroy.Text = "Destroy";
             this.btnDestroy.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
-            // btnCopyFCPShort
+            // toolStripLabel20
             // 
-            this.btnCopyFCPShort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopyFCPShort.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyFCPShort.Image")));
-            this.btnCopyFCPShort.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCopyFCPShort.Location = new System.Drawing.Point(212, 3);
-            this.btnCopyFCPShort.Name = "btnCopyFCPShort";
-            this.btnCopyFCPShort.Size = new System.Drawing.Size(97, 72);
-            this.btnCopyFCPShort.TabIndex = 6;
-            this.btnCopyFCPShort.Text = "ShortURL";
-            this.btnCopyFCPShort.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCopyFCPShort.UseVisualStyleBackColor = true;
-            this.btnCopyFCPShort.Click += new System.EventHandler(this.btnCopyFCPShort_Click);
+            this.toolStripLabel20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripLabel20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel20.Image = global::LouMapInfoApp.Properties.Resources.icon_recruit_slots;
+            this.toolStripLabel20.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripLabel20.Name = "toolStripLabel20";
+            this.toolStripLabel20.Size = new System.Drawing.Size(30, 23);
+            this.toolStripLabel20.Text = "Army Size";
             // 
-            // pbCity
+            // lblArmySize2
             // 
-            this.pbCity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCity.BackgroundImage")));
-            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbCity.Location = new System.Drawing.Point(0, 0);
-            this.pbCity.Name = "pbCity";
-            this.pbCity.Size = new System.Drawing.Size(768, 480);
-            this.pbCity.TabIndex = 3;
-            this.pbCity.TabStop = false;
-            this.pbCity.Water = true;
-            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
-            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
+            this.lblArmySize2.Name = "lblArmySize2";
+            this.lblArmySize2.Size = new System.Drawing.Size(13, 23);
+            this.lblArmySize2.Text = "0";
+            // 
+            // toolStripSeparator26
+            // 
+            this.toolStripSeparator26.Name = "toolStripSeparator26";
+            this.toolStripSeparator26.Size = new System.Drawing.Size(6, 26);
             // 
             // ContentLayout
             // 
@@ -1658,13 +1685,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).EndInit();
             this.tbExport.ResumeLayout(false);
             this.pnlCity.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1817,6 +1844,9 @@
         private System.Windows.Forms.Label label3;
         private EricUtility.Windows.Forms.StatePictureBox statePictureBox1;
         private System.Windows.Forms.Button btnCopyFCPShort;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel20;
+        private System.Windows.Forms.ToolStripLabel lblArmySize2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator26;
 
 
 
