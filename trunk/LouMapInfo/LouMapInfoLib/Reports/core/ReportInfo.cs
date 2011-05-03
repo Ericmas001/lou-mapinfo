@@ -411,6 +411,41 @@ namespace LouMapInfo.Reports.core
             Array.Reverse(res);
             return res;
         }
+
+        protected virtual CityInfo[] getCities(ContinentInfo c, CityType cityType, params FilterType[] bordering)
+        {
+            bool gt = GroupingEnabled(GroupingType.CityType);
+            List<FilterType> filters = new List<FilterType>(bordering);
+
+            if (gt)
+            {
+                if (FilterEnabled(Filters.Filter(cityType)))
+                    filters.Add(Filters.Filter(cityType));
+            }
+            else
+            {
+                if (FilterEnabled(FilterType.TypeCastle))
+                    filters.Add(FilterType.TypeCastle);
+                if (FilterEnabled(FilterType.TypeCity))
+                    filters.Add(FilterType.TypeCity);
+                if (FilterEnabled(FilterType.TypePalace))
+                    filters.Add(FilterType.TypePalace);
+            }
+
+            FilterType[] fs = new FilterType[filters.Count];
+            filters.CopyTo(fs, 0);
+            List<CityInfo> cities = new List<CityInfo>();
+            foreach (AllianceInfo a in c.Alliances)
+            {
+                foreach (PlayerInfo p in a.Players(c.Id))
+                    cities.AddRange(p.Cities(c.Id, fs));
+            }
+            CityInfo[] res = new CityInfo[cities.Count];
+            cities.CopyTo(res, 0);
+            Array.Sort(res);
+            Array.Reverse(res);
+            return res;
+        }
         protected virtual int ShowCities(ReportItem r, CityType cityType, int ic, PlayerInfo p)
         {
             bool gt = GroupingEnabled(GroupingType.CityType);
@@ -490,6 +525,63 @@ namespace LouMapInfo.Reports.core
                     cities = getCities(ic, a, cityType, FilterType.BorderingLand);
                 else
                     cities = getCities(ic, a, cityType, FilterType.BorderingLand, FilterType.BorderingWater);
+            }
+
+            int count = cities.Length;
+            if (el)
+                count += citiesL.Length;
+            if (ew)
+                count += citiesW.Length;
+            if (FilterEnabled(FilterType.NoCities) || count > 0)
+            {
+
+                ReportItem r3;
+                if (gt)
+                {
+                    if (!el)
+                        r3 = new CityTypeReportItem(false, count, cityType, BorderingType.Water);
+                    else if (!ew)
+                        r3 = new CityTypeReportItem(false, count, cityType, BorderingType.Land);
+                    else
+                        r3 = new CityTypeReportItem(false, count, cityType);
+                }
+                else
+                    r3 = r;
+
+                if (gb)
+                {
+                    ShowBorderingGroup(r3, BorderingType.Water, citiesW);
+                    ShowBorderingGroup(r3, BorderingType.Land, citiesL);
+                }
+                else
+                    ShowCityDetailLine(r3, cities);
+                if (gt)
+                    r.Items.Add(r3);
+            }
+            return count;
+        }
+        protected virtual int ShowCities(ReportItem r, CityType cityType, ContinentInfo c)
+        {
+            bool gt = GroupingEnabled(GroupingType.CityType);
+            bool gb = GroupingEnabled(GroupingType.Bordering);
+            bool el = FilterEnabled(FilterType.BorderingLand);
+            bool ew = FilterEnabled(FilterType.BorderingWater);
+            CityInfo[] citiesW = new CityInfo[0];
+            CityInfo[] citiesL = new CityInfo[0];
+            CityInfo[] cities = new CityInfo[0];
+            if (gb)
+            {
+                citiesW = getCities(c, cityType, FilterType.BorderingWater);
+                citiesL = getCities(c, cityType, FilterType.BorderingLand);
+            }
+            else
+            {
+                if (!el)
+                    cities = getCities(c, cityType, FilterType.BorderingWater);
+                else if (!ew)
+                    cities = getCities(c, cityType, FilterType.BorderingLand);
+                else
+                    cities = getCities(c, cityType, FilterType.BorderingLand, FilterType.BorderingWater);
             }
 
             int count = cities.Length;
