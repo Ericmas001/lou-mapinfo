@@ -6,6 +6,7 @@ namespace LouMapInfo.Entities
 {
     public enum CityType
     {
+        None = -1,
         City = 0,
         Castle = 1,
         Palace = 2,

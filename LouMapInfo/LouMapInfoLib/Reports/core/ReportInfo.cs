@@ -131,7 +131,7 @@ namespace LouMapInfo.Reports.core
 
         private void ReportDetail(StringBuilder sb, ReportItem it, bool detail)
         {
-            if (it.Items.Count > 0 )
+            if (it.Items.Count > 0)
             {
                 sb.Append("<ul>");
                 foreach (ReportItem it2 in it.Items)
@@ -259,7 +259,7 @@ namespace LouMapInfo.Reports.core
             foreach (string b in BBCodeDisplay.Keys)
                 if (!BBCodeDisplay[b])
                     res = res
-                        .Replace("["+b+"]", "")
+                        .Replace("[" + b + "]", "")
                         .Replace("[/" + b + "]", "");
             return res;
         }
@@ -326,71 +326,112 @@ namespace LouMapInfo.Reports.core
             lines.CopyTo(res, 0);
             return res;
         }
+        protected virtual void ShowCityDetailLine(ReportItem r, CityInfo[] cities)
+        {
+            Array.Sort(cities);
+            Array.Reverse(cities);
+            foreach (CityInfo c in cities)
+            {
+                if (c.TypeCity == CityType.Palace)
+                {
+                    c.LoadIfNeeded();
+                    r.Items.Add(new DetailedPalaceInfoReportItem(true, c, false, false, false, true, true));
+                }
+                else
+                    r.Items.Add(new CityInfoReportItem(true, c));
+            }
+        }
+        protected virtual void ShowBorderingGroup(ReportItem r, BorderingType b, CityInfo[] cities)
+        {
+            bool me = b == BorderingType.Water ? FilterEnabled(FilterType.BorderingWater) : FilterEnabled(FilterType.BorderingLand);
+            bool ot = b == BorderingType.Land ? FilterEnabled(FilterType.BorderingWater) : FilterEnabled(FilterType.BorderingLand);
+            bool gt = GroupingEnabled(GroupingType.CityType);
+            if (me && cities.Length > 0)
+            {
+                ReportItem r4 = !ot && gt ? r : new BorderingTypeReportItem(false, cities.Length, b);
+                ShowCityDetailLine(r4, cities);
+                if (ot || !gt)
+                    r.Items.Add(r4);
+            }
+        }
+
+        protected virtual CityInfo[] getCities(int ic, PlayerInfo p, CityType cityType, params FilterType[] bordering)
+        {
+            bool gt = GroupingEnabled(GroupingType.CityType);
+            List<FilterType> filters = new List<FilterType>(bordering);
+
+            if (gt && FilterEnabled(Filters.Filter(cityType)))
+                filters.Add(Filters.Filter(cityType));
+            else
+            {
+                if (FilterEnabled(FilterType.TypeCastle))
+                    filters.Add(FilterType.TypeCastle);
+                if (FilterEnabled(FilterType.TypeCity))
+                    filters.Add(FilterType.TypeCity);
+                if (FilterEnabled(FilterType.TypePalace))
+                    filters.Add(FilterType.TypePalace);
+            }
+
+            FilterType[] fs = new FilterType[filters.Count];
+            filters.CopyTo(fs, 0);
+            return p.Cities(ic, fs);
+        }
         protected virtual int ShowCities(ReportItem r, CityType cityType, int ic, PlayerInfo p)
         {
-            FilterType type = Filters.Filter(cityType);
-            if (FilterEnabled(type))
+            bool gt = GroupingEnabled(GroupingType.CityType);
+            bool gb = GroupingEnabled(GroupingType.Bordering);
+            bool el = FilterEnabled(FilterType.BorderingLand);
+            bool ew = FilterEnabled(FilterType.BorderingWater);
+            CityInfo[] citiesW = new CityInfo[0];
+            CityInfo[] citiesL = new CityInfo[0];
+            CityInfo[] cities = new CityInfo[0];
+            if (gb)
             {
-                bool el = FilterEnabled(FilterType.BorderingLand);
-                bool ew = FilterEnabled(FilterType.BorderingWater);
-                CityInfo[] citiesW = p.Cities(ic, FilterType.BorderingWater, type);
-                CityInfo[] citiesL = p.Cities(ic, FilterType.BorderingLand, type);
-                int count = 0;
-                if (el)
-                    count += citiesL.Length;
-                if (ew)
-                    count += citiesW.Length;
-                if (FilterEnabled(FilterType.NoCities) || count > 0)
+                citiesW = getCities(ic, p, cityType, FilterType.BorderingWater);
+                citiesL = getCities(ic, p, cityType, FilterType.BorderingLand);
+            }
+            else
+            {
+                if (!el)
+                    cities = getCities(ic, p, cityType, FilterType.BorderingWater);
+                else if (!ew)
+                    cities = getCities(ic, p, cityType, FilterType.BorderingLand);
+                else
+                    cities = getCities(ic, p, cityType, FilterType.BorderingLand, FilterType.BorderingWater);
+            }
+
+            int count = cities.Length;
+            if (el)
+                count += citiesL.Length;
+            if (ew)
+                count += citiesW.Length;
+            if (FilterEnabled(FilterType.NoCities) || count > 0)
+            {
+
+                ReportItem r3;
+                if (gt)
                 {
-                    ReportItem r3;
                     if (!el)
-                        r3 = new CityTypeReportItem(false, citiesW.Length, cityType, BorderingType.Water);
+                        r3 = new CityTypeReportItem(false, count, cityType, BorderingType.Water);
                     else if (!ew)
-                        r3 = new CityTypeReportItem(false, citiesL.Length, cityType, BorderingType.Land);
+                        r3 = new CityTypeReportItem(false, count, cityType, BorderingType.Land);
                     else
                         r3 = new CityTypeReportItem(false, count, cityType);
-
-                    if (ew && citiesW.Length > 0)
-                    {
-                        ReportItem r4 = !el ? r3 : new BorderingTypeReportItem(false, citiesW.Length, BorderingType.Water);
-                        Array.Sort(citiesW);
-                        Array.Reverse(citiesW);
-                        foreach (CityInfo c in citiesW)
-                        {
-                            if (c.TypeCity == CityType.Palace)
-                            {
-                                c.LoadIfNeeded();
-                                r4.Items.Add(new DetailedPalaceInfoReportItem(true, c, false, false, false, true, true));
-                            }
-                            else
-                                r4.Items.Add(new CityInfoReportItem(true, c));
-                        }
-                        if (el)
-                            r3.Items.Add(r4);
-                    }
-                    if (el && citiesL.Length > 0)
-                    {
-                        ReportItem r4 = !ew ? r3 : new BorderingTypeReportItem(false, citiesL.Length, BorderingType.Land);
-                        Array.Sort(citiesL);
-                        Array.Reverse(citiesL);
-                        foreach (CityInfo c in citiesL)
-                            if (c.TypeCity == CityType.Palace)
-                            {
-                                c.LoadIfNeeded();
-                                r4.Items.Add(new DetailedPalaceInfoReportItem(true, c, false, false, false, true, true));
-                            }
-                            else
-                                r4.Items.Add(new CityInfoReportItem(true, c));
-                        if (ew)
-                            r3.Items.Add(r4);
-                    }
-                    r.Items.Add(r3);
                 }
-                return count;
+                else
+                    r3 = r;
+
+                if (gb)
+                {
+                    ShowBorderingGroup(r3, BorderingType.Water, citiesW);
+                    ShowBorderingGroup(r3, BorderingType.Land, citiesL);
+                }
+                else
+                    ShowCityDetailLine(r3, cities);
+                if (gt)
+                    r.Items.Add(r3);
             }
-            return 0;
+            return count;
         }
     }
-    
-
 }
