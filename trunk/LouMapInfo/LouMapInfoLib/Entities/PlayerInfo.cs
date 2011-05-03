@@ -23,6 +23,13 @@ namespace LouMapInfo.Entities
         protected int m_Score;
         protected int m_Rank;
         protected readonly int m_InitCityCount;
+        private char m_Prefix;
+
+        public char Prefix  // A: Normal Player, C: LordOfUltima
+        {
+            get { return m_Prefix; }
+            set { m_Prefix = value; }
+        }
 
         public int Id { get { return m_Id; } }
         public string Name { get { return m_Name; } }
@@ -30,7 +37,6 @@ namespace LouMapInfo.Entities
         public int Score { get { return m_Score; } }
         public int Rank { get { return m_Rank; } }
         public int CityCount { get { return m_InitCityCount; } }
-
         public int[] ActiveContinents
         {
             get

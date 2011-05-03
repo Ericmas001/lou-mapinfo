@@ -83,6 +83,7 @@ namespace LouMapInfo.Entities
             {
                 int pI = (int)((JsonNumericValue)p["i"]).Value;
                 string pN = (string)((JsonStringValue)p["n"]).Value;
+                char prefix = pN[0];
                 if (m_ServerVersion >= 314249) //Stupid A prefix :)
                     pN = pN.Substring(1);
                 int pJ = (int)((JsonNumericValue)p["j"]).Value;
@@ -98,6 +99,7 @@ namespace LouMapInfo.Entities
                 }
                 AllianceInfo a = m_AlliancesById[pJ];
                 PlayerInfo pInfo = new PlayerInfo(this, pN, pI, a, pP, pR, pC);
+                pInfo.Prefix = prefix;
                 m_PlayersByName.Add(pN, pInfo);
                 m_PlayersById.Add(pI, pInfo);
             }
