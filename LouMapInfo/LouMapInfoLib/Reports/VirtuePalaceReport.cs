@@ -32,18 +32,90 @@ namespace LouMapInfo.Reports
 
         protected override void OnLoad()
         {
-            bool el = FilterEnabled(FilterType.BorderingLand);
-            bool ew = FilterEnabled(FilterType.BorderingWater);
-            title = new TextReportItem(false,(virtue == VirtueType.None ? "Virtues" : virtue.ToString()) + " Overview");
+            VirtueType[] virtues = (virtue == VirtueType.None ? new VirtueType[] { VirtueType.Compassion, VirtueType.Honesty, VirtueType.Honor, VirtueType.Humility, VirtueType.Justice, VirtueType.Sacrifice, VirtueType.Spirituality, VirtueType.Valor } : new VirtueType[] { virtue });
+
+            title = new TextReportItem(false, (virtue == VirtueType.None ? "Virtues" : virtue.ToString()) + " Overview");
             string[] lines = SayCityType();
             if (lines.Length > 0)
                 subtitle = new MultiLineReportItem(true, lines);
             string a = alliance == null ? "" : alliance.Name;
             if (alliance != null)
                 subtitle = new AllianceInfoReportItem(false, alliance);
-            Dictionary<int, Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>>> palaces = new Dictionary<int, Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>>>();
-            VirtueType[] virtues = (virtue == VirtueType.None ? new VirtueType[]{ VirtueType.Compassion, VirtueType.Honesty, VirtueType.Honor, VirtueType.Humility, VirtueType.Justice, VirtueType.Sacrifice, VirtueType.Spirituality, VirtueType.Valor} : new VirtueType[]{ virtue });
+            Dictionary<int, Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>>> palaces = getPalaces(a, virtues);
+            if (GroupingEnabled(GroupingType.PalaceLevel))
+            {
+                for (int i = 10; i > 0; --i)
+                {
+                    bool something = false;
+                    if (palaces[i].Count > 0)
+                    {
+                        ReportItem r = new TextReportItem(false, "Level " + i + " Palaces");
+                        if (GroupingEnabled(GroupingType.VirtueType))
+                        {
+                            foreach (VirtueType v in virtues)
+                                if (printPalaces(r, v, palaces[i][v].Key, palaces[i][v].Value))
+                                    something = true;
+                        }
+                        else
+                        {
+                            KeyValuePair<List<CityInfo>, List<CityInfo>> alls = new KeyValuePair<List<CityInfo>, List<CityInfo>>(new List<CityInfo>(), new List<CityInfo>());
+                            foreach (VirtueType v in virtues)
+                            {
+                                alls.Key.AddRange(palaces[i][v].Key);
+                                alls.Value.AddRange(palaces[i][v].Value);
+                            }
+                            if (printPalaces(r, VirtueType.None, alls.Key, alls.Value))
+                                something = true;
+                        }
+                        if (something)
+                            root.Add(r);
+                    }
+                }
+            }
+            else
+            {
+                Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>> palacesV = new Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>>();
+                for (int i = 10; i > 0; --i)
+                {
+                    foreach( VirtueType v in palaces[i].Keys )
+                    {
+                        if (!palacesV.ContainsKey(v))
+                            palacesV.Add(v, new KeyValuePair<List<CityInfo>, List<CityInfo>>(new List<CityInfo>(), new List<CityInfo>()));
+                        palacesV[v].Key.AddRange(palaces[i][v].Key);
+                        palacesV[v].Value.AddRange(palaces[i][v].Value);
+                    }
+                }
+                if (palacesV.Count > 0)
+                {
+                    ReportItem r = new TextReportItem(false, "");
+                    if (GroupingEnabled(GroupingType.VirtueType))
+                    {
+                        foreach (VirtueType v in virtues)
+                            printPalaces(r, v, palacesV[v].Key, palacesV[v].Value);
+                    }
+                    else
+                    {
+                        KeyValuePair<List<CityInfo>, List<CityInfo>> alls = new KeyValuePair<List<CityInfo>, List<CityInfo>>(new List<CityInfo>(), new List<CityInfo>());
+                        foreach (VirtueType v in virtues)
+                        {
+                            alls.Key.AddRange(palacesV[v].Key);
+                            alls.Value.AddRange(palacesV[v].Value);
+                        }
+                        printPalaces(r, VirtueType.None, alls.Key, alls.Value);
+                    }
+                    foreach( ReportItem ri in r.Items)
+                        root.Add(ri);
+                }
+            }
 
+        }
+        
+
+        private Dictionary<int, Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>>> getPalaces(string a, VirtueType[] virtues)
+        {
+            bool el = FilterEnabled(FilterType.BorderingLand);
+            bool ew = FilterEnabled(FilterType.BorderingWater);
+            Dictionary<int, Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>>> palaces = new Dictionary<int, Dictionary<VirtueType, KeyValuePair<List<CityInfo>, List<CityInfo>>>>();
             List<string> members = new List<string>(alliance == null ? new string[0] : world.PalacesOwnersByAlliance(a));
             for (int i = 10; i > 0; --i)
             {
@@ -82,70 +154,67 @@ namespace LouMapInfo.Reports
                     }
                 }
             }
-            for (int i = 10; i > 0; --i)
-            {
-                bool something = false;
-                if (palaces[i].Count > 0)
-                {
-                    ReportItem r = new TextReportItem(false, "Level " + i + " Palaces");
-                    foreach (VirtueType v in virtues)
-                    {
-                        bool something2 = false;
-                        //ReportItem r2 = new CityTypeReportItem(palaces[i][v].Key.Count + palaces[i][v].Value.Count, CityType.Palace, v, false);
+            return palaces;
+        }
 
-                        int count = 0;
-                        if (el)
-                            count += palaces[i][v].Value.Count;
-                        if (ew)
-                            count += palaces[i][v].Key.Count; 
-                        ReportItem r2;
-                        if (!el)
-                            r2 = new CityTypeReportItem(false, count, CityType.Palace, BorderingType.Water, v);
-                        else if (!ew)
-                            r2 = new CityTypeReportItem(false, count, CityType.Palace, BorderingType.Land, v);
-                        else
-                            r2 = new CityTypeReportItem(false, count, CityType.Palace, v);
-                        if (ew && palaces[i][v].Key.Count > 0)
-                        {
-                            ReportItem r3 = !el ? r2 : new BorderingTypeReportItem(false, palaces[i][v].Key.Count, BorderingType.Water);
-                            CityInfo[] cities = new CityInfo[palaces[i][v].Key.Count];
-                            palaces[i][v].Key.CopyTo(cities);
-                            Array.Sort(cities);
-                            Array.Reverse(cities);
-                            foreach (CityInfo info in cities)
-                            {
-                                ReportItem r4 = new DetailedCityInfoReportItem(true, info, true, alliance == null, true);
-                                r3.Items.Add(r4);
-                            }
-                            if( el)
-                                r2.Items.Add(r3);
-                            something = true;
-                            something2 = true;
-                        }
-                        if (el && palaces[i][v].Value.Count > 0)
-                        {
-                            ReportItem r3 = !ew ? r2 : new BorderingTypeReportItem(false, palaces[i][v].Value.Count, BorderingType.Land);
-                            CityInfo[] cities = new CityInfo[palaces[i][v].Value.Count];
-                            palaces[i][v].Value.CopyTo(cities);
-                            Array.Sort(cities);
-                            Array.Reverse(cities);
-                            foreach (CityInfo info in cities)
-                            {
-                                ReportItem r4 = new DetailedCityInfoReportItem(true, info, true, alliance == null, true);
-                                r3.Items.Add(r4);
-                            }
-                            if (ew)
-                                r2.Items.Add(r3);
-                            something = true;
-                            something2 = true;
-                        }
-                        if (something2)
-                            r.Items.Add(r2);
-                    }
-                    if( something )
-                        root.Add(r);
+        private bool printPalaces(ReportItem r, VirtueType v, List<CityInfo> cw, List<CityInfo>cl)
+        {
+            bool gt = GroupingEnabled(GroupingType.CityType);
+            bool gb = GroupingEnabled(GroupingType.Bordering);
+            bool el = FilterEnabled(FilterType.BorderingLand);
+            bool ew = FilterEnabled(FilterType.BorderingWater);
+
+            int count = 0;
+            if (!gb || el)
+                count += cl.Count;
+            if (!gb || ew)
+                count += cw.Count;
+
+            if (count > 0)
+            {
+
+                ReportItem r3;
+                if (v != VirtueType.None)
+                {
+                    if (!el)
+                        r3 = new CityTypeReportItem(false, count, CityType.Palace, BorderingType.Water,v);
+                    else if (!ew)
+                        r3 = new CityTypeReportItem(false, count, CityType.Palace, BorderingType.Land,v);
+                    else
+                        r3 = new CityTypeReportItem(false, count, CityType.Palace,v);
                 }
+                else
+                    r3 = r;
+
+                if (gb)
+                {
+                    CityInfo[] cities = new CityInfo[cw.Count];
+                    cw.CopyTo(cities, 0);
+                    ShowBorderingGroup(r3, BorderingType.Water, cities);
+
+                    cities = new CityInfo[cl.Count];
+                    cl.CopyTo(cities, 0);
+                    ShowBorderingGroup(r3, BorderingType.Land, cities);
+                }
+                else
+                {
+
+                    CityInfo[] cities = new CityInfo[cw.Count + cl.Count];
+                    cw.CopyTo(cities, 0);
+                    cl.CopyTo(cities, cw.Count);
+                    ShowCityDetailLine(r3, cities);
+                }
+                if (v != VirtueType.None)
+                    r.Items.Add(r3);
             }
+            return count > 0;
+        }
+        protected override void ShowCityDetailLine(ReportItem r, CityInfo[] cities)
+        {
+            Array.Sort(cities);
+            Array.Reverse(cities);
+            foreach (CityInfo c in cities)
+                    r.Items.Add(new DetailedCityInfoReportItem(true, c, true, alliance == null, true));
         }
     }
 }
