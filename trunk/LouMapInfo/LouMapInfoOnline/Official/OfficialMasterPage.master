@@ -17,15 +17,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-14 04h00 PM Eastern Time: </span>Alliance Reports works with all the reports Feature, auto complete, etc.
-        <br />
     <span class="style4">2011-04-14 09h30 PM Eastern Time: </span>Continent Reports works with all the reports Features and have a continent picker working
         <br />
     <span class="style4">2011-04-17 05h00 PM Eastern Time: </span>The website has been filled with the right info
         <br />
     <span class="style4">2011-04-17 08h30 PM Eastern Time: </span>Virtues overview by alliance & by virtue reports
         <br />
-    <span class="style2">2011-04-19 07h30 PM Eastern Time: </span><span class="style1">The last Virtues reports have been added. Now all the reports are available online !!</span>
+    <span class="style4">2011-04-19 07h30 PM Eastern Time: </span>The last Virtues reports have been added. Now all the reports are available online !!
+        <br />
+    <span class="style2">2011-05-03 04h45 PM Eastern Time: </span><span class="style1">Reports now support Grouping, a new feature that will be available in 4.4 !</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
@@ -66,7 +66,33 @@
                         <asp:ListItem Selected="True" Value="Detailed">Detailed Report</asp:ListItem>
                         <asp:ListItem Value="Summary">Summary Report</asp:ListItem>
                     </asp:RadioButtonList>
-&nbsp;<br /> <b>Filters:</b><asp:CheckBox ID="chkFilterCity" runat="server" AutoPostBack="True" 
+&nbsp;<br /> 
+                     <b>Grouping:</b><asp:CheckBox ID="chkGroupContinent" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="Continent" 
+                    oncheckedchanged="chkGroupContinent_CheckedChanged" />
+                        <asp:CheckBox ID="chkGroupAlliance" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="Alliance" 
+                    oncheckedchanged="chkGroupAlliance_CheckedChanged" />
+                        <asp:CheckBox ID="chkGroupPlayer" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="Player" 
+                    oncheckedchanged="chkGroupPlayer_CheckedChanged" />
+                        <asp:CheckBox ID="chkGroupDistance" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="Distance" 
+                    oncheckedchanged="chkGroupDistance_CheckedChanged" />
+                        <asp:CheckBox ID="chkGroupPalaceLevel" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="Palace Level" 
+                    oncheckedchanged="chkGroupPalaceLevel_CheckedChanged" />
+                        <asp:CheckBox ID="chkGroupCityType" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="City Type" 
+                    oncheckedchanged="chkGroupCityType_CheckedChanged" />
+                        <asp:CheckBox ID="chkGroupVirtueType" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="Virtue Type" 
+                    oncheckedchanged="chkGroupVirtueType_CheckedChanged" />
+                        <asp:CheckBox ID="chkGroupBorderingType" runat="server" AutoPostBack="True" 
+                        Checked="True" Text="Bordering Type" 
+                    oncheckedchanged="chkGroupBorderingType_CheckedChanged" />
+                    <br />
+                    <b>Filters:</b><asp:CheckBox ID="chkFilterCity" runat="server" AutoPostBack="True" 
                         Checked="True" oncheckedchanged="chkFilterCity_CheckedChanged" Text="Cities" />
                     <asp:CheckBox ID="chkFilterCastle" runat="server" AutoPostBack="True" 
                         Checked="True" oncheckedchanged="chkFilterCastle_CheckedChanged" 
