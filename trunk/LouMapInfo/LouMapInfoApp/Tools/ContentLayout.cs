@@ -130,6 +130,7 @@ namespace LouMapInfoApp.Tools
                 lblBuildingsLeft.ForeColor = Color.Black;
             lblConsSpeed.Text = pbCity.ConsSpeed.ToString("N0") + "%";
             lblArmySize.Text = pbCity.ArmySize.ToString("N0");
+            lblArmySize2.Text = pbCity.ArmySize.ToString("N0");
             lblCityGuard.Text = pbCity.Recruitment[BuildingType.CityGuardHouse].ToString("N0") + "%";
             lblTrainingGround.Text = pbCity.Recruitment[BuildingType.TrainingGround].ToString("N0") + "%";
             lblStable.Text = pbCity.Recruitment[BuildingType.Stable].ToString("N0") + "%";
