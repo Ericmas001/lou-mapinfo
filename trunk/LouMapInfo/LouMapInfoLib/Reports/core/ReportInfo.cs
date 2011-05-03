@@ -380,14 +380,14 @@ namespace LouMapInfo.Reports.core
             return fs;
         }
 
-        protected virtual CityInfo[] getCities(int ic, PlayerInfo p, CityType cityType, params FilterType[] bordering)
+        protected virtual CityInfo[] getCities(int ic, PlayerInfo p, CityType cityType, FilterType[] filters, params FilterType[] bordering)
         {
-            return p.Cities(ic, buildFilters(cityType,bordering));
+            return p.Cities(ic, buildFilters(cityType, bordering));
         }
 
-        protected virtual CityInfo[] getCities(int ic, AllianceInfo a, CityType cityType, params FilterType[] bordering)
+        protected virtual CityInfo[] getCities(int ic, AllianceInfo a, CityType cityType, FilterType[] filters, params FilterType[] bordering)
         {
-            FilterType[] fs = buildFilters(cityType,bordering);
+            FilterType[] fs = buildFilters(cityType, bordering);
             List<CityInfo> cities = new List<CityInfo>();
             foreach (PlayerInfo p in a.Players())
                 cities.AddRange(p.Cities(ic, fs));
@@ -398,7 +398,7 @@ namespace LouMapInfo.Reports.core
             return res;
         }
 
-        protected virtual CityInfo[] getCities(ContinentInfo c, CityType cityType, params FilterType[] bordering)
+        protected virtual CityInfo[] getCities(ContinentInfo c, CityType cityType, FilterType[] filters, params FilterType[] bordering)
         {
             FilterType[] fs = buildFilters(cityType, bordering);
             List<CityInfo> cities = new List<CityInfo>();
@@ -453,7 +453,7 @@ namespace LouMapInfo.Reports.core
             }
             return count;
         }
-        protected virtual int ShowCities(ReportItem r, CityType cityType, int ic, PlayerInfo p)
+        protected virtual int ShowCities(ReportItem r, CityType cityType, int ic, PlayerInfo p, params FilterType[] filters)
         {
             bool gb = GroupingEnabled(GroupingType.Bordering);
             bool el = FilterEnabled(FilterType.BorderingLand);
@@ -463,21 +463,21 @@ namespace LouMapInfo.Reports.core
             CityInfo[] cities = new CityInfo[0];
             if (gb)
             {
-                citiesW = getCities(ic, p, cityType, FilterType.BorderingWater);
-                citiesL = getCities(ic, p, cityType, FilterType.BorderingLand);
+                citiesW = getCities(ic, p, cityType, filters, FilterType.BorderingWater);
+                citiesL = getCities(ic, p, cityType, filters, FilterType.BorderingLand);
             }
             else
             {
                 if (!el)
-                    cities = getCities(ic, p, cityType, FilterType.BorderingWater);
+                    cities = getCities(ic, p, cityType, filters, FilterType.BorderingWater);
                 else if (!ew)
-                    cities = getCities(ic, p, cityType, FilterType.BorderingLand);
+                    cities = getCities(ic, p, cityType, filters, FilterType.BorderingLand);
                 else
-                    cities = getCities(ic, p, cityType, FilterType.BorderingLand, FilterType.BorderingWater);
+                    cities = getCities(ic, p, cityType, filters, FilterType.BorderingLand, FilterType.BorderingWater);
             }
             return printCities(r, cityType, cities, citiesL, citiesW);
         }
-        protected virtual int ShowCities(ReportItem r, CityType cityType, int ic, AllianceInfo a)
+        protected virtual int ShowCities(ReportItem r, CityType cityType, int ic, AllianceInfo a, params FilterType[] filters)
         {
             bool gt = GroupingEnabled(GroupingType.CityType);
             bool gb = GroupingEnabled(GroupingType.Bordering);
@@ -488,21 +488,21 @@ namespace LouMapInfo.Reports.core
             CityInfo[] cities = new CityInfo[0];
             if (gb)
             {
-                citiesW = getCities(ic, a, cityType, FilterType.BorderingWater);
-                citiesL = getCities(ic, a, cityType, FilterType.BorderingLand);
+                citiesW = getCities(ic, a, cityType, filters, FilterType.BorderingWater);
+                citiesL = getCities(ic, a, cityType, filters, FilterType.BorderingLand);
             }
             else
             {
                 if (!el)
-                    cities = getCities(ic, a, cityType, FilterType.BorderingWater);
+                    cities = getCities(ic, a, cityType, filters, FilterType.BorderingWater);
                 else if (!ew)
-                    cities = getCities(ic, a, cityType, FilterType.BorderingLand);
+                    cities = getCities(ic, a, cityType, filters, FilterType.BorderingLand);
                 else
-                    cities = getCities(ic, a, cityType, FilterType.BorderingLand, FilterType.BorderingWater);
+                    cities = getCities(ic, a, cityType, filters, FilterType.BorderingLand, FilterType.BorderingWater);
             }
             return printCities(r, cityType, cities, citiesL, citiesW);
         }
-        protected virtual int ShowCities(ReportItem r, CityType cityType, ContinentInfo c)
+        protected virtual int ShowCities(ReportItem r, CityType cityType, ContinentInfo c, params FilterType[] filters)
         {
             bool gt = GroupingEnabled(GroupingType.CityType);
             bool gb = GroupingEnabled(GroupingType.Bordering);
@@ -513,17 +513,17 @@ namespace LouMapInfo.Reports.core
             CityInfo[] cities = new CityInfo[0];
             if (gb)
             {
-                citiesW = getCities(c, cityType, FilterType.BorderingWater);
-                citiesL = getCities(c, cityType, FilterType.BorderingLand);
+                citiesW = getCities(c, cityType, filters, FilterType.BorderingWater);
+                citiesL = getCities(c, cityType, filters, FilterType.BorderingLand);
             }
             else
             {
                 if (!el)
-                    cities = getCities(c, cityType, FilterType.BorderingWater);
+                    cities = getCities(c, cityType, filters, FilterType.BorderingWater);
                 else if (!ew)
-                    cities = getCities(c, cityType, FilterType.BorderingLand);
+                    cities = getCities(c, cityType, filters, FilterType.BorderingLand);
                 else
-                    cities = getCities(c, cityType, FilterType.BorderingLand, FilterType.BorderingWater);
+                    cities = getCities(c, cityType, filters, FilterType.BorderingLand, FilterType.BorderingWater);
             }
             return printCities(r, cityType, cities, citiesL, citiesW);
         }
