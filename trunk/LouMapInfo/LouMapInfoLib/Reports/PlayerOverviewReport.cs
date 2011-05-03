@@ -42,18 +42,41 @@ namespace LouMapInfo.Reports
             }
             else
                 subtitle = new AllianceInfoReportItem(false, player.Alliance);
-
-            foreach (int ic in player.ActiveContinents)
+            if (GroupingEnabled(GroupingType.Continent))
             {
-                ReportItem r = new ContinentScoreReportItem(false, ic, player.CScore(ic), true);
+                foreach (int ic in player.ActiveContinents)
+                {
+                    ReportItem r = new ContinentScoreReportItem(false, ic, player.CScore(ic), true);
+                    int count = 0;
+
+                    if (GroupingEnabled(GroupingType.CityType))
+                    {
+                        count += ShowCities(r, CityType.Palace, ic, player);
+                        count += ShowCities(r, CityType.Castle, ic, player);
+                        count += ShowCities(r, CityType.City, ic, player);
+                    }
+                    else
+                        count += ShowCities(r, CityType.None, ic, player);
+                    if (FilterEnabled(FilterType.NoCities) || count > 0)
+                        root.Add(r);
+
+                }
+            }
+            else
+            {
+                ReportItem r = new TextReportItem(false, "");
                 int count = 0;
 
-                count += ShowCities(r, CityType.Palace, ic, player);
-                count += ShowCities(r, CityType.Castle, ic, player);
-                count += ShowCities(r, CityType.City, ic, player);
-                if (FilterEnabled(FilterType.NoCities) || count > 0)
-                    root.Add(r);
-
+                if (GroupingEnabled(GroupingType.CityType))
+                {
+                    count += ShowCities(r, CityType.Palace, -1, player);
+                    count += ShowCities(r, CityType.Castle, -1, player);
+                    count += ShowCities(r, CityType.City, -1, player);
+                }
+                else
+                    count += ShowCities(r, CityType.None, -1, player);
+                foreach (ReportItem ri in r.Items)
+                    root.Add(ri);
             }
         }
     }

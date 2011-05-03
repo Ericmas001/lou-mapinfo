@@ -138,6 +138,8 @@ namespace LouMapInfo.Entities
         }
         public CityInfo[] Cities(int continent)
         {
+            if (continent == -1)
+                return Cities();
             if (m_CitiesByContinent.ContainsKey(continent))
                 return Cities(m_CitiesByContinent[continent]);
             return new CityInfo[0];
