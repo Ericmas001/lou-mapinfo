@@ -45,6 +45,15 @@ namespace LoUMapInfoOnline
 
             chkFilterNoAlliance.Visible = report.hasFilter(FilterType.NoAlliance);
 
+            chkGroupAlliance.Visible = report.hasGrouping(GroupingType.Alliance);
+            chkGroupBorderingType.Visible = report.hasGrouping(GroupingType.Bordering);
+            chkGroupCityType.Visible = report.hasGrouping(GroupingType.CityType);
+            chkGroupContinent.Visible = report.hasGrouping(GroupingType.Continent);
+            chkGroupDistance.Visible = report.hasGrouping(GroupingType.Distance);
+            chkGroupPalaceLevel.Visible = report.hasGrouping(GroupingType.PalaceLevel);
+            chkGroupPlayer.Visible = report.hasGrouping(GroupingType.Player);
+            chkGroupVirtueType.Visible = report.hasGrouping(GroupingType.VirtueType);
+
             foreach (ReportOption o in Enum.GetValues(typeof(ReportOption)))
                 report.SetOption(o, true);
             foreach (FilterType o in Enum.GetValues(typeof(FilterType)))
@@ -274,6 +283,62 @@ namespace LoUMapInfoOnline
         {
             ReportInfo report = (ReportInfo)Session["report"];
             report.BBCodeDisplay["alliance"] = chkBBCodeAlliance.Checked;
+            RefreshReports();
+        }
+
+        protected void chkGroupContinent_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.Continent, chkGroupContinent.Checked);
+            RefreshReports();
+        }
+
+        protected void chkGroupAlliance_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.Alliance, chkGroupAlliance.Checked);
+            RefreshReports();
+        }
+
+        protected void chkGroupPlayer_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.Player, chkGroupPlayer.Checked);
+            RefreshReports();
+        }
+
+        protected void chkGroupDistance_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.Distance, chkGroupDistance.Checked);
+            RefreshReports();
+        }
+
+        protected void chkGroupPalaceLevel_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.PalaceLevel, chkGroupPalaceLevel.Checked);
+            RefreshReports();
+        }
+
+        protected void chkGroupCityType_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.CityType, chkGroupCityType.Checked);
+            RefreshReports();
+        }
+
+        protected void chkGroupVirtueType_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.VirtueType, chkGroupVirtueType.Checked);
+            RefreshReports();
+        }
+
+        protected void chkGroupBorderingType_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportInfo report = (ReportInfo)Session["report"];
+            report.SetGrouping(GroupingType.Bordering, chkGroupBorderingType.Checked);
             RefreshReports();
         }
     }
