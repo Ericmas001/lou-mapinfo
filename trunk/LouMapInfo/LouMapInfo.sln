@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityWinForms_4.0", "..\..\..\Desktop\Programmation\C#\LouMapInfo\EricUtilityWinForms\EricUtilityWinForms_4.0.csproj", "{13AC29CB-866A-4954-B376-7FCA5412DDF1}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "LouMapInfoInstallShield", "LouMapInfoInstallShield\LouMapInfoInstallShield.isproj", "{0AFBA132-21FF-439B-9967-D3DA56484386}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84} = {B90EB1EA-6095-49C1-8DC1-1FA1D1BF3D84}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoOnline", "LoUMapInfoOnline\LouMapInfoOnline.csproj", "{42724157-1008-4F85-8739-52AAA0BC5705}"
 EndProject
