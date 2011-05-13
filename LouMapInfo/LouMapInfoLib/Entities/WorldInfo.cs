@@ -118,22 +118,25 @@ namespace LouMapInfo.Entities
             for (int k = 0; k <= 8; ++k)
                 m_PalacesOwnersByVirtue.Add((VirtueType)k, new List<string>());
             JsonArrayCollection jac = EndPoint.GetPlayersWithPalace(Session.World.Url, Session.SessionID);
-            foreach (JsonObjectCollection p in jac)
+            if (jac != null)
             {
-                string name = ((JsonStringValue)p["n"]).Value;
-                if (m_ServerVersion >= 314249) //Stupid A prefix :)
-                    name = name.Substring(1);
-                string alliance = ((JsonStringValue)p["a"]).Value;
-                if (!m_PalacesOwnersByAlliance.ContainsKey(alliance))
-                    m_PalacesOwnersByAlliance.Add(alliance, new List<string>());
-                m_PalacesOwnersByAlliance[alliance].Add(name);
-                for (int i = 0; i < 8; ++i)
+                foreach (JsonObjectCollection p in jac)
                 {
-                    if (((JsonNumericValue)p[vkeys[i]]).Value > 0)
+                    string name = ((JsonStringValue)p["n"]).Value;
+                    if (m_ServerVersion >= 314249) //Stupid A prefix :)
+                        name = name.Substring(1);
+                    string alliance = ((JsonStringValue)p["a"]).Value;
+                    if (!m_PalacesOwnersByAlliance.ContainsKey(alliance))
+                        m_PalacesOwnersByAlliance.Add(alliance, new List<string>());
+                    m_PalacesOwnersByAlliance[alliance].Add(name);
+                    for (int i = 0; i < 8; ++i)
                     {
-                        m_PalacesOwnersByVirtue[(VirtueType)(i + 1)].Add(name);
-                        if (!m_PalacesOwnersByVirtue[VirtueType.None].Contains(name))
-                            m_PalacesOwnersByVirtue[VirtueType.None].Add(name);
+                        if (((JsonNumericValue)p[vkeys[i]]).Value > 0)
+                        {
+                            m_PalacesOwnersByVirtue[(VirtueType)(i + 1)].Add(name);
+                            if (!m_PalacesOwnersByVirtue[VirtueType.None].Contains(name))
+                                m_PalacesOwnersByVirtue[VirtueType.None].Add(name);
+                        }
                     }
                 }
             }
