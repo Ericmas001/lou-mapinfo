@@ -91,32 +91,44 @@ namespace LouMapInfo
             m_AllServers.Add(new ServerInfo(40, "World 26 (Australia)", 3));
             m_AllServers.Add(new ServerInfo(41, "World 27 (Europe)", 8));
             m_AllServers.Add(new ServerInfo(42, "World 28 (USA East Coast)", 5));
+            m_AllServers.Add(new ServerInfo(55, "World 29 (Europe)", 5));
+            m_AllServers.Add(new ServerInfo(58, "World 30 (Australia)", 14));
+            m_AllServers.Add(new ServerInfo(59, "World 31 (USA West Coast)", 15));
 
             m_AllServers.Add(new ServerInfo(37, "Castle 1", 3));
+            m_AllServers.Add(new ServerInfo(54, "Castle 2", 8));
 
             m_AllServers.Add(new ServerInfo(4, "(de) Welt 1", 7));
             m_AllServers.Add(new ServerInfo(13, "(de) Welt 2", 3));
             m_AllServers.Add(new ServerInfo(19, "(de) Welt 3", 11));
             m_AllServers.Add(new ServerInfo(25, "(de) Welt 4", 12));
             m_AllServers.Add(new ServerInfo(36, "(de) Welt 5", 2));
+            m_AllServers.Add(new ServerInfo(53, "(de) Welt 6", 7));
 
             m_AllServers.Add(new ServerInfo(28, "(es) Mundo 1", 5));
             m_AllServers.Add(new ServerInfo(46, "(es) Mundo 2", 7));
+            m_AllServers.Add(new ServerInfo(50, "(es) Mundo 3", 3));
 
             m_AllServers.Add(new ServerInfo(26, "(fr) Monde 1", 13));
             m_AllServers.Add(new ServerInfo(48, "(fr) Monde 2", 8));
+            m_AllServers.Add(new ServerInfo(57, "(fr) Monde 3", 7));
 
             m_AllServers.Add(new ServerInfo(27, "(it) Mondo 1", 4));
             m_AllServers.Add(new ServerInfo(47, "(it) Mondo 2", 7));
 
-            m_AllServers.Add(new ServerInfo(31, "(pl) Świata 1", 8));
-            m_AllServers.Add(new ServerInfo(43, "(pl) Świata 2", 5));
+            m_AllServers.Add(new ServerInfo(31, "(pl) Świat 1", 8));
+            m_AllServers.Add(new ServerInfo(43, "(pl) Świat 2", 5));
+            m_AllServers.Add(new ServerInfo(56, "(pl) Świat 3", 3));
 
             m_AllServers.Add(new ServerInfo(29, "(pt) Mundo 1", 6));
             m_AllServers.Add(new ServerInfo(45, "(pt) Mundo 2", 4));
 
             m_AllServers.Add(new ServerInfo(30, "(ru) Мир 1", 7));
             m_AllServers.Add(new ServerInfo(44, "(ru) Мир 2", 4));
+            m_AllServers.Add(new ServerInfo(51, "(ru) Мир 3", 2));
+
+            m_AllServers.Add(new ServerInfo(49, "(tr) Dünya 1", 2));
+            m_AllServers.Add(new ServerInfo(52, "(tr) Dünya 2", 3));
 
             foreach (ServerInfo info in m_AllServers)
             {
