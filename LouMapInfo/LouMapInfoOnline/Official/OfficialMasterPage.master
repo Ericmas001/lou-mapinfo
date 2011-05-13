@@ -25,7 +25,9 @@
         <br />
     <span class="style4">2011-04-19 07h30 PM Eastern Time: </span>The last Virtues reports have been added. Now all the reports are available online !!
         <br />
-    <span class="style2">2011-05-03 04h45 PM Eastern Time: </span><span class="style1">Reports now support Grouping, a new feature that will be available in 4.4 !</span>
+    <span class="style4">2011-05-03 04h45 PM Eastern Time: </span>Reports now support Grouping, a new feature that will be available in 4.4 !
+    <hr />
+    <span class="style2">2011-05-13 11h00 AM Eastern Time: </span><span class="style1">New Worlds available :)</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
