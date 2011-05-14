@@ -157,20 +157,25 @@ namespace LouMapInfo.Reports.core
             sb.Append(String.Format("<p align=\"right\">{0:yyyy}-{0:MM}-{0:dd}</p>", DateTime.Now));
             if (ReportDepth <= 1)
                 sb.Append("<hr /><ul>");
-            foreach (ReportItem it1 in root)
+            if (root.Count == 0)
+                sb.Append("This report has no data to be displayed");
+            else
             {
-                if (ReportDepth > 1)
+                foreach (ReportItem it1 in root)
                 {
-                    sb.Append("<hr />");
-                    if (!String.IsNullOrEmpty(it1.Value(options)))
-                        sb.Append(String.Format("<center><h3>{0}</h3></center>", StringUtility.RemoveBBCodeTags(it1.Value(options))));
+                    if (ReportDepth > 1)
+                    {
+                        sb.Append("<hr />");
+                        if (!String.IsNullOrEmpty(it1.Value(options)))
+                            sb.Append(String.Format("<center><h3>{0}</h3></center>", StringUtility.RemoveBBCodeTags(it1.Value(options))));
+                    }
+                    else
+                        sb.Append(String.Format("<li>{0}</li>", it1.Value(options)));
+                    ReportDetail(sb, it1, detail);
                 }
-                else
-                    sb.Append(String.Format("<li>{0}</li>", it1.Value(options)));
-                ReportDetail(sb, it1, detail);
+                if (ReportDepth <= 1)
+                    sb.Append("</ul>");
             }
-            if (ReportDepth <= 1)
-                sb.Append("</ul>");
             return ReportText(sb.ToString());
         }
 
@@ -203,18 +208,23 @@ namespace LouMapInfo.Reports.core
             sb.Append("\n");
             if (ReportDepth <= 1)
                 sb.Append("[hr]\n");
-            foreach (ReportItem it1 in root)
+            if (root.Count == 0)
+                sb.Append("This report has no data to be displayed");
+            else
             {
-                if (it1.IsDetailLine)
+                foreach (ReportItem it1 in root)
                 {
-                    sb.Append(String.Format("{0}\n", it1.Value(options)));
-                }
-                else if (it1.Items.Count > 0)
-                {
-                    sb.Append("[hr]\n");
-                    if (!String.IsNullOrEmpty(it1.Value(options)))
-                        sb.Append(String.Format("[b]{0}[/b]", it1.Value(options)));
-                    BBCodeDetail(sb, it1, detail);
+                    if (it1.IsDetailLine)
+                    {
+                        sb.Append(String.Format("{0}\n", it1.Value(options)));
+                    }
+                    else if (it1.Items.Count > 0)
+                    {
+                        sb.Append("[hr]\n");
+                        if (!String.IsNullOrEmpty(it1.Value(options)))
+                            sb.Append(String.Format("[b]{0}[/b]", it1.Value(options)));
+                        BBCodeDetail(sb, it1, detail);
+                    }
                 }
             }
             return BBCodeText(sb.ToString());
