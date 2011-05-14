@@ -85,7 +85,7 @@ namespace LouMapInfoApp
             else if (btn == btnMenuTools)
             {
                 AddSubItem(btn, "Options", new ContentOptions());
-                AddSubItem(btn, "Layout", new ContentLayout());
+                AddSubItem(btn, "City Planner", new ContentLayout());
                 AddSubItem(btn, "About", new ContentAbout());
                 AddSubItem(btn, "FAQ", new ContentFAQ());
             }
@@ -181,7 +181,8 @@ namespace LouMapInfoApp
             }
             else
             {
-                AddSubItem(btnMenuOfficial, "Cities"/*m_Session.World.Player(m_Session.PlayerID).Name*/, new ContentLoUOfficial(this, new ContentEmpireCities(), Properties.Resources.menu_Empire));
+                AddSubItem(btnMenuOfficial, "Summary"/*m_Session.World.Player(m_Session.PlayerID).Name*/, new ContentLoUOfficial(this, new ContentEmpireSummary(), Properties.Resources.menu_Empire));
+                AddSubItem(btnMenuOfficial, "City Layouts"/*m_Session.World.Player(m_Session.PlayerID).Name*/, new ContentLoUOfficial(this, new ContentEmpireCities(), Properties.Resources.menu_Empire));
                 //if (m_Session.AllianceID > 0)
                 //    AddSubItem(btnMenuOfficial, m_Session.World.Alliance(m_Session.AllianceID).Name, new ContentLoUOfficial(this, new ContentLouMyAlliance(), Properties.Resources.menu_Empire));
             }

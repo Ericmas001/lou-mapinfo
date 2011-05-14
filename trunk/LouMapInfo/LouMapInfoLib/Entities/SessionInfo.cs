@@ -63,8 +63,8 @@ namespace LouMapInfo.Entities
             {
                 JsonObjectCollection o = EndPoint.OpenSession(m_World.Url, m_SessionID);
                 m_SessionID = ((JsonStringValue)o["i"]).Value;
-                
-                JsonObjectCollection me = EndPoint.GetMyPlayerInfo(m_World.Url, m_SessionID);
+
+                JsonObjectCollection me = EndPoint.GetMyPlayerInfoLight(m_World.Url, m_SessionID);
                 m_MyPID = (int)((JsonNumericValue)me["Id"]).Value;
                 m_MyAID = (int)((JsonNumericValue)me["AllianceId"]).Value;
 
