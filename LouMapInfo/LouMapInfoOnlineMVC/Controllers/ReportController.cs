@@ -26,7 +26,7 @@ namespace LouMapInfoOnlineMVC.Controllers
             else
             {
                 SessionInfo session = (SessionInfo)Session["betaSession"];
-                PlayerInfo info = session.World.Player(session.PlayerID);
+                PlayerInfo info = session.MyPlayer;
                 if (info != null)
                     return new PlayerOverviewReport(info).Report();
                 else

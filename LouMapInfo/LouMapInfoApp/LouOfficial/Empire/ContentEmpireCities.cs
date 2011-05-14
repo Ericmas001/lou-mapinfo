@@ -73,7 +73,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
                 m_Frame = value;
 
 
-                PlayerInfo pj = Session.World.Player(Session.PlayerID);
+                PlayerInfo pj = Session.MyPlayer;
                 lstCities.Items.Clear();
                 CityInfo[] cities = pj.Cities();
                 entrys = new CityEntry[cities.Length];

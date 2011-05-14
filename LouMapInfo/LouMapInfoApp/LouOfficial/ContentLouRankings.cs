@@ -326,7 +326,7 @@ namespace LouMapInfoApp.LouOfficial
             dgvPlayers.Rows.Clear();
             List<object[]> objs = Session.World.Ranking(type);
             dgvPlayers.Rows.Add(objs.Count);
-            String search1 = Session.World.Player(Session.PlayerID).Name;
+            String search1 = Session.MyPlayer.Name;
             String search2 = Session.World.Alliance(Session.AllianceID).Name;
             int row = -1;
             for( int i = 0; i < objs.Count; ++i)

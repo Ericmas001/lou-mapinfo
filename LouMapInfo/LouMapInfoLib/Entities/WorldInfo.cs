@@ -98,7 +98,15 @@ namespace LouMapInfo.Entities
                     m_AlliancesByName.Add(pA, aInfo);
                 }
                 AllianceInfo a = m_AlliancesById[pJ];
-                PlayerInfo pInfo = new PlayerInfo(this, pN, pI, a, pP, pR, pC);
+
+                PlayerInfo pInfo;
+                if (pI == Session.PlayerID)
+                {
+                    pInfo = new PlayerExtendedInfo(this, pN, pI, a, pP, pR, pC);
+                    Session.MyPlayer = (PlayerExtendedInfo)pInfo;
+                }
+                else
+                    pInfo = new PlayerInfo(this, pN, pI, a, pP, pR, pC);
                 pInfo.Prefix = prefix;
                 m_PlayersByName.Add(pN, pInfo);
                 m_PlayersById.Add(pI, pInfo);
@@ -112,7 +120,7 @@ namespace LouMapInfo.Entities
                     m_ContinentById.Add(c, new ContinentInfo(this, c));
                 }
             }
-            m_PlayersById[m_Session.PlayerID].ForceLoad();
+            Session.MyPlayer.ForceLoad();
             //CompleteLayout cl = CompleteLayout.GetLayoutFromCity(m_PlayersById[m_Session.PlayerID].Cities()[10]);
             string[] vkeys = new string[] { "c", "o", "h", "u", "ju", "f", "s", "v" };
             for (int k = 0; k <= 8; ++k)

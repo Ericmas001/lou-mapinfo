@@ -23,7 +23,7 @@ namespace LoUMapInfoOnline.Official
             else
             {
                 SessionInfo session = (SessionInfo)Session["louSession"];
-                foreach (int c in session.World.Player(session.PlayerID).ActiveContinents)
+                foreach (int c in session.MyPlayer.ActiveContinents)
                 {
                     Button b = new Button();
                     b.ID = "btnActiveC" + c.ToString("00");

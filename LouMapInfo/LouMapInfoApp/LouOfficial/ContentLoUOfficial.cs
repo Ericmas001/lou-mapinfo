@@ -39,7 +39,7 @@ namespace LouMapInfoApp.LouOfficial
             child.Dock = DockStyle.Fill;
             SessionInfo session = m_Parent.Session;
             InitializeComponent();
-            string pName = session.World.Player(session.PlayerID).Name;
+            string pName = session.MyPlayer.Name;
             string aName = session.World.Alliance(session.AllianceID).Name;
             lblImage.Image = m_Logo;
             lblWorldInfo.Text = pName + (String.IsNullOrEmpty(aName) ? "" : (" (" + aName + ")")) + " on " + session.World.Name;
