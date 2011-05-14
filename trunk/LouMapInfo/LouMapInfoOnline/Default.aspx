@@ -14,6 +14,6 @@
     <p>
         In April 2011, I decided to start make the App available to more people by bringing it online.<br />
         So here you are, in the currently beta version of LoU Map Online.<br />
-        <a href="Official/" title="LoU Map Info Online">Start using the Online version</a>
+        <a href="/Official/" title="LoU Map Info Online">Start using the Online version</a>
     </p>
 </asp:Content>
