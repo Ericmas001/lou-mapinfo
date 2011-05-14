@@ -6,6 +6,7 @@ namespace LouMapInfo.Entities
 {
     public class Pt
     {
+        private readonly WorldInfo m_World;
         private int m_x;
 
         public int X
@@ -23,18 +24,21 @@ namespace LouMapInfo.Entities
 
         public int Continent
         {
-            get { return ((m_y / 100) * 10) + (m_x / 100); }
+            get { return ((m_y / m_World.ContinentsHeight) * 10) + (m_x / m_World.ContinentsHeight); }
         }
-        public Pt()
+        public Pt(WorldInfo world)
         {
+            m_World = world;
         }
-        public Pt(int x, int y)
+        public Pt(WorldInfo world, int x, int y)
         {
+            m_World = world;
             m_x = x;
             m_y = y;
         }
-        public Pt(string loc)
+        public Pt(WorldInfo world, string loc)
         {
+            m_World = world;
             string[] s = loc.Split(':');
             m_x = int.Parse(s[0]);
             m_y = int.Parse(s[1]);

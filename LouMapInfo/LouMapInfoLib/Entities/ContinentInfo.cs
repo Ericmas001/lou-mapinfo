@@ -35,22 +35,25 @@ namespace LouMapInfo.Entities
         protected override void OnLoad()
         {
             JsonArrayCollection players = EndPoint.GetPlayerList(m_World.Url, m_World.Session.SessionID, m_Id, 0, 0);
-            foreach (JsonObjectCollection p in players)
+            if (players != null)
             {
-                string n = ((JsonStringValue)p["n"]).Value;
-                if (World.ServerVersion >= 314249) //Stupid A prefix :)
-                    n = n.Substring(1);
-                int r = (int)((JsonNumericValue)p["r"]).Value;
-                int c = (int)((JsonNumericValue)p["c"]).Value;
-                PlayerInfo player = World.Player(n);
-                if (!m_Alliances.ContainsKey(player.Alliance.Id))
-                    m_Alliances.Add(player.Alliance.Id, new AllianceInfo(World, player.Alliance.Name, player.Alliance.Id));
-                PlayerInfo cPlayer = new PlayerInfo(World, player.Name, player.Id, m_Alliances[player.Alliance.Id], player.CScore(Id), r, c);
-                foreach (CityInfo city in player.Cities(m_Id))
+                foreach (JsonObjectCollection p in players)
                 {
-                    cPlayer.AddCity(new CityInfo(World, cPlayer, city.Name, city.Id, city.Location, city.Bordering, city.TypeCity, city.Score));
+                    string n = ((JsonStringValue)p["n"]).Value;
+                    if (World.ServerVersion >= 314249) //Stupid A prefix :)
+                        n = n.Substring(1);
+                    int r = (int)((JsonNumericValue)p["r"]).Value;
+                    int c = (int)((JsonNumericValue)p["c"]).Value;
+                    PlayerInfo player = World.Player(n);
+                    if (!m_Alliances.ContainsKey(player.Alliance.Id))
+                        m_Alliances.Add(player.Alliance.Id, new AllianceInfo(World, player.Alliance.Name, player.Alliance.Id));
+                    PlayerInfo cPlayer = new PlayerInfo(World, player.Name, player.Id, m_Alliances[player.Alliance.Id], player.CScore(Id), r, c);
+                    foreach (CityInfo city in player.Cities(m_Id))
+                    {
+                        cPlayer.AddCity(new CityInfo(World, cPlayer, city.Name, city.Id, city.Location, city.Bordering, city.TypeCity, city.Score));
+                    }
+                    m_Alliances[player.Alliance.Id].InformActiveContinent(cPlayer);
                 }
-                m_Alliances[player.Alliance.Id].InformActiveContinent(cPlayer);
             }
         }
     }

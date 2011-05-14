@@ -183,7 +183,7 @@ namespace LouMapInfoApp.LouOfficial
         {
             try
             {
-                Pt loc = new Pt(txtShrineLocation.Text);
+                Pt loc = new Pt(Session.World, txtShrineLocation.Text);
                 ContentEnabling(false);
                 new Thread(new ParameterizedThreadStart(OpenShrineReportAsync)).Start(loc);
             }
