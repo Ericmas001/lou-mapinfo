@@ -131,6 +131,12 @@
     <Compile Include="LouOfficial\Empire\ContentEmpireCities.Designer.cs">
       <DependentUpon>ContentEmpireCities.cs</DependentUpon>
     </Compile>
+    <Compile Include="LouOfficial\Empire\ContentEmpireSummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LouOfficial\Empire\ContentEmpireSummary.Designer.cs">
+      <DependentUpon>ContentEmpireSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ContentLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>

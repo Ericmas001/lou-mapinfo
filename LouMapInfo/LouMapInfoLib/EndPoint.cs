@@ -111,7 +111,8 @@ namespace LouMapInfo
             args.Add(new JsonStringValue("session", session));
             args.Add(new JsonStringValue("requestid", "42"));
             //args.Add(new JsonStringValue("requests", "VIS:w:0:0:-0:-0:1000000:1000000"));
-            args.Add(new JsonStringValue("requests", "UA:\fTM:48,1,\fCAT:1\fWC:A\fWORLD:BA%S-CA?S-DAFhB-EA_(C-FAk0C-hA8+C-iAY%B-jA|1B-kAd)C-lAb'C-%A[2C-&Ax_C-(AJhC-)AB7C-*AO1B-GB'PB-HB_kC-IB]YB-JBv4C-KBQsC-mBquC-nB)LB-oB~cB-pBZnC-qB^pC-+BoiB-,B[SB-.B]2C- BQrC-:B_rC-\fVIS:w:0:0:-264:-66:1016:677\fUFP:\fREPORT:\fMAIL:\fFRIENDINV:\fTIME:1298397592476\fCHAT:\fSUBSTITUTION:\fINV:\fALL_AT:\fMAT:3276896\fFRIENDL:\f"));
+
+            args.Add(new JsonStringValue("requests", "TM:71,50,\fCAT:1\fSERVER:\fALLIANCE:\fQUEST:\fTE:\fPLAYER:\fCITY:9830667\fWC:\fWORLD:\fVIS:c:9830667:0:-964:-582:1016:677\fUFP:\fREPORT:\fMAIL:\fFRIENDINV:\fTIME:1305347895979\fCHAT:\fSUBSTITUTION:\fINV:\fALL_AT:\fMAT:9830667\f"));
             JsonObject jo = Query(baseurl, endpoint, args);
             JsonArrayCollection ac1 = jo as JsonArrayCollection;
             foreach (JsonObjectCollection oc1 in ac1)
@@ -157,13 +158,32 @@ namespace LouMapInfo
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
 
-
-        public static JsonObjectCollection GetMyPlayerInfo(string baseurl, string session)
+        
+        public static JsonObjectCollection GetMyPlayerInfoLight(string baseurl, string session)
         {
             string endpoint = "GetPlayerInfo";
             JsonObjectCollection args = new JsonObjectCollection();
             args.Add(new JsonStringValue("session", session));
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        }
+
+        public static JsonObjectCollection GetMyPlayerInfo(string baseurl, string session)
+        {
+            string endpoint = "Poll"; //
+            JsonObjectCollection args = new JsonObjectCollection();
+            args.Add(new JsonStringValue("session", session));
+            args.Add(new JsonStringValue("requestid", "42"));
+            args.Add(new JsonStringValue("requests", "PLAYER:"));
+            JsonObject jo = Query(baseurl, endpoint, args);
+            JsonArrayCollection ac1 = jo as JsonArrayCollection;
+            foreach (JsonObjectCollection oc1 in ac1)
+            {
+                if (((JsonStringValue)oc1["C"]).Value == "PLAYER")
+                {
+                    return (JsonObjectCollection)oc1["D"];
+                }
+            }
+            return null;
         }
 
         public static JsonObjectCollection GetMyAllianceInfo(string baseurl, string session)
