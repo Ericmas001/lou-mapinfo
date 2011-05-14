@@ -116,8 +116,13 @@ namespace LoUMapInfoOnline.Official
         protected void btnShrineRadius_Click(object sender, EventArgs e)
         {
             SessionInfo session = (SessionInfo)Session["louSession"];
-            Pt loc = new Pt(txtShrineLocation.Text);
-            Official.OpenReport(new ShrineRadiusReport(session.World, loc));
+            try
+            {
+                Pt loc = new Pt(session.World, txtShrineLocation.Text);
+                Official.OpenReport(new ShrineRadiusReport(session.World, loc));
+            }
+            catch
+            { }
         }
 
         protected void btnHighestLevel_Click(object sender, EventArgs e)
