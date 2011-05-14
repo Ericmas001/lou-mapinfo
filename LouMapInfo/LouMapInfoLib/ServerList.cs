@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using LouMapInfo.Entities;
+using EricUtility.Networking.Gathering;
 
 namespace LouMapInfo
 {
@@ -63,6 +64,22 @@ namespace LouMapInfo
         private static bool m_Loaded = false;
         private static void Load()
         {
+            string worlds = GatheringUtility.GetPageSource("http://www.loumapinfo.com/data/worlds.txt").Replace("\r", "");
+            
+            string[] lines = worlds.Split('\n');
+
+            foreach (string line in lines)
+            {
+                string[] it = line.Split(';');
+                if (it.Length == 3)
+                {
+                    ServerInfo info = new ServerInfo(int.Parse(it[0]), it[1], int.Parse(it[2]));
+                    m_ServersById.Add(info.Id, info);
+                    m_ServersByName.Add(info.Name, info);
+                    m_AllServers.Add(info);
+                }
+            }
+            /*
             m_AllServers.Add(new ServerInfo(2, "World 1 (Europe)", 2));
             m_AllServers.Add(new ServerInfo(3, "World 2 (Europe)", 5));
             m_AllServers.Add(new ServerInfo(5, "World 3 (USA East Coast)", 9));
@@ -135,6 +152,7 @@ namespace LouMapInfo
                 m_ServersById.Add(info.Id, info);
                 m_ServersByName.Add(info.Name, info);
             }
+             * */
 
             m_Loaded = true;
         }
