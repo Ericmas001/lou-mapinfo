@@ -23,10 +23,10 @@ namespace LouMapInfoApp.LouOfficial
                 lstServerNames1.Items.Add(s.Name);
                 lstServerNames2.Items.Add(s.Name);
             }
-            txtUsername.Text = Properties.Settings.Default.liveUsername;
-            txtPassword.Text = Properties.Settings.Default.livePassword;
-            lstServerNames1.SelectedItem = Properties.Settings.Default.liveWorld;
-            lstServerNames2.SelectedItem = Properties.Settings.Default.liveWorld;
+            txtUsername.Text = UserOptions.Current.liveUsername;
+            txtPassword.Text = UserOptions.Current.livePassword;
+            lstServerNames1.SelectedItem = UserOptions.Current.liveWorld;
+            lstServerNames2.SelectedItem = UserOptions.Current.liveWorld;
         }
 
         private void ContentLouConnection_Resize(object sender, EventArgs e)
@@ -39,8 +39,8 @@ namespace LouMapInfoApp.LouOfficial
             if (txtSessionID.Text.Length > 0 && lstServerNames2.SelectedIndex >= 0)
             {
                 // We connect
-                Properties.Settings.Default.liveWorld = lstServerNames2.SelectedItem.ToString();
-                Properties.Settings.Default.Save();
+                UserOptions.Current.liveWorld = lstServerNames2.SelectedItem.ToString();
+                UserOptions.Current.Save();
                 EnableAll(false);
                 statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.Waiting;
                 SessionInfo session = new SessionInfo(txtSessionID.Text, lstServerNames2.SelectedItem.ToString());
@@ -53,12 +53,12 @@ namespace LouMapInfoApp.LouOfficial
             if (txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && lstServerNames1.SelectedIndex >= 0)
             {
                 // We connect
-                if( Properties.Settings.Default.liveRememberMail)
-                    Properties.Settings.Default.liveUsername = txtUsername.Text;
-                if (Properties.Settings.Default.liveRememberPass)
-                    Properties.Settings.Default.livePassword = txtPassword.Text;
-                Properties.Settings.Default.liveWorld = lstServerNames1.SelectedItem.ToString();
-                Properties.Settings.Default.Save();
+                if( UserOptions.Current.liveRememberMail)
+                    UserOptions.Current.liveUsername = txtUsername.Text;
+                if (UserOptions.Current.liveRememberPass)
+                    UserOptions.Current.livePassword = txtPassword.Text;
+                UserOptions.Current.liveWorld = lstServerNames1.SelectedItem.ToString();
+                UserOptions.Current.Save();
                 EnableAll(false);
                 statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.Waiting;
                 SessionInfo session = new SessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames1.SelectedItem.ToString());

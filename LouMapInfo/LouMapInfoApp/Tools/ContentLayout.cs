@@ -47,12 +47,12 @@ namespace LouMapInfoApp.Tools
         {
             InitializeComponent();
 
-            nudAPUseSlots.Value = Properties.Settings.Default.apUseSlots;
-            nudAPCottages.Value = Properties.Settings.Default.apNumCottages;
-            txtAPPlacement.Text = Properties.Settings.Default.apPlacementSchedule;
-            chkAPBuildOnlyOnOpen.Checked = Properties.Settings.Default.apBuildOnlyOnOpen;
-            chkAPClearBuildings.Checked = Properties.Settings.Default.apClearBuildings;
-            chkAPKeepExtraNodes.Checked = Properties.Settings.Default.apKeepExtraResNodes;
+            nudAPUseSlots.Value = UserOptions.Current.apUseSlots;
+            nudAPCottages.Value = UserOptions.Current.apNumCottages;
+            txtAPPlacement.Text = UserOptions.Current.apPlacementSchedule;
+            chkAPBuildOnlyOnOpen.Checked = UserOptions.Current.apBuildOnlyOnOpen;
+            chkAPClearBuildings.Checked = UserOptions.Current.apClearBuildings;
+            chkAPKeepExtraNodes.Checked = UserOptions.Current.apKeepExtraResNodes;
 
             pbCity.ChooseTool(BuildingType.None);
             pbCity.CreateNew(true);
@@ -232,13 +232,13 @@ namespace LouMapInfoApp.Tools
                 return;
             }
 
-            Properties.Settings.Default.apUseSlots = (int)nudAPUseSlots.Value;
-            Properties.Settings.Default.apNumCottages = (int)nudAPCottages.Value;
-            Properties.Settings.Default.apPlacementSchedule = txtAPPlacement.Text;
-            Properties.Settings.Default.apBuildOnlyOnOpen = chkAPBuildOnlyOnOpen.Checked;
-            Properties.Settings.Default.apClearBuildings = chkAPClearBuildings.Checked;
-            Properties.Settings.Default.apKeepExtraResNodes = chkAPKeepExtraNodes.Checked;
-            Properties.Settings.Default.Save();
+            UserOptions.Current.apUseSlots = (int)nudAPUseSlots.Value;
+            UserOptions.Current.apNumCottages = (int)nudAPCottages.Value;
+            UserOptions.Current.apPlacementSchedule = txtAPPlacement.Text;
+            UserOptions.Current.apBuildOnlyOnOpen = chkAPBuildOnlyOnOpen.Checked;
+            UserOptions.Current.apClearBuildings = chkAPClearBuildings.Checked;
+            UserOptions.Current.apKeepExtraResNodes = chkAPKeepExtraNodes.Checked;
+            UserOptions.Current.Save();
 
             pbCity.Import(res);
             tabControl1.SelectedTab = tbCityInfo;

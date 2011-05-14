@@ -22,15 +22,15 @@ namespace LouMapInfoApp.Zeus
             //foreach (string s in LoUServerList.Servers.Keys)
             //{
             lstServerNames1.Items.Add(ServerList.WORLD_10);
-            lstServerNames2.Items.Add(ServerList.WORLD_10);
+            lstServerNames2.Items.Add(ServerList.WORLD_21);
             //}
-            txtUsername.Text = Properties.Settings.Default.zeusUsername;
-            txtUsername2.Text = Properties.Settings.Default.zeusUsername;
-            txtPassword.Text = Properties.Settings.Default.zeusPassword;
+            txtUsername.Text = UserOptions.Current.zeusUsername;
+            txtUsername2.Text = UserOptions.Current.zeusUsername;
+            txtPassword.Text = UserOptions.Current.zeusPassword;
             lstServerNames1.SelectedIndex = 0;
             lstServerNames2.SelectedIndex = 0;
-            lstServerNames1.SelectedItem = Properties.Settings.Default.zeusWorld;
-            lstServerNames2.SelectedItem = Properties.Settings.Default.zeusWorld;
+            lstServerNames1.SelectedItem = UserOptions.Current.zeusWorld;
+            lstServerNames2.SelectedItem = UserOptions.Current.zeusWorld;
         }
 
         private void ContentLouConnection_Resize(object sender, EventArgs e)
@@ -43,10 +43,10 @@ namespace LouMapInfoApp.Zeus
             if (txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && lstServerNames1.SelectedIndex >= 0)
             {
                 // We connect
-                Properties.Settings.Default.zeusUsername = txtUsername.Text;
-                Properties.Settings.Default.zeusPassword = txtPassword.Text;
-                Properties.Settings.Default.zeusWorld = lstServerNames1.SelectedItem.ToString();
-                Properties.Settings.Default.Save();
+                UserOptions.Current.zeusUsername = txtUsername.Text;
+                UserOptions.Current.zeusPassword = txtPassword.Text;
+                UserOptions.Current.zeusWorld = lstServerNames1.SelectedItem.ToString();
+                UserOptions.Current.Save();
                 EnableAll(false);
                 statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.Waiting;
                 ZeusSessionInfo session = new ZeusSessionInfo(txtUsername.Text, txtPassword.Text, lstServerNames1.SelectedItem.ToString(), "zeus42.is-a-geek.com", 42042);
@@ -125,9 +125,9 @@ namespace LouMapInfoApp.Zeus
             if (txtUsername2.Text.Length > 0 && lstServerNames2.SelectedIndex >= 0)
             {
                 // We connect
-                Properties.Settings.Default.zeusUsername = txtUsername2.Text;
-                Properties.Settings.Default.zeusWorld = lstServerNames2.SelectedItem.ToString();
-                Properties.Settings.Default.Save();
+                UserOptions.Current.zeusUsername = txtUsername2.Text;
+                UserOptions.Current.zeusWorld = lstServerNames2.SelectedItem.ToString();
+                UserOptions.Current.Save();
                 EnableAll(false);
                 statePictureBox1.Etat = EricUtility.Windows.Forms.StatePictureBoxStates.Waiting;
                 ZeusSessionInfo session = new ZeusSessionInfo(txtUsername.Text, lstServerNames1.SelectedItem.ToString(), "127.0.0.1", 42042);

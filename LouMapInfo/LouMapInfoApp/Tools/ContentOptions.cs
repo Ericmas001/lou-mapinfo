@@ -15,53 +15,53 @@ namespace LouMapInfoApp.Tools
         public ContentOptions()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.liveRememberPass)
+            if (UserOptions.Current.liveRememberPass)
                 rdxConnectionRememberAll.Checked = true;
-            else if (Properties.Settings.Default.liveRememberMail)
+            else if (UserOptions.Current.liveRememberMail)
                 rdxConnectionRememberMail.Checked = true;
             else
                 rdxConnectionDontRemember.Checked = true;
 
-            if (Properties.Settings.Default.showDetail)
+            if (UserOptions.Current.showDetail)
                 rdxDetailDetailed.Checked = true;
             else
                 rdxDetailSummary.Checked = true;
 
-            chkDisplayAllianceRank.Checked = Properties.Settings.Default.dispAllianceRank;
-            chkDisplayAllianceScore.Checked = Properties.Settings.Default.dispAllianceScore;
-            chkDisplayCityCount.Checked = Properties.Settings.Default.dispCityCount;
-            chkDisplayCityName.Checked = Properties.Settings.Default.dispCityName;
-            chkDisplayCityScore.Checked = Properties.Settings.Default.dispCityScore;
-            chkDisplayPlayerCount.Checked = Properties.Settings.Default.dispPlayerCount;
-            chkDisplayPlayerScore.Checked = Properties.Settings.Default.dispPlayerScore;
-            chkDisplayPalaceLevel.Checked = Properties.Settings.Default.dispPalaceLevel;
-            chkDisplayPalaceVirtue.Checked = Properties.Settings.Default.dispPalaceVirtue;
+            chkDisplayAllianceRank.Checked = UserOptions.Current.dispAllianceRank;
+            chkDisplayAllianceScore.Checked = UserOptions.Current.dispAllianceScore;
+            chkDisplayCityCount.Checked = UserOptions.Current.dispCityCount;
+            chkDisplayCityName.Checked = UserOptions.Current.dispCityName;
+            chkDisplayCityScore.Checked = UserOptions.Current.dispCityScore;
+            chkDisplayPlayerCount.Checked = UserOptions.Current.dispPlayerCount;
+            chkDisplayPlayerScore.Checked = UserOptions.Current.dispPlayerScore;
+            chkDisplayPalaceLevel.Checked = UserOptions.Current.dispPalaceLevel;
+            chkDisplayPalaceVirtue.Checked = UserOptions.Current.dispPalaceVirtue;
 
-            chkBBCodeAlliance.Checked = Properties.Settings.Default.bbCode_alliance;
-            chkBBCodeB.Checked = Properties.Settings.Default.bbCode_b;
-            chkBBCodeCity.Checked = Properties.Settings.Default.bbCode_city;
-            chkBBCodeI.Checked = Properties.Settings.Default.bbCode_i;
-            chkBBCodePlayer.Checked = Properties.Settings.Default.bbCode_player;
-            chkBBCodeS.Checked = Properties.Settings.Default.bbCode_s;
-            chkBBCodeU.Checked = Properties.Settings.Default.bbCode_u;
-            chkBBCodeUrl.Checked = Properties.Settings.Default.bbCode_url;
+            chkBBCodeAlliance.Checked = UserOptions.Current.bbCode_alliance;
+            chkBBCodeB.Checked = UserOptions.Current.bbCode_b;
+            chkBBCodeCity.Checked = UserOptions.Current.bbCode_city;
+            chkBBCodeI.Checked = UserOptions.Current.bbCode_i;
+            chkBBCodePlayer.Checked = UserOptions.Current.bbCode_player;
+            chkBBCodeS.Checked = UserOptions.Current.bbCode_s;
+            chkBBCodeU.Checked = UserOptions.Current.bbCode_u;
+            chkBBCodeUrl.Checked = UserOptions.Current.bbCode_url;
 
-            chkFilterLand.Checked = Properties.Settings.Default.filtLand;
-            chkFilterNoAlliance.Checked = Properties.Settings.Default.filtNoAlliance;
-            chkFilterNoCities.Checked = Properties.Settings.Default.filtNoCities;
-            chkFilterTypeCastles.Checked = Properties.Settings.Default.filtCastles;
-            chkFilterTypeCities.Checked = Properties.Settings.Default.filtCities;
-            chkFilterTypePalaces.Checked = Properties.Settings.Default.filtPalaces;
-            chkFilterWater.Checked = Properties.Settings.Default.filtWater;
+            chkFilterLand.Checked = UserOptions.Current.filtLand;
+            chkFilterNoAlliance.Checked = UserOptions.Current.filtNoAlliance;
+            chkFilterNoCities.Checked = UserOptions.Current.filtNoCities;
+            chkFilterTypeCastles.Checked = UserOptions.Current.filtCastles;
+            chkFilterTypeCities.Checked = UserOptions.Current.filtCities;
+            chkFilterTypePalaces.Checked = UserOptions.Current.filtPalaces;
+            chkFilterWater.Checked = UserOptions.Current.filtWater;
 
-            chkGroupAlliance.Checked = Properties.Settings.Default.groupAlliance;
-            chkGroupBordering.Checked = Properties.Settings.Default.groupBordering;
-            chkGroupCityType.Checked = Properties.Settings.Default.groupCityType;
-            chkGroupContinent.Checked = Properties.Settings.Default.groupContinent;
-            chkGroupDistance.Checked = Properties.Settings.Default.groupDistance;
-            chkGroupPalaceLvl.Checked = Properties.Settings.Default.groupPalaceLvl;
-            chkGroupPlayer.Checked = Properties.Settings.Default.groupPlayer;
-            chkGroupVirtueType.Checked = Properties.Settings.Default.groupVirtueType;
+            chkGroupAlliance.Checked = UserOptions.Current.groupAlliance;
+            chkGroupBordering.Checked = UserOptions.Current.groupBordering;
+            chkGroupCityType.Checked = UserOptions.Current.groupCityType;
+            chkGroupContinent.Checked = UserOptions.Current.groupContinent;
+            chkGroupDistance.Checked = UserOptions.Current.groupDistance;
+            chkGroupPalaceLvl.Checked = UserOptions.Current.groupPalaceLvl;
+            chkGroupPlayer.Checked = UserOptions.Current.groupPlayer;
+            chkGroupVirtueType.Checked = UserOptions.Current.groupVirtueType;
 
             started = true;
         }
@@ -80,11 +80,11 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.liveRememberMail = false;
-                Properties.Settings.Default.liveRememberPass = false;
-                Properties.Settings.Default.liveUsername = "";
-                Properties.Settings.Default.livePassword = "";
-                Properties.Settings.Default.Save();
+                UserOptions.Current.liveRememberMail = false;
+                UserOptions.Current.liveRememberPass = false;
+                UserOptions.Current.liveUsername = "";
+                UserOptions.Current.livePassword = "";
+                UserOptions.Current.Save();
             }
         }
 
@@ -92,10 +92,10 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.liveRememberMail = true;
-                Properties.Settings.Default.liveRememberPass = false;
-                Properties.Settings.Default.livePassword = "";
-                Properties.Settings.Default.Save();
+                UserOptions.Current.liveRememberMail = true;
+                UserOptions.Current.liveRememberPass = false;
+                UserOptions.Current.livePassword = "";
+                UserOptions.Current.Save();
             }
         }
 
@@ -103,9 +103,9 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.liveRememberMail = true;
-                Properties.Settings.Default.liveRememberPass = true;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.liveRememberMail = true;
+                UserOptions.Current.liveRememberPass = true;
+                UserOptions.Current.Save();
             }
         }
 
@@ -113,8 +113,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.showDetail = false;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.showDetail = false;
+                UserOptions.Current.Save();
             }
         }
 
@@ -122,8 +122,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.showDetail = true;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.showDetail = true;
+                UserOptions.Current.Save();
             }
         }
 
@@ -131,8 +131,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispCityCount = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispCityCount = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -140,8 +140,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispCityScore = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispCityScore = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -149,8 +149,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispCityName = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispCityName = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -158,8 +158,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispPlayerCount = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispPlayerCount = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -167,8 +167,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispPlayerScore = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispPlayerScore = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -176,8 +176,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispAllianceScore = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispAllianceScore = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -185,8 +185,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispAllianceRank = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispAllianceRank = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -194,8 +194,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.filtCities = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.filtCities = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -203,8 +203,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.filtCastles = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.filtCastles = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -212,8 +212,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.filtPalaces = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.filtPalaces = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -221,8 +221,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.filtLand = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.filtLand = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -230,8 +230,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.filtWater = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.filtWater = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -239,8 +239,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.filtNoAlliance = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.filtNoAlliance = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -248,8 +248,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.filtNoCities = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.filtNoCities = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -257,8 +257,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_b = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_b = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -266,8 +266,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_u = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_u = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -275,8 +275,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_i = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_i = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -284,8 +284,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_s = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_s = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -293,8 +293,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_url = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_url = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -302,8 +302,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_city = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_city = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -311,8 +311,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_player = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_player = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -320,8 +320,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.bbCode_alliance = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.bbCode_alliance = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -329,8 +329,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispPalaceLevel = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispPalaceLevel = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -338,8 +338,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.dispPalaceVirtue = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.dispPalaceVirtue = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -347,8 +347,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupContinent = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupContinent = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -356,8 +356,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupAlliance = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupAlliance = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -365,8 +365,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupPlayer = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupPlayer = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -374,8 +374,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupDistance = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupDistance = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -383,8 +383,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupPalaceLvl = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupPalaceLvl = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -392,8 +392,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupCityType = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupCityType = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -401,8 +401,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupVirtueType = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupVirtueType = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
 
@@ -410,8 +410,8 @@ namespace LouMapInfoApp.Tools
         {
             if (started)
             {
-                Properties.Settings.Default.groupBordering = ((CheckBox)sender).Checked;
-                Properties.Settings.Default.Save();
+                UserOptions.Current.groupBordering = ((CheckBox)sender).Checked;
+                UserOptions.Current.Save();
             }
         }
     }
