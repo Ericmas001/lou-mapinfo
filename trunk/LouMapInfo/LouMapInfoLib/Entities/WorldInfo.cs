@@ -28,6 +28,18 @@ namespace LouMapInfo.Entities
 
         private int m_NbContinentsX;
         private int m_NbContinentsY;
+        private int m_ContinentsWidth;
+
+        public int ContinentsWidth
+        {
+            get { return m_ContinentsWidth; }
+        }
+        private int m_ContinentsHeight;
+
+        public int ContinentsHeight
+        {
+            get { return m_ContinentsHeight; }
+        }
         private int m_ServerVersion;
 
         public int ServerVersion
@@ -78,6 +90,8 @@ namespace LouMapInfo.Entities
             m_NbContinentsX = (int)((JsonNumericValue)nfo["cx"]).Value;
             m_NbContinentsY = (int)((JsonNumericValue)nfo["cy"]).Value;
             m_ServerVersion = (int)((JsonNumericValue)nfo["sv"]).Value;
+            m_ContinentsHeight = (int)((JsonNumericValue)nfo["ch"]).Value;
+            m_ContinentsWidth = (int)((JsonNumericValue)nfo["cw"]).Value;
             JsonArrayCollection players = EndPoint.GetPlayerList(Url, m_Session.SessionID);
             foreach (JsonObjectCollection p in players)
             {
@@ -437,7 +451,7 @@ namespace LouMapInfo.Entities
                         case 1: // MoonGate
                             {
                                 int i = (int)((JsonNumericValue)oc2["mi"]).Value; // id
-                                Pt loc = new Pt(x, y);
+                                Pt loc = new Pt(this, x, y);
                                 MoonGateInfo mi = new MoonGateInfo(this, i, loc);
                                 if (!m_MoonGatesByCont.ContainsKey(loc.Continent))
                                     m_MoonGatesByCont.Add(loc.Continent, new List<MoonGateInfo>());
@@ -452,7 +466,7 @@ namespace LouMapInfo.Entities
                                     string name = ((JsonStringValue)oc2["n"]).Value; // name
                                     int p = (int)((JsonNumericValue)oc2["p"]).Value; // score
                                     int c = (int)((JsonNumericValue)oc2["k"]).Value; // continent
-                                    Pt loc = new Pt(x, y);
+                                    Pt loc = new Pt(this,x, y);
                                     CityInfo ci = new CityInfo(this, null, name, i, loc, BorderingType.Unknown, name.Contains("castle") ? CityType.Castle : CityType.City, p);
                                     if (!m_LawlessByCont.ContainsKey(c))
                                         m_LawlessByCont.Add(c, new List<CityInfo>());
@@ -464,7 +478,7 @@ namespace LouMapInfo.Entities
                             {
                                 int i = (int)((JsonNumericValue)oc2["si"]).Value; // id
                                 int st = (int)((JsonNumericValue)oc2["m"]).Value; // shrine type
-                                Pt loc = new Pt(x, y);
+                                Pt loc = new Pt(this,x, y);
                                 ShrineInfo si = new ShrineInfo(this, i, loc, (ShrineType)st);
                                 if (!m_ShrinesByCont.ContainsKey(loc.Continent))
                                     m_ShrinesByCont.Add(loc.Continent, new List<ShrineInfo>());
@@ -604,6 +618,8 @@ namespace LouMapInfo.Entities
         }
         public string[] PalacesOwnersByAlliance(string a)
         {
+            if (!m_PalacesOwnersByAlliance.ContainsKey(a))
+                return new string[0];
             string[] res = new string[m_PalacesOwnersByAlliance[a].Count];
             m_PalacesOwnersByAlliance[a].CopyTo(res);
             return res;
