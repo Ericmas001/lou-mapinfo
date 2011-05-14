@@ -99,7 +99,7 @@ namespace LouMapInfoApp.LouOfficial.Empire
                 Invoke(new ReportHandler(OpenReport), r);
                 return;
             }
-            // ReportForm.ShowReport(r, Properties.Settings.Default.lastWDetailLvl);
+            // ReportForm.ShowReport(r, UserOptions.Current.lastWDetailLvl);
             ContentReport content = new ContentReport(r);
             pnlContent.Controls.Add(content);
             content.Dock = DockStyle.Fill;

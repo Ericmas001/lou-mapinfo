@@ -177,6 +177,7 @@
     <Compile Include="Tools\ContentOptions.Designer.cs">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserOptions.cs" />
     <Compile Include="Zeus\ContentZeusAccount.cs">
       <SubType>UserControl</SubType>
     </Compile>
