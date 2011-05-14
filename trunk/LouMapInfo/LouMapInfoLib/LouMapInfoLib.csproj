@@ -40,6 +40,8 @@
   <ItemGroup>
     <Compile Include="CSV\AllianceCitiesListCSV.cs" />
     <Compile Include="CSV\ReportCSV.cs" />
+    <Compile Include="Entities\CityExtendedInfo.cs" />
+    <Compile Include="Entities\PlayerExtendedInfo.cs" />
     <Compile Include="Entities\Types\GroupingType.cs" />
     <Compile Include="Entities\Types\RankingType.cs" />
     <Compile Include="Layout\BuildingInfo.cs" />

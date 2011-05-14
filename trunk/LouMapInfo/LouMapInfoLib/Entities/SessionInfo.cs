@@ -19,6 +19,13 @@ namespace LouMapInfo.Entities
         private readonly WorldInfo m_World;
         private int m_MyPID;
         private int m_MyAID;
+        private PlayerExtendedInfo m_MyPlayer;
+
+        public PlayerExtendedInfo MyPlayer
+        {
+            get { return m_MyPlayer; }
+            set { m_MyPlayer = value; }
+        }
 
         public WorldInfo World { get { return m_World; } }
         public string Mail { get { return m_Mail; } }

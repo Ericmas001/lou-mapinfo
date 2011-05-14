@@ -79,7 +79,11 @@ namespace LouMapInfo.Entities
                 int cY = (int)((JsonNumericValue)cInfo["y"]).Value; // Y
                 int continent = ((cY / 100) * 10) + (cX / 100);
                 Pt pt = new Pt(cX, cY);
-                CityInfo city = new CityInfo(m_World, this, cN, cI, pt, (BorderingType)cW, (CityType)cS, cP);
+                CityInfo city;
+                if (this is PlayerExtendedInfo)
+                    city = new CityExtendedInfo(m_World, this, cN, cI, pt, (BorderingType)cW, (CityType)cS, cP);
+                else
+                    city = new CityInfo(m_World, this, cN, cI, pt, (BorderingType)cW, (CityType)cS, cP);
                 if (!m_CitiesByContinent.ContainsKey(pt.Continent))
                 {
                     m_CitiesByContinent.Add(pt.Continent, new List<CityInfo>());

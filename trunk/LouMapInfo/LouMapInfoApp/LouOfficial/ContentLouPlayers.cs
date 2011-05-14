@@ -26,7 +26,7 @@ namespace LouMapInfoApp.LouOfficial
             set
             {
                 m_Frame = value;
-                string pName = Session.World.Player(Session.PlayerID).Name;
+                string pName = Session.MyPlayer.Name;
                 btnPlayerReportMe.Text = pName;
             }
         }

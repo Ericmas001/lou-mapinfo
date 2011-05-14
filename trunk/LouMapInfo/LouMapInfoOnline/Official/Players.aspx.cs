@@ -27,7 +27,7 @@ namespace LoUMapInfoOnline.Official
                 SessionInfo session = (SessionInfo)Session["louSession"];
                 if (Players.list == null)
                     Players.list = session.World.Players;
-                btnMe.Text = session.World.Player(session.PlayerID).Name;
+                btnMe.Text = session.MyPlayer.Name;
             }
         }
 
@@ -42,7 +42,7 @@ namespace LoUMapInfoOnline.Official
         protected void btnMe_Click(object sender, EventArgs e)
         {
             SessionInfo session = (SessionInfo)Session["louSession"];
-            PlayerInfo info = session.World.Player(session.PlayerID);
+            PlayerInfo info = session.MyPlayer;
             if (info != null)
                 Official.OpenReport(new PlayerOverviewReport(info));
         }
