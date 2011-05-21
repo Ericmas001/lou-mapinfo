@@ -71,10 +71,15 @@ namespace LouMapInfoApp.Tools
                     lstUtilDestroyAll.Items.Add(BuildingInfo.ByType[bt]);
                     lstUtilReplaceAll1.Items.Add(BuildingInfo.ByType[bt]);
                     lstUtilReplaceAll2.Items.Add(BuildingInfo.ByType[bt]);
+                    if (bt != BuildingType.ResFood && bt != BuildingType.ResIron && bt != BuildingType.ResStone && bt != BuildingType.ResWood)
+                    {
+                        lstUtilPlaceSome.Items.Add(BuildingInfo.ByType[bt]);
+                    }
                 }
             lstUtilDestroyAll.SelectedIndex = 0;
             lstUtilReplaceAll1.SelectedIndex = 0;
             lstUtilReplaceAll2.SelectedIndex = 0;
+            lstUtilPlaceSome.SelectedIndex = 0;
         }        
             
         
@@ -367,6 +372,23 @@ namespace LouMapInfoApp.Tools
                     le.Info = b2.BType;
             }
             pbCity.Invalidate();
+        }
+
+        private void btnUtilPlaceSome_Click(object sender, EventArgs e)
+        {
+            BuildingInfo b = lstUtilPlaceSome.SelectedItem as BuildingInfo;
+            int count = (int)nudUtilPlaceSome.Value;
+            int used = 0;
+            foreach (LayoutEntry le in pbCity.City.CityLayout)
+            {
+                if (used >= count)
+                    return;
+                if (le.Info == BuildingType.None)
+                {
+                    le.Info = b.BType;
+                    used++;
+                }
+            }
         }
     }
 }
