@@ -22,6 +22,11 @@ namespace LouMapInfoApp
         private Dictionary<BuildingType, Bitmap> m_DONOTUSE_Buildings = new Dictionary<BuildingType, Bitmap>();
         private CompleteLayout m_Layout;
 
+        public CompleteLayout City
+        {
+            get { return m_Layout; }
+        }
+
         public int Hidden
         {
             get { return m_Layout.Hidden; }

@@ -100,6 +100,9 @@
             this.toolStripLabel25 = new System.Windows.Forms.ToolStripLabel();
             this.lblMoonglow = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip7 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel20 = new System.Windows.Forms.ToolStripLabel();
+            this.lblArmySize2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel18 = new System.Windows.Forms.ToolStripLabel();
             this.lblCityGuard = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
@@ -130,7 +133,6 @@
             this.btnCopyFCP = new System.Windows.Forms.Button();
             this.btnCopySS = new System.Windows.Forms.Button();
             this.pnlCity = new System.Windows.Forms.Panel();
-            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnSawmill = new System.Windows.Forms.ToolStripButton();
             this.btnStonemasson = new System.Windows.Forms.ToolStripButton();
@@ -175,9 +177,16 @@
             this.btnOldFarm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDestroy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel20 = new System.Windows.Forms.ToolStripLabel();
-            this.lblArmySize2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbUtil = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lstUtilDestroyAll = new System.Windows.Forms.ComboBox();
+            this.btnUtilDestroyAll = new System.Windows.Forms.Button();
+            this.btnUtilReplaceAll = new System.Windows.Forms.Button();
+            this.lstUtilReplaceAll1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lstUtilReplaceAll2 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
             this.pnlRight.SuspendLayout();
@@ -197,10 +206,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).BeginInit();
             this.tbExport.SuspendLayout();
             this.pnlCity.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.tbUtil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -250,6 +260,7 @@
             this.tabControl1.Controls.Add(this.tbImport);
             this.tabControl1.Controls.Add(this.tbAutoPlanner);
             this.tabControl1.Controls.Add(this.tbExport);
+            this.tabControl1.Controls.Add(this.tbUtil);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -809,6 +820,27 @@
             this.toolStrip7.TabIndex = 10;
             this.toolStrip7.Text = "toolStrip7";
             // 
+            // toolStripLabel20
+            // 
+            this.toolStripLabel20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripLabel20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel20.Image = global::LouMapInfoApp.Properties.Resources.icon_recruit_slots;
+            this.toolStripLabel20.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripLabel20.Name = "toolStripLabel20";
+            this.toolStripLabel20.Size = new System.Drawing.Size(30, 23);
+            this.toolStripLabel20.Text = "Army Size";
+            // 
+            // lblArmySize2
+            // 
+            this.lblArmySize2.Name = "lblArmySize2";
+            this.lblArmySize2.Size = new System.Drawing.Size(13, 23);
+            this.lblArmySize2.Text = "0";
+            // 
+            // toolStripSeparator26
+            // 
+            this.toolStripSeparator26.Name = "toolStripSeparator26";
+            this.toolStripSeparator26.Size = new System.Drawing.Size(6, 26);
+            // 
             // toolStripLabel18
             // 
             this.toolStripLabel18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -1148,20 +1180,6 @@
             this.pnlCity.Name = "pnlCity";
             this.pnlCity.Size = new System.Drawing.Size(768, 480);
             this.pnlCity.TabIndex = 5;
-            // 
-            // pbCity
-            // 
-            this.pbCity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCity.BackgroundImage")));
-            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbCity.Location = new System.Drawing.Point(0, 0);
-            this.pbCity.Name = "pbCity";
-            this.pbCity.Size = new System.Drawing.Size(768, 480);
-            this.pbCity.TabIndex = 3;
-            this.pbCity.TabStop = false;
-            this.pbCity.Water = true;
-            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
-            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
             // 
             // toolStrip3
             // 
@@ -1623,26 +1641,116 @@
             this.btnDestroy.Text = "Destroy";
             this.btnDestroy.Click += new System.EventHandler(this.btnBuilding_Click);
             // 
-            // toolStripLabel20
+            // tbUtil
             // 
-            this.toolStripLabel20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripLabel20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripLabel20.Image = global::LouMapInfoApp.Properties.Resources.icon_recruit_slots;
-            this.toolStripLabel20.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripLabel20.Name = "toolStripLabel20";
-            this.toolStripLabel20.Size = new System.Drawing.Size(30, 23);
-            this.toolStripLabel20.Text = "Army Size";
+            this.tbUtil.Controls.Add(this.lstUtilReplaceAll2);
+            this.tbUtil.Controls.Add(this.label7);
+            this.tbUtil.Controls.Add(this.btnUtilReplaceAll);
+            this.tbUtil.Controls.Add(this.lstUtilReplaceAll1);
+            this.tbUtil.Controls.Add(this.label6);
+            this.tbUtil.Controls.Add(this.btnUtilDestroyAll);
+            this.tbUtil.Controls.Add(this.lstUtilDestroyAll);
+            this.tbUtil.Controls.Add(this.label5);
+            this.tbUtil.Location = new System.Drawing.Point(4, 22);
+            this.tbUtil.Name = "tbUtil";
+            this.tbUtil.Padding = new System.Windows.Forms.Padding(3);
+            this.tbUtil.Size = new System.Drawing.Size(762, 81);
+            this.tbUtil.TabIndex = 6;
+            this.tbUtil.Text = "Utilities";
+            this.tbUtil.UseVisualStyleBackColor = true;
             // 
-            // lblArmySize2
+            // label5
             // 
-            this.lblArmySize2.Name = "lblArmySize2";
-            this.lblArmySize2.Size = new System.Drawing.Size(13, 23);
-            this.lblArmySize2.Text = "0";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Destroy all ...";
             // 
-            // toolStripSeparator26
+            // lstUtilDestroyAll
             // 
-            this.toolStripSeparator26.Name = "toolStripSeparator26";
-            this.toolStripSeparator26.Size = new System.Drawing.Size(6, 26);
+            this.lstUtilDestroyAll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstUtilDestroyAll.FormattingEnabled = true;
+            this.lstUtilDestroyAll.Items.AddRange(new object[] {
+            "Buildings & Resources",
+            "Buildings",
+            "Resources",
+            "======"});
+            this.lstUtilDestroyAll.Location = new System.Drawing.Point(80, 0);
+            this.lstUtilDestroyAll.Name = "lstUtilDestroyAll";
+            this.lstUtilDestroyAll.Size = new System.Drawing.Size(121, 21);
+            this.lstUtilDestroyAll.TabIndex = 1;
+            // 
+            // btnUtilDestroyAll
+            // 
+            this.btnUtilDestroyAll.Location = new System.Drawing.Point(207, 0);
+            this.btnUtilDestroyAll.Name = "btnUtilDestroyAll";
+            this.btnUtilDestroyAll.Size = new System.Drawing.Size(75, 23);
+            this.btnUtilDestroyAll.TabIndex = 2;
+            this.btnUtilDestroyAll.Text = "Destroy!";
+            this.btnUtilDestroyAll.UseVisualStyleBackColor = true;
+            this.btnUtilDestroyAll.Click += new System.EventHandler(this.btnUtilDestroyAll_Click);
+            // 
+            // btnUtilReplaceAll
+            // 
+            this.btnUtilReplaceAll.Location = new System.Drawing.Point(358, 22);
+            this.btnUtilReplaceAll.Name = "btnUtilReplaceAll";
+            this.btnUtilReplaceAll.Size = new System.Drawing.Size(75, 23);
+            this.btnUtilReplaceAll.TabIndex = 5;
+            this.btnUtilReplaceAll.Text = "Replace!";
+            this.btnUtilReplaceAll.UseVisualStyleBackColor = true;
+            this.btnUtilReplaceAll.Click += new System.EventHandler(this.btnUtilReplaceAll_Click);
+            // 
+            // lstUtilReplaceAll1
+            // 
+            this.lstUtilReplaceAll1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstUtilReplaceAll1.FormattingEnabled = true;
+            this.lstUtilReplaceAll1.Location = new System.Drawing.Point(80, 24);
+            this.lstUtilReplaceAll1.Name = "lstUtilReplaceAll1";
+            this.lstUtilReplaceAll1.Size = new System.Drawing.Size(121, 21);
+            this.lstUtilReplaceAll1.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Replace all ...";
+            // 
+            // lstUtilReplaceAll2
+            // 
+            this.lstUtilReplaceAll2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstUtilReplaceAll2.FormattingEnabled = true;
+            this.lstUtilReplaceAll2.Location = new System.Drawing.Point(231, 24);
+            this.lstUtilReplaceAll2.Name = "lstUtilReplaceAll2";
+            this.lstUtilReplaceAll2.Size = new System.Drawing.Size(121, 21);
+            this.lstUtilReplaceAll2.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(207, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "by";
+            // 
+            // pbCity
+            // 
+            this.pbCity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCity.BackgroundImage")));
+            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbCity.Location = new System.Drawing.Point(0, 0);
+            this.pbCity.Name = "pbCity";
+            this.pbCity.Size = new System.Drawing.Size(768, 480);
+            this.pbCity.TabIndex = 3;
+            this.pbCity.TabStop = false;
+            this.pbCity.Water = true;
+            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
+            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
             // 
             // ContentLayout
             // 
@@ -1685,13 +1793,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAPUseSlots)).EndInit();
             this.tbExport.ResumeLayout(false);
             this.pnlCity.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tbUtil.ResumeLayout(false);
+            this.tbUtil.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1847,6 +1957,15 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel20;
         private System.Windows.Forms.ToolStripLabel lblArmySize2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator26;
+        private System.Windows.Forms.TabPage tbUtil;
+        private System.Windows.Forms.Button btnUtilDestroyAll;
+        private System.Windows.Forms.ComboBox lstUtilDestroyAll;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox lstUtilReplaceAll2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnUtilReplaceAll;
+        private System.Windows.Forms.ComboBox lstUtilReplaceAll1;
+        private System.Windows.Forms.Label label6;
 
 
 

@@ -123,14 +123,18 @@ namespace LouMapInfo.Layout
                 return BuildingInfo.m_ByOfficialID;
             }
         }
+        public override string ToString()
+        {
+            return m_Name;
+        }
         private static void Load()
         {
             m_Loaded = true;
             m_AllOfThem.Add(new BuildingInfo(BuildingType.None, "Nothing", '0', '-',false, ResourceType.None, 501));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResWood, "Wood", 'A', '.', true, ResourceType.None, 901));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResStone, "Stone", 'B', ':', true, ResourceType.None, 900));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResIron, "Iron", 'C', ',', true, ResourceType.None, 902));
-            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResFood, "Food", 'D', ';', true, ResourceType.None, 903));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResWood, "Resource Wood (Trees)", 'A', '.', true, ResourceType.None, 901));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResStone, "Resource Stone", 'B', ':', true, ResourceType.None, 900));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResIron, "Resource Iron", 'C', ',', true, ResourceType.None, 902));
+            m_AllOfThem.Add(new BuildingInfo(BuildingType.ResFood, "Resource Food (Lakes)", 'D', ';', true, ResourceType.None, 903));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.WoodcutterOld, "Woodcutter's hut (old)", 'F', 'W', false,ResourceType.Wood, 401));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.QuarryOld, "Quarry (old)", 'G', 'Q', false,ResourceType.Stone, 402));
             m_AllOfThem.Add(new BuildingInfo(BuildingType.IronMineOld, "Iron Mine (old)", 'H', 'I', false,ResourceType.Iron, 406));
