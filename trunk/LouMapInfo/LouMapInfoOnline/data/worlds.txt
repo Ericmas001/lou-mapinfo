@@ -37,9 +37,12 @@
 25;(de) Welt 4;12
 36;(de) Welt 5;2
 53;(de) Welt 6;7
+60;(de) Welt 7;16
 28;(es) Mundo 1;5
 46;(es) Mundo 2;7
 50;(es) Mundo 3;3
+61;(es) Mundo 4 (España);4
+62;(es) Mundo 5 (América Latina);8
 26;(fr) Monde 1;13
 48;(fr) Monde 2;8
 57;(fr) Monde 3;7
