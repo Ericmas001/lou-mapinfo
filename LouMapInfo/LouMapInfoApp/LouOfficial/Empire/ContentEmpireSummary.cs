@@ -31,7 +31,14 @@ namespace LouMapInfoApp.LouOfficial.Empire
             {
                 m_Frame = value;
 
-                //DO LOADING STUFF HERE
+                lblScore.Text = Session.MyPlayer.Score.ToString("N0");
+                lblRank.Text = Session.MyPlayer.Rank.ToString("N0");
+                lblGold.Text = Session.MyPlayer.Gold.ToString("N0");
+                lblMana.Text = Session.MyPlayer.Mana.ToString("N0");
+                lblPurWood.Text = Session.MyPlayer.PurWood.ToString("N0");
+                lblPurStone.Text = Session.MyPlayer.PurStone.ToString("N0");
+                lblPurIron.Text = Session.MyPlayer.PurIron.ToString("N0");
+                lblPurFood.Text = Session.MyPlayer.PurFood.ToString("N0");
             }
         }
     }

@@ -8,11 +8,47 @@ namespace LouMapInfo.Entities
     public class PlayerExtendedInfo : PlayerInfo
     {
         private int m_Gold;
+
+        public int Gold
+        {
+            get { return m_Gold; }
+            set { m_Gold = value; }
+        }
         private int m_Mana;
+
+        public int Mana
+        {
+            get { return m_Mana; }
+            set { m_Mana = value; }
+        }
         private int m_PurWood;
+
+        public int PurWood
+        {
+            get { return m_PurWood; }
+            set { m_PurWood = value; }
+        }
         private int m_PurStone;
+
+        public int PurStone
+        {
+            get { return m_PurStone; }
+            set { m_PurStone = value; }
+        }
         private int m_PurIron;
+
+        public int PurIron
+        {
+            get { return m_PurIron; }
+            set { m_PurIron = value; }
+        }
         private int m_PurFood;
+
+        public int PurFood
+        {
+            get { return m_PurFood; }
+            set { m_PurFood = value; }
+        }
 
         public PlayerExtendedInfo(WorldInfo world, string name, int id, AllianceInfo alliance, int score, int rank, int nbCities)
             : base(world, name, id, alliance, score, rank, nbCities)

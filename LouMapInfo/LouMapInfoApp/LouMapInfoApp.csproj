@@ -239,6 +239,9 @@
     <EmbeddedResource Include="LouOfficial\Empire\ContentEmpireCities.resx">
       <DependentUpon>ContentEmpireCities.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LouOfficial\Empire\ContentEmpireSummary.resx">
+      <DependentUpon>ContentEmpireSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\ContentLayout.resx">
       <DependentUpon>ContentLayout.cs</DependentUpon>
     </EmbeddedResource>
