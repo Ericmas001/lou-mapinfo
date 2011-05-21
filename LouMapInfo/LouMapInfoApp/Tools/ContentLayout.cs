@@ -64,7 +64,20 @@ namespace LouMapInfoApp.Tools
             list.Images.Add(Properties.Resources.icon_recruit_slots);
             tbCityInfo.ImageIndex = 0;
             tbCityMilitary.ImageIndex = 1;
-        }
+
+            foreach (BuildingType bt in BuildingInfo.ByType.Keys)
+                if (bt != BuildingType.None && bt != BuildingType.FarmLand)
+                {
+                    lstUtilDestroyAll.Items.Add(BuildingInfo.ByType[bt]);
+                    lstUtilReplaceAll1.Items.Add(BuildingInfo.ByType[bt]);
+                    lstUtilReplaceAll2.Items.Add(BuildingInfo.ByType[bt]);
+                }
+            lstUtilDestroyAll.SelectedIndex = 0;
+            lstUtilReplaceAll1.SelectedIndex = 0;
+            lstUtilReplaceAll2.SelectedIndex = 0;
+        }        
+            
+        
 
 
 
@@ -299,6 +312,61 @@ namespace LouMapInfoApp.Tools
         private void btnOpenFCP_Click(object sender, EventArgs e)
         {
             Process.Start(pbCity.GenerateFlashCityPlanner());
+        }
+
+        private void btnUtilDestroyAll_Click(object sender, EventArgs e)
+        {
+            if (lstUtilDestroyAll.SelectedItem is BuildingInfo)
+            {
+                BuildingInfo b = lstUtilDestroyAll.SelectedItem as BuildingInfo;
+                foreach (LayoutEntry le in pbCity.City.CityLayout)
+                {
+                    if (b.BType == le.Info)
+                        le.Info = BuildingType.None;
+                }
+            }
+            else
+            {
+                if (lstUtilDestroyAll.SelectedIndex == 0 || lstUtilDestroyAll.SelectedIndex == 1)
+                {
+                    List<BuildingType> excluded = new List<BuildingType>(new BuildingType[] { BuildingType.FarmLand, BuildingType.None, BuildingType.ResFood, BuildingType.ResIron, BuildingType.ResStone, BuildingType.ResWood });
+                    foreach (LayoutEntry le in pbCity.City.CityLayout)
+                    {
+                        if( !excluded.Contains(le.Info ) )
+                            le.Info = BuildingType.None;
+                    }
+                }
+                if (lstUtilDestroyAll.SelectedIndex == 0 || lstUtilDestroyAll.SelectedIndex == 2)
+                {
+                    List<BuildingType> included = new List<BuildingType>(new BuildingType[] { BuildingType.ResFood, BuildingType.ResIron, BuildingType.ResStone, BuildingType.ResWood });
+                    foreach (LayoutEntry le in pbCity.City.CityLayout)
+                    {
+                        if (included.Contains(le.Info))
+                            le.Info = BuildingType.None;
+                    }
+                }
+            }
+            pbCity.Invalidate();
+        }
+
+        private void btnUtilReplaceAll_Click(object sender, EventArgs e)
+        {
+            BuildingInfo b1 = lstUtilReplaceAll1.SelectedItem as BuildingInfo;
+            BuildingInfo b2 = lstUtilReplaceAll2.SelectedItem as BuildingInfo;
+            if( b1.BType == b2.BType )
+                return;
+            bool b1OnWater = (b1.BType == BuildingType.Shipyard || b1.BType == BuildingType.Harbor);
+            bool b2OnWater = (b2.BType == BuildingType.Shipyard || b2.BType == BuildingType.Harbor);
+            
+            if( b1OnWater != b2OnWater)
+                return;
+
+            foreach (LayoutEntry le in pbCity.City.CityLayout)
+            {
+                if (b1.BType == le.Info)
+                    le.Info = b2.BType;
+            }
+            pbCity.Invalidate();
         }
     }
 }
