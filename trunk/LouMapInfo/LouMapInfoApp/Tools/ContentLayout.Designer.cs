@@ -186,11 +186,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lstUtilReplaceAll2 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.nudUtilPlaceSome = new System.Windows.Forms.NumericUpDown();
             this.lstUtilPlaceSome = new System.Windows.Forms.ComboBox();
             this.btnUtilPlaceSome = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pbCity = new LouMapInfoApp.LayoutPictureBox();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statePictureBox1)).BeginInit();
             this.pnlRight.SuspendLayout();
@@ -214,8 +219,9 @@
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tbUtil.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudUtilPlaceSome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -1648,6 +1654,11 @@
             // 
             // tbUtil
             // 
+            this.tbUtil.Controls.Add(this.label10);
+            this.tbUtil.Controls.Add(this.button2);
+            this.tbUtil.Controls.Add(this.comboBox1);
+            this.tbUtil.Controls.Add(this.numericUpDown1);
+            this.tbUtil.Controls.Add(this.label9);
             this.tbUtil.Controls.Add(this.btnUtilPlaceSome);
             this.tbUtil.Controls.Add(this.lstUtilPlaceSome);
             this.tbUtil.Controls.Add(this.nudUtilPlaceSome);
@@ -1671,7 +1682,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 3);
+            this.label5.Location = new System.Drawing.Point(6, 2);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 0;
@@ -1687,14 +1698,14 @@
             "Buildings",
             "Resources",
             "======"});
-            this.lstUtilDestroyAll.Location = new System.Drawing.Point(80, 0);
+            this.lstUtilDestroyAll.Location = new System.Drawing.Point(80, -1);
             this.lstUtilDestroyAll.Name = "lstUtilDestroyAll";
             this.lstUtilDestroyAll.Size = new System.Drawing.Size(121, 20);
             this.lstUtilDestroyAll.TabIndex = 1;
             // 
             // btnUtilDestroyAll
             // 
-            this.btnUtilDestroyAll.Location = new System.Drawing.Point(207, 0);
+            this.btnUtilDestroyAll.Location = new System.Drawing.Point(207, -1);
             this.btnUtilDestroyAll.Name = "btnUtilDestroyAll";
             this.btnUtilDestroyAll.Size = new System.Drawing.Size(75, 20);
             this.btnUtilDestroyAll.TabIndex = 2;
@@ -1704,7 +1715,7 @@
             // 
             // btnUtilReplaceAll
             // 
-            this.btnUtilReplaceAll.Location = new System.Drawing.Point(358, 22);
+            this.btnUtilReplaceAll.Location = new System.Drawing.Point(358, 20);
             this.btnUtilReplaceAll.Name = "btnUtilReplaceAll";
             this.btnUtilReplaceAll.Size = new System.Drawing.Size(75, 20);
             this.btnUtilReplaceAll.TabIndex = 5;
@@ -1717,7 +1728,7 @@
             this.lstUtilReplaceAll1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstUtilReplaceAll1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstUtilReplaceAll1.FormattingEnabled = true;
-            this.lstUtilReplaceAll1.Location = new System.Drawing.Point(80, 22);
+            this.lstUtilReplaceAll1.Location = new System.Drawing.Point(80, 20);
             this.lstUtilReplaceAll1.Name = "lstUtilReplaceAll1";
             this.lstUtilReplaceAll1.Size = new System.Drawing.Size(121, 20);
             this.lstUtilReplaceAll1.TabIndex = 4;
@@ -1725,7 +1736,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 25);
+            this.label6.Location = new System.Drawing.Point(6, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 13);
             this.label6.TabIndex = 3;
@@ -1736,7 +1747,7 @@
             this.lstUtilReplaceAll2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstUtilReplaceAll2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstUtilReplaceAll2.FormattingEnabled = true;
-            this.lstUtilReplaceAll2.Location = new System.Drawing.Point(231, 22);
+            this.lstUtilReplaceAll2.Location = new System.Drawing.Point(231, 20);
             this.lstUtilReplaceAll2.Name = "lstUtilReplaceAll2";
             this.lstUtilReplaceAll2.Size = new System.Drawing.Size(121, 20);
             this.lstUtilReplaceAll2.TabIndex = 7;
@@ -1744,30 +1755,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(207, 25);
+            this.label7.Location = new System.Drawing.Point(207, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(18, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "by";
             // 
-            // pbCity
-            // 
-            this.pbCity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCity.BackgroundImage")));
-            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbCity.Location = new System.Drawing.Point(0, 0);
-            this.pbCity.Name = "pbCity";
-            this.pbCity.Size = new System.Drawing.Size(768, 480);
-            this.pbCity.TabIndex = 3;
-            this.pbCity.TabStop = false;
-            this.pbCity.Water = true;
-            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
-            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 46);
+            this.label8.Location = new System.Drawing.Point(6, 43);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 8;
@@ -1776,7 +1773,7 @@
             // nudUtilPlaceSome
             // 
             this.nudUtilPlaceSome.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudUtilPlaceSome.Location = new System.Drawing.Point(46, 44);
+            this.nudUtilPlaceSome.Location = new System.Drawing.Point(46, 41);
             this.nudUtilPlaceSome.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1796,20 +1793,92 @@
             this.lstUtilPlaceSome.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstUtilPlaceSome.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstUtilPlaceSome.FormattingEnabled = true;
-            this.lstUtilPlaceSome.Location = new System.Drawing.Point(98, 44);
+            this.lstUtilPlaceSome.Location = new System.Drawing.Point(98, 41);
             this.lstUtilPlaceSome.Name = "lstUtilPlaceSome";
             this.lstUtilPlaceSome.Size = new System.Drawing.Size(121, 20);
             this.lstUtilPlaceSome.TabIndex = 10;
             // 
             // btnUtilPlaceSome
             // 
-            this.btnUtilPlaceSome.Location = new System.Drawing.Point(225, 44);
+            this.btnUtilPlaceSome.Location = new System.Drawing.Point(225, 41);
             this.btnUtilPlaceSome.Name = "btnUtilPlaceSome";
             this.btnUtilPlaceSome.Size = new System.Drawing.Size(75, 20);
             this.btnUtilPlaceSome.TabIndex = 11;
             this.btnUtilPlaceSome.Text = "Place!";
             this.btnUtilPlaceSome.UseVisualStyleBackColor = true;
             this.btnUtilPlaceSome.Click += new System.EventHandler(this.btnUtilPlaceSome_Click);
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(308, 62);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 20);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Place!";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Enabled = false;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(181, 62);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 14;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(76, 63);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(46, 18);
+            this.numericUpDown1.TabIndex = 13;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Destroy the ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(128, 66);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "weakest";
+            // 
+            // pbCity
+            // 
+            this.pbCity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCity.BackgroundImage")));
+            this.pbCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbCity.Location = new System.Drawing.Point(0, 0);
+            this.pbCity.Name = "pbCity";
+            this.pbCity.Size = new System.Drawing.Size(768, 480);
+            this.pbCity.TabIndex = 3;
+            this.pbCity.TabStop = false;
+            this.pbCity.Water = true;
+            this.pbCity.CounterRefreshed += new LouMapInfo.Layout.EmptyHandler(this.pbCity_CounterRefreshed);
+            this.pbCity.BuildingChanged += new LouMapInfo.Layout.BuildingTypeHandler(this.pbCity_BuildingChanged);
             // 
             // ContentLayout
             // 
@@ -1860,8 +1929,9 @@
             this.toolStrip1.PerformLayout();
             this.tbUtil.ResumeLayout(false);
             this.tbUtil.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudUtilPlaceSome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2030,6 +2100,11 @@
         private System.Windows.Forms.ComboBox lstUtilPlaceSome;
         private System.Windows.Forms.NumericUpDown nudUtilPlaceSome;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label9;
 
 
 
