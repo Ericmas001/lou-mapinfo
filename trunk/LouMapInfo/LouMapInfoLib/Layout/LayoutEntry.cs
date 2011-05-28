@@ -274,9 +274,12 @@ namespace LouMapInfo.Layout
             else if (m_Recruitment.ContainsKey(m_Info))
             {
                 int numB = 0;
-                foreach (LayoutEntry le in NeighborsWithWater)
-                    if (le.m_Info == BuildingType.Barracks)
-                        numB++;
+                if (m_Info != BuildingType.CityGuardHouse)
+                {
+                    foreach (LayoutEntry le in NeighborsWithWater)
+                        if (le.m_Info == BuildingType.Barracks)
+                            numB++;
+                }
                 int speed = 150 + (numB * 25);
                 m_Recruitment[m_Info] = speed;
                 RefreshRecruitmentSpeed(m_Info);
@@ -491,6 +494,49 @@ namespace LouMapInfo.Layout
             else
                 m_BuildingCount = 1;
             RefreshBuildingCount();
+        }
+        public int Usefulness
+        {
+            get
+            {
+                switch (m_Info)
+                {
+                    case BuildingType.None: return -1;
+                    case BuildingType.ResWood:  //Resource Wood (Trees)", 'A', '.', true, ResourceType.None, 901));
+                    case BuildingType.ResStone:  //Resource Stone", 'B', ':', true, ResourceType.None, 900));
+                    case BuildingType.ResIron:  //Resource Iron", 'C', ',', true, ResourceType.None, 902));
+                    case BuildingType.ResFood:  //Resource Food (Lakes)", 'D', ';', true, ResourceType.None, 903));
+                    case BuildingType.WoodcutterOld:  //Woodcutter's hut (old)", 'F', 'W', false,ResourceType.Wood, 401));
+                    case BuildingType.QuarryOld:  //Quarry (old)", 'G', 'Q', false,ResourceType.Stone, 402));
+                    case BuildingType.IronMineOld:  //Iron Mine (old)", 'H', 'I', false,ResourceType.Iron, 406));
+                    case BuildingType.FarmOld:  //Farm (old)", 'I', 'F', false,ResourceType.Food, 403));
+                    case BuildingType.Woodcutter:  //Woodcutter's hut", '2', '2', false,ResourceType.Wood, 447));
+                    case BuildingType.Quarry:  //Quarry", '3', '3', false,ResourceType.Stone, 448));
+                    case BuildingType.IronMine:  //Iron Mine", '4', '4', false,ResourceType.Iron, 449));
+                    case BuildingType.Farm:  //Farm", '5', '1', false,ResourceType.Food, 450));
+                    case BuildingType.Sawmill:  //Sawmill", 'K', 'L', true, ResourceType.None, 407));
+                    case BuildingType.Stonemasson:  //Stonemasson", 'L', 'A', true, ResourceType.None, 410));
+                    case BuildingType.Foundry:  //Foundry", 'M', 'D', true, ResourceType.None, 411));
+                    case BuildingType.Mill:  //Mill", 'N', 'M', true, ResourceType.None, 408));
+                    case BuildingType.Warehouse:  //Warehouse", 'Z', 'S', false, ResourceType.None, 420));
+                    case BuildingType.Cottage:  //Cottage", 'O', 'C', true, ResourceType.None, 404));
+                    case BuildingType.Hideout:  //Hideout", '1', 'H', false, ResourceType.None, 409));
+                    case BuildingType.Marketplace:  //Marketplace", 'J', 'P', true, ResourceType.None, 405));
+                    case BuildingType.Townhouse:  //Townhouse", 'E', 'U', false, ResourceType.Gold, 413));
+                    case BuildingType.Barracks:  //Barracks", 'P', 'B', true, ResourceType.None, 414));
+                    case BuildingType.CityGuardHouse: return 150;
+                    case BuildingType.TrainingGround:  //Training Ground", 'Q', 'G', false, ResourceType.None, 416));
+                    case BuildingType.Stable:  //Stable", 'U', 'E', false, ResourceType.None, 417));
+                    case BuildingType.MoonglowTower:  //Moonglow Tower", 'R', 'J', false, ResourceType.None, 436));
+                    case BuildingType.TrinsicTemple:  //Trinsic Temple", 'W', 'Z', false, ResourceType.None, 437));
+                    case BuildingType.Workshop:  //Workshop", 'V', 'Y', false, ResourceType.None,418));
+                    case BuildingType.Harbor:  //Harbor", 'T', 'R', true, ResourceType.None,422));
+                    case BuildingType.Shipyard:  //Shipyard", 'Y', 'V', false, ResourceType.None,419));
+                    case BuildingType.Castle: return int.MaxValue;
+                    case BuildingType.FarmLand: return -1;
+                }
+                return 0;
+            }
         }
     }
 }
