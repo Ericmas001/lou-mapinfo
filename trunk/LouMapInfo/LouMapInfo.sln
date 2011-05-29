@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoOnlineMVC", "LouM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoOnlineMVC.Tests", "LouMapInfoOnlineMVC.Tests\LouMapInfoOnlineMVC.Tests.csproj", "{84931840-8BE3-4809-90C5-00E92D39E248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoUListServers", "LoUListServers\LoUListServers.csproj", "{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -302,6 +304,31 @@ Global
 		{84931840-8BE3-4809-90C5-00E92D39E248}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{84931840-8BE3-4809-90C5-00E92D39E248}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{84931840-8BE3-4809-90C5-00E92D39E248}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.CD_ROM|Any CPU.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.CD_ROM|Mixed Platforms.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.CD_ROM|Mixed Platforms.Build.0 = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.CD_ROM|x86.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.CD_ROM|x86.Build.0 = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Debug|x86.ActiveCfg = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Debug|x86.Build.0 = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.DVD-5|Any CPU.ActiveCfg = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.DVD-5|Mixed Platforms.ActiveCfg = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.DVD-5|Mixed Platforms.Build.0 = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.DVD-5|x86.ActiveCfg = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.DVD-5|x86.Build.0 = Debug|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Release|Any CPU.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Release|x86.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.Release|x86.Build.0 = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.SingleImage|Any CPU.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.SingleImage|Mixed Platforms.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.SingleImage|Mixed Platforms.Build.0 = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.SingleImage|x86.ActiveCfg = Release|x86
+		{B4586EF2-3BE2-48AC-BE7A-44CCFB0E63F8}.SingleImage|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
