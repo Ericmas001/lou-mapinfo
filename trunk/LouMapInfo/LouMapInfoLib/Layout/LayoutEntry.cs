@@ -501,39 +501,158 @@ namespace LouMapInfo.Layout
             {
                 switch (m_Info)
                 {
-                    case BuildingType.None: return -1;
-                    case BuildingType.ResWood:  //Resource Wood (Trees)", 'A', '.', true, ResourceType.None, 901));
-                    case BuildingType.ResStone:  //Resource Stone", 'B', ':', true, ResourceType.None, 900));
-                    case BuildingType.ResIron:  //Resource Iron", 'C', ',', true, ResourceType.None, 902));
-                    case BuildingType.ResFood:  //Resource Food (Lakes)", 'D', ';', true, ResourceType.None, 903));
-                    case BuildingType.WoodcutterOld:  //Woodcutter's hut (old)", 'F', 'W', false,ResourceType.Wood, 401));
-                    case BuildingType.QuarryOld:  //Quarry (old)", 'G', 'Q', false,ResourceType.Stone, 402));
-                    case BuildingType.IronMineOld:  //Iron Mine (old)", 'H', 'I', false,ResourceType.Iron, 406));
-                    case BuildingType.FarmOld:  //Farm (old)", 'I', 'F', false,ResourceType.Food, 403));
-                    case BuildingType.Woodcutter:  //Woodcutter's hut", '2', '2', false,ResourceType.Wood, 447));
-                    case BuildingType.Quarry:  //Quarry", '3', '3', false,ResourceType.Stone, 448));
-                    case BuildingType.IronMine:  //Iron Mine", '4', '4', false,ResourceType.Iron, 449));
-                    case BuildingType.Farm:  //Farm", '5', '1', false,ResourceType.Food, 450));
-                    case BuildingType.Sawmill:  //Sawmill", 'K', 'L', true, ResourceType.None, 407));
-                    case BuildingType.Stonemasson:  //Stonemasson", 'L', 'A', true, ResourceType.None, 410));
-                    case BuildingType.Foundry:  //Foundry", 'M', 'D', true, ResourceType.None, 411));
-                    case BuildingType.Mill:  //Mill", 'N', 'M', true, ResourceType.None, 408));
-                    case BuildingType.Warehouse:  //Warehouse", 'Z', 'S', false, ResourceType.None, 420));
-                    case BuildingType.Cottage:  //Cottage", 'O', 'C', true, ResourceType.None, 404));
-                    case BuildingType.Hideout:  //Hideout", '1', 'H', false, ResourceType.None, 409));
-                    case BuildingType.Marketplace:  //Marketplace", 'J', 'P', true, ResourceType.None, 405));
-                    case BuildingType.Townhouse:  //Townhouse", 'E', 'U', false, ResourceType.Gold, 413));
-                    case BuildingType.Barracks:  //Barracks", 'P', 'B', true, ResourceType.None, 414));
-                    case BuildingType.CityGuardHouse: return 150;
-                    case BuildingType.TrainingGround:  //Training Ground", 'Q', 'G', false, ResourceType.None, 416));
-                    case BuildingType.Stable:  //Stable", 'U', 'E', false, ResourceType.None, 417));
-                    case BuildingType.MoonglowTower:  //Moonglow Tower", 'R', 'J', false, ResourceType.None, 436));
-                    case BuildingType.TrinsicTemple:  //Trinsic Temple", 'W', 'Z', false, ResourceType.None, 437));
-                    case BuildingType.Workshop:  //Workshop", 'V', 'Y', false, ResourceType.None,418));
-                    case BuildingType.Harbor:  //Harbor", 'T', 'R', true, ResourceType.None,422));
-                    case BuildingType.Shipyard:  //Shipyard", 'Y', 'V', false, ResourceType.None,419));
-                    case BuildingType.Castle: return int.MaxValue;
-                    case BuildingType.FarmLand: return -1;
+                    case BuildingType.None:
+                        {
+                            return -1;
+                        }
+                    case BuildingType.ResWood:
+                    case BuildingType.Sawmill:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                                if (le.m_Production[ResourceType.Wood] > 0)
+                                {
+                                    nb++;
+                                    total += le.m_Production[ResourceType.Wood];
+                                }
+                            return total;// / nb;
+                        }
+                    case BuildingType.ResStone:
+                    case BuildingType.Stonemasson:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                                if (le.m_Production[ResourceType.Stone] > 0)
+                                {
+                                    nb++;
+                                    total += le.m_Production[ResourceType.Stone];
+                                }
+                            return total;// / nb;
+                        }
+                    case BuildingType.ResIron:
+                    case BuildingType.Foundry:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                                if (le.m_Production[ResourceType.Iron] > 0)
+                                {
+                                    nb++;
+                                    total += le.m_Production[ResourceType.Iron];
+                                }
+                            return total;// / nb;
+                        }
+                    case BuildingType.ResFood:
+                    case BuildingType.Mill:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                                if (le.m_Production[ResourceType.Food] > 0)
+                                {
+                                    nb++;
+                                    total += le.m_Production[ResourceType.Food];
+                                }
+                            return total;// / nb;
+                        }
+                    case BuildingType.WoodcutterOld: 
+                    case BuildingType.QuarryOld: 
+                    case BuildingType.IronMineOld: 
+                    case BuildingType.FarmOld: 
+                    case BuildingType.Woodcutter:
+                    case BuildingType.Quarry: 
+                    case BuildingType.IronMine:
+                    case BuildingType.Farm:
+                    case BuildingType.Townhouse:
+                        {
+                            return m_Production[BuildingInfo.ByType[m_Info].ResourceProduced];
+                        }
+                    case BuildingType.Warehouse:
+                        {
+                            return m_Storage[ResourceType.Wood] + m_Storage[ResourceType.Stone] + m_Storage[ResourceType.Iron] + m_Storage[ResourceType.Food];
+                        }
+                    case BuildingType.Cottage:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                                if (le.m_Production[ResourceType.Wood] > 0 || le.m_Production[ResourceType.Stone] > 0 || le.m_Production[ResourceType.Iron] > 0||le.m_Production[ResourceType.Food] > 0)
+                                {
+                                    nb++;
+                                    total += le.m_Production[ResourceType.Wood] + le.m_Production[ResourceType.Stone] + le.m_Production[ResourceType.Iron] + le.m_Production[ResourceType.Food];
+                                }
+                            return 100 + total;// / nb;
+                        }
+                    case BuildingType.Hideout:
+                        {
+                            return m_Hidden;
+                        }
+                    case BuildingType.Marketplace:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                                if (le.m_Production[ResourceType.Gold] > 0 )
+                                {
+                                    nb++;
+                                    total += le.m_Production[ResourceType.Gold];
+                                }
+                            return 200 + total;// / nb;
+                        }
+                    case BuildingType.Harbor:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                                if (le.m_Production[ResourceType.Gold] > 0)
+                                {
+                                    nb++;
+                                    total += le.m_Production[ResourceType.Gold];
+                                }
+                            return 300 + total;// / nb;
+                        }
+                    case BuildingType.Barracks:
+                        {
+                            int total = 0;
+                            int nb = 0;
+                            foreach (LayoutEntry le in NeighborsWithWater)
+                            {
+                                bool ok = false;
+                                foreach (BuildingType bt in Enum.GetValues(typeof(BuildingType)))
+                                {
+                                    if (le.m_Recruitment[bt] > 0)
+                                    {
+                                        ok = true;
+                                        total += le.m_Recruitment[bt];
+                                    }
+                                }
+                                if (ok) nb++;
+                            }
+                            return 1000 + total;// / nb;
+                        }
+                    case BuildingType.CityGuardHouse:
+                        {
+                            return 150;
+                        }
+                    case BuildingType.TrainingGround: 
+                    case BuildingType.Stable: 
+                    case BuildingType.MoonglowTower: 
+                    case BuildingType.TrinsicTemple: 
+                    case BuildingType.Workshop:
+                    case BuildingType.Shipyard:
+                        {
+                            return m_Recruitment[m_Info];
+                        }
+                    case BuildingType.Castle:
+                        {
+                            return int.MaxValue;
+                        }
+                    case BuildingType.FarmLand:
+                        {
+                            return -1;
+                        }
                 }
                 return 0;
             }
