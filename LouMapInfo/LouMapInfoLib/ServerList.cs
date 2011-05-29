@@ -10,7 +10,13 @@ namespace LouMapInfo
     {
         //private static string WORLD_10 { get { return "World 10 (Europe)"; } }
         //private static string WORLD_21 { get { return "World 21 (USA East Coast)"; } }
+        private static bool m_LoadFromWeb = true;
 
+        public static bool LoadFromWeb
+        {
+            get { return ServerList.m_LoadFromWeb; }
+            set { ServerList.m_LoadFromWeb = value; }
+        }
         private static readonly List<ServerInfo> m_AllServers = new List<ServerInfo>();
         private static readonly Dictionary<string, ServerInfo> m_ServersByName = new Dictionary<string, ServerInfo>();
         private static readonly Dictionary<int, ServerInfo> m_ServersById = new Dictionary<int, ServerInfo>();
@@ -60,23 +66,34 @@ namespace LouMapInfo
                 return m_ServersById[33];
             }
         }
+        public static void PopulateDictionnaries()
+        {
+            foreach (ServerInfo info in AllServers)
+            {
+                m_ServersById.Add(info.Id, info);
+                m_ServersByName.Add(info.Name, info);
+            }
+        }
         
         private static bool m_Loaded = false;
         private static void Load()
         {
-            string worlds = GatheringUtility.GetPageSource("http://www.loumapinfo.com/data/worlds.txt").Replace("\r", "");
-            
-            string[] lines = worlds.Split('\n');
-
-            foreach (string line in lines)
+            if (m_LoadFromWeb)
             {
-                string[] it = line.Split(';');
-                if (it.Length == 3)
+                string worlds = GatheringUtility.GetPageSource("http://www.loumapinfo.com/data/worlds.txt").Replace("\r", "");
+
+                string[] lines = worlds.Split('\n');
+
+                foreach (string line in lines)
                 {
-                    ServerInfo info = new ServerInfo(int.Parse(it[0]), it[1], int.Parse(it[2]));
-                    m_ServersById.Add(info.Id, info);
-                    m_ServersByName.Add(info.Name, info);
-                    m_AllServers.Add(info);
+                    string[] it = line.Split(';');
+                    if (it.Length == 3)
+                    {
+                        ServerInfo info = new ServerInfo(int.Parse(it[0]), it[1], int.Parse(it[2]));
+                        m_ServersById.Add(info.Id, info);
+                        m_ServersByName.Add(info.Name, info);
+                        m_AllServers.Add(info);
+                    }
                 }
             }
             /*
