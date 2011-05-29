@@ -79,7 +79,7 @@ namespace LoUListServers
                         name = name.Substring(1);
                 }
                 if (world.Contains("class=\"low\""))
-                    name = name.Remove(name.LastIndexOf('(')).Trim();
+                    name = name.Remove(name.LastIndexOf('(')).TrimEnd();
                 string url = StringUtility.Extract(world, "http://", ".aspx");
                 string srv = StringUtility.Extract(url, "prodgame", ".lordofultima.com");
                 string id = StringUtility.Extract(url, ".com/", "/index");

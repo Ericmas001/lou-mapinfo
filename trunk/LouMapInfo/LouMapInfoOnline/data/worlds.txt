@@ -25,6 +25,7 @@
 39;World 25 (USA West Coast);2
 40;World 26 (Australia);3
 41;World 27 (Europe);8
+42;World 28 (USA East Coast);5
 55;World 29 (Europe);12
 58;World 30 (Australia);14
 59;World 31 (USA West Coast);15
@@ -58,4 +59,3 @@
 63;(ru) Мир 4;1
 49;(tr) Dünya 1;2
 52;(tr) Dünya 2;3
-42;World 28 (USA East Coast);5
