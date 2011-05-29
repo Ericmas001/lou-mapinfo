@@ -48,12 +48,15 @@ namespace LouMapInfo.Entities
             m_UsingCredentials = false;
             m_World = new WorldInfo(this, world);
         }
-
+        public static CookieContainer ConnectToLoU( string user, string pass )
+        {
+            return GatheringUtility.SignInWebsite("https://www.lordofultima.com/en/user/login?destination=%40homepage%3F", "mail=" + user + "&password=" + pass + "&remember_me=true", true);
+        }
         public bool Connect()
         {
             if (m_UsingCredentials)
             {
-                m_Cookies = GatheringUtility.SignInWebsite("https://www.lordofultima.com/en/user/login?destination=%40homepage%3F", "mail=" + m_Mail + "&password=" + m_Password + "&remember_me=true", true);
+                m_Cookies = SessionInfo.ConnectToLoU(m_Mail, m_Password);
                 string s = GatheringUtility.GetPageSource("http://www.lordofultima.com/en/game", m_Cookies);
                 m_SessionID = StringUtility.Extract(s, "<input type=\"hidden\" name=\"sessionId\" id=\"sessionId\" value=\"", "\"");
             }
