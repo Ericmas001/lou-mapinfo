@@ -29,6 +29,7 @@
 55;World 29 (Europe);12
 58;World 30 (Australia);14
 59;World 31 (USA West Coast);15
+64;World 32 (USA East Coast);1
 37;Castles 1 (Europe);3
 54;Castles 2 (USA East Coast);8
 4;(de) Welt  1;7
@@ -46,6 +47,7 @@
 26;(fr) Monde 1;13
 48;(fr) Monde 2;8
 57;(fr) Monde 3;7
+66;(fr) Monde 4;10
 27;(it) Mondo 1;4
 47;(it) Mondo 2;7
 31;(pl) Świat 1;8
@@ -53,6 +55,7 @@
 56;(pl) Świat 3;3
 29;(pt) Mundo 1;6
 45;(pt) Mundo 2;4
+65;(pt) Mundo 3 (Brazil);4
 30;(ru) Мир 1;7
 44;(ru) Мир 2;4
 51;(ru) Мир 3;2
