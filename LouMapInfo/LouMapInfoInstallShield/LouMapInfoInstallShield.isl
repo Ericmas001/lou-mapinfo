@@ -4585,9 +4585,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]Application\LouMapInfoApp.Primary output</td><td/></row>
-		<row><td>ProductCode</td><td>{463AFC6D-9872-4CF8-B9FF-D0731205B347}</td><td/></row>
+		<row><td>ProductCode</td><td>{F5387A9A-0447-4592-A37B-354F224E11AC}</td><td/></row>
 		<row><td>ProductName</td><td>Lou Map Info</td><td/></row>
-		<row><td>ProductVersion</td><td>4.04.001</td><td/></row>
+		<row><td>ProductVersion</td><td>4.05.001</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4603,7 +4603,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SecureCustomProperties</td><td>USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;SOFTWARE_MICROSOFT_NET_FRAMEWORK_SETUP_NDP_V2.0.50727;DOTNETVERSION35;ISACTIONPROP1;ISFOUNDNEWERPRODUCTVERSION;ISACTIONPROP2</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
-		<row><td>UpgradeCode</td><td>{C27EE3F5-5038-4D35-BEC4-0CF3E30DC3AB}</td><td/></row>
+		<row><td>UpgradeCode</td><td>{BFFD192F-84DE-4030-A3BB-3A762B967BF6}</td><td/></row>
 		<row><td>_IsMaintenance</td><td>Change</td><td/></row>
 		<row><td>_IsSetupTypeMin</td><td>Typical</td><td/></row>
 	</table>
