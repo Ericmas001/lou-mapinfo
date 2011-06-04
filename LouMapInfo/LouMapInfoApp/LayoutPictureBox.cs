@@ -251,23 +251,24 @@ namespace LouMapInfoApp
         {
             base.OnMouseClick(e);
             bool demo = m_Layout.CurBuilding == BuildingType.None || e.Button == System.Windows.Forms.MouseButtons.Right;
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+
+            int mousex = coords.X;
+            int mousey = coords.Y;
+            if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_Layout.CoordLayout[mousex, mousey] != null)
             {
-                int mousex = coords.X;
-                int mousey = coords.Y;
-                if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_Layout.CoordLayout[mousex, mousey] != null)
+                if (e.Button == System.Windows.Forms.MouseButtons.Right)
                 {
                     m_Layout.CoordLayout[mousex, mousey].Info = BuildingType.None;
                 }
-            }
-            else if (validClick && e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                int mousex = coords.X;
-                int mousey = coords.Y;
-                if (mousex >= 0 && mousex < 20 && mousey >= 0 && mousey < 20 && m_Layout.CoordLayout[mousex, mousey] != null)
+                else if (validClick && e.Button == System.Windows.Forms.MouseButtons.Left)
                 {
                     m_Layout.CoordLayout[mousex, mousey].Info = m_Layout.CurBuilding;
                 }
+                //else if (e.Button == System.Windows.Forms.MouseButtons.Middle)
+                //{
+                //    if (m_Layout.CoordLayout[mousex, mousey].Info != BuildingType.None)
+                //        MessageBox.Show("Bleh: " + m_Layout.CoordLayout[mousex, mousey].Usefulness);
+                //}
             }
             verifyValid();
             Invalidate();

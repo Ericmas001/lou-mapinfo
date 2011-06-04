@@ -19,12 +19,12 @@ namespace LouMapInfoApp.Tools
 {
     public partial class ContentLayout : UserControl
     {
-        
+
         private bool m_Loaded = false;
         private Dictionary<ToolStripButton, BuildingType> m_DONOTUSE_ButtonToBuilding = new Dictionary<ToolStripButton, BuildingType>();
         private Dictionary<BuildingType, ToolStripButton> m_DONOTUSE_BuildingToButton = new Dictionary<BuildingType, ToolStripButton>();
         private ToolStripButton m_CurButton = null;
-        
+
         public Dictionary<ToolStripButton, BuildingType> ButtonToBuilding
         {
             get
@@ -71,6 +71,7 @@ namespace LouMapInfoApp.Tools
                     lstUtilDestroyAll.Items.Add(BuildingInfo.ByType[bt]);
                     lstUtilReplaceAll1.Items.Add(BuildingInfo.ByType[bt]);
                     lstUtilReplaceAll2.Items.Add(BuildingInfo.ByType[bt]);
+                    lstUtilDestroyWeak.Items.Add(BuildingInfo.ByType[bt]);
                     if (bt != BuildingType.ResFood && bt != BuildingType.ResIron && bt != BuildingType.ResStone && bt != BuildingType.ResWood)
                     {
                         lstUtilPlaceSome.Items.Add(BuildingInfo.ByType[bt]);
@@ -80,9 +81,10 @@ namespace LouMapInfoApp.Tools
             lstUtilReplaceAll1.SelectedIndex = 0;
             lstUtilReplaceAll2.SelectedIndex = 0;
             lstUtilPlaceSome.SelectedIndex = 0;
-        }        
-            
-        
+            lstUtilDestroyWeak.SelectedIndex = 0;
+        }
+
+
 
 
 
@@ -224,7 +226,7 @@ namespace LouMapInfoApp.Tools
             }
             string postArgs = "content=" + pbCity.GenerateFlashCityPlanner() + args;
             new Thread(new ParameterizedThreadStart(CallAutoPlanner)).Start(postArgs);
-            
+
         }
         private void CallAutoPlanner(object o)
         {
@@ -310,8 +312,8 @@ namespace LouMapInfoApp.Tools
         {
             string s = GatheringUtility.GetPageSource(pbCity.GenerateFlashCityPlanner().Replace("map.php", "bitly.php"));
             int iU = s.IndexOf("http://bit.ly/");
-            int iUf = s.IndexOf('<',iU);
-            Clipboard.SetText(s.Substring(iU,iUf-iU));
+            int iUf = s.IndexOf('<', iU);
+            Clipboard.SetText(s.Substring(iU, iUf - iU));
         }
 
         private void btnOpenFCP_Click(object sender, EventArgs e)
@@ -337,7 +339,7 @@ namespace LouMapInfoApp.Tools
                     List<BuildingType> excluded = new List<BuildingType>(new BuildingType[] { BuildingType.FarmLand, BuildingType.None, BuildingType.ResFood, BuildingType.ResIron, BuildingType.ResStone, BuildingType.ResWood });
                     foreach (LayoutEntry le in pbCity.City.CityLayout)
                     {
-                        if( !excluded.Contains(le.Info ) )
+                        if (!excluded.Contains(le.Info))
                             le.Info = BuildingType.None;
                     }
                 }
@@ -358,12 +360,12 @@ namespace LouMapInfoApp.Tools
         {
             BuildingInfo b1 = lstUtilReplaceAll1.SelectedItem as BuildingInfo;
             BuildingInfo b2 = lstUtilReplaceAll2.SelectedItem as BuildingInfo;
-            if( b1.BType == b2.BType )
+            if (b1.BType == b2.BType)
                 return;
             bool b1OnWater = (b1.BType == BuildingType.Shipyard || b1.BType == BuildingType.Harbor);
             bool b2OnWater = (b2.BType == BuildingType.Shipyard || b2.BType == BuildingType.Harbor);
-            
-            if( b1OnWater != b2OnWater)
+
+            if (b1OnWater != b2OnWater)
                 return;
 
             foreach (LayoutEntry le in pbCity.City.CityLayout)
@@ -389,6 +391,72 @@ namespace LouMapInfoApp.Tools
                     used++;
                 }
             }
+            pbCity.Invalidate();
+        }
+
+        private void btnUtilDestroyWeak_Click(object sender, EventArgs e)
+        {
+            int total = (int)nudUtilDestroyWeak.Value;
+            for (int i = 0; i < total; ++i)
+            {
+                LayoutEntry weak = null;
+                if (lstUtilDestroyAll.SelectedItem is BuildingInfo)
+                {
+                    BuildingInfo b = lstUtilDestroyAll.SelectedItem as BuildingInfo;
+                    foreach (LayoutEntry le in pbCity.City.CityLayout)
+                    {
+                        if (b.BType == le.Info && (weak == null || weak.Usefulness > le.Usefulness))
+                            weak = le;
+                    }
+                }
+                else
+                {
+                    if (lstUtilDestroyWeak.SelectedIndex == 0)
+                    {
+                        // all buildings
+                        List<BuildingType> excluded = new List<BuildingType>(new BuildingType[] { BuildingType.FarmLand, BuildingType.None, BuildingType.ResFood, BuildingType.ResIron, BuildingType.ResStone, BuildingType.ResWood });
+                        foreach (LayoutEntry le in pbCity.City.CityLayout)
+                        {
+                            if (!excluded.Contains(le.Info) && (weak == null || weak.Usefulness > le.Usefulness))
+                                weak = le;
+                        }
+
+                    }
+                    else if (lstUtilDestroyWeak.SelectedIndex == 1)
+                    {
+                        // Res Building
+                        List<BuildingType> included = new List<BuildingType>(new BuildingType[] { BuildingType.Cottage, BuildingType.Farm, BuildingType.FarmOld, BuildingType.Woodcutter, BuildingType.WoodcutterOld, BuildingType.IronMine, BuildingType.IronMineOld, BuildingType.Quarry, BuildingType.QuarryOld, BuildingType.Mill, BuildingType.Sawmill, BuildingType.Stonemasson, BuildingType.Foundry });
+                        foreach (LayoutEntry le in pbCity.City.CityLayout)
+                        {
+                            if (included.Contains(le.Info) && (weak == null || weak.Usefulness > le.Usefulness))
+                                weak = le;
+                        }
+                    }
+                    else if (lstUtilDestroyWeak.SelectedIndex == 2)
+                    {
+                        // Gold Building
+                        List<BuildingType> included = new List<BuildingType>(new BuildingType[] { BuildingType.Townhouse, BuildingType.Marketplace, BuildingType.Harbor });
+                        foreach (LayoutEntry le in pbCity.City.CityLayout)
+                        {
+                            if (included.Contains(le.Info) && (weak == null || weak.Usefulness > le.Usefulness))
+                                weak = le;
+                        }
+                    }
+                    else if (lstUtilDestroyWeak.SelectedIndex == 3)
+                    {
+                        // War Building
+                        List<BuildingType> included = new List<BuildingType>(new BuildingType[] { BuildingType.Barracks, BuildingType.TrainingGround, BuildingType.Stable, BuildingType.TrinsicTemple, BuildingType.CityGuardHouse, BuildingType.MoonglowTower, BuildingType.Workshop, BuildingType.Shipyard});
+                        foreach (LayoutEntry le in pbCity.City.CityLayout)
+                        {
+                            if (included.Contains(le.Info) && (weak == null || weak.Usefulness > le.Usefulness))
+                                weak = le;
+                        }
+                    }
+                }
+                if (weak != null)
+                    weak.Info = BuildingType.None;
+            }
+            pbCity.Invalidate();
         }
     }
 }
