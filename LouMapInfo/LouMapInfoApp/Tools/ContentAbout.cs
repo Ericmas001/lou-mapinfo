@@ -14,6 +14,7 @@ namespace LouMapInfoApp.Tools
         public ContentAbout()
         {
             InitializeComponent();
+            lblVersion.Text = "Current Version: " + Application.ProductVersion;
         }
 
         private void GeneralUrl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

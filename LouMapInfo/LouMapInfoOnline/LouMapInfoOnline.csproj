@@ -61,6 +61,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="data\desktop\version.txt" />
     <Content Include="data\worlds.txt" />
     <Content Include="Official\Alliances.aspx" />
     <Content Include="Official\Continents.aspx" />
