@@ -31,7 +31,7 @@
     <br />
     <span class="style4">2011-05-14 11h45 AM Eastern Time: </span>Lots of bugs fixed. Big thanks to Dmitrii !:)
     <br />
-    <span class="style2">2011-05-14 11h45 AM Eastern Time: </span><span class="style1"><a href="http://code.google.com/p/lou-mapinfo/downloads/list">Desktop App 4.5 released !!!</a></span>
+    <span class="style2">2011-06-04 03h30 PM Eastern Time: </span><span class="style1"><a href="http://code.google.com/p/lou-mapinfo/downloads/list">Desktop App 4.5 released !!!</a></span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
