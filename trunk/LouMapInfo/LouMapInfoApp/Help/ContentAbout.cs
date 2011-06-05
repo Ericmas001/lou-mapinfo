@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace LouMapInfoApp.Tools
+namespace LouMapInfoApp.Help
 {
     public partial class ContentAbout : UserControl
     {

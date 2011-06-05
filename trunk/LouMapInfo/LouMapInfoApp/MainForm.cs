@@ -12,6 +12,7 @@ using LouMapInfo.Zeus;
 using LouMapInfoApp.Zeus;
 using LouMapInfoApp.LouOfficial.Empire;
 using System.Diagnostics;
+using LouMapInfoApp.Help;
 
 namespace LouMapInfoApp
 {
@@ -74,10 +75,6 @@ namespace LouMapInfoApp
             {
                 FillOfficial(false);
             }
-            else if (btn == btnMenuZeus)
-            {
-                FillZeus(false);
-            }
             else if (btn == btnMenuEmpire)
             {
                 FillEmpire(false);
@@ -86,39 +83,42 @@ namespace LouMapInfoApp
             {
                 AddSubItem(btn, "Options", new ContentOptions());
                 AddSubItem(btn, "City Planner", new ContentLayout());
+            }
+            else if (btn == btnMenuHelp)
+            {
                 AddSubItem(btn, "About", new ContentAbout());
                 AddSubItem(btn, "FAQ", new ContentFAQ());
             }
         }
         const string CONNECT = "Connection";
 
-        public void FillZeus()
-        {
-            FillZeus(true);
-        }
-        private void FillZeus(bool remove)
-        {
-            lstSubItems.Items.Clear();
-            if (remove)
-            {
-                string[] keys = new string[tabs.Keys.Count];
-                tabs.Keys.CopyTo(keys, 0);
-                foreach (string k in keys)
-                    if (k.StartsWith(btnMenuZeus.Name) && k != (btnMenuZeus.Name + "_" + CONNECT))
-                        tabs.Remove(k);
-            }
-            if (m_ZeusSession == null)
-            {
-                AddSubItem(btnMenuZeus, CONNECT, new ContentZeusConnection(this));
-            }
-            else
-            {
-                AddSubItem(btnMenuZeus, "Account", new ContentZeus(this, new ContentZeusAccount()));
-            }
-            if (lstSubItems.Items.Count > 0)
-                lstSubItems.SelectedIndex = 0;
+        //public void FillZeus()
+        //{
+        //    FillZeus(true);
+        //}
+        //private void FillZeus(bool remove)
+        //{
+        //    lstSubItems.Items.Clear();
+        //    if (remove)
+        //    {
+        //        string[] keys = new string[tabs.Keys.Count];
+        //        tabs.Keys.CopyTo(keys, 0);
+        //        foreach (string k in keys)
+        //            if (k.StartsWith(btnMenuTools.Name) && k != (btnMenuTools.Name + "_" + CONNECT))
+        //                tabs.Remove(k);
+        //    }
+        //    if (m_ZeusSession == null)
+        //    {
+        //        AddSubItem(btnMenuTools, CONNECT, new ContentZeusConnection(this));
+        //    }
+        //    else
+        //    {
+        //        AddSubItem(btnMenuTools, "Account", new ContentZeus(this, new ContentZeusAccount()));
+        //    }
+        //    if (lstSubItems.Items.Count > 0)
+        //        lstSubItems.SelectedIndex = 0;
 
-        }
+        //}
 
         public void FillOfficial()
         {

@@ -163,16 +163,16 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\ContentFAQ.cs">
+    <Compile Include="Help\ContentFAQ.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tools\ContentFAQ.Designer.cs">
+    <Compile Include="Help\ContentFAQ.Designer.cs">
       <DependentUpon>ContentFAQ.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\ContentAbout.cs">
+    <Compile Include="Help\ContentAbout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tools\ContentAbout.Designer.cs">
+    <Compile Include="Help\ContentAbout.Designer.cs">
       <DependentUpon>ContentAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -254,10 +254,10 @@
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tools\ContentFAQ.resx">
+    <EmbeddedResource Include="Help\ContentFAQ.resx">
       <DependentUpon>ContentFAQ.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tools\ContentAbout.resx">
+    <EmbeddedResource Include="Help\ContentAbout.resx">
       <DependentUpon>ContentAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

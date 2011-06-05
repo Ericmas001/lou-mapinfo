@@ -33,8 +33,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnMenuEmpire = new System.Windows.Forms.RadioButton();
             this.lstSubItems = new System.Windows.Forms.ListBox();
+            this.btnMenuHelp = new System.Windows.Forms.RadioButton();
             this.btnMenuTools = new System.Windows.Forms.RadioButton();
-            this.btnMenuZeus = new System.Windows.Forms.RadioButton();
             this.btnMenuOfficial = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.LinkLabel();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -53,8 +53,8 @@
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuEmpire);
             this.splitContainer1.Panel1.Controls.Add(this.lstSubItems);
+            this.splitContainer1.Panel1.Controls.Add(this.btnMenuHelp);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuTools);
-            this.splitContainer1.Panel1.Controls.Add(this.btnMenuZeus);
             this.splitContainer1.Panel1.Controls.Add(this.btnMenuOfficial);
             this.splitContainer1.Panel1MinSize = 10;
             // 
@@ -91,7 +91,7 @@
             this.btnMenuEmpire.Name = "btnMenuEmpire";
             this.btnMenuEmpire.Size = new System.Drawing.Size(198, 71);
             this.btnMenuEmpire.TabIndex = 9;
-            this.btnMenuEmpire.Text = "Empire";
+            this.btnMenuEmpire.Text = "Manage your Empire";
             this.btnMenuEmpire.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuEmpire.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMenuEmpire.UseVisualStyleBackColor = true;
@@ -113,16 +113,33 @@
             this.lstSubItems.SelectedIndexChanged += new System.EventHandler(this.lstSubItems_SelectedIndexChanged);
             this.lstSubItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
+            // btnMenuHelp
+            // 
+            this.btnMenuHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMenuHelp.Appearance = System.Windows.Forms.Appearance.Button;
+            this.btnMenuHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuHelp.Image = global::LouMapInfoApp.Properties.Resources.menu_Official;
+            this.btnMenuHelp.Location = new System.Drawing.Point(-2, 210);
+            this.btnMenuHelp.Name = "btnMenuHelp";
+            this.btnMenuHelp.Size = new System.Drawing.Size(198, 71);
+            this.btnMenuHelp.TabIndex = 7;
+            this.btnMenuHelp.Text = "Help / About";
+            this.btnMenuHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMenuHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMenuHelp.UseVisualStyleBackColor = true;
+            this.btnMenuHelp.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
+            this.btnMenuHelp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
+            // 
             // btnMenuTools
             // 
             this.btnMenuTools.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMenuTools.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuTools.Image = global::LouMapInfoApp.Properties.Resources.menu_Tools;
-            this.btnMenuTools.Location = new System.Drawing.Point(-2, 210);
+            this.btnMenuTools.Location = new System.Drawing.Point(-2, 140);
             this.btnMenuTools.Name = "btnMenuTools";
             this.btnMenuTools.Size = new System.Drawing.Size(198, 71);
-            this.btnMenuTools.TabIndex = 7;
+            this.btnMenuTools.TabIndex = 5;
             this.btnMenuTools.Text = "Tools";
             this.btnMenuTools.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -130,37 +147,19 @@
             this.btnMenuTools.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
             this.btnMenuTools.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
             // 
-            // btnMenuZeus
-            // 
-            this.btnMenuZeus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMenuZeus.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnMenuZeus.Enabled = false;
-            this.btnMenuZeus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuZeus.Image = global::LouMapInfoApp.Properties.Resources.menu_Zeus;
-            this.btnMenuZeus.Location = new System.Drawing.Point(-2, 140);
-            this.btnMenuZeus.Name = "btnMenuZeus";
-            this.btnMenuZeus.Size = new System.Drawing.Size(198, 71);
-            this.btnMenuZeus.TabIndex = 5;
-            this.btnMenuZeus.Text = "ZEUS";
-            this.btnMenuZeus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMenuZeus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMenuZeus.UseVisualStyleBackColor = true;
-            this.btnMenuZeus.CheckedChanged += new System.EventHandler(this.menuButton_CheckedChanged);
-            this.btnMenuZeus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSubItems_KeyDown);
-            // 
             // btnMenuOfficial
             // 
             this.btnMenuOfficial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMenuOfficial.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnMenuOfficial.Checked = true;
             this.btnMenuOfficial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuOfficial.Image = global::LouMapInfoApp.Properties.Resources.menu_Official;
+            this.btnMenuOfficial.Image = global::LouMapInfoApp.Properties.Resources.menu_Map;
             this.btnMenuOfficial.Location = new System.Drawing.Point(-2, 0);
             this.btnMenuOfficial.Name = "btnMenuOfficial";
             this.btnMenuOfficial.Size = new System.Drawing.Size(198, 71);
             this.btnMenuOfficial.TabIndex = 4;
             this.btnMenuOfficial.TabStop = true;
-            this.btnMenuOfficial.Text = "Official LoU";
+            this.btnMenuOfficial.Text = "Generate Reports";
             this.btnMenuOfficial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuOfficial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMenuOfficial.UseVisualStyleBackColor = true;
@@ -169,7 +168,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.LightSalmon;
+            this.label1.BackColor = System.Drawing.Color.Gold;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Location = new System.Drawing.Point(0, 537);
@@ -177,7 +176,7 @@
             this.label1.Size = new System.Drawing.Size(934, 25);
             this.label1.TabIndex = 1;
             this.label1.TabStop = true;
-            this.label1.Text = "Get your reports online at http://www.loumapinfo.com";
+            this.label1.Text = "Generate reports online at http://www.loumapinfo.com !!!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.label1_LinkClicked);
             // 
@@ -203,8 +202,8 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.RadioButton btnMenuOfficial;
-        private System.Windows.Forms.RadioButton btnMenuZeus;
         private System.Windows.Forms.RadioButton btnMenuTools;
+        private System.Windows.Forms.RadioButton btnMenuHelp;
         private System.Windows.Forms.ListBox lstSubItems;
         private System.Windows.Forms.RadioButton btnMenuEmpire;
         private System.Windows.Forms.Button button1;

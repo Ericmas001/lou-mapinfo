@@ -117,7 +117,7 @@ namespace LouMapInfoApp.Zeus
                 return;
             }
             m_Parent.ZeusSession = session;
-            m_Parent.FillZeus();
+            //m_Parent.FillZeus();
         }
 
         private void btnLostPassword_Click(object sender, EventArgs e)

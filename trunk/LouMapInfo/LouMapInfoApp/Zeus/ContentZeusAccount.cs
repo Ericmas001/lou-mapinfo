@@ -45,7 +45,7 @@ namespace LouMapInfoApp.Zeus
                 Session.ChangePassword(txtPassword1.Text);
                 Session.Disconnect();
                 Frame.MainForm.ZeusSession = null;
-                Frame.MainForm.FillZeus();
+                //Frame.MainForm.FillZeus();
             }
         }
     }
