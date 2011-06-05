@@ -435,13 +435,20 @@ namespace LouMapInfoApp
       private static UserOptions Load()
       {
          if (!File.Exists(OptionsPath))
-            return new UserOptions();
-
-         XmlSerializer serializer = new XmlSerializer(typeof(UserOptions));
-         using (FileStream stream = new FileStream(OptionsPath, FileMode.Open))
+             return new UserOptions();
+         try
          {
-            XmlReader reader = new XmlTextReader(stream);
-            return (UserOptions) serializer.Deserialize(reader);
+
+             XmlSerializer serializer = new XmlSerializer(typeof(UserOptions));
+             using (FileStream stream = new FileStream(OptionsPath, FileMode.Open))
+             {
+                 XmlReader reader = new XmlTextReader(stream);
+                 return (UserOptions)serializer.Deserialize(reader);
+             }
+         }
+         catch
+         {
+             return new UserOptions();
          }
       }
 
@@ -461,7 +468,7 @@ namespace LouMapInfoApp
                serializer.Serialize(writer, this);
             }
          }
-         catch (SecurityException)
+         catch
          {
             // Do nothing.
          }
