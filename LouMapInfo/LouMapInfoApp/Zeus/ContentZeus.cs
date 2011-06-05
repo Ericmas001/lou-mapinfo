@@ -38,7 +38,7 @@ namespace LouMapInfoApp.Zeus
         {
             m_Parent.ZeusSession.Disconnect();
             m_Parent.ZeusSession = null;
-            m_Parent.FillZeus();
+            //m_Parent.FillZeus();
         }
         delegate void EmptyHandler();
         public void StartWaiting()

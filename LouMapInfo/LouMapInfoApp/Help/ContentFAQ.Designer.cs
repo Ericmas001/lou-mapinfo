@@ -1,4 +1,4 @@
-﻿namespace LouMapInfoApp.Tools
+﻿namespace LouMapInfoApp.Help
 {
     partial class ContentFAQ
     {
@@ -34,6 +34,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +55,9 @@
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContent.Controls.Add(this.linkLabel1);
+            this.pnlContent.Controls.Add(this.label6);
+            this.pnlContent.Controls.Add(this.label7);
             this.pnlContent.Controls.Add(this.label4);
             this.pnlContent.Controls.Add(this.label5);
             this.pnlContent.Controls.Add(this.label3);
@@ -116,6 +122,45 @@
             this.label2.Text = "Should I be worried about giving my e-mail and password ?";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(3, 191);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(354, 30);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Click on this link and report an issue, even for a simple suggestion. I will be a" +
+                "ble to track them down easily :)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 142);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(354, 33);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "I found a bug / I have a suggestion. What should I do ?";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.Location = new System.Drawing.Point(3, 175);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(354, 16);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "http://code.google.com/p/lou-mapinfo/issues/list";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // ContentFAQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,5 +186,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
