@@ -1,14 +1,14 @@
-﻿2;World  1 (Europe);2
+﻿2;World  1 (Europe);15
 3;World  2 (Europe);5
 5;World  3 (USA East Coast);9
 6;World  4 (Europe);4
-7;World  5 (USA East Coast);1
-9;World  6 (Europe);2
+7;World  5 (USA East Coast);14
+9;World  6 (Europe);15
 10;World  7 (USA East Coast);6
-11;World  8 (Europe);8
-12;World  9 (USA East Coast);10
-14;World 10 (Europe);5
-15;World 11 (USA East Coast);7
+11;World  8 (Europe);7
+12;World  9 (USA East Coast);9
+14;World 10 (Europe);6
+15;World 11 (USA East Coast);8
 16;World 12 (Europe);4
 17;World 13 (USA West Coast);10
 18;World 14 (USA East Coast);5
@@ -20,28 +20,31 @@
 32;World 20 (USA West Coast);9
 33;World 21 (USA East Coast);10
 34;World 22 (Australia);4
-35;World 23 (Europe);1
+35;World 23 (Europe);14
 38;World 24 (USA East Coast);6
-39;World 25 (USA West Coast);2
-40;World 26 (Australia);3
+39;World 25 (USA West Coast);15
+40;World 26 (Australia);16
 41;World 27 (Europe);8
 42;World 28 (USA East Coast);5
 55;World 29 (Europe);12
 58;World 30 (Australia);14
 59;World 31 (USA West Coast);15
-64;World 32 (USA East Coast);1
-37;Castles 1 (Europe);3
+64;World 32 (USA East Coast);14
+69;World 33 (Europe);4
+71;World 34 (Australia);9
+72;World 35 (USA West Coast);10
+37;Castles 1 (Europe);16
 54;Castles 2 (USA East Coast);8
-4;(de) Welt  1;7
-13;(de) Welt  2;3
+4;(de) Welt  1;11
+13;(de) Welt  2;16
 19;(de) Welt 3;11
 25;(de) Welt 4;12
-36;(de) Welt 5;2
+36;(de) Welt 5;15
 53;(de) Welt 6;7
 60;(de) Welt 7;16
 28;(es) Mundo 1;5
 46;(es) Mundo 2;7
-50;(es) Mundo 3;3
+50;(es) Mundo 3;16
 61;(es) Mundo 4 (España);4
 62;(es) Mundo 5 (América Latina);8
 26;(fr) Monde 1;13
@@ -50,15 +53,18 @@
 66;(fr) Monde 4;10
 27;(it) Mondo 1;4
 47;(it) Mondo 2;7
+68;(it) Mondo 3;16
 31;(pl) Świat 1;8
 43;(pl) Świat 2;5
-56;(pl) Świat 3;3
+56;(pl) Świat 3;16
+70;(pl) Świat 4;8
 29;(pt) Mundo 1;6
 45;(pt) Mundo 2;4
 65;(pt) Mundo 3 (Brazil);4
+67;(pt) Mundo 4 (Portuguesa);9
 30;(ru) Мир 1;7
 44;(ru) Мир 2;4
-51;(ru) Мир 3;2
-63;(ru) Мир 4;1
-49;(tr) Dünya 1;2
-52;(tr) Dünya 2;3
+51;(ru) Мир 3;15
+63;(ru) Мир 4;14
+49;(tr) Dünya 1;15
+52;(tr) Dünya 2;16
