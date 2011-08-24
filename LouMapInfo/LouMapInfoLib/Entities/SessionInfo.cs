@@ -74,7 +74,7 @@ namespace LouMapInfo.Entities
                 m_Connected = true;
                 return true;
             }
-            catch
+            catch( Exception e )
             {
                 return false;
             }
