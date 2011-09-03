@@ -50,7 +50,7 @@ namespace LouMapInfo.Entities
         }
         public static CookieContainer ConnectToLoU( string user, string pass )
         {
-            return GatheringUtility.SignInWebsite("https://www.lordofultima.com/en/user/login?destination=%40homepage%3F", "mail=" + user + "&password=" + pass + "&remember_me=true", true);
+            return GatheringUtility.SignInWebsite("https://www.lordofultima.com/en/user/login", "mail=" + user + "&password=" + pass + "&remember_me=true", true);
         }
         public bool Connect()
         {
