@@ -404,7 +404,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(300, 23);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "Current Version: 4.5.0.0";
+            this.lblVersion.Text = "Current Version: 4.5.1.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ContentAbout

@@ -1,5 +1,5 @@
 ﻿2;World  1 (Europe);15
-3;World  2 (Europe);13
+3;World  2 (Europe);12
 5;World  3 (USA East Coast);6
 6;World  4 (Europe);9
 7;World  5 (USA East Coast);14
@@ -14,8 +14,8 @@
 18;World 14 (USA East Coast);9
 20;World 15 (Europe);11
 21;World 16 (USA West Coast);11
-22;World 17 (USA East Coast);13
-23;World 18 (Europe);13
+22;World 17 (USA East Coast);12
+23;World 18 (Europe);12
 24;World 19 (Europe);9
 32;World 20 (USA West Coast);6
 33;World 21 (USA East Coast);8
@@ -28,17 +28,18 @@
 42;World 28 (USA East Coast);10
 55;World 29 (Europe);11
 58;World 30 (Australia);14
-59;World 31 (USA West Coast);15
+59;World 31 (USA West Coast)							(Server is full);12
 64;World 32 (USA East Coast);5
-69;World 33 (Europe);13
+69;World 33 (Europe);12
 71;World 34 (Australia);6
 72;World 35 (USA West Coast);8
 74;World 36 (USA East Coast);6
 77;World 37 (Europe);11
 79;World 38 (USA West Coast);8
 80;World 39 (USA East Coast);15
-81;World 40 (Australia);13
+81;World 40 (Australia);12
 85;World 41 (Europe);15
+87;World 42 (Europe);10
 37;Castles 1 (Europe);16
 54;Castles 2 (USA East Coast);5
 4;(de) Welt  1;4
@@ -46,7 +47,7 @@
 19;(de) Welt 3;4
 25;(de) Welt 4;1
 36;(de) Welt 5;4
-53;(de) Welt 6;7
+53;(de) Welt 6							(Server ist voll);7
 60;(de) Welt 7;2
 78;(de) Welt 8;4
 28;(es) Mundo 1;2
@@ -69,6 +70,7 @@
 56;(pl) Świat 3;1
 70;(pl) Świat 4;3
 86;(pl) Świat 5;7
+88;(pl) Świat 6;1
 29;(pt) Mundo 1;2
 45;(pt) Mundo 2;3
 65;(pt) Mundo 3 (Brazil);3
