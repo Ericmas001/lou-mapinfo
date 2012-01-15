@@ -3,12 +3,12 @@
     <style type="text/css">
     .style1
     {
-        background-color: #FFFF66;
+        background-color: #00FFFF;
     }
     .style2
     {
         font-weight: bold;
-        background-color: #FFFF66;
+        background-color: #00FFFF;
     }
         .style4
         {
@@ -17,15 +17,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <span class="style4">2011-04-14 09h30 PM Eastern Time: </span>Continent Reports works with all the reports Features and have a continent picker working
-        <br />
-    <span class="style4">2011-04-17 05h00 PM Eastern Time: </span>The website has been filled with the right info
-        <br />
-    <span class="style4">2011-04-17 08h30 PM Eastern Time: </span>Virtues overview by alliance & by virtue reports
-        <br />
-    <span class="style4">2011-04-19 07h30 PM Eastern Time: </span>The last Virtues reports have been added. Now all the reports are available online !!
-        <br />
-    <span class="style4">2011-05-03 04h45 PM Eastern Time: </span>Reports now support Grouping, a new feature that will be available in 4.4 !
     <br />
     <span class="style4">2011-05-13 11h00 AM Eastern Time: </span>New Worlds available in multiple languages !!
     <br />
@@ -33,7 +24,9 @@
     <br />
     <span class="style4">2011-06-04 03h30 PM Eastern Time: </span><a href="http://code.google.com/p/lou-mapinfo/downloads/list">Desktop App 4.5 released !!!</a>
     <br />
-    <span class="style2">2011-06-27 09h30 PM Eastern Time: </span><span class="style1">New Worlds available in multiple languages !!</span>
+    <span class="style4">2011-06-27 09h30 PM Eastern Time: </span>New Worlds available in multiple languages !!
+    <br />
+    <span class="style2">2011-09-03 02h30 PM Eastern Time: </span><span class="style1"><a href="http://code.google.com/p/lou-mapinfo/downloads/list">Desktop App 4.5.1 released !!!</a></span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
