@@ -85,7 +85,8 @@ namespace LouMapInfo.Entities
                 }
             }
 
-            JsonArrayCollection test = EndPoint.GetVIS(m_World.Url, m_World.Session.SessionID);
+            // Not Used anywhere
+            //JsonArrayCollection test = EndPoint.GetVIS(m_World.Url, m_World.Session.SessionID);
         }
     }
 }

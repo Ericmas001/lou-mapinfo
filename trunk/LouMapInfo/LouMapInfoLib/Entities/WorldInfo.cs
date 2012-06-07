@@ -433,66 +433,6 @@ namespace LouMapInfo.Entities
             }
             return m_Rankings[type];
         }
-
-        public void LoadVis()
-        {
-            if (!m_VisLoaded)
-            {
-                foreach (JsonObjectCollection oc2 in EndPoint.GetVIS(m_Session.World.Url, m_Session.SessionID))
-                {
-                    // 1: MoonGate
-                    // 2: City
-                    // 14: Shrine
-                    int t = (int)((JsonNumericValue)oc2["t"]).Value; // type
-                    int x = (int)((JsonNumericValue)oc2["x"]).Value / 128; //x
-                    int y = (int)(((JsonNumericValue)oc2["y"]).Value + 0.5) / 80; // y
-                    switch (t)
-                    {
-                        case 1: // MoonGate
-                            {
-                                int i = (int)((JsonNumericValue)oc2["mi"]).Value; // id
-                                Pt loc = new Pt(this, x, y);
-                                MoonGateInfo mi = new MoonGateInfo(this, i, loc);
-                                if (!m_MoonGatesByCont.ContainsKey(loc.Continent))
-                                    m_MoonGatesByCont.Add(loc.Continent, new List<MoonGateInfo>());
-                                m_MoonGatesByCont[loc.Continent].Add(mi);
-                                break;
-                            }
-                        case 2: // City
-                            {
-                                if (String.IsNullOrEmpty(((JsonStringValue)oc2["pn"]).Value))
-                                {
-                                    int i = (int)((JsonNumericValue)oc2["ci"]).Value; // id
-                                    string name = ((JsonStringValue)oc2["n"]).Value; // name
-                                    int p = (int)((JsonNumericValue)oc2["p"]).Value; // score
-                                    int c = (int)((JsonNumericValue)oc2["k"]).Value; // continent
-                                    Pt loc = new Pt(this,x, y);
-                                    CityInfo ci = new CityInfo(this, null, name, i, loc, BorderingType.Unknown, name.Contains("castle") ? CityType.Castle : CityType.City, p);
-                                    if (!m_LawlessByCont.ContainsKey(c))
-                                        m_LawlessByCont.Add(c, new List<CityInfo>());
-                                    m_LawlessByCont[c].Add(ci);
-                                }
-                                break;
-                            }
-                        case 14: // Shrine
-                            {
-                                int i = (int)((JsonNumericValue)oc2["si"]).Value; // id
-                                int st = (int)((JsonNumericValue)oc2["m"]).Value; // shrine type
-                                Pt loc = new Pt(this,x, y);
-                                ShrineInfo si = new ShrineInfo(this, i, loc, (ShrineType)st);
-                                if (!m_ShrinesByCont.ContainsKey(loc.Continent))
-                                    m_ShrinesByCont.Add(loc.Continent, new List<ShrineInfo>());
-                                m_ShrinesByCont[loc.Continent].Add(si);
-                                if (!m_ShrinesByVirtue.ContainsKey(si.Virtue))
-                                    m_ShrinesByVirtue.Add(si.Virtue, new List<ShrineInfo>());
-                                m_ShrinesByVirtue[si.Virtue].Add(si);
-                                break;
-                            }
-                    }
-                }
-                m_VisLoaded = true;
-            }
-        }
         public PlayerInfo Player(int id)
         {
             PlayerInfo res = null;
@@ -543,73 +483,6 @@ namespace LouMapInfo.Entities
             }
             return res;
         }
-        public Dictionary<int, CityInfo[]> Lawless(params int[] who)
-        {
-            LoadVis();
-            bool all = who.Length == 0;
-            List<int> conts = new List<int>(who);
-            int[] ids = new int[m_LawlessByCont.Keys.Count];
-            m_LawlessByCont.Keys.CopyTo(ids, 0);
-            Array.Sort(ids);
-            Dictionary<int, CityInfo[]> res = new Dictionary<int, CityInfo[]>();
-            foreach (int i in ids)
-            {
-                if( all || conts.Contains(i) )
-                {
-                    CityInfo[] cs = new CityInfo[m_LawlessByCont[i].Count];
-                    m_LawlessByCont[i].CopyTo(cs, 0);
-                    Array.Sort(cs);
-                    Array.Reverse(cs);
-                    res.Add(i, cs);
-                }
-            }
-            return res;
-        }
-        public List<ShrineInfo> Shrines(int cid)
-        {
-            LoadVis();
-            List<ShrineInfo> res = new List<ShrineInfo>();
-            if (m_ShrinesByCont.ContainsKey(cid))
-                res = m_ShrinesByCont[cid];
-            return res;
-        }
-        public List<ShrineInfo> ActivatedShrines()
-        {
-            LoadVis();
-            List<ShrineInfo> res = new List<ShrineInfo>();
-            foreach (ShrineType t in m_ShrinesByVirtue.Keys)
-                if (t != ShrineType.UnActivated)
-                    res.AddRange(m_ShrinesByVirtue[t]);
-            return res;
-        }
-        public List<ShrineInfo> Shrines(ShrineType virtue)
-        {
-            LoadVis();
-            List<ShrineInfo> res = new List<ShrineInfo>();
-            if (m_ShrinesByVirtue.ContainsKey(virtue))
-                res = m_ShrinesByVirtue[virtue];
-            return res;
-        }
-        public Dictionary<int, MoonGateInfo[]> MoonGates(params int[] who)
-        {
-            LoadVis();
-            bool all = who.Length == 0;
-            List<int> conts = new List<int>(who);
-            int[] ids = new int[m_MoonGatesByCont.Keys.Count];
-            m_MoonGatesByCont.Keys.CopyTo(ids, 0);
-            Array.Sort(ids);
-            Dictionary<int, MoonGateInfo[]> res = new Dictionary<int, MoonGateInfo[]>();
-            foreach (int i in ids)
-            {
-                if (all || conts.Contains(i))
-                {
-                    MoonGateInfo[] cs = new MoonGateInfo[m_MoonGatesByCont[i].Count];
-                    m_MoonGatesByCont[i].CopyTo(cs, 0);
-                    res.Add(i, cs);
-                }
-            }
-            return res;
-        }
         public string[] PalacesOwnersByVirtue(VirtueType vid)
         {
             string[] res = new string[m_PalacesOwnersByVirtue[vid].Count];
@@ -630,5 +503,139 @@ namespace LouMapInfo.Entities
             m_PalacesOwnersByAlliance.Keys.CopyTo(res,0);
             return res;
         }
+
+        //// Not Used anywhere
+        //public Dictionary<int, CityInfo[]> Lawless(params int[] who)
+        //{
+        //    LoadVis();
+        //    bool all = who.Length == 0;
+        //    List<int> conts = new List<int>(who);
+        //    int[] ids = new int[m_LawlessByCont.Keys.Count];
+        //    m_LawlessByCont.Keys.CopyTo(ids, 0);
+        //    Array.Sort(ids);
+        //    Dictionary<int, CityInfo[]> res = new Dictionary<int, CityInfo[]>();
+        //    foreach (int i in ids)
+        //    {
+        //        if (all || conts.Contains(i))
+        //        {
+        //            CityInfo[] cs = new CityInfo[m_LawlessByCont[i].Count];
+        //            m_LawlessByCont[i].CopyTo(cs, 0);
+        //            Array.Sort(cs);
+        //            Array.Reverse(cs);
+        //            res.Add(i, cs);
+        //        }
+        //    }
+        //    return res;
+        //}
+        //// Not Used anywhere
+        //public List<ShrineInfo> Shrines(int cid)
+        //{
+        //    LoadVis();
+        //    List<ShrineInfo> res = new List<ShrineInfo>();
+        //    if (m_ShrinesByCont.ContainsKey(cid))
+        //        res = m_ShrinesByCont[cid];
+        //    return res;
+        //}
+        //// Not Used anywhere
+        //public List<ShrineInfo> ActivatedShrines()
+        //{
+        //    LoadVis();
+        //    List<ShrineInfo> res = new List<ShrineInfo>();
+        //    foreach (ShrineType t in m_ShrinesByVirtue.Keys)
+        //        if (t != ShrineType.UnActivated)
+        //            res.AddRange(m_ShrinesByVirtue[t]);
+        //    return res;
+        //}
+        //// Not Used anywhere
+        //public List<ShrineInfo> Shrines(ShrineType virtue)
+        //{
+        //    LoadVis();
+        //    List<ShrineInfo> res = new List<ShrineInfo>();
+        //    if (m_ShrinesByVirtue.ContainsKey(virtue))
+        //        res = m_ShrinesByVirtue[virtue];
+        //    return res;
+        //}
+        //// Not Used anywhere
+        //public Dictionary<int, MoonGateInfo[]> MoonGates(params int[] who)
+        //{
+        //    LoadVis();
+        //    bool all = who.Length == 0;
+        //    List<int> conts = new List<int>(who);
+        //    int[] ids = new int[m_MoonGatesByCont.Keys.Count];
+        //    m_MoonGatesByCont.Keys.CopyTo(ids, 0);
+        //    Array.Sort(ids);
+        //    Dictionary<int, MoonGateInfo[]> res = new Dictionary<int, MoonGateInfo[]>();
+        //    foreach (int i in ids)
+        //    {
+        //        if (all || conts.Contains(i))
+        //        {
+        //            MoonGateInfo[] cs = new MoonGateInfo[m_MoonGatesByCont[i].Count];
+        //            m_MoonGatesByCont[i].CopyTo(cs, 0);
+        //            res.Add(i, cs);
+        //        }
+        //    }
+        //    return res;
+        //}
+
+        //// Not Used anywhere
+        //public void LoadVis()
+        //{
+        //    if (!m_VisLoaded)
+        //    {
+        //        foreach (JsonObjectCollection oc2 in EndPoint.GetVIS(m_Session.World.Url, m_Session.SessionID))
+        //        {
+        //            // 1: MoonGate
+        //            // 2: City
+        //            // 14: Shrine
+        //            int t = (int)((JsonNumericValue)oc2["t"]).Value; // type
+        //            int x = (int)((JsonNumericValue)oc2["x"]).Value / 128; //x
+        //            int y = (int)(((JsonNumericValue)oc2["y"]).Value + 0.5) / 80; // y
+        //            switch (t)
+        //            {
+        //                case 1: // MoonGate
+        //                    {
+        //                        int i = (int)((JsonNumericValue)oc2["mi"]).Value; // id
+        //                        Pt loc = new Pt(this, x, y);
+        //                        MoonGateInfo mi = new MoonGateInfo(this, i, loc);
+        //                        if (!m_MoonGatesByCont.ContainsKey(loc.Continent))
+        //                            m_MoonGatesByCont.Add(loc.Continent, new List<MoonGateInfo>());
+        //                        m_MoonGatesByCont[loc.Continent].Add(mi);
+        //                        break;
+        //                    }
+        //                case 2: // City
+        //                    {
+        //                        if (String.IsNullOrEmpty(((JsonStringValue)oc2["pn"]).Value))
+        //                        {
+        //                            int i = (int)((JsonNumericValue)oc2["ci"]).Value; // id
+        //                            string name = ((JsonStringValue)oc2["n"]).Value; // name
+        //                            int p = (int)((JsonNumericValue)oc2["p"]).Value; // score
+        //                            int c = (int)((JsonNumericValue)oc2["k"]).Value; // continent
+        //                            Pt loc = new Pt(this, x, y);
+        //                            CityInfo ci = new CityInfo(this, null, name, i, loc, BorderingType.Unknown, name.Contains("castle") ? CityType.Castle : CityType.City, p);
+        //                            if (!m_LawlessByCont.ContainsKey(c))
+        //                                m_LawlessByCont.Add(c, new List<CityInfo>());
+        //                            m_LawlessByCont[c].Add(ci);
+        //                        }
+        //                        break;
+        //                    }
+        //                case 14: // Shrine
+        //                    {
+        //                        int i = (int)((JsonNumericValue)oc2["si"]).Value; // id
+        //                        int st = (int)((JsonNumericValue)oc2["m"]).Value; // shrine type
+        //                        Pt loc = new Pt(this, x, y);
+        //                        ShrineInfo si = new ShrineInfo(this, i, loc, (ShrineType)st);
+        //                        if (!m_ShrinesByCont.ContainsKey(loc.Continent))
+        //                            m_ShrinesByCont.Add(loc.Continent, new List<ShrineInfo>());
+        //                        m_ShrinesByCont[loc.Continent].Add(si);
+        //                        if (!m_ShrinesByVirtue.ContainsKey(si.Virtue))
+        //                            m_ShrinesByVirtue.Add(si.Virtue, new List<ShrineInfo>());
+        //                        m_ShrinesByVirtue[si.Virtue].Add(si);
+        //                        break;
+        //                    }
+        //            }
+        //        }
+        //        m_VisLoaded = true;
+        //    }
+        //}
     }
 }
