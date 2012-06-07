@@ -79,15 +79,6 @@ namespace LouMapInfo
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
 
-        public static JsonObjectCollection GetPublicAllianceInfo(string baseurl, string session, int idAlliance)
-        {
-            string endpoint = "GetPublicAllianceInfo";
-            JsonObjectCollection args = new JsonObjectCollection();
-            args.Add(new JsonStringValue("session", session));
-            args.Add(new JsonNumericValue("id", idAlliance));
-            return (JsonObjectCollection)Query(baseurl, endpoint, args);
-        }
-
         public static JsonObjectCollection GetServerInfo(string baseurl, string session)
         {
             string endpoint = "GetServerInfo";
@@ -101,36 +92,7 @@ namespace LouMapInfo
             string endpoint = "OpenSession";
             JsonObjectCollection args = new JsonObjectCollection();
             args.Add(new JsonStringValue("session", session));
-            return (JsonObjectCollection)Query(baseurl, endpoint, args);
-        }
-
-        public static JsonArrayCollection GetVIS(string baseurl, string session)
-        {
-            string endpoint = "Poll"; //
-            JsonObjectCollection args = new JsonObjectCollection();
-            args.Add(new JsonStringValue("session", session));
-            args.Add(new JsonStringValue("requestid", "42"));
-            //args.Add(new JsonStringValue("requests", "VIS:w:0:0:-0:-0:1000000:1000000"));
-
-            args.Add(new JsonStringValue("requests", "TM:71,50,\fCAT:1\fSERVER:\fALLIANCE:\fQUEST:\fTE:\fPLAYER:\fCITY:9830667\fWC:\fWORLD:\fVIS:c:9830667:0:-964:-582:1016:677\fUFP:\fREPORT:\fMAIL:\fFRIENDINV:\fTIME:1305347895979\fCHAT:\fSUBSTITUTION:\fINV:\fALL_AT:\fMAT:9830667\f"));
-            JsonObject jo = Query(baseurl, endpoint, args);
-            JsonArrayCollection ac1 = jo as JsonArrayCollection;
-            foreach (JsonObjectCollection oc1 in ac1)
-            {
-                if (((JsonStringValue)oc1["C"]).Value == "VIS")
-                {
-                    return ((JsonObjectCollection)((JsonObjectCollection)oc1["D"]))["u"] as JsonArrayCollection;
-                }
-            }
-            return null;
-        }
-
-        public static JsonObjectCollection GetShrineInfo(string baseurl, string session, int id)
-        {
-            string endpoint = "GetPublicShrineInfo";
-            JsonObjectCollection args = new JsonObjectCollection();
-            args.Add(new JsonStringValue("session", session));
-            args.Add(new JsonNumericValue("id", id));
+            args.Add(new JsonBooleanValue("reset", true));
             return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
 
@@ -184,14 +146,6 @@ namespace LouMapInfo
                 }
             }
             return null;
-        }
-
-        public static JsonObjectCollection GetMyAllianceInfo(string baseurl, string session)
-        {
-            string endpoint = "GetAllianceInfo";
-            JsonObjectCollection args = new JsonObjectCollection();
-            args.Add(new JsonStringValue("session", session));
-            return (JsonObjectCollection)Query(baseurl, endpoint, args);
         }
 
         public static void CityNoteSet(string baseurl, string session, int cid, string title, string text)
@@ -304,5 +258,56 @@ namespace LouMapInfo
                 // 10: Un bout de Wall
                 // 13: Wall, the object
         }
+
+        ////Not used anywhere
+        //public static JsonObjectCollection GetMyAllianceInfo(string baseurl, string session)
+        //{
+        //    string endpoint = "GetAllianceInfo";
+        //    JsonObjectCollection args = new JsonObjectCollection();
+        //    args.Add(new JsonStringValue("session", session));
+        //    return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        //}
+
+        //// Not Used anywhere
+        //public static JsonObjectCollection GetPublicAllianceInfo(string baseurl, string session, int idAlliance)
+        //{
+        //    string endpoint = "GetPublicAllianceInfo";
+        //    JsonObjectCollection args = new JsonObjectCollection();
+        //    args.Add(new JsonStringValue("session", session));
+        //    args.Add(new JsonNumericValue("id", idAlliance));
+        //    return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        //}
+
+        //// Not Used anywhere
+        //public static JsonArrayCollection GetVIS(string baseurl, string session)
+        //{
+        //    string endpoint = "Poll"; //
+        //    JsonObjectCollection args = new JsonObjectCollection();
+        //    args.Add(new JsonStringValue("session", session));
+        //    args.Add(new JsonStringValue("requestid", "42"));
+        //    //args.Add(new JsonStringValue("requests", "VIS:w:0:0:-0:-0:1000000:1000000"));
+
+        //    args.Add(new JsonStringValue("requests", "TM:71,50,\fCAT:1\fSERVER:\fALLIANCE:\fQUEST:\fTE:\fPLAYER:\fCITY:9830667\fWC:\fWORLD:\fVIS:c:9830667:0:-964:-582:1016:677\fUFP:\fREPORT:\fMAIL:\fFRIENDINV:\fTIME:1305347895979\fCHAT:\fSUBSTITUTION:\fINV:\fALL_AT:\fMAT:9830667\f"));
+        //    JsonObject jo = Query(baseurl, endpoint, args);
+        //    JsonArrayCollection ac1 = jo as JsonArrayCollection;
+        //    foreach (JsonObjectCollection oc1 in ac1)
+        //    {
+        //        if (((JsonStringValue)oc1["C"]).Value == "VIS")
+        //        {
+        //            return ((JsonObjectCollection)((JsonObjectCollection)oc1["D"]))["u"] as JsonArrayCollection;
+        //        }
+        //    }
+        //    return null;
+        //}
+
+        //// Not Used anywhere
+        //public static JsonObjectCollection GetShrineInfo(string baseurl, string session, int id)
+        //{
+        //    string endpoint = "GetPublicShrineInfo";
+        //    JsonObjectCollection args = new JsonObjectCollection();
+        //    args.Add(new JsonStringValue("session", session));
+        //    args.Add(new JsonNumericValue("id", id));
+        //    return (JsonObjectCollection)Query(baseurl, endpoint, args);
+        //}
     }
 }
