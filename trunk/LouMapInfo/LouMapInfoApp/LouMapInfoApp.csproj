@@ -41,9 +41,6 @@
     <StartupObject>LouMapInfoApp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -297,10 +294,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\Programmation\C#\LouMapInfo\EricUtilityWinForms\EricUtilityWinForms_4.0.csproj">
-      <Project>{13AC29CB-866A-4954-B376-7FCA5412DDF1}</Project>
-      <Name>EricUtilityWinForms_4.0</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections_4.0.csproj">
       <Project>{B8B8FC45-F16D-4380-91FD-F08B365C74A7}</Project>
       <Name>EricUtilityCollections_4.0</Name>
@@ -308,6 +301,10 @@
     <ProjectReference Include="..\EricUtilityNetworking\EricUtilityNetworking_4.0.csproj">
       <Project>{455F649D-B01B-4B20-B648-805461BF3142}</Project>
       <Name>EricUtilityNetworking_4.0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtilityWinForms\EricUtilityWinForms_4.0.csproj">
+      <Project>{13ac29cb-866a-4954-b376-7fca5412ddf1}</Project>
+      <Name>EricUtilityWinForms_4.0</Name>
     </ProjectReference>
     <ProjectReference Include="..\EricUtility\EricUtility_4.0.csproj">
       <Project>{31541BBE-B408-4719-BFCE-03947BB7AB0E}</Project>
