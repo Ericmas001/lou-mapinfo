@@ -60,12 +60,6 @@
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LouMapInfoOnlineMVC\LouMapInfoOnlineMVC.csproj">
-      <Project>{CC96156B-A842-4456-9A34-F9C6B3F616F0}</Project>
-      <Name>LouMapInfoOnlineMVC</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
