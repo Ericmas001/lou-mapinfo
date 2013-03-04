@@ -1,25 +1,25 @@
 ﻿2;World  1 (Europe);12
 3;World  2 (Europe);9
 5;World  3 (USA East Coast);2
-6;World  4 (Europe);5
+6;World  4 (Europe);21
 7;World  5 (USA East Coast);11
 9;World  6 (Europe);12
-10;World  7 (USA East Coast);5
+10;World  7 (USA East Coast);21
 11;World  8 (Europe);28
 12;World  9 (USA East Coast);2
 14;World 10 (Europe);4
 15;World 11 (USA East Coast);4
 16;World 12 (Europe);4
 17;World 13 (USA West Coast);4
-18;World 14 (USA East Coast);5
+18;World 14 (USA East Coast);21
 20;World 15 (Europe);7
 21;World 16 (USA West Coast);7
 22;World 17 (USA East Coast);11
 23;World 18 (Europe);9
-24;World 19 (Europe);5
+24;World 19 (Europe);21
 32;World 20 (USA West Coast);2
 33;World 21 (USA East Coast);4
-34;World 22 (Australia);5
+34;World 22 (Australia);21
 35;World 23 (Europe);11
 38;World 24 (USA East Coast);4
 39;World 25 (USA West Coast);12
@@ -57,30 +57,51 @@
 130;World 57 (Australia);9
 131;World 58 (Europe);2
 139;World 59 (Europe);28
-140;World 60 (USA East Coast);5
+140;World 60 (USA East Coast);29
 146;World 61 (Australia);24
 147;World 62 (USA West Coast);2
-148;World 63 (USA East Coast);24
-149;World 64 (Europe);24
+148;World 63 (USA East Coast);20
+149;World 64 (Europe);13
 154;World 65 (Europe);24
 155;World 66 (USA East Coast);28
 159;World 67 (Australia);11
 162;World 68 (Europe);19
 163;World 69 (USA West Coast);24
-164;World 70 (USA East Coast);24
+164;World 70 (USA East Coast);10
 167;World 71 (Europe);28
 173;World 72 (Australia);20
-174;World 73 (Europe);20
+174;World 73 (Europe);12
 175;World 74 (USA East Coast);20
+178;World 75 (USA West Coast);4
+179;World 76 (Europe);4
+185;World 77 (USA East Coast);19
+189;World 78 (Europe);19
+191;World 79 (Australia) 							(Server is full);2
+192;World 80 (USA East Coast);22
+193;World 81 (Europe);9
+196;World 82 (Australia);5
+197;World 83 (USA West Coast);5
+214;World 84 (Europe);5
+216;World 85 (Australia);29
+217;World 86 (USA East Coast);29
+223;World 87 (Europe);29
+229;World 88 (USA West Coast);29
+231;World 89 (Australia);18
+233;World 90 (Europe);28
+235;World 91 (USA East Coast);28
 37;Castles 1 (Europe);4
 54;Castles 2 (USA East Coast);28
-136;Castles 3 (Europe);5
+136;Castles 3 (Europe);21
+232;Castles 4 (USA East Coast);18
 4;(de) Welt  1;27
 13;(de) Welt  2;16
 120;(de) Welt 10;23
 144;(de) Welt 11;3
 158;(de) Welt 12;15
 169;(de) Welt 13;1
+183;(de) Welt 14							(Server ist voll);26
+195;(de) Welt 15;25
+227;(de) Welt 16;30
 19;(de) Welt 3;27
 25;(de) Welt 4;15
 36;(de) Welt 5;27
@@ -93,6 +114,12 @@
 116;(es) Mundo 11 (España);8
 138;(es) Mundo 12 (América Latina);1
 141;(es) Mundo 13 (España);23
+181;(es) Mundo 14 (América Latina);27
+188;(es) Mundo 15 (España);27
+200;(es) Mundo 16 (España);32
+201;(es) Mundo 17 (América Latina);32
+226;(es) Mundo 18 (España);31
+236;(es) Mundo 19 (América Latina);27
 46;(es) Mundo 2;26
 50;(es) Mundo 3;26
 61;(es) Mundo 4 (España);15
@@ -107,26 +134,37 @@
 152;(fr) Monde 12;3
 161;(fr) Monde 13;23
 172;(fr) Monde 14;25
-48;(fr) Monde 2							(Serveur complet);26
+184;(fr) Monde 15;27
+190;(fr) Monde 16;8
+215;(fr) Monde 17;30
+228;(fr) Monde 18;30
+48;(fr) Monde 2;26
 57;(fr) Monde 3;15
 66;(fr) Monde 4;16
-82;(fr) Monde 5							(Serveur complet);6
+82;(fr) Monde 5;27
 100;(fr) Monde 6;16
-107;(fr) Monde 7;8
+107;(fr) Monde 7;26
 118;(fr) Monde 8;8
 127;(fr) Monde 9;14
 27;(it) Mondo 1;16
+194;(it) Mondo 10 							(Server pieno);27
+218;(it) Mondo 11;31
+230;(it) Mondo 12;31
 47;(it) Mondo 2;26
 68;(it) Mondo 3;26
 94;(it) Mondo 4;6
 111;(it) Mondo 5;8
-125;(it) Mondo 6;14
+125;(it) Mondo 6							(Server pieno);14
 143;(it) Mondo 7;23
-160;(it) Mondo 8;25
+160;(it) Mondo 8							(Server pieno);25
+176;(it) Mondo 9;23
 31;(pl) Świat 1;16
 134;(pl) Świat 10;1
 150;(pl) Świat 11;23
 166;(pl) Świat 12;23
+186;(pl) Świat 13;8
+202;(pl) Świat 14;32
+225;(pl) Świat 15;31
 43;(pl) Świat 2;26
 56;(pl) Świat 3;15
 70;(pl) Świat 4;26
@@ -136,27 +174,25 @@
 113;(pl) Świat 8;8
 124;(pl) Świat 9;14
 29;(pt) Mundo 1;16
-122;(pt) Mundo 10 (Brazil);14
 123;(pt) Mundo 11 (Portuguesa);14
-135;(pt) Mundo 12 (Brazil);1
 142;(pt) Mundo 13 (Portuguesa);23
-153;(pt) Mundo 14 (Brazil);6
 157;(pt) Mundo 15 (Portuguesa);6
 168;(pt) Mundo 16 (Portuguesa);26
 170;(pt) Mundo 17 (Portuguesa);25
-171;(pt) Mundo 18 (Brazil);25
+177;(pt) Mundo 19 (Portuguesa);25
 45;(pt) Mundo 2;26
-65;(pt) Mundo 3 (Brazil);26
+221;(pt) Mundo 20 (Portuguesa);16
 67;(pt) Mundo 4 (Portuguesa);26
-83;(pt) Mundo 5 (Brazil);6
 93;(pt) Mundo 6 (Portuguesa);6
-102;(pt) Mundo 7 (Brazil);15
 110;(pt) Mundo 8 (Portuguesa);8
-114;(pt) Mundo 9 (Brazil);8
 30;(ru) Мир 1;6
 132;(ru) Мир 10;3
-151;(ru) Мир 11;1
+151;(ru) Мир 11;30
 165;(ru) Мир 12;6
+187;(ru) Мир 13;26
+203;(ru) Мир 14;32
+222;(ru) Мир 15;31
+234;(ru) Мир 16;27
 44;(ru) Мир 2;26
 51;(ru) Мир 3;26
 63;(ru) Мир 4;15
@@ -171,3 +207,5 @@
 95;(tr) Dünya 4;15
 137;(tr) Dünya 5;1
 156;(tr) Dünya 6;6
+180;(tr) Dünya 7;25
+220;(tr) Dünya 8;32

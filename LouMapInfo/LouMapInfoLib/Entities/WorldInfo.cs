@@ -13,7 +13,7 @@ namespace LouMapInfo.Entities
         private readonly SessionInfo m_Session;
         private readonly string m_Name;
         private readonly ServerInfo m_Server;
-        private bool m_VisLoaded = false;
+        //private bool m_VisLoaded = false;
         private readonly Dictionary<string, PlayerInfo> m_PlayersByName = new Dictionary<string, PlayerInfo>();
         private readonly Dictionary<int, PlayerInfo> m_PlayersById = new Dictionary<int, PlayerInfo>();
         private readonly Dictionary<string, AllianceInfo> m_AlliancesByName = new Dictionary<string, AllianceInfo>();
