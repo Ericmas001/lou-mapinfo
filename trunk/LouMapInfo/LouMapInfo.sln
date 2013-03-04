@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtility_4.0", "EricUtility\EricUtility_4.0.csproj", "{31541BBE-B408-4719-BFCE-03947BB7AB0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityCollections_4.0", "EricUtilityCollections\EricUtilityCollections_4.0.csproj", "{B8B8FC45-F16D-4380-91FD-F08B365C74A7}"
