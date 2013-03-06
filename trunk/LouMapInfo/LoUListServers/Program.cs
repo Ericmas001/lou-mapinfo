@@ -15,7 +15,7 @@ namespace LoUListServers
         static void Main(string[] args)
         {
             string main = "en";
-            string[] others = { "de", "fr", "it", "pl", "pt", "ru", "es", "tr" };
+            string[] others = { "de", "fr", "it", "pl", "pt", "pt_BR", "uk", "ar", "cs", "da", "fi", "nl", "no", "ro", "sk", "sv", "ru", "es", "tr", "hu" };
             Array.Sort(others);
 
             Console.WriteLine(" ==== Retrieve LoU Servers List !! ==== ");
@@ -63,29 +63,31 @@ namespace LoUListServers
             List<ServerInfo> servers = new List<ServerInfo>();
 
             string s = GatheringUtility.GetPageSource("http://www.lordofultima.com/"+ lang + "/game", cookies);
-            s = StringUtility.Extract(s, "<div class=\"world-new\">", "<div id=\"startgame_new\"");
-            
-            int ind = -1;
-            while ((ind = s.IndexOf("<option", ind + 1)) >= 0)
+            if (s != null)
             {
-                string world = StringUtility.Extract(s, "<option", "/option>", ind);
-                string name = StringUtility.Extract(world, ">", "<").Trim();
-                if (prefix != null)
-                    name = "(" + prefix + ") " + name;
-                else
-                {
-                    name = "  " + name;
-                    if (name.Contains("Castle"))
-                        name = name.Substring(1);
-                }
-                if (world.Contains("class=\"low\""))
-                    name = name.Remove(name.LastIndexOf('(')).TrimEnd();
-                string url = StringUtility.Extract(world, "http://", ".aspx");
-                string srv = StringUtility.Extract(url, "prodgame", ".lordofultima.com");
-                string id = StringUtility.Extract(url, ".com/", "/index");
-                servers.Add(new ServerInfo(int.Parse(id), name, int.Parse(srv)));
-            }
+                s = StringUtility.Extract(s, "<div class=\"world-new\">", "<div id=\"startgame_new\"");
 
+                int ind = -1;
+                while ((ind = s.IndexOf("<option", ind + 1)) >= 0)
+                {
+                    string world = StringUtility.Extract(s, "<option", "/option>", ind);
+                    string name = StringUtility.Extract(world, ">", "<").Trim();
+                    if (prefix != null)
+                        name = "(" + prefix + ") " + name;
+                    else
+                    {
+                        name = "  " + name;
+                        if (name.Contains("Castle"))
+                            name = name.Substring(1);
+                    }
+                    if (world.Contains("class=\"low\""))
+                        name = name.Remove(name.LastIndexOf('(')).TrimEnd();
+                    string url = StringUtility.Extract(world, "http://", ".aspx");
+                    string srv = StringUtility.Extract(url, "prodgame", ".lordofultima.com");
+                    string id = StringUtility.Extract(url, ".com/", "/index");
+                    servers.Add(new ServerInfo(int.Parse(id), name, int.Parse(srv)));
+                }
+            }
             return servers;
         }
     }

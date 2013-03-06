@@ -146,6 +146,10 @@
 107;(fr) Monde 7;26
 118;(fr) Monde 8;8
 127;(fr) Monde 9;14
+182;(hu) Világ 1;27
+199;(hu) Világ 2;32
+219;(hu) Világ 3;31
+224;(hu) Világ 4;16
 27;(it) Mondo 1;16
 194;(it) Mondo 10 							(Server pieno);27
 218;(it) Mondo 11;31
@@ -185,6 +189,16 @@
 67;(pt) Mundo 4 (Portuguesa);26
 93;(pt) Mundo 6 (Portuguesa);6
 110;(pt) Mundo 8 (Portuguesa);8
+122;(pt_BR) Mundo 10 (Brazil);14
+135;(pt_BR) Mundo 12 (Brazil);1
+153;(pt_BR) Mundo 14 (Brazil);6
+171;(pt_BR) Mundo 18 (Brazil);25
+198;(pt_BR) Mundo 19 (Brazil);30
+237;(pt_BR) Mundo 20 (Brazil);26
+65;(pt_BR) Mundo 3 (Brazil);26
+83;(pt_BR) Mundo 5 (Brazil);6
+102;(pt_BR) Mundo 7 (Brazil);15
+114;(pt_BR) Mundo 9 (Brazil);8
 30;(ru) Мир 1;6
 132;(ru) Мир 10;3
 151;(ru) Мир 11;30
