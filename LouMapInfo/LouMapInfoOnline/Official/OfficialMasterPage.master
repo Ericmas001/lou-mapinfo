@@ -3,12 +3,12 @@
     <style type="text/css">
     .style1
     {
-        background-color: #00FFFF;
+        background-color: #00FF00;
     }
     .style2
     {
         font-weight: bold;
-        background-color: #00FFFF;
+        background-color: #00FF00;
     }
         .style4
         {
@@ -26,7 +26,9 @@
     <br />
     <span class="style4">2011-06-27 09h30 PM Eastern Time: </span>New Worlds available in multiple languages !!
     <br />
-    <span class="style2">2011-09-03 02h30 PM Eastern Time: </span><span class="style1"><a href="http://code.google.com/p/lou-mapinfo/downloads/list">Desktop App 4.5.1 released !!!</a></span>
+    <span class="style4">2011-09-03 02h30 PM Eastern Time: </span><a href="http://code.google.com/p/lou-mapinfo/downloads/list">Desktop App 4.5.1 released !!!</a>
+    <br />
+    <span class="style2">2013-03-19 02h30 PM Eastern Time: </span><span class="style1">Repaired !!! It's working again !</span>
     <hr />
     <asp:Panel ID="pnlDisconnectedMenu" runat="server">
     <h2>
