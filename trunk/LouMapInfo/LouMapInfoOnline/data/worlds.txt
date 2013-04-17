@@ -90,6 +90,7 @@
 233;World 90 (Europe);28
 235;World 91 (USA East Coast);28
 238;World 92 (Australia);7
+239;World 93 (Europe);7
 37;Castles 1 (Europe);4
 54;Castles 2 (USA East Coast);28
 136;Castles 3 (Europe);21
@@ -135,6 +136,7 @@
 226;(es) Mundo 18 (España);31
 236;(es) Mundo 19 (América Latina);27
 46;(es) Mundo 2;26
+240;(es) Mundo 20 (España);3
 50;(es) Mundo 3;26
 61;(es) Mundo 4 (España);15
 62;(es) Mundo 5 (América Latina);15
@@ -186,6 +188,7 @@
 186;(pl) Świat 13;8
 202;(pl) Świat 14;32
 225;(pl) Świat 15;31
+241;(pl) Świat 16;6
 43;(pl) Świat 2;26
 56;(pl) Świat 3;15
 70;(pl) Świat 4;26
