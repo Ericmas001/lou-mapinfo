@@ -91,6 +91,8 @@
 235;World 91 (USA East Coast);28
 238;World 92 (Australia);7
 239;World 93 (Europe);7
+242;World 94 (Australia);24
+249;World 95 (USA West Coast);21
 37;Castles 1 (Europe);4
 54;Castles 2 (USA East Coast);28
 136;Castles 3 (Europe);21
@@ -102,6 +104,7 @@
 171;(br) Mundo 18 (Brazil);25
 198;(br) Mundo 19 (Brazil);30
 237;(br) Mundo 20 (Brazil);26
+252;(br) Mundo 21 (Brazil);1
 65;(br) Mundo 3 (Brazil);26
 83;(br) Mundo 5 (Brazil);6
 102;(br) Mundo 7 (Brazil);15
@@ -116,6 +119,7 @@
 183;(de) Welt 14;26
 195;(de) Welt 15;25
 227;(de) Welt 16;30
+248;(de) Welt 17;23
 19;(de) Welt 3;27
 25;(de) Welt 4;15
 36;(de) Welt 5;27
@@ -137,6 +141,7 @@
 236;(es) Mundo 19 (América Latina);27
 46;(es) Mundo 2;26
 240;(es) Mundo 20 (España);3
+251;(es) Mundo 21 (América Latina);23
 50;(es) Mundo 3;26
 61;(es) Mundo 4 (España);15
 62;(es) Mundo 5 (América Latina);15
@@ -155,6 +160,7 @@
 190;(fr) Monde 16;8
 215;(fr) Monde 17;30
 228;(fr) Monde 18;30
+247;(fr) Monde 19;14
 48;(fr) Monde 2;26
 57;(fr) Monde 3;15
 66;(fr) Monde 4;16
@@ -167,10 +173,12 @@
 199;(hu) Világ 2;32
 219;(hu) Világ 3;31
 224;(hu) Világ 4;16
+244;(hu) Világ 5;23
 27;(it) Mondo 1;16
 194;(it) Mondo 10;27
 218;(it) Mondo 11;31
 230;(it) Mondo 12;31
+246;(it) Mondo 13;3
 47;(it) Mondo 2;26
 68;(it) Mondo 3;26
 94;(it) Mondo 4;6
@@ -206,6 +214,7 @@
 177;(pt) Mundo 19 (Portuguesa);25
 45;(pt) Mundo 2;26
 221;(pt) Mundo 20 (Portuguesa);16
+243;(pt) Mundo 21 (Portuguesa);23
 67;(pt) Mundo 4 (Portuguesa);26
 93;(pt) Mundo 6 (Portuguesa);6
 110;(pt) Mundo 8 (Portuguesa);8
@@ -218,6 +227,7 @@
 203;(ru) Мир 14;32
 222;(ru) Мир 15;31
 234;(ru) Мир 16;27
+250;(ru) Мир 17;16
 44;(ru) Мир 2;26
 51;(ru) Мир 3;26
 63;(ru) Мир 4;15
@@ -236,4 +246,5 @@
 156;(tr) Dünya 6;6
 180;(tr) Dünya 7;25
 220;(tr) Dünya 8;32
+245;(tr) Dünya 9;23
 211;(ua) Світ 1;31
