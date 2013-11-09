@@ -23,8 +23,9 @@ namespace LoUListServers
 
             CookieContainer cookies = SessionInfo.ConnectToLoU(mail, pass);
             string session = SessionInfo.GetSessionID(cookies);
+                                //                         http://prodgame.lordofultima.com/Farm/service.svc/ajaxEndpoint/1/session/b2ab6bf0-e607-45fb-bd85-df559c123f8e/worlds?SessionType=1
 
-            string xml = GatheringUtility.GetPageSource("http://prodcdngame.lordofultima.com/Farm/service.svc/ajaxEndpoint/1/session/" + session + "/worlds", "application/xml ; charset=UTF-8", cookies, Encoding.UTF8);
+            string xml = GatheringUtility.GetPageSource("http://prodgame.lordofultima.com/Farm/service.svc/ajaxEndpoint/1/session/" + session + "/worlds?SessionType=1", "application/xml ; charset=UTF-8", cookies, Encoding.UTF8);
             xml = xml.Replace("</server>\n\t<server>", "</server>|<server>");
             string[] servers = xml.Split('|');
             ServerList.LoadFromWeb = false;
@@ -37,9 +38,13 @@ namespace LoUListServers
                 string name = StringUtility.Extract(sr, "<servername>", "</servername>").Trim().Replace("العالم","Arab World");
 
                 string lang = StringUtility.Extract(sr, "<region>", "</region>");
+                string[] langs = lang.Split('_');
 
-                if (lang != "en")
-                    name = "(" + lang + ") " + name;
+                string l = langs[0].ToLower();
+                string c = langs[1].ToLower();
+
+                if (l != "en" && c != "us")
+                    name = "(" + (l == c ? l : lang) + ") " + name;
                 else
                 {
                     name = "  " + name;

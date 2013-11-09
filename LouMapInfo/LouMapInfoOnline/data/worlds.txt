@@ -1,4 +1,5 @@
-﻿2;World  1 (Europe);12
+﻿255;Battle of Lords (Europe);5
+2;World  1 (Europe);12
 3;World  2 (Europe);9
 5;World  3 (USA East Coast);2
 6;World  4 (Europe);21
@@ -8,6 +9,9 @@
 11;World  8 (Europe);28
 12;World  9 (USA East Coast);2
 14;World 10 (Europe);4
+284;World 100 (USA East Coast);28
+285;World 101 (Europe);29
+286;World 102 (Australia);12
 15;World 11 (USA East Coast);4
 16;World 12 (Europe);4
 17;World 13 (USA West Coast);4
@@ -43,7 +47,7 @@
 89;World 43 (Europe);11
 91;World 44 (USA East Coast);19
 96;World 45 (Australia);19
-97;World 46 (USA West Coast);11
+97;World 46 (USA West Coast);20
 104;World 47 (Europe);19
 105;World 48 (USA East Coast);18
 106;World 49 (Australia);18
@@ -64,10 +68,10 @@
 149;World 64 (Europe);13
 154;World 65 (Europe);24
 155;World 66 (USA East Coast);28
-159;World 67 (Australia);11
+159;World 67 (Australia);22
 162;World 68 (Europe);19
 163;World 69 (USA West Coast);24
-164;World 70 (USA East Coast);10
+164;World 70 (USA East Coast);22
 167;World 71 (Europe);28
 173;World 72 (Australia);20
 174;World 73 (Europe);12
@@ -83,33 +87,27 @@
 197;World 83 (USA West Coast);5
 214;World 84 (Europe);5
 216;World 85 (Australia);29
-217;World 86 (USA East Coast);29
-223;World 87 (Europe);29
+217;World 86 (USA East Coast);11
+223;World 87 (Europe);21
 229;World 88 (USA West Coast);29
 231;World 89 (Australia);18
-233;World 90 (Europe);28
+233;World 90 (Europe);10
 235;World 91 (USA East Coast);28
 238;World 92 (Australia);7
 239;World 93 (Europe);7
 242;World 94 (Australia);24
 249;World 95 (USA West Coast);21
+253;World 96 (USA East Coast);2
+254;World 97 (Australia);2
+276;World 98 (Europe);29
+279;World 99 (Australia);29
 37;Castles 1 (Europe);4
 54;Castles 2 (USA East Coast);28
 136;Castles 3 (Europe);21
 232;Castles 4 (USA East Coast);18
-213;(ar) 1 Arab World;31
-122;(br) Mundo 10 (Brazil);14
-135;(br) Mundo 12 (Brazil);1
-153;(br) Mundo 14 (Brazil);6
-171;(br) Mundo 18 (Brazil);25
-198;(br) Mundo 19 (Brazil);30
-237;(br) Mundo 20 (Brazil);26
-252;(br) Mundo 21 (Brazil);1
-65;(br) Mundo 3 (Brazil);26
-83;(br) Mundo 5 (Brazil);6
-102;(br) Mundo 7 (Brazil);15
-114;(br) Mundo 9 (Brazil);8
-210;(cz) Svět 1;31
+213;(ar_AE) 1 Arab World;31
+210;(cs_CZ) Svět 1;31
+205;(da_DK) Verden 1;31
 4;(de) Welt  1;27
 13;(de) Welt  2;16
 120;(de) Welt 10;23
@@ -120,6 +118,7 @@
 195;(de) Welt 15;25
 227;(de) Welt 16;30
 248;(de) Welt 17;23
+282;(de) Welt 18;25
 19;(de) Welt 3;27
 25;(de) Welt 4;15
 36;(de) Welt 5;27
@@ -127,7 +126,6 @@
 60;(de) Welt 7;14
 78;(de) Welt 8;27
 92;(de) Welt 9;16
-205;(dk) Verden 1;31
 28;(es) Mundo 1;16
 115;(es) Mundo 10 (América Latina);8
 116;(es) Mundo 11 (España);8
@@ -142,6 +140,8 @@
 46;(es) Mundo 2;26
 240;(es) Mundo 20 (España);3
 251;(es) Mundo 21 (América Latina);23
+277;(es) Mundo 22 (España);32
+283;(es) Mundo 23 (América Latina);3
 50;(es) Mundo 3;26
 61;(es) Mundo 4 (España);15
 62;(es) Mundo 5 (América Latina);15
@@ -162,6 +162,7 @@
 228;(fr) Monde 18;30
 247;(fr) Monde 19;14
 48;(fr) Monde 2;26
+281;(fr) Monde 20;31
 57;(fr) Monde 3;15
 66;(fr) Monde 4;16
 82;(fr) Monde 5;27
@@ -187,8 +188,8 @@
 143;(it) Mondo 7;23
 160;(it) Mondo 8;25
 176;(it) Mondo 9;23
+208;(nb_NO) Verden 1;31
 204;(nl) Wereld 1;31
-208;(no) Verden 1;31
 31;(pl) Świat 1;16
 134;(pl) Świat 10;1
 150;(pl) Świat 11;23
@@ -197,6 +198,7 @@
 202;(pl) Świat 14;32
 225;(pl) Świat 15;31
 241;(pl) Świat 16;6
+278;(pl) Świat 17;32
 43;(pl) Świat 2;26
 56;(pl) Świat 3;15
 70;(pl) Świat 4;26
@@ -218,6 +220,17 @@
 67;(pt) Mundo 4 (Portuguesa);26
 93;(pt) Mundo 6 (Portuguesa);6
 110;(pt) Mundo 8 (Portuguesa);8
+122;(pt_BR) Mundo 10 (Brazil);14
+135;(pt_BR) Mundo 12 (Brazil);1
+153;(pt_BR) Mundo 14 (Brazil);6
+171;(pt_BR) Mundo 18 (Brazil);25
+198;(pt_BR) Mundo 19 (Brazil);30
+237;(pt_BR) Mundo 20 (Brazil);26
+252;(pt_BR) Mundo 21 (Brazil);1
+65;(pt_BR) Mundo 3 (Brazil);26
+83;(pt_BR) Mundo 5 (Brazil);6
+102;(pt_BR) Mundo 7 (Brazil);15
+114;(pt_BR) Mundo 9 (Brazil);8
 209;(ro) Lume 1;31
 30;(ru) Мир 1;6
 132;(ru) Мир 10;3
@@ -236,9 +249,10 @@
 101;(ru) Мир 7;16
 112;(ru) Мир 8;8
 126;(ru) Мир 9;14
-207;(se) Värld 1;31
 212;(sk) Svet 1;31
+207;(sv_SE) Värld 1;31
 49;(tr) Dünya 1;26
+280;(tr) Dünya 10;32
 52;(tr) Dünya 2;15
 73;(tr) Dünya 3;16
 95;(tr) Dünya 4;15
@@ -247,4 +261,4 @@
 180;(tr) Dünya 7;25
 220;(tr) Dünya 8;32
 245;(tr) Dünya 9;23
-211;(ua) Світ 1;31
+211;(uk_UA) Світ 1;31

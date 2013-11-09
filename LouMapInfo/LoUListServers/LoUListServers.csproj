@@ -53,7 +53,7 @@
       <Name>EricUtility_4.0</Name>
     </ProjectReference>
     <ProjectReference Include="..\LouMapInfoLib\LouMapInfoLib.csproj">
-      <Project>{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}</Project>
+      <Project>{94fcf27f-d4f1-456f-9d5e-60c40e4a45cb}</Project>
       <Name>LouMapInfoLib</Name>
     </ProjectReference>
   </ItemGroup>
