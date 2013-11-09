@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LouMapInfo</RootNamespace>
+    <AssemblyName>LouMapInfoLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CSV\AllianceCitiesListCSV.cs" />
+    <Compile Include="CSV\ReportCSV.cs" />
+    <Compile Include="Entities\CityExtendedInfo.cs" />
+    <Compile Include="Entities\PlayerExtendedInfo.cs" />
+    <Compile Include="Entities\Types\GroupingType.cs" />
+    <Compile Include="Entities\Types\RankingType.cs" />
+    <Compile Include="Layout\BuildingInfo.cs" />
+    <Compile Include="Layout\BuildingType.cs" />
+    <Compile Include="Layout\CompleteLayout.cs" />
+    <Compile Include="Layout\LayoutEntry.cs" />
+    <Compile Include="Layout\ProductionType.cs" />
+    <Compile Include="Layout\ResourceType.cs" />
+    <Compile Include="Entities\ServerInfo.cs" />
+    <Compile Include="Entities\Types\BattleType.cs" />
+    <Compile Include="Entities\MoonGateInfo.cs" />
+    <Compile Include="Entities\ShrineInfo.cs" />
+    <Compile Include="Entities\ContinentInfo.cs" />
+    <Compile Include="Entities\CityInfo.cs" />
+    <Compile Include="Entities\Pt.cs" />
+    <Compile Include="Entities\AllianceInfo.cs" />
+    <Compile Include="Entities\Types\ShrineType.cs" />
+    <Compile Include="Entities\Types\CityType.cs" />
+    <Compile Include="Entities\Types\BorderingType.cs" />
+    <Compile Include="EndPoint.cs" />
+    <Compile Include="Entities\PlayerInfo.cs" />
+    <Compile Include="Reports\Items\EnlightmentScoreReportItem.cs" />
+    <Compile Include="ServerList.cs" />
+    <Compile Include="Entities\SessionInfo.cs" />
+    <Compile Include="Entities\WorldInfo.cs" />
+    <Compile Include="Entities\Types\VirtueType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\core\Filters.cs" />
+    <Compile Include="Entities\Types\FilterType.cs" />
+    <Compile Include="Reports\Items\ContinentScoreReportItem.cs" />
+    <Compile Include="Reports\Items\MultiLineReportItem.cs" />
+    <Compile Include="Reports\Items\PlayerCountReportItem.cs" />
+    <Compile Include="Reports\Items\TextReportItem.cs" />
+    <Compile Include="Reports\ShrineRadiusReport.cs" />
+    <Compile Include="Reports\Items\DetailedPalaceInfoReportItem.cs" />
+    <Compile Include="Reports\BattlePalaceReport.cs" />
+    <Compile Include="Reports\Items\DetailedCityInfoReportItem.cs" />
+    <Compile Include="Reports\VirtuePalaceReport.cs" />
+    <Compile Include="Reports\ContinentOverviewReport.cs" />
+    <Compile Include="Reports\AllianceOverviewReport.cs" />
+    <Compile Include="Reports\Items\AllianceInfoReportItem.cs" />
+    <Compile Include="Reports\Items\BorderingTypeReportItem.cs" />
+    <Compile Include="Reports\Items\CityInfoReportItem.cs" />
+    <Compile Include="Reports\Items\CityTypeReportItem.cs" />
+    <Compile Include="Reports\PlayerOverviewReport.cs" />
+    <Compile Include="Reports\core\ReportOption.cs" />
+    <Compile Include="Reports\core\ReportItem.cs" />
+    <Compile Include="Reports\Items\PlayerInfoReportItem.cs" />
+    <Compile Include="Reports\core\ReportInfo.cs" />
+    <Compile Include="Zeus\AbstractLobbyCommand.cs" />
+    <Compile Include="Zeus\AbstractLobbyResponse.cs" />
+    <Compile Include="Zeus\Commands\Account\ChangePasswordCommand.cs" />
+    <Compile Include="Zeus\Commands\Account\ChangePasswordResponse.cs" />
+    <Compile Include="Zeus\Commands\Identifying\AuthenticateCommand.cs" />
+    <Compile Include="Zeus\Commands\Identifying\AuthenticateResponse.cs" />
+    <Compile Include="Zeus\Commands\Identifying\IdentifyCommand.cs" />
+    <Compile Include="Zeus\Commands\Identifying\IdentifyResponse.cs" />
+    <Compile Include="Zeus\Commands\Identifying\RequestPasswordCommand.cs" />
+    <Compile Include="Zeus\Commands\Identifying\RequestPasswordResponse.cs" />
+    <Compile Include="Zeus\LobbyTCPClient.cs" />
+    <Compile Include="Zeus\ZeusSessionInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections2011.csproj">
+      <Project>{e6120916-9399-4bf5-8f95-19d79df74067}</Project>
+      <Name>EricUtilityCollections2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtilityNetworking\EricUtilityNetworking2011.csproj">
+      <Project>{980f8de9-2f6e-4a96-849d-23754b364271}</Project>
+      <Name>EricUtilityNetworking2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtility\EricUtility2011.csproj">
+      <Project>{e88c4aef-1b0b-45c0-a08d-cbcda35c1e62}</Project>
+      <Name>EricUtility2011</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
