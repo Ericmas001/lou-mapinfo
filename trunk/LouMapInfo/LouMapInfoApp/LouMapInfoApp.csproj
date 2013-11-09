@@ -14,6 +14,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <GenerateResourceNeverLockTypeAssemblies>true</GenerateResourceNeverLockTypeAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -134,6 +135,11 @@
     <Compile Include="LouOfficial\Empire\ContentEmpireSummary.Designer.cs">
       <DependentUpon>ContentEmpireSummary.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ContentLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -239,6 +245,10 @@
     <EmbeddedResource Include="LouOfficial\Empire\ContentEmpireSummary.resx">
       <DependentUpon>ContentEmpireSummary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\ContentLayout.resx">
       <DependentUpon>ContentLayout.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,16 +267,6 @@
     <EmbeddedResource Include="Help\ContentAbout.resx">
       <DependentUpon>ContentAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Tools\ContentOptions.resx">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -354,6 +354,7 @@
     <Content Include="pthreadVC2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\LordOfUltima.png" />
     <Content Include="SQLite3.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -455,7 +456,6 @@
     <None Include="Resources\menu_Map.png" />
     <None Include="Resources\menu_Empire.png" />
     <None Include="Resources\Office-excel-csv-icon.png" />
-    <None Include="Resources\LordOfUltima.png" />
     <None Include="Resources\Refresh-icon.png" />
     <None Include="Resources\popup_icon.gif" />
     <None Include="logo-LOU.png" />

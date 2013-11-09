@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityWinForms_4.0", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouRestService", "LouRestService\LouRestService.csproj", "{4C539942-39A3-4F4F-9634-1ABBD2F291EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMIApp", "LMIApp\LMIApp.csproj", "{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -315,6 +317,36 @@ Global
 		{4C539942-39A3-4F4F-9634-1ABBD2F291EA}.TestLive|Mixed Platforms.ActiveCfg = TestLive|Any CPU
 		{4C539942-39A3-4F4F-9634-1ABBD2F291EA}.TestLive|Mixed Platforms.Build.0 = TestLive|Any CPU
 		{4C539942-39A3-4F4F-9634-1ABBD2F291EA}.TestLive|x86.ActiveCfg = TestLive|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.Release|x86.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.TestLive|Any CPU.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.TestLive|Any CPU.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.TestLive|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.TestLive|Mixed Platforms.Build.0 = Release|Any CPU
+		{DABF7A7C-9E91-42A6-8906-5B7FD122E7EC}.TestLive|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
